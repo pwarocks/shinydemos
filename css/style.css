@@ -72,19 +72,9 @@ hr {
 input, select {
   vertical-align: middle; }
 
-/**
- * Font normalization inspired by YUI Library's fonts.css: developer.yahoo.com/yui/
- */
-body {
-  font: 100%/1 sans-serif;
-  *font-size: small; }
-
-/* Hack retained to preserve specificity */
 select, input, textarea, button {
   font: 99% sans-serif; }
 
-/* Normalize monospace sizing:
-   en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome */
 pre, code, kbd, samp {
   font-family: monospace, sans-serif; }
 
@@ -114,7 +104,6 @@ strong, th {
 td {
   vertical-align: top; }
 
-/* Set sub, sup without affecting line-height: gist.github.com/413930 */
 sub, sup {
   font-size: 75%;
   line-height: 0;
@@ -127,7 +116,6 @@ sub {
   bottom: -0.25em; }
 
 pre {
-  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
   white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -136,11 +124,9 @@ pre {
 textarea {
   overflow: auto; }
 
-/* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
 .ie6 legend, .ie7 legend {
   margin-left: -7px; }
 
-/* Align checkboxes, radios, text inputs with their label by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
 input[type="radio"] {
   vertical-align: text-bottom; }
 
@@ -153,15 +139,12 @@ input[type="checkbox"] {
 .ie6 input {
   vertical-align: text-bottom; }
 
-/* Hand cursor on clickable input elements */
 label, input[type="button"], input[type="submit"], input[type="image"], button {
   cursor: pointer; }
 
-/* Webkit browsers add a 2px margin outside the chrome of form elements */
 button, input, select, textarea {
   margin: 0; }
 
-/* Colors for form validity */
 input:invalid, textarea:invalid {
   border-radius: 1px;
   -moz-box-shadow: 0px 0px 5px red;
@@ -171,9 +154,6 @@ input:invalid, textarea:invalid {
 .no-boxshadow input:invalid, .no-boxshadow textarea:invalid {
   background-color: #f0dddd; }
 
-/* These selection declarations have to be separate
-   No text-shadow: twitter.com/miketaylr/status/12228805301
-   Also: hot pink! */
 ::-moz-selection {
   background: #FF5E99;
   color: #fff;
@@ -184,31 +164,21 @@ input:invalid, textarea:invalid {
   color: #fff;
   text-shadow: none; }
 
-/* j.mp/webkit-tap-highlight-color */
 a:link {
   -webkit-tap-highlight-color: #FF5E99; }
 
-/* Make buttons play nice in IE:
-   www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
 button {
   width: auto;
   overflow: visible; }
 
-/* Bicubic resizing for non-native sized IMG:
-   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
 .ie7 img {
   -ms-interpolation-mode: bicubic; }
 
-/**
- * You might tweak these..
- */
 body, select, input, textarea {
-  /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */
   color: #444;
-  /* Set your base font here, to apply evenly */
-  /* font-family: Georgia, serif;  */ }
+  font: 100%/1 sans-serif;
+  *font-size: small; }
 
-/* Headers (h1, h2, etc) have no default font-size or margin; define those yourself */
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold; }
 
@@ -232,45 +202,11 @@ a:hover {
   font-style: normal; }
 
 html {
-  background: silver;
-  position: fixed;
-  width: 100%;
-  height: 100%; }
+  background: silver; }
 
 body {
-  width: 1000px;
-  margin: 0 auto;
-  position: relative;
-  top: 50%;
-  height: 50%; }
-
-#container {
-  position: absolute;
-  top: -450px;
-  left: 0;
-  width: 100%;
-  height: 900px;
-  -webkit-transition: -webkit-transform 2s ease-in;
-  -o-transition: -o-transform 2s ease-out; }
-
-#main {
-  position: absolute;
-  top: 0%;
-  left: 0;
-  width: 100%;
-  height: 100%; }
-
-.demo {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  width: 1000px;
-  height: 100%;
-  margin-left: -500px; }
-
-.zoomedin #container {
-  -webkit-transform: scale(40);
-  -o-transform: scale(40); }
+  width: 80%;
+  margin: 0 auto; }
 
 #main > a,
 #main > h1,
@@ -281,140 +217,155 @@ body {
 
 #main > a,
 #main > h1 {
+  padding: 0.5em;
+  -o-transition: color 1s, background 1s;
+  -moz-transition: color 1s, background 1s;
+  -webkit-transition: color 1s, background 1s;
+  transition: color 1s, background 1s;
   display: block;
-  position: absolute;
-  padding: 0.1em 0.2em 0;
-  color: rgba(255, 204, 204, 0.2);
-  -o-transition: color 1s ease-out;
-  -moz-transition: color 1s ease-out;
-  -webkit-transition: color 1s ease-out;
-  transition: color 1s ease-out; }
+  font-size: 1.5em; }
 
-#main > a:hover {
-  color: white; }
-
-#main > a:first-child {
+#main > a[href="#video"] {
   background: #d97879;
-  font-size: 4em;
-  top: 1em;
-  left: 7.25em; }
+  color: #efc7c8;
+  text-shadow: 1px 1px 1px #671d1e; }
+  #main > a[href="#video"]:hover {
+    color: white;
+    background: #8f282a; }
 
-#main > a:first-child:before {
-  top: 1.2em;
-  right: 0.1em;
+#main > a[href="#video"]:before {
   background: lightslategray; }
 
-#main > a:nth-child(2) {
-  background: #e4192d;
-  font-size: 6em;
-  top: 2.9em;
-  left: 0.9em; }
+#main > a[href="#parser"] {
+  background: #1b2c7e;
+  color: #2d49d2;
+  text-shadow: 1px 1px 1px black; }
+  #main > a[href="#parser"]:hover {
+    color: white;
+    background: black; }
 
-#main > a:nth-child(3) {
-  background: indigo;
-  font-size: 3em;
-  top: 11em;
-  left: 1em; }
+#main > a[href="#contenteditable"] {
+  background: #4b0082;
+  color: #8600e8;
+  text-shadow: 1px 1px 1px black; }
+  #main > a[href="#contenteditable"]:hover {
+    color: white;
+    background: black; }
 
-#main > a:nth-child(4) {
+#main > a[href="#audio"] {
   background: #a3a1b7;
-  font-size: 2em;
-  top: 5.15em;
-  left: 16.8em; }
+  color: #dcdbe3;
+  text-shadow: 1px 1px 1px #3e3d4f; }
+  #main > a[href="#audio"]:hover {
+    color: white;
+    background: #55536c; }
 
-#main > a:nth-child(5) {
+#main > a[href="#forms"] {
   background: #f36691;
-  font-size: 4em;
-  top: 4.96em;
-  left: 5.7em; }
+  color: #fac5d5;
+  text-shadow: 1px 1px 1px #830a2f; }
+  #main > a[href="#forms"]:hover {
+    color: white;
+    background: #b20e40; }
 
-#main > a:nth-child(5):before {
-  left: 0;
-  top: -2.1em;
-  background: #b73436; }
+#main > a[href="#forms"]:before {
+  background: #b73436;
+  color: #d97879;
+  text-shadow: 1px 1px 1px #180707; }
+  #main > a[href="#forms"]:before:hover {
+    color: white;
+    background: #401213; }
 
-#main > a:nth-child(6) {
+#main > a[href="#canvas"] {
   background: #1b221b;
-  font-size: 4em;
-  top: 6.1em;
-  left: 1.2em;
-  max-width: 4em;
-  text-align: right; }
+  color: #485b48;
+  text-shadow: 1px 1px 1px black; }
+  #main > a[href="#canvas"]:hover {
+    color: #e8ede8;
+    background: black; }
 
-#main > a:nth-child(7) {
+#main > a[href="#svg"] {
   background: #8c1519;
-  font-size: 4em;
-  top: 6.1em;
-  left: 6.9em;
-  max-width: 3em; }
+  color: #df282e;
+  text-shadow: 1px 1px 1px black; }
+  #main > a[href="#svg"]:hover {
+    color: white;
+    background: #070101; }
 
-#main > a:nth-child(8) {
+#main > a[href="#css"] {
   background: #311a34;
-  font-size: 2em;
-  top: 4.95em;
-  left: 20em; }
+  color: #713c78;
+  text-shadow: 1px 1px 1px black; }
+  #main > a[href="#css"]:hover {
+    color: #f6eff7;
+    background: black; }
 
-#main > a:nth-child(9) {
+#main > a[href="#js"] {
   background: #f78e23;
-  font-size: 3em;
-  top: -0.5em;
-  left: 12.1em; }
+  color: #fbc185;
+  text-shadow: 1px 1px 1px #4b2703; }
+  #main > a[href="#js"]:hover {
+    color: white;
+    background: #7c4105; }
 
 #main > h1 {
+  font-size: 3em;
   color: #fff;
-  font-size: 5em;
-  top: 5.25em;
-  left: 7.25em;
   text-shadow: 1px 1px 1px #000;
-  margin: 0;
-  padding: 0; }
-
-#main > a:first-child,
-#main > a:nth-child(4),
-#main > a:nth-child(5),
-#main > a:nth-child(7),
-#main > a:nth-child(9),
-#main > a:nth-child(8) {
-  -o-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  transform: rotate(90deg);
-  -o-transform-origin: 0% 100%;
-  -moz-transform-origin: 0% 100%;
-  -webkit-transform-origin: 0% 100%;
-  transform-origin: 0% 100%; }
+  margin: 0.25em 0;
+  padding: 0;
+  text-align: center; }
+  #main > h1 a {
+    color: inherit; }
+  #main > h1 i {
+    content: url("../img/opera.png");
+    width: 0.8em;
+    height: 0.9em;
+    vertical-align: -5px;
+    margin-left: 0.1em;
+    display: inline-block; }
 
 .demo {
-  pointer-events: none; }
+  z-index: -2;
+  position: relative;
+  margin: 2em 0; }
 
 .zoomedin .demo {
-  pointer-events: auto; }
+  z-index: 1; }
+
+.demo .wrapper,
+.demo > a,
+.demo .wrapper article {
+  opacity: 0;
+  -webkit-transition: 1.5s cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -o-transition: 1.5s cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: 1.5s cubic-bezier(0.26, 0.86, 0.44, 0.985); }
 
 .demo .wrapper {
-  position: absolute;
-  top: 10%;
-  left: 0;
-  right: 0;
-  bottom: 30%;
   background: #fff;
   box-shadow: 0 0 1em #666;
   padding: 2em 3em;
-  line-height: 1.5; }
+  line-height: 1.5;
+  min-height: 40em; }
 
-.demo .wrapper:before {
-  content: url("../img/opera-logo.png");
-  position: absolute;
-  top: -54px;
-  left: 2em;
-  z-index: -1; }
+.zoomedin .demo .wrapper,
+.zoomedin .demo > a,
+.demo .wrapper div.infobar,
+.demo .wrapper > article:target {
+  opacity: 1; }
 
 .demo .infobar {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
+  z-index: 1;
   height: 2em;
+  background: maroon;
+  background: -o-linear-gradient(indianred, #cc0000);
   background: -webkit-linear-gradient(indianred, #cc0000);
+  background: -moz-linear-gradient(indianred, #cc0000);
+  background: linear-gradient(indianred, #cc0000);
   border-top: 1px solid maroon;
   border-bottom: 1px solid #444;
   color: #fff;
@@ -422,11 +373,33 @@ body {
   line-height: 2em;
   padding: 0 1em; }
 
+.demo .infobar > a {
+  float: right; }
+
+.demo .infobar a {
+  color: inherit;
+  font-size: 0.8em; }
+
+.demo h1 {
+  font-size: 3em;
+  text-shadow: 1px 1px 1px #444, 3px 1px 1px indianred;
+  letter-spacing: 1px; }
+
+.demo .wrapper article {
+  top: 0;
+  padding-top: 3.5em;
+  left: 1.5em;
+  right: 0;
+  bottom: 0;
+  position: absolute; }
+
 .browsersupport {
-  background: url("../img/browser-logos-blur.png") 5em center no-repeat;
   display: inline-block;
   width: 50%;
   height: 2em; }
+
+.browsersupport a {
+  display: none; }
 
 .browsersupport a.current {
   text-indent: 0;
@@ -441,27 +414,6 @@ body {
   text-transform: uppercase;
   line-height: 1.8em; }
 
-.demo .infobar > a {
-  float: right; }
-
-.demo .infobar a {
-  color: inherit;
-  font-size: 0.8em; }
-
-.demo h1 {
-  font-size: 3em;
-  text-shadow: 1px 1px 1px #444, 3px 1px 1px indianred;
-  letter-spacing: 1px; }
-
-.demo .wrapper, .demo > a, .demo .wrapper > div {
-  opacity: 0;
-  -webkit-transition: 2s ease-in;
-  -o-transition: 2s ease-in; }
-
-.zoomedin .demo .wrapper, .zoomedin .demo > a, .demo .wrapper div.infobar, .demo .wrapper > div:target {
-  opacity: 1;
-  z-index: 2; }
-
 #parser h1 {
   color: #e4192d; }
 
@@ -473,19 +425,179 @@ body {
 #parser > div:last-of-type {
   margin-right: 0; }
 
-#main > a:first-child:before,
-#main > a:nth-child(5):before {
-  width: 1em;
-  height: 1em;
-  border-radius: 20em;
-  content: "";
-  display: block;
-  position: absolute; }
+@media only screen and (min-width: 800px) {
+  html {
+    position: fixed;
+    width: 100%;
+    height: 100%; }
 
-#main > a:nth-child(5):before {
-  width: 2em;
-  height: 2em; }
+  body {
+    width: 780px;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    height: 50%; }
 
+  #container {
+    position: absolute;
+    top: -350px;
+    left: 0;
+    width: 100%;
+    height: 700px;
+    -webkit-transition: -webkit-transform 1s cubic-bezier(0.26, 0.86, 0.44, 0.985);
+    -o-transition: -o-transform 1s cubic-bezier(0.26, 0.86, 0.44, 0.985);
+    -moz-transition: -moz-transform 1s cubic-bezier(0.26, 0.86, 0.44, 0.985); }
+
+  #main {
+    position: absolute;
+    top: 0%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 16px; }
+
+  .demo {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 800px;
+    height: 100%;
+    margin-left: -390px; }
+
+  .zoomedin #container {
+    -webkit-transform: scale(40);
+    -moz-transform: scale(40);
+    -o-transform: scale(40);
+    transform: 480px 440px;
+    -webkit-transform-origin: 480px 440px;
+    -o-transform-origin: 480px 440px;
+    -moz-transform-origin: 480px 440px;
+    transform-origin: 480px 440px; }
+
+  #main > a,
+  #main > h1 {
+    position: absolute;
+    padding: 0.1em 0.2em 0; }
+
+  #main > a[href="#video"] {
+    font-size: 4em;
+    top: 128px;
+    right: 344px; }
+
+  #main > a[href="#video"]:before {
+    bottom: 1.2em;
+    left: 0.1em; }
+
+  #main > a[href="#parser"] {
+    font-size: 6em;
+    top: 278px;
+    right: 230px; }
+
+  #main > a[href="#contenteditable"] {
+    font-size: 3em;
+    top: 533px;
+    right: 445px; }
+
+  #main > a[href="#audio"] {
+    font-size: 2em;
+    top: 195px;
+    right: 265px; }
+
+  #main > a[href="#forms"] {
+    font-size: 4em;
+    top: 391px;
+    right: 438px; }
+
+  #main > a[href="#forms"]:before {
+    right: 0.1em;
+    bottom: -2.1em; }
+
+  #main > a[href="#canvas"] {
+    font-size: 4em;
+    top: 391px;
+    right: 445px;
+    max-width: 248px;
+    text-align: right; }
+
+  #main > a[href="#svg"] {
+    font-size: 4em;
+    top: 533px;
+    right: 360px;
+    max-width: 3em; }
+
+  #main > a[href="#css"] {
+    font-size: 2em;
+    top: 192px;
+    right: 165px; }
+
+  #main > a[href="#js"] {
+    font-size: 3em;
+    right: 223px;
+    top: 28px; }
+
+  #main > h1 {
+    font-size: 5em;
+    top: 391px;
+    left: 560px;
+    width: 4em;
+    text-indent: -9px;
+    text-align: left;
+    margin: 0;
+    padding: 0; }
+    #main > h1 b:first-of-type {
+      padding-left: 0.5em; }
+
+  #main > a[href="#video"],
+  #main > a[href="#audio"],
+  #main > a[href="#forms"],
+  #main > a[href="#js"],
+  #main > a[href="#css"],
+  #main > a[href="#svg"] {
+    -o-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -o-transform-origin: 100% 0;
+    -moz-transform-origin: 100% 0;
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    text-align: right; }
+
+  #main > a[href="#video"]:before,
+  #main > a[href="#forms"]:before {
+    width: 1em;
+    height: 1em;
+    border-radius: 20em;
+    content: "";
+    display: block;
+    position: absolute; }
+
+  #main > a[href="#forms"]:before {
+    width: 2em;
+    height: 2em; }
+
+  .demo {
+    margin-top: 0;
+    margin-bottom: 0; }
+
+  .demo .wrapper {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    bottom: 30%; }
+
+  .demo .wrapper:before {
+    content: url("../img/opera-logo.png");
+    position: absolute;
+    top: -54px;
+    left: 2em;
+    z-index: -1; }
+
+  .browsersupport {
+    background: url("../img/browser-logos-blur.png") 5em center no-repeat; }
+    .browsersupport a {
+      display: inline-block; } }
 /**
  * Non-semantic helper classes: please define your styles before this section.
  */
@@ -545,23 +657,10 @@ body {
 .clearfix {
   zoom: 1; }
 
-/**
- * Media queries for responsive design.
- *
- * These follow after primary styles so they will successfully override.
- */
-@media all and (orientation:portrait) {
-  /* Style adjustments for portrait mode goes here */ }
-@media all and (orientation:landscape) {
-  /* Style adjustments for landscape mode goes here */ }
-@media all and (max-width: 800px) {
-  #main {
-    font-size: 10px; } }
-/* Grade-A Mobile Browsers (Opera Mobile, Mobile Safari, Android Chrome)
-   consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
-@media screen and (max-device-width: 480px) {
-  /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you: j.mp/textsizeadjust */
-  /* html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */ }
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+  /* Styles */ }
 /**
  * Print styles.
  *

@@ -6,28 +6,14 @@
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-
-  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
-       Remove this if you use the .htaccess -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <title>The Web is Open</title>
   <meta name="description" content="">
   <meta name="author" content="">
-
-  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-
-  <!-- CSS: implied media="all" -->
   <link rel="stylesheet" href="css/style.css?v=2">
-
-  <!-- Uncomment if you are specifically targeting less enabled mobile browsers
-  <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
 
   <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
   <script src="js/libs/modernizr-1.7.min.js"></script>
@@ -39,11 +25,11 @@
     <div id="main" role="main">
   		<h1><a href="http://opera.com">The Web <br><b>is</b> <b><i>O</i>pen</b></a></h1>      
   		<a href="#video">Video</a>
-  		<a href="#parser">HTML5 Parser</a>
+  		<a href="parser.html">HTML5 Parser</a>
   		<a href="#contenteditable">Content Editable</a>
   		<a href="#audio">Audio</a>
   		<a href="#forms">Web Forms</a>
-  		<a href="#canvas">Dynamic Artwork!</a>
+  		<a href="canvas.html">Dynamic Artwork!</a>
   		<a href="#svg">Vector Graphics</a>
   		<a href="#css">Magic of styles</a>
   		<a href="#js">Faster applications</a>
@@ -53,65 +39,24 @@
   <section class="demo">
     <div class="wrapper">
       <div class="infobar">
-        <p class="browsersupport">
+        <p id="browsersupport">
           <a href="#" class="current live" title="Works on your browser">On Air</a>
-          <a href="#">Opera</a>
-          <a href="#">Safari</a>
-          <a href="#">IE</a>
-          <a href="#">Firefox</a>
+          <b class="op">Opera</b>
+          <b class="sa">Safari</b>
+          <b class="ff">Firefox</b>
+          <b class="ie">IE</b>          
         </p>
         <a href="#">close &#x24e7;</a>        
       </div>
-      <article id="parser">
-        <h1>The HTML5 parser</h3>
-          
-          <div>
-            <h2>The Markup</h2>
-            <p class="parsing"></p>             
-          </div>
-          <div>
-            <h2>The Parsed Result</h2>
-            <p class="result"></p>            
-          </div>
-      </article>  
-      <article id="video">
-        <h1>Video</h3>
-        <p></p>
-      </article>
-      <article id="contenteditable">
-        <h1>Content Editable</h1>
-        <p>Edit and save content to your heart's content.</p>
-      </article>
-      <article id="audio">
-        <h1>Audio</h1>
-        <p>Can you hear this?</p>
-      </article>
-      <article id="forms">
-        <h1>Web Forms</h1>
-        <p>About Web Forms.</p>
-      </article>
-      <article id="canvas">
-        <h1>Canvas</h1>
-        <p></p>
-      </article>
-      <article id="svg">
-        <h1>Vector Graphics</h1>
-      </article>
+      <iframe src="parser.html" allowtransparency="yes"></iframe>    
     </div>
   </section>
-  <!-- JavaScript at the bottom for fast page loading -->
 
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
 
 
-  <!-- scripts concatenated and minified via ant build script-->
   <script src="js/plugins.js"></script>
-  <script src="js/script.js"></script>
-  <!-- end scripts-->
-
-  <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
   <script>
     var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;

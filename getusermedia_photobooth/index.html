@@ -6,26 +6,29 @@
 <meta name="viewport" content="width=device-width">
 <style>
 body {margin:0;position:relative;background:#fff;}
-video {float:left;}
-canvas {margin-left:20px;}
+video {-o-object-fit:fill;float:left;}
+canvas {margin-left:20px;position:relative;}
 img, button {display:block;}
 #wrap {float:left;}
 div {outline:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
+.done {
+  -o-transition: top 1s ease-out 0s;
+  top: 0;
+}
+.blank {
+  top: -600px;
+}
 </style>
 </head>
 <body>
   <video width="888" height="500" muted autoplay></video>
-  <canvas id="photos" height="500" width="98"></canvas>
-  <button id="vintage">vintage</button>
-  <button id="lomo">lomo</button>
-  <button id="sunrise">sunrise</button>
-  <button id="grungy">grungy</button>
+  <canvas class="blank" id="photos" height="500" width="98"></canvas>
   <script>
     var video = document.querySelector('video'),
         btn = document.getElementById('cam'),
         ctn = document.getElementById('pics'),
-        snaps = document.getElementById('photos'),
-        photos = snaps.getContext('2d'),
+        snapshots = document.getElementById('photos'),
+        photos = snapshots.getContext('2d'),
         tb = document.getElementById('toolbar'),
         img = new Image(),
         VIDEO_WIDTH = video.width = window.innerWidth - 140,
@@ -42,20 +45,21 @@ div {outline:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
         FRAME_INTRINSIC_Y,
         frame = document.body.appendChild(document.createElement('div')),
         snaps = [
-          function(){photos.drawImage(video, FRAME_INTRINSIC_X, FRAME_INTRINSIC_Y, FRAME_INTRINSIC_WIDTH, FRAME_INTRINSIC_HEIGHT, 5, 381, 87, 112);},
-          function(){photos.drawImage(video, FRAME_INTRINSIC_X, FRAME_INTRINSIC_Y, FRAME_INTRINSIC_WIDTH, FRAME_INTRINSIC_HEIGHT, 5, 257, 87, 112);},
+          function(){photos.drawImage(video, FRAME_INTRINSIC_X, FRAME_INTRINSIC_Y, FRAME_INTRINSIC_WIDTH, FRAME_INTRINSIC_HEIGHT, 5, 8, 87, 112);},
           function(){photos.drawImage(video, FRAME_INTRINSIC_X, FRAME_INTRINSIC_Y, FRAME_INTRINSIC_WIDTH, FRAME_INTRINSIC_HEIGHT, 5, 132, 87, 112);},
-          function(){photos.drawImage(video, FRAME_INTRINSIC_X, FRAME_INTRINSIC_Y, FRAME_INTRINSIC_WIDTH, FRAME_INTRINSIC_HEIGHT, 5, 8, 87, 112);}
+          function(){photos.drawImage(video, FRAME_INTRINSIC_X, FRAME_INTRINSIC_Y, FRAME_INTRINSIC_WIDTH, FRAME_INTRINSIC_HEIGHT, 5, 257, 87, 112);},
+          function(){photos.drawImage(video, FRAME_INTRINSIC_X, FRAME_INTRINSIC_Y, FRAME_INTRINSIC_WIDTH, FRAME_INTRINSIC_HEIGHT, 5, 381, 87, 112);},          
+          function(){slideDown();}
         ];
         
     var takeSnap = function(){
       var i = 0,
           id = setInterval(function(){
             if (snaps.length){
-              snaps.pop()();
+              snaps.shift()();
             }
              
-            if (++i == 4){
+            if (++i == 5){
               clearInterval(id);
             }
           }, 1200);
@@ -64,12 +68,13 @@ div {outline:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
     var fallback = function(){
       video.src = 'video.webm';
       video.onloadedmetadata = function(){
+        video.muted = true;
         VIDEO_INTRINSIC_WIDTH = video.videoWidth;
         VIDEO_INTRINSIC_HEIGHT = video.videoHeight;
         FRAME_INTRINSIC_HEIGHT = Math.floor(VIDEO_INTRINSIC_HEIGHT * 0.85);
         FRAME_INTRINSIC_WIDTH = FRAME_INTRINSIC_HEIGHT * (87/112);
         FRAME_INTRINSIC_X = (VIDEO_INTRINSIC_WIDTH - FRAME_INTRINSIC_WIDTH) / 2;
-        FRAME_INTRINSIC_Y = (VIDEO_INTRINSIC_HEIGHT - FRAME_INTRINSIC_HEIGHT) /2;
+        FRAME_INTRINSIC_Y = (VIDEO_INTRINSIC_HEIGHT - FRAME_INTRINSIC_HEIGHT) / 2;
         takeSnap();
       };
     };
@@ -86,6 +91,11 @@ div {outline:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
         photos.drawImage(this, 0, 0);
       };
     }());
+    
+    var slideDown = function(){
+      snapshots.classList.remove('blank');
+      snapshots.classList.add('done');
+    };
 
     var init = (function(){  
       navigator.getUserMedia ? 

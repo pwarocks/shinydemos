@@ -14,7 +14,7 @@ div {outline:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
 </style>
 </head>
 <body>
-  <video width="700" height="500"></video>
+  <video width="700" height="500" muted autoplay></video>
   <canvas id="photos" height="500" width="98"></canvas>
   <button id="vintage">vintage</button>
   <button id="lomo">lomo</button>
@@ -55,7 +55,7 @@ div {outline:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
     };
 
     var fallback = function(){
-      video.src = 'dontstop.webm';
+      video.src = 'video.webm';
     };
 
     var drawFrame = (function(){ 

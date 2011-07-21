@@ -4,9 +4,81 @@
 <meta charset="utf-8">
 <title></title>
 <meta name="viewport" content="width=device-width">
-
+<style>
+body {margin:0;position:relative;background:#fff;}
+video {-o-object-fit:fill;float:left;}
+canvas {margin-left:20px;}
+img, button {display:block;}
+#wrap {float:left;}
+div {outline:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
+</style>
 </head>
 <body>
+  <video width="700" height="500"></video>
+  <canvas id="photos" height="500" width="98"></canvas>
+  <button id="vintage">vintage</button>
+  <button id="lomo">lomo</button>
+  <button id="sunrise">sunrise</button>
+  <button id="grungy">grungy</button>
+  <script src="caman.js"></script>
+  <script>
+    var video = document.querySelector('video'),
+        btn = document.getElementById('cam'),
+        ctn = document.getElementById('pics'),
+        snaps = document.getElementById('photos'),
+        photos = snaps.getContext('2d'),
+        tb = document.getElementById('toolbar'),
+        img = new Image(),
+        VIDEO_WIDTH = video.width,
+        VIDEO_HEIGHT = video.height,
+        FRAME_HEIGHT = Math.floor(VIDEO_HEIGHT * 0.85),
+        FRAME_WIDTH = FRAME_HEIGHT * (87/112),
+        FRAME_X = (VIDEO_WIDTH - FRAME_WIDTH) / 2,
+        FRAME_Y = (VIDEO_HEIGHT - FRAME_HEIGHT) / 2,
+        frame = document.body.appendChild(document.createElement('div')),
+        snaps = [
+          function(){photos.drawImage(video, FRAME_X, FRAME_Y, FRAME_WIDTH, FRAME_HEIGHT, 5, 8, 87, 112);},
+          function(){photos.drawImage(video, FRAME_X, FRAME_Y, FRAME_WIDTH, FRAME_HEIGHT, 5, 132, 87, 112);},
+          function(){photos.drawImage(video, FRAME_X, FRAME_Y, FRAME_WIDTH, FRAME_HEIGHT, 5, 257, 87, 112);},
+          function(){photos.drawImage(video, FRAME_X, FRAME_Y, FRAME_WIDTH, FRAME_HEIGHT, 5, 381, 87, 112);}
+        ];
 
+    var takeSnap = function(){
+      var i = 0, 
+          order = 0,
+          id = setInterval(function(){
+            snaps[order++]();
+             if (++i == 4){
+               clearInterval(id);
+             }
+          }, 1200);
+    };
+
+    var fallback = function(){
+      video.src = 'dontstop.webm';
+    };
+
+    var drawFrame = (function(){ 
+      frame.style = "width:"+FRAME_WIDTH+"px;height:"+FRAME_HEIGHT+"px;top:"+FRAME_Y+"px;left:"+FRAME_X+"px;";
+    }());
+
+    var canvasPrep = (function(){
+          photos.fillStyle = '#333';
+          photos.fillRect(0,0,98,498);
+          img.src = 'phototemplate.png';
+          img.onload = function(){
+            photos.drawImage(this, 0, 0);
+          };
+        }());
+
+    var init = (function(){  
+      navigator.getUserMedia ? 
+        navigator.getUserMedia('video', function(stream){
+          video.src = stream;
+        }, fallback) : fallback();
+
+      takeSnap();
+    })();
+  </script>
 </body>
 </html>

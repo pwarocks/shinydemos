@@ -1,0 +1,19 @@
+@font-face{font-family:'dayposter';src:url('../fonts/DAYPBL__-webfont.eot');src:url('../fonts/DAYPBL__-webfont.eot?#iefix') format('embedded-opentype'),
+url('../fonts/DAYPBL__-webfont.woff') format('woff'),
+url('../fonts/DAYPBL__-webfont.ttf') format('truetype'),
+url('../fonts/DAYPBL__-webfont.svg#DayPosterBlackRegular') format('svg');font-weight:normal;font-style:normal;}
+
+#splash {width:440px;margin:5% auto;}
+img {width:100%;margin-bottom:25px;}
+.oldfashion {font-family: 'Limelight', cursive;font-size:92px;margin:-10px 0 0;-o-transform: scaleY(1.4);}
+.dayposter {font-family:dayposter;text-align: center;letter-spacing:9px;margin:0;color: #33;}
+
+body {margin:0;position:relative;background:#fff;}
+video {-o-object-fit:fill;float:left;}
+canvas {margin-left:20px;position:relative;}
+img, button {display:block;}
+#wrap {float:left;}
+#frame {outline:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
+#eyelevel {}
+.done {-o-transition: top 1s ease-out 0s;top: 20px;}
+.blank {top: -600px;}

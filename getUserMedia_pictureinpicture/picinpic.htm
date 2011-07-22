@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+@-o-viewport {
+  width: device-width;
+  height: device-height;
+}
+@font-face {
+    font-family: 'NobileRegular';
+    src: url('nobile-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+body{
+	background-color: #333;
+	color: #fff;
+	font-family: 'NobileRegular';
+
+}
+#container{
+	width: 100%;
+}
+
+canvas{
+	border: 1px solid #ccc;
+}
+
+video{
+display: none;
+}
+
+#footer{
+	clear: both;
+	color: #fff;
+}
+a:visited{
+	color: #fff;
+}
+
+</style>
+
+
+
+</head>
+<body>
+<div id="container">
+<div id="message"></div>
+<video id="video" autoplay></video>
+<div id="footer">
+<canvas id="mycanvas" width="300" height="425"></canvas>
+</div>
+</div>
+<script type="text/javascript">
+//var button = document.querySelector('#button');
+//button.addEventListener('click',snapshot, false);
+
+
+var video_element = document.querySelector('#video');
+
+var myinterval = setInterval(snapshot, 50);
+
+if (navigator.getUserMedia){
+	navigator.getUserMedia('video', v_success, v_error);
+} else{
+	not_supported();
+}
+
+function not_supported(){
+	var message = document.querySelector('#message');
+	message.innerHTML = "<h1>Camera access is not supported by this browser</h1>";
+}
+
+function v_success(stream){
+	video.src = stream;
+}
+
+function v_error(error){
+	opera.postError("Error! Error code is:"+error.code);
+}
+
+
+function snapshot(){
+var c = document.querySelector('#mycanvas');
+var ctx = c.getContext('2d');
+var cw = c.clientWidth;
+var ch = c.clientHeight;
+//opera.postError('width and height are'+cw+" and "+ch);
+	ctx.drawImage(video_element, 0, 0, cw, ch);
+	
+	ctx.scale(1/2, 1/2);
+	ctx.drawImage(video_element, 0, 0);
+	
+	ctx.scale(1/2, 1/2);
+	ctx.drawImage(video_element, 0, 0);
+	
+	ctx.scale(1/2, 1/2);
+	ctx.drawImage(video_element, 0, 0);
+	
+	ctx.scale(2, 2);
+	ctx.scale(2, 2);
+	ctx.scale(2, 2);
+}
+
+
+</script>
+
+</body>
+</html>

@@ -10,9 +10,8 @@ img {width:100%;margin-bottom:25px;}
 
 body {margin:0;position:relative;background:#fff;}
 video {-o-object-fit:fill;float:left;}
-canvas {margin-left:20px;position:relative;}
+canvas {margin-left:20px;position:absolute;right:20px;}
 img, button {display:block;}
-#wrap {float:left;}
 #frame {outline:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
 #eyelevel {}
 .done {-o-transition: top 1s ease-out 0s;top: 20px;}

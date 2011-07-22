@@ -1,7 +1,7 @@
-@font-face{font-family:'dayposter';src:url('../fonts/DAYPBL__-webfont.eot');src:url('../fonts/DAYPBL__-webfont.eot?#iefix') format('embedded-opentype'),
-url('../fonts/DAYPBL__-webfont.woff') format('woff'),
-url('../fonts/DAYPBL__-webfont.ttf') format('truetype'),
-url('../fonts/DAYPBL__-webfont.svg#DayPosterBlackRegular') format('svg');font-weight:normal;font-style:normal;}
+@font-face{font-family:'dayposter';src:url('../assets/DAYPBL__-webfont.eot');src:url('../assets/DAYPBL__-webfont.eot?#iefix') format('embedded-opentype'),
+url('../assets/DAYPBL__-webfont.woff') format('woff'),
+url('../assets/DAYPBL__-webfont.ttf') format('truetype'),
+url('../assets/DAYPBL__-webfont.svg#DayPosterBlackRegular') format('svg');font-weight:normal;font-style:normal;}
 
 #splash {width:440px;margin:5% auto;}
 img {width:100%;margin-bottom:25px;}

@@ -431,11 +431,20 @@
 </footer>
 </div><!-- end wrap -->
 
-<script src="helpers.js"></script>
-
 <script>
 (function(){
-	if( helpers.mightBeIE8() ){
+	var hasRange, mightBeIE8;
+
+	hasRange = function(){
+		return (document.querySelector('input[type=range]').type == 'range');
+	}
+
+	// should return true if it is IE8 or older
+	mightBeIE8 = function(){
+		return ( 'attachEvent' in window ) && !('addEventListener' in window);
+	}
+
+	if( mightBeIE8() ){
 		document.getElementById('unsupported').className = '';
 		return false;
 	} else {
@@ -458,7 +467,7 @@
 		form.addEventListener('submit',onsubmithandler,false);
 
 		/* If we don't have a range, adjust the UI. */
-		if( helpers.hasRange() == false ){
+		if( hasRange() == false ){
 			document.getElementById('worksbestwithrange').className = '';
 			var i, len, input;
 			len = fixranges.length;

@@ -4,6 +4,8 @@ var video = document.querySelector('video'),
     snapshots = document.getElementById('photos'),
     photos = snapshots.getContext('2d'),
     tb = document.getElementById('toolbar'),
+    leftArrow = document.getElementById('leftarrow'),
+    rightArrow = document.getElementById('rightarrow'),
     img = new Image(),
     audio = new Audio('assets/click.ogg'),
     VIDEO_WIDTH, 
@@ -72,6 +74,8 @@ var drawFrame = function(){
   computeBounds();
   frame.id = "frame";
   frame.style = "width:"+FRAME_WIDTH+"px;height:"+FRAME_HEIGHT+"px;top:"+FRAME_Y+"px;left:"+FRAME_X+"px;";
+  leftArrow.style.left = FRAME_X - leftArrow.width - 15 +"px";
+  rightArrow.style.left = FRAME_WIDTH + FRAME_X + 15 + "px";
 };
 
 var canvasPrep = (function(){

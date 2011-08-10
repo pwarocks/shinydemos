@@ -44,15 +44,15 @@ var takeSnap = function(){
 var fallback = function(){
   video.src = 'video.webm';
   video.onloadedmetadata = function(){
-    video.muted = true;
-    VIDEO_INTRINSIC_WIDTH = video.videoWidth;
-    VIDEO_INTRINSIC_HEIGHT = video.videoHeight;
+    this.muted = true;
+    VIDEO_INTRINSIC_WIDTH = this.videoWidth;
+    VIDEO_INTRINSIC_HEIGHT = this.videoHeight;
     FRAME_INTRINSIC_HEIGHT = Math.floor(VIDEO_INTRINSIC_HEIGHT * 0.85);
     FRAME_INTRINSIC_WIDTH = FRAME_INTRINSIC_HEIGHT * (87/112);
     FRAME_INTRINSIC_X = (VIDEO_INTRINSIC_WIDTH - FRAME_INTRINSIC_WIDTH) / 2;
     FRAME_INTRINSIC_Y = (VIDEO_INTRINSIC_HEIGHT - FRAME_INTRINSIC_HEIGHT) / 2;
     takeSnap();
-  };
+  }
 };
 
 var drawFrame = (function(){
@@ -82,6 +82,14 @@ var init = (function(){
   navigator.getUserMedia ? 
     navigator.getUserMedia('video', function(stream){
       video.src = stream;
-      video.onloadedmetadata = takeSnap;  
+      video.onloadedmetadata = function(){
+        VIDEO_INTRINSIC_WIDTH = this.videoWidth;
+        VIDEO_INTRINSIC_HEIGHT = this.videoHeight;
+        FRAME_INTRINSIC_HEIGHT = Math.floor(VIDEO_INTRINSIC_HEIGHT * 0.85);
+        FRAME_INTRINSIC_WIDTH = FRAME_INTRINSIC_HEIGHT * (87/112);
+        FRAME_INTRINSIC_X = (VIDEO_INTRINSIC_WIDTH - FRAME_INTRINSIC_WIDTH) / 2;
+        FRAME_INTRINSIC_Y = (VIDEO_INTRINSIC_HEIGHT - FRAME_INTRINSIC_HEIGHT) / 2;
+        takeSnap();
+      }; 
     }, fallback) : fallback();
 })();

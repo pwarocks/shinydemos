@@ -9,10 +9,12 @@ img {width:100%;margin-bottom:25px;}
 .dayposter {font-family:dayposter;text-align: center;letter-spacing:9px;margin:0;color: #33;}
 
 body {margin:0;position:relative;background:#fff;}
-video {-o-object-fit:fill;float:left;}
+video {-o-object-fit:cover;float:left;}
 canvas {margin-left:20px;position:absolute;right:20px;}
 img, button {display:block;}
 #frame {outline:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
-#eyelevel {}
 .done {-o-transition: top 1s ease-out 0s;top: 20px;}
 .blank {top: -600px;}
+
+/* put in an eye level indicator behind a media query*/
+#eyelevel {}

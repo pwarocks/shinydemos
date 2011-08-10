@@ -90,6 +90,9 @@ var click = function(){
 var slideDown = function(){
   snapshots.classList.remove('blank');
   snapshots.classList.add('done');
+  snapshots.onclick = function(){
+    location.href='snap.html';
+  };
 };
 
 //http://goo.gl/zTZY0 thx @unscriptable!

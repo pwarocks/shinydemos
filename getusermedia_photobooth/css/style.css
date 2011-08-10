@@ -15,6 +15,7 @@ img, button {display:block;}
 #frame {outline:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
 .done {-o-transition: top 1s ease-out 0s;top: 20px;}
 .blank {top: -600px;}
+.center {margin:5% auto;width:auto;}
 
 /* put in an eye level indicator behind a media query*/
 #eyelevel {}

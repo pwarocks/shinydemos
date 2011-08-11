@@ -91,6 +91,7 @@ var slideDown = function(){
   snapshots.classList.remove('blank');
   snapshots.classList.add('done');
   snapshots.onclick = function(){
+    localStorage.setItem('snap', this.toDataURL());
     location.href='snap.html';
   };
 };

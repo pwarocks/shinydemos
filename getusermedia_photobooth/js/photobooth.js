@@ -51,7 +51,7 @@ var takeSnap = function(){
       id = setInterval(function(){
         if (snaps.length){
           snaps.shift()();
-          click();
+          audio.play();;
         }
          
         if (++i == 4){
@@ -86,10 +86,6 @@ var canvasPrep = (function(){
     photos.drawImage(this, 0, 0);
   };
 }());
-
-var click = function(){
-  audio.play();
-};
 
 var slideDown = function(){
   snapshots.classList.remove('blank');

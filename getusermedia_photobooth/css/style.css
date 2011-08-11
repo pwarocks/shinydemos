@@ -15,6 +15,9 @@ img, button {display:block;}
 .done {-o-transition: top 1s ease-out 0s;top: 20px;}
 .blank {top: -600px;}
 .center {margin:5% auto;width:auto;}
-#leftarrow, #rightarrow {position:absolute;top:45%;}
-#leftarrow:after{content: attr(alt);position:absolute;left:20px;top:18px;color:#fff;font-size:40px;font-family:dayposter;}
-#rightarrow:before{content: attr(alt);position:absolute;right:10px;top:22px;color:#fff;font-size:36px;font-family:dayposter;}
+#leftarrow, #rightarrow {position:absolute;top:40%;}
+
+@media all and (min-width:700px){
+  #leftarrow:after{content: attr(alt);position:absolute;left:20px;top:18px;color:#fff;font-size:40px;font-family:dayposter;}
+  #rightarrow:before{content: attr(alt);position:absolute;right:10px;top:22px;color:#fff;font-size:36px;font-family:dayposter;}
+}

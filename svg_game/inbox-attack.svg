@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Inbox Attack by Daniel Davis, Opera Software.
+     Use the left and right arrow keys or "Z" and "X" to move.
+     For some reason, validates when file uploaded or input directly but not when using live URL.
+     Validator problem with WAI-ARIA? Or is the role attribute supported in SVG 1.2 only? -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <style type="text/css">
+    @-o-viewport {
+        width: device-width;
+        zoom: 100%;
+    }
+    @font-face {
+        /* LCD font by Samuel Reynolds */
+        /* License: http://www.spinwardstars.com/scrfonts/aaastdlicense.html */
+        font-family: "LCD";
+        src: url(LCDM2B__.TTF.gz) format('truetype');
+    }
+    #txt_time, #txt_score, #txt_result {
+        font-family: "LCD", monospace;
+    }
+    </style>
+	<script type="text/javascript"><![CDATA[
+	function launch() {
+		/*
+		 * Configurable options
+		 */
+		var TOTAL_TIME = 20; // Total time (progress countdown) in seconds
+		var DROP_TIME = 300; // Final mail drop time - lower is more difficult
+		
+		/*
+		 * Non-configurable stuff from here on
+		 */
+         // Cache global variables for speed         
+        var win = window;
+        var doc = document;
+        
+        // Resize game to fit screen
+        var default_width = 980;
+        var default_height = 630;
+        var case_ratio = default_width / default_height; // Optimal size ratio is roughly 1.55:1
+        var svg = doc.getElementsByTagName('svg')[0];
+        var screen_width = document.documentElement.clientWidth;
+        var screen_height = document.documentElement.clientHeight;
+        var case_width, case_height;
+        
+        // Ensure game is in landscape format
+        var screen_ratio = screen_width / screen_height;
+        if (case_ratio > screen_ratio) {
+            case_width = screen_width;
+            case_height = case_width / case_ratio;
+        } else {
+            case_width = screen_width;
+            case_height = screen_height;
+        }
+        
+        var scalex = case_width / default_width;
+        var scaley = case_height / default_height;
+    
+        svg.setAttribute('width', case_width);
+        svg.setAttribute('height', case_height);
+        //setTimeout(function() { window.scrollTo(0, 1) }, 100);
+        //window.scrollTo(0,1);
+        
+		// DOM elements - gotta catch 'em all
+		var progress = doc.getElementById('progress');
+        var lbl_reset = doc.getElementById('lbl_reset');
+        var lbl_inbox = doc.getElementById('lbl_inbox');
+        var lbl_attack = doc.getElementById('lbl_attack');
+		var txt_time = doc.getElementById('txt_time');
+		var txt_score = doc.getElementById('txt_score');
+		var txt_result = doc.getElementById('txt_result');
+		var btn_reset = doc.getElementById('btn_reset');
+		var btn_left = doc.getElementById('btn_left');
+		var btn_right = doc.getElementById('btn_right');
+		var inbox = doc.getElementById('inbox');
+		var head = doc.getElementById('head');
+        var users = [];
+        for (var i = 0; i < 5; i++) {
+            users[i] = doc.getElementById('user' + i);
+        }
+		// Other global constants
+		var SVGNS = "http://www.w3.org/2000/svg";
+		var XLINKNS = "http://www.w3.org/1999/xlink";
+        var ENV_GAP = 25;
+        var ENV_HEIGHT = 28;
+		var MAIL_STEP = ENV_GAP + ENV_HEIGHT;
+        var HAND_POS = 356;
+		var TICK_RATE = 100; // Time (ms) between each iteration of tick function
+        var TICK_GAP = case_width / 163.333;
+        var TICK_X = case_width / 2.841;
+        var TICK_Y = case_height / 3.841;
+		var PROGRESS_LENGTH = 50; // Initial length of the progress bar in ticks
+		var CHANNELS = [305, 395, 535, 625];
+		//var CHANNELS = [case_width / 3.213, case_width / 2.481, case_width / 1.832, case_width / 1.568];
+		var SUPPORTS_TOUCH = 'createTouch' in doc;
+		// Global variables
+		var last_channel;
+		// Global counters
+		var count;
+		var count_time;
+		var count_progress;
+		var count_caught;
+		var count_mails;
+        var total_mails;
+		// Global objects
+		var face = { // Paths for facial expressions
+			'panic' : 'm 0,0 C -5,-3 -13,3 -18,7 c -2,-6 -16,-2 -6,4 -2,2 -2,2 -5,5 14,3 2,23 -5,10 -3,5 -2,13 1,16 8,9 19,11 29,-6 12,-17 17,-34 4,-36 z',
+			'big-smile' : 'm 0,0 c -5,-3 -13,3 -18,7 -2,-6 -16,-2 -6,4 -2,2 -2,2 -5,5 7,1 6,5 11,5 -4,2 -7,7 -16,5 -3,5 -2,13 1,16 8,9 19,11 29,-6 12,-17 17,-34 4,-36 z',
+			'smile' : 'm 0,0 c -5,-3 -13,3 -18,7 -2,-6 -16,-2 -6,4 -2,2 -2,2 -5,5 7,1 6,5 9,8 -4,2 -5,4 -14,2 -3,5 -2,13 1,16 8,9 19,11 29,-6 12,-17 17,-34 4,-36 z',
+			'so-so' : 'm 0,0 c -5,-3 -13,3 -18,7 -2,-6 -16,-2 -6,4 -2,2 -2,2 -5,5 7,1 5,8 8,11 -4,2 -4,0 -13,-1 -3,5 -2,13 1,16 8,9 19,11 29,-6 12,-17 17,-34 4,-36 z',
+			'sad' : 'm 0,0 c -5,-3 -13,3 -18,7 -2,-6 -16,-2 -6,4 -2,2 -2,2 -5,5 7,1 3,10 6,14 -4,-1 -2,-3 -11,-4 -3,5 -2,13 1,16 8,9 19,11 29,-6 12,-17 17,-34 4,-36 z'
+		};
+        
+        // Position labels
+        lbl_reset.setAttributeNS(null, 'font-size', 22 * scalex);
+        lbl_reset.setAttributeNS(null, 'x', 112 * scalex);
+        lbl_reset.setAttributeNS(null, 'y', 168 * scaley);
+        
+        lbl_inbox.setAttributeNS(null, 'font-size', 30 * scalex);
+        lbl_inbox.setAttributeNS(null, 'x', 782 * scalex);
+        lbl_inbox.setAttributeNS(null, 'y', 130 * scaley);
+		
+        lbl_attack.setAttributeNS(null, 'font-size', 30 * scalex);
+        lbl_attack.setAttributeNS(null, 'x', 774 * scalex);
+        lbl_attack.setAttributeNS(null, 'y', 176 * scaley);
+        
+        txt_time.setAttributeNS(null, 'font-size', 22 * scalex);
+        txt_time.setAttributeNS(null, 'x', 300 * scalex);
+        txt_time.setAttributeNS(null, 'y', 183 * scaley);
+        
+        txt_score.setAttributeNS(null, 'font-size', 22 * scalex);
+        txt_score.setAttributeNS(null, 'x', 656 * scalex);
+        txt_score.setAttributeNS(null, 'y', 183 * scaley);
+        
+        txt_result.setAttributeNS(null, 'font-size', 22 * scalex);
+        txt_result.setAttributeNS(null, 'x', 466 * scalex);
+        txt_result.setAttributeNS(null, 'y', 230 * scaley);
+        
+		/*
+		 * Reset variables to re-start game
+		 */
+		function doReset() {
+			count = 1;
+			count_time = TOTAL_TIME;
+			count_progress = PROGRESS_LENGTH;
+			count_caught = 0;
+			count_mails = 0;
+            total_mails = 0;
+			txt_score.textContent = count_caught;
+			txt_time.textContent = count_time;
+			txt_result.textContent = '';
+			head.setAttributeNS(null, 'd', face['panic']);
+            user.resize();
+			user.set(1);
+			progress_bar.reset();
+		}
+		
+		/*
+		 * User class
+		 */
+		function User() {
+			var channel_id;
+			
+			/*
+			 * Move the user left or right
+			 */
+			this.move = function(direction) {
+				if (direction === 'left' && this.channel_id > 0) {
+					this.channel_id -= 1;
+					this.set(this.channel_id);
+				} else if (direction === 'right' && this.channel_id < 3) {
+					this.channel_id += 1;
+					this.set(this.channel_id);
+				}
+			};
+			
+			/*
+			 * Display the user in a particular position (channel)
+			 */
+			this.set = function(channel_id) {
+				this.channel_id = channel_id;
+				for (var i = 0, len = users.length; i < len; i++) {
+					if (i === this.channel_id) {
+						users[i].setAttributeNS(null, 'opacity', 1);
+					} else {
+						users[i].setAttributeNS(null, 'opacity', 0);
+					}
+				}
+			};
+            
+            /*
+           * Resize and move the user based on the case size
+             */
+            this.resize = function() {
+                var x = case_width / 3.37;
+                var y = case_height / 2.06;
+				for (var i = 0, len = users.length; i < len; i++) {
+                    users[i].setAttributeNS(null, 'transform', 'translate(' + x + ', ' + y + ') scale(' + scalex + ', ' + scaley + ')');
+				}
+            };
+		}
+		
+		/*
+		 * Actions for clicking direction buttons
+		 */
+		function doButtonPress(event, direction) {
+			if (direction === 'left') {
+				btn_left.setAttributeNS(null, 'fill', 'url(#btn_rubber_pressed)');
+				btn_left.setAttributeNS(null, 'aria-pressed', 'true');
+			} else {
+				btn_right.setAttributeNS(null, 'fill', 'url(#btn_rubber_pressed)');
+				btn_right.setAttributeNS(null, 'aria-pressed', 'true');
+			}
+			user.move(direction);
+		}
+		function doButtonRelease(event, direction) {
+			if (direction === 'left') {
+				btn_left.setAttributeNS(null, 'fill', 'url(#btn_rubber)');
+				btn_left.setAttributeNS(null, 'aria-pressed', 'false');
+			} else {
+				btn_right.setAttributeNS(null, 'fill', 'url(#btn_rubber)');
+				btn_right.setAttributeNS(null, 'aria-pressed', 'false');
+			}
+		}
+		
+		/*
+		 * Actions for clicking reset (reload) button
+		 */
+		function doResetPress(event) {
+			btn_reset.setAttributeNS(null, 'fill', 'url(#btn_small_pressed)');
+			btn_reset.setAttributeNS(null, 'aria-pressed', 'true');
+		}
+		function doResetRelease(event) {
+			btn_reset.setAttributeNS(null, 'fill', 'url(#btn_small_pressed)');
+			btn_reset.setAttributeNS(null, 'aria-pressed', 'false');
+            win.location = win.location.href;
+		}
+		
+		/*
+		 * Add event listeners. Doing it this way to make it cross-browser as easily as possible.
+		 * UPDATE (26/06/2010): Added support for touchscreen devices.
+		 * Hat tip for touch support to http://mir.aculo.us/2010/06/04/making-an-ipad-html5-app-making-it-really-fast/
+		 */
+        var mouse_down = (SUPPORTS_TOUCH ? 'ontouchstart' : 'onmousedown');
+        var mouse_up = (SUPPORTS_TOUCH ? 'ontouchend' : 'onmouseup');
+		btn_left[mouse_down] = function(event) {
+			doButtonPress(event, 'left');
+		};
+		btn_left[mouse_up] = function(event) {
+			doButtonRelease(event, 'left');
+		};		
+		btn_right[mouse_down] = function(event) {
+			doButtonPress(event, 'right');
+		};
+		btn_right[mouse_up] = function(event) {
+			doButtonRelease(event, 'right');
+		};
+		btn_reset[mouse_down] = function(event) {
+			doResetPress(event);
+		};
+		btn_reset[mouse_up] = function(event) {
+			doResetRelease(event);
+		};
+		
+		/*
+		 * Enable keyboard use: Arrow keys or [Z] and [X], [space] or [up] for reset.
+		 */
+		doc.onkeydown = function(event) {
+			var keyCode = (win.event) ? win.event.keyCode : event.which;
+			
+			switch (keyCode) {
+				case 37: case 90: case 65: case 97: case 44: case 49:
+					doButtonPress(event, 'left');
+				break;
+				case 39: case 88: case 83: case 115: case 46: case 50:
+					doButtonPress(event, 'right');
+				break;
+				case 32: case 27: case 81: case 38:
+					doResetPress(event);
+				break;
+			}
+		};
+		doc.onkeyup = function(event) {
+			var keyCode = (win.event) ? win.event.keyCode : event.which;
+			
+			switch (keyCode) {
+				case 37: case 90: case 65: case 97: case 44: case 49:
+					doButtonRelease(event, 'left');
+				break;
+				case 39: case 88: case 83: case 115: case 46: case 50:
+					doButtonRelease(event, 'right');
+				break;
+				case 32: case 27: case 81: case 38:
+					doResetRelease(event);
+				break;
+			}
+		};
+		
+		/*
+		 * Show the user's score and a facial expression to match
+		 */
+		function showResult(count_caught, count_mails) {
+			var result = count_caught / count_mails;
+			
+			if (result > 0.75) {
+				head.setAttributeNS(null, 'd', face['big-smile']);
+				if (result === 1) {
+					user.set(4);
+				}
+			} else if (result > 0.5) {
+				head.setAttributeNS(null, 'd', face['smile']);
+			} else if (result > 0.25) {
+				head.setAttributeNS(null, 'd', face['so-so']);
+			} else {
+				head.setAttributeNS(null, 'd', face['sad']);
+			}
+			
+			txt_result.textContent = count_caught + '/' + count_mails;
+		}
+		
+		/*
+		 * Mail class
+		 */
+		function Mail(channel_id) {
+            // Set local constants
+        
+			// Create new #envelope element when mail object is created
+			var new_mail = doc.createElementNS(SVGNS, 'use');
+			new_mail.setAttributeNS(null,'transform', 'scale(' + scalex + ', ' + scaley + ')');
+			new_mail.setAttributeNS(null,'x', CHANNELS[channel_id]);
+            new_mail.setAttributeNS(null, 'y', HAND_POS - ((MAIL_STEP * 4) - (ENV_GAP * 2)));
+			new_mail.setAttributeNS(XLINKNS, 'href', '#envelope');
+			inbox.appendChild(new_mail);
+			
+			/*
+			 * Show mail pouring down. Just like real life.
+			 */
+			this.animate = function(sec) {
+				var status, mail_pos;
+				var drop = setInterval(function() {
+					mail_pos = new_mail.getAttributeNS(null, 'y') * 1; // Multiplying by 1 is more efficient than parseInt()
+					if ((mail_pos + MAIL_STEP) < HAND_POS) {
+						// Draw dropping mail
+						new_mail.setAttributeNS(null, 'y', mail_pos + MAIL_STEP);
+					} else if (!status) {
+						count_mails += 1;
+						// Decide whether the mail has been caught
+						if (channel_id === user.channel_id) {
+							// Caught - show open envelope
+							new_mail.setAttributeNS(XLINKNS, 'href', '#envelope_open');
+							status = 'caught';
+							count_caught += 1;
+							txt_score.textContent = count_caught;
+						} else {
+							// Missed - show black envelope
+						 new_mail.setAttributeNS(XLINKNS, 'href', '#envelope_inverse');
+							new_mail.setAttributeNS(null, 'y', mail_pos + (MAIL_STEP));
+							status = 'missed';
+						}
+					} else {
+						// Stop drawing mail
+						inbox.removeChild(new_mail);
+						clearInterval(drop);
+					}
+					// If all mails have dropped, show the result
+					//if (count_mails === TOTAL_TIME) {
+                    if (count_mails === total_mails) {
+						showResult(count_caught, count_mails);
+					}
+				}, sec);
+			};
+		}
+		
+		/*
+		 * The main timer function
+		 */
+		function tick() {
+			var mail, rnd_channel, speed;
+            var tick_sec = 1000 / TICK_RATE;
+            
+            // There must be a better way to do this...			            
+            if (count % (500 / TICK_RATE) === 0) {            
+                if (count % tick_sec === 0) {
+                    // Per-second tasks
+                    count_time -= 1;
+                    if (count_time >= 0) {
+                        // Show time remaining on screen
+                        txt_time.textContent = count_time;
+                    } else {
+                        // Time's up! Stop timer but let remaining mails continue.
+                        clearInterval(timer);
+                        return;
+                    }
+                }
+                
+                //if (count > 110 || (count % tick_sec === 0)) {
+                if (count % tick_sec === 0) {
+                    // Drop mail, making sure it's not in the same channel as the previous mail
+                    do {
+                        rnd_channel = (Math.random() * 4) | 0; // Generate a random number between 0 and 3. Bitwise operator for efficiency
+                    } while (rnd_channel === last_channel);
+                    mail = new Mail(rnd_channel);
+                    total_mails++;
+                    // Make speed gradually increase based on progress
+                    speed = DROP_TIME + (DROP_TIME * 1 * (count_progress / PROGRESS_LENGTH));
+                    mail.animate(speed);
+                    last_channel = rnd_channel;
+                }
+            }                
+                
+			if (count % (((TOTAL_TIME / PROGRESS_LENGTH) * tick_sec)) === 0) {
+				if (count_progress > 0) {
+					// Who says progress bars have to count up?
+					progress_bar.reduce();
+				}
+			}
+			
+			count += 1;
+		}
+		
+		/*
+		 * ProgressBar Class
+		 */
+		function ProgressBar() {
+			var bar;
+			
+			/*
+			 * Reset (draw) the progress bar
+			 */
+			this.reset = function() {
+				progress.setAttributeNS(null, 'aria-valuemax', PROGRESS_LENGTH);
+			
+				for (var i = 0; i < count_progress; i++) {
+					bar = doc.createElementNS(SVGNS, 'use');
+					bar.setAttributeNS(null,'x', (i * TICK_GAP) + TICK_X);	
+					bar.setAttributeNS(null,'y', TICK_Y);
+					bar.setAttributeNS(XLINKNS, 'href', '#bar');
+					bar.setAttributeNS(null, 'id', 'bar' + i);	
+					progress.appendChild(bar);					
+				}
+			}
+			
+			/*
+			 * Remove one line from the progress bar
+			 */
+			this.reduce = function() {
+				count_progress -= 1;
+				bar = doc.getElementById('bar' + (count_progress));
+				progress.removeChild(bar);
+				progress.setAttributeNS(null, 'aria-valuenow', count_progress);
+			}
+		}
+		
+		var progress_bar = new ProgressBar();
+		var user = new User();
+		doReset();
+		
+		// OK, let's get this baby started
+		var timer = setInterval(tick, TICK_RATE);
+	}
+	
+	window.onload = launch;
+	]]></script>
+	<title>Inbox Attack</title>
+	<desc>A progress bar built into an SVG game, made for the http://nobitsherlock.com competition.
+	Use the left and right arrow keys or "Z" and "X" to move.
+	Made by Daniel Davis, Opera Software (@ourmaninjapan : http://people.opera.com/danield/)</desc>
+	<defs>
+		<!-- Case definitions -->
+        <linearGradient id="case_grad" x1="0%" y1="0%" x2="0%" y2="50%">
+            <stop stop-color="#aa1122" offset="0%"/>
+            <stop stop-color="#880000" offset="100%"/>
+        </linearGradient>
+        <linearGradient id="metal_grad" x1="0%" y1="0%" x2="0%" y2="50%">
+            <stop stop-color="#ffffee" offset="0%"/>
+            <stop stop-color="#ddccaa" offset="100%"/>
+        </linearGradient>
+		
+		<!-- Progress bar definitions -->
+		<line id="bar" x1="0" y1="0" x2="0" y2="2.4%" stroke="#111111" stroke-width="0.5%" stroke-linejoin="round" stroke-linecap="round"/>
+		
+		<!-- Button definitions -->
+		<circle id="button_surround" cx="0" cy="0" r="7.3%" fill="#990000" stroke="#330000" stroke-width="0.2%"/>
+        <linearGradient id="btn_rubber" x1="0%" y1="0%" x2="0%" y2="50%">
+            <stop stop-color="#ff9999" offset="0%"/>
+            <stop stop-color="#cc3333" offset="100%"/>
+        </linearGradient>
+        <linearGradient id="btn_rubber_pressed" x1="0%" y1="0%" x2="0%" y2="50%">
+            <stop stop-color="#ee7777" offset="0%"/>
+            <stop stop-color="#bb2222" offset="100%"/>
+        </linearGradient>
+        <linearGradient id="btn_small" x1="0%" y1="0%" x2="0%" y2="30%">
+			<stop stop-color="#eeeeee" offset="0%"/>
+			<stop stop-color="#bbbbbb" offset="100%"/>
+        </linearGradient>
+        <linearGradient id="btn_small_pressed" x1="0%" y1="0%" x2="0%" y2="30%">
+			<stop stop-color="#dddddd" offset="0%"/>
+			<stop stop-color="#aaaaaa" offset="100%"/>
+        </linearGradient>
+        
+		<!-- Envelope definitions -->
+		<path id="envelope" d="m0,0 l0,25 l50,0 l0,-25 l-50,0 l25,12 l25,-12" stroke="#111111" stroke-width="0.4%" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+		<path id="envelope_open" d="m0,0 l0,25 l50,0 l0,-25 l-25,12 l-25,-12 l25,-12 l25,12" stroke="#111111" stroke-width="0.4%" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+		<path id="envelope_inverse" d="m0,0 l0,25 l50,0 l0,-25 l-50,0 l25,12 l25,-12" stroke="#ccddaa" stroke-width="0.4%" stroke-linejoin="round" stroke-linecap="round" fill="#111111"/>
+		
+		<!-- User definitions -->
+		<path id="head" d="m 0,0 C -5,-3 -13,3 -18,7 c -2,-6 -16,-2 -6,4 -2,2 -2,2 -5,5 14,3 2,23 -5,10 -3,5 -2,13 1,16 8,9 19,11 29,-6 12,-17 17,-34 4,-36 z" fill="#111111" stroke="none"/>
+		<path id="body" d="m-15,0 l -14,43 c -10,48 68,48 58,0 l -14,-43 c -4,-20 -26,-20 -30,0" fill="#111111" stroke="none"/>
+		<path id="hand" d="m 0,0 l 26,0 c 8,0 8,14 0,12 l -26,-6 c -4,0 -4,-7 0,-6 z" fill="#111111" stroke="none"/>
+		<path id="foot" d="m0,15 l 35,0 l -26,-26 c -20,-20 -40,26 -10,26" fill="#111111" stroke="none"/>
+	</defs>
+	<g>
+		<title>Case</title>
+		<rect id="case" x="0" y="0" width="100%" height="100%" fill="url(#case_grad)" stroke="none"/>
+		<rect id="metal" x="3.1%" y="4.8%" width="93.9%" height="90.5%" rx="0.6%" ry="0.9%" fill="url(#metal_grad)" stroke="#330000" stroke-width="0.2%"/>
+		<rect id="inset" x="27%" y="20.6%" width="45.9%" height="58.7%" rx="1%" ry="1.6%" fill="#990000" stroke="#330000" stroke-width="0.2%"/>
+	</g>
+	<g>
+		<title>Screen</title>
+		<rect id="screen_outer" x="28.1%" y="22.2%" width="43.9%" height="55.6%" rx="1%" ry="1.6%" fill="#333333" stroke="none"/>
+		<rect id="screen_inner" x="29.1%" y="23.8%" width="41.8%" height="52.4%" rx="1%" ry="1.6%" fill="#ccddaa" stroke="none"/>
+	</g>
+	
+	<g>
+		<title>Game title: Inbox Attack</title>
+		<text id="lbl_inbox" fill="#000000" font-family="monospace">INBOX</text>
+		<text id="lbl_attack" fill="#000000" font-family="monospace">ATTACK</text>
+	</g>
+	<g>
+		<title>Reset button</title>
+			<rect x="10.7%" y="12.7%" width="7.7%" height="7.9%" rx="2.5%" ry="5%" fill="#990000" stroke="#330000" stroke-width="0.2%"/>
+			<rect id="btn_reset" x="11.7%" y="14.3%" width="5.6%" height="4.8%" rx="1.5%" ry="3%" fill="url(#btn_small)" stroke="#330000" stroke-width="0.1%"/>
+		<text id="lbl_reset" fill="#000000" font-family="monospace">RESET</text>
+	</g>
+	<g>
+		<title>Left button</title>
+		<use x="15.3%" y="70.6%" xlink:href="#button_surround"/>
+		<!-- Using <circle> here because mobile Safari can't add events to <use> elements. -->
+		<circle id="btn_left" cx="15.3%" cy="70.6%" r="6.1%" fill="url(#btn_rubber)" stroke="#330000" stroke-width="0.1%" role="button"/>
+	</g>
+	<g>
+		<title>Right button</title>
+		<use x="84.7%" y="70.6%" xlink:href="#button_surround"/>
+		<!-- Using <circle> here because mobile Safari can't add events to <use> elements. -->
+		<circle id="btn_right" cx="84.7%" cy="70.6%" r="6.1%" fill="url(#btn_rubber)" stroke="#330000" stroke-width="0.1%" role="button"/>
+	</g>
+	
+	<g id="time">
+		<title>Time remaining</title>
+		<text id="txt_time" fill="#111111" font-family="monospace"></text>
+    </g>
+    <g id="progress" role="progressbar" aria-valuemin="0">
+		<title>Progress bar</title>
+    </g>
+    <g id="score">
+		<title>Current score</title>
+		<text id="txt_score" fill="#111111" font-family="monospace"></text>
+    </g>
+    <g id="result">
+		<title>Final result</title>
+		<text id="txt_result" fill="#111111" font-family="monospace" x="40%" y ="40%">Loading...</text>
+    </g>
+	<g id="inbox">
+		<title>Mail</title>
+	</g>	
+	
+	<g id="user0" opacity="0">
+		<title>User (far left)</title>
+		<use x="200" y="10" xlink:href="#head"/>
+		<use x="200" y="75" transform="rotate(-20, 200, 125)" xlink:href="#body"/>
+		<use x="35" y="73" xlink:href="#hand"/>
+		<use x="150" y="150" xlink:href="#foot"/>
+		<use x="260" y="135" transform="rotate(120, 260, 135)" xlink:href="#foot"/>
+	</g>
+	<g id="user1" opacity="0">
+		<title>User (left)</title>
+		<use x="225" y="5" xlink:href="#head"/>
+		<use x="200" y="75" xlink:href="#body"/>
+		<use x="125" y="73" xlink:href="#hand"/>
+		<use x="150" y="150" xlink:href="#foot"/>
+		<use x="-250" y="150" transform="matrix(-1 0 0 1 0 0)" xlink:href="#foot"/>
+	</g>
+	<g id="user2" opacity="0">
+		<title>User (right)</title>
+		<use x="-175" y="5" transform="matrix(-1 0 0 1 0 0)" xlink:href="#head"/>
+		<use x="200" y="75" xlink:href="#body"/>
+		<use x="-275" y="73" transform="matrix(-1 0 0 1 0 0)" xlink:href="#hand"/>
+		<use x="150" y="150" xlink:href="#foot"/>
+		<use x="-250" y="150" transform="matrix(-1 0 0 1 0 0)" xlink:href="#foot"/>
+	</g>
+	<g id="user3" opacity="0">
+		<title>User (far right)</title>
+		<use x="-200" y="10" transform="matrix(-1 0 0 1 0 0)" xlink:href="#head"/>
+		<use x="200" y="75" transform="rotate(20, 200, 125)" xlink:href="#body"/>
+		<use x="-365" y="73" transform="matrix(-1 0 0 1 0 0)" xlink:href="#hand"/>
+		<use x="140" y="135" transform="rotate(14, 140, 135)" xlink:href="#foot"/>
+		<use x="-250" y="150" transform="matrix(-1 0 0 1 0 0)" xlink:href="#foot"/>
+	</g>
+	<g id="user4" opacity="0">
+		<title>User (finished)</title>
+		<use x="225" y="5" xlink:href="#head"/>
+		<use x="200" y="75" xlink:href="#body"/>
+		<use x="135" y="-20" transform="rotate(67, 135, -20)" xlink:href="#hand"/>
+		<use x="270" y="-20" transform="rotate(97, 270, -20)" xlink:href="#hand"/>
+		<use x="150" y="150" xlink:href="#foot"/>
+		<use x="-250" y="150" transform="matrix(-1 0 0 1 0 0)" xlink:href="#foot"/>
+	</g>
+</svg>

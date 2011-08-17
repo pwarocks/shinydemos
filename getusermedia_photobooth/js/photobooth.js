@@ -8,6 +8,7 @@ var video = document.querySelector('video'),
     rightArrow = document.getElementById('rightarrow'),
     img = new Image(),
     audio = new Audio('assets/click.ogg'),
+    lb = document.createElement('div'),
     VIDEO_WIDTH, 
     VIDEO_HEIGHT,
     FRAME_WIDTH,
@@ -127,3 +128,9 @@ window.onresize = debounce(function(){
   drawFrame();
   computeFrame();
 }, 100, false);
+
+window.addEventListener('OTransitionEnd', function(e){
+  lb.id = "lb";
+  document.body.appendChild(lb);
+  video.pause();
+}, false);

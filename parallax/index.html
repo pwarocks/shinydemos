@@ -1,12 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title></title>
-<meta name="viewport" content="width=device-width">
-
+  <meta charset="utf-8">
+  <title>The World of Open Web</title>
+  <meta name="viewport" content="width=device-width">
+  <link href='http://fonts.googleapis.com/css?family=Lato:900' rel='stylesheet' type='text/css'>  
+  <style>
+    html {
+      background: url('bg-1.png') 0px 0px fixed, url('bg-2.png') 230px -50px fixed,  #000;
+      background-repeat: round;
+      color: #fff;
+    }
+    body > b {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      background-image: -o-linear-gradient(#222, rgba(0, 0, 0, 0.3) 20%, rgba(0, 0, 0, 0.3) 80%, #222);
+      background-image: -webkit-linear-gradient(#222, rgba(0, 0, 0, 0.3) 20%, rgba(0, 0, 0, 0.3) 80%, #222);      
+      content: "";
+      z-index: 2;
+    }
+    
+    body { min-width: 50%; max-width: 60em; margin: 0 auto; position: relative; z-index: 1; }
+    
+    .core, .graphics { background: url(planet1.svg) no-repeat center center; width: 100%; height: 600px; background-size: contain; }
+    .graphics { background-image: url(planet2.svg); height: 800px; }
+    
+    h2 { font-family: 'Lato', sans-serif; text-transform: uppercase; }
+    section { position: relative; }
+    section h2 { position: absolute; letter-spacing: 0.15em; font-size: 10em; line-height: 1em; top: 300px; margin-top: -0.2em; text-align: center; width: 100%; text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15); }
+    
+    
+  </style>
 </head>
 <body>
-
+  <b></b>
+  <section class=core>
+    <h2>Core</h2>
+    <a href=#>HTML</a>
+    <a href=#>CSS</a>
+    <a href=#>DOM</a>
+    <a href=#>JavaScript</a>
+  </section>
+  <section class=graphics>
+    <h2>Graphics</h2>
+    <a href=#>SVG</a>
+    <a href=#>WebGL</a>
+    <a href=#>WOFF</a>
+    <a href=#>MathML</a>
+  </section>
+  <section class=storage>
+    <h2>Storage & File System</h2>
+    <a href=#>Indexed Database</a>
+    <a href=#>Offline Web Applications</a>
+    <a href=#>File System, & File Writer APIs</a>
+    <a href=#>Web Storage</a>
+  </section>
+  <section class=realtime>
+    <h2>Real-time Communication</h2>
+    <a href=#>Web Real-time communication APIs</a>
+    <a href=#>Web Sockets</a>
+    <a href=#>Server-sent Events</a>
+    <a href=#>XMLHttpRequest</a>
+    <a href=#>Progress Events</a>
+  </section>
+  <section class=bonus>
+    <h2>Bonus</h2>
+    <a href=#>ARIA</a>
+    <a href=#>History API</a>
+    <a href=#>Drag and drop API</a>
+    <a href=#>contentEditable</a>
+  </section>
 </body>
 </html>

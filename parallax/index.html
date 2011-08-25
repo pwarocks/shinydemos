@@ -17,26 +17,104 @@
       left: 0;
       right: 0;
       top: 0;
-      background-image: -o-linear-gradient(#222, rgba(0, 0, 0, 0.3) 20%, rgba(0, 0, 0, 0.3) 80%, #222);
-      background-image: -webkit-linear-gradient(#222, rgba(0, 0, 0, 0.3) 20%, rgba(0, 0, 0, 0.3) 80%, #222);      
+      background-image: -o-linear-gradient(#222, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, #222);
+      background-image: -webkit-linear-gradient(#222, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, #222);      
       content: "";
-      z-index: 2;
+      z-index: 1;
     }
     
-    body { min-width: 50%; max-width: 60em; margin: 0 auto; position: relative; z-index: 1; }
+    body { min-width: 50%; max-width: 60em; margin: 0 auto; position: relative; z-index: 1; font-family: sans-serif; height: 100%; overflow: hidden; }
     
     .core, .graphics { background: url(planet1.svg) no-repeat center center; width: 100%; height: 600px; background-size: contain; }
     .graphics { background-image: url(planet2.svg); height: 800px; }
     
     h2 { font-family: 'Lato', sans-serif; text-transform: uppercase; }
-    section { position: relative; }
+    a { text-decoration: none; color: white; }
+    aside { position: fixed; top: 50%; left: 0; border-radius: 0 1em 1em 0; background: -o-linear-gradient(left, transparent 96%, rgba(255, 255, 255, 0.1)), -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.5) 2%, rgba(0, 0, 0, 0.5) 98%, rgba(255, 255, 255, 0.1)); padding: 2em 0; display: block; z-index: 4; }
+    
+    aside::before {
+      position: absolute;
+      right: 20px;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      content: "";
+      background: -o-linear-gradient(transparent 5%, skyblue 10%, skyblue 90%, transparent 95%);
+    }
+    aside a { padding: 1em 4em 1em 2em; display: block; position: relative; }
+    aside a:hover { background: -o-linear-gradient( left, transparent 50%, hsla(65, 100%, 90%, 0.5) 91%, transparent 91%); }
+    aside a:hover::after { position: absolute; right: 20px; width: 5px; top: 0; bottom: 0; background: yellow; content: ""; }
+    section { position: relative; margin: 5em 0; z-index: 3; }
     section h2 { position: absolute; letter-spacing: 0.15em; font-size: 10em; line-height: 1em; top: 300px; margin-top: -0.2em; text-align: center; width: 100%; text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15); }
     
+    section a { position: absolute; display: block; padding-left: 40px; line-height: 1; font-size: 2em; text-transform: uppercase; margin-top: -16px; }
+    section a::before {
+      content: "•";
+      font-size: 80px;
+      line-height: 1px;
+      position: absolute;
+      top: 16px !important;
+      left: 0 !important;
+      color: skyblue;
+      display: block;
+    }
+    
+    section a::after {
+      content: "";
+      background: skyblue;
+      width: 100px;
+      height: 1px;
+      position: absolute;
+      top: 16px !important;
+      left: 20px !important;
+      display: block;
+      -o-transform-origin: 0 0;      
+    }
+    
+    
+    .core a:first-of-type {
+      top: 10%;
+      left: 30%;   
+    }
+    
+    .core a:first-of-type::after {
+      -o-transform: rotate(60deg);
+    }
+    
+    
+    .core a:nth-of-type(2) {
+      top: 13%;
+      right: 30%;
+    }
+    
+    .core a:nth-of-type(2)::after { -o-transform: rotate(120deg) translate(0,10px); }
+
+    .core a:nth-of-type(3) {
+      top: 33%;
+      left: 50%;
+    }
+    
+    .core a:nth-of-type(3)::after { -o-transform: rotate(150deg) translate(0, 5px); }
+
+    .core a:nth-of-type(4) {
+      bottom: 11%;
+      right: 5%;
+    }
+    
+    .core a:nth-of-type(4)::after { -o-transform: rotate(-120deg) translate(0,-5px); }
+
     
   </style>
 </head>
 <body>
   <b></b>
+  <aside>
+    <a href=#>Core</a>
+    <a href=#>Graphics</a>
+    <a href=#>Storage & File System</a>
+    <a href=#>Real-time Communication</a>
+    <a href=#>Bonus</a>
+  </aside>
   <section class=core>
     <h2>Core</h2>
     <a href=#>HTML</a>

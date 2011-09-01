@@ -9,14 +9,16 @@ url('../assets/DAYPBL__-webfont.svg#DayPosterBlackRegular') format('svg');font-w
 
 body {margin:0;background:#fff;background: #ccc;}
 video {-o-object-fit:cover;float:left;}
-canvas {margin-left:20px;position:absolute;right:20px;z-index:10;}
+canvas {margin-left:20px;position:absolute;right:20px;z-index:3;}
 img, button {display:block;}
-#frame {outline:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
+#frame {border:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
 .done {-o-transition: top 1s ease-out 0s;top: 11%;right:46%;}
 .blank {top: -200%;}
 .center {margin:5% auto;width:auto;}
 #leftarrow, #rightarrow {position:absolute;top:40%;}
-#lb {height: 100%;width:100%;background-color:#000;opacity:0.9;position:absolute;z-index:9;}
+#lb {height: 100%;width:100%;background-color:#000;opacity:0.75;position:absolute;z-index:0;}
+
+button {position:absolute;right:-120px;top:0;width:100px;height:100px;border-radius:50px;border:1px solid transparent;background:red;z-index:2;}
 
 @media all and (min-width:700px){
   #leftarrow::after{content: attr(alt);position:absolute;left:20px;top:18px;color:#fff;font-size:40px;font-family:dayposter;}

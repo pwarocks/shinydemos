@@ -53,17 +53,17 @@
 
   var takeSnaps = function(){
     var i = 0,
-        id = setInterval(function(){
-          if (snaps.length){
-            snaps.shift()();
-            audio.play();
-          }
-
-          if (++i == 4){
-            clearInterval(id);
-            slideDown();
-          }
-        }, 1200);
+    id = setInterval(function(){
+      if (snaps.length){
+        snaps.shift()();
+        audio.play();
+      }
+    
+      if (++i == 4){
+        clearInterval(id);
+        slideDown();
+      }
+    }, 1200);
   };
 
   var fallback = function(){
@@ -84,12 +84,12 @@
 
   var drawFrame = function(){
     computeBounds();
+    getStarted();
     frame.id = "frame";
     frame.style = "width:"+FRAME_WIDTH+"px;height:"+FRAME_HEIGHT+"px;top:"+FRAME_Y+"px;left:"+FRAME_X+"px;";
     splash.style = "left:" + getSplashX() + "px;top:"+ getSplashY() +"px;";
     leftArrow.style.left = FRAME_X - leftArrow.width -10 +"px";
     rightArrow.style.left = FRAME_WIDTH + FRAME_X + 25 + "px";
-    getStarted();
   };
 
   var canvasPrep = (function(){
@@ -127,9 +127,9 @@
   };
   
   var removeSplash = function(){
-    splash.classList.add('hidden');
-    leftArrow.classList.toggle('hidden');
-    rightArrow.classList.toggle('hidden');
+    [splash, frame, leftArrow, rightArrow].forEach(function(elm){
+      elm.classList.toggle('hidden');
+    });
   };
   
   var getStarted = function(){
@@ -141,7 +141,7 @@
 
   var init = (function(){
     drawFrame();
-    
+    frame.classList.add('hidden');
     navigator.getUserMedia ? 
       navigator.getUserMedia('video', function(stream){
         video.src = stream;

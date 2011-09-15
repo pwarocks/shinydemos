@@ -8,6 +8,7 @@ loadHandler = function(e){
 	 	i,
 	 	len,
 	 	loadHandler,
+	 	loader,
 	 	overlay,
 	 	overlayHandler,
 	 	secs,
@@ -21,6 +22,7 @@ loadHandler = function(e){
 
 	clen       = close.length;
 	len        = secs.length;
+	loader	   = document.querySelector('#loader');
 
 
 	/*
@@ -91,12 +93,15 @@ loadHandler = function(e){
 		secs[i].addEventListener('click', clickHandler, false)
 	}
 
-	// remove the loading class.
+	// remove the loading class and hide the loader.
 	if( hasClassList ){
 		container.classList.remove('loading');
 		container.classList.add('loaded');
+		loader.classList.add('hide');
+
 	} else {
-		container.setAttribute('class',container.className.replace(/loading/,'loaded') );
+		container.className = container.className.replace(/loading/,'loaded');
+		loader.className    += 'hide';
 	}
 
 	overlay.addEventListener('click',closeHandler,false);

@@ -37,7 +37,11 @@ header > p{padding: 0px 20px;}
 
 #container.loading{
 	top: -1000px;
-	-o-transform: skew(-90deg);
+	     -o-transform: skew(-90deg);
+	-webkit-transform: skew(-90deg);
+       -moz-transform: skew(-90deg);
+        -ms-transform: skew(-90deg);
+            transform: skew(-90deg);
 }
 
 #photostack{

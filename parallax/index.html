@@ -1,12 +1,328 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title></title>
-<meta name="viewport" content="width=device-width">
+  <meta charset="utf-8">
+  <title>The Universe of Open Web</title>
+  <meta name="viewport" content="width=device-width">
+  <link href='http://fonts.googleapis.com/css?family=Lato:900' rel='stylesheet' type='text/css'>  
+  <style>
+    html {
+      background: url('bg-1.png') 0px 0px fixed, url('bg-2.png') 230px -50px fixed,  url('bg-1.png') -230px -50px fixed, #000;
+      background-repeat: round;
+      color: #fff;
+    }
+    body > b {
+      position: fixed;
+      left: 0; right: 0; top: 0;
+      height: 20%;
+      background-image: -o-linear-gradient(#222, rgba(0, 0, 0, 0));
+      background-image: -webkit-linear-gradient(#222, rgba(0, 0, 0, 0));      
+      z-index: 1;
+    }
+    
+    body { min-width: 50%; max-width: 60em; margin: 0 auto; position: relative; z-index: 1; font-family: sans-serif; height: 100%; overflow: hidden; }
 
+    #scrollpage { white-space: nowrap; position: absolute; background: url('bg-1.png'); }
+    #scrollpage section { white-space: normal; }
+        
+    h2 { font-family: 'Lato', sans-serif; text-transform: uppercase; }
+    a { text-decoration: none; color: white; }
+
+    aside { 
+      position: fixed; 
+      bottom: 0; left: 1em; right: 1em; 
+      border-radius: 1em 1em 0 0; 
+      background:  -o-linear-gradient(skyblue, rgba(0, 0, 0, 0.5) 2%, rgba(0, 0, 0, 0.5) 98%, skyblue); 
+      background:  -webkit-linear-gradient(skyblue, rgba(0, 0, 0, 0.5) 2%, rgba(0, 0, 0, 0.5) 98%, skyblue);       
+      padding: 1em 0; 
+      z-index: 4; 
+      text-align:center;
+    }
+        
+    aside::before {
+      position: absolute;
+      right: 1em;
+      left: 1em;
+      top: 0;
+      height: 5px;
+      content: "";
+      background: -o-linear-gradient(left, transparent 5%, skyblue 10%, skyblue 90%, transparent 95%);
+      background: -webkit-linear-gradient(left, transparent 5%, skyblue 10%, skyblue 90%, transparent 95%);      
+    }
+        
+    aside a { padding: 0 1em; display: inline-block; position: relative; text-transform: uppercase; font-size: 0.9em; }
+    aside a:hover, aside a.active { color: yellow; }
+    aside a:hover::after, aside a.active::after { position: absolute; top: -1.18em; height: 5px; left: 0; right: 0; background: yellow; content: ""; }
+
+
+        
+    section { background: url(planet1.svg) no-repeat center center; width: 60em; height: 600px; background-size: contain; }
+    .graphics, .bonus { background-image: url(planet2.svg); height: 800px; }
+    .storage, .realtime { background-image: url(planet1.svg); height: 700px; }        
+        
+    section { position: relative; margin: 2em 0; z-index: 3; display: inline-block; vertical-align: middle; }
+
+    section h2 { position: absolute; letter-spacing: 0.15em; font-size: 10em; line-height: 1em; top: 300px; margin-top: -0.2em; text-align: center; width: 100%; text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15); }
+    
+    .realtime h2 { margin-top: -0.5em; }
+
+    section a { position: absolute; display: block; padding-left: 40px; line-height: 1; font-size: 2em; text-transform: uppercase; margin-top: -16px; }
+
+    section a::before {
+      content: "•";
+      font-size: 80px;
+      line-height: 1px;
+      position: absolute;
+      top: 16px !important;
+      left: 0 !important;
+      color: skyblue;
+      display: block;
+    }
+    
+    section a::after {
+      content: "";
+      background: skyblue;
+      width: 100px;
+      height: 1px;
+      position: absolute;
+      top: 16px !important;
+      left: 20px !important;
+      display: block;
+      -o-transform-origin: 0 0;      
+      -webkit-transform-origin: 0 0;            
+    }
+    
+    .storage h2 { font-size: 5em; }    
+    .realtime h2 { font-size: 4em; }
+    
+    .storage a, .realtime a { font-size: 1.5em; }
+        
+    .core a:first-of-type::after, 
+    .graphics a:nth-of-type(2)::after,
+    .storage a:nth-of-type(4)::after,
+    .bonus a:nth-of-type(1)::after{ 
+      -o-transform: rotate(60deg); 
+      -webkit-transform: rotate(60deg);       
+    }
+        
+
+    .core a:nth-of-type(2)::after, 
+    .graphics a:nth-of-type(4)::after, 
+    .storage a:nth-of-type(3)::after,
+    .realtime a:first-of-type::after,
+    .bonus a:nth-of-type(2)::after { 
+      -o-transform: rotate(120deg) translate(0,10px); 
+      -webkit-transform: rotate(120deg) translate(0,10px); 
+    }
+
+
+    .core a:nth-of-type(3)::after, 
+    .graphics a:first-of-type::after, 
+    .storage a:nth-of-type(2)::after,
+    .realtime a:nth-of-type(4)::after { 
+      -o-transform: rotate(150deg) translate(0, 5px); 
+      -webkit-transform: rotate(150deg) translate(0, 5px); 
+    }
+
+
+    .core a:nth-of-type(4)::after, 
+    .graphics a:nth-of-type(3)::after, 
+    .storage a:first-of-type::after,
+    .realtime a:nth-of-type(2)::after,
+    .bonus a:nth-of-type(4)::after { 
+      -o-transform: rotate(-120deg) translate(0,-5px); 
+      -webkit-transform: rotate(-120deg) translate(0,-5px); 
+    }
+    
+    .realtime a:nth-of-type(5)::after,
+    .bonus a:nth-of-type(3)::after { 
+      -o-transform: rotate(90deg) translate(0, 5px); 
+      -webkit-transform: rotate(90deg) translate(0, 5px);       
+    }
+
+    .realtime a:nth-of-type(3)::after { 
+      -o-transform: rotate(-60deg) translate(-5px, -5px); 
+      -webkit-transform: rotate(-60deg) translate(-5px, -5px);       
+    }
+
+    .graphics a:first-of-type,
+    .bonus a:first-of-type,
+    .bonus a:nth-of-type(4) { bottom: 30%; }
+
+    .realtime a:nth-of-type(3) { bottom: 15%;  }
+    
+    .core a:nth-of-type(4),
+    .realtime a:nth-of-type(2),
+    .storage a:first-of-type { bottom: 10%; }  
+    
+
+    .core a:nth-of-type(3),
+    .realtime a:nth-of-type(4),
+    .storage a:nth-of-type(3)  { top: 30%; }   
+        
+    .storage a:nth-of-type(2),
+    .realtime a:nth-of-type(5),
+    .realtime a:nth-of-type(5)  { top: 20%; }
+
+    .core a:nth-of-type(2), 
+    .graphics a:nth-of-type(4) { top: 15%; }    
+        
+    .core a:first-of-type, 
+    .graphics a:nth-of-type(2), 
+    .storage a:nth-of-type(4),
+    .bonus a:nth-of-type(3)  { top: 10%; }    
+         
+
+    .core a:nth-of-type(3) { left: 50%; }    
+
+    .bonus a:nth-of-type(3) { left: 40%; }
+    
+    .core a:first-of-type, 
+    .graphics a:nth-of-type(2), 
+    .storage a:nth-of-type(4),
+    .graphics a:first-of-type,
+    .realtime a:nth-of-type(5),
+    .realtime a:nth-of-type(3) { left: 30%; }
+    
+    .bonus a:first-of-type { left: 20%;  }
+    
+    .core a:nth-of-type(2), 
+    .graphics a:nth-of-type(4),
+    .graphics a:nth-of-type(3)  { right: 30%; }    
+
+
+    .realtime a:nth-of-type(4) ,
+    .bonus a:nth-of-type(2) { right: 15%; }
+
+    .core a:nth-of-type(4),
+    .realtime a:nth-of-type(2) { right: 5%; }
+
+
+    .bonus a:nth-of-type(4),
+    .storage a:nth-of-type(2) { right: 0%; }
+
+
+    .graphics a:nth-of-type(3) { bottom: 20%; }
+    
+    .storage a:first-of-type { right: 20%; }
+    .storage a:nth-of-type(3) { right: 10%; }
+    
+    .realtime a:first-of-type { top: 0; right: -5%; }
+
+        
+    
+    /* Movement */
+    #scrollpage { -o-transition: -o-transform 1s linear; -o-transform-orign: 0 0; -webkit-transistion: -webkit-transform 1s linear; -webkit-transform-origin: 0 0; }
+    #scrollpage section { -o-transition: -o-transform 1.5s ease-in; -webkit-transition: -webkit-transform 1.5s ease-in; }
+    
+    .page0 { -o-transform: translate(0); -webkit-transform: translate(0); }    
+    .page1 { -o-transform: translate(-60em, 0); -webkit-transform: translate(-60em, 0); }
+    .page2 { -o-transform: translate(-120em, 0); -webkit-transform: translate(-120em, 0); }    
+    .page3 { -o-transform: translate(-180em, 0); -webkit-transform: translate(-180em, 0); }        
+    .page4 { -o-transform: translate(-240em, 0); -webkit-transform: translate(-240em, 0); }                           
+    
+    .page0 section:not(.core),
+    .page1 section:not(.graphics),
+    .page2 section:not(.storage),
+    .page3 section:not(.realtime),
+    .page4 section:not(.bonus) { -o-transform: scale(0.5); -webkit-transform: scale(0.5); }
+  </style>
 </head>
 <body>
+  <b></b>
+  <div id="scrollpage" class="page0">
+    <section class=core>
+      <h2>Core</h2>
+      <a href=#>HTML</a>
+      <a href=#>CSS</a>
+      <a href=#>DOM</a>
+      <a href=#>JavaScript</a>
+    </section>
+    <section class=graphics>
+      <h2>Graphics</h2>
+      <a href=#>SVG</a>
+      <a href=#>WebGL</a>
+      <a href=#>WOFF</a>
+      <a href=#>MathML</a>
+    </section>
+    <section class=storage>
+      <h2>Storage & File System</h2>
+      <a href=#>Indexed Database</a>
+      <a href=#>Offline Web Applications</a>
+      <a href=#>File System, & File Writer APIs</a>
+      <a href=#>Web Storage</a>
+    </section>
+    <section class=realtime>
+      <h2>Real-time Communication</h2>
+      <a href=#>Web Real-time communication APIs</a>
+      <a href=#>Web Sockets</a>
+      <a href=#>Server-sent Events</a>
+      <a href=#>XMLHttpRequest</a>
+      <a href=#>Progress Events</a>
+    </section>
+    <section class=bonus>
+      <h2>Bonus</h2>
+      <a href=#>ARIA</a>
+      <a href=#>History API</a>
+      <a href=#>Drag and drop API</a>
+      <a href=#>contentEditable</a>
+    </section>    
+  </div>
+  <script>
+    (function() {
+      var scrollpage = document.getElementById('scrollpage'),
+          sections = scrollpage.querySelectorAll('section'),
+          navsections = scrollpage.querySelectorAll('section > h2'),
+          numsections = sections.length,
+          clickcount = 0,
+          aside = document.createElement('aside'), 
+          asidelinks = aside.childNodes,
+          lnk;
 
+      for(i = 0; i < numsections; i++) {
+        lnk = document.createElement('a');
+        if(i == 0) { lnk.classList.add('active'); } 
+        lnk.href='#';
+        lnk.onclick = function (i) { return function (e) { changePage(i); e.preventDefault(); };  }(i);
+        lnk.appendChild(document.createTextNode(navsections[i].innerText));
+        aside.appendChild(lnk);
+      }
+          
+      document.onkeypress = function(e) {
+        if(e.keyCode == 39 || e.keyCode == 40 || e.keyCode == 34 || e.keyCode == 32) {
+          changePage('next');          
+        } 
+        
+        if(e.keyCode == 38 || e.keyCode == 37 || e.keyCode == 33) {
+          changePage('prev');                  
+        }
+      };    
+      
+
+      function changePage(opt) {
+        switch(opt) {
+          case 'prev':
+            clickcount = clickcount > 0 ? (clickcount - 1) : numsections;         
+            break;
+          case 'next':
+            clickcount = clickcount < (numsections - 1) ? (clickcount + 1) : 0;         
+            scrollpage.className = "page" + clickcount;
+            break;
+          default:
+            clickcount = opt;
+        }
+
+        scrollpage.className = "page" + clickcount;            
+
+        for(var i = 0, len = asidelinks.length; i < len; i++) {
+          asidelinks[i].classList.remove('active');
+        }
+        
+        asidelinks[clickcount].classList.add('active');
+      };
+      
+      document.body.appendChild(aside);      
+    })();
+  </script>
 </body>
 </html>

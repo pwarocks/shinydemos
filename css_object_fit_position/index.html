@@ -2,11 +2,450 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title></title>
-<meta name="viewport" content="width=device-width">
+<title>Opera demo - object-fit :: object-position :: :target</title>
 
+<script>
+  document.createElement('article');
+  document.createElement('section');
+  document.createElement('aside');
+  document.createElement('hgroup');
+  document.createElement('nav');
+  document.createElement('header'); 
+  document.createElement('footer');
+  document.createElement('figure');
+  document.createElement('figcaption'); 
+</script>
+    
+<style>
+
+/* Web font imports */
+
+@font-face {
+    font-family: 'LeagueGothicRegular';
+    src: url('league_gothic-webfont.eot');
+    src: url('league_gothic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('league_gothic-webfont.woff') format('woff'),
+         url('league_gothic-webfont.ttf') format('truetype'),
+         url('league_gothic-webfont.svg#LeagueGothicRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'VollkornRegular';
+    src: url('vollkorn-regular-webfont.eot');
+    src: url('vollkorn-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('vollkorn-regular-webfont.woff') format('woff'),
+         url('vollkorn-regular-webfont.ttf') format('truetype'),
+         url('vollkorn-regular-webfont.svg#VollkornRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/* HTML5 shiv-idge */
+
+header, footer, section, article, nav, aside, hgroup, figure, figcaption, video {
+  display: block;
+}
+
+/* General styling and tabs */
+
+html {
+  background: #EEEEFF;
+  font-size: 80%;
+}
+
+p, figcaption {
+  
+}
+
+article[id*=tab] {
+  width: 35em;
+  padding: 1em;
+  margin: 1em 0 0 3em;
+  background: #eee;
+  box-shadow: inset 5px 5px 10px #ddd;
+ -webkit-box-shadow: inset 5px 5px 10px #ddd;
+  border: 2px solid #E667AF;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  position: absolute;
+  left: 0em;
+  opacity: 0;
+  -moz-transition: 1s all;
+  -ms-transition: 1s all;
+  -o-transition: 1s all;
+  -webkit-transition: 1s all;
+  transition: 1s all;
+}
+
+article[id*=tab]:target {
+  opacity: 1;
+  z-index: 5;
+}
+
+ul {
+  width: 65em;
+}
+
+li {
+  display: inline;
+}
+
+li a {
+   background-color: #ccc;
+   border: 1px solid #E667AF;
+   border-radius: 5px;
+   display: inline-block;
+   margin-right: 1em;
+   line-height: 2.5em;
+   width: 150px;
+   text-align: center;
+   list-style: none;
+   padding-right: 20px;
+   text-decoration: none;
+  background-image: -ms-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.2));
+  background-image: -moz-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.2));
+  background-image: -o-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.2));
+  background-image: -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.2));
+  background-image: linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.2));
+}
+
+li a, li a:link, li a:visited {
+  text-decoration: none;
+  color: #E63993;
+  text-shadow: 1px 1px 1px black;
+  -moz-transition: 1s all;
+  -ms-transition: 1s all;
+  -o-transition: 1s all;
+  -webkit-transition: 1s all;
+  transition: 1s all;
+}
+
+li a:hover, li a:focus {
+  background-color: #fff;
+}
+
+li a:active {
+  box-shadow: inset 2px 2px 10px #000;
+   -webkit-box-shadow: inset 2px 2px 10px #000;
+}
+
+img {
+  margin-top: 1.5em;
+  
+}
+
+#wrapper {
+  width: 65em;
+  
+}
+
+/* supplementary info box */
+
+aside {
+  margin-top: 1em;
+  width: 20em;
+  background: #eee;
+  box-shadow: inset 5px 5px 10px #ddd;
+ -webkit-box-shadow: inset 5px 5px 10px #ddd;
+  border: 2px solid #E667AF;
+  border-radius: 10px;
+  padding: 20px;
+  float: right;
+}
+
+/* web fonts */
+
+article, aside {
+  font-family: VollkornRegular;
+  line-height: 1.05em;
+}
+
+li {
+  font-family: sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: LeagueGothicRegular;
+  margin: 0;
+  color: #269926;
+  /*text-shadow: 1px 1px 1px black;*/
+  letter-spacing: 0.05em;
+  word-spacing: 0.2em;
+}
+
+code {
+  color: #E63993;
+  text-shadow: 1px 1px 1px black;
+}
+
+h1 {
+  font-size: 3em;
+  margin: 0.2em 0 0.3em 0.8em;
+}
+
+h2 {
+  font-size: 2.5em;
+  padding: 0 0 0.2em 0;
+}
+
+aside p {
+  padding-left: 1em;
+}
+
+/* object-fit: none; and object-position demo styling */
+
+#tab1 img {
+  width: 10em;
+  height: 10em;
+  position: absolute;
+  left: 25em;
+  border: 1px solid black;
+  background-color: #ccc;
+ -ms-object-fit: none;
+ -moz-object-fit: none;
+ -o-object-fit: none;
+ -webkit-object-fit: none;
+  object-fit: none;
+  overflow: hidden;
+ -ms-object-position: center;
+ -moz-object-position: center;
+ -o-object-position: center;
+ -webkit-object-position: center;
+  object-position: center;
+ -ms-transition: 1s all;
+ -moz-transition: 1s all;
+ -o-transition: 1s all;
+ -webkit-transition: 1s all;
+ transition: 1s all;
+}
+
+#tab1 figure {
+  width: 20em;
+  height: 10em;
+  margin-bottom: 1em;
+}
+
+#tab1 figcaption {
+  padding: 1em 0 0 1em;
+}
+
+#tab1 a:focus img, #tab1 a:hover img {   
+  background-color: #E63993;
+  width: 20em;
+  height: 20em;  
+  z-index: 10;
+}
+
+/* object-fit: fill; demo styling */
+
+#tab2 video {
+  position: absolute;
+  left: 19em;
+}
+
+#tab2 figure {
+  width: 17em;
+  height: 10em;
+  margin-bottom: 1em;
+}
+
+#tab2 figcaption {
+  padding: 1em 0 0 1em;
+}
+
+#no-object-fit {
+  border: 1px solid black;
+  background-color: #ccc;
+  margin-bottom: 1em;
+}
+
+#object-fit {
+  border: 1px solid black;
+  background-color: #ccc;
+ -ms-object-fit: fill;
+ -moz-object-fit: fill;
+ -o-object-fit: fill;
+ -webkit-object-fit: fill;
+  object-fit: fill;
+}
+
+/* object-fit: contain; */
+
+#tab3 img {
+  width: 10em;
+  height: 10em;
+  position: absolute;
+  left: 25em;
+  border: 1px solid black;
+  background-color: #ccc;
+ overflow: hidden;
+}
+
+#objectcontain {
+ -ms-object-fit: contain;
+ -moz-object-fit: contain;
+ -o-object-fit: contain;
+ -webkit-object-fit: contain;
+}
+
+#tab3 figure {
+  width: 20em;
+  height: 10em;
+  margin-bottom: 1em;
+}
+
+#tab3 figcaption {
+  padding: 1em 0 0 1em;
+}
+
+/* object-fit: cover; */
+
+#tab4 img {
+  width: 10em;
+  height: 10em;
+  position: absolute;
+  left: 25em;
+  border: 1px solid black;
+  background-color: #ccc;
+ overflow: hidden;
+}
+
+#objectcover {
+ -ms-object-fit: cover;
+ -moz-object-fit: cover;
+ -o-object-fit: cover;
+ -webkit-object-fit: cover;
+ object-fit: cover;
+}
+
+#tab4 figure {
+  width: 20em;
+  height: 10em;
+  margin-bottom: 1em;
+}
+
+#tab4 figcaption {
+  padding: 1em 0 0 1em;
+}
+
+</style>
 </head>
 <body>
+
+<h1>Object-fit demos</h1>
+
+<nav role="navigation">
+
+<ul>
+  <li><a href="#tab1" tabindex="1">object-fit: none;</a></li>
+  <li><a href="#tab2" tabindex="2">object-fit: fill;</a></li>
+  <li><a href="#tab3" tabindex="3">object-fit: contain;</a></li>
+  <li><a href="#tab4" tabindex="4">object-fit: cover;</a></li>
+</ul>
+
+</nav>
+
+<div id="wrapper">
+
+<aside>
+  <h2>General note</h2>
+  
+  <p>I have made use of the <code>:target</code> pseudo class to create a CSS-only tabbed navigation. All the <code>&lt;article&gt;</code> "tabs" are absolutely positioned on top of one another and given <code>opacity: 0;</code> to start with, then a transition is used to make the tabs smoothly appear when the links that link to them are clicked on them, ie when they become a target (<code>article[id*=tab]:target {}</code>).</p>
+</aside>
+
+<article id="tab1">
+
+<h2>object-fit: none; and object-position</h2>
+
+<figure>
+<a href="photo3.jpg"><img src="photo3.jpg" alt="Kirsty and Elva enjoying a ride in Luna Park, Sydney"></a>
+<figcaption>These pictures have <code>object-fit: none;</code> applied to them, which causes the images to ignore the constraints of the <code>&lt;img&gt;</code> tag and spill out at their original size. Here we've hidden the parts of the image that fall outside with <code>overflow: hidden;</code>. We've also used <code>object-position: center;</code> to make the image display from the center rather than the top left.</figcaption>
+</figure>
+
+<figure>
+<a href="photo4.jpg"><img src="photo4.jpg" alt="Gabriel standing just outside Luna Park, Sydney"></a>
+<figcaption>We've then applied a transition to the images so that when they are hovered or focused, they grow in size. The <code>object-fit: none;</code>/<code>overflow: hidden;</code> effect alters as the image grows, creating an interesting preview effect.</figcaption>
+</figure>
+
+</article>
+
+<article id="tab2">
+
+<h2>object-fit: fill;</h2>
+
+<figure>
+<video autoplay loop width="213" height="121" id="no-object-fit">
+  <source src="windowsill.mp4" type="video/mp4">
+  <source src="windowsill.webm" type="video/webm">
+	<!-- proper fallback content goes here -->
+</video>
+<figcaption><code>object-fit: fill;</code> forces the content of the replaced element to adopt the aspect ratio of the element itself, even if it would not normally do so, eg with videos. This first <code>&lt;video&gt;</code> element shows a video with a broken aspect ratio - not great.</figcaption>
+</figure>
+
+<figure>
+<video autoplay loop width="213" height="121" id="object-fit">
+  <source src="windowsill.mp4" type="video/mp4">
+  <source src="windowsill.webm" type="video/webm">
+	<!-- proper fallback content goes here -->
+</video>
+<figcaption>This second <code>&lt;video&gt;</code> element is identical to the first, except that it has <code>object-fit: fill;</code> applied to it - this causes the video to adopt the aspect ratio of the <code>&lt;video&gt;</code> element - much better.</figcaption>
+</figure>
+
+</article>
+
+<article id="tab3">
+
+<h2>object-fit: contain;</h2>
+
+<figure>
+<a href="photo2.jpg"><img src="photo2.jpg" alt="Elva eating really messily in Manly near Sydney" id="noobjectcontain"></a>
+<figcaption><code>object-fit: contain;</code> applied to a replaced element alters the longest dimension of the content so that it is the same size as its containing element's corresponding dimension. The other dimension is altered proportionately so that the content maintains its aspect ratio, and shrinks to fit inside the replaced element.</figcaption>
+</figure>
+
+<figure>
+<a href="photo2.jpg"><img src="photo2.jpg" alt="Elva eating really messily in Manly near Sydney" id="objectcontain"></a>
+<figcaption>So in this case, the first <code>&lt;img&gt;</code> is set to different dimensions than the original image, causing it to stretch and look horrible. the second <code>&lt;img&gt;</code> has <code>object-fit: contain;</code> applied, forcing its content to main aspect ratio and shrink so it fits inside.</figcaption>
+</figure>
+
+</article>
+
+<article id="tab4">
+
+<h2>object-fit: cover;</h2>
+
+<figure>
+<a href="photo1.jpg"><img src="photo1.jpg" alt="Gabriel in Sydney Harbour" id="noobjectcover"></a>
+<figcaption><code>object-fit: cover;</code> applied to a replaced element alters the shortest dimension of the content so that it is the same size as its containing element's corresponding dimension. The other dimension is altered proportionately so that the content maintains its aspect ratio, and the content grows to completely envelope the replaced element.</figcaption>
+</figure>
+
+<figure>
+<a href="photo1.jpg"><img src="photo1.jpg" alt="Gabriel in Sydney Harbour" id="objectcover"></a>
+<figcaption>So in this case, the first <code>&lt;img&gt;</code> is set to different dimensions than the original image, causing it to stretch and look horrible. the second <code>&lt;img&gt;</code> has <code>object-fit: cover;</code> applied, forcing its content to main aspect ratio and grow so it covers the containing element. <code>overflow: hidden;</code> is then used to hide the overflowing content.</figcaption>
+</figure>
+
+</article>
+
+</div>
+
+<script>
+  var video1 = document.getElementById('no-object-fit');
+  
+  var video2 = document.getElementById('object-fit');
+  
+  video1.oncanplay = function(){
+    this.muted = true;
+  };
+  
+  video2.oncanplay = function(){
+    this.muted = true;
+  };
+</script>
 
 </body>
 </html>

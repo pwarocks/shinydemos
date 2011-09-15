@@ -13,15 +13,20 @@ loadHandler = function(e){
 	 	secs,
 	 	transitionEvent;
 
-	clen       = close.length;
 	close      = document.querySelectorAll('.close');
 	container  = document.querySelector('#container');
 	hasClassList = !(document.body.classList == undefined );
-	len        = secs.length;
 	overlay    = document.querySelector('#overlay');
 	secs       = document.querySelectorAll('section');
 
-	/* Yeah yeah, it's a browser sniff. Sorry. */
+	clen       = close.length;
+	len        = secs.length;
+
+
+	/*
+	  Yeah yeah, it's a browser sniff, but a necessary
+	  one until everything is standardized.
+	*/
 	transitionEvent = function(){
 		var whichTrans;
 		if( !window.opera ){
@@ -63,32 +68,37 @@ loadHandler = function(e){
 	closeHandler = function(e){
 		e.stopPropagation();
 
-		var lp = e.currentTarget.parentNode;
+		var lp = document.querySelector('.leadPhoto');
 		var re = /leadPhoto/gi;
 		var classReplace = 'leadPhoto';
 
-		if(hasClassList == true){
+		if( hasClassList == true ){
 			overlay.classList.add('hide');
-			lp.classList.remove(classReplace);
-
+			lp.classList.remove( classReplace );
 		} else {
 			overlay.setAttribute('class','hide');
-			lp.setAttribute('class', lp.className.replace(re,'') );
+			lp.className = lp.className.replace(re,'');
 		}
 	}
 
+	// add event handler for close buttons.
 	for(i = 0; i < len; i++){
 		close[i].addEventListener('click', closeHandler, false);
 	}
+
+	// add event handler for sections / images.
 	for(i = 0; i < clen; i++){
 		secs[i].addEventListener('click', clickHandler, false)
 	}
+
+	// remove the loading class.
 	if( hasClassList ){
 		container.classList.remove('loading');
 		container.classList.add('loaded');
 	} else {
 		container.setAttribute('class',container.className.replace(/loading/,'loaded') );
 	}
+
 	overlay.addEventListener('click',closeHandler,false);
 }
 

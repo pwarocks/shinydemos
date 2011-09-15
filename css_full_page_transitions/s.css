@@ -203,10 +203,6 @@ section.leadPhoto{
             transform: scale(1.5);
 }
 
-section.vert.leadPhoto{
-	-o-transform: scale(1.5);
-}
-
 .close{
 	background: #b20;
 	text-align: center;

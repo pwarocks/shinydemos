@@ -30,7 +30,9 @@
 
 		/* If we don't have a range, adjust the UI. */
 		if( hasRange == false ){
+
 			document.getElementById('worksbestwithrange').className = '';
+
 			var i, len, input;
 			len = fixranges.length;
 			for(i = 0; i < len; i++){

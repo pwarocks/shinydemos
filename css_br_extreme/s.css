@@ -172,7 +172,7 @@ pre{
 	margin:20px;
 }
 
-@media screen and (min-width:400px;){
+/* @media screen and (min-width:400px;){
 	#wrap, header{width:630px;}
 	form{width:300px;}
 
@@ -182,6 +182,7 @@ pre{
 		margin: 20px 0 20px 55px;
 	}
 }
+ */
 
 @media screen and (min-width: 801px){
 	form{width:400px;}
@@ -192,4 +193,12 @@ pre{
 		height: 300px;
 		margin: 20px 0 20px 55px;
 	}
+}
+
+/* remove what is after this line */
+
+#main{
+	border-radius: 30px;
+	border-width: 10px;
+	border: 10px solid #fc9;
 }

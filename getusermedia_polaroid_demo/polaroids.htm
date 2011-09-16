@@ -27,6 +27,7 @@ body{
 	font-family: 'NobileRegular';
 
 }
+
 #container{
 	max-width: 1000px;
 }
@@ -38,8 +39,8 @@ video{
 	margin-bottom: 10px;
 	/*width: 150px;
 	height: 225px;*/
-	width: 80%;
-	height: 80%;
+	width: 100%;
+	height: 100%;
 	box-shadow: 1px 1px 15px #000;
 		moz-box-shadow: 1px 1px 15px #000;
 		webkit-box-shadow: 1px 1px 15px #000;
@@ -82,10 +83,10 @@ a:visited{
 
 canvas{
 	background-color: #fff;
-	padding: 5px;
-	margin: 10px;
-	width: 155px;
-	height: 190px;
+	/*padding: 5px;
+	margin: 10px;*/
+	width: 165px;
+	height: 200px;
 	box-shadow: 3px 3px 3px #000;
 }
 
@@ -112,6 +113,20 @@ canvas{
 
 #click{
 	font-family: 'rabiohead';
+	font-size: 1.2 em;
+}
+#picbutton{
+	/*background-color: #ccc;*/
+	color: #fff;
+	border-radius: 5px;
+	text-align: center;
+	background-image: -moz-linear-gradient(#666 10%, #222);
+	background-image: -ms-linear-gradient(#666 10%, #222);
+	background-image: -webkit-linear-gradient(#666 10%, #222);
+	background-image: -o-linear-gradient(#666 10%, #222);
+	width: inherit;
+	padding: 1px;
+	text-shadow: 1px 1px 1px #000;
 }
 </style>
 
@@ -127,8 +142,10 @@ canvas{
 <video id="video" autoplay></video>
 </div>
 <div id="right">
-<h1 id="click">Click picture!</h1>
-<a id="button"><img id="shutter" src="shutter.png" /></a><br />
+<div id="picbutton">
+<h1 id="click">Take a photo!</h1>
+</div>
+<!--<a id="button"><img id="shutter" src="shutter.png" /></a><br />-->
 </div>
 </div>
 <div id="footer">
@@ -138,14 +155,14 @@ canvas{
 <p>Shake device to reset the images</p>
 <p>Shutter icon from <a href="http://www.25icons.com/index.php?Icon-Set=Super-Simple-Grey-Series">25 icons</a>.</p>
 </div>
+
 <script type="text/javascript">
-var button = document.querySelector('#button');
+var button = document.querySelector('#picbutton');
 button.addEventListener('click',snapshot, false);
 window.addEventListener('devicemotion', reset, false);
 
 var prev= 0;
 var video_element = document.querySelector('video');
-
 
 
 if (navigator.getUserMedia){
@@ -178,6 +195,10 @@ function snapshot(){
 	canvas.className = "pic";
 	var deg = getDeg();
 	canvas.style.OTransform = "rotate("+deg+"deg)";
+	canvas.style.MozTransform = "rotate("+deg+"deg)";
+	canvas.style.WebkitTransform = "rotate("+deg+"deg)";
+	canvas.style.msTransform = "rotate("+deg+"deg)";
+
 	var footer = document.querySelector("#pictures");
 	footer.appendChild(canvas);
 	
@@ -188,7 +209,24 @@ function snapshot(){
 	var ch = c.clientHeight;
 	ctx.fillStyle = "#fff";
 	ctx.fillRect(0, 0, cw, ch);
-	ctx.drawImage(video_element, 0, 0, cw, (ch-40) );
+	ctx.drawImage(video_element, 0+5, 0+5, cw-50, (ch-40) );
+	applyEvents();
+}
+
+
+function applyEvents(){
+	var elems = document.querySelectorAll('canvas');
+	for (var i=0; i<elems.length;i++){
+		elems[i].addEventListener('click', newimg, true);
+	}
+}
+
+
+function newimg(){
+	var datauri = this.toDataURL("image/png");
+	window.open(datauri);
+	//Canvas2Image.saveAsPNG(this);
+	
 }
 
 function reset(){

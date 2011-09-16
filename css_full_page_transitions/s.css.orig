@@ -172,7 +172,10 @@ section:nth-child(10){
 section img{
 	display: block;
 	width:   100%;
+<<<<<<< HEAD
+=======
 	margin: 0 0 10px 0;
+>>>>>>> working
 }
 
 section{

@@ -24,29 +24,23 @@ loadHandler = function(e){
 	len        = secs.length;
 	loader	   = document.querySelector('#loader');
 
-
-	/*
-	  Yeah yeah, it's a browser sniff, but a necessary
-	  one until everything is standardized.
-	*/
+	/* Technique borrowed from Modernizr */
 	transitionEvent = function(){
-		var whichTrans;
-		if( !window.opera ){
-			switch( navigator.userAgent.match(/webkit|gecko|trident/i)[0].toLowerCase() ){
-				case 'webkit':
-					whichTrans = 'webkitTransitionEnd';
-					break;
-				case 'gecko':
-					whichTrans = 'mozTransitionEnd';
-					break;
-				case 'trident':
-					whichTrans = 'msTransitionEnd';
-					break;
-			}
-		} else{
-			whichTrans = 'oTransitionEnd';
+		var t, transitions, el = container;
+
+		transitions = {
+			'transition':'transitionEnd',
+			'OTransition':'oTransitionEnd',
+			'MSTransition':'msTransitionEnd',
+			'MozTransition':'mozTransitionEnd',
+			'WebkitTransition':'webkitTransitionEnd'
 		}
-		return whichTrans;
+
+		for(t in transitions){
+			if( el.style[t] !== undefined ){
+				return transitions[t];
+			}
+		}
 	}
 
 	clickHandler = function(e){

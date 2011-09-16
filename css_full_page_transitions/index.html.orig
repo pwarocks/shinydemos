@@ -18,7 +18,11 @@
 </header>
 	<div id="photostack">
 		<section class="vert phx" id="s1">
+<<<<<<< HEAD
 			<div class="close">close</div>
+=======
+			<div class="close"></div>
+>>>>>>> working
 			<p><img src="images/chinatown_la.jpg" alt="Paper lanterns at the opening gates to Los Angeles' Chinatown">Chinatown, Los Angeles, California, USA (2011)</p>
 		</section>
 

@@ -1,0 +1,86 @@
+<!doctype html>
+<title>Canvas bounce</title>
+
+<meta name="viewport" content="width=360,user-scalable=no" />
+
+<style>
+/* typeface: Adore 64 by pixelite@lycos.de http://www.freakyfonts.de/ */
+@font-face {
+    font-family: "Adore64";
+    src: url(Adore64.ttf)
+}
+body { font: 16px Adore64, Courier, sans-serif; background-color: #000031; color: #fff; width: 360px; margin: 24px auto 0 auto; position: relative; }
+h1 { font-size: 16px; margin: 0; padding: 0; text-transform: uppercase; color: #f00; }
+small { font-size: 8px; }
+a {  color: #f00; }
+canvas { margin: 8px 0; border-bottom: 2px #555 solid; }
+#autopilot { text-transform: uppercase; position: absolute; top: 200px; left: 110px; background-color: rgba(0,0,0,0.5); }
+#autopilot.off { display: none; }
+</style>
+
+<script>
+var ctx,autopilot=true,px,x=145,y=145,dx=Math.floor(Math.random()*4+5),dy=Math.floor(Math.random()*4+5);
+
+var img_bg = new Image();
+var img_shadow = new Image();
+var img_walls = new Image();
+var img_paddle = new Image();
+var img_ball = new Image();
+
+
+function init() {
+	img_bg.src = 'remix/background.png';
+	img_shadow.src = 'remix/shadow.png';
+	img_walls.src = 'remix/walls.png';
+	img_paddle.src = 'remix/paddle.png';
+	img_ball.src = 'ball.png';
+	
+	var elem = document.getElementById('bouncy');
+
+	ctx = elem.getContext('2d');
+	
+	elem.addEventListener('mousemove',function(e) { if(e.offsetX) { px = e.offsetX-30; } else if (e.layerX) { px = e.layerX-30; } }, false);
+	elem.addEventListener('mouseover',function() { autopilot = false; }, false);
+	elem.addEventListener('mouseout',function() { autopilot = true; }, false);
+	setInterval(bounce,20);
+}
+
+function bounce() {
+	ctx.drawImage(img_bg,0,0);
+	ctx.drawImage(img_shadow,0,0);
+	// ball
+	if (x<=20) { dx = 0-dx; x=20; }
+	if ((x+dx+8)>=340) { dx = 0-dx; x=340; }
+	if (y<=15) { dy = 0-dy; y=15; }
+	if ((y+dy+8)>=350) {
+		if ((px<x)&&((px+60)>x)) {
+			dy = 0-dy; y=350;
+		} else {
+			// lost ball
+			y=16;
+		}
+	}
+	x+=dx; y+=dy;
+	ctx.drawImage(img_ball,x,y);
+	// paddle
+	if (autopilot) { 
+		px = x-30;
+		document.getElementById('autopilot').className=""
+	} else {
+		document.getElementById('autopilot').className="off"
+	}
+	py=350;
+	if (px<20) { px=20; }
+	if ((px+60)>340) { px=280; }
+	ctx.drawImage(img_paddle,px,py);
+	ctx.drawImage(img_walls,0,0); // walls drawn last, so paddle shadow always underneath wall
+}
+
+</script>
+
+<body onLoad="init()">
+<h1>Canvas bounce</h1>
+<canvas id="bouncy" width="360" height="378"></canvas>
+<p><small>Font by <a href="http://www.freakyfonts.de/">freakyfonts.de</a></small></p>
+<p id="autopilot">Autopilot</p>
+</body>

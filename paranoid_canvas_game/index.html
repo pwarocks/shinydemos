@@ -1,12 +1,222 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
 <head>
 <meta charset="utf-8">
-<title></title>
-<meta name="viewport" content="width=device-width">
+<title>Paranoid 0.3 - Revenge of D'oh!</title>
 
+<meta name="viewport" content="width=372,user-scalable=no">
+
+<style>
+/* typeface: Adore 64 by pixelite@lycos.de http://www.freakyfonts.de/ */
+@font-face {
+    font-family: "Adore64";
+    src: url(Adore64.ttf)
+}
+
+
+html, body { margin: 0; padding: 0; }
+html { margin: 5px; }
+body { font: 10px Adore64, sans-serif; background-color: #000031; color: #fff; width: 360px; margin: 24px auto 0 auto; position: relative; }
+h1,h2 { font-size: 20px; margin: 0; padding: 0; text-transform: uppercase; color: #f00; }
+h2 { margin-bottom: 8px; }
+p { margin: 0; padding: 0; }
+small { font-size: 8px; }
+a {  color: #f00; }
+canvas { display: block; margin: 16px 0; border-bottom: 2px #555 solid; cursor: none; }
+dt { float: left; }
+#autopilot { font-size: 16px; text-transform: uppercase; position: absolute; top: 200px; width:360px; text-align:center; background-color: rgba(0,0,0,0.5); }
+.off { display: none; }
+
+@media (max-height: 620px) {
+	h1,h2 { font-size: 12px; }
+	body { font-size: 6px; margin: 0 auto; }
+	canvas { margin: 2px 0; }
+}
+</style>
+
+<script>
+// wrap the whole thing in an object so we don't pollute the global namespace
+var paranoid = {
+	ctx: new Object(),
+	autopilot:true,
+	px:0,
+	x:145,
+	y:145,
+	dx: Math.floor(Math.random()*4+5),
+	dy: Math.floor(Math.random()*4+5),
+	
+	img_bg : new Image(),
+	img_shadow : new Image(),
+	img_walls : new Image(),
+	img_paddle : new Image(),
+	img_ball : new Image(),
+	img_brick : new Image(),
+	
+	bricks : new Array,
+	bricks_count : 10,
+	
+	
+	init: function() {
+		paranoid.img_bg.src = 'images/background.png';
+		paranoid.img_shadow.src = 'images/shadow.png';
+		paranoid.img_walls.src = 'images/walls.png';
+		paranoid.img_paddle.src = 'images/paddle.png';
+		paranoid.img_ball.src = 'images/ball.png';
+		paranoid.img_brick.src = 'images/brick.png';
+		
+		paranoid.reset();
+		
+		var elem = document.getElementById('bouncy');
+
+		paranoid.ctx = elem.getContext('2d');
+		
+		elem.addEventListener('touchmove', function(e){ e.preventDefault(); paranoid.mouse(e); }, false);
+		elem.addEventListener('MozTouchMove', function(e){ e.preventDefault(); paranoid.mouse(e); }, false);
+		elem.addEventListener('mousemove', function(e){ paranoid.mouse(e); }, false);
+		elem.addEventListener('touchstart', function(e){ e.preventDefault(); paranoid.auto(false); }, false);
+		elem.addEventListener('MozTouchDown', function(e){ e.preventDefault(); paranoid.auto(false); }, false);
+		elem.addEventListener('mouseover', function(e){ paranoid.auto(false); }, false);
+		elem.addEventListener('touchend', function(e){ e.preventDefault();paranoid.auto(true); }, false);
+		elem.addEventListener('MozTouchUp', function(e){ e.preventDefault();paranoid.auto(true); }, false);
+		elem.addEventListener('mouseout', function(e){ paranoid.auto(true); }, false);
+		document.addEventListener('keydown', function(e){ e.preventDefault(); paranoid.kbd(e);}, true);
+		
+		// if it's a touch device, change autopilot message and hide controls legend
+		var hazTouch = 'ontouchstart' in window || 'onMozTouchDown' in window || 'createTouch' in document;
+		if (hazTouch) {
+			document.getElementById('controls').className='off';
+			document.getElementById('autopilot').innerHTML+='<br>Touch to play';
+		}
+		
+		setInterval(paranoid.bounce,30);
+	},
+	
+	reset: function() {
+		paranoid.bricks = [1,1,1,1,1,1,1,1,1,1];
+		paranoid.bricks_count = 10;
+	},
+
+	auto: function(state) {
+		paranoid.autopilot = state;
+	},
+	
+	kbd: function(e) {
+		switch(e.keyCode) {
+			case 65:
+				paranoid.auto(!paranoid.autopilot);
+				break;
+			case 37:
+				paranoid.px-=30;
+				break;
+			case 39:
+				paranoid.px+=30;
+				break;			
+		}
+	},
+	
+	mouse: function(e) {
+		if (e.touches) {
+			paranoid.px=e.touches[0].clientX-e.target.offsetLeft;
+		}  else if (e.offsetX) {
+			paranoid.px=e.offsetX;
+		
+		} else if (e.layerX) {
+			paranoid.px=e.layerX;
+		}
+		// remove half a paddle size so it's centered
+		paranoid.px-=30;
+	},
+
+	bounce: function() {
+		// the main game loop ... this is where everything happens
+		
+		// collision detection
+		// with bricks
+		hit = false;
+		for(i = 0; i<10; i++) {
+			if((paranoid.bricks[i]==1)&&(!hit)) {
+				if(((paranoid.x+4+paranoid.dx)>=(i*32)+20)&&
+					((paranoid.x+4+paranoid.dx)<(i*32)+52)&&
+					((paranoid.y+4+paranoid.dy+8)>100)&&
+					((paranoid.y+4+paranoid.dy)<115)) {
+					hit = true;
+					paranoid.bricks[i]=0;
+					paranoid.bricks_count-=1;
+					// brick to the right
+					if((paranoid.dx>0)&&(paranoid.x+8<=(i*32)+22)) {paranoid.dx=0-paranoid.dx;}
+					// brick to the left
+					else if((paranoid.dx<0)&&(paranoid.x>=(i*32)+50)) {paranoid.dx=0-paranoid.dx;}
+					// brick below
+					if((paranoid.dy>0)&&(paranoid.y+8<=102)) {paranoid.dy=0-paranoid.dy;}
+					// brick above
+					else if((paranoid.dy<0)&&(paranoid.y>=113)) {paranoid.dy=0-paranoid.dy;}
+				}
+			}
+		}
+		// with walls
+		if (paranoid.x<=20) { paranoid.dx = 0-paranoid.dx; paranoid.x=20; }
+		if ((paranoid.x+paranoid.dx+8)>=340) { paranoid.dx = 0-paranoid.dx; paranoid.x=340; }
+		if (paranoid.y<=15) { paranoid.dy = 0-paranoid.dy; y=15; }
+		// with paddle
+		if ((paranoid.y+paranoid.dy+8)>=340) {
+			if ((paranoid.px<paranoid.x)&&((paranoid.px+60)>paranoid.x)) {
+				paranoid.dy = 0-paranoid.dy; paranoid.y=340;
+			} else {
+				// lost ball
+				
+				paranoid.y=16;
+			}
+		}
+		paranoid.x+=paranoid.dx; paranoid.y+=paranoid.dy;
+
+		// paddle control
+		if (paranoid.autopilot) { 
+			paranoid.px = paranoid.x-30;
+			document.getElementById('autopilot').className=""
+		} else {
+			document.getElementById('autopilot').className="off"
+		}
+		paranoid.py=335;
+		if (paranoid.px<20) { paranoid.px=20; }
+		if ((paranoid.px+60)>340) { paranoid.px=280; }
+		
+		// draw everything
+		paranoid.ctx.drawImage(paranoid.img_bg,0,0);
+		paranoid.ctx.drawImage(paranoid.img_shadow,0,0);
+		paranoid.ctx.drawImage(paranoid.img_ball,paranoid.x,paranoid.y);
+		
+		for(i = 0; i<10; i++) {
+			if(paranoid.bricks[i]==1) {
+				paranoid.ctx.drawImage(paranoid.img_brick,(i*32)+20,100);
+			}
+		}
+		
+		paranoid.ctx.drawImage(paranoid.img_paddle,paranoid.px,paranoid.py);
+		paranoid.ctx.drawImage(paranoid.img_walls,0,0); // walls drawn last, so paddle shadow always underneath wall
+		
+		if (paranoid.bricks_count==0) paranoid.reset();
+	}
+
+};
+
+window.addEventListener('load',paranoid.init,false);
+</script>
 </head>
-<body>
 
+<body>
+<h1>Paranoid 0.3</h1>
+<canvas id="bouncy" width="360" height="378"></canvas>
+<div id="controls">
+<h2>Instructions</h2>
+<p>To control the paddle, use the mouse, touchscreen or keyboard.</p>
+<dl>
+<dt>(a)</dt>
+<dd>toggle autopilot</dd>
+<dt>(<)</dt>
+<dd>move left</dd>
+<dt>(>)</dt>
+<dd>move right</dd>
+</dl>
+</div>
+<p><small>Font by <a href="http://www.freakyfonts.de/">freakyfonts.de</a></small></p>
+<p id="autopilot">Autopilot</p>
 </body>
-</html>

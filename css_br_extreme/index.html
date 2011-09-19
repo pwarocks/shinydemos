@@ -5,11 +5,9 @@
 	<title>Border radius</title>
 	<link rel="stylesheet" media="screen" href="s.css">
 </head>
-<body>
+<body id="cssbr">
 
-<div id="unsupported" class="hide"><p>Your browser doesn't support <code>border-radius</code> making this page pretty useless. Try the latest version of <a href="http://opera.com/">Opera</a>. (The latest versions of <a href="http://www.google.com/chrome/">Chrome</a>, <a href="http://getfirefox.com/">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">Internet Explorer</a> will also work.) <a class="close">close</a></p></div>
-
-	<header><h1>Border-Radius-O-Matic</h1></header>
+<header><h1>Border-Radius-O-Matic</h1></header>
 
 <div id="wrap">
 
@@ -233,15 +231,21 @@
 </div><!-- end wrap -->
 
 <div id="overlay" class="hide">
-	<section>
+	<section id="showcss">
 		<a class="close">close</a>
 		<h1>Copy and paste the CSS below into your file</h1>
 		<pre></pre>
 	</section>
+
+
+	<section id="unsupported" class="hide">
+		<p>Your browser doesn't support <code>border-radius</code> making this page pretty useless. Try the latest version of <a href="http://opera.com/">Opera</a>. (The latest versions of <a href="http://www.google.com/chrome/">Chrome</a>, <a href="http://getfirefox.com/">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">Internet Explorer</a> will also work.) <a class="close">close</a></p>
+	</section>
+
 </div>
 
 <script src="js.js"></script>
-<script src="getcss.js"></script>
+<!-- <script src="getcss.js"></script> -->
 
 </body>
 </html>

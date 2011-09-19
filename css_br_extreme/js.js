@@ -1,17 +1,23 @@
-var main = document.querySelector('#main');
-
 (function(){
-	var hasRange, mightBeIE8, noBorderRadius;
 
+	var hasBorderRadius,
+		hasRange,
+	    main = document.querySelector('#main');
+
+	function getStyles( obj ){
+		if('getComputedStyle' in window){
+			return window.getComputedStyle( obj, null );
+		} else {
+			return obj.currentStyle;
+		}
+	}
+
+	hasBorderRadius = !( getStyles( main ).borderRadius == undefined );
 	hasRange = (document.querySelector('input[type=range]').type == 'range');
 
-	mightBeIE8 = ( ('attachEvent' in window ) && !('addEventListener' in window) );
+	if( hasBorderRadius == false ){
+		alert('cant do that!');
 
-	noBorderRadius = ( window.getComputedStyle(main).borderRadius == undefined );
-
-	if( mightBeIE8 || noBorderRadius ){
-		document.getElementById('unsupported').className = '';
-		return false;
 	} else {
 
 		var form, range, fixranges, n, unit = 'px';
@@ -195,6 +201,6 @@ var main = document.querySelector('#main');
 
 		bgimg.addEventListener('change',onbgchange,false);
 
-	}
-
+   }
 })();
+

@@ -9,7 +9,7 @@ var main = document.querySelector('#main');
 
 	noBorderRadius = ( window.getComputedStyle(main).borderRadius == undefined );
 
-	if( mightBeIE8 ||  ){
+	if( mightBeIE8 || noBorderRadius ){
 		document.getElementById('unsupported').className = '';
 		return false;
 	} else {

@@ -1,6 +1,6 @@
 @import url(./maiden_orange/stylesheet.css);
 
-body{
+body#cssbr{
 	position: relative;
 	font: 13px / 1.5 sans-serif;
 	padding:0;
@@ -156,7 +156,7 @@ footer p{margin: 20px; padding:10px 0 0 0}
 	margin:0;
 }
 
-#overlay section{
+#overlay:not(.hide) section:not(.hide){
 	background: #fff;
 	display: block;
 	margin: 100px auto;
@@ -166,7 +166,9 @@ footer p{margin: 20px; padding:10px 0 0 0}
 	border-radius: 30px 0;
 	box-shadow: 0 0 100px rgba(0,0,0,.5);
 }
+
 #overlay h1{margin:0}
+
 #overlay pre{
 	background-color: #fff;
 	padding: 5px;

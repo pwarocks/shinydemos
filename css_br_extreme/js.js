@@ -1,21 +1,23 @@
+var main = document.querySelector('#main');
+
 (function(){
-	var hasRange, mightBeIE8;
+	var hasRange, mightBeIE8, noBorderRadius;
 
 	hasRange = (document.querySelector('input[type=range]').type == 'range');
 
-	// should return true if it is IE8 or older
 	mightBeIE8 = ( ('attachEvent' in window ) && !('addEventListener' in window) );
 
-	if( mightBeIE8 ){
+	noBorderRadius = ( window.getComputedStyle(main).borderRadius == undefined );
+
+	if( mightBeIE8 ||  ){
 		document.getElementById('unsupported').className = '';
 		return false;
 	} else {
 
-		var main, form, range, fixranges, n, unit = 'px';
+		var form, range, fixranges, n, unit = 'px';
 		var onsubmithandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, onbgchange;
 		var close;
 
-		main      = document.querySelector('#main');
 		form      = document.querySelector('form');
 		fixranges = document.querySelectorAll('input[type=range]');
 		brdrstyle = document.querySelectorAll('#setborderstyle select');
@@ -30,12 +32,6 @@
 
 		/* If we don't have a range, adjust the UI. */
 		if( hasRange == false ){
-<<<<<<< HEAD
-
-			document.getElementById('worksbestwithrange').className = '';
-
-=======
->>>>>>> working
 			var i, len, input;
 			len = fixranges.length;
 			for(i = 0; i < len; i++){
@@ -178,7 +174,7 @@
 			}
 		}
 
-		/* Set up event handlerst */
+		/* Set up event handlers */
 		for( n = 0; n < range.length; n++){
 			range[n].addEventListener('change', onrangechange, false);
 		}
@@ -193,7 +189,7 @@
 
 		for( n = 0; n < close.length; n++){
 			close[n].addEventListener('click', function(e){
-				e.target.parentNode.parentNode.classList.add('fadeout');
+				e.target.parentNode.parentNode.className += 'hide';
 			}, true);
 		}
 

@@ -194,7 +194,7 @@ section:hover{
 
 section.leadPhoto{
 	z-index: 9999;
-
+	cursor: default;
 	box-shadow: 0 0 30px rgba(0,0,0,.7);
 	     -o-transition-property: transform, left, top;
 	-webkit-transition-property: transform, left, top;
@@ -231,9 +231,8 @@ section.leadPhoto{
 	font-size: 8pt;
 	padding: 4px 2px 2px 2px;
 	text-indent: -9999px;
+	cursor: pointer
 }
-
-/* .close:hover{background: #f60;} */
 
 .leadPhoto .close{
     opacity: 1;
@@ -247,12 +246,12 @@ section.leadPhoto{
 
 #overlay{
 	background-color: rgba(0,0,0,.5);
-	position: absolute;
+	position: fixed;
 	z-index: 9997;
 	left: -2000px;
 	top:  -2000px;
 	width:  4000px;
-	height: 2600px;
+	height: 4000px;
 }
 
 #overlay:hover{cursor: pointer;}

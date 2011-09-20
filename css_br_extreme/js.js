@@ -255,6 +255,7 @@
 			close[n].addEventListener('click', function(e){
 				overlay.className = 'hide';
 				showcss.className = 'hide';
+				document.body.className = '';
 			}, true);
 		}
 

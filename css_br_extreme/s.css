@@ -90,8 +90,9 @@ input[type=range]{text-align:right}
 .patt155{background-image: url('pattern_155.gif');}
 .patt157{background-image: url('pattern_157.gif');}
 
-.hide{display:none; speak:none;}
+.hide{display:none;}
 .killscroll{ overflow: hidden;}
+.show{display:block}
 
 #unsupported{
 	text-align:center;
@@ -156,9 +157,8 @@ footer p{margin: 20px; padding:10px 0 0 0}
 	margin:0;
 }
 
-#overlay:not(.hide) section:not(.hide){
+#overlay section{
 	background: #fff;
-	display: block;
 	margin: 100px auto;
 	padding: 20px 20px 30px;
 	position: relative;
@@ -187,17 +187,17 @@ pre{
 }
 
 
-@media screen and (min-width:400px){
-	#wrap, header{width:630px;}
-	form{width:300px;}
+#wrap, header{width:630px;}
+form{width:300px;}
 
-	#main{
-		width: 100px;
-		height: 100px;
-		margin: 20px 0 20px 55px;
-	}
+#main{
+	width: 100px;
+	height: 100px;
+	margin: 20px 0 20px 55px;
 }
 
+/* large screen override for browsers
+that support media queries.*/
 @media screen and (min-width: 801px){
 	form{width:400px;}
 	#wrap, header{width:950px;}

@@ -1,9 +1,15 @@
 (function(){
-
+	/*
+		using getElementById instead of querySelector in some cases
+		so that we're not retrieving the same object twice (once for old
+		browsers, once for new).
+	*/
 	var hasBorderRadius,
-		hasRange,
-	    main = document.querySelector('#main');
+		unsupported = document.getElementById('unsupported'),
+		overlay = document.getElementById('overlay'),
+	    main = document.getElementById('main');
 
+	// do we have getComputedStyle or currentStyle?
 	function getStyles( obj ){
 		if('getComputedStyle' in window){
 			return window.getComputedStyle( obj, null );
@@ -13,16 +19,18 @@
 	}
 
 	hasBorderRadius = !( getStyles( main ).borderRadius == undefined );
-	hasRange = (document.querySelector('input[type=range]').type == 'range');
 
 	if( hasBorderRadius == false ){
-		alert('cant do that!');
+		overlay.className = unsupported.className = 'show';
+
 
 	} else {
 
-		var form, range, fixranges, n, unit = 'px';
+		var hasRange, form, range, fixranges, n, unit = 'px';
 		var onsubmithandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, onbgchange;
 		var close;
+
+		hasRange = (document.querySelector('input[type=range]').type == 'range');
 
 		form      = document.querySelector('form');
 		fixranges = document.querySelectorAll('input[type=range]');

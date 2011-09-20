@@ -1,6 +1,6 @@
 @import url(./maiden_orange/stylesheet.css);
 
-body{
+body#cssbr{
 	position: relative;
 	font: 13px / 1.5 sans-serif;
 	padding:0;
@@ -90,8 +90,9 @@ input[type=range]{text-align:right}
 .patt155{background-image: url('pattern_155.gif');}
 .patt157{background-image: url('pattern_157.gif');}
 
-.hide{display:none; speak:none;}
+.hide{display:none;}
 .killscroll{ overflow: hidden;}
+.show{display:block}
 
 #unsupported{
 	text-align:center;
@@ -158,7 +159,6 @@ footer p{margin: 20px; padding:10px 0 0 0}
 
 #overlay section{
 	background: #fff;
-	display: block;
 	margin: 100px auto;
 	padding: 20px 20px 30px;
 	position: relative;
@@ -166,7 +166,9 @@ footer p{margin: 20px; padding:10px 0 0 0}
 	border-radius: 30px 0;
 	box-shadow: 0 0 100px rgba(0,0,0,.5);
 }
+
 #overlay h1{margin:0}
+
 #overlay pre{
 	background-color: #fff;
 	padding: 5px;
@@ -185,17 +187,17 @@ pre{
 }
 
 
-@media screen and (min-width:400px){
-	#wrap, header{width:630px;}
-	form{width:300px;}
+#wrap, header{width:630px;}
+form{width:300px;}
 
-	#main{
-		width: 100px;
-		height: 100px;
-		margin: 20px 0 20px 55px;
-	}
+#main{
+	width: 100px;
+	height: 100px;
+	margin: 20px 0 20px 55px;
 }
 
+/* large screen override for browsers
+that support media queries.*/
 @media screen and (min-width: 801px){
 	form{width:400px;}
 	#wrap, header{width:950px;}

@@ -1,22 +1,36 @@
-var main = document.querySelector('#main');
-
 (function(){
-	var hasRange, mightBeIE8, noBorderRadius;
+	/*
+		using getElementById instead of querySelector in some cases
+		so that we're not retrieving the same object twice (once for old
+		browsers, once for new).
+	*/
+	var hasBorderRadius,
+		unsupported = document.getElementById('unsupported'),
+		overlay = document.getElementById('overlay'),
+	    main = document.getElementById('main');
 
-	hasRange = (document.querySelector('input[type=range]').type == 'range');
+	// do we have getComputedStyle or currentStyle?
+	function getStyles( obj ){
+		if('getComputedStyle' in window){
+			return window.getComputedStyle( obj, null );
+		} else {
+			return obj.currentStyle;
+		}
+	}
 
-	mightBeIE8 = ( ('attachEvent' in window ) && !('addEventListener' in window) );
+	hasBorderRadius = !( getStyles( main ).borderRadius == undefined );
 
-	noBorderRadius = ( window.getComputedStyle(main).borderRadius == undefined );
+	if( hasBorderRadius == false ){
+		overlay.className = unsupported.className = 'show';
 
-	if( mightBeIE8 || noBorderRadius ){
-		document.getElementById('unsupported').className = '';
-		return false;
+
 	} else {
 
-		var form, range, fixranges, n, unit = 'px';
+		var hasRange, form, range, fixranges, n, unit = 'px';
 		var onsubmithandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, onbgchange;
 		var close;
+
+		hasRange = (document.querySelector('input[type=range]').type == 'range');
 
 		form      = document.querySelector('form');
 		fixranges = document.querySelectorAll('input[type=range]');
@@ -195,6 +209,6 @@ var main = document.querySelector('#main');
 
 		bgimg.addEventListener('change',onbgchange,false);
 
-	}
-
+   }
 })();
+

@@ -4,15 +4,27 @@
 	<meta charset="UTF-8">
 	<title>Border radius</title>
 	<link rel="stylesheet" media="screen" href="s.css">
+	<!--[if lte IE 9]>
+	<script type="text/javascript">
+	// adding fake support for HTML(5) tags that we're using
+	var el, len, i;
+	el = ['header','footer','section'];
+	len = el.length;
+	for(i = 0; i < len; i++){ document.createElement( el[i] ); }
+	</script>
+
+	<style type="text/css">
+	#overlay{
+		background: url(ie8.png);
+	}
+	</style>
+	<![endif]-->
 </head>
-<body>
+<body id="cssbr">
 
-<div id="unsupported" class="hide"><p>Your browser doesn't support <code>border-radius</code> making this page pretty useless. Try the latest version of <a href="http://opera.com/">Opera</a>. (The latest versions of <a href="http://www.google.com/chrome/">Chrome</a>, <a href="http://getfirefox.com/">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">Internet Explorer</a> will also work.) <a class="close">close</a></p></div>
-
-	<header><h1>Border-Radius-O-Matic</h1></header>
+<header><h1>Border-Radius-O-Matic</h1></header>
 
 <div id="wrap">
-
 	<form>
 		<fieldset id="basic">
 
@@ -233,15 +245,23 @@
 </div><!-- end wrap -->
 
 <div id="overlay" class="hide">
-	<section>
+	<section id="showcss" class="hide">
 		<a class="close">close</a>
 		<h1>Copy and paste the CSS below into your file</h1>
 		<pre></pre>
 	</section>
+
+
+	<section id="unsupported" class="hide">
+		<h1>Get a better browser!</h1>
+		<p>Your browser doesn't support the CSS3 <a href="http://www.w3.org/TR/css3-background/"><code>border-radius</code> property</a> making this page pretty useless.</p>
+		<p>Please download and install the latest version of <a href="http://opera.com/">Opera</a>.<br>(The latest versions of <a href="http://www.google.com/chrome/">Chrome</a>, <a href="http://getfirefox.com/">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">Internet Explorer</a> will also work.) </p>
+	</section>
+
 </div>
 
 <script src="js.js"></script>
-<script src="getcss.js"></script>
+<!-- <script src="getcss.js"></script> -->
 
 </body>
 </html>

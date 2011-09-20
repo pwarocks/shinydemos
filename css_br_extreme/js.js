@@ -1,39 +1,35 @@
 (function(){
-	/*
+	/*-------------
 		using getElementById instead of querySelector in some cases
-		so that we're not retrieving the same object twice (once for old
-		browsers, once for new).
-	*/
+		so that don't have to retrieve the object once for old
+		browsers, and once for new.
+	-------------*/
+
 	var hasBorderRadius,
 		unsupported = document.getElementById('unsupported'),
 		overlay = document.getElementById('overlay'),
-	    main = document.getElementById('main');
+	    main = document.getElementById('main'),
+	    getStyles = function( obj ){
+			if('getComputedStyle' in window){
+				return window.getComputedStyle( obj, null );
+			} else {
+				return obj.currentStyle;
+			}
+		};
 
-	// do we have getComputedStyle or currentStyle?
-	function getStyles( obj ){
-		if('getComputedStyle' in window){
-			return window.getComputedStyle( obj, null );
-		} else {
-			return obj.currentStyle;
-		}
-	}
-
+	/* Is border-radius supported? */
 	hasBorderRadius = !( getStyles( main ).borderRadius == undefined );
 
 	if( hasBorderRadius == false ){
 		overlay.className = unsupported.className = 'show';
-
-
 	} else {
 
-		var hasRange, form, range, fixranges, n, unit = 'px';
-		var onsubmithandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, onbgchange;
-		var close;
+		var hasRange, form, range, fixranges, n, close, unit = 'px';
+		var onsubmithandler, onrangechange, onunitchange, onborderchange, onborderwidthchange;
 
 		hasRange = (document.querySelector('input[type=range]').type == 'range');
 
 		form      = document.querySelector('form');
-		fixranges = document.querySelectorAll('input[type=range]');
 		brdrstyle = document.querySelectorAll('#setborderstyle select');
 		range     = document.querySelectorAll('#basic input[type=range]');
 		brdrwidth = document.querySelectorAll('#setborderwidth input[type=range]');
@@ -41,18 +37,21 @@
 
 		close     = document.querySelectorAll('.close');
 
-		onsubmithandler = function(e){ e.preventDefault(); }
-		form.addEventListener('submit',onsubmithandler,false);
-
 		/* If we don't have a range, adjust the UI. */
 		if( hasRange == false ){
 			var i, len, input;
+			fixranges = document.querySelectorAll('input[type=range]');
 			len = fixranges.length;
 			for(i = 0; i < len; i++){
 				fixranges[i].setAttribute('size',4);
 				fixranges[i].setAttribute('maxlength',3);
 			}
 		}
+
+
+		/*----------------------
+		 Define event handlers
+		 ----------------------*/
 
 		onrangechange = function(e){
 			var prop, u = unit, thisedge, otheredge;
@@ -188,7 +187,58 @@
 			}
 		}
 
-		/* Set up event handlers */
+		onsubmithandler = function(e){
+			e.preventDefault();
+
+			var	extractCSS,
+				getThese,
+				output,
+				showcss,
+				pre,
+				styles;
+
+			showcss  = document.querySelector('#showcss');
+			pre      = document.querySelector('pre');
+
+			styles   = getStyles( main );
+
+			output = '';
+
+			extractCSS = function( arrayOfStyles, styleObj){
+				var i, len = arrayOfStyles.length, css = new Array();
+
+				for( var i = 0; i < len; i++){
+					css[i] = arrayOfStyles[i]+': '+styleObj.getPropertyValue(arrayOfStyles[i]);
+				}
+				return css.join('\n');
+			}
+
+			getThese = [
+				'background-image',
+				'border-top-right-radius',
+				'border-bottom-right-radius',
+				'border-bottom-left-radius',
+				'border-top-left-radius',
+				'border-top-style',
+				'border-right-style',
+				'border-bottom-style',
+				'border-left-style',
+				'border-top-width',
+				'border-right-width',
+				'border-bottom-width',
+				'border-left-width'
+			]
+
+			pre.innerHTML = extractCSS( getThese, styles );
+
+			overlay.className = showcss.className = 'show';
+
+			document.body.className = 'killscroll';
+		}
+
+		/*----------------------
+		 Add event handlers
+		 ----------------------*/
 		for( n = 0; n < range.length; n++){
 			range[n].addEventListener('change', onrangechange, false);
 		}
@@ -203,11 +253,14 @@
 
 		for( n = 0; n < close.length; n++){
 			close[n].addEventListener('click', function(e){
-				e.target.parentNode.parentNode.className += 'hide';
+				overlay.className = 'hide';
+				showcss.className = 'hide';
+				document.body.className = '';
 			}, true);
 		}
 
 		bgimg.addEventListener('change',onbgchange,false);
+		form.addEventListener('submit',onsubmithandler,false);
 
    }
 })();

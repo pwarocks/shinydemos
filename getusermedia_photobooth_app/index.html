@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/master.css">
+</head>
+<body>
+  <h1>Online PhotoBooth</h1>
+  <div id="container">
+    <video width="640" height="400" preload autoplay muted>
+      <source src="media/charade.webm" type='video/webm; codecs="vp8, vorbis"'>
+      <source src="media/charade.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+    </video>
+    <div id="strip">
+      <button>take pics</button>
+    </div>
+  </div>
+  <canvas id="pics" width="160" height="480"></canvas>
+  <script src="js/emile.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

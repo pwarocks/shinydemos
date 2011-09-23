@@ -7,18 +7,25 @@
       button = doc.querySelector('button'),
       VIDEO_WIDTH, VIDEO_HEIGHT,
       snaps = [
-        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 5, 150, 112.5);},
+        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 6, 150, 112.5);},
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 124, 150, 112.5);},
-        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 244, 150, 112.5);},
-        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 363, 150, 112.5);}
+        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 242, 150, 112.5);},
+        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 361, 150, 112.5);}
       ];
       
   var canvasPrep = (function(){
     photos.fillStyle = '#fff';
+    photos.lineCap = 'square';
     photos.fillRect(0,0,160,480);
     photos.lineWidth = 2;
     photos.strokeStyle = '#515151';
     photos.strokeRect(0,0,160,480)
+    photos.lineWidth = 1;
+    photos.fillStyle = '#ccc';
+    photos.fillRect(5, 6, 150, 112);
+    photos.fillRect(5, 124, 150, 112);
+    photos.fillRect(5, 242, 150, 112);
+    photos.fillRect(5, 361, 150, 112);
   }());
 
   var computeAspect = function(){
@@ -38,7 +45,6 @@
     
       if (++i == 4){
         clearInterval(id);
-        clickToSend();
       }
     }, interval);
   };
@@ -48,14 +54,6 @@
       //not all browsers have video@muted yet.
       this.muted = true;
       computeAspect();
-    };
-  };
-
-  var clickToSend = function(){
-    snapshots.onclick = function(){
-      //do this because super long data URIs cause opera to screech to a halt
-      sessionStorage.setItem('snap', this.toDataURL());
-      location.href='snap.html';
     };
   };
 

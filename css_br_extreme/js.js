@@ -190,7 +190,9 @@
 		onsubmithandler = function(e){
 			e.preventDefault();
 
-			var	extractCSS,
+			var	x,
+				num,
+				extractCSS,
 				getThese,
 				output,
 				showcss,
@@ -205,41 +207,46 @@
 			output = '';
 
 			extractCSS = function( arrayOfStyles, styleObj){
-				var i, val, len = arrayOfStyles.length, css = new Array();
+				var i, val, out, len = arrayOfStyles.length, css = new Array();
 
 				for( var i = 0; i < len; i++){
 					val = styleObj.getPropertyValue(arrayOfStyles[i]);
 
-					if( val != 'none' ){
-						css.push( arrayOfStyles[i]+': '+ val );
+					if( (val != '0px') && (val != 'none') ){
+						css.push( arrayOfStyles[i]+': '+ val +';' );
 					}
-
 				}
-				return css.join('\n');
+
+				if( css.length > 0 ){
+					css.push(''); /* pad the array by 1 for formatting reasons */
+					out = css.join('\n'); /* turn array into a string */
+				} else {
+					out = '';
+				}
+				return out;
 			}
 
+
 			getThese = [
-				'background-image',
-				'border-top-right-radius',
-				'border-bottom-right-radius',
-				'border-bottom-left-radius',
-				'border-top-left-radius',
-				'border-top-style',
-				'border-right-style',
-				'border-bottom-style',
-				'border-left-style',
-				'border-top-width',
-				'border-right-width',
-				'border-bottom-width',
-				'border-left-width'
-			]
+			  ['background-image','border-top-right-radius','border-bottom-right-radius','border-bottom-left-radius','border-top-left-radius'],
+			  ['border-top-style','border-right-style','border-bottom-style','border-left-style'],
+			  ['border-top-width','border-right-width','border-bottom-width','border-left-width']
+			];
 
-			pre.innerHTML = extractCSS( getThese, styles );
+			num = getThese.length;
 
+			// possible regex for matching the unlinked corner values.
+			// \d*px\s\d*px
+
+			for(x=0; x < num; x++){
+				output += extractCSS( getThese[x], styles );
+			}
+			pre.innerHTML = output;
 			overlay.className = showcss.className = 'show';
-
 			document.body.className = 'killscroll';
 		}
+
+
 
 		/*----------------------
 		 Add event handlers
@@ -266,7 +273,6 @@
 
 		bgimg.addEventListener('change',onbgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
-
    }
 })();
 

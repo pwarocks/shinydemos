@@ -117,7 +117,7 @@
 					break;
 			}
 
-			main.style[prop] = thisedge + ' '+otheredge + unit;
+			main.style[prop] = thisedge + ' '+otheredge + u;
 			if( button.disabled ){ button.removeAttribute('disabled') };
 		}
 

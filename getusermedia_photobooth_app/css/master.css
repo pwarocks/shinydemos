@@ -1,0 +1,34 @@
+body {
+  font-family: sans-serif;
+  width: 800px;
+  margin: 0 auto;
+}
+
+video {
+  -o-object-fit: cover;
+  object-fit: cover;
+  margin:0;
+}
+
+canvas {
+  float:right;
+}
+
+#container {
+  position:relative;
+  float:left;
+}
+
+#strip {
+  position:relative;
+  top:-4px;
+  height:80px;
+  width: 639px;
+  border-left: 1px solid #515151;
+  background: #515151;
+  background: -moz-linear-gradient(top, #515151 0%, #e1e1e1 2%, #cdcdcd 3%, #a8a8a8 98%, #515151 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#515151), color-stop(2%,#e1e1e1), color-stop(3%,#cdcdcd), color-stop(98%,#a8a8a8), color-stop(100%,#515151));
+  background: -o-linear-gradient(top, #515151 0%,#e1e1e1 2%,#cdcdcd 3%,#a8a8a8 98%,#515151 100%);
+  background: -ms-linear-gradient(top, #515151 0%,#e1e1e1 2%,#cdcdcd 3%,#a8a8a8 98%,#515151 100%);
+  background: linear-gradient(top, #515151 0%,#e1e1e1 2%,#cdcdcd 3%,#a8a8a8 98%,#515151 100%);
+}

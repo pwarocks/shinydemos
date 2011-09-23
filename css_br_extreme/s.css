@@ -22,6 +22,7 @@ a:hover, a:active{color: #f3c;}
 	margin:auto;
 	position:relative;
 	min-width:600px;
+	min-height:500px;
 }
 header{
 	background: #fff;
@@ -31,7 +32,7 @@ header{
 	border-radius: 30px 0 0 0;
 	display:block;
 	margin:auto;
-	min-width:550px;
+	min-width:600px;
 }
 h1{
 	font-family: 'MaidenOrangeRegular',serif;
@@ -171,8 +172,6 @@ pre{
 	margin:20px;
 }
 
-
-#wrap, header{width:630px;}
 form{width:300px;}
 
 #main{
@@ -181,13 +180,11 @@ form{width:300px;}
 	margin: 20px 0 20px 55px;
 }
 
-#wrap{min-height:400px;}
 /* large screen override for browsers
 that support media queries.*/
 @media screen and (min-width: 801px){
 	form{width:400px;}
 	#wrap, header{width:950px;}
-
 	#main{
 		width: 300px;
 		height: 300px;

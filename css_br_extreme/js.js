@@ -49,13 +49,12 @@
 			}
 		}
 
-
 		/*----------------------
 		 Define event handlers
 		 ----------------------*/
 
 		onrangechange = function(e){
-			var prop, u = unit, thisedge, otheredge;
+			var prop, u = unit, thisedge, otheredge, labels;
 			var linktl, linktr, linkbl, linkbr;
 
 			thisedge = e.target.value + u;
@@ -65,59 +64,60 @@
 			linkbl = document.querySelector('#linkbottomleft').checked;
 			linkbr = document.querySelector('#linkbottomright').checked;
 
+			labels = {'topleftA':'tl',
+					  'topleftB':'tl',
+					 'toprightA':'tr',
+					 'toprightB':'tr',
+				  'bottomrightA':'br',
+				  'bottomrightB':'br',
+				   'bottomleftA':'bl',
+				   'bottomleftB':'bl'}
 
 			switch( e.target.id ){
 				case 'topleftA':
 					prop = 'borderTopLeftRadius';
 					otheredge = ( linktl ) ? range[0].value : range[1].value;
 					range[1].value = ( linktl ) ? range[0].value : range[1].value;
-					document.querySelector('#ttl').innerHTML = thisedge;
 					break;
 				case 'topleftB':
 					prop = 'borderTopLeftRadius';
 					otheredge = ( linktl ) ? range[1].value : range[0].value;
 					range[0].value = ( linktl ) ? range[1].value : range[0].value;
-					document.querySelector('#ltl').innerHTML = thisedge;
 					break;
 				case 'toprightA':
 					prop = 'borderTopRightRadius';
 					otheredge = ( linktr ) ? range[2].value : range[3].value;
 					range[3].value = ( linktr ) ? range[2].value : range[3].value;
-					document.querySelector('#ttr').innerHTML = thisedge;
 					break;
 				case 'toprightB':
 					prop = 'borderTopRightRadius';
 					otheredge = ( linktr ) ? range[3].value : range[2].value;
 					range[2].value = ( linktr ) ? range[3].value : range[2].value;
-					document.querySelector('#rtr').innerHTML = thisedge
 					break;
 				case 'bottomrightA':
 					prop = 'borderBottomRightRadius';
 					otheredge = ( linkbr ) ? range[4].value : range[5].value;
 					range[5].value = ( linkbr ) ? range[4].value : range[5].value;
-					document.querySelector('#bbr').innerHTML = thisedge
 					break;
 				case 'bottomrightB':
 					prop = 'borderBottomRightRadius';
 					otheredge = ( linkbr ) ? range[5].value : range[4].value;
 					range[4].value = ( linkbr ) ? range[5].value : range[4].value;
-					document.querySelector('#rbr').innerHTML = thisedge
 					break;
 				case 'bottomleftA':
 					prop = 'borderBottomLeftRadius';
 					otheredge = ( linkbl ) ? range[6].value : range[7].value;
 					range[7].value = ( linkbl ) ? range[6].value : range[7].value;
-					document.querySelector('#bbl').innerHTML = thisedge
 					break;
 				case 'bottomleftB':
 					prop = 'borderBottomLeftRadius';
 					otheredge = ( linkbl ) ? range[7].value : range[6].value;
 					range[6].value = ( linkbl ) ? range[7].value : range[6].value;
-					document.querySelector('#lbl').innerHTML = thisedge;
 					break;
 			}
 
-			main.style[prop] = thisedge + ' '+otheredge + unit;
+			main.style[prop] = thisedge + ' '+otheredge + u;
+			document.querySelector( '#'+labels[e.target.id] ).innerHTML = main.style[prop];
 			if( button.disabled ){ button.removeAttribute('disabled') };
 		}
 
@@ -169,12 +169,12 @@
 					break;
 			}
 
-			// change the border style to solid so we can actually see the width change.
+			/* change the border style to solid so we can see the width change. */
 			if( form[whichstyle].value == 'none' ){
 
 				form[whichstyle].value = 'solid';
 
-				// dispatch a change event so that it actually changes
+				/* dispatch a change event to trigger the change */
 				evt = document.createEvent('Events');
 				evt.initEvent('change',false,false);
 				document.getElementById(whichstyle).dispatchEvent(evt);
@@ -231,7 +231,6 @@
 				return out;
 			}
 
-
 			getThese = [
 			  ['background-image','border-top-right-radius','border-bottom-right-radius','border-bottom-left-radius','border-top-left-radius'],
 			  ['border-top-style','border-right-style','border-bottom-style','border-left-style'],
@@ -240,9 +239,6 @@
 
 			num = getThese.length;
 
-			/* possible regex for matching the unlinked corner values.
-					\d*px\s\d*px */
-
 			for(x=0; x < num; x++){
 				output += extractCSS( getThese[x], styles );
 			}
@@ -250,8 +246,6 @@
 			overlay.className = showcss.className = 'show';
 			document.body.className = 'killscroll';
 		}
-
-
 
 		/*----------------------
 		 Add event handlers
@@ -278,8 +272,6 @@
 
 		bgimg.addEventListener('change',onbgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
-
-
    }
 })();
 

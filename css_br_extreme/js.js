@@ -24,12 +24,13 @@
 		overlay.className = unsupported.className = 'show';
 	} else {
 
-		var hasRange, form, range, fixranges, n, close, unit = 'px';
+		var hasRange, form, button, range, fixranges, n, close, unit = 'px';
 		var onsubmithandler, onrangechange, onunitchange, onborderchange, onborderwidthchange;
 
 		hasRange = (document.querySelector('input[type=range]').type == 'range');
 
 		form      = document.querySelector('form');
+		button    = form.querySelector('button');
 		brdrstyle = document.querySelectorAll('#setborderstyle select');
 		range     = document.querySelectorAll('#basic input[type=range]');
 		brdrwidth = document.querySelectorAll('#setborderwidth input[type=range]');
@@ -117,6 +118,7 @@
 			}
 
 			main.style[prop] = thisedge + ' '+otheredge + unit;
+			if( button.disabled ){ button.removeAttribute('disabled') };
 		}
 
 		onborderchange = function(e){
@@ -142,6 +144,7 @@
 			}
 
 			main.style[whichborder] = e.target.value;
+			if( button.disabled ){ button.removeAttribute('disabled') };
 		}
 
 		onborderwidthchange = function(e){
@@ -177,6 +180,7 @@
 				document.getElementById(whichstyle).dispatchEvent(evt);
 			}
 			main.style[whichborder] = e.target.value + u;
+			if( button.disabled ){ button.removeAttribute('disabled') };
 		}
 
 		onbgchange = function(e){
@@ -185,6 +189,7 @@
 			} else {
 				main.className = 'patt'+e.target.value;
 			}
+			if( button.disabled ){ button.removeAttribute('disabled') };
 		}
 
 		onsubmithandler = function(e){
@@ -235,8 +240,8 @@
 
 			num = getThese.length;
 
-			// possible regex for matching the unlinked corner values.
-			// \d*px\s\d*px
+			/* possible regex for matching the unlinked corner values.
+					\d*px\s\d*px */
 
 			for(x=0; x < num; x++){
 				output += extractCSS( getThese[x], styles );
@@ -273,6 +278,8 @@
 
 		bgimg.addEventListener('change',onbgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
+
+
    }
 })();
 

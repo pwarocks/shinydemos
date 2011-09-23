@@ -169,12 +169,12 @@
 					break;
 			}
 
-			// change the border style to solid so we can actually see the width change.
+			/* change the border style to solid so we can see the width change. */
 			if( form[whichstyle].value == 'none' ){
 
 				form[whichstyle].value = 'solid';
 
-				// dispatch a change event so that it actually changes
+				/* dispatch a change event to trigger the change */
 				evt = document.createEvent('Events');
 				evt.initEvent('change',false,false);
 				document.getElementById(whichstyle).dispatchEvent(evt);

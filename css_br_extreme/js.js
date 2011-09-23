@@ -49,13 +49,12 @@
 			}
 		}
 
-
 		/*----------------------
 		 Define event handlers
 		 ----------------------*/
 
 		onrangechange = function(e){
-			var prop, u = unit, thisedge, otheredge;
+			var prop, u = unit, thisedge, otheredge, labels;
 			var linktl, linktr, linkbl, linkbr;
 
 			thisedge = e.target.value + u;
@@ -65,15 +64,14 @@
 			linkbl = document.querySelector('#linkbottomleft').checked;
 			linkbr = document.querySelector('#linkbottomright').checked;
 
-			var labels = {	'topleftA':'tl',
-							'topleftB':'tl',
-							'toprightA':'tr',
-							'toprightB':'tr',
-							'bottomrightA':'br',
-							'bottomrightB':'br',
-							'bottomleftA':'bl',
-							'bottomleftB':'bl' }
-
+			labels = {'topleftA':'tl',
+					'topleftB':'tl',
+					'toprightA':'tr',
+					'toprightB':'tr',
+					'bottomrightA':'br',
+					'bottomrightB':'br',
+					'bottomleftA':'bl',
+					'bottomleftB':'bl'}
 
 			switch( e.target.id ){
 				case 'topleftA':
@@ -233,7 +231,6 @@
 				return out;
 			}
 
-
 			getThese = [
 			  ['background-image','border-top-right-radius','border-bottom-right-radius','border-bottom-left-radius','border-top-left-radius'],
 			  ['border-top-style','border-right-style','border-bottom-style','border-left-style'],
@@ -242,9 +239,6 @@
 
 			num = getThese.length;
 
-			/* possible regex for matching the unlinked corner values.
-					\d*px\s\d*px */
-
 			for(x=0; x < num; x++){
 				output += extractCSS( getThese[x], styles );
 			}
@@ -252,8 +246,6 @@
 			overlay.className = showcss.className = 'show';
 			document.body.className = 'killscroll';
 		}
-
-
 
 		/*----------------------
 		 Add event handlers
@@ -280,8 +272,6 @@
 
 		bgimg.addEventListener('change',onbgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
-
-
    }
 })();
 

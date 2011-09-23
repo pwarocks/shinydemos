@@ -1,11 +1,13 @@
+
 (function(){
+
 	/*-------------
 		using getElementById instead of querySelector in some cases
 		so that don't have to retrieve the object once for old
 		browsers, and once for new.
 	-------------*/
 
-	var hasBorderRadius,
+	var hasClassList = !(document.body.classList == undefined ),
 		unsupported = document.getElementById('unsupported'),
 		overlay = document.getElementById('overlay'),
 	    main = document.getElementById('main'),
@@ -15,13 +17,31 @@
 			} else {
 				return obj.currentStyle;
 			}
-		};
+		},
+		transitionEvent = function(){
+			var t, transitions, el = document.createElement('fakeEl');
 
-	/* Is border-radius supported? */
-	hasBorderRadius = !( getStyles( main ).borderRadius == undefined );
+			transitions = {
+				'OTransition':'oTransitionEnd',
+				'MSTransition':'msTransitionEnd',
+				'MozTransition':'mozTransitionEnd',
+				'WebkitTransition':'webkitTransitionEnd',
+				'transition':'transitionEnd'
+			}
+
+			for(t in transitions){
+				if( el.style[t] !== undefined ){
+					return transitions[t];
+				}
+			}
+		},
+		hasBorderRadius = !( getStyles( main ).borderRadius == undefined ),
+		panels = document.querySelectorAll('form > fieldset > legend');
 
 	if( hasBorderRadius == false ){
-		overlay.className = unsupported.className = 'show';
+		overlay.className = 'show';
+		unsupported.className = 'show';
+
 	} else {
 
 		var hasRange, form, button, range, fixranges, n, close, unit = 'px';
@@ -270,8 +290,33 @@
 			}, true);
 		}
 
+		for( n = 0; n < panels.length; n++){
+			panels[n].addEventListener('click', function(e){
+				e.stopPropagation();
+				var transition = transitionEvent();
+				var a = 'active';
+				var act = new RegExp(a,'g');
+				var parent = e.target.parentNode;
+				var panel  = parent.querySelector('div');
+
+				if(hasClassList){
+					parent.classList.toggle(a);
+				} else {
+					if( parent.className.match(act) ){
+						parent.className = parent.className.replace(act,'');
+					} else {
+						parent.className += ' '+a;
+					}
+				}
+
+			}, false);
+		}
+
 		bgimg.addEventListener('change',onbgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
+
+
+
    }
 })();
 

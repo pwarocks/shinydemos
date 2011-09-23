@@ -9,7 +9,7 @@ body#cssbr{
 }
 
 a{text-decoration: underline;}
-a:link{color: #3cf; }
+a:link{color: #3cf;}
 a:visited{color: #0cf;}
 a:hover, a:active{color: #f3c;}
 
@@ -50,8 +50,8 @@ form{
 
 fieldset{border:0; border-radius: 5px;}
 form > fieldset > legend{font-size: 22px; padding-top: .5em;}
-form > div{margin: -.5em 1em 1em; }
-fieldset fieldset{background:#E8FAFF; margin-top:-2em;margin-bottom:1em; }
+form button{margin: 1em; display:block;}
+fieldset fieldset{background:#E8FAFF; margin-top:-1em;margin-bottom:0em; }
 fieldset fieldset legend{padding-top: 2em; font-family: monospace;}
 fieldset#advanced, fieldset#basic{ position:relative}
 fieldset#advanced fieldset p{float: left; width: 49%; margin:0 0 3px 0;}
@@ -196,6 +196,7 @@ form{width:300px;}
 	margin: 20px 0 20px 55px;
 }
 
+#wrap{min-height:400px;}
 /* large screen override for browsers
 that support media queries.*/
 @media screen and (min-width: 801px){
@@ -207,4 +208,21 @@ that support media queries.*/
 		height: 300px;
 		margin: 20px 0 20px 55px;
 	}
+}
+
+form > fieldset div{
+	max-height:.01em;
+	-o-transition-property: min-height, max-height;
+	-o-transition-duration: 300ms;
+	-o-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
+	overflow-y: hidden;
+}
+
+form > fieldset.active div{
+	min-height: 10em;
+	max-height: 80em;
+	height:auto;
+	-o-transition-property: min-height, max-height;
+	-o-transition-duration: 300ms;
+	-o-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
 }

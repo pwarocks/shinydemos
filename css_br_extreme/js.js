@@ -205,10 +205,15 @@
 			output = '';
 
 			extractCSS = function( arrayOfStyles, styleObj){
-				var i, len = arrayOfStyles.length, css = new Array();
+				var i, val, len = arrayOfStyles.length, css = new Array();
 
 				for( var i = 0; i < len; i++){
-					css[i] = arrayOfStyles[i]+': '+styleObj.getPropertyValue(arrayOfStyles[i]);
+					val = styleObj.getPropertyValue(arrayOfStyles[i]);
+
+					if( val != 'none' ){
+						css.push( arrayOfStyles[i]+': '+ val );
+					}
+
 				}
 				return css.join('\n');
 			}

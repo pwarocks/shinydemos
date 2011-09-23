@@ -1,0 +1,19 @@
+body {
+	background:#000;
+    margin:0;
+    padding:0;
+}
+canvas {
+    xborder:solid 1px #333;
+    xheight:200px;
+    xwidth:300px;
+}
+#canvas1 {
+    display:block;
+}
+#canvas2 {
+    display:none;
+}
+video {
+    display:none;
+}

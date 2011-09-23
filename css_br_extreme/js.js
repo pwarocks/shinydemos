@@ -65,13 +65,13 @@
 			linkbr = document.querySelector('#linkbottomright').checked;
 
 			labels = {'topleftA':'tl',
-					'topleftB':'tl',
-					'toprightA':'tr',
-					'toprightB':'tr',
-					'bottomrightA':'br',
-					'bottomrightB':'br',
-					'bottomleftA':'bl',
-					'bottomleftB':'bl'}
+					  'topleftB':'tl',
+					 'toprightA':'tr',
+					 'toprightB':'tr',
+				  'bottomrightA':'br',
+				  'bottomrightB':'br',
+				   'bottomleftA':'bl',
+				   'bottomleftB':'bl'}
 
 			switch( e.target.id ){
 				case 'topleftA':

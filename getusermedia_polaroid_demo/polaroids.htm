@@ -13,12 +13,21 @@
     font-style: normal;
 
 }
+
+@font-face {
+    font-family: 'rabiohead';
+    src: url('rabiohead-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body{
 	background-color: #333;
 	color: #fff;
 	font-family: 'NobileRegular';
 
 }
+
 #container{
 	max-width: 1000px;
 }
@@ -28,23 +37,30 @@ canvas{
 }
 video{
 	margin-bottom: 10px;
-	width: 150px;
-	height: 225px;
+	/*width: 150px;
+	height: 225px;*/
+	width: 100%;
+	height: 100%;
+	box-shadow: 1px 1px 15px #000;
+		moz-box-shadow: 1px 1px 15px #000;
+		webkit-box-shadow: 1px 1px 15px #000;
 }
 #button{
 	font-size: 1.0em;
 	margin-bottom: 10px;
-	/*padding-left: 65px;*/
 }
+
 #left{
 	float: left;
 	width: 50%;
 }
+
 #right{
 	padding-top: 5px;
 	float: right;
 	width: 45%;
 }
+
 #footer{
 	clear: both;
 	color: #fff;
@@ -52,48 +68,73 @@ video{
 	margin-left: 10px;
 	color: #fff;
 }
+
 a{
 	color: #fff;
 }
+
 a:visited{
 	color: #fff;
 }
 
 #polaroid{
 	margin-bottom: 10px;
-	/*padding: 0;
-	background-color: #fff;
-	padding: 3px 3px 25px 6px;
-	border: 1px solid #000;
-	width: 255px;
-	height: 380px;*/
 }
+
 canvas{
 	background-color: #fff;
-	padding: 5px;
-	margin: 10px;
-	width: 125px;
-	height: 190px;
+	/*padding: 5px;
+	margin: 10px;*/
+	width: 165px;
+	height: 200px;
 	box-shadow: 3px 3px 3px #000;
 }
 
 #mycanvas{
 		-o-transform: rotate(-25deg);
+		-moz-transform: rotate(-25deg);
+		-webkit-transform: rotate(-25deg);
+		-ms-transform: rotate(-25deg);
 }
+
 .pic{
-	-o-object-fit: contain;
+	-o-object-fit: cover;
 	overflow: hidden;
 }
+
 #subcontainer{
 	max-width: 800px;
 }
 
+#shutter{
+	width: 48px;
+	height: 48px;
+}
+
+#click{
+	font-family: 'rabiohead';
+	font-size: 1.2 em;
+}
+#picbutton{
+	/*background-color: #ccc;*/
+	color: #fff;
+	border-radius: 5px;
+	text-align: center;
+	background-image: -moz-linear-gradient(#666 10%, #222);
+	background-image: -ms-linear-gradient(#666 10%, #222);
+	background-image: -webkit-linear-gradient(#666 10%, #222);
+	background-image: -o-linear-gradient(#666 10%, #222);
+	width: inherit;
+	padding: 1px;
+	text-shadow: 1px 1px 1px #000;
+}
 </style>
 
 
 
 </head>
 <body>
+<h1>Picture Polaroid Demo</h1>
 <div id="container">
 <div id="subcontainer">
 <div id="message"></div>
@@ -101,8 +142,10 @@ canvas{
 <video id="video" autoplay></video>
 </div>
 <div id="right">
-<h1>Click picture!</h1>
-<a id="button"><img src="shutter.png" /></a><br />
+<div id="picbutton">
+<h1 id="click">Take a photo!</h1>
+</div>
+<!--<a id="button"><img id="shutter" src="shutter.png" /></a><br />-->
 </div>
 </div>
 <div id="footer">
@@ -112,20 +155,21 @@ canvas{
 <p>Shake device to reset the images</p>
 <p>Shutter icon from <a href="http://www.25icons.com/index.php?Icon-Set=Super-Simple-Grey-Series">25 icons</a>.</p>
 </div>
+
 <script type="text/javascript">
-var button = document.querySelector('#button');
+var button = document.querySelector('#picbutton');
 button.addEventListener('click',snapshot, false);
 window.addEventListener('devicemotion', reset, false);
 
 var prev= 0;
-
 var video_element = document.querySelector('video');
-
 
 
 if (navigator.getUserMedia){
 	navigator.getUserMedia('video', v_success, v_error);
-} else{
+} else if (opera.getUserMedia){
+	opera.getUserMedia('video', v_success, v_error);
+} else {
 	not_supported();
 }
 
@@ -136,6 +180,7 @@ function not_supported(){
 
 function v_success(stream){
 	video_element.src = stream;
+	//alert(video_element.clientWidth+","+video_element.clientHeight)
 }
 
 function v_error(error){
@@ -149,8 +194,11 @@ function snapshot(){
 	canvas.height = 190;
 	canvas.className = "pic";
 	var deg = getDeg();
-	deg = deg + '';
 	canvas.style.OTransform = "rotate("+deg+"deg)";
+	canvas.style.MozTransform = "rotate("+deg+"deg)";
+	canvas.style.WebkitTransform = "rotate("+deg+"deg)";
+	canvas.style.msTransform = "rotate("+deg+"deg)";
+
 	var footer = document.querySelector("#pictures");
 	footer.appendChild(canvas);
 	
@@ -161,7 +209,24 @@ function snapshot(){
 	var ch = c.clientHeight;
 	ctx.fillStyle = "#fff";
 	ctx.fillRect(0, 0, cw, ch);
-	ctx.drawImage(video_element, 0, 0, cw, (ch-40) );
+	ctx.drawImage(video_element, 0+5, 0+5, cw-50, (ch-40) );
+	applyEvents();
+}
+
+
+function applyEvents(){
+	var elems = document.querySelectorAll('canvas');
+	for (var i=0; i<elems.length;i++){
+		elems[i].addEventListener('click', newimg, true);
+	}
+}
+
+
+function newimg(){
+	var datauri = this.toDataURL("image/png");
+	window.open(datauri);
+	//Canvas2Image.saveAsPNG(this);
+	
 }
 
 function reset(){
@@ -182,7 +247,7 @@ function reset(){
 function getDeg(){
 	if (prev == 0){
 		var number = Math.floor(Math.random()*45);
-		var number  = 30;
+		//var number  = 30;
 		prev += 1;
 		return number;
 	} else {

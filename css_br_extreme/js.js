@@ -65,59 +65,58 @@
 			linkbl = document.querySelector('#linkbottomleft').checked;
 			linkbr = document.querySelector('#linkbottomright').checked;
 
-
 			switch( e.target.id ){
 				case 'topleftA':
 					prop = 'borderTopLeftRadius';
-					otheredge = ( linktl ) ? range[0].value : range[1].value;
+					otheredge = ( linktl ) ? thisedge : range[1].value;
 					range[1].value = ( linktl ) ? range[0].value : range[1].value;
 					document.querySelector('#ttl').innerHTML = thisedge;
 					break;
 				case 'topleftB':
 					prop = 'borderTopLeftRadius';
-					otheredge = ( linktl ) ? range[1].value : range[0].value;
+					otheredge = ( linktl ) ? thisedge : range[0].value;
 					range[0].value = ( linktl ) ? range[1].value : range[0].value;
 					document.querySelector('#ltl').innerHTML = thisedge;
 					break;
 				case 'toprightA':
 					prop = 'borderTopRightRadius';
-					otheredge = ( linktr ) ? range[2].value : range[3].value;
+					otheredge = ( linktr ) ? thisedge : range[3].value;
 					range[3].value = ( linktr ) ? range[2].value : range[3].value;
 					document.querySelector('#ttr').innerHTML = thisedge;
 					break;
 				case 'toprightB':
 					prop = 'borderTopRightRadius';
-					otheredge = ( linktr ) ? range[3].value : range[2].value;
+					otheredge = ( linktr ) ? thisedge : range[2].value;
 					range[2].value = ( linktr ) ? range[3].value : range[2].value;
 					document.querySelector('#rtr').innerHTML = thisedge
 					break;
 				case 'bottomrightA':
 					prop = 'borderBottomRightRadius';
-					otheredge = ( linkbr ) ? range[4].value : range[5].value;
+					otheredge = ( linkbr ) ? thisedge : range[5].value;
 					range[5].value = ( linkbr ) ? range[4].value : range[5].value;
 					document.querySelector('#bbr').innerHTML = thisedge
 					break;
 				case 'bottomrightB':
 					prop = 'borderBottomRightRadius';
-					otheredge = ( linkbr ) ? range[5].value : range[4].value;
+					otheredge = ( linkbr ) ? thisedge : range[4].value;
 					range[4].value = ( linkbr ) ? range[5].value : range[4].value;
 					document.querySelector('#rbr').innerHTML = thisedge
 					break;
 				case 'bottomleftA':
 					prop = 'borderBottomLeftRadius';
-					otheredge = ( linkbl ) ? range[6].value : range[7].value;
+					otheredge = ( linkbl ) ? thisedge : range[7].value;
 					range[7].value = ( linkbl ) ? range[6].value : range[7].value;
 					document.querySelector('#bbl').innerHTML = thisedge
 					break;
 				case 'bottomleftB':
 					prop = 'borderBottomLeftRadius';
-					otheredge = ( linkbl ) ? range[7].value : range[6].value;
+					otheredge = ( linkbl ) ? thisedge : range[6].value;
 					range[6].value = ( linkbl ) ? range[7].value : range[6].value;
 					document.querySelector('#lbl').innerHTML = thisedge;
 					break;
 			}
+			main.style[prop] = thisedge + ' '+otheredge;
 
-			main.style[prop] = thisedge + ' '+otheredge + u;
 			if( button.disabled ){ button.removeAttribute('disabled') };
 		}
 

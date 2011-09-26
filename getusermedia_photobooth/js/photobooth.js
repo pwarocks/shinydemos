@@ -1,14 +1,11 @@
 (function(win, doc){
   var video = doc.querySelector('video'),
-      btn = doc.getElementById('cam'),
-      ctn = doc.getElementById('pics'),
       snapshots = doc.getElementById('photos'),
       photos = snapshots.getContext('2d'),
-      tb = doc.getElementById('toolbar'),
       leftArrow = doc.getElementById('leftarrow'),
       rightArrow = doc.getElementById('rightarrow'),
       img = new Image(),
-      audio = new Audio('assets/click.ogg'),
+      audio = new Audio('media/click.ogg'),
       lb = doc.createElement('div'),
       frame = doc.body.appendChild(doc.createElement('div')),
       splash = doc.getElementById('splash'),
@@ -66,8 +63,8 @@
   var drawFrame = function(callback){
     computeBounds();
     frame.id = "frame";
-    frame.style = "width:"+FRAME_WIDTH+"px;height:"+FRAME_HEIGHT+"px;top:"+FRAME_Y+"px;left:"+FRAME_X+"px;";
-    splash.style = "left:" + getSplashX() + "px;top:"+ getSplashY() +"px;";
+    frame.style = "width:"+FRAME_WIDTH+"px;height:"+FRAME_HEIGHT+"px;top:"+FRAME_Y+"px;left:"+FRAME_X+"px";
+    splash.style = "left:" + getSplashX() + "px;top:"+ getSplashY() +"px";
     leftArrow.style.left = FRAME_X - leftArrow.width -10 +"px";
     rightArrow.style.left = FRAME_WIDTH + FRAME_X + 25 + "px";
     
@@ -92,11 +89,11 @@
   };
 
   var fallback = function(){
-    video.src = 'video.webm';
-    video.onloadedmetadata = function(){
+    video.addEventListener('loadedmetadata',function(){
+      this.play();
       this.muted = true;
       computeAspect();
-    };
+    }, false);
   };
 
   var slideDown = function(){
@@ -136,9 +133,10 @@
     navigator.getUserMedia ? 
       navigator.getUserMedia('video', function(stream){
         video.src = stream;
-        video.onloadedmetadata = function(){
+        video.addEventListener('loadedmetadata', function(){
           computeAspect();
-        }; 
+          this.play();
+        }, false);
       }, fallback) : fallback();
   }());
   

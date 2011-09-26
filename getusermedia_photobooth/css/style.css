@@ -21,8 +21,8 @@ button.clean-gray:active{border:1px solid #aaa;border-bottom:1px solid #888;box-
 
 .dayposter {font-family:dayposter;text-align: center;letter-spacing:9px;margin:0;color: #333;}
 .oldfashion {font-family: 'Limelight', cursive;font-size:72px;margin:0;text-align:center;-o-transform: scaleY(1.4);-ms-transform: scaleY(1.4);-moz-transform: scaleY(1.4);-webkit-transform: scaleY(1.4);transform: scaleY(1.4);}
-.oldfashion span {font-size:22px;position:absolute;margin-left:6px;margin-bottom:6px;top:-5px;}
-.done {-o-transition: top 1s ease-out 0s;top: 11%;right:46%;}
+.oldfashion span {font-size:22px;position:absolute;top:-5px;left:82px;}
+.done {-o-transition: top 1s ease-out 0s;-moz-transition: top 1s ease-out 0s;-ms-transition: top 1s ease-out 0s;-webkit-transition: top 1s ease-out 0s;transition: top 1s ease-out 0s;top: 11%;right:46%;}
 .blank {top: -200%;}
 .center {margin:5% auto;width:auto;}
 .hidden {display:none;}
@@ -30,7 +30,7 @@ button.clean-gray:active{border:1px solid #aaa;border-bottom:1px solid #888;box-
 #leftarrow, #rightarrow {position:absolute;top:40%;}
 #lb {height: 100%;width:100%;background-color:#000;opacity:0.75;position:absolute;z-index:0;}
 #frame {border:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
-#splash {width:440px;position:absolute;top:20px;left:20px;z-index:4;vertical-align:middle;background:#fff;width:500px;border:5px solid red;border-radius:10px;padding:10px;box-shadow: inset 0 0 2px 2px rgba(200, 0, 0, 0.3);}
+#splash {width:440px;position:absolute;z-index:4;vertical-align:middle;background:#fff;width:500px;border:5px solid red;border-radius:10px;padding:10px;box-shadow: inset 0 0 2px 2px rgba(200, 0, 0, 0.3);}
 #splash img {margin:0 auto 20px;}
 
 /* if not wide enough, hide the "eye level" text*/

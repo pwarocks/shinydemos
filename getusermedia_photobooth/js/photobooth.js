@@ -33,13 +33,17 @@
     };
   }());
 
-  var computeBounds = function(){
+  var computeBounds = function(callback){
     VIDEO_WIDTH = video.width = win.innerWidth;
     VIDEO_HEIGHT = video.height = win.innerHeight;
     FRAME_HEIGHT = Math.floor(VIDEO_HEIGHT * 0.85);
     FRAME_WIDTH = FRAME_HEIGHT * (87/112);
     FRAME_X = ((VIDEO_WIDTH - FRAME_WIDTH) / 2) - 10;
     FRAME_Y = (VIDEO_HEIGHT - FRAME_HEIGHT) / 2;
+    
+    if (arguments.length && typeof callback == "function"){
+      callback();
+    }
   };
 
   var computeAspect = function(){
@@ -62,15 +66,17 @@
   
   var drawFrame = function(callback){
     computeBounds();
-    frame.id = "frame";
-    frame.style = "width:"+FRAME_WIDTH+"px;height:"+FRAME_HEIGHT+"px;top:"+FRAME_Y+"px;left:"+FRAME_X+"px";
-    splash.style = "left:" + getSplashX() + "px;top:"+ getSplashY() +"px";
-    leftArrow.style.left = FRAME_X - leftArrow.width -10 +"px";
+    splash.style.left = getSplashX()+ "px";
+    splash.style.top = getSplashY()+ "px";
+    leftArrow.style.left = FRAME_X - 154 +"px";
     rightArrow.style.left = FRAME_WIDTH + FRAME_X + 25 + "px";
-    
-    if (arguments.length && typeof callback == "function"){
-      callback();
-    }
+    frame.id = "frame";
+    frame.style.width = FRAME_WIDTH + "px";
+    frame.style.height = FRAME_HEIGHT + "px";
+    frame.style.top = FRAME_Y + "px";
+    frame.style.left = FRAME_X + "px";
+    frame.classList.add('hidden')
+  
   };
 
   var takeSnaps = function(interval){
@@ -128,7 +134,7 @@
   };
 
   var init = (function(){
-    drawFrame(frame.classList.add('hidden'));
+    drawFrame();
     
     navigator.getUserMedia ? 
       navigator.getUserMedia('video', function(stream){

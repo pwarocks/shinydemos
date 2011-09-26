@@ -76,7 +76,6 @@
     frame.style.top = FRAME_Y + "px";
     frame.style.left = FRAME_X + "px";
     frame.classList.add('hidden')
-  
   };
 
   var takeSnaps = function(interval){

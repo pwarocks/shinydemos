@@ -60,11 +60,11 @@ section, .leadPhoto .close, #container{
         -ms-transition-duration: 500ms;
             transition-duration: 500ms;
 
-         -o-transition-timing-function: ease-in-out;
-	-webkit-transition-timing-function: ease-in-out;
-       -moz-transition-timing-function: ease-in-out;
-        -ms-transition-timing-function: ease-in-out;
-            transition-timing-function: ease-in-out;
+         -o-transition-timing-function: linear;
+	-webkit-transition-timing-function: linear;
+       -moz-transition-timing-function: linear;
+        -ms-transition-timing-function: linear;
+            transition-timing-function: linear;
 }
 
 section{

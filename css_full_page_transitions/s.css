@@ -43,9 +43,7 @@ header > p{padding: 0px 20px;}
     top: 0;
 }
 
-#container.loading{
-	top: -1000px;
-}
+#container.loading{top: -1000px;}
 
 #photostack{
 	top:0;

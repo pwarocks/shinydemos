@@ -86,6 +86,13 @@ section{
        -moz-transform-origin: 100% 100%;
         -ms-transform-origin: 100% 100%;
 	        transform-origin: 100% 100%;
+
+	    -o-transition-property: transform, left, top;
+	-webkit-transition-property: transform, left, top;
+       -moz-transition-property: transform, left, top;
+        -ms-transition-property: transform, left, top;
+            transition-property: transform, left, top;
+
 }
 
 section p{line-height: 1.3; border: 10px solid #fff;}
@@ -168,13 +175,6 @@ section img{
 	margin: 0 0 10px 0;
 }
 
-section{
-	     -o-transition-property: transform;
-	-webkit-transition-property: transform;
-       -moz-transition-property: transform;
-        -ms-transition-property: transform;
-            transition-property: transform;
-}
 
 section:hover{
 	     -o-transform: scale(1.1);
@@ -189,11 +189,6 @@ section.leadPhoto{
 	z-index: 9999;
 	cursor: default;
 	box-shadow: 0 0 30px rgba(0,0,0,.7);
-	     -o-transition-property: transform, left, top;
-	-webkit-transition-property: transform, left, top;
-       -moz-transition-property: transform, left, top;
-        -ms-transition-property: transform, left, top;
-            transition-property: transform, left, top;
 
 	     -o-transform: scale(1.5);
 	-webkit-transform: scale(1.5);

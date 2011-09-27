@@ -76,12 +76,11 @@ section{
 	position: absolute;
 	background: #fff;
 	margin: 0 -10px;
-	float: left;
 	cursor: pointer;
 	z-index:auto;
 	display:block;
 
-	     -o-transform-origin: 100% 100%;
+	   -o-transform-origin: 100% 100%;
 	-webkit-transform-origin: 100% 100%;
        -moz-transform-origin: 100% 100%;
         -ms-transform-origin: 100% 100%;
@@ -261,6 +260,20 @@ footer img{
 	margin-right: .5em;
 }
 
+/*
+first-child: Chinatown
+2: banff
+3: djem el fna
+4: montserrat vertical.
+5: ben yussef
+6: kananaskis
+7: montserrat horizontal.
+8: barcelona
+9: saba
+10: essaouira
+
+*/
+
 /* For iPad sized devices */
 @media screen and (min-width: 768px){
 
@@ -270,42 +283,53 @@ footer img{
 	section:first-child{
 		left: 0;
 		top:  0;
+		border: 2px dashed #f60 /* china town */
 	}
 	section:nth-child(2){
-		left: 90px;
+		left: 0px;
 		top: 0px;
+		border: 2px dashed #606 /* banff */
 	}
 	section:nth-child(3){
 		left: 0;
-		top: 80px;
+		top: 0px;
+		border: 2px dashed #0c0; /* djem elfna */
 	}
 	section:nth-child(4){
 		left: 100px;
 		top: 55px;
+		border: 2px dashed #03f; /* montserrat vert */
 	}
 	section:nth-child(5){
 		left: 150px;
 		top: 5px;
+		border: 2px dashed #030;
 	}
 	section:nth-child(6){
 		left: 200px;
 		top:  145px;
+		border: 2px dashed #9f0;
 	}
 	section:nth-child(7){
 		left: 300px;
 		top:   80px;
+		border: 2px dashed #c09;
 	}
 	section:nth-child(8){
 		left: 390px;
 		top:    0px;
+		border: 2px dashed #c00; /* barcelona */
+
 	}
 	section:nth-child(9){
 		left: 400px;
 		top:   20px;
+		border: 2px dashed #ff0;
 	}
 	section:nth-child(10){
 		left: 450px;
 		top:   85px;
+		border: 2px dashed #39f;
 	}
 	.loaded section.leadPhoto{
 		left: 50%;

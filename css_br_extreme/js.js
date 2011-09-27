@@ -1,9 +1,5 @@
+
 (function(){
-	/*-------------
-		using getElementById instead of querySelector in some cases
-		so that don't have to retrieve the object once for old
-		browsers, and once for new.
-	-------------*/
 
 	/*-------------
 		using getElementById instead of querySelector in some cases

@@ -195,12 +195,6 @@ section.leadPhoto{
         -ms-transition-property: transform, left, top;
             transition-property: transform, left, top;
 
-	     -o-transition-duration: 50ms;
-	-webkit-transition-duration: 50ms;
-       -moz-transition-duration: 50ms;
-        -ms-transition-duration: 50ms;
-  		    transition-duration: 50ms;
-
 	     -o-transform: scale(1.5);
 	-webkit-transform: scale(1.5);
        -moz-transform: scale(1.5);

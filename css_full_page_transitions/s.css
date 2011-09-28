@@ -59,11 +59,11 @@ section, .leadPhoto .close, #container{
         -ms-transition-duration: 500ms;
             transition-duration: 500ms;
 
-         -o-transition-timing-function: linear;
-	-webkit-transition-timing-function: linear;
-       -moz-transition-timing-function: linear;
-        -ms-transition-timing-function: linear;
-            transition-timing-function: linear;
+         -o-transition-timing-function: ease-in-out;
+	-webkit-transition-timing-function: ease-in-out;
+       -moz-transition-timing-function: ease-in-out;
+        -ms-transition-timing-function: ease-in-out;
+            transition-timing-function: ease-in-out;
 }
 
 section{
@@ -79,7 +79,7 @@ section{
 	z-index:auto;
 	display:block;
 
-	   -o-transform-origin: 100% 100%;
+	    -o-transform-origin: 100% 100%;
 	-webkit-transform-origin: 100% 100%;
        -moz-transform-origin: 100% 100%;
         -ms-transform-origin: 100% 100%;
@@ -285,56 +285,45 @@ footer img{
 	section:first-child{
 		left: 0;
 		top:  0;
-		border: 2px dashed #f60
 	}
 	section:nth-child(2){
 		left: 0;
 		top: 0px;
-		border: 2px dashed #606
 	}
 	section:nth-child(3){
 		left: 0;
 		top: 0px;
-		border: 2px dashed #0c0;
 	}
 	section:nth-child(4){
 		left: 7%;
 		top: 55px;
-		border: 2px dashed #03f;
 	}
 	section:nth-child(5){
 		left: 9%;
 		top: 5px;
-		border: 2px dashed #030;
 	}
 	section:nth-child(6){
 		left: 30%;
 		top:  145px;
-		border: 2px dashed #9f0;
 	}
 	section:nth-child(7){
 		left: 40%;
 		top:   80px;
-		border: 2px dashed #c09;
 	}
 	section:nth-child(8){
 		left: 42%;
 		top:    0px;
-		border: 2px dashed #c00;
-
 	}
 	section:nth-child(9){
 		left: 55%;
 		top:   20px;
-		border: 2px dashed #ff0;
 	}
 	section:nth-child(10){
 		left: 80%;
 		top:   85px;
-		border: 2px dashed #39f;
 	}
 	.loaded section.leadPhoto{
-		left: 48%;
+		left: 49%;
 		top: 80px;
 	}
 }

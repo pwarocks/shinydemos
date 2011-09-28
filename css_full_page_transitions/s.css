@@ -277,7 +277,7 @@ footer img{
 }
 
 /* For iPad sized devices */
- @media screen and (min-width: 768px){
+ @media screen and (max-width: 768px) {
 
 	section{width: 175px;}
 	section.vert{width: 126px;}
@@ -328,7 +328,7 @@ footer img{
 	}
 }
 /* For computer sized devices */
-@media screen and (min-width: 1025px){
+@media screen and (min-width: 769px){
 	section{width: 250px;}
 	section.vert{width: 180px;}
 

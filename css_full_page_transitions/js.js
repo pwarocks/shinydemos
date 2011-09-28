@@ -8,38 +8,39 @@ loadHandler = function(e){
 	 	i,
 	 	len,
 	 	loadHandler,
+	 	loader,
 	 	overlay,
 	 	overlayHandler,
 	 	secs,
 	 	transitionEvent;
 
-	clen       = close.length;
 	close      = document.querySelectorAll('.close');
 	container  = document.querySelector('#container');
 	hasClassList = !(document.body.classList == undefined );
-	len        = secs.length;
 	overlay    = document.querySelector('#overlay');
 	secs       = document.querySelectorAll('section');
 
-	/* Yeah yeah, it's a browser sniff. Sorry. */
+	clen       = close.length;
+	len        = secs.length;
+	loader	   = document.querySelector('#loader');
+
+	/* Technique borrowed from Modernizr */
 	transitionEvent = function(){
-		var whichTrans;
-		if( !window.opera ){
-			switch( navigator.userAgent.match(/webkit|gecko|trident/i)[0].toLowerCase() ){
-				case 'webkit':
-					whichTrans = 'webkitTransitionEnd';
-					break;
-				case 'gecko':
-					whichTrans = 'mozTransitionEnd';
-					break;
-				case 'trident':
-					whichTrans = 'msTransitionEnd';
-					break;
-			}
-		} else{
-			whichTrans = 'oTransitionEnd';
+		var t, transitions, el = container;
+
+		transitions = {
+			'transition':'transitionEnd',
+			'OTransition':'oTransitionEnd',
+			'MSTransition':'msTransitionEnd',
+			'MozTransition':'mozTransitionEnd',
+			'WebkitTransition':'webkitTransitionEnd'
 		}
-		return whichTrans;
+
+		for(t in transitions){
+			if( el.style[t] !== undefined ){
+				return transitions[t];
+			}
+		}
 	}
 
 	clickHandler = function(e){
@@ -63,32 +64,40 @@ loadHandler = function(e){
 	closeHandler = function(e){
 		e.stopPropagation();
 
-		var lp = e.currentTarget.parentNode;
+		var lp = document.querySelector('.leadPhoto');
 		var re = /leadPhoto/gi;
 		var classReplace = 'leadPhoto';
 
-		if(hasClassList == true){
+		if( hasClassList == true ){
 			overlay.classList.add('hide');
-			lp.classList.remove(classReplace);
-
+			lp.classList.remove( classReplace );
 		} else {
 			overlay.setAttribute('class','hide');
-			lp.setAttribute('class', lp.className.replace(re,'') );
+			lp.className = lp.className.replace(re,'');
 		}
 	}
 
+	// add event handler for close buttons.
 	for(i = 0; i < len; i++){
 		close[i].addEventListener('click', closeHandler, false);
 	}
+
+	// add event handler for sections / images.
 	for(i = 0; i < clen; i++){
 		secs[i].addEventListener('click', clickHandler, false)
 	}
+
+	// remove the loading class and hide the loader.
 	if( hasClassList ){
 		container.classList.remove('loading');
 		container.classList.add('loaded');
+		loader.classList.add('hide');
+
 	} else {
-		container.setAttribute('class',container.className.replace(/loading/,'loaded') );
+		container.className = container.className.replace(/loading/,'loaded');
+		loader.className    += 'hide';
 	}
+
 	overlay.addEventListener('click',closeHandler,false);
 }
 

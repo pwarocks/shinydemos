@@ -3,222 +3,35 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Border radius</title>
-	<style media="screen" type="text/css">
-	@import url(./maiden_orange/stylesheet.css);
+	<link rel="stylesheet" media="screen" href="s.css">
+	<!--[if lte IE 9]>
+	<script type="text/javascript">
+	// adding fake support for HTML(5) tags that we're using
+	var el, len, i;
+	el = ['header','footer','section'];
+	len = el.length;
+	for(i = 0; i < len; i++){ document.createElement( el[i] ); }
+	</script>
 
-	body{
-		position: relative;
-		font: 13px / 1.5 sans-serif;
-		padding:0;
-		background: #f3c;
-		margin:0
-	}
-
-	a{text-decoration: underline;}
-	a:link{color: #3cf; }
-	a:visited{color: #0cf;}
-	a:hover, a:active{color: #f3c;}
-
-	#wrap{
-		background:#fff;
-		border-width:0px 1px 1px 1px;
-		border-style: solid;
-		border-color: #0cf;
-		border-radius: 0 0 30px 0;
-		margin:auto;
-		position:relative;
-		min-width:600px;
-	}
-	header{
-		background: #fff;
-		border-width:1px 1px 0px 1px;
-		border-style: solid;
-		border-color: #0cf;
-		border-radius: 30px 0 0 0;
-		display:block;
-		margin:auto;
-		min-width:550px;
-	}
-	h1{
-		font-family: 'MaidenOrangeRegular',serif;
-		font-size:48px;
-		margin:20px 20px 0 20px;
-	}
-	p{margin:0;}
-
-	form{
-		float:right;
-		background:#B9F1FF;
-		position:relative;
-		border-radius: 20px 0;
-		margin: -20px 20px 0;
-	}
-
-	fieldset{border:0; border-radius: 5px;}
-	form > fieldset > legend{font-size: 22px; padding-top: .5em;}
-
-
-	fieldset fieldset{background:#E8FAFF; margin-top:-2em;margin-bottom:1em; }
-	fieldset fieldset legend{padding-top: 2em; font-family: monospace;}
-	fieldset#advanced, fieldset#basic{ position:relative}
-	fieldset#advanced fieldset p{float: left; width: 49%; margin:0 0 3px 0;}
-	fieldset#basic fieldset   p{float: left; margin:5px;}
-
-	label{display:block;}
-	input[type=range]{display:block;}
-	label.inline{display:inline;}
-
-	/* right align in browsers that do not support range */
-	input[type=range]{text-align:right}
-
-	#main{
-		background-color:#0cf;
-		margin: 20px 0 20px 55px;
-		position:fixed;
-		border-color: #f3c;
-		top:100px;
-	}
-
-	#main p{
-		position:absolute;
-		background:#cf0;
-		white-space:nowrap;
-		text-align:right;
-	}
-
-	#main p:nth-child(1){top: -1.5em; left: -2.5em; line-height: 1;}
-	#main p:nth-child(2){top: -1.5em; right:-2.5em; line-height: 1;}
-	#main p:nth-child(3){bottom: -1.5em; left: -2.5em; line-height: 1;}
-	#main p:nth-child(4){bottom: -1.5em; right: -2.5em; line-height: 1;}
-
-	.patt002{background-image: url('pattern_002.gif');}
-	.patt123{background-image: url('pattern_132.gif');}
-	.patt141{background-image: url('pattern_141.gif');}
-	.patt155{background-image: url('pattern_155.gif');}
-	.patt157{background-image: url('pattern_157.gif');}
-
-	.hide{display:none; speak:none;}
-
-	#unsupported, #worksbestwithrange{
-		text-align:center;
-		background:#fc0;
-		padding: 5px;
-		margin:0;
-		position: fixed;
-		top:0;
-		left:0;
-		width:100%;
-		z-index: 100;
-	}
-
-	#unsupported a:link, #worksbestwithrange a:link{ color: #33f; }
-	#unsupported a:visited, #worksbestwithrange a:visited{ color: #30c; }
-	#unsupported a:hover, #worksbestwithrange a:hover,
-	#unsupported a:active, #worksbestwithrange a:active{ color: #f09; }
-
-	#unsupported.fadeout,
-	#worksbestwithrange.fadeout{
-		-moz-transition-property: top;
-		-moz-transition-duration: 2s;
-		-moz-transition-timing-function: ease-in-out;
-
-		-webkit-transition-property: top;
-		-webkit-transition-duration: 2s;
-		-webkit-transition-timing-function: ease-in-out;
-
-		-o-transition-property: top;
-		-o-transition-duration: 2s;
-		-o-transition-timing-function: ease-in-out;
-		top: -1000px;
-	}
-
-	.close{
-		background:#f09;
-		color: #fff;
-		padding: 1px 3px;
-		position:absolute;
-		right:20px;
-	}
-	#unsupported a.close:hover,
-	#worksbestwithrange a.close:hover{
-		background:#000;
-		color:#fff;
-		text-decoration:none;
-	}
-
-	footer{
-		display:block;
-		clear:both;
-		text-align: right;
-	}
-	footer p{margin: 20px; padding:10px 0 0 0}
+	<style type="text/css">
 	#overlay{
-		position:absolute;
-		z-index:9999;
-		width:100%;
-		height:100%;
-		background:rgba(0,0,0,1);
-		/* top:0;
-		left:0;
-		margin:0 */
+		background: url(ie8.png);
 	}
-	#css{
-		background:#fff;
-		width: 40%;
-		margin:0 auto;
-		padding:10px 0;
-	}
-	#overlay h2{
-		font-family: 'MaidenOrangeRegular',serif;
-		font-size:36px;
-		margin:0 10px;
-	}
-	pre{
-		border:1px inset #333;
-		margin:20px;
-	}
-
-	@media screen and (min-width:400px;){
-		#wrap, header{width:630px;}
-		form{width:300px;}
-
-		#main{
-			width: 100px;
-			height: 100px;
-			margin: 20px 0 20px 55px;
-		}
-	}
-
-	@media screen and (min-width: 801px){
-		form{width:400px;}
-		#wrap, header{width:950px;}
-
-		#main{
-			width: 300px;
-			height: 300px;
-			margin: 20px 0 20px 55px;
-		}
-
-	}
-
 	</style>
+	<![endif]-->
 </head>
-<body>
+<body id="cssbr">
 
-<div class="hide" id="unsupported"><p>Your browser doesn't support <code>border-radius</code> making this page pretty useless. Try the latest version of <a href="http://opera.com/">Opera</a>. (The latest versions of <a href="http://www.google.com/chrome/">Chrome</a>, <a href="http://getfirefox.com/">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">Internet Explorer</a> will also work.) <a class="close">close</a></p></div>
-
-<div class="hide" id="worksbestwithrange"><p>This demo works better with browsers that support the <code>range</code> input type. Try the latest version of <a href="http://opera.com/">Opera</a>. (The latest versions of <a href="http://www.google.com/chrome/">Chrome</a> and <a href="http://www.apple.com/safari/">Safari</a> will also work.) <a class="close">close</a></p></div>
-
-	<header><h1>Border-Radius-O-Matic</h1></header>
+<header><h1>Border-Radius-O-Matic</h1></header>
 
 <div id="wrap">
-
 	<form>
-		<fieldset id="basic">
+		<fieldset id="basic" class="active">
 
 			<legend>Basic options</legend>
 
 			<!-- top left controls -->
+			<div>
 			<fieldset id="topleft" class="crnr">
 				<legend>border-top-left-radius</legend>
 
@@ -295,12 +108,12 @@
 					<input type="checkbox" id="linkbottomleft" name="linkbottomleft" checked>
 				</p>
 			</fieldset>
+			</div>
+		</fieldset> <!-- end basic -->
 
-
-		</fieldset>
 		<fieldset id="advanced">
 			<legend>Oh you fancy, huh?</legend>
-
+			<div>
 			<fieldset id="setborderstyle">
 				<legend>border-style</legend>
 				<p>
@@ -398,31 +211,33 @@
 					<option value="157">Snow flakes</option>
 				</select>
 			</fieldset>
+			</div>
 	</fieldset>
+		<div><button type="submit" id="getcode" disabled>Get the code</button></div>
 	</form>
 
 	<div id="main">
 		<p>
 			<code>
-			<b id="ttl" class="crnrsz">0px</b>
-			<b id="ltl" class="crnrsz">0px</b></code>
+			<b id="tl" class="crnrsz">0px</b>
+			</code>
 		</p>
 
 		<p><code>
-		<b id="ttr" class="crnrsz">0px</b>
-		<b id="rtr" class="crnrsz">0px</b> </code>
+		<b id="tr" class="crnrsz">0px</b>
+		</code>
 		</p>
 
 		<p>
 		<code>
-		<b id="bbl" class="crnrsz">0px</b>
-		<b id="lbl" class="crnrsz">0px</b></code>
+		<b id="bl" class="crnrsz">0px</b>
+		</code>
 		</p>
 
 		<p>
 		<code>
-		<b id="bbr" class="crnrsz">0px</b>
-		<b id="rbr" class="crnrsz">0px</b></code>
+		<b id="br" class="crnrsz">0px</b>
+		</code>
 		</p>
 	</div>
 
@@ -431,211 +246,24 @@
 </footer>
 </div><!-- end wrap -->
 
-<script>
-(function(){
-	var hasRange, mightBeIE8;
-
-	hasRange = function(){
-		return (document.querySelector('input[type=range]').type == 'range');
-	}
-
-	// should return true if it is IE8 or older
-	mightBeIE8 = function(){
-		return ( 'attachEvent' in window ) && !('addEventListener' in window);
-	}
-
-	if( mightBeIE8() ){
-		document.getElementById('unsupported').className = '';
-		return false;
-	} else {
-
-		var main, form, range, fixranges, n, unit = 'px';
-		var onsubmithandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, onbgchange;
-		var close;
-
-		main      = document.querySelector('#main');
-		form      = document.querySelector('form');
-		fixranges = document.querySelectorAll('input[type=range]');
-		brdrstyle = document.querySelectorAll('#setborderstyle select');
-		range     = document.querySelectorAll('#basic input[type=range]');
-		brdrwidth = document.querySelectorAll('#setborderwidth input[type=range]');
-		bgimg     = document.querySelector('#bgimg');
-
-		close     = document.querySelectorAll('.close');
-
-		onsubmithandler = function(e){ e.preventDefault(); }
-		form.addEventListener('submit',onsubmithandler,false);
-
-		/* If we don't have a range, adjust the UI. */
-		if( hasRange() == false ){
-			document.getElementById('worksbestwithrange').className = '';
-			var i, len, input;
-			len = fixranges.length;
-			for(i = 0; i < len; i++){
-				fixranges[i].setAttribute('size',4);
-				fixranges[i].setAttribute('maxlength',3);
-			}
-		}
-
-		onrangechange = function(e){
-			var prop, u = unit, thisedge, otheredge;
-			var linktl, linktr, linkbl, linkbr;
-
-			thisedge = e.target.value + u;
-
-			linktl = document.querySelector('#linktopleft').checked;
-			linktr = document.querySelector('#linktopright').checked;
-			linkbl = document.querySelector('#linkbottomleft').checked;
-			linkbr = document.querySelector('#linkbottomright').checked;
+<div id="overlay" class="hide">
+	<section id="showcss" class="hide">
+		<a class="close">close</a>
+		<h1>Copy and paste the CSS below into your file</h1>
+		<pre></pre>
+	</section>
 
 
-			switch( e.target.id ){
-				case 'topleftA':
-					prop = 'borderTopLeftRadius';
-					otheredge = ( linktl ) ? range[0].value : range[1].value;
-					range[1].value = ( linktl ) ? range[0].value : range[1].value;
-					document.querySelector('#ttl').innerHTML = thisedge;
-					break;
-				case 'topleftB':
-					prop = 'borderTopLeftRadius';
-					otheredge = ( linktl ) ? range[1].value : range[0].value;
-					range[0].value = ( linktl ) ? range[1].value : range[0].value;
-					document.querySelector('#ltl').innerHTML = thisedge;
-					break;
-				case 'toprightA':
-					prop = 'borderTopRightRadius';
-					otheredge = ( linktr ) ? range[2].value : range[3].value;
-					range[3].value = ( linktr ) ? range[2].value : range[3].value;
-					document.querySelector('#ttr').innerHTML = thisedge;
-					break;
-				case 'toprightB':
-					prop = 'borderTopRightRadius';
-					otheredge = ( linktr ) ? range[3].value : range[2].value;
-					range[2].value = ( linktr ) ? range[3].value : range[2].value;
-					document.querySelector('#rtr').innerHTML = thisedge
-					break;
-				case 'bottomrightA':
-					prop = 'borderBottomRightRadius';
-					otheredge = ( linkbr ) ? range[4].value : range[5].value;
-					range[5].value = ( linkbr ) ? range[4].value : range[5].value;
-					document.querySelector('#bbr').innerHTML = thisedge
-					break;
-				case 'bottomrightB':
-					prop = 'borderBottomRightRadius';
-					otheredge = ( linkbr ) ? range[5].value : range[4].value;
-					range[4].value = ( linkbr ) ? range[5].value : range[4].value;
-					document.querySelector('#rbr').innerHTML = thisedge
-					break;
-				case 'bottomleftA':
-					prop = 'borderBottomLeftRadius';
-					otheredge = ( linkbl ) ? range[6].value : range[7].value;
-					range[7].value = ( linkbl ) ? range[6].value : range[7].value;
-					document.querySelector('#bbl').innerHTML = thisedge
-					break;
-				case 'bottomleftB':
-					prop = 'borderBottomLeftRadius';
-					otheredge = ( linkbl ) ? range[7].value : range[6].value;
-					range[6].value = ( linkbl ) ? range[7].value : range[6].value;
-					document.querySelector('#lbl').innerHTML = thisedge;
-					break;
-			}
+	<section id="unsupported" class="hide">
+		<h1>Get a better browser!</h1>
+		<p>Your browser doesn't support the CSS3 <a href="http://www.w3.org/TR/css3-background/"><code>border-radius</code> property</a> making this page pretty useless.</p>
+		<p>Please download and install the latest version of <a href="http://opera.com/">Opera</a>.<br>(The latest versions of <a href="http://www.google.com/chrome/">Chrome</a>, <a href="http://getfirefox.com/">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">Internet Explorer</a> will also work.) </p>
+	</section>
 
-			main.style[prop] = thisedge + ' '+otheredge + unit;
-		}
+</div>
 
-		onborderchange = function(e){
-			var whichborder;
+<script src="js.js"></script>
 
-			switch( e.target.id ){
-				case 'brdrtop':
-					whichborder = 'borderTopStyle';
-					document.querySelector('#brdrwidthtop').value = 1;
-					break;
-				case 'brdrright':
-					whichborder = 'borderRightStyle';
-					document.querySelector('#brdrwidthright').value = 1;
-					break;
-				case 'brdrbottom':
-					whichborder = 'borderBottomStyle';
-					document.querySelector('#brdrwidthbottom').value = 1;
-					break;
-				case 'brdrleft':
-					whichborder = 'borderLeftStyle';
-					document.querySelector('#brdrwidthleft').value = 1;
-					break;
-			}
 
-			main.style[whichborder] = e.target.value;
-		}
-
-		onborderwidthchange = function(e){
-			var whichborder, whichstyle, u = unit, evt;
-
-			switch( e.target.id ){
-				case 'brdrwidthtop':
-					whichborder = 'borderTopWidth';
-					whichstyle  = 'brdrtop';
-					break;
-				case 'brdrwidthright':
-					whichborder = 'borderRightWidth';
-					whichstyle  = 'brdrright';
-					break;
-				case 'brdrwidthbottom':
-					whichborder = 'borderBottomWidth';
-					whichstyle  = 'brdrbottom';
-					break;
-				case 'brdrwidthleft':
-					whichborder = 'borderLeftWidth';
-					whichstyle  = 'brdrleft';
-					break;
-			}
-
-			// change the border style to solid so we can actually see the width change.
-			if( form[whichstyle].value == 'none' ){
-
-				form[whichstyle].value = 'solid';
-
-				// dispatch a change event so that it actually changes
-				evt = document.createEvent('Events');
-				evt.initEvent('change',false,false);
-				document.getElementById(whichstyle).dispatchEvent(evt);
-			}
-			main.style[whichborder] = e.target.value + u;
-		}
-
-		onbgchange = function(e){
-			if( e.target.value == ''){
-				main.className = '';
-			} else {
-				main.className = 'patt'+e.target.value;
-			}
-		}
-
-		/* Set up event handlerst */
-		for( n = 0; n < range.length; n++){
-			range[n].addEventListener('change', onrangechange, false);
-		}
-
-		for( n = 0; n < brdrstyle.length; n++){
-			brdrstyle[n].addEventListener('change', onborderchange, false);
-		}
-
-		for( n = 0; n < brdrwidth.length; n++){
-			brdrwidth[n].addEventListener('change', onborderwidthchange, false);
-		}
-
-		for( n = 0; n < close.length; n++){
-			close[n].addEventListener('click', function(e){
-				e.target.parentNode.parentNode.classList.add('fadeout');
-			}, true);
-		}
-
-		bgimg.addEventListener('change',onbgchange,false);
-
-	}
-
-})();
-
-</script>
 </body>
 </html>

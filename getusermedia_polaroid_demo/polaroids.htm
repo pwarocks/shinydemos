@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+@-o-viewport {
+  width: device-width;
+  height: device-height;
+}
+@font-face {
+    font-family: 'NobileRegular';
+    src: url('nobile-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'rabiohead';
+    src: url('rabiohead-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+	background-color: #333;
+	color: #fff;
+	font-family: 'NobileRegular';
+
+}
+
+#container{
+	max-width: 1000px;
+}
+
+canvas{
+	border: 1px solid #ccc;
+}
+video{
+	margin-bottom: 10px;
+	/*width: 150px;
+	height: 225px;*/
+	width: 100%;
+	height: 100%;
+	box-shadow: 1px 1px 15px #000;
+		moz-box-shadow: 1px 1px 15px #000;
+		webkit-box-shadow: 1px 1px 15px #000;
+}
+#button{
+	font-size: 1.0em;
+	margin-bottom: 10px;
+}
+
+#left{
+	float: left;
+	width: 50%;
+}
+
+#right{
+	padding-top: 5px;
+	float: right;
+	width: 45%;
+}
+
+#footer{
+	clear: both;
+	color: #fff;
+	padding-left: 25px;
+	margin-left: 10px;
+	color: #fff;
+}
+
+a{
+	color: #fff;
+}
+
+a:visited{
+	color: #fff;
+}
+
+#polaroid{
+	margin-bottom: 10px;
+}
+
+canvas{
+	background-color: #fff;
+	/*padding: 5px;
+	margin: 10px;*/
+	width: 165px;
+	height: 200px;
+	box-shadow: 3px 3px 3px #000;
+}
+
+#mycanvas{
+		-o-transform: rotate(-25deg);
+		-moz-transform: rotate(-25deg);
+		-webkit-transform: rotate(-25deg);
+		-ms-transform: rotate(-25deg);
+}
+
+.pic{
+	-o-object-fit: cover;
+	overflow: hidden;
+}
+
+#subcontainer{
+	max-width: 800px;
+}
+
+#shutter{
+	width: 48px;
+	height: 48px;
+}
+
+#click{
+	font-family: 'rabiohead';
+	font-size: 1.2 em;
+}
+#picbutton{
+	/*background-color: #ccc;*/
+	color: #fff;
+	border-radius: 5px;
+	text-align: center;
+	background-image: -moz-linear-gradient(#666 10%, #222);
+	background-image: -ms-linear-gradient(#666 10%, #222);
+	background-image: -webkit-linear-gradient(#666 10%, #222);
+	background-image: -o-linear-gradient(#666 10%, #222);
+	width: inherit;
+	padding: 1px;
+	text-shadow: 1px 1px 1px #000;
+}
+</style>
+
+
+
+</head>
+<body>
+<h1>Picture Polaroid Demo</h1>
+<div id="container">
+<div id="subcontainer">
+<div id="message"></div>
+<div id="left">
+<video id="video" autoplay></video>
+</div>
+<div id="right">
+<div id="picbutton">
+<h1 id="click">Take a photo!</h1>
+</div>
+<!--<a id="button"><img id="shutter" src="shutter.png" /></a><br />-->
+</div>
+</div>
+<div id="footer">
+<div id="pictures">
+</div>
+</div>
+<p>Shake device to reset the images</p>
+<p>Shutter icon from <a href="http://www.25icons.com/index.php?Icon-Set=Super-Simple-Grey-Series">25 icons</a>.</p>
+</div>
+
+<script type="text/javascript">
+var button = document.querySelector('#picbutton');
+button.addEventListener('click',snapshot, false);
+window.addEventListener('devicemotion', reset, false);
+
+var prev= 0;
+var video_element = document.querySelector('video');
+
+
+if (navigator.getUserMedia){
+	navigator.getUserMedia('video', v_success, v_error);
+} else if (opera.getUserMedia){
+	opera.getUserMedia('video', v_success, v_error);
+} else {
+	not_supported();
+}
+
+function not_supported(){
+	var message = document.querySelector('#message');
+	message.innerHTML = "<h1>Camera access is not supported by this browser</h1>";
+}
+
+function v_success(stream){
+	video_element.src = stream;
+	//alert(video_element.clientWidth+","+video_element.clientHeight)
+}
+
+function v_error(error){
+	opera.postError("Error! Error code is:"+error.code);
+}
+
+
+function snapshot(){
+	var canvas = document.createElement('canvas');
+	canvas.width = 125;
+	canvas.height = 190;
+	canvas.className = "pic";
+	var deg = getDeg();
+	canvas.style.OTransform = "rotate("+deg+"deg)";
+	canvas.style.MozTransform = "rotate("+deg+"deg)";
+	canvas.style.WebkitTransform = "rotate("+deg+"deg)";
+	canvas.style.msTransform = "rotate("+deg+"deg)";
+
+	var footer = document.querySelector("#pictures");
+	footer.appendChild(canvas);
+	
+	//var c = document.querySelector('canvas');
+	var c = canvas;
+	var ctx = c.getContext('2d');
+	var cw = c.clientWidth;
+	var ch = c.clientHeight;
+	ctx.fillStyle = "#fff";
+	ctx.fillRect(0, 0, cw, ch);
+	ctx.drawImage(video_element, 0+5, 0+5, cw-50, (ch-40) );
+	applyEvents();
+}
+
+
+function applyEvents(){
+	var elems = document.querySelectorAll('canvas');
+	for (var i=0; i<elems.length;i++){
+		elems[i].addEventListener('click', newimg, true);
+	}
+}
+
+
+function newimg(){
+	var datauri = this.toDataURL("image/png");
+	window.open(datauri);
+	//Canvas2Image.saveAsPNG(this);
+	
+}
+
+function reset(){
+	var acc_x = topos(event.acceleration.x);
+	var acc_y = topos(event.acceleration.y);
+	var acc_z = topos(event.acceleration.z);
+	
+	if ( (acc_x || acc_y || acc_z) > 15.5){
+		var canvases = document.querySelectorAll('canvas');
+		var polaroid = document.querySelector('#pictures');	
+		for (var i=0; i<canvases.length; i++){
+			polaroid.removeChild(canvases[i]);
+		}
+	}
+	
+}
+
+function getDeg(){
+	if (prev == 0){
+		var number = Math.floor(Math.random()*45);
+		//var number  = 30;
+		prev += 1;
+		return number;
+	} else {
+		var number = Math.floor(Math.random()*45);
+		number *= -1;
+		prev -= 1;
+		return number;
+	}
+}
+
+
+function topos(num){
+	if (num < 0){
+		num*=-1;
+	}
+	return num;
+}
+
+</script>
+
+
+
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5565331; 
+var sc_invisible=1; 
+var sc_security="8da620b8"; 
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="click tracking"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/5565331/0/8da620b8/1/"
+alt="click tracking" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+</body>
+</html>

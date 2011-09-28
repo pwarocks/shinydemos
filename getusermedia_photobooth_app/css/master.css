@@ -1,0 +1,68 @@
+body {
+  font-family: sans-serif;
+  width: 800px;
+  margin: 0 auto;
+}
+
+video {
+  -o-object-fit: cover;
+  object-fit: cover;
+  margin:0;
+}
+
+button {
+  background: none;
+  border:none;
+  padding:0;
+  display:block;
+  margin: 0 auto;
+  position:relative;
+  top:12px;
+}
+
+canvas {
+  float:right;
+}
+
+.hide {
+  display:none !important;
+}
+
+#flash {
+  position:absolute;
+  top:0;
+  left:0;
+  background: #fff;
+  z-index:99;
+  width: 640px;
+  height:400px;
+  opacity:.6;
+}
+
+#container {
+  position:relative;
+  float:left;
+}
+
+#prompt {
+  font-family: sans-serif;
+  font-size:72px;
+  margin:0 auto;
+  text-align:center;
+  display:block;
+  padding-top:10px;
+}
+
+#strip {
+  position:relative;
+  top:-4px;
+  height:80px;
+  width: 639px;
+  border-left: 1px solid #515151;
+  background: #515151;
+  background: -moz-linear-gradient(top, #515151 0%, #e1e1e1 2%, #cdcdcd 3%, #a8a8a8 98%, #515151 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#515151), color-stop(2%,#e1e1e1), color-stop(3%,#cdcdcd), color-stop(98%,#a8a8a8), color-stop(100%,#515151));
+  background: -o-linear-gradient(top, #515151 0%,#e1e1e1 2%,#cdcdcd 3%,#a8a8a8 98%,#515151 100%);
+  background: -ms-linear-gradient(top, #515151 0%,#e1e1e1 2%,#cdcdcd 3%,#a8a8a8 98%,#515151 100%);
+  background: linear-gradient(top, #515151 0%,#e1e1e1 2%,#cdcdcd 3%,#a8a8a8 98%,#515151 100%);
+}

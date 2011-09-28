@@ -186,7 +186,7 @@ section:nth-child(10){
 section img{
 	display: block;
 	width:   100%;
-	margin: 0 0 10px 0;
+	margin:  0 0 10px 0;
 }
 
 
@@ -277,7 +277,7 @@ footer img{
 }
 
 /* For iPad sized devices */
-@media screen and (min-width: 768px){
+ @media screen and (min-width: 768px){
 
 	section{width: 175px;}
 	section.vert{width: 126px;}
@@ -285,108 +285,107 @@ footer img{
 	section:first-child{
 		left: 0;
 		top:  0;
-		border: 2px dashed #f60 /* china town */
+		border: 2px dashed #f60
 	}
 	section:nth-child(2){
-		left: 0px;
+		left: 0;
 		top: 0px;
-		border: 2px dashed #606 /* banff */
+		border: 2px dashed #606
 	}
 	section:nth-child(3){
 		left: 0;
 		top: 0px;
-		border: 2px dashed #0c0; /* djem elfna */
+		border: 2px dashed #0c0;
 	}
 	section:nth-child(4){
-		left: 100px;
+		left: 7%;
 		top: 55px;
-		border: 2px dashed #03f; /* montserrat vert */
+		border: 2px dashed #03f;
 	}
 	section:nth-child(5){
-		left: 150px;
+		left: 9%;
 		top: 5px;
 		border: 2px dashed #030;
 	}
 	section:nth-child(6){
-		left: 200px;
+		left: 30%;
 		top:  145px;
 		border: 2px dashed #9f0;
 	}
 	section:nth-child(7){
-		left: 300px;
+		left: 40%;
 		top:   80px;
 		border: 2px dashed #c09;
 	}
 	section:nth-child(8){
-		left: 390px;
+		left: 42%;
 		top:    0px;
-		border: 2px dashed #c00; /* barcelona */
+		border: 2px dashed #c00;
 
 	}
 	section:nth-child(9){
-		left: 400px;
+		left: 55%;
 		top:   20px;
 		border: 2px dashed #ff0;
 	}
 	section:nth-child(10){
-		left: 450px;
+		left: 80%;
 		top:   85px;
 		border: 2px dashed #39f;
 	}
-	/* .loaded section.leadPhoto{
-		left: 400px;
+	.loaded section.leadPhoto{
+		left: 48%;
 		top: 80px;
-	} */
+	}
 }
-
 /* For computer sized devices */
 @media screen and (min-width: 1025px){
 	section{width: 250px;}
 	section.vert{width: 180px;}
 
 	section:first-child{
-		left: 0px;
+		left: 0;
 		top: 70px;
 	}
 	section:nth-child(2){
-		left: 90px;
+		left: 10%;
 		top: 0px;
 	}
 	section:nth-child(3){
-		left: 10px;
+		left: 4%;
 		top: 80px;
 	}
 	section:nth-child(4){
-		left: 400px;
+		left: 40%;
 		top:   55px;
 	}
 	section:nth-child(5){
-		left: 250px;
+		left: 25%;
 		top:   25px;
 	}
 	section:nth-child(6){
-		left: 600px;
+		left: 60%;
 		top:    0px;
 	}
 	section:nth-child(7){
-		left: 605px;
+		left: 62%;
 		top:   90px;
 	}
 	section:nth-child(8){
-		left: 700px;
+		left: 70%;
 		top: 0px;
 	}
 	section:nth-child(9){
-		left: 750px;
+		left: 75%;
 		top: 30px;
 	}
 	section:nth-child(10){
-		left: 450px;
+		left: 40%;
 		top: 105px;
 	}
 
 	section.leadPhoto{
-		left: 1000px;
+		left: 49%;
 		top: 100px;
 	}
 }

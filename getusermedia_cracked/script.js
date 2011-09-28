@@ -1,13 +1,44 @@
 /*
- * Version 0.1
- * Really messy, totally unoptimised and very incomplete.
+ * Version 0.3
+ * Getting there but still buggy and unoptimised.
  * TODO:
- * Crop off the video stream correctly.
+ * Crop off the video stream correctly. DONE
  * Centre the webcam stream in the canvas. (22nd Sep: Not working in Android labs build)
- * Break glass where the canvas was clicked/touched.
- * Use mask to create irregular shapes of shard.
+ * Divide glass into random parts. DONE
+ * Break glass where the canvas was clicked/touched. DONE
+ * Get the damn thing working on mobile. DONE
+ * Add movement detection (device orientation).
  */
+ 
+/* COMMON FUNCTIONS */
+// Get random number between a range
+// Code from: http://roshanbh.com.np/2008/09/get-random-number-range-two-numbers-javascript.html
+function randomXToY(minVal, maxVal, floatVal) {
+    var randVal = minVal + (Math.random() * (maxVal - minVal));
+    return typeof floatVal === 'undefined' ? Math.round(randVal) : randVal.toFixed(floatVal);
+}
 
+// Returns an array containing the x and y coordinates of an event (e.g. mouse click)
+// Code from: http://answers.oreilly.com/topic/1929-how-to-use-the-canvas-and-draw-elements-in-html5/
+function getCoords(event) {
+    var x, y;
+    if (event.touches) {
+        x = event.touches[0].pageX;
+        y = event.touches[0].pageY;
+    } else if (event.pageX || event.pageY) { 
+        x = event.pageX;
+        y = event.pageY;
+        
+    } else { 
+        x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
+        y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
+    }
+    x -= canvas1.offsetLeft;
+    y -= canvas1.offsetTop;
+    return [x, y];
+}
+
+/* MAIN SCRIPT */
 document.addEventListener('DOMContentLoaded', function(){
     var shards = [];
     var coords = [];
@@ -15,12 +46,12 @@ document.addEventListener('DOMContentLoaded', function(){
     var isCracked = false;
     var RAD = Math.PI/180;
     var SUPPORTS_TOUCH = 'createTouch' in document;
+    var crack_coords = [120, 200];
+    
+	var windowwidth = window.innerWidth;
+	var windowheight = window.innerHeight;
     
     var mouse_down = (SUPPORTS_TOUCH ? 'ontouchstart' : 'onmousedown');
-    
-    document[mouse_down] = function(event) {
-        doCrack(event);
-    };
     
     // Shard constructor
     function Shard() {
@@ -29,7 +60,10 @@ document.addEventListener('DOMContentLoaded', function(){
         this.currentX = 0;
         this.currentY = 0;
         this.rotation = 0;
-        this.force = 0;
+        this.corner1 = crack_coords; // Make this an empty array
+        this.corner2 = [];
+        this.corner3 = [];
+        //this.force = 0;
         //this.z = 0;
         this.moveX= 0;
         this.moveY= 0;
@@ -39,119 +73,94 @@ document.addEventListener('DOMContentLoaded', function(){
         this.videoY = 0;
     }
     
-    function createShards() {
+    function createShards(coords) {
         var offsetX = 0;
         var offsetY = 0;
         var y = 0;
         var x = 0;
-        for (var i = 0; i < 3; i++) {
+        var shard_total = 100;
+        var shard_num = 0;
+        var all_sides = false;
+        var step;
+        
+        do {
             var shard = new Shard();
-            /*
-            shard.videoX = x;
-            shard.videoY = y;
-            shard.originX = offsetX + x;
-            shard.originY = offsetY + y;
-            shard.currentX = shard.originX;
-            shard.currentY = shard.originY;
-            */
+            shard.corner1 = coords;
+            
+            step = randomXToY(100, 300);
+            
+            if (x <= windowwidth && y <= 0) {
+                // Move right
+				shard.corner2 = [x, y];
+				x += step;
+				shard.corner3 = [x, y];
+            } else if (x >= windowwidth && y <= windowheight) {
+                // Move down
+				shard.corner2 = [x, y];
+				y += step;
+				shard.corner3 = [x, y];
+                // Make sure we've gone round the entire window
+                if (all_sides) {
+                    break;
+                }
+            } else if (x >= 0 && y >= windowheight) {
+                // Move left
+				shard.corner2 = [x, y];
+				x -= step;
+				shard.corner3 = [x, y];
+            } else if (x <= 0 && y >= 0) {
+                // Move up
+				shard.corner2 = [x, y];
+				y -= step;
+				shard.corner3 = [x, y];
+                all_sides = true;
+            }
+            
             shard.videoX = x;
             shard.originX = x;
             shard.currentX = x;
-            shard.rotation = Math.random(0.5) - 0.5;
+            shard.rotation = randomXToY(-0.05, 0.05, 3);
             shards.push(shard);
-            x += 100;
-            y += 100;
-        }
-        //shards[0].
+            
+            shard_num++;
+        } while (shard_num < shard_total);        
     }
-
-       
 
     function doDraw(v, c1, c2, sx, sy, sw, sh, dx, dy, dw, dh) {
         if (v.paused || v.ended) return false;
         // Draw video onto first canvas
         c1.drawImage(v, sx, sy, sw, sh, dx, dy, dw, dh);
         
-        // Create shards from first canvas
-        for (var i = 0, len = shards.length; i < len; i++) {
-            var shard = shards[i];
-            
-            if (shard.force > 0.0001) {
-                //expand
-                /*
-                shard.moveX *= shard.force;
-                shard.moveY *= shard.force;
-                shard.moveRotation *= shard.force;
-                shard.currentX += shard.moveX;
-                shard.currentY += shard.moveY;
-                shard.rotation += shard.moveRotation;
-                shard.rotation %= 360;
-                shard.force *= 0.9;
-                if (shard.currentX <= 0 || shard.currentX >= 100) {
-                    shard.moveX *= -1;
-                }
-                if (shard.currentY <= 0 || shard.currentY >= 50) {
-                    shard.moveY *= -1;
-                }
-                */
-            } else if (shard.rotation != 0 || shard.currentX != shard.originX || shard.currentY != shard.originY) {
-                //contract
-                /*
-                var diffx = (shard.originX-shard.currentX)*0.2;
-                var diffy = (shard.originY-shard.currentY)*0.2;
-                var diffRot = (0-shard.rotation)*0.2;
+        var len = shards.length;
+        if (len > 0) {
+            // Create shards from first canvas
+            for (var i = 0; i < len; i++) {
+                var shard = shards[i];
+                            
+                // Draw shard onto second canvas
+                c2.save();
                 
-                if (Math.abs(diffx) < 0.5) {
-                    shard.currentX = shard.originX;
-                }else{
-                    shard.currentX += diffx;
-                }
-                if (Math.abs(diffy) < 0.5) {
-                    shard.currentY = shard.originY;
-                } else {
-                    shard.currentY += diffy;
-                }
-                if (Math.abs(diffRot) < 0.5) {
-                    shard.rotation = 0;
-                } else {
-                    shard.rotation += diffRot;
-                }
-                */
-            } else {
-                shard.force = 0;
+                // Clip a triangular shape of the canvas
+                c2.beginPath();
+                c2.moveTo(shard.corner1[0], shard.corner1[1]);
+                c2.lineTo(shard.corner2[0], shard.corner2[1]);
+                c2.lineTo(shard.corner3[0], shard.corner3[1]);
+                c2.lineTo(shard.corner1[0], shard.corner1[1]);
+                c2.stroke();
+                c2.closePath();
+                c2.clip();
+                
+                // Slightly rotate each shard
+                c2.rotate(shard.rotation);
+                
+                c2.drawImage(c1.canvas, sx, sy, dw, dh, dx, dy, dw, dh);
+                c2.restore();
             }
-            
-            // Draw shard onto second canvas
-            c2.save();
-            //c2.translate(35, -50);
-            //c2.rotate(0.1);
-            c2.translate(shard.currentX, shard.currentY);
-            //c2.rotate(shard.rotation * RAD);
-            c2.rotate(shard.rotation);
-            
-            // Clip a triangular shape of the canvas
-            c2.beginPath();
-            c2.moveTo(100, 100);
-            c2.lineTo(300, 100);
-            c2.lineTo(100, 300);
-            c2.lineTo(100, 100);
-            c2.stroke();
-            c2.closePath();
-            c2.clip();
-            
+        } else {
             c2.drawImage(c1.canvas, sx, sy, dw, dh, dx, dy, dw, dh);
-            c2.restore();
-            /*
-            draw.save();
-            draw.translate(tile.currentX, tile.currentY);
-            draw.rotate(tile.rotation*RAD);
-            draw.drawImage(copycanvas, tile.videoX, tile.videoY, TILE_WIDTH, TILE_HEIGHT, -TILE_CENTER_WIDTH, -TILE_CENTER_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
-            draw.restore();
-            */
         }
     
         setTimeout(doDraw, 40, v, c1, c2, sx, sy, sw, sh, dx, dy, dw, dh); // Draw at 25 fps (every 40 milliseconds)
-        //opera.postError('width: ' + c1.canvas.width + ' : height: ' + c1.canvas.height);
     }
     
     var video = document.querySelector('video');;
@@ -160,57 +169,41 @@ document.addEventListener('DOMContentLoaded', function(){
     var canvas2 = document.getElementById('canvas2');
     var context2 = canvas2.getContext('2d');
     
-    createShards();
-    
-    function doCrack() {
+    function doCrack(event) {
         if (!isCracked) {
-            coords = getCoords(event);
-            
-			context2.clearRect(0, 0, context2.width, context2.height);
-            //createShards();
-            //opera.postError(coords);
-            
-            canvas1.style.display = 'none';
-            canvas2.style.display = 'block';
+            //canvas1.style.display = 'none';
+            //canvas2.style.display = 'block';
             isCracked = true;
         } else {
-			shards = [];
-            canvas1.style.display = 'block';
-            canvas2.style.display = 'none';
+            //canvas1.style.display = 'block';
+            //canvas2.style.display = 'none';
             isCracked = false;
         }
     }
     
+    document[mouse_down] = function(event) {
+        // Get coords
+        var coords = getCoords(event);
+        //alert(coords);
+        //coords = [100, 100];
+        
+        if (!isCracked) {
+            // Create shards if necessary
+            createShards(coords);
+        } else {
+            // Else clear the shards
+            shards = [];
+        }
+        
+        // Hide/show canvases
+        doCrack();
+    };
     
-    //document.addEventListener('click', doCrack, false);
-    
-    //createShards();
-    
-    // Returns an array containing the x and y coordinates of an event (e.g. mouse click)
-    // Code from: http://answers.oreilly.com/topic/1929-how-to-use-the-canvas-and-draw-elements-in-html5/
-    function getCoords(event) {
-        var x, y;
-        if (event.pageX || event.pageY) { 
-            x = event.pageX;
-            y = event.pageY;
-        } else { 
-            x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
-            y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
-        } 
-        x -= canvas1.offsetLeft;
-        y -= canvas1.offsetTop;
-        return [x, y];
-    }
-    
-    
-    //canvas1.addEventListener('click', getCoords, false);
 
 
-    video.addEventListener('play', function(){
+    video.addEventListener('play', function() {
         // Calculate video and window height.
         // Note that final video size will always be greater than or equal to window size.
-        var windowwidth = window.innerWidth;
-        var windowheight = window.innerHeight;
         
         canvas1.width = windowwidth;
         canvas1.height = windowheight;
@@ -244,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
     if (navigator.getUserMedia) {
-        navigator.getUserMedia('video user', successCallback, errorCallback);
+        navigator.getUserMedia('video', successCallback, errorCallback);
         function successCallback(stream) {
             video.src = stream;
         }

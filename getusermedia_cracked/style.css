@@ -7,12 +7,16 @@ canvas {
     xborder:solid 1px #333;
     xheight:200px;
     xwidth:300px;
+    xposition:absolute;
+    cursor:crosshair;
 }
 #canvas1 {
-    display:block;
+    display:none;
+    xopacity:0.5;
 }
 #canvas2 {
-    display:none;
+    display:block;
+    xopacity:0.5;
 }
 video {
     display:none;

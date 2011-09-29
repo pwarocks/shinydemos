@@ -54,6 +54,17 @@ form > fieldset > legend{font-size: 22px; padding-top: .5em; cursor:pointer}
 form > fieldset legend img{
 	-o-transform: rotate(0deg);
 	-o-transition: -o-transform 500ms linear;
+
+	-webkit-transform: rotate(0deg);
+	-webkit-transition: -webkit-transform 500ms linear;
+
+	-moz-transform: rotate(0deg);
+	-moz-transition: -moz-transform 500ms linear;
+
+	-ms-transform: rotate(0deg);
+	-ms-transition: -ms-transform 500ms linear;
+
+
 	vertical-align: middle;
 }
 form button{margin: 1em; display:block;}
@@ -232,6 +243,9 @@ form > fieldset.active div{
 
 form > fieldset.active legend img{
 	-o-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
 }
 
 

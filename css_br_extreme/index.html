@@ -28,7 +28,7 @@
 	<form>
 		<fieldset id="basic" class="active">
 
-			<legend>Basic options</legend>
+			<legend>Basic options <img src="triangle.svg" alt="Click this label open or close these controls" width="10" height="10"></legend>
 
 			<!-- top left controls -->
 			<div>
@@ -45,7 +45,7 @@
 					<input type="range" id="topleftB" name="topleftB" min="0" max="300" value="0">
 				</p>
 
-				<p>
+				<p class="samevalues">
 					<label for="linktopleft" class="inline">Link values</label>
 					<input type="checkbox" id="linktopleft" name="linktopleft" checked>
 				</p>
@@ -64,7 +64,7 @@
 					<input type="range" id="toprightB" name="toprightB" min="0" max="300" value="0">
 				</p>
 
-				<p>
+				<p class="samevalues">
 					<label for="linktopright" class="inline">Link values</label>
 					<input type="checkbox" id="linktopright" name="linktopright" checked>
 				</p>
@@ -84,7 +84,7 @@
 					<input type="range" id="bottomrightB" name="bottomrightB" min="0" max="300" value="0">
 				</p>
 
-				<p>
+				<p class="samevalues">
 					<label for="linkbottomright" class="inline">Link values</label>
 					<input type="checkbox" id="linkbottomright" name="linkbottomright" checked>
 				</p>
@@ -103,7 +103,7 @@
 					<input type="range" id="bottomleftB" name="bottomleftB" min="0" max="300" value="0">
 				</p>
 
-				<p>
+				<p class="samevalues">
 					<label for="linkbottomleft" class="inline">Link values</label>
 					<input type="checkbox" id="linkbottomleft" name="linkbottomleft" checked>
 				</p>
@@ -111,8 +111,8 @@
 			</div>
 		</fieldset> <!-- end basic -->
 
-		<fieldset id="advanced">
-			<legend>Oh you fancy, huh?</legend>
+		<fieldset id="advanced" class="active">
+			<legend>Oh you fancy, huh? <img src="triangle.svg" alt="Click this label open or close these controls" width="10" height="10"></legend>
 			<div>
 			<fieldset id="setborderstyle">
 				<legend>border-style</legend>
@@ -210,6 +210,7 @@
 					<option value="155">Weave</option>
 					<option value="157">Snow flakes</option>
 				</select>
+				<br><span class="credit">Background patterns by <a href="http://www.squidfingers.com/patterns/" target="_blank">Squidfingers</a>.</span>
 			</fieldset>
 			</div>
 	</fieldset>
@@ -242,7 +243,7 @@
 	</div>
 
 <footer>
-	<p>Background patterns by <a href="http://www.squidfingers.com/patterns/" target="_blank">Squidfingers</a>.<br>Font is <a href="http://www.fontsquirrel.com/fonts/maiden-orange" target="_blank">Maiden Orange</a>.</p>
+	<p class="credit">Title font is <a href="http://www.fontsquirrel.com/fonts/maiden-orange" target="_blank">Maiden Orange</a>.</p>
 </footer>
 </div><!-- end wrap -->
 
@@ -257,7 +258,7 @@
 	<section id="unsupported" class="hide">
 		<h1>Get a better browser!</h1>
 		<p>Your browser doesn't support the CSS3 <a href="http://www.w3.org/TR/css3-background/"><code>border-radius</code> property</a> making this page pretty useless.</p>
-		<p>Please download and install the latest version of <a href="http://opera.com/">Opera</a>.<br>(The latest versions of <a href="http://www.google.com/chrome/">Chrome</a>, <a href="http://getfirefox.com/">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">Internet Explorer</a> will also work.) </p>
+		<p>Please download and install the latest version of <a href="http://www.opera.com/download/">Opera</a>.<br>(The latest versions of <a href="http://www.google.com/chrome/">Chrome</a>, <a href="http://getfirefox.com/">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">Internet Explorer</a> will also work.) </p>
 	</section>
 
 </div>

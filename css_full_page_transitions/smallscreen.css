@@ -35,14 +35,11 @@
 	section img{margin: 0 0 2px;}
 
 	section.leadPhoto{
-	z-index: 9999;
-	cursor: default;
-
-	     -o-transform: scale(1.8);
-	-webkit-transform: scale(1.8);
-       -moz-transform: scale(1.8);
-        -ms-transform: scale(1.8);
-            transform: scale(1.8);
+	     -o-transform: scale(1.4);
+	-webkit-transform: scale(1.4);
+       -moz-transform: scale(1.4);
+        -ms-transform: scale(1.4);
+            transform: scale(1.4);
 	}
 	footer{padding-top: 1em;}
 	footer img{display:block;clear:both;float:none}

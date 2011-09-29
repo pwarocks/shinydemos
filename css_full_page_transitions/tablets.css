@@ -1,0 +1,100 @@
+/* For medium-sized devices. Larger than phones. Smaller than net books and desktops */
+
+@media screen and (min-width: 481px) and (max-width: 768px){
+	h1{
+		font-size:3em;
+		padding: 10px 10px 0 10px;
+	}
+	header > p{padding: 0 10px;}
+	#photostack{
+		top:0;
+		position:relative;
+		margin: 3em auto 0 auto;
+		background:#03f;
+		min-height: 400px;
+	}
+	section{
+		position: absolute;
+		background: #fff;
+		margin: 10px auto;
+		width: 250px;
+	}
+	section.vert{width: 188px;}
+	section p{border-width: 8px;}
+	section:nth-child(odd){
+		     -o-transform: rotate(-5deg);
+	   	   -moz-transform: rotate(-5deg);
+		-webkit-transform: rotate(-5deg);
+		 -khtml-transform: rotate(-5deg);
+		    -ms-transform: rotate(-5deg);
+		        transform: rotate(-5deg);
+	}
+	section:nth-child(even){
+		     -o-transform: rotate(5deg);
+	   	   -moz-transform: rotate(5deg);
+		-webkit-transform: rotate(5deg);
+		 -khtml-transform: rotate(5deg);
+		    -ms-transform: rotate(5deg);
+		        transform: rotate(5deg);
+	}
+	section:first-child{
+		left: 0;
+		top: 70px;
+	}
+	section:nth-child(2){
+		left: 10%;
+		top: 0px;
+	}
+	section:nth-child(3){
+		left: 4%;
+		top: 80px;
+	}
+	section:nth-child(4){
+		left: 30%;
+		top:  200px;
+	}
+	section:nth-child(5){
+		left: 25%;
+		top:  25px;
+	}
+	section:nth-child(6){
+		left: 60%;
+		top:  0px;
+	}
+	section:nth-child(7){
+		left: 62%;
+		top:  120px;
+	}
+	section:nth-child(8){
+		left: 60%;
+		top: 180px;
+	}
+	section:nth-child(9){
+		left: 60%;
+		top: 200px;
+	}
+	section:nth-child(10){
+		left: 40%;
+		top: 105px;
+	}
+
+	section:hover{
+	     -o-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+       -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+	          z-index: 9998;
+	}
+
+	section.leadPhoto{
+		left: 49%;
+		top: 100px;
+	     -o-transform: scale(1.8);
+	-webkit-transform: scale(1.8);
+       -moz-transform: scale(1.8);
+        -ms-transform: scale(1.8);
+            transform: scale(1.8);
+	}
+	footer{ position:absolute;}
+}

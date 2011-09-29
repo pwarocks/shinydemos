@@ -12,7 +12,7 @@
 		white-space: nowrap;
 	}
 
-	header > p{padding: 0px 5px;}
+	header > p{padding: 0 5px;}
 
 	#photostack{
 		width:100%;
@@ -37,7 +37,6 @@
 	section.leadPhoto{
 	z-index: 9999;
 	cursor: default;
-	box-shadow: 0 0 30px rgba(0,0,0,.7);
 
 	     -o-transform: scale(1.8);
 	-webkit-transform: scale(1.8);

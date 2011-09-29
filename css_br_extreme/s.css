@@ -64,7 +64,6 @@ form > fieldset legend img{
 	-ms-transform: rotate(0deg);
 	-ms-transition: -ms-transform 500ms linear;
 
-
 	vertical-align: middle;
 }
 form button{margin: 1em; display:block;}

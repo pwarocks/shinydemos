@@ -1,0 +1,50 @@
+/* For phone-sized devices */
+
+@media screen and (min-width: 1px) and (max-width: 480px){
+	body{font-size: .8em;}
+
+	#container{margin: 0 .2em;}
+	#container.loading{top: -5888px;}
+
+	h1{
+		font-size: 1.9em;
+		padding: 5px 5px 0 5px;
+		white-space: nowrap;
+	}
+
+	header > p{padding: 0px 5px;}
+
+	#photostack{
+		width:100%;
+		margin: 2em auto 0 auto;
+	}
+
+	section{
+		position: relative;
+		background: #fff;
+		margin: 10px auto;
+		width: 150px;
+		font-size: .5em;
+		-o-transform-origin: 50% 50%;
+	}
+
+	section p{
+		line-height: 1.1;
+		border: 5px solid #fff;
+	}
+	section img{margin: 0 0 2px;}
+
+	section.leadPhoto{
+	z-index: 9999;
+	cursor: default;
+	box-shadow: 0 0 30px rgba(0,0,0,.7);
+
+	     -o-transform: scale(1.8);
+	-webkit-transform: scale(1.8);
+       -moz-transform: scale(1.8);
+        -ms-transform: scale(1.8);
+            transform: scale(1.8);
+	}
+	footer{padding-top: 1em;}
+	footer img{display:block;clear:both;float:none}
+}

@@ -92,10 +92,10 @@ section{
         -ms-transform-origin: 100% 100%;
 	        transform-origin: 100% 100%;
 
-	     -o-transition-property: transform, left, top;
-	-webkit-transition-property: transform, left, top;
-       -moz-transition-property: transform, left, top;
-        -ms-transition-property: transform, left, top;
+	     -o-transition-property: -o-transform, left, top;
+	-webkit-transition-property: -webki-transform, left, top;
+       -moz-transition-property: -moz-transform, left, top;
+        -ms-transition-property: -ms-transform, left, top;
             transition-property: transform, left, top;
 }
 

@@ -58,12 +58,9 @@ html {
   font-size: 80%;
 }
 
-p, figcaption {
-  
-}
-
 article[id*=tab] {
-  width: 35em;
+  width: 30em;
+  height: 23em;
   padding: 1em;
   margin: 1em 0 0 3em;
   background: #eee;
@@ -86,6 +83,26 @@ article[id*=tab] {
 article[id*=tab]:target {
   opacity: 1;
   z-index: 5;
+}
+
+article[id*=tab] p {
+  position: absolute;
+ left: 3em;
+ bottom: 1em;
+}
+
+article[id*=tab] video {
+   position: absolute;
+ left: 1.4em;
+ bottom: 5em;
+}
+
+article[id*=tab] p:first-of-type, article[id*=tab] video:first-of-type {
+  left: 17em;
+}
+
+figcaption {
+  padding: 1em 0 0 1em;
 }
 
 ul {
@@ -136,8 +153,10 @@ li a:active {
 }
 
 img {
-  margin-top: 1.5em;
-  
+  width: 12em;
+  height: 12em;
+  border: 1px solid black;
+  background-color: #ccc;
 }
 
 #wrapper {
@@ -149,7 +168,8 @@ img {
 
 aside {
   margin-top: 1em;
-  width: 20em;
+  width: 17em;
+  height: 23em;
   background: #eee;
   box-shadow: inset 5px 5px 10px #ddd;
  -webkit-box-shadow: inset 5px 5px 10px #ddd;
@@ -163,7 +183,8 @@ aside {
 
 article, aside {
   font-family: VollkornRegular;
-  line-height: 1.05em;
+  line-height: 1.15em;
+  font-size: 1.2em;
 }
 
 li {
@@ -201,12 +222,6 @@ aside p {
 /* object-fit: none; and object-position demo styling */
 
 #tab1 img {
-  width: 10em;
-  height: 10em;
-  position: absolute;
-  left: 25em;
-  border: 1px solid black;
-  background-color: #ccc;
  -ms-object-fit: none;
  -moz-object-fit: none;
  -o-object-fit: none;
@@ -225,16 +240,6 @@ aside p {
  transition: 1s all;
 }
 
-#tab1 figure {
-  width: 20em;
-  height: 10em;
-  margin-bottom: 1em;
-}
-
-#tab1 figcaption {
-  padding: 1em 0 0 1em;
-}
-
 #tab1 a:focus img, #tab1 a:hover img {   
   background-color: #E63993;
   width: 20em;
@@ -244,30 +249,12 @@ aside p {
 
 /* object-fit: fill; demo styling */
 
-#tab2 video {
-  position: absolute;
-  left: 19em;
-}
-
-#tab2 figure {
-  width: 17em;
-  height: 10em;
-  margin-bottom: 1em;
-}
-
-#tab2 figcaption {
-  padding: 1em 0 0 1em;
-}
-
-#no-object-fit {
+video {
   border: 1px solid black;
-  background-color: #ccc;
-  margin-bottom: 1em;
+  background-color: #ccc; 
 }
 
 #object-fit {
-  border: 1px solid black;
-  background-color: #ccc;
  -ms-object-fit: fill;
  -moz-object-fit: fill;
  -o-object-fit: fill;
@@ -278,12 +265,6 @@ aside p {
 /* object-fit: contain; */
 
 #tab3 img {
-  width: 10em;
-  height: 10em;
-  position: absolute;
-  left: 25em;
-  border: 1px solid black;
-  background-color: #ccc;
  overflow: hidden;
 }
 
@@ -294,25 +275,9 @@ aside p {
  -webkit-object-fit: contain;
 }
 
-#tab3 figure {
-  width: 20em;
-  height: 10em;
-  margin-bottom: 1em;
-}
-
-#tab3 figcaption {
-  padding: 1em 0 0 1em;
-}
-
 /* object-fit: cover; */
 
 #tab4 img {
-  width: 10em;
-  height: 10em;
-  position: absolute;
-  left: 25em;
-  border: 1px solid black;
-  background-color: #ccc;
  overflow: hidden;
 }
 
@@ -322,16 +287,6 @@ aside p {
  -o-object-fit: cover;
  -webkit-object-fit: cover;
  object-fit: cover;
-}
-
-#tab4 figure {
-  width: 20em;
-  height: 10em;
-  margin-bottom: 1em;
-}
-
-#tab4 figcaption {
-  padding: 1em 0 0 1em;
 }
 
 </style>
@@ -364,13 +319,9 @@ aside p {
 <h2>object-fit: none; and object-position</h2>
 
 <figure>
-<a href="photo3.jpg"><img src="photo3.jpg" alt="Kirsty and Elva enjoying a ride in Luna Park, Sydney"></a>
-<figcaption>These pictures have <code>object-fit: none;</code> applied to them, which causes the images to ignore the constraints of the <code>&lt;img&gt;</code> tag and spill out at their original size. Here we've hidden the parts of the image that fall outside with <code>overflow: hidden;</code>. We've also used <code>object-position: center;</code> to make the image display from the center rather than the top left.</figcaption>
-</figure>
-
-<figure>
-<a href="photo4.jpg"><img src="photo4.jpg" alt="Gabriel standing just outside Luna Park, Sydney"></a>
-<figcaption>We've then applied a transition to the images so that when they are hovered or focused, they grow in size. The <code>object-fit: none;</code>/<code>overflow: hidden;</code> effect alters as the image grows, creating an interesting preview effect.</figcaption>
+<figcaption><code>object-fit: none;</code> makes the images spill out of the <code>&lt;img&gt;</code> tag; the spill is hidden with <code>overflow: hidden;</code>. <code>object-position: center;</code> makes the image display from the centre rather than the top left. A transition is then used to create the interesting preview effect.</figcaption>
+<p><a href="photo3.jpg"><img src="photo3.jpg" alt="Kirsty and Elva enjoying a ride in Luna Park, Sydney"></a></p>
+<p><a href="photo4.jpg"><img src="photo4.jpg" alt="Gabriel standing just outside Luna Park, Sydney"></a></p>
 </figure>
 
 </article>
@@ -380,21 +331,19 @@ aside p {
 <h2>object-fit: fill;</h2>
 
 <figure>
+
+<figcaption><code>object-fit: fill;</code> forces the content of the replaced element to adopt the aspect ratio of the element itself, even if it would not normally do so, eg with videos. This first <code>&lt;video&gt;</code> element shows a video with a broken aspect ratio - not great. This second <code>&lt;video&gt;</code> element has the aspect ratio fixed with <code>object-fit: fill;</code></figcaption>
 <video autoplay loop width="213" height="121" id="no-object-fit">
   <source src="windowsill.mp4" type="video/mp4">
   <source src="windowsill.webm" type="video/webm">
 	<!-- proper fallback content goes here -->
 </video>
-<figcaption><code>object-fit: fill;</code> forces the content of the replaced element to adopt the aspect ratio of the element itself, even if it would not normally do so, eg with videos. This first <code>&lt;video&gt;</code> element shows a video with a broken aspect ratio - not great.</figcaption>
-</figure>
-
-<figure>
 <video autoplay loop width="213" height="121" id="object-fit">
   <source src="windowsill.mp4" type="video/mp4">
   <source src="windowsill.webm" type="video/webm">
 	<!-- proper fallback content goes here -->
 </video>
-<figcaption>This second <code>&lt;video&gt;</code> element is identical to the first, except that it has <code>object-fit: fill;</code> applied to it - this causes the video to adopt the aspect ratio of the <code>&lt;video&gt;</code> element - much better.</figcaption>
+
 </figure>
 
 </article>
@@ -404,14 +353,10 @@ aside p {
 <h2>object-fit: contain;</h2>
 
 <figure>
-<a href="photo2.jpg"><img src="photo2.jpg" alt="Elva eating really messily in Manly near Sydney" id="noobjectcontain"></a>
-<figcaption><code>object-fit: contain;</code> applied to a replaced element alters the longest dimension of the content so that it is the same size as its containing element's corresponding dimension. The other dimension is altered proportionately so that the content maintains its aspect ratio, and shrinks to fit inside the replaced element.</figcaption>
+<figcaption><code>object-fit: contain;</code> alters the longest dimension of the content so that it is the same size as its containing element's corresponding dimension. Aspect ratio is maintained so the image fits inside. Here the aspect ratio is broken by the width/height settings (left), then fixed with <code>object-fit: contain;</code> (right).</figcaption>
 </figure>
-
-<figure>
-<a href="photo2.jpg"><img src="photo2.jpg" alt="Elva eating really messily in Manly near Sydney" id="objectcontain"></a>
-<figcaption>So in this case, the first <code>&lt;img&gt;</code> is set to different dimensions than the original image, causing it to stretch and look horrible. the second <code>&lt;img&gt;</code> has <code>object-fit: contain;</code> applied, forcing its content to main aspect ratio and shrink so it fits inside.</figcaption>
-</figure>
+<p><a href="photo2.jpg"><img src="photo2.jpg" alt="Elva eating really messily in Manly near Sydney" id="objectcontain"></a></p>
+<p><a href="photo2.jpg"><img src="photo2.jpg" alt="Elva eating really messily in Manly near Sydney" id="noobjectcontain"></a></p>
 
 </article>
 
@@ -420,13 +365,9 @@ aside p {
 <h2>object-fit: cover;</h2>
 
 <figure>
-<a href="photo1.jpg"><img src="photo1.jpg" alt="Gabriel in Sydney Harbour" id="noobjectcover"></a>
-<figcaption><code>object-fit: cover;</code> applied to a replaced element alters the shortest dimension of the content so that it is the same size as its containing element's corresponding dimension. The other dimension is altered proportionately so that the content maintains its aspect ratio, and the content grows to completely envelope the replaced element.</figcaption>
-</figure>
-
-<figure>
-<a href="photo1.jpg"><img src="photo1.jpg" alt="Gabriel in Sydney Harbour" id="objectcover"></a>
-<figcaption>So in this case, the first <code>&lt;img&gt;</code> is set to different dimensions than the original image, causing it to stretch and look horrible. the second <code>&lt;img&gt;</code> has <code>object-fit: cover;</code> applied, forcing its content to main aspect ratio and grow so it covers the containing element. <code>overflow: hidden;</code> is then used to hide the overflowing content.</figcaption>
+<figcaption><code>object-fit: cover;</code> alters the shortest dimension of the content so that it is the same size as its containing element's corresponding dimension. Aspect ratio is maintained so the image covers its container completely. Here the aspect ratio is broken by the width/height settings (left), then fixed with <code>object-fit: contain;</code>/<code>overflow: hidden;</code> (right).</figcaption>
+<p><a href="photo1.jpg"><img src="photo1.jpg" alt="Gabriel in Sydney Harbour" id="objectcover"></a></p>
+<p><a href="photo1.jpg"><img src="photo1.jpg" alt="Gabriel in Sydney Harbour" id="noobjectcover"></a></p>
 </figure>
 
 </article>

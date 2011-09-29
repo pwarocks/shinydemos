@@ -7,7 +7,8 @@
  * Break glass where the canvas was clicked/touched. DONE
  * Get the damn thing working on mobile. DONE
  * Add movement detection using window.DeviceMotionEvent. (Waiting for decent builds)
- * Possibly have a Terminator-style auto-mend?
+ * Self-heal like the Terminator. DONE
+ * Code clean-up
  */
  
 /* COMMON FUNCTIONS */
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	var windowheight = window.innerHeight;    
     var shards = [];
     var coords = [];
-    var isCracked = false;
+    var MAX_ROTATION = 0.05; // In radians
     var DRAW_SPEED = 1000 / 20; // Draw at 20 fps
     var SUPPORTS_TOUCH = 'createTouch' in document;
     var mouse_down = (SUPPORTS_TOUCH ? 'ontouchstart' : 'onmousedown');
@@ -54,8 +55,13 @@ document.addEventListener('DOMContentLoaded', function(){
     var context1 = canvas1.getContext('2d');
     var canvas2 = document.getElementById('canvas2');
     var context2 = canvas2.getContext('2d');
-    
-    
+    var HEALING_DELAY = 1000; // Milliseconds
+    var HEALING_TIME = 2000; // Milliseconds
+    var opacity = 1;
+    var timer_delay = HEALING_DELAY;
+    var timer_heal = HEALING_TIME;
+    var heal_step = DRAW_SPEED / HEALING_TIME;
+ 
     // Shard constructor
     function Shard() {
         this.rotation = 0;
@@ -68,15 +74,16 @@ document.addEventListener('DOMContentLoaded', function(){
     function createShards(coords) {
         var y = 0;
         var x = 0;
-        var shard_total = 100;
+        var shard_total = 100; // Just in case, limit loop to 100
         var shard_num = 0;
         var all_sides = false;
         var step;
+        var shard;
+        shards = [];
         
         do {
-            var shard = new Shard();
-            shard.corner1 = coords;
-            
+            shard = new Shard();
+            shard.corner1 = coords;            
             step = randomXToY(100, 300);
             
             if (x <= windowwidth && y <= 0) {
@@ -106,25 +113,36 @@ document.addEventListener('DOMContentLoaded', function(){
                 all_sides = true;
             }
             
-            shard.rotation = randomXToY(-0.05, 0.05, 3);
+            shard.rotation = randomXToY(MAX_ROTATION * -1, MAX_ROTATION, 3);
+            shard.rotation_step = shard.rotation * heal_step;
             shards.push(shard);
             
             shard_num++;
         } while (shard_num < shard_total);        
     }
-
+    
     // Draw images on both canvases
     function doDraw(video, ctx1, ctx2, sx, sy, sw, sh, dx, dy, dw, dh) {
         if (video.paused || video.ended) return false;
+        
         // Draw video onto first canvas
         ctx1.drawImage(video, sx, sy, sw, sh, dx, dy, dw, dh);
         
         var len = shards.length;
         if (len > 0) {
+            if (timer_delay > 0) {
+                timer_delay = timer_delay - DRAW_SPEED;
+            } else {
+                opacity = (opacity > heal_step) ? opacity - heal_step : 0;
+                timer_heal = timer_heal - DRAW_SPEED;
+            }
+            
             // Create shards from first canvas
             for (var i = 0; i < len; i++) {
                 var shard = shards[i];
-                var corner1 = shard.corner1; // Slight performance increase
+                // Cache for slight performance increase
+                var corner1 = shard.corner1; 
+                var rotation = shard.rotation;
                             
                 // Draw shard onto second canvas
                 ctx2.save();
@@ -135,15 +153,23 @@ document.addEventListener('DOMContentLoaded', function(){
                 ctx2.lineTo(shard.corner2[0], shard.corner2[1]);
                 ctx2.lineTo(shard.corner3[0], shard.corner3[1]);
                 ctx2.lineTo(corner1[0], corner1[1]);
+                ctx2.lineWidth = 1;
+                ctx2.strokeStyle = 'rgba(30, 30, 30, ' + opacity + ')';
                 ctx2.stroke();
                 ctx2.closePath();
                 ctx2.clip();
                 
                 // Slightly rotate each shard
+                if (timer_heal < HEALING_TIME) {
+                    shard.rotation = (rotation !== 0) ? rotation - shard.rotation_step : 0;
+                }
                 ctx2.rotate(shard.rotation);
                 
                 ctx2.drawImage(ctx1.canvas, sx, sy, dw, dh, dx, dy, dw, dh);
                 ctx2.restore();
+            }
+            if (timer_heal < DRAW_SPEED) {
+                shards = [];
             }
         } else {
             ctx2.drawImage(ctx1.canvas, sx, sy, dw, dh, dx, dy, dw, dh);
@@ -155,18 +181,13 @@ document.addEventListener('DOMContentLoaded', function(){
     // Main function for cracking and fixing the screen
     function doCrack(event) {        
         // Get coords
-        var coords = getCoords(event);
+        var coords = (event) ? getCoords(event) : [];
         
-        // Hide/show canvases
-        if (!isCracked) {
-            // Create shards if necessary
-            createShards(coords);
-            isCracked = true;
-        } else {
-            // Else clear the shards
-            shards = [];
-            isCracked = false;
-        }
+        opacity = 1;
+        createShards(coords);
+        
+        timer_delay = HEALING_DELAY;
+        timer_heal = HEALING_TIME;
     }
     
     document[mouse_down] = doCrack;

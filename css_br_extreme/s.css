@@ -53,17 +53,16 @@ fieldset{border:0; border-radius: 5px;}
 form > fieldset > legend{font-size: 22px; padding-top: .5em; cursor:pointer}
 form > fieldset legend img{
 	-o-transform: rotate(0deg);
-	-o-transition: -o-transform 500ms linear;
+	-o-transition: -o-transform 200ms linear;
 
 	-webkit-transform: rotate(0deg);
-	-webkit-transition: -webkit-transform 500ms linear;
+	-webkit-transition: -webkit-transform 200ms linear;
 
 	-moz-transform: rotate(0deg);
-	-moz-transition: -moz-transform 500ms linear;
+	-moz-transition: -moz-transform 200ms linear;
 
 	-ms-transform: rotate(0deg);
-	-ms-transition: -ms-transform 500ms linear;
-
+	-ms-transition: -ms-transform 200ms linear;
 
 	vertical-align: middle;
 }

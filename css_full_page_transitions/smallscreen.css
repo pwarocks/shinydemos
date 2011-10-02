@@ -1,0 +1,55 @@
+/* For phone-sized devices */
+
+@media screen and (min-width: 1px) and (max-width: 480px){
+	body{font-size: .8em;}
+
+	#container{margin: 0 .2em;}
+	#container.loading{top: -5888px;}
+
+	h1{
+		font-size: 1.9em;
+		padding: 5px 5px 0 5px;
+		white-space: nowrap;
+	}
+
+	header > p{padding: 0 5px;}
+
+	#photostack{
+		width:100%;
+		margin: 2em auto 0 auto;
+	}
+
+	section{
+		position: relative;
+		background: #fff;
+		margin: 10px auto;
+		width: 150px;
+		font-size: .5em;
+		-o-transform-origin: 50% 50%;
+	}
+
+	section:hover{
+	     -o-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+       -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+	          z-index: 9998;
+	}
+
+	section p{
+		line-height: 1.1;
+		border: 5px solid #fff;
+	}
+	section img{margin: 0 0 2px;}
+
+	section.leadPhoto{
+	     -o-transform: scale(1.4);
+	-webkit-transform: scale(1.4);
+       -moz-transform: scale(1.4);
+        -ms-transform: scale(1.4);
+            transform: scale(1.4);
+	}
+	footer{padding-top: 1em;}
+	footer img{display:block;clear:both;float:none}
+}

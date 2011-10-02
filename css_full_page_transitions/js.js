@@ -8,6 +8,7 @@ loadHandler = function(e){
 	 	i,
 	 	len,
 	 	loadHandler,
+	 	loader,
 	 	overlay,
 	 	overlayHandler,
 	 	secs,
@@ -21,30 +22,25 @@ loadHandler = function(e){
 
 	clen       = close.length;
 	len        = secs.length;
+	loader	   = document.querySelector('#loader');
 
-
-	/*
-	  Yeah yeah, it's a browser sniff, but a necessary
-	  one until everything is standardized.
-	*/
+	/* Technique borrowed from Modernizr */
 	transitionEvent = function(){
-		var whichTrans;
-		if( !window.opera ){
-			switch( navigator.userAgent.match(/webkit|gecko|trident/i)[0].toLowerCase() ){
-				case 'webkit':
-					whichTrans = 'webkitTransitionEnd';
-					break;
-				case 'gecko':
-					whichTrans = 'mozTransitionEnd';
-					break;
-				case 'trident':
-					whichTrans = 'msTransitionEnd';
-					break;
-			}
-		} else{
-			whichTrans = 'oTransitionEnd';
+		var t, transitions, el = container;
+
+		transitions = {
+			'transition':'transitionEnd',
+			'OTransition':'oTransitionEnd',
+			'MSTransition':'msTransitionEnd',
+			'MozTransition':'transitionend',
+			'WebkitTransition':'webkitTransitionEnd'
 		}
-		return whichTrans;
+
+		for(t in transitions){
+			if( el.style[t] !== undefined ){
+				return transitions[t];
+			}
+		}
 	}
 
 	clickHandler = function(e){
@@ -60,9 +56,13 @@ loadHandler = function(e){
 
 		e.currentTarget.addEventListener(trans, function(e){
 			if( document.querySelector('.leadPhoto') != null ){
+
 				hasClassList ? overlay.classList.remove('hide') : overlay.setAttribute('class','');
+
 			} else{}
 		}, false);
+
+
 	}
 
 	closeHandler = function(e){
@@ -91,15 +91,19 @@ loadHandler = function(e){
 		secs[i].addEventListener('click', clickHandler, false)
 	}
 
-	// remove the loading class.
+	// remove the loading class and hide the loader.
 	if( hasClassList ){
 		container.classList.remove('loading');
 		container.classList.add('loaded');
+		loader.classList.add('hide');
+
 	} else {
-		container.setAttribute('class',container.className.replace(/loading/,'loaded') );
+		container.className = container.className.replace(/loading/,'loaded');
+		loader.className    += 'hide';
 	}
 
 	overlay.addEventListener('click',closeHandler,false);
 }
 
 window.addEventListener('load',loadHandler,false);
+

@@ -15,7 +15,9 @@
       audio = new Audio('media/click.ogg'),
       button = doc.querySelector('button'),
       container = doc.getElementById('container'),
+      showemail = doc.getElementById('emailme'),
       VIDEO_WIDTH, VIDEO_HEIGHT, flash,
+      form = doc.querySelector('form');
       snaps = [
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 6, 150, 93.75);},
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 105, 150, 93.75);},
@@ -26,10 +28,10 @@
   var canvasPrep = (function(){
     photos.fillStyle = '#fff';
     photos.lineCap = 'square';
-    photos.fillRect(0,0,160,480);
+    photos.fillRect(0,0,160,402);
     photos.lineWidth = 2;
     photos.strokeStyle = '#515151';
-    photos.strokeRect(0,0,160,480)
+    photos.strokeRect(0,0,160,402);
     photos.lineWidth = 1;
     photos.fillStyle = '#ccc';
     photos.fillRect(5, 6, 150, 93.75);
@@ -56,6 +58,9 @@
     
       if (++i == 4){
         clearInterval(id);
+        setTimeout(function(){
+          showemail.className = '';
+        }, 500);
       }
     }, interval);
   };
@@ -65,7 +70,7 @@
     flash.id = 'flash';
     flash.className = 'hide';
     container.appendChild(flash);
-  }())
+  }());
   
   var showFlash = function(){
     flash.className = '';
@@ -100,6 +105,15 @@
     }, 1200);
   };
   
+  var showEmailForm = function(){
+    emile(container, 'opacity: 0', {duration:250, after: function(){
+      container.parentNode.removeChild(container);
+      showemail.parentNode.removeChild(showemail);
+      snapshots.className = 'left';
+      form.parentNode.className = '';
+    }});
+  };
+  
   var init = (function(){
     navigator.getUserMedia ? 
       navigator.getUserMedia('video', function(stream){
@@ -109,6 +123,12 @@
         }; 
       }, fallback) : fallback();
   }());
+  
+  showemail.onclick = showEmailForm;
+  
+  form.onsubmit = function(){
+    alert('AJAX SUBMISSION TO PHP SCRIPT!!!!');
+  };
   
   button.onclick = function(){
     this.className = 'hide';

@@ -28,13 +28,13 @@ canvas {
   right:0;
 }
 
-.hide {
-  display:none !important;
-}
-
 .left {
   -o-transition: right .4s ease-out 0s;-moz-transition: right .4s ease-out 0s;-ms-transition: right .4s ease-out 0s;-webkit-transition: right .4s ease-out 0s;transition: right .4s ease-out 0s;
   right: 640px;
+}
+
+.hidden {
+  display:none !important;
 }
 
 #flash {
@@ -87,5 +87,3 @@ canvas {
 #form {
   margin-left:200px;
 }
-
-.hidden {display:none;}

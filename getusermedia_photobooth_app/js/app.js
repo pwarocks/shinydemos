@@ -68,7 +68,7 @@
   var prepFlash = (function(){
     flash = doc.createElement('div');
     flash.id = 'flash';
-    flash.className = 'hide';
+    flash.className = 'hidden';
     container.appendChild(flash);
   }());
   
@@ -76,7 +76,7 @@
     flash.className = '';
     emile(flash, 'opacity:0', {duration:250, after: function(){
       flash.style.opacity = .6;
-      flash.className = 'hide';
+      flash.className = 'hidden';
     }});
   };
 
@@ -89,7 +89,7 @@
   };
   
   var startButton = function(){
-    prompt.classList.remove('hide');
+    prompt.className = '';
     setTimeout(function(){
       prompt.textContent = "2";
       setTimeout(function(){
@@ -131,7 +131,7 @@
   };
   
   button.onclick = function(){
-    this.className = 'hide';
+    this.className = 'hidden';
     startButton();
   };
 }(window, document));

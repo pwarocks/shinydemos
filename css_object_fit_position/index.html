@@ -54,7 +54,7 @@ header, footer, section, article, nav, aside, hgroup, figure, figcaption, video 
 /* General styling and tabs */
 
 html {
-  background: #EEEEFF;
+  background: #D9CEAD;
   font-size: 80%;
 }
 
@@ -63,10 +63,10 @@ article[id*=tab] {
   height: 23em;
   padding: 1em;
   margin: 1em 0 0 3em;
-  background: #eee;
-  box-shadow: inset 5px 5px 10px #ddd;
- -webkit-box-shadow: inset 5px 5px 10px #ddd;
-  border: 2px solid #E667AF;
+  background: #ddd;
+  box-shadow: inset 2px 2px 10px #888;
+ -webkit-box-shadow: inset 2px 2px 10px #888;
+  border: 2px solid #473C35;
   border-radius: 10px;
   margin-bottom: 20px;
   padding: 20px;
@@ -87,7 +87,7 @@ article[id*=tab]:target {
 
 article[id*=tab] p {
   position: absolute;
- left: 3em;
+ left: 2.2em;
  bottom: 1em;
 }
 
@@ -114,16 +114,16 @@ li {
 }
 
 li a {
-   background-color: #ccc;
-   border: 1px solid #E667AF;
+   background-color: #9C968B;
+   border: 1px solid #473C35;
    border-radius: 5px;
    display: inline-block;
-   margin-right: 1em;
+   margin-right: 1.5em;
+   margin-left: -3px;
    line-height: 2.5em;
-   width: 150px;
+   width: 185px;
    text-align: center;
    list-style: none;
-   padding-right: 20px;
    text-decoration: none;
   background-image: -ms-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.2));
   background-image: -moz-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.2));
@@ -134,7 +134,7 @@ li a {
 
 li a, li a:link, li a:visited {
   text-decoration: none;
-  color: #E63993;
+  color: #A36D5C;
   text-shadow: 1px 1px 1px black;
   -moz-transition: 1s all;
   -ms-transition: 1s all;
@@ -144,7 +144,7 @@ li a, li a:link, li a:visited {
 }
 
 li a:hover, li a:focus {
-  background-color: #fff;
+  background-color: #ddd;
 }
 
 li a:active {
@@ -156,7 +156,7 @@ img {
   width: 12em;
   height: 12em;
   border: 1px solid black;
-  background-color: #ccc;
+  background-color: #9C968B;
 }
 
 #wrapper {
@@ -170,10 +170,10 @@ aside {
   margin-top: 1em;
   width: 17em;
   height: 23em;
-  background: #eee;
-  box-shadow: inset 5px 5px 10px #ddd;
- -webkit-box-shadow: inset 5px 5px 10px #ddd;
-  border: 2px solid #E667AF;
+  background: #ddd;
+  box-shadow: inset 2px 2px 10px #888;
+ -webkit-box-shadow: inset 2px 2px 10px #888;
+  border: 2px solid #473C35;
   border-radius: 10px;
   padding: 20px;
   float: right;
@@ -194,20 +194,19 @@ li {
 h1, h2, h3 {
   font-family: LeagueGothicRegular;
   margin: 0;
-  color: #269926;
-  /*text-shadow: 1px 1px 1px black;*/
+  color: #8A866A;
+  text-shadow: 1px 1px 1px black;
   letter-spacing: 0.05em;
-  word-spacing: 0.2em;
+  word-spacing: 0.2em; 
 }
 
 code {
-  color: #E63993;
-  text-shadow: 1px 1px 1px black;
+  color: #A36D5C;
 }
 
 h1 {
-  font-size: 3em;
-  margin: 0.2em 0 0.3em 0.8em;
+  font-size: 4em;
+  margin: 0.2em 0 0.3em 1.16em;
 }
 
 h2 {
@@ -241,7 +240,7 @@ aside p {
 }
 
 #tab1 a:focus img, #tab1 a:hover img {   
-  background-color: #E63993;
+  background-color: #A36D5C;
   width: 20em;
   height: 20em;  
   z-index: 10;
@@ -251,7 +250,7 @@ aside p {
 
 video {
   border: 1px solid black;
-  background-color: #ccc; 
+  background-color: #9C968B; 
 }
 
 #object-fit {
@@ -311,7 +310,7 @@ video {
 <aside>
   <h2>General note</h2>
   
-  <p>I have made use of the <code>:target</code> pseudo class to create a CSS-only tabbed navigation. All the <code>&lt;article&gt;</code> "tabs" are absolutely positioned on top of one another and given <code>opacity: 0;</code> to start with, then a transition is used to make the tabs smoothly appear when the links that link to them are clicked on them, ie when they become a target (<code>article[id*=tab]:target {}</code>).</p>
+  <p><code>:target</code> pseudo class used to create CSS-only tabbed navigation. <code>&lt;article&gt;</code> "tabs" are absolutely positioned on top of one another and given <code>opacity: 0;</code>, then transition is used to make tabs smoothly appear when the links that link to them are clicked, ie when they become a target (<code>article[id*=tab]:target {}</code>).</p>
 </aside>
 
 <article id="tab1">
@@ -319,7 +318,7 @@ video {
 <h2>object-fit: none; and object-position</h2>
 
 <figure>
-<figcaption><code>object-fit: none;</code> makes the images spill out of the <code>&lt;img&gt;</code> tag; the spill is hidden with <code>overflow: hidden;</code>. <code>object-position: center;</code> makes the image display from the centre rather than the top left. A transition is then used to create the interesting preview effect.</figcaption>
+<figcaption><code>object-fit: none;</code> makes images spill out of <code>&lt;img&gt;</code> tags; spill then hidden with <code>overflow: hidden;</code>. <code>object-position: center;</code> makes image display from centre rather than top left. transition creates interesting rollover effect.</figcaption>
 <p><a href="photo3.jpg"><img src="photo3.jpg" alt="Kirsty and Elva enjoying a ride in Luna Park, Sydney"></a></p>
 <p><a href="photo4.jpg"><img src="photo4.jpg" alt="Gabriel standing just outside Luna Park, Sydney"></a></p>
 </figure>
@@ -332,7 +331,7 @@ video {
 
 <figure>
 
-<figcaption><code>object-fit: fill;</code> forces the content of the replaced element to adopt the aspect ratio of the element itself, even if it would not normally do so, eg with videos. This first <code>&lt;video&gt;</code> element shows a video with a broken aspect ratio - not great. This second <code>&lt;video&gt;</code> element has the aspect ratio fixed with <code>object-fit: fill;</code></figcaption>
+<figcaption><code>object-fit: fill;</code> forces video content to adopt aspect ratio of <code>&lt;video&gt;</code> element, even though videos letterbox by default. First <code>&lt;video&gt;</code> shows video with broken aspect ratio. Second <code>&lt;video&gt;</code> element has aspect ratio fixed with <code>object-fit: fill;</code></figcaption>
 <video autoplay loop width="213" height="121" id="object-fit">
   <source src="windowsill.mp4" type="video/mp4">
   <source src="windowsill.webm" type="video/webm">
@@ -353,7 +352,7 @@ video {
 <h2>object-fit: contain;</h2>
 
 <figure>
-<figcaption><code>object-fit: contain;</code> alters the longest dimension of the content so that it is the same size as its containing element's corresponding dimension. Aspect ratio is maintained so the image fits inside. Here the aspect ratio is broken by the width/height settings (left), then fixed with <code>object-fit: contain;</code> (right).</figcaption>
+<figcaption><code>object-fit: contain;</code> alters longest image dimension to same size as <code>&lt;img&gt;</code> element's same dimension. Aspect ratio is maintained so image fits inside. Here aspect ratio is broken on left, but then fixed with <code>object-fit: contain;</code> on right.</figcaption>
 </figure>
 <p><a href="photo2.jpg"><img src="photo2.jpg" alt="Elva eating really messily in Manly near Sydney" id="objectcontain"></a></p>
 <p><a href="photo2.jpg"><img src="photo2.jpg" alt="Elva eating really messily in Manly near Sydney" id="noobjectcontain"></a></p>
@@ -365,7 +364,8 @@ video {
 <h2>object-fit: cover;</h2>
 
 <figure>
-<figcaption><code>object-fit: cover;</code> alters the shortest dimension of the content so that it is the same size as its containing element's corresponding dimension. Aspect ratio is maintained so the image covers its container completely. Here the aspect ratio is broken by the width/height settings (left), then fixed with <code>object-fit: contain;</code>/<code>overflow: hidden;</code> (right).</figcaption>
+<figcaption><code>object-fit: cover;</code> alters shortest image dimension to same size as <code>&lt;img&gt;</code> element's same dimension. Aspect ratio is maintained so image covers container. Here aspect ratio is broken on left, but then fixed with <code>object-fit: cover;</code> on right.</figcaption>
+
 <p><a href="photo1.jpg"><img src="photo1.jpg" alt="Gabriel in Sydney Harbour" id="objectcover"></a></p>
 <p><a href="photo1.jpg"><img src="photo1.jpg" alt="Gabriel in Sydney Harbour" id="noobjectcover"></a></p>
 </figure>

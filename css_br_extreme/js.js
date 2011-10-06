@@ -12,6 +12,7 @@
 		overlay = document.getElementById('overlay'),
 	    main = document.getElementById('main'),
 	    borderobj = main.lastElementChild,
+
 	    getStyles = function( obj ){
 			if('getComputedStyle' in window){
 				return window.getComputedStyle( obj, null );
@@ -46,7 +47,7 @@
 
 	} else {
 
-		var hasRange, form, button, range, fixranges, n, close, bgimg, fgimg, fgimg_img, unit = 'px';
+		var hasRange, form, button, range, fixranges, n, close, bgimg, fgimg, fgimg_img, div, unit = 'px';
 		var onsubmithandler, onrangechange, onunitchange, onborderchange, onborderwidthchange;
 
 		hasRange = (document.querySelector('input[type=range]').type == 'range');
@@ -56,6 +57,7 @@
 		brdrstyle = document.querySelectorAll('#setborderstyle select');
 		range     = document.querySelectorAll('#basic input[type=range]');
 		brdrwidth = document.querySelectorAll('#setborderwidth input[type=range]');
+		div		  = document.querySelector('#main div');
 		bgimg     = document.querySelector('#bgimg');
 		fgimg     = document.querySelector('#fgimg');
 		fgimg_img = document.createElement('img');
@@ -218,16 +220,19 @@
 		onfgchange = function(e){
 			var img, curchild = main.lastElementChild;
 
-			if( curchild == '[object HTMLDivElement]' ){
-				img = document.createElement('img');
-				img.id = curchild.id;
-				main.replaceChild(img, curchild);
+			if( e.target.value == '' ){
+				main.replaceChild(div, curchild);
+				borderobj = div;
 			} else {
-				img = curchild;
+				if( curchild == '[object HTMLDivElement]' ){
+					img = document.createElement('img');
+					main.replaceChild(img, curchild);
+				} else {
+					img = curchild;
+				}
+				img.src = e.target.value;
+				borderobj = img;
 			}
-
-			img.src = e.target.value;
-			borderobj = img;
 		}
 
 

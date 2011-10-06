@@ -7,10 +7,11 @@
 		browsers, and once for new.
 	-------------*/
 
-	var hasClassList = !(document.body.classList == undefined ),
+	var hasClassList = !(document.body.classList === undefined ),
 		unsupported = document.getElementById('unsupported'),
 		overlay = document.getElementById('overlay'),
 	    main = document.getElementById('main'),
+	    borderobj = main.lastElementChild,
 	    getStyles = function( obj ){
 			if('getComputedStyle' in window){
 				return window.getComputedStyle( obj, null );
@@ -35,8 +36,9 @@
 				}
 			}
 		},
-		hasBorderRadius = !( getStyles( main ).borderRadius == undefined ),
+		hasBorderRadius = !( getStyles( borderobj ).borderRadius == undefined ),
 		panels = document.querySelectorAll('form > fieldset > legend');
+
 
 	if( hasBorderRadius == false ){
 		overlay.className = 'show';
@@ -44,7 +46,7 @@
 
 	} else {
 
-		var hasRange, form, button, range, fixranges, n, close, unit = 'px';
+		var hasRange, form, button, range, fixranges, n, close, bgimg, fgimg, fgimg_img, unit = 'px';
 		var onsubmithandler, onrangechange, onunitchange, onborderchange, onborderwidthchange;
 
 		hasRange = (document.querySelector('input[type=range]').type == 'range');
@@ -55,7 +57,8 @@
 		range     = document.querySelectorAll('#basic input[type=range]');
 		brdrwidth = document.querySelectorAll('#setborderwidth input[type=range]');
 		bgimg     = document.querySelector('#bgimg');
-
+		fgimg     = document.querySelector('#fgimg');
+		fgimg_img = document.createElement('img');
 		close     = document.querySelectorAll('.close');
 
 		/* If we don't have a range, adjust the UI. */
@@ -136,8 +139,8 @@
 					break;
 			}
 
-			main.style[prop] = thisedge + ' '+otheredge + u;
-			document.querySelector( '#'+labels[e.target.id] ).innerHTML = main.style[prop];
+			borderobj.style[prop] = thisedge + ' '+otheredge + u;
+			document.querySelector( '#'+labels[e.target.id] ).innerHTML = borderobj.style[prop];
 			if( button.disabled ){ button.removeAttribute('disabled') };
 		}
 
@@ -163,7 +166,7 @@
 					break;
 			}
 
-			main.style[whichborder] = e.target.value;
+			borderobj.style[whichborder] = e.target.value;
 			if( button.disabled ){ button.removeAttribute('disabled') };
 		}
 
@@ -199,18 +202,34 @@
 				evt.initEvent('change',false,false);
 				document.getElementById(whichstyle).dispatchEvent(evt);
 			}
-			main.style[whichborder] = e.target.value + u;
+			borderobj.style[whichborder] = e.target.value + u;
 			if( button.disabled ){ button.removeAttribute('disabled') };
 		}
 
 		onbgchange = function(e){
 			if( e.target.value == ''){
-				main.className = '';
+				borderobj.className = '';
 			} else {
-				main.className = 'patt'+e.target.value;
+				borderobj.className = 'patt'+e.target.value;
 			}
 			if( button.disabled ){ button.removeAttribute('disabled') };
 		}
+
+		onfgchange = function(e){
+			var img, curchild = main.lastElementChild;
+
+			if( curchild == '[object HTMLDivElement]' ){
+				img = document.createElement('img');
+				img.id = curchild.id;
+				main.replaceChild(img, curchild);
+			} else {
+				img = curchild;
+			}
+
+			img.src = e.target.value;
+			borderobj = img;
+		}
+
 
 		onsubmithandler = function(e){
 			e.preventDefault();
@@ -227,7 +246,7 @@
 			showcss  = document.querySelector('#showcss');
 			pre      = document.querySelector('pre');
 
-			styles   = getStyles( main );
+			styles   = getStyles( borderobj );
 
 			output = '';
 
@@ -313,7 +332,10 @@
 		}
 
 		bgimg.addEventListener('change',onbgchange,false);
+		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
+
+
 
 
 

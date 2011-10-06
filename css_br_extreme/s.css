@@ -81,11 +81,18 @@ label.inline{display:inline; cursor:pointer}
 input[type=range]{text-align:right}
 
 #main{
-	background-color:#0cf;
-	margin: 20px 0 20px 55px;
 	position:fixed;
-	border-color: #f3c;
 	top:100px;
+	width: 100px;
+	height: 100px;
+	margin: 20px 0 20px 55px;
+}
+
+
+#main div, #main img{
+	border-color:#f3c;
+	background-color:#0cf;
+	margin:0;
 }
 
 #main p{
@@ -204,11 +211,6 @@ pre{
 
 form{width:300px;}
 
-#main{
-	width: 100px;
-	height: 100px;
-	margin: 20px 0 20px 55px;
-}
 form > fieldset div{
 	max-height:.01em;
 	     -o-transition-property: min-height, max-height;
@@ -257,5 +259,10 @@ that support media queries.*/
 		width: 300px;
 		height: 300px;
 		margin: 20px 0 20px 55px;
+	}
+	#main div, #main img{
+		width: 300px;
+		height: 300px;
+		margin: 0;
 	}
 }

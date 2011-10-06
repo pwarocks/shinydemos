@@ -40,15 +40,16 @@
     photos.fillRect(5, 303, 150, 93.75);
   }());
 
-  var computeSize = function(bool){
-    // bool is false in the case of having webcam access
-    if (bool != false){
-      VIDEO_WIDTH = video.videoWidth;
-      VIDEO_HEIGHT = video.videoHeight;
-      console.log(VIDEO_WIDTH, VIDEO_HEIGHT);
-    } else {
+  var computeSize = function(supportsObjectFit){
+    // user agents that don't support object-fit 
+    // will display the video with a different 
+    // aspect ratio. 
+    if (supportsObjectFit == true){
       VIDEO_WIDTH = 640;
       VIDEO_HEIGHT = 400;
+    } else {
+      VIDEO_WIDTH = video.videoWidth;
+      VIDEO_HEIGHT = video.videoHeight;
     }
   };
 
@@ -124,7 +125,7 @@
       navigator.getUserMedia('video', function(stream){
         video.src = stream;
         video.addEventListener('loadedmetadata', function(){
-          computeSize(false);
+          computeSize(true);
           video.play();
         }, false);
       }, fallback) : fallback();

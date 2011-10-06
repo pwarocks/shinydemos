@@ -19,7 +19,7 @@
       VIDEO_WIDTH, VIDEO_HEIGHT, flash,
       form = doc.querySelector('form');
       snaps = [
-        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 6, 150, 93.75);},
+        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 6, 150, 93.74);},
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 105, 150, 93.75);},
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 204, 150, 93.75);},
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 303, 150, 93.75);}
@@ -40,11 +40,16 @@
     photos.fillRect(5, 303, 150, 93.75);
   }());
 
-  var computeAspect = function(){
-    //compute correct size/aspect ratio for picture frame
-    //browsers that don't have object fit will look wacky
-    VIDEO_WIDTH = video.videoWidth;
-    VIDEO_HEIGHT = video.videoHeight;
+  var computeSize = function(bool){
+    // bool is false in the case of having webcam access
+    if (bool != false){
+      VIDEO_WIDTH = video.videoWidth;
+      VIDEO_HEIGHT = video.videoHeight;
+      console.log(VIDEO_WIDTH, VIDEO_HEIGHT);
+    } else {
+      VIDEO_WIDTH = 640;
+      VIDEO_HEIGHT = 400;
+    }
   };
 
   var takeSnaps = function(interval){
@@ -81,11 +86,11 @@
   };
 
   var fallback = function(){
-    video.onloadedmetadata = function(){
+    video.addEventListener('loadedmetadata', function(){
       //not all browsers have video@muted yet.
       this.muted = true;
-      computeAspect();
-    };
+      computeSize();
+    }, false);
   };
   
   var startButton = function(){
@@ -118,16 +123,28 @@
     navigator.getUserMedia ? 
       navigator.getUserMedia('video', function(stream){
         video.src = stream;
-        video.onloadedmetadata = function(){
-          computeAspect();
-        }; 
+        video.addEventListener('loadedmetadata', function(){
+          computeSize(false);
+          video.play();
+        }, false);
       }, fallback) : fallback();
   }());
   
   showemail.onclick = showEmailForm;
   
   form.onsubmit = function(){
-    alert('AJAX SUBMISSION TO PHP SCRIPT!!!!');
+    email = form.querySelector('[type=email]').value,
+    xhr = new XMLHttpRequest();
+    
+    xhr.open('POST', 'email.php');
+    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function(){
+      if (this.status == 200 && this.readyState == 4){
+        console.log(this);
+      };
+    };
+    xhr.send('email='+email+'&photo'+snapshots.toDataURL());
+    return false;
   };
   
   button.onclick = function(){

@@ -1,7 +1,10 @@
 body {
   font-family: sans-serif;
   width: 800px;
+  height: 900px;
   margin: 0 auto;
+  overflow: hidden;
+  position:relative;
 }
 
 video {
@@ -21,10 +24,16 @@ button {
 }
 
 canvas {
-  float:right;
+  position: absolute;
+  right:0;
 }
 
-.hide {
+.left {
+  -o-transition: right .4s ease-out 0s;-moz-transition: right .4s ease-out 0s;-ms-transition: right .4s ease-out 0s;-webkit-transition: right .4s ease-out 0s;transition: right .4s ease-out 0s;
+  right: 640px;
+}
+
+.hidden {
   display:none !important;
 }
 
@@ -40,8 +49,9 @@ canvas {
 }
 
 #container {
-  position:relative;
-  float:left;
+  position:absolute;
+  left:0;
+  top: 53px;
 }
 
 #prompt {
@@ -51,6 +61,13 @@ canvas {
   text-align:center;
   display:block;
   padding-top:10px;
+}
+
+#emailme {
+  position:absolute;
+  bottom: 0;
+  right:0;
+  height: 30px;
 }
 
 #strip {
@@ -65,4 +82,8 @@ canvas {
   background: -o-linear-gradient(top, #515151 0%,#e1e1e1 2%,#cdcdcd 3%,#a8a8a8 98%,#515151 100%);
   background: -ms-linear-gradient(top, #515151 0%,#e1e1e1 2%,#cdcdcd 3%,#a8a8a8 98%,#515151 100%);
   background: linear-gradient(top, #515151 0%,#e1e1e1 2%,#cdcdcd 3%,#a8a8a8 98%,#515151 100%);
+}
+
+#form {
+  margin-left:200px;
 }

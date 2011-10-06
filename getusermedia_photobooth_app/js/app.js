@@ -15,9 +15,11 @@
       audio = new Audio('media/click.ogg'),
       button = doc.querySelector('button'),
       container = doc.getElementById('container'),
+      showemail = doc.getElementById('emailme'),
       VIDEO_WIDTH, VIDEO_HEIGHT, flash,
+      form = doc.querySelector('form');
       snaps = [
-        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 6, 150, 93.75);},
+        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 6, 150, 93.74);},
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 105, 150, 93.75);},
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 204, 150, 93.75);},
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 303, 150, 93.75);}
@@ -26,10 +28,10 @@
   var canvasPrep = (function(){
     photos.fillStyle = '#fff';
     photos.lineCap = 'square';
-    photos.fillRect(0,0,160,480);
+    photos.fillRect(0,0,160,402);
     photos.lineWidth = 2;
     photos.strokeStyle = '#515151';
-    photos.strokeRect(0,0,160,480)
+    photos.strokeRect(0,0,160,402);
     photos.lineWidth = 1;
     photos.fillStyle = '#ccc';
     photos.fillRect(5, 6, 150, 93.75);
@@ -38,11 +40,17 @@
     photos.fillRect(5, 303, 150, 93.75);
   }());
 
-  var computeAspect = function(){
-    //compute correct size/aspect ratio for picture frame
-    //browsers that don't have object fit will look wacky
-    VIDEO_WIDTH = video.videoWidth;
-    VIDEO_HEIGHT = video.videoHeight;
+  var computeSize = function(supportsObjectFit){
+    // user agents that don't support object-fit 
+    // will display the video with a different 
+    // aspect ratio. 
+    if (supportsObjectFit == true){
+      VIDEO_WIDTH = 640;
+      VIDEO_HEIGHT = 400;
+    } else {
+      VIDEO_WIDTH = video.videoWidth;
+      VIDEO_HEIGHT = video.videoHeight;
+    }
   };
 
   var takeSnaps = function(interval){
@@ -56,6 +64,9 @@
     
       if (++i == 4){
         clearInterval(id);
+        setTimeout(function(){
+          showemail.className = '';
+        }, 500);
       }
     }, interval);
   };
@@ -63,28 +74,28 @@
   var prepFlash = (function(){
     flash = doc.createElement('div');
     flash.id = 'flash';
-    flash.className = 'hide';
+    flash.className = 'hidden';
     container.appendChild(flash);
-  }())
+  }());
   
   var showFlash = function(){
     flash.className = '';
     emile(flash, 'opacity:0', {duration:250, after: function(){
       flash.style.opacity = .6;
-      flash.className = 'hide';
+      flash.className = 'hidden';
     }});
   };
 
   var fallback = function(){
-    video.onloadedmetadata = function(){
+    video.addEventListener('loadedmetadata', function(){
       //not all browsers have video@muted yet.
       this.muted = true;
-      computeAspect();
-    };
+      computeSize();
+    }, false);
   };
   
   var startButton = function(){
-    prompt.classList.remove('hide');
+    prompt.className = '';
     setTimeout(function(){
       prompt.textContent = "2";
       setTimeout(function(){
@@ -100,18 +111,45 @@
     }, 1200);
   };
   
+  var showEmailForm = function(){
+    emile(container, 'opacity: 0', {duration:250, after: function(){
+      container.parentNode.removeChild(container);
+      showemail.parentNode.removeChild(showemail);
+      snapshots.className = 'left';
+      form.parentNode.className = '';
+    }});
+  };
+  
   var init = (function(){
     navigator.getUserMedia ? 
       navigator.getUserMedia('video', function(stream){
         video.src = stream;
-        video.onloadedmetadata = function(){
-          computeAspect();
-        }; 
+        video.addEventListener('loadedmetadata', function(){
+          computeSize(true);
+          video.play();
+        }, false);
       }, fallback) : fallback();
   }());
   
+  showemail.onclick = showEmailForm;
+  
+  form.onsubmit = function(){
+    email = form.querySelector('[type=email]').value,
+    xhr = new XMLHttpRequest();
+    
+    xhr.open('POST', 'email.php');
+    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function(){
+      if (this.status == 200 && this.readyState == 4){
+        console.log(this);
+      };
+    };
+    xhr.send('email='+email+'&photo'+snapshots.toDataURL());
+    return false;
+  };
+  
   button.onclick = function(){
-    this.className = 'hide';
+    this.className = 'hidden';
     startButton();
   };
 }(window, document));

@@ -4,7 +4,7 @@ body#cssbr{
 	position: relative;
 	font: 13px / 1.5 sans-serif;
 	padding:0;
-	background: #f3c;
+	background: #8BE8FF;
 	margin:0
 }
 
@@ -31,7 +31,7 @@ header{
 	border-color: #0cf;
 	border-radius: 30px 0 0 0;
 	display:block;
-	margin:auto;
+	margin: .5em auto 0 auto;
 	min-width:600px;
 }
 h1{
@@ -50,9 +50,24 @@ form{
 }
 
 fieldset{border:0; border-radius: 5px;}
-form > fieldset > legend{font-size: 22px; padding-top: .5em;}
+form > fieldset > legend{font-size: 22px; padding-top: .5em; cursor:pointer}
+form > fieldset legend img{
+	-o-transform: rotate(0deg);
+	-o-transition: -o-transform 200ms linear;
+
+	-webkit-transform: rotate(0deg);
+	-webkit-transition: -webkit-transform 200ms linear;
+
+	-moz-transform: rotate(0deg);
+	-moz-transition: -moz-transform 200ms linear;
+
+	-ms-transform: rotate(0deg);
+	-ms-transition: -ms-transform 200ms linear;
+
+	vertical-align: middle;
+}
 form button{margin: 1em; display:block;}
-fieldset fieldset{background:#E8FAFF; margin: -1em 0 0 0; min-width: 95%;}
+fieldset fieldset{background:#E8FAFF; margin: 0; min-width: 95%; position:relative}
 fieldset fieldset legend{padding-top: 2em; font-family: monospace;}
 fieldset#advanced, fieldset#basic{ position:relative}
 fieldset#advanced fieldset p{float: left; width: 49%; margin:0 0 3px 0;}
@@ -60,7 +75,7 @@ fieldset#basic fieldset p{float: left; margin:5px;}
 
 label{display:block;}
 input[type=range]{display:block;}
-label.inline{display:inline;}
+label.inline{display:inline; cursor:pointer}
 
 /* right align in browsers that do not support range */
 input[type=range]{text-align:right}
@@ -94,7 +109,22 @@ input[type=range]{text-align:right}
 .hide{display:none;}
 .killscroll{ overflow: hidden;}
 .show{display:block}
+.credit{
+	font-size: .8em; /* for older browsers*/
+	font-size: .7rem;
+	padding-top: .3em;
+	padding-top: .3rem;
+	display:block;
+	color: #666;
+}
+.samevalues{
+	position:absolute;
+	top:1.5em;
+	right:.2em;
 
+	top:1.34rem;
+	right:.2rem;
+}
 #unsupported{
 	text-align:center;
 	background:#fc0;
@@ -179,19 +209,6 @@ form{width:300px;}
 	height: 100px;
 	margin: 20px 0 20px 55px;
 }
-
-/* large screen override for browsers
-that support media queries.*/
-@media screen and (min-width: 801px){
-	form{width:400px;}
-	#wrap, header{width:950px;}
-	#main{
-		width: 300px;
-		height: 300px;
-		margin: 20px 0 20px 55px;
-	}
-}
-
 form > fieldset div{
 	max-height:.01em;
 	     -o-transition-property: min-height, max-height;
@@ -221,4 +238,24 @@ form > fieldset.active div{
 	min-height: 10em;
 	max-height: 80em;
 	height:auto;
+}
+
+form > fieldset.active legend img{
+	-o-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+}
+
+
+/* large screen override for browsers
+that support media queries.*/
+@media screen and (min-width: 801px){
+	form{width:400px;}
+	#wrap, header{width:950px;}
+	#main{
+		width: 300px;
+		height: 300px;
+		margin: 20px 0 20px 55px;
+	}
 }

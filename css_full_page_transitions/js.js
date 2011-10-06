@@ -32,7 +32,7 @@ loadHandler = function(e){
 			'transition':'transitionEnd',
 			'OTransition':'oTransitionEnd',
 			'MSTransition':'msTransitionEnd',
-			'MozTransition':'mozTransitionEnd',
+			'MozTransition':'transitionend',
 			'WebkitTransition':'webkitTransitionEnd'
 		}
 
@@ -56,9 +56,13 @@ loadHandler = function(e){
 
 		e.currentTarget.addEventListener(trans, function(e){
 			if( document.querySelector('.leadPhoto') != null ){
+
 				hasClassList ? overlay.classList.remove('hide') : overlay.setAttribute('class','');
+
 			} else{}
 		}, false);
+
+
 	}
 
 	closeHandler = function(e){

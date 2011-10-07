@@ -1,15 +1,10 @@
 /*
- * Version 0.3
- * Getting there but still buggy and unoptimised.
- * TODO:
- * Crop off the video stream correctly. DONE
- * Divide glass into random parts. DONE
- * Break glass where the canvas was clicked/touched. DONE
- * Get the damn thing working on mobile. DONE
- * Add movement detection using window.DeviceMotionEvent. (Waiting for decent builds)
- * Self-heal like the Terminator. DONE
- * Code clean-up
+ * Created by Daniel Davis (Opera Software)
+ * 
+ * Uses concepts developed by Sean Christmann: 
+ * http://www.craftymind.com/2010/04/20/blowing-up-html5-video-and-mapping-it-into-3d-space/
  */
+
  
 /* COMMON FUNCTIONS */
 // Get random number between a range
@@ -168,6 +163,8 @@ document.addEventListener('DOMContentLoaded', function(){
                 ctx2.drawImage(ctx1.canvas, sx, sy, dw, dh, dx, dy, dw, dh);
                 ctx2.restore();
             }
+            
+            // When the cracks have "healed", clear the shards array
             if (timer_heal < DRAW_SPEED) {
                 shards = [];
             }

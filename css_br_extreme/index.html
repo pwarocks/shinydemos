@@ -30,8 +30,19 @@
 
 			<legend>Basic options <img src="triangle.png" alt="Click this label open or close these controls" width="10" height="10"></legend>
 
-			<!-- top left controls -->
 			<div>
+			<fieldset id="foreground">
+				<legend>
+					<span class="notmono">Use a:</span>
+				</legend>
+				<select id="fgimg" name="fgimg">
+					<option value="">&lt;div&gt;</option>
+					<option value="kananaskis.jpg">&lt;img&gt;</option>
+				</select>
+			</fieldset>
+
+			<!-- top left controls -->
+
 			<fieldset id="topleft" class="crnr">
 				<legend>border-top-left-radius</legend>
 
@@ -46,7 +57,7 @@
 				</p>
 
 				<p class="samevalues">
-					<label for="linktopleft" class="inline">Link values</label>
+					<label for="linktopleft" class="checkbox">Link values</label>
 					<input type="checkbox" id="linktopleft" name="linktopleft" checked>
 				</p>
 			</fieldset>
@@ -65,7 +76,7 @@
 				</p>
 
 				<p class="samevalues">
-					<label for="linktopright" class="inline">Link values</label>
+					<label for="linktopright" class="checkbox">Link values</label>
 					<input type="checkbox" id="linktopright" name="linktopright" checked>
 				</p>
 
@@ -85,7 +96,7 @@
 				</p>
 
 				<p class="samevalues">
-					<label for="linkbottomright" class="inline">Link values</label>
+					<label for="linkbottomright" class="checkbox">Link values</label>
 					<input type="checkbox" id="linkbottomright" name="linkbottomright" checked>
 				</p>
 			</fieldset>
@@ -104,10 +115,11 @@
 				</p>
 
 				<p class="samevalues">
-					<label for="linkbottomleft" class="inline">Link values</label>
+					<label for="linkbottomleft" class="checkbox">Link values</label>
 					<input type="checkbox" id="linkbottomleft" name="linkbottomleft" checked>
 				</p>
 			</fieldset>
+
 			</div>
 		</fieldset> <!-- end basic -->
 
@@ -214,20 +226,7 @@
 			</fieldset>
 
 
-
-		<fieldset id="foreground">
-				<legend>
-					<span class="notmono">Use an image instead of a</span> <code>&lt;div&gt;</code>
-				</legend>
-				<select id="fgimg" name="fgimg">
-					<option value="">None</option>
-					<option value="table-for-one.jpg">Table for one</option>
-					<option value="bridal-bouquet.jpg">Bridal bouquet</option>
-					<option value="red-velvet.jpg">Red velvet pancakes</option>
-					<option value="kananaskis.jpg">Mountain scenery</option>
-				</select>
 			</fieldset>
-	</fieldset>
 
 
 		<div>
@@ -260,7 +259,7 @@
 		</code>
 		</p>
 
-		<div></div>
+		<div id="changeobj"></div>
 
 	</div>
 

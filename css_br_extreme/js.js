@@ -1,4 +1,3 @@
-
 (function(){
 
 	/*-------------
@@ -7,53 +6,22 @@
 		browsers, and once for new.
 	-------------*/
 
-	var hasClassList = !(document.body.classList === undefined ),
-		unsupported = document.getElementById('unsupported'),
-		overlay = document.getElementById('overlay'),
-	    main = document.getElementById('main'),
-	    borderobj = main.lastElementChild,
+	var	unsupported = document.getElementById('unsupported'),
+		overlay     = document.getElementById('overlay'),
+	    main        = document.getElementById('main'),
+	    borderobj   = main.lastElementChild,
+		panels      = document.querySelectorAll('form > fieldset > legend');
 
-	    getStyles = function( obj ){
-			if('getComputedStyle' in window){
-				return window.getComputedStyle( obj, null );
-			} else {
-				return obj.currentStyle;
-			}
-		},
-		transitionEvent = function(){
-			var t, transitions, el = document.createElement('fakeEl');
-
-			transitions = {
-				'OTransition':'oTransitionEnd',
-				'MSTransition':'msTransitionEnd',
-				'MozTransition':'mozTransitionEnd',
-				'WebkitTransition':'webkitTransitionEnd',
-				'transition':'transitionEnd'
-			}
-
-			for(t in transitions){
-				if( el.style[t] !== undefined ){
-					return transitions[t];
-				}
-			}
-		},
-		hasBorderRadius = !( getStyles( borderobj ).borderRadius == undefined ),
-		panels = document.querySelectorAll('form > fieldset > legend');
-
-
-	if( hasBorderRadius == false ){
+	if( Lib.hasBorderRadius == false ){
 		overlay.className = 'show';
 		unsupported.className = 'show';
 
 	} else {
-
-		var hasRange, form, button, range, fixranges, n, close, bgimg, fgimg, fgimg_img, div, unit = 'px';
-		var onsubmithandler, onrangechange, onunitchange, onborderchange, onborderwidthchange;
-
-		hasRange = (document.querySelector('input[type=range]').type == 'range');
+		var hasRange, form, getcode, range, fixranges, n, close, bgimg, fgimg, fgimg_img, div, unit = 'px';
+		var onsubmithandler, onresethandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, oncloseclick, onpanelclick;
 
 		form      = document.querySelector('form');
-		button    = form.querySelector('button');
+		getcode   = form.querySelector('button#getcode');
 		brdrstyle = document.querySelectorAll('#setborderstyle select');
 		range     = document.querySelectorAll('#basic input[type=range]');
 		brdrwidth = document.querySelectorAll('#setborderwidth input[type=range]');
@@ -62,21 +30,6 @@
 		fgimg     = document.querySelector('#fgimg');
 		fgimg_img = document.createElement('img');
 		close     = document.querySelectorAll('.close');
-
-		/* If we don't have a range, adjust the UI. */
-		if( hasRange == false ){
-			var i, len, input;
-			fixranges = document.querySelectorAll('input[type=range]');
-			len = fixranges.length;
-			for(i = 0; i < len; i++){
-				fixranges[i].setAttribute('size',4);
-				fixranges[i].setAttribute('maxlength',3);
-			}
-		}
-
-		/*----------------------
-		 Define event handlers
-		 ----------------------*/
 
 		onrangechange = function(e){
 			var prop, u = unit, thisedge, otheredge, labels;
@@ -143,7 +96,9 @@
 
 			borderobj.style[prop] = thisedge + ' '+otheredge + u;
 			document.querySelector( '#'+labels[e.target.id] ).innerHTML = borderobj.style[prop];
-			if( button.disabled ){ button.removeAttribute('disabled') };
+
+			Lib.enableButton('getcode');
+			Lib.enableButton('reset');
 		}
 
 		onborderchange = function(e){
@@ -169,7 +124,8 @@
 			}
 
 			borderobj.style[whichborder] = e.target.value;
-			if( button.disabled ){ button.removeAttribute('disabled') };
+			Lib.enableButton('getcode');
+			Lib.enableButton('reset');
 		}
 
 		onborderwidthchange = function(e){
@@ -205,7 +161,8 @@
 				document.getElementById(whichstyle).dispatchEvent(evt);
 			}
 			borderobj.style[whichborder] = e.target.value + u;
-			if( button.disabled ){ button.removeAttribute('disabled') };
+			Lib.enableButton('getcode');
+			Lib.enableButton('reset');
 		}
 
 		onbgchange = function(e){
@@ -214,7 +171,8 @@
 			} else {
 				borderobj.className = 'patt'+e.target.value;
 			}
-			if( button.disabled ){ button.removeAttribute('disabled') };
+			Lib.enableButton('getcode');
+			Lib.enableButton('reset');
 		}
 
 		onfgchange = function(e){
@@ -235,7 +193,6 @@
 			}
 		}
 
-
 		onsubmithandler = function(e){
 			e.preventDefault();
 
@@ -251,7 +208,7 @@
 			showcss  = document.querySelector('#showcss');
 			pre      = document.querySelector('pre');
 
-			styles   = getStyles( borderobj );
+			styles   = Lib.getStyles( borderobj );
 
 			output = '';
 
@@ -291,59 +248,50 @@
 			document.body.className = 'killscroll';
 		}
 
+		oncloseclick = function(e){
+			overlay.className = 'hide';
+			showcss.className = 'hide';
+			document.body.className = '';
+		}
+
+		onpanelclick = function(e){
+			e.stopPropagation();
+			var transition = Lib.transitionEvent();
+			var a = 'active';
+			var act = new RegExp(a,'g');
+			var parent = e.target.parentNode;
+			var panel  = parent.querySelector('div');
+
+			if(Lib.hasClassList){
+				parent.classList.toggle(a);
+			} else {
+				if( parent.className.match(act) ){
+					parent.className = parent.className.replace(act,'');
+				} else {
+					parent.className += ' '+a;
+				}
+			}
+		}
+
+		onresethandler = function(e){
+			e.target.reset();
+			console.log( e.target );
+		}
 		/*----------------------
 		 Add event handlers
 		 ----------------------*/
-		for( n = 0; n < range.length; n++){
-			range[n].addEventListener('change', onrangechange, false);
-		}
-
-		for( n = 0; n < brdrstyle.length; n++){
-			brdrstyle[n].addEventListener('change', onborderchange, false);
-		}
-
-		for( n = 0; n < brdrwidth.length; n++){
-			brdrwidth[n].addEventListener('change', onborderwidthchange, false);
-		}
-
-		for( n = 0; n < close.length; n++){
-			close[n].addEventListener('click', function(e){
-				overlay.className = 'hide';
-				showcss.className = 'hide';
-				document.body.className = '';
-			}, true);
-		}
-
-		for( n = 0; n < panels.length; n++){
-			panels[n].addEventListener('click', function(e){
-				e.stopPropagation();
-				var transition = transitionEvent();
-				var a = 'active';
-				var act = new RegExp(a,'g');
-				var parent = e.target.parentNode;
-				var panel  = parent.querySelector('div');
-
-				if(hasClassList){
-					parent.classList.toggle(a);
-				} else {
-					if( parent.className.match(act) ){
-						parent.className = parent.className.replace(act,'');
-					} else {
-						parent.className += ' '+a;
-					}
-				}
-
-			}, false);
-		}
+		Lib.addHandlers({nodelist:range, event:'change', func:onrangechange});
+		Lib.addHandlers({nodelist:brdrstyle, event:'change', func:onborderchange});
+		Lib.addHandlers({nodelist:brdrwidth, event:'change', func:onborderwidthchange});
+		Lib.addHandlers({nodelist:close, event:'click', func:oncloseclick});
+		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
+		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
+		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
 
 		bgimg.addEventListener('change',onbgchange,false);
 		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
+		form.addEventListener('reset',onresethandler,false);
 
-
-
-
-
-   }
+}
 })();
-

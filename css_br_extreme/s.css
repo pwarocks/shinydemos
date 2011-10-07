@@ -73,6 +73,10 @@ fieldset#advanced, fieldset#basic{ position:relative}
 fieldset#advanced fieldset p{float: left; width: 49%; margin:0 0 3px 0;}
 fieldset#basic fieldset p{float: left; margin:5px;}
 
+.notmono{
+	font-family: sans-serif;
+}
+
 label{display:block;}
 input[type=range]{display:block;}
 label.inline{display:inline; cursor:pointer}

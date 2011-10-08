@@ -153,7 +153,7 @@
 			}
 
 			/* change the border style to solid so we can see the width change. */
-			if( form[whichstyle].value == 'none' ){
+			if( form[whichstyle].value == '' ){
 
 				form[whichstyle].value = 'solid';
 

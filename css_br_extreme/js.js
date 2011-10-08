@@ -19,7 +19,6 @@
 	} else {
 		var hasRange, form, getcode, range, fixranges, n, close, bgimg, fgimg, fimg, div, unit = 'px';
 		var onsubmithandler, onresethandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, oncloseclick, onpanelclick;
-		var resetborderobj;
 
 		form      = document.querySelector('form');
 		getcode   = form.querySelector('button#getcode');
@@ -336,8 +335,5 @@
 		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
 		form.addEventListener('reset',onresethandler,false);
-		form.addEventListener('chuck',function(e){ alert('chuck event!') },false);
-
-
-}
+	}
 })();

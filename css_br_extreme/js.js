@@ -19,6 +19,7 @@
 	} else {
 		var hasRange, form, getcode, range, fixranges, n, close, bgimg, fgimg, fimg, div, unit = 'px';
 		var onsubmithandler, onresethandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, oncloseclick, onpanelclick;
+		var resetborderobj;
 
 		form      = document.querySelector('form');
 		getcode   = form.querySelector('button#getcode');
@@ -177,11 +178,11 @@
 		}
 
 		onfgchange = function(e){
-			var id, curchild = main.lastElementChild, resetrest;
+			var id, curchild = main.lastElementChild, selects = document.querySelectorAll('select');
 			id = curchild.id;
 			var whichtype = e.target.value;
 
-			switch( e.target.value ){
+			switch( whichtype ){
 				case 'div':
 					borderobj = div;
 				 	break;
@@ -195,6 +196,25 @@
 			borderobj.id = id;
 
 			main.replaceChild(borderobj, curchild);
+
+			/* reset the selects, skipping the first. */
+			for(var i = 1; i < selects.length; i++){
+				selects[i].value = '';
+			}
+
+			/* reset the ranges */
+			for(var i = 0; i < range.length; i++){
+				range[i].value = 0;
+			}
+
+
+			/*  evt = document.createEvent('Events');
+			evt.initEvent('reset',false,false);
+			document.querySelector('form').dispatchEvent(evt);
+
+			evt = document.createEvent('CustomEvent');
+			evt.initEvent('chuck',false,false);
+			document.querySelector('form').dispatchEvent(evt); */
 
 			Lib.enableButton('getcode');
 			Lib.enableButton('reset');
@@ -280,7 +300,24 @@
 			}
 		}
 
-		onresethandler = function(e){ borderobj.style.cssText = ''; }
+		onresethandler = function(e){
+			// console.log('reset!');
+			var curchild = main.lastElementChild;
+
+			div.id = 'changeobj';
+			borderobj = div;
+
+			/* Swap a <div> with the lastElementChild */
+			main.replaceChild(borderobj, curchild);
+
+			/* Reset styles on all of these objects */
+			img.style.cssText = '';
+			vid.style.cssText = '';
+			div.style.cssText = '';
+		}
+
+
+
 		/*----------------------
 		 Add event handlers
 		 ----------------------*/
@@ -296,6 +333,7 @@
 		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
 		form.addEventListener('reset',onresethandler,false);
+		form.addEventListener('chuck',function(e){ alert('chuck event!') },false);
 
 
 }

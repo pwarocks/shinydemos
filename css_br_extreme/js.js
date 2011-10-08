@@ -280,10 +280,7 @@
 			}
 		}
 
-		onresethandler = function(e){
-			console.log('reset!');
-			// main.replaceChild( div, main.lastChild );
-		}
+		onresethandler = function(e){ borderobj.style.cssText = ''; }
 		/*----------------------
 		 Add event handlers
 		 ----------------------*/

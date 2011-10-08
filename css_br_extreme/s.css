@@ -35,7 +35,7 @@ header{
 	min-width:600px;
 }
 h1{
-	font-family: 'MaidenOrangeRegular',serif;
+/* 	font-family: 'MaidenOrangeRegular',serif; */
 	font-size:48px;
 	margin:20px 20px 0 20px;
 }
@@ -253,7 +253,6 @@ form > fieldset.active legend img{
 	-moz-transform: rotate(90deg);
 	-ms-transform: rotate(90deg);
 }
-
 
 /* large screen override for browsers
 that support media queries.*/

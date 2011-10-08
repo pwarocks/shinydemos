@@ -8,6 +8,7 @@
 
 	var	unsupported = document.getElementById('unsupported'),
 		overlay     = document.getElementById('overlay'),
+		showcss     = document.getElementById('showcss'),
 	    main        = document.getElementById('main'),
 	    borderobj   = main.lastElementChild,
 		panels      = document.querySelectorAll('form > fieldset > legend');
@@ -226,11 +227,9 @@
 				extractCSS,
 				getThese,
 				output,
-				showcss,
 				pre,
 				styles;
 
-			showcss  = document.querySelector('#showcss');
 			pre      = document.querySelector('pre');
 
 			styles   = Lib.getStyles( borderobj );

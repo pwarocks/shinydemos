@@ -34,10 +34,15 @@ var Lib = function(){
 	       	return (input.type == 'range')
 	    },
 
-		/* Enable or disable a button */
+		/* Enable a button */
 		enableButton: function(buttonid){
 			var button = document.querySelector('button#'+buttonid);
 			if(button.disabled){ button.removeAttribute('disabled'); }
+		},
+		/* Disable a button */
+		disableButton: function(buttonid){
+			var button = document.querySelector('button#'+buttonid);
+			button.setAttribute('disabled','disabled');
 		},
 
 		/* If we don't have a range, adjust the UI. */
@@ -62,7 +67,40 @@ var Lib = function(){
 			for(n = 0; n < len; n++){
 				obj.nodelist[n].addEventListener(obj.event, obj.func, obj.capture);
 			}
+		},
+		makeVideo: function(filename){
+			var canplay, video = document.createElement('video');
+			var t, restart, types = {
+				'.ogg':'video/ogg',
+				'.webm':'video/webm',
+				'.mp4':'video/mpeg'
+			}
+			restart = function(e){
+				 e.target.play();
+			}
+
+			for(t in types){
+				switch( video.canPlayType( types[t] ) ){
+					case 'maybe':
+						canplay = t;
+						break;
+				}
+			}
+			video.src = filename+canplay;
+			video.width = '100%';
+			video.height = '100%';
+			video.setAttribute('autoplay','autoplay');
+			video.setAttribute('loop','loop');
+			video.addEventListener('ended', restart);
+			return video;
+		},
+		makeImage: function(filename){
+			var img = document.createElement('img');
+			img.src = filename;
+			return img;
+
 		}
+
 	// end object
 	}
 }

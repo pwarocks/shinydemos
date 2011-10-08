@@ -79,7 +79,8 @@ fieldset#basic fieldset p{float: left; margin:5px;}
 
 label{display:block;}
 input[type=range]{display:block;}
-label.inline{display:inline; cursor:pointer}
+label.inline, label.checkbox{display:inline;}
+label.checkbox{cursor:pointer}
 
 /* right align in browsers that do not support range */
 input[type=range]{text-align:right}
@@ -93,7 +94,7 @@ input[type=range]{text-align:right}
 }
 
 
-#main div, #main img{
+#changeobj{
 	border-color:#f3c;
 	background-color:#0cf;
 	margin:0;
@@ -264,9 +265,16 @@ that support media queries.*/
 		height: 300px;
 		margin: 20px 0 20px 55px;
 	}
-	#main div, #main img{
+	#main > img, #main > div{
 		width: 300px;
 		height: 300px;
 		margin: 0;
+	}
+
+	#main > video{
+		width:300px;
+		height:300px;
+		object-fit: fill;
+		background: #000;
 	}
 }

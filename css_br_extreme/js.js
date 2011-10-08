@@ -17,7 +17,7 @@
 		unsupported.className = 'show';
 
 	} else {
-		var hasRange, form, getcode, range, fixranges, n, close, bgimg, fgimg, fgimg_img, div, unit = 'px';
+		var hasRange, form, getcode, range, fixranges, n, close, bgimg, fgimg, fimg, div, unit = 'px';
 		var onsubmithandler, onresethandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, oncloseclick, onpanelclick;
 
 		form      = document.querySelector('form');
@@ -28,7 +28,8 @@
 		div		  = document.querySelector('#main div');
 		bgimg     = document.querySelector('#bgimg');
 		fgimg     = document.querySelector('#fgimg');
-		fgimg_img = document.createElement('img');
+		img 	  = Lib.makeImage('kananaskis.jpg');
+		vid		  = Lib.makeVideo('raindropsinapool');
 		close     = document.querySelectorAll('.close');
 
 		onrangechange = function(e){
@@ -176,21 +177,27 @@
 		}
 
 		onfgchange = function(e){
-			var img, curchild = main.lastElementChild;
+			var id, curchild = main.lastElementChild, resetrest;
+			id = curchild.id;
+			var whichtype = e.target.value;
 
-			if( e.target.value == '' ){
-				main.replaceChild(div, curchild);
-				borderobj = div;
-			} else {
-				if( curchild == '[object HTMLDivElement]' ){
-					img = document.createElement('img');
-					main.replaceChild(img, curchild);
-				} else {
-					img = curchild;
-				}
-				img.src = e.target.value;
-				borderobj = img;
+			switch( e.target.value ){
+				case 'div':
+					borderobj = div;
+				 	break;
+				case 'video':
+					borderobj = vid;
+					break;
+				case 'img':
+					borderobj = img;
+					break;
 			}
+			borderobj.id = id;
+
+			main.replaceChild(borderobj, curchild);
+
+			Lib.enableButton('getcode');
+			Lib.enableButton('reset');
 		}
 
 		onsubmithandler = function(e){
@@ -274,8 +281,8 @@
 		}
 
 		onresethandler = function(e){
-			e.target.reset();
-			console.log( e.target );
+			console.log('reset!');
+			// main.replaceChild( div, main.lastChild );
 		}
 		/*----------------------
 		 Add event handlers
@@ -292,6 +299,7 @@
 		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
 		form.addEventListener('reset',onresethandler,false);
+
 
 }
 })();

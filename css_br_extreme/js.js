@@ -215,6 +215,11 @@
 			/* Remove any classes from the border object */
 			borderobj.className = '';
 
+			/* Reset styles on all of these objects */
+			img.style.cssText = '';
+			vid.style.cssText = '';
+			div.style.cssText = '';
+
 			Lib.enableButton('getcode');
 			Lib.enableButton('reset');
 		}

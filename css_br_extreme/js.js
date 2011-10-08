@@ -319,6 +319,10 @@
 
 			/* Remove any classes from the object */
 			borderobj.className = '';
+
+			/* Disable buttons again */
+			Lib.disableButton('getcode');
+			Lib.disableButton('reset');
 		}
 
 		/* Adjust UI for browsers without a range UI */

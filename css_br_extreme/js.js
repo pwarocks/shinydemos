@@ -220,8 +220,9 @@
 			vid.style.cssText = '';
 			div.style.cssText = '';
 
-			Lib.enableButton('getcode');
-			Lib.enableButton('reset');
+			/* Disable buttons since we are resetting. */
+			Lib.disableButton('getcode');
+			Lib.disableButton('reset');
 		}
 
 		onsubmithandler = function(e){

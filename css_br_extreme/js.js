@@ -202,19 +202,18 @@
 				selects[i].value = '';
 			}
 
-			/* reset the ranges */
+			/* reset the corner ranges */
 			for(var i = 0; i < range.length; i++){
 				range[i].value = 0;
 			}
 
+			/* reset the border width ranges */
+			for(var i = 0; i < brdrwidth.length; i++){
+				brdrwidth[i].value = 0;
+			}
 
-			/*  evt = document.createEvent('Events');
-			evt.initEvent('reset',false,false);
-			document.querySelector('form').dispatchEvent(evt);
-
-			evt = document.createEvent('CustomEvent');
-			evt.initEvent('chuck',false,false);
-			document.querySelector('form').dispatchEvent(evt); */
+			/* Remove any classes from the border object */
+			borderobj.className = '';
 
 			Lib.enableButton('getcode');
 			Lib.enableButton('reset');
@@ -314,9 +313,13 @@
 			img.style.cssText = '';
 			vid.style.cssText = '';
 			div.style.cssText = '';
+
+			/* Remove any classes from the object */
+			borderobj.className = '';
 		}
 
-
+		/* Adjust UI for browsers without a range UI */
+		Lib.adjustUI();
 
 		/*----------------------
 		 Add event handlers

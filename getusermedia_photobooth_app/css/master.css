@@ -1,149 +1,23 @@
-body {
-  font-family: sans-serif;
-  height: 900px;
-  width: 1000px;
-  margin: 0 auto;
-  position:relative;
-  background: url(../assets/bg_wood.png);
-}
-
-h1 {
-  margin:50px 0 -35px 15px;
-  padding:0;
-  width:912px;
-  height:192px;
-  text-indent: -9999px;
-  background-image: url(../assets/banner.png);
-  position:relative;
-  top: -20px;
-}
-
-#take-photo {
-  text-indent: -9999px;
-  background: url(../assets/button_normal.png);
-  border:none;
-  padding:0;
-  width: 136px;
-  height: 294px;
-  position: absolute;
-  right: 25px;
-  top: 297px;
-}
-
-button:active {
-  background: url(../assets/button_pressed.png);
-}
-
-canvas {
-  background: url(../assets/bg_output.png);
-  position: relative;
-  margin-left: 50px;
-  margin-top: 10px;
-}
-
-canvas:after {
-  content:url(../assets/deco_arrow.png);
-  position: absolute;
-  right: -135px;
-  top: -10px;
-}
-
-video {
-  position:relative;
-  left:50px;
-  -o-object-fit: cover;
-  object-fit: cover;
-  border-width: 24px 20px;
-  -o-border-image: url(../assets/bg_cam.png) 23 20 repeat;
-  -moz-border-image: url(../assets/bg_cam.png) 23 20 repeat;
-  -webkit-border-image: url(../assets/bg_cam.png) 23 20 repeat;
-  -ms-border-image: url(../assets/bg_cam.png) 23 20 repeat;
-  border-image: url(../assets/bg_cam.png) 23 20 repeat;
-}
-
-#sticker {
-  position:absolute;
-  right:25px;
-  top:160px;
-}
-
-#torn-sticker {
-  position:absolute;
-  right:-65px;
-  top:750px;
-}
-
-#countdown {
-  position: absolute;
-  top: 230px;
-  left: 230px;
-}
-
-#container {
-  position: relative;
-  width: 938px;
-  height: 988px;
-  background: url(../assets/deco_borderbox.png) no-repeat;
-}
-
-#container:after {
-  content: url(../assets/floral.png);
-  position: absolute;
-  left: 220px;
-  bottom: -40px;
-  margin-bottom: 20px;
-}
-
-.share {
-  -o-transition: bottom .4s ease-out 0s;-moz-transition: right .4s ease-out 0s;-ms-transition: right .4s ease-out 0s;-webkit-transition: right .4s ease-out 0s;transition: right .4s ease-out 0s;
-  position: absolute;
-  bottom: 640px;
-}
-
-canvas.share:after {
-  content: "";
-}
-
-.hidden {
-  display:none !important;
-}
-
-#flash {
-  position:absolute;
-  top:180px;
-  left:70px;
-  background: #fff;
-  z-index:99;
-  width: 640px;
-  height:400px;
-  opacity:.6;
-}
-
-#prompt {
-  font-family: sans-serif;
-  font-size:72px;
-  margin:0 auto;
-  text-align:center;
-  display:block;
-  padding-top:10px;
-}
-
-#form {
-  position: relative;
-  left: 50px;
-  top: 210px;
-}
-
-#form img {
-  position: absolute;
-  top: 3px;
-  left: 380px;
-}
-
-#form input {
-  height: 23px;
-}
-
+body{font-family:sans-serif;height:900px;width:1000px;margin:0 auto;position:relative;background:url(../assets/bg_wood.png);}
+h1{margin:50px 0 -35px 15px;padding:0;width:912px;height:192px;text-indent:-9999px;background-image:url(../assets/banner.png);position:relative;top:-20px;}
+button:active{background:url(../assets/button_pressed.png);}
+canvas{background:url(../assets/bg_output.png);position:relative;margin-left:50px;margin-top:10px;}
+canvas:after{content:url(../assets/deco_arrow.png);position:absolute;right:-135px;top:-10px;}
+video{position:relative;left:50px;-o-object-fit:cover;object-fit:cover;border-width:24px 20px;-o-border-image:url(../assets/bg_cam.png) 23 20 repeat;-moz-border-image:url(../assets/bg_cam.png) 23 20 repeat;-webkit-border-image:url(../assets/bg_cam.png) 23 20 repeat;-ms-border-image:url(../assets/bg_cam.png) 23 20 repeat;border-image:url(../assets/bg_cam.png) 23 20 repeat;}
+#take-photo{text-indent:-9999px;background:url(../assets/button_normal.png);border:none;padding:0;width:136px;height:294px;position:absolute;right:25px;top:297px;}
+#sticker{position:absolute;right:25px;top:160px;}
+#torn-sticker{position:absolute;right:-65px;top:750px;}
+#countdown{position:absolute;top:230px;left:230px;}
+#container{position:relative;width:938px;height:988px;background:url(../assets/deco_borderbox.png) no-repeat;}
+#container:after{content:url(../assets/floral.png);position:absolute;left:220px;bottom:-40px;margin-bottom:20px;}
+#flash{position:absolute;top:180px;left:70px;background:#fff;z-index:99;width:640px;height:400px;opacity:.6;}
+#prompt{font-family:sans-serif;font-size:72px;margin:0 auto;text-align:center;display:block;padding-top:10px;}
+#form{position:relative;left:50px;top:210px;}
+#form img{position:absolute;top:3px;left:380px;}
+#form input{height:23px;}
+.share{-o-transition:bottom .4s ease-out 0s;-moz-transition:right .4s ease-out 0s;-ms-transition:right .4s ease-out 0s;-webkit-transition:right .4s ease-out 0s;transition:right .4s ease-out 0s;position:absolute;bottom:640px;}
+.share:after{content:"";}
+.hidden{display:none !important;}
 /* button courtesy of https://github.com/ubuwaits/css3-buttons */
 button.clean-gray{position:relative;margin:0 auto;background-color:#eeeeee;background-image:-webkit-linear-gradient(top,#eeeeee,#cccccc);background-image:-moz-linear-gradient(top,#eeeeee,#cccccc);background-image:-ms-linear-gradient(top,#eeeeee,#cccccc);background-image:-o-linear-gradient(top,#eeeeee,#cccccc);background-image:linear-gradient(top,#eeeeee,#cccccc);border:1px solid #ccc;border-bottom:1px solid #bbb;border-radius:3px;color:#333;font:bold 11px "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;line-height:1;padding:8px 0;text-align:center;text-shadow:0 1px 0 #eee;width:150px;}
 button.clean-gray:hover{background-color:#dddddd;background-image:-webkit-linear-gradient(top,#dddddd,#bbbbbb);background-image:-moz-linear-gradient(top,#dddddd,#bbbbbb);background-image:-ms-linear-gradient(top,#dddddd,#bbbbbb);background-image:-o-linear-gradient(top,#dddddd,#bbbbbb);background-image:linear-gradient(top,#dddddd,#bbbbbb);border:1px solid #bbb;border-bottom:1px solid #999;cursor:pointer;text-shadow:0 1px 0 #ddd;}

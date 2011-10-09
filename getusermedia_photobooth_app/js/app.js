@@ -13,7 +13,7 @@
       shareimg = new Image(),
       corner = new Image(),
       audio = new Audio('media/click.ogg'),
-      button = doc.querySelector('button'),
+      button = doc.querySelector('canvas + button'),
       container = doc.getElementById('container'),
       spinner = doc.getElementById('spinner'),
       VIDEO_WIDTH, VIDEO_HEIGHT, flash, xhr,
@@ -33,7 +33,7 @@
       photos.drawImage(snap, 181, 23);
       photos.drawImage(snap, 347, 23);
       photos.drawImage(snap, 512, 23);
-    }
+    };
   }());
 
   var computeSize = function(supportsObjectFit){
@@ -110,7 +110,7 @@
       photos.globalCompositeOperation = 'destination-out';
       photos.drawImage(corner, 635, 23);
       photos.globalCompositeOperation = 'source-over';
-    }
+    };
     
     snapshots.onclick = function(){
       emile(video, 'opacity: 0', {duration:250, after: function(){
@@ -144,7 +144,7 @@
   
   form.onsubmit = function(){
     spinner.className = '';
-    email = form.querySelector('[type=email]').value,
+    email = form.querySelector('[type=email]').value;
     xhr = new XMLHttpRequest();
     xhr.open('POST', 'email.php');
     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");

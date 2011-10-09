@@ -13,10 +13,11 @@
       snap = new Image(),
       img = new Image(),
       countdown = new Image(),
+      shareimg = new Image(),
+      corner = new Image(),
       audio = new Audio('media/click.ogg'),
       button = doc.querySelector('button'),
       container = doc.getElementById('container'),
-      showemail = doc.getElementById('emailme'),
       VIDEO_WIDTH, VIDEO_HEIGHT, flash,
       form = doc.querySelector('form');
       snaps = [
@@ -27,6 +28,7 @@
       ];
       
   var canvasPrep = (function(){
+    corner.src = 'assets/corner.png';
     snap.src = 'assets/img_border.png';
     snap.onload = function(){
       photos.drawImage(snap, 16, 23);
@@ -63,10 +65,11 @@
       }
     
       if (++i == 4){
+        button.disabled = false;
         clearInterval(id);
-        video.pause();
+        i = 0;
         setTimeout(function(){
-          showemail.className = '';
+          share();
         }, 500);
       }
     }, interval);
@@ -102,13 +105,32 @@
     setTimeout(takeSnaps, 4000, 1200);
   };
   
-  var showEmailForm = function(){
-    emile(container, 'opacity: 0', {duration:250, after: function(){
-      container.parentNode.removeChild(container);
-      showemail.parentNode.removeChild(showemail);
-      snapshots.className = 'left';
-      form.parentNode.className = '';
-    }});
+  var share = function(){
+    shareimg.src = 'assets/img_border_hover.png';
+    shareimg.onload = function(){
+      photos.drawImage(this, 512, 23);
+      photos.globalCompositeOperation = 'destination-out';
+      photos.drawImage(corner, 635, 23);
+      photos.globalCompositeOperation = 'source-over';
+    }
+    
+    snapshots.onclick = function(){
+      emile(video, 'opacity: 0', {duration:250, after: function(){
+        video.parentNode.removeChild(video);
+        //repaint last snapshot w/o share?
+        snapshots.className = 'share';
+        form.parentNode.className = '';
+      }});
+      
+      repaint();
+    };
+  };
+  
+  var repaint = function(){
+    shareimg.src = 'assets/img_repaint.png';
+    shareimg.onload = function(){
+      photos.drawImage(this, 512, 23);
+    };
   };
   
   var init = (function(){
@@ -116,13 +138,11 @@
       navigator.getUserMedia('video', function(stream){
         video.src = stream;
         video.addEventListener('loadedmetadata', function(){
-          computeSize(true);
           video.play();
+          computeSize(true);
         }, false);
       }, fallback) : fallback();
   }());
-  
-  showemail.onclick = showEmailForm;
   
   form.onsubmit = function(){
     email = form.querySelector('[type=email]').value,

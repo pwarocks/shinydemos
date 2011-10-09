@@ -134,6 +134,12 @@ canvas.share:after {
   top: 210px;
 }
 
+#form img {
+  position: absolute;
+  top: 3px;
+  left: 380px;
+}
+
 #form input {
   height: 23px;
 }

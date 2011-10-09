@@ -18,8 +18,9 @@
       audio = new Audio('media/click.ogg'),
       button = doc.querySelector('button'),
       container = doc.getElementById('container'),
-      VIDEO_WIDTH, VIDEO_HEIGHT, flash,
-      form = doc.querySelector('form');
+      spinner = doc.getElementById('spinner'),
+      VIDEO_WIDTH, VIDEO_HEIGHT, flash, xhr,
+      form = doc.querySelector('form'),
       snaps = [
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 31, 46, 120, 75);},
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 196, 46, 120, 75);},
@@ -145,14 +146,15 @@
   }());
   
   form.onsubmit = function(){
+    spinner.className = '';
     email = form.querySelector('[type=email]').value,
     xhr = new XMLHttpRequest();
-    
     xhr.open('POST', 'email.php');
     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xhr.onreadystatechange = function(){
       if (this.status == 200 && this.readyState == 4){
-        console.log(this);
+        spinner.className = 'hidden';
+        emile(form, 'opacity: 0', {duration:250});
       };
     };
     xhr.send('email='+email+'&photo'+snapshots.toDataURL());

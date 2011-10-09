@@ -1,31 +1,93 @@
 body {
   font-family: sans-serif;
-  width: 800px;
   height: 900px;
+  width: 1000px;
   margin: 0 auto;
-  overflow: hidden;
   position:relative;
+  background: url(../assets/bg_wood.png);
 }
 
-video {
-  -o-object-fit: cover;
-  object-fit: cover;
-  margin:0;
+h1 {
+  margin:50px 0 -35px 15px;
+  padding:0;
+  width:912px;
+  height:192px;
+  text-indent: -9999px;
+  background-image: url(../assets/banner.png);
+  position:relative;
+  top: -20px;
 }
 
 button {
-  background: none;
+  text-indent: -9999px;
+  background: url(../assets/button_normal.png);
   border:none;
   padding:0;
-  display:block;
-  margin: 0 auto;
-  position:relative;
-  top:12px;
+  width: 136px;
+  height: 294px;
+  position: absolute;
+  right: 25px;
+  top: 297px;
+}
+
+button:active {
+  background: url(../assets/button_pressed.png);
 }
 
 canvas {
+  background: url(../assets/bg_output.png);
+  position: relative;
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+canvas:after {
+  content:url(../assets/deco_arrow.png);
   position: absolute;
-  right:0;
+  right: -135px;
+  top: -10px;
+}
+
+video {
+  position:relative;
+  left:50px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-width: 24px 20px;
+  -o-border-image: url(../assets/bg_cam.png) 23 20 repeat;
+}
+
+#sticker {
+  position:absolute;
+  right:25px;
+  top:160px;
+}
+
+#torn-sticker {
+  position:absolute;
+  right:-65px;
+  top:750px;
+}
+
+#countdown {
+  position: absolute;
+  top: 230px;
+  left: 230px;
+}
+
+#container {
+  position: relative;
+  width: 938px;
+  height: 988px;
+  background: url(../assets/deco_borderbox.png) no-repeat;
+}
+
+#container:after {
+  content: url(../assets/floral.png);
+  position: relative;
+  left: 220px;
+  top: 120px;
+  margin-bottom: 20px;
 }
 
 .left {
@@ -39,19 +101,13 @@ canvas {
 
 #flash {
   position:absolute;
-  top:0;
-  left:0;
+  top:180px;
+  left:70px;
   background: #fff;
   z-index:99;
   width: 640px;
   height:400px;
   opacity:.6;
-}
-
-#container {
-  position:absolute;
-  left:0;
-  top: 53px;
 }
 
 #prompt {
@@ -68,20 +124,6 @@ canvas {
   bottom: 0;
   right:0;
   height: 30px;
-}
-
-#strip {
-  position:relative;
-  top:-4px;
-  height:80px;
-  width: 639px;
-  border-left: 1px solid #515151;
-  background: #515151;
-  background: -moz-linear-gradient(top, #515151 0%, #e1e1e1 2%, #cdcdcd 3%, #a8a8a8 98%, #515151 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#515151), color-stop(2%,#e1e1e1), color-stop(3%,#cdcdcd), color-stop(98%,#a8a8a8), color-stop(100%,#515151));
-  background: -o-linear-gradient(top, #515151 0%,#e1e1e1 2%,#cdcdcd 3%,#a8a8a8 98%,#515151 100%);
-  background: -ms-linear-gradient(top, #515151 0%,#e1e1e1 2%,#cdcdcd 3%,#a8a8a8 98%,#515151 100%);
-  background: linear-gradient(top, #515151 0%,#e1e1e1 2%,#cdcdcd 3%,#a8a8a8 98%,#515151 100%);
 }
 
 #form {

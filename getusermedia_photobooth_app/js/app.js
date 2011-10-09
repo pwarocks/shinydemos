@@ -9,9 +9,10 @@
 (function(win, doc){
   var video = doc.querySelector('video'),
       snapshots = doc.getElementById('pics'),
-      prompt = doc.getElementById('prompt'),
       photos = snapshots.getContext('2d'),
+      snap = new Image(),
       img = new Image(),
+      countdown = new Image(),
       audio = new Audio('media/click.ogg'),
       button = doc.querySelector('button'),
       container = doc.getElementById('container'),
@@ -19,25 +20,20 @@
       VIDEO_WIDTH, VIDEO_HEIGHT, flash,
       form = doc.querySelector('form');
       snaps = [
-        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 6, 150, 93.74);},
-        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 105, 150, 93.75);},
-        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 204, 150, 93.75);},
-        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 5, 303, 150, 93.75);}
+        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 31, 46, 120, 75);},
+        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 196, 46, 120, 75);},
+        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 362, 46, 120, 75);},
+        function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 527, 46, 120, 75);}
       ];
       
   var canvasPrep = (function(){
-    photos.fillStyle = '#fff';
-    photos.lineCap = 'square';
-    photos.fillRect(0,0,160,402);
-    photos.lineWidth = 2;
-    photos.strokeStyle = '#515151';
-    photos.strokeRect(0,0,160,402);
-    photos.lineWidth = 1;
-    photos.fillStyle = '#ccc';
-    photos.fillRect(5, 6, 150, 93.75);
-    photos.fillRect(5, 105, 150, 93.75);
-    photos.fillRect(5, 204, 150, 93.75);
-    photos.fillRect(5, 303, 150, 93.75);
+    snap.src = 'assets/img_border.png';
+    snap.onload = function(){
+      photos.drawImage(snap, 16, 23);
+      photos.drawImage(snap, 181, 23);
+      photos.drawImage(snap, 347, 23);
+      photos.drawImage(snap, 512, 23);
+    }
   }());
 
   var computeSize = function(supportsObjectFit){
@@ -54,6 +50,10 @@
   };
 
   var takeSnaps = function(interval){
+    emile(countdown, 'opacity:0', {duration:500, after: function(){
+      countdown.parentNode.removeChild(countdown);
+      video.play();
+    }});
     var i = 0,
     id = setInterval(function(){
       if (snaps.length){
@@ -64,6 +64,7 @@
     
       if (++i == 4){
         clearInterval(id);
+        video.pause();
         setTimeout(function(){
           showemail.className = '';
         }, 500);
@@ -95,20 +96,10 @@
   };
   
   var startButton = function(){
-    prompt.className = '';
-    setTimeout(function(){
-      prompt.textContent = "2";
-      setTimeout(function(){
-        prompt.textContent = "1";
-        setTimeout(function(){
-          prompt.textContent = "Smile!";
-          setTimeout(function(){
-            video.play();
-            takeSnaps(1200);
-          }, 1);
-        }, 1200);
-      }, 1200);
-    }, 1200);
+    countdown.src = 'assets/countdown.svg';
+    countdown.id = 'countdown';
+    container.appendChild(countdown);
+    setTimeout(takeSnaps, 4000, 1200);
   };
   
   var showEmailForm = function(){
@@ -148,8 +139,8 @@
     return false;
   };
   
-  button.onclick = function(){
-    this.className = 'hidden';
+  button.addEventListener('click', function(){
     startButton();
-  };
+    this.disabled = true;
+  }, false);
 }(window, document));

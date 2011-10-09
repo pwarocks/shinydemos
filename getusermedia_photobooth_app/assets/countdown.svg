@@ -36,7 +36,7 @@
 		<rect id="lefteye" x="96.8" y="108.801" width="24.481" height="24.48"/>
 		<rect id="righteye" x="181.281" y="108.801" width="24.48" height="24.48"/>
 	
-		<set attributeName="visibility" attributeType="XML" begin="3s" dur="indefinate" to="visible"/>
+		<set attributeName="visibility" attributeType="XML" begin="3s" dur="indefinite" to="visible"/>
 	</g>
 </g>
 </svg>

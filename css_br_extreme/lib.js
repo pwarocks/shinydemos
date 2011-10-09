@@ -73,7 +73,7 @@ var Lib = function(){
 			var t, restart, types = {
 				'.ogg':'video/ogg',
 				'.webm':'video/webm',
-				'.mp4':'video/mpeg'
+				'.mp4':'video/mp4'
 			}
 			restart = function(e){
 				 e.target.play();

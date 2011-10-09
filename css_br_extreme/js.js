@@ -198,11 +198,11 @@
 
 			main.replaceChild(borderobj, curchild);
 
-			/* Reset the form */
-			evt = document.createEvent('Event');
-			evt.resetformonly = true; // setting a custom property.
-			evt.initEvent('reset',false,false,'test');
-			form.dispatchEvent(evt);
+			/* Reset the form. */
+			form.setAttribute('class','formonly');
+			form.reset();
+
+
 
 			/*******
 			  Set fgimg value to current type of object
@@ -298,16 +298,17 @@
 		}
 
 		onresethandler = function(e){
-			var i, curchild, corners = document.querySelectorAll('.crnrsz'), clen = corners.length;
+			var i, hasclass, curchild, corners = document.querySelectorAll('.crnrsz'), clen = corners.length;
 			/*
-			 If e.resetformonly == true, the event came from onfgchange,
+			 If form has a class of 'formonly', the event came from onfgchange,
 			 and we only want to change the form values.
 
-			 Otherwise, it's undefined and that means we also
-			 want to reset the borderobj.
+			 Otherwise we also want to reset the borderobj.
 			*/
 
-			if( e.resetformonly == undefined ){
+			Lib.hasClassList ? (hasclass = form.classList.contains('formonly') ) : (hasclass = form.className.indexOf('formonly') == -1);
+
+			if( !hasclass ){
 
 				/* Get the current last child */
 				curchild = main.lastElementChild;
@@ -333,7 +334,10 @@
 
 			/* Disable buttons again since we have reset. */
 			Lib.disableButton('getcode');
-			Lib.disableButton('resetform');
+			// Lib.disableButton('resetform');
+
+			/* Remove any classes from the form */
+			form.setAttribute('class','');
 		}
 
 		/* Adjust UI for browsers without a range UI */

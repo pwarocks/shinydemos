@@ -1,4 +1,4 @@
-var Lib = function(){
+var Lib = (function(){
 	return {
 		hasClassList: !(document.body.classList === undefined ),
 		hasBorderRadius: !(document.createElement('fauxel').style.borderRadius === undefined),
@@ -103,5 +103,5 @@ var Lib = function(){
 
 	// end object
 	}
-}
-var Lib = Lib();
+})();
+

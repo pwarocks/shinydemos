@@ -298,7 +298,7 @@
 		}
 
 		onresethandler = function(e){
-
+			var i, curchild, corners = document.querySelectorAll('.crnrsz'), clen = corners.length;
 			/*
 			 If e.resetformonly == true, the event came from onfgchange,
 			 and we only want to change the form values.
@@ -310,7 +310,7 @@
 			if( e.resetformonly == undefined ){
 
 				/* Get the current last child */
-				var curchild = main.lastElementChild;
+				curchild = main.lastElementChild;
 
 				div.id = curchild.id;
 
@@ -324,6 +324,11 @@
 
 				/* Reset styles and class on all of these objects */
 				img.style.cssText = vid.style.cssText = div.style.cssText = '';
+			}
+
+			/* Reset the corners so that they all say 0px */
+			for(i = 0; i < clen; i++){
+				corners[i].innerHTML = '0px';
 			}
 
 			/* Disable buttons again since we have reset. */

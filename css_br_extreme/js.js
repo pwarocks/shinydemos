@@ -100,7 +100,7 @@
 			document.querySelector( '#'+labels[e.target.id] ).innerHTML = borderobj.style[prop];
 
 			Lib.enableButton('getcode');
-			Lib.enableButton('reset');
+			Lib.enableButton('resetform');
 		}
 
 		onborderchange = function(e){
@@ -127,7 +127,7 @@
 
 			borderobj.style[whichborder] = e.target.value;
 			Lib.enableButton('getcode');
-			Lib.enableButton('reset');
+			Lib.enableButton('resetform');
 		}
 
 		onborderwidthchange = function(e){
@@ -158,13 +158,13 @@
 				form[whichstyle].value = 'solid';
 
 				/* dispatch a change event to trigger the change */
-				evt = document.createEvent('Events');
+				evt = document.createEvent('Event');
 				evt.initEvent('change',false,false);
 				document.getElementById(whichstyle).dispatchEvent(evt);
 			}
 			borderobj.style[whichborder] = e.target.value + u;
 			Lib.enableButton('getcode');
-			Lib.enableButton('reset');
+			Lib.enableButton('resetform');
 		}
 
 		onbgchange = function(e){
@@ -174,10 +174,11 @@
 				borderobj.className = 'patt'+e.target.value;
 			}
 			Lib.enableButton('getcode');
-			Lib.enableButton('reset');
+			Lib.enableButton('resetform');
 		}
 
 		onfgchange = function(e){
+
 			var id, curchild = main.lastElementChild, selects = document.querySelectorAll('select');
 			id = curchild.id;
 			var whichtype = e.target.value;
@@ -197,20 +198,17 @@
 
 			main.replaceChild(borderobj, curchild);
 
-			/* reset the selects, skipping the first. */
-			for(var i = 1; i < selects.length; i++){
-				selects[i].value = '';
-			}
+			/* Reset the form */
+			evt = document.createEvent('Event');
+			evt.resetformonly = true; // setting a custom property.
+			evt.initEvent('reset',false,false,'test');
+			form.dispatchEvent(evt);
 
-			/* reset the corner ranges */
-			for(var i = 0; i < range.length; i++){
-				range[i].value = 0;
-			}
-
-			/* reset the border width ranges */
-			for(var i = 0; i < brdrwidth.length; i++){
-				brdrwidth[i].value = 0;
-			}
+			/*******
+			  Set fgimg value to current type of object
+			  so the field stays the same.
+			********/
+			fgimg.value = whichtype;
 
 			/* Remove any classes from the border object */
 			borderobj.className = '';
@@ -219,10 +217,6 @@
 			img.style.cssText = '';
 			vid.style.cssText = '';
 			div.style.cssText = '';
-
-			/* Disable buttons since we are resetting. */
-			Lib.disableButton('getcode');
-			Lib.disableButton('reset');
 		}
 
 		onsubmithandler = function(e){
@@ -304,26 +298,37 @@
 		}
 
 		onresethandler = function(e){
-			// console.log('reset!');
-			var curchild = main.lastElementChild;
 
-			div.id = 'changeobj';
-			borderobj = div;
+			/*
+			 If e.resetformonly == true, the event came from onfgchange,
+			 and we only want to change the form values.
 
-			/* Swap a <div> with the lastElementChild */
-			main.replaceChild(borderobj, curchild);
+			 Otherwise, it's undefined and that means we also
+			 want to reset the borderobj.
+			*/
 
-			/* Reset styles on all of these objects */
-			img.style.cssText = '';
-			vid.style.cssText = '';
-			div.style.cssText = '';
+			if( e.resetformonly == undefined ){
 
-			/* Remove any classes from the object */
-			borderobj.className = '';
+				/* Get the current last child */
+				var curchild = main.lastElementChild;
 
-			/* Disable buttons again */
+				div.id = curchild.id;
+
+				borderobj = div;
+
+				/* Remove any classes from the object */
+				borderobj.setAttribute('class','');
+
+				/* Swap a <div> with the lastElementChild */
+				main.replaceChild(borderobj, curchild);
+
+				/* Reset styles and class on all of these objects */
+				img.style.cssText = vid.style.cssText = div.style.cssText = '';
+			}
+
+			/* Disable buttons again since we have reset. */
 			Lib.disableButton('getcode');
-			Lib.disableButton('reset');
+			Lib.disableButton('resetform');
 		}
 
 		/* Adjust UI for browsers without a range UI */
@@ -344,5 +349,6 @@
 		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
 		form.addEventListener('reset',onresethandler,false);
+
 	}
 })();

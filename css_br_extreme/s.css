@@ -93,6 +93,18 @@ input[type=range]{text-align:right}
 	margin: 20px 0 20px 55px;
 }
 
+#main > img, #main > div{
+		width: 100px;
+		height: 100px;
+		margin: 0;
+	}
+
+	#main > video{
+		width:100px;
+		height:100px;
+		object-fit: fill;
+		background: #000;
+	}
 
 #changeobj{
 	border-color:#f3c;

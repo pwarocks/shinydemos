@@ -66,7 +66,7 @@ form > fieldset legend img{
 
 	vertical-align: middle;
 }
-form button{margin: 1em; display:block;}
+form button{margin: 1em;}
 fieldset fieldset{background:#E8FAFF; margin: 0; min-width: 95%; position:relative}
 fieldset fieldset legend{padding-top: 2em; font-family: monospace;}
 fieldset#advanced, fieldset#basic{ position:relative}

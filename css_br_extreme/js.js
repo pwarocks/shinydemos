@@ -1,4 +1,3 @@
-
 (function(){
 
 	/*-------------
@@ -7,71 +6,32 @@
 		browsers, and once for new.
 	-------------*/
 
-	var hasClassList = !(document.body.classList == undefined ),
-		unsupported = document.getElementById('unsupported'),
-		overlay = document.getElementById('overlay'),
-	    main = document.getElementById('main'),
-	    getStyles = function( obj ){
-			if('getComputedStyle' in window){
-				return window.getComputedStyle( obj, null );
-			} else {
-				return obj.currentStyle;
-			}
-		},
-		transitionEvent = function(){
-			var t, transitions, el = document.createElement('fakeEl');
+	var	unsupported = document.getElementById('unsupported'),
+		overlay     = document.getElementById('overlay'),
+		showcss     = document.getElementById('showcss'),
+	    main        = document.getElementById('main'),
+	    borderobj   = main.lastElementChild,
+		panels      = document.querySelectorAll('form > fieldset > legend');
 
-			transitions = {
-				'OTransition':'oTransitionEnd',
-				'MSTransition':'msTransitionEnd',
-				'MozTransition':'mozTransitionEnd',
-				'WebkitTransition':'webkitTransitionEnd',
-				'transition':'transitionEnd'
-			}
-
-			for(t in transitions){
-				if( el.style[t] !== undefined ){
-					return transitions[t];
-				}
-			}
-		},
-		hasBorderRadius = !( getStyles( main ).borderRadius == undefined ),
-		panels = document.querySelectorAll('form > fieldset > legend');
-
-	if( hasBorderRadius == false ){
+	if( Lib.hasBorderRadius == false ){
 		overlay.className = 'show';
 		unsupported.className = 'show';
 
 	} else {
-
-		var hasRange, form, button, range, fixranges, n, close, unit = 'px';
-		var onsubmithandler, onrangechange, onunitchange, onborderchange, onborderwidthchange;
-
-		hasRange = (document.querySelector('input[type=range]').type == 'range');
+		var hasRange, form, getcode, range, fixranges, n, close, bgimg, fgimg, fimg, div, unit = 'px';
+		var onsubmithandler, onresethandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, oncloseclick, onpanelclick;
 
 		form      = document.querySelector('form');
-		button    = form.querySelector('button');
+		getcode   = form.querySelector('button#getcode');
 		brdrstyle = document.querySelectorAll('#setborderstyle select');
 		range     = document.querySelectorAll('#basic input[type=range]');
 		brdrwidth = document.querySelectorAll('#setborderwidth input[type=range]');
+		div		  = document.querySelector('#main div');
 		bgimg     = document.querySelector('#bgimg');
-
+		fgimg     = document.querySelector('#fgimg');
+		img 	  = Lib.makeImage('kananaskis.jpg');
+		vid		  = Lib.makeVideo('raindropsinapool');
 		close     = document.querySelectorAll('.close');
-
-		/* If we don't have a range, adjust the UI. */
-		if( hasRange == false ){
-			var i, len, input;
-			fixranges = document.querySelectorAll('input[type=range]');
-			len = fixranges.length;
-			for(i = 0; i < len; i++){
-				fixranges[i].setAttribute('size',4);
-				fixranges[i].setAttribute('maxlength',3);
-			}
-		}
-
-		/*----------------------
-		 Define event handlers
-		 ----------------------*/
 
 		onrangechange = function(e){
 			var prop, u = unit, thisedge, otheredge, labels;
@@ -136,9 +96,11 @@
 					break;
 			}
 
-			main.style[prop] = thisedge + ' '+otheredge + u;
-			document.querySelector( '#'+labels[e.target.id] ).innerHTML = main.style[prop];
-			if( button.disabled ){ button.removeAttribute('disabled') };
+			borderobj.style[prop] = thisedge + ' '+otheredge + u;
+			document.querySelector( '#'+labels[e.target.id] ).innerHTML = borderobj.style[prop];
+
+			Lib.enableButton('getcode');
+			Lib.enableButton('resetform');
 		}
 
 		onborderchange = function(e){
@@ -163,8 +125,9 @@
 					break;
 			}
 
-			main.style[whichborder] = e.target.value;
-			if( button.disabled ){ button.removeAttribute('disabled') };
+			borderobj.style[whichborder] = e.target.value;
+			Lib.enableButton('getcode');
+			Lib.enableButton('resetform');
 		}
 
 		onborderwidthchange = function(e){
@@ -190,26 +153,70 @@
 			}
 
 			/* change the border style to solid so we can see the width change. */
-			if( form[whichstyle].value == 'none' ){
+			if( form[whichstyle].value == '' ){
 
 				form[whichstyle].value = 'solid';
 
 				/* dispatch a change event to trigger the change */
-				evt = document.createEvent('Events');
+				evt = document.createEvent('Event');
 				evt.initEvent('change',false,false);
 				document.getElementById(whichstyle).dispatchEvent(evt);
 			}
-			main.style[whichborder] = e.target.value + u;
-			if( button.disabled ){ button.removeAttribute('disabled') };
+			borderobj.style[whichborder] = e.target.value + u;
+			Lib.enableButton('getcode');
+			Lib.enableButton('resetform');
 		}
 
 		onbgchange = function(e){
 			if( e.target.value == ''){
-				main.className = '';
+				borderobj.className = '';
 			} else {
-				main.className = 'patt'+e.target.value;
+				borderobj.className = 'patt'+e.target.value;
 			}
-			if( button.disabled ){ button.removeAttribute('disabled') };
+			Lib.enableButton('getcode');
+			Lib.enableButton('resetform');
+		}
+
+		onfgchange = function(e){
+
+			var id, curchild = main.lastElementChild, selects = document.querySelectorAll('select');
+			id = curchild.id;
+			var whichtype = e.target.value;
+
+			switch( whichtype ){
+				case 'div':
+					borderobj = div;
+				 	break;
+				case 'video':
+					borderobj = vid;
+					break;
+				case 'img':
+					borderobj = img;
+					break;
+			}
+			borderobj.id = id;
+
+			main.replaceChild(borderobj, curchild);
+
+			/* Reset the form. */
+			form.setAttribute('class','formonly');
+			form.reset();
+
+
+
+			/*******
+			  Set fgimg value to current type of object
+			  so the field stays the same.
+			********/
+			fgimg.value = whichtype;
+
+			/* Remove any classes from the border object */
+			borderobj.className = '';
+
+			/* Reset styles on all of these objects */
+			img.style.cssText = '';
+			vid.style.cssText = '';
+			div.style.cssText = '';
 		}
 
 		onsubmithandler = function(e){
@@ -220,14 +227,12 @@
 				extractCSS,
 				getThese,
 				output,
-				showcss,
 				pre,
 				styles;
 
-			showcss  = document.querySelector('#showcss');
 			pre      = document.querySelector('pre');
 
-			styles   = getStyles( main );
+			styles   = Lib.getStyles( borderobj );
 
 			output = '';
 
@@ -267,56 +272,92 @@
 			document.body.className = 'killscroll';
 		}
 
+		oncloseclick = function(e){
+			overlay.className = 'hide';
+			showcss.className = 'hide';
+			document.body.className = '';
+		}
+
+		onpanelclick = function(e){
+			e.stopPropagation();
+			var transition = Lib.transitionEvent();
+			var a = 'active';
+			var act = new RegExp(a,'g');
+			var parent = e.target.parentNode;
+			var panel  = parent.querySelector('div');
+
+			if(Lib.hasClassList){
+				parent.classList.toggle(a);
+			} else {
+				if( parent.className.match(act) ){
+					parent.className = parent.className.replace(act,'');
+				} else {
+					parent.className += ' '+a;
+				}
+			}
+		}
+
+		onresethandler = function(e){
+			var i, hasclass, curchild, corners = document.querySelectorAll('.crnrsz'), clen = corners.length;
+			/*
+			 If form has a class of 'formonly', the event came from onfgchange,
+			 and we only want to change the form values.
+
+			 Otherwise we also want to reset the borderobj.
+			*/
+
+			Lib.hasClassList ? (hasclass = form.classList.contains('formonly') ) : (hasclass = form.className.indexOf('formonly') == -1);
+
+			if( !hasclass ){
+
+				/* Get the current last child */
+				curchild = main.lastElementChild;
+
+				div.id = curchild.id;
+
+				borderobj = div;
+
+				/* Remove any classes from the object */
+				borderobj.setAttribute('class','');
+
+				/* Swap a <div> with the lastElementChild */
+				main.replaceChild(borderobj, curchild);
+
+				/* Reset styles and class on all of these objects */
+				img.style.cssText = vid.style.cssText = div.style.cssText = '';
+			}
+
+			/* Reset the corners so that they all say 0px */
+			for(i = 0; i < clen; i++){
+				corners[i].innerHTML = '0px';
+			}
+
+			/* Disable buttons again since we have reset. */
+			Lib.disableButton('getcode');
+			// Lib.disableButton('resetform');
+
+			/* Remove any classes from the form */
+			form.setAttribute('class','');
+		}
+
+		/* Adjust UI for browsers without a range UI */
+		Lib.adjustUI();
+
 		/*----------------------
 		 Add event handlers
 		 ----------------------*/
-		for( n = 0; n < range.length; n++){
-			range[n].addEventListener('change', onrangechange, false);
-		}
-
-		for( n = 0; n < brdrstyle.length; n++){
-			brdrstyle[n].addEventListener('change', onborderchange, false);
-		}
-
-		for( n = 0; n < brdrwidth.length; n++){
-			brdrwidth[n].addEventListener('change', onborderwidthchange, false);
-		}
-
-		for( n = 0; n < close.length; n++){
-			close[n].addEventListener('click', function(e){
-				overlay.className = 'hide';
-				showcss.className = 'hide';
-				document.body.className = '';
-			}, true);
-		}
-
-		for( n = 0; n < panels.length; n++){
-			panels[n].addEventListener('click', function(e){
-				e.stopPropagation();
-				var transition = transitionEvent();
-				var a = 'active';
-				var act = new RegExp(a,'g');
-				var parent = e.target.parentNode;
-				var panel  = parent.querySelector('div');
-
-				if(hasClassList){
-					parent.classList.toggle(a);
-				} else {
-					if( parent.className.match(act) ){
-						parent.className = parent.className.replace(act,'');
-					} else {
-						parent.className += ' '+a;
-					}
-				}
-
-			}, false);
-		}
+		Lib.addHandlers({nodelist:range, event:'change', func:onrangechange});
+		Lib.addHandlers({nodelist:brdrstyle, event:'change', func:onborderchange});
+		Lib.addHandlers({nodelist:brdrwidth, event:'change', func:onborderwidthchange});
+		Lib.addHandlers({nodelist:close, event:'click', func:oncloseclick});
+		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
+		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
+		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
 
 		bgimg.addEventListener('change',onbgchange,false);
+		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
+		form.addEventListener('reset',onresethandler,false);
 
-
-
-   }
+	}
 })();
-

@@ -134,7 +134,6 @@ input[type=range]{text-align:right}
 .patt157{background-image: url('pattern_157.gif');}
 
 .hide{display:none;}
-.killscroll{ overflow: hidden;}
 .show{display:block}
 .credit{
 	font-size: .8em; /* for older browsers*/

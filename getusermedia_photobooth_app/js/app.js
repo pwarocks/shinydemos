@@ -12,12 +12,14 @@
       countdown = new Image(),
       shareimg = new Image(),
       corner = new Image(),
+      canvasBg = new Image(),
       audio = new Audio('media/click.ogg'),
       button = doc.querySelector('canvas + button'),
       container = doc.getElementById('container'),
       spinner = doc.getElementById('spinner'),
       VIDEO_WIDTH, VIDEO_HEIGHT, flash, xhr,
       form = doc.querySelector('form'),
+      emailSubmit = form.querySelector('button'),
       snaps = [
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 31, 46, 120, 75);},
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 196, 46, 120, 75);},
@@ -26,6 +28,10 @@
       ];
       
   var canvasPrep = (function(){
+    canvasBg.src = 'assets/bg_output.png';
+    canvasBg.onload = function(){
+     photos.drawImage(canvasBg, 0, 0); 
+    }
     corner.src = 'assets/corner.png';
     snap.src = 'assets/img_border.png';
     snap.onload = function(){
@@ -52,6 +58,7 @@
   var takeSnaps = function(interval){
     emile(countdown, 'opacity:0', {duration:500, after: function(){
       countdown.parentNode.removeChild(countdown);
+      video.muted = true;
       video.play();
     }});
     var i = 0,
@@ -90,8 +97,6 @@
 
   var fallback = function(){
     video.addEventListener('loadedmetadata', function(){
-      //not all browsers have video@muted yet.
-      this.muted = true;
       computeSize();
     }, false);
   };
@@ -107,15 +112,16 @@
     shareimg.src = 'assets/img_border_hover.png';
     shareimg.onload = function(){
       photos.drawImage(this, 512, 23);
-      photos.globalCompositeOperation = 'destination-out';
+      //photos.globalCompositeOperation = 'destination-out';
       photos.drawImage(corner, 635, 23);
-      photos.globalCompositeOperation = 'source-over';
+      //photos.globalCompositeOperation = 'source-over';
     };
+    
+    snapshots.className = 'clickable';
     
     snapshots.onclick = function(){
       emile(video, 'opacity: 0', {duration:250, after: function(){
         video.parentNode.removeChild(video);
-        //repaint last snapshot w/o share?
         snapshots.className = 'share';
         form.parentNode.className = '';
       }});
@@ -142,7 +148,7 @@
       }, fallback) : fallback();
   }());
   
-  form.onsubmit = function(){
+  form.onsubmit = function(e){
     spinner.className = '';
     email = form.querySelector('[type=email]').value;
     xhr = new XMLHttpRequest();
@@ -151,11 +157,13 @@
     xhr.onreadystatechange = function(){
       if (this.status == 200 && this.readyState == 4){
         spinner.className = 'hidden';
-        emile(form, 'opacity: 0', {duration:250});
+        form.querySelector('[type=email]').disabled = true;
+        emailSubmit.textContent = 'Again?';
+        emailSubmit.onclick = function(){location.reload();};
       };
     };
-    xhr.send('email='+email+'&photo'+snapshots.toDataURL());
-    return false;
+    xhr.send('email=' + email + '&photo=' + encodeURIComponent(snapshots.toDataURL()));
+    e.preventDefault();
   };
   
   button.addEventListener('click', function(){

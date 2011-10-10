@@ -68,7 +68,7 @@ form > fieldset legend img{
 	vertical-align: middle;
 }
 form button{margin: 1em;}
-fieldset fieldset{background:#E8FAFF; margin: 0; position:relative}
+fieldset fieldset{background:#E8FAFF; margin: 0 0 10px 0; position:relative}
 fieldset fieldset legend{padding-top: 2em; font-family: monospace;}
 fieldset#advanced, fieldset#basic{ position:relative}
 fieldset#advanced fieldset p{float: left; width: 49%; margin:0 0 3px 0;}
@@ -77,7 +77,7 @@ fieldset#basic fieldset p{float: left; margin:5px;}
 .notmono{font-family: sans-serif;}
 
 label{display:block;}
-input[type=range]{display:block;}
+input[type=range]{display:block; width:100px;}
 label.inline, label.checkbox{display:inline;}
 label.checkbox{cursor:pointer}
 
@@ -291,5 +291,5 @@ that support media queries.*/
 	}
 	h1{ font-size:48px; margin:20px 20px 0 20px;}
 	form > fieldset > legend{font-size: 22px;}
-
+	input[type=range]{width:auto;}
 }

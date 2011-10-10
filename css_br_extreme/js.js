@@ -306,7 +306,7 @@
 			 Otherwise we also want to reset the borderobj.
 			*/
 
-			Lib.hasClassList ? (hasclass = form.classList.contains('formonly') ) : (hasclass = form.className.indexOf('formonly') == -1);
+			Lib.hasClassList ? (hasclass = form.classList.contains('formonly') ) : (hasclass = form.className.indexOf('formonly') !== -1);
 
 			if( !hasclass ){
 
@@ -334,7 +334,7 @@
 
 			/* Disable buttons again since we have reset. */
 			Lib.disableButton('getcode');
-			// Lib.disableButton('resetform');
+			Lib.disableButton('resetform');
 
 			/* Remove any classes from the form */
 			form.setAttribute('class','');

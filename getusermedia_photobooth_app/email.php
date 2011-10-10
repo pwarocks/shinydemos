@@ -14,7 +14,7 @@ $message = "
 </head>
 <body>
   <p>Here are your Photobooth snapshots!</p>
-  <img height=187 width=680 src=http://miketaylr.com/test/fb/$file>
+  <img height=187 width=680 src=http://miketaylr.com/test/fb/$file><br>
   <a href=http://miketaylr.com/test/fb/download.php?file=$file>Download</a>
 </body>
 </html>

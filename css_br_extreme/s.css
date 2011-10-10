@@ -36,8 +36,9 @@ header{
 }
 h1{
 	font-family: 'MaidenOrangeRegular',serif;
-	font-size:48px;
+	font-size:30px;
 	margin:20px 20px 0 20px;
+	padding-bottom:5px;
 }
 p{margin:0;}
 
@@ -50,7 +51,7 @@ form{
 }
 
 fieldset{border:0; border-radius: 5px;}
-form > fieldset > legend{font-size: 22px; padding-top: .5em; cursor:pointer}
+form > fieldset > legend{font-size: 16px; padding-top: .5em; cursor:pointer}
 form > fieldset legend img{
 	-o-transform: rotate(0deg);
 	-o-transition: -o-transform 200ms linear;
@@ -67,15 +68,13 @@ form > fieldset legend img{
 	vertical-align: middle;
 }
 form button{margin: 1em;}
-fieldset fieldset{background:#E8FAFF; margin: 0; min-width: 95%; position:relative}
+fieldset fieldset{background:#E8FAFF; margin: 0; position:relative}
 fieldset fieldset legend{padding-top: 2em; font-family: monospace;}
 fieldset#advanced, fieldset#basic{ position:relative}
 fieldset#advanced fieldset p{float: left; width: 49%; margin:0 0 3px 0;}
 fieldset#basic fieldset p{float: left; margin:5px;}
 
-.notmono{
-	font-family: sans-serif;
-}
+.notmono{font-family: sans-serif;}
 
 label{display:block;}
 input[type=range]{display:block;}
@@ -94,17 +93,17 @@ input[type=range]{text-align:right}
 }
 
 #main > img, #main > div{
-		width: 100px;
-		height: 100px;
-		margin: 0;
-	}
+	width: 100px;
+	height: 100px;
+	margin: 0;
+}
 
-	#main > video{
-		width:100px;
-		height:100px;
-		object-fit: fill;
-		background: #000;
-	}
+#main > video{
+	width:100px;
+	height:100px;
+	object-fit: fill;
+	background: #000;
+}
 
 #changeobj{
 	border-color:#f3c;
@@ -142,12 +141,7 @@ input[type=range]{text-align:right}
 	color: #666;
 }
 .samevalues{
-	position:absolute;
-	top:1.5em;
-	right:.2em;
-
-	top:1.34rem;
-	right:.2rem;
+	clear:both;
 }
 #unsupported{
 	text-align:center;
@@ -288,4 +282,14 @@ that support media queries.*/
 		object-fit: fill;
 		background: #000;
 	}
+	.samevalues{
+		position:absolute;
+		top:1.5em;
+		right:.2em;
+		top:1.34rem;
+		right:.2rem;
+	}
+	h1{ font-size:48px; margin:20px 20px 0 20px;}
+	form > fieldset > legend{font-size: 22px;}
+
 }

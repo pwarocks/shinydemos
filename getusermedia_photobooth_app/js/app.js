@@ -3,9 +3,6 @@
 
 (function(f,a){var h=document.createElement("div"),g=("backgroundColor borderBottomColor borderBottomWidth borderLeftColor borderLeftWidth borderRightColor borderRightWidth borderSpacing borderTopColor borderTopWidth bottom color fontSize fontWeight height left letterSpacing lineHeight marginBottom marginLeft marginRight marginTop maxHeight maxWidth minHeight minWidth opacity outlineColor outlineOffset outlineWidth paddingBottom paddingLeft paddingRight paddingTop right textIndent top width wordSpacing zIndex").split(" ");function e(j,k,l){return(j+(k-j)*l).toFixed(3)}function i(k,j,l){return k.substr(j,l||1)}function c(l,p,s){var n=2,m,q,o,t=[],k=[];while(m=3,q=arguments[n-1],n--){if(i(q,0)=="r"){q=q.match(/\d+/g);while(m--){t.push(~~q[m])}}else{if(q.length==4){q="#"+i(q,1)+i(q,1)+i(q,2)+i(q,2)+i(q,3)+i(q,3)}while(m--){t.push(parseInt(i(q,1+m*2,2),16))}}}while(m--){o=~~(t[m+3]+(t[m]-t[m+3])*s);k.push(o<0?0:o>255?255:o)}return"rgb("+k.join(",")+")"}function b(l){var k=parseFloat(l),j=l.replace(/^[\-\d\.]+/,"");return isNaN(k)?{v:j,f:c,u:""}:{v:k,f:e,u:j}}function d(m){var l,n={},k=g.length,j;h.innerHTML='<div style="'+m+'"></div>';l=h.childNodes[0].style;while(k--){if(j=l[g[k]]){n[g[k]]=b(j)}}return n}a[f]=function(p,m,j){p=typeof p=="string"?document.getElementById(p):p;j=j||{};var r=d(m),q=p.currentStyle?p.currentStyle:getComputedStyle(p,null),l,s={},n=+new Date,k=j.duration||200,u=n+k,o,t=j.easing||function(v){return(-Math.cos(v*Math.PI)/2)+0.5};for(l in r){s[l]=b(q[l])}o=setInterval(function(){var v=+new Date,w=v>u?1:(v-n)/k;for(l in r){p.style[l]=r[l].f(s[l].v,r[l].v,t(w))+r[l].u}if(v>u){clearInterval(o);j.after&&j.after()}},10)}})("emile",this);
 
-// TODO:
-// mail/attachment integration
-
 (function(win, doc){
   var video = doc.querySelector('video'),
       snapshots = doc.getElementById('pics'),
@@ -13,12 +10,16 @@
       snap = new Image(),
       img = new Image(),
       countdown = new Image(),
+      shareimg = new Image(),
+      corner = new Image(),
+      canvasBg = new Image(),
       audio = new Audio('media/click.ogg'),
-      button = doc.querySelector('button'),
+      button = doc.querySelector('canvas + button'),
       container = doc.getElementById('container'),
-      showemail = doc.getElementById('emailme'),
-      VIDEO_WIDTH, VIDEO_HEIGHT, flash,
-      form = doc.querySelector('form');
+      spinner = doc.getElementById('spinner'),
+      VIDEO_WIDTH, VIDEO_HEIGHT, flash, xhr,
+      form = doc.querySelector('form'),
+      emailSubmit = form.querySelector('button'),
       snaps = [
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 31, 46, 120, 75);},
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 196, 46, 120, 75);},
@@ -27,13 +28,18 @@
       ];
       
   var canvasPrep = (function(){
+    canvasBg.src = 'assets/bg_output.png';
+    canvasBg.onload = function(){
+     photos.drawImage(canvasBg, 0, 0); 
+    }
+    corner.src = 'assets/corner.png';
     snap.src = 'assets/img_border.png';
     snap.onload = function(){
       photos.drawImage(snap, 16, 23);
       photos.drawImage(snap, 181, 23);
       photos.drawImage(snap, 347, 23);
       photos.drawImage(snap, 512, 23);
-    }
+    };
   }());
 
   var computeSize = function(supportsObjectFit){
@@ -52,6 +58,7 @@
   var takeSnaps = function(interval){
     emile(countdown, 'opacity:0', {duration:500, after: function(){
       countdown.parentNode.removeChild(countdown);
+      video.muted = true;
       video.play();
     }});
     var i = 0,
@@ -63,10 +70,11 @@
       }
     
       if (++i == 4){
+        button.disabled = false;
         clearInterval(id);
-        video.pause();
+        i = 0;
         setTimeout(function(){
-          showemail.className = '';
+          share();
         }, 500);
       }
     }, interval);
@@ -89,8 +97,6 @@
 
   var fallback = function(){
     video.addEventListener('loadedmetadata', function(){
-      //not all browsers have video@muted yet.
-      this.muted = true;
       computeSize();
     }, false);
   };
@@ -102,13 +108,33 @@
     setTimeout(takeSnaps, 4000, 1200);
   };
   
-  var showEmailForm = function(){
-    emile(container, 'opacity: 0', {duration:250, after: function(){
-      container.parentNode.removeChild(container);
-      showemail.parentNode.removeChild(showemail);
-      snapshots.className = 'left';
-      form.parentNode.className = '';
-    }});
+  var share = function(){
+    shareimg.src = 'assets/img_border_hover.png';
+    shareimg.onload = function(){
+      photos.drawImage(this, 512, 23);
+      //photos.globalCompositeOperation = 'destination-out';
+      photos.drawImage(corner, 635, 23);
+      //photos.globalCompositeOperation = 'source-over';
+    };
+    
+    snapshots.className = 'clickable';
+    
+    snapshots.onclick = function(){
+      emile(video, 'opacity: 0', {duration:250, after: function(){
+        video.parentNode.removeChild(video);
+        snapshots.className = 'share';
+        form.parentNode.className = '';
+      }});
+      
+      repaint();
+    };
+  };
+  
+  var repaint = function(){
+    shareimg.src = 'assets/img_repaint.png';
+    shareimg.onload = function(){
+      photos.drawImage(this, 512, 23);
+    };
   };
   
   var init = (function(){
@@ -116,27 +142,28 @@
       navigator.getUserMedia('video', function(stream){
         video.src = stream;
         video.addEventListener('loadedmetadata', function(){
-          computeSize(true);
           video.play();
+          computeSize(true);
         }, false);
       }, fallback) : fallback();
   }());
   
-  showemail.onclick = showEmailForm;
-  
-  form.onsubmit = function(){
-    email = form.querySelector('[type=email]').value,
+  form.onsubmit = function(e){
+    spinner.className = '';
+    email = form.querySelector('[type=email]').value;
     xhr = new XMLHttpRequest();
-    
     xhr.open('POST', 'email.php');
     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xhr.onreadystatechange = function(){
       if (this.status == 200 && this.readyState == 4){
-        console.log(this);
+        spinner.className = 'hidden';
+        form.querySelector('[type=email]').disabled = true;
+        emailSubmit.textContent = 'Again?';
+        emailSubmit.onclick = function(){location.reload();};
       };
     };
-    xhr.send('email='+email+'&photo'+snapshots.toDataURL());
-    return false;
+    xhr.send('email=' + email + '&photo=' + encodeURIComponent(snapshots.toDataURL()));
+    e.preventDefault();
   };
   
   button.addEventListener('click', function(){

@@ -87,20 +87,20 @@ input[type=range]{text-align:right}
 #main{
 	position:fixed;
 	top:100px;
-	width: 100px;
-	height: 100px;
+	width: 200px;
+	height: 200px;
 	margin: 20px 0 20px 55px;
 }
 
 #main > img, #main > div{
-	width: 100px;
-	height: 100px;
+	width: 200px;
+	height: 200px;
 	margin: 0;
 }
 
 #main > video{
-	width:100px;
-	height:100px;
+	width:200px;
+	height:200px;
 	object-fit: fill;
 	background: #000;
 }

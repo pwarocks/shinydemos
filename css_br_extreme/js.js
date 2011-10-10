@@ -274,7 +274,6 @@
 
 			pre.innerHTML = output;
 			overlay.className = showcss.className = 'show';
-			document.body.className = 'killscroll';
 		}
 
 		oncloseclick = function(e){

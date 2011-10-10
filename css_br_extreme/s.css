@@ -101,6 +101,10 @@ input[type=range]{text-align:right}
 #main > video{
 	width:200px;
 	height:200px;
+	-o-object-fit: fill;
+	-webkit-object-fit: fill;
+	-moz-object-fit: fill;
+	-ms-object-fit: fill;
 	object-fit: fill;
 	background: #000;
 }
@@ -270,18 +274,9 @@ that support media queries.*/
 		height: 300px;
 		margin: 20px 0 20px 55px;
 	}
-	#main > img, #main > div{
-		width: 300px;
-		height: 300px;
-		margin: 0;
-	}
+	#main > img, #main > div{width: 300px;	height: 300px;}
 
-	#main > video{
-		width:300px;
-		height:300px;
-		object-fit: fill;
-		background: #000;
-	}
+	#main > video{width:300px; height:300px;}
 	.samevalues{
 		position:absolute;
 		top:1.5em;

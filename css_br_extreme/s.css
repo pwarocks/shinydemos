@@ -101,12 +101,12 @@ input[type=range]{text-align:right}
 #main > video{
 	width:200px;
 	height:200px;
-	-o-object-fit: fill;
+	     -o-object-fit: fill;
 	-webkit-object-fit: fill;
-	-moz-object-fit: fill;
-	-ms-object-fit: fill;
-	object-fit: fill;
-	background: #000;
+   	   -moz-object-fit: fill;
+	    -ms-object-fit: fill;
+	 -khtml-object-fit: fill;
+	        object-fit: fill;
 }
 
 #changeobj{
@@ -246,7 +246,7 @@ form > fieldset div{
 	   -moz-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
 	 -khtml-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
 
-	overflow-y: hidden;
+	overflow: hidden;
 	width: 100%;
 	padding:0;
 }
@@ -277,6 +277,7 @@ that support media queries.*/
 	#main > img, #main > div{width: 300px;	height: 300px;}
 
 	#main > video{width:300px; height:300px;}
+
 	.samevalues{
 		position:absolute;
 		top:1.5em;
@@ -284,6 +285,7 @@ that support media queries.*/
 		top:1.34rem;
 		right:.2rem;
 	}
+
 	h1{ font-size:48px; margin:20px 20px 0 20px;}
 	form > fieldset > legend{font-size: 22px;}
 	input[type=range]{width:auto;}

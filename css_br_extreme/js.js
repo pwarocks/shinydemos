@@ -267,6 +267,11 @@
 			for(x=0; x < num; x++){
 				output += extractCSS( getThese[x], styles );
 			}
+
+			if( output == ''){
+				output = 'No styles to output.';
+			} else{};
+
 			pre.innerHTML = output;
 			overlay.className = showcss.className = 'show';
 			document.body.className = 'killscroll';
@@ -351,13 +356,10 @@
 		Lib.addHandlers({nodelist:brdrwidth, event:'change', func:onborderwidthchange});
 		Lib.addHandlers({nodelist:close, event:'click', func:oncloseclick});
 		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
-		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
-		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
 
 		bgimg.addEventListener('change',onbgchange,false);
 		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
 		form.addEventListener('reset',onresethandler,false);
-
 	}
 })();

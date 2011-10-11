@@ -43,7 +43,7 @@ header > p{padding: 0 20px;}
     top: 0;
 }
 
-#container.loading{top: -1000px;}
+#container.loading{top: -1000em;}
 
 #photostack{
 	top:0;
@@ -151,10 +151,16 @@ section.leadPhoto{
 	background-color: rgba(0,0,0,.5);
 	position: fixed;
 	z-index: 9997;
-	left: -2000px;
-	top:  -2000px;
-	width:  4000px;
-	height: 4000px;
+	left: -2000em;
+	top:  -2000em;
+	width:  4000em;
+	height: 4000em;
+
+	/* using rems where supported */
+	left: -2000rem;
+	top:  -2000rem;
+	width:  4000rem;
+	height: 4000rem
 }
 #overlay:hover{cursor: pointer;}
 

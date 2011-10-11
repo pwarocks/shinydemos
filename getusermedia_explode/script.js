@@ -11,7 +11,10 @@ var TILE_HEIGHT = 24;
 var TILE_CENTER_WIDTH = TILE_WIDTH / 2;
 var TILE_CENTER_HEIGHT = TILE_HEIGHT / 2;
 var SOURCERECT = {x:0, y:0, width:0, height:0};
-var PAINTRECT = {x:0, y:0, width:window.innerWidth, height:window.innerHeight};
+var PAINTX = 0;
+var PAINTY = 0;
+var PAINTWIDTH = window.innerWidth;
+var PAINTHEIGHT = window.innerHeight;
 var SUPPORTS_TOUCH = 'createTouch' in document;
 var RAD = Math.PI/180;
 
@@ -59,8 +62,8 @@ function init(){
 }
 
 function createTiles(){
-    var offsetX = (TILE_CENTER_WIDTH+(PAINTRECT.width-SOURCERECT.width)/2 >> 0);
-    var offsetY = (TILE_CENTER_HEIGHT+(PAINTRECT.height-SOURCERECT.height)/2 >> 0);
+    var offsetX = (TILE_CENTER_WIDTH+(PAINTWIDTH-SOURCERECT.width)/2 >> 0);
+    var offsetY = (TILE_CENTER_HEIGHT+(PAINTHEIGHT-SOURCERECT.height)/2 >> 0);
     var y=0;
     while(y < SOURCERECT.height){
         var x=0;
@@ -97,24 +100,25 @@ function processFrame(){
     var debugStr = "";
     //copy tiles
     copy.drawImage(video, 0, 0);
-    draw.clearRect(PAINTRECT.x, PAINTRECT.y,PAINTRECT.width,PAINTRECT.height);
+    draw.clearRect(PAINTX, PAINTY,PAINTWIDTH,PAINTHEIGHT);
     
     for(var i=0, len = tiles.length; i<len; i++){
         var tile = tiles[i];
         if(tile.force > 0.0001){
             //expand
-            tile.moveX *= tile.force;
-            tile.moveY *= tile.force;
-            tile.moveRotation *= tile.force;
+            var force = tile.force;
+            tile.moveX *= force;
+            tile.moveY *= force;
+            tile.moveRotation *= force;
             tile.currentX += tile.moveX;
             tile.currentY += tile.moveY;
             tile.rotation += tile.moveRotation;
             tile.rotation %= 360;
             tile.force *= 0.9;
-            if(tile.currentX <= 0 || tile.currentX >= PAINTRECT.width){
+            if(tile.currentX <= 0 || tile.currentX >= PAINTWIDTH){
                 tile.moveX *= -1;
             }
-            if(tile.currentY <= 0 || tile.currentY >= PAINTRECT.height){
+            if(tile.currentY <= 0 || tile.currentY >= PAINTHEIGHT){
                 tile.moveY *= -1;
             }
         }else if(tile.rotation != 0 || tile.currentX != tile.originX || tile.currentY != tile.originY){
@@ -154,14 +158,15 @@ function processFrame(){
 }
 
 function explode(x, y){
-    for(var i=0; i<tiles.length; i++){
+    for(var i=0, len = tiles.length; i<len; i++){
         var tile = tiles[i];
         
         var xdiff = tile.currentX-x;
         var ydiff = tile.currentY-y;
         var dist = Math.sqrt(xdiff*xdiff + ydiff*ydiff);
+        var rnd = Math.random();
         
-        var randRange = 180+(Math.random()*10);
+        var randRange = 180+(rnd*10);
         var range = randRange-dist;
         var force = 3*(range/randRange);
         if(force > tile.force){
@@ -169,7 +174,7 @@ function explode(x, y){
             var radians = Math.atan2(ydiff, xdiff);
             tile.moveX = Math.cos(radians);
             tile.moveY = Math.sin(radians);
-            tile.moveRotation = 0.5-Math.random();
+            tile.moveRotation = 0.5-rnd;
         }
     }
     tiles.sort(zindexSort);

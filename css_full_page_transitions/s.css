@@ -43,7 +43,7 @@ header > p{padding: 0 20px;}
     top: 0;
 }
 
-#container.loading{top: -1000em;}
+#container.loading{top: -1000px;}
 
 #photostack{
 	top:0;
@@ -73,6 +73,13 @@ section, .leadPhoto .close, #container{
             transition-timing-function: linear;
 }
 
+#container{
+         -o-transition-duration: 1s;
+	-webkit-transition-duration: 1s;
+       -moz-transition-duration: 1s;
+        -ms-transition-duration: 1s;
+            transition-duration: 1s;
+}
 section{
 	border-width: 1px;
 	border-color: rgba(0,0,0,.2);

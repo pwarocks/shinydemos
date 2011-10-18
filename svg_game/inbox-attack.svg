@@ -5,10 +5,11 @@
      Validator problem with WAI-ARIA? Or is the role attribute supported in SVG 1.2 only? -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <style type="text/css">
-    @-o-viewport {
-        width: device-width;
-        zoom: 100%;
-    }
+	@-o-viewport {
+		width: device-width;
+		zoom: 1;
+		user-zoom: fixed;
+	}
     @font-face {
         /* LCD font by Samuel Reynolds */
         /* License: http://www.spinwardstars.com/scrfonts/aaastdlicense.html */

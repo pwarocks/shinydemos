@@ -16,7 +16,7 @@ body {
 	transform-origin: 0 0;
 }
 #container {
-	position: absolute; background: #fff url(isomodvector2.webp) 0 0 no-repeat; width: 1600px; height: 1152px;
+	position: absolute; background: #fff url(isomodvector2.webp) 0 0 no-repeat; width: 1600px; height: 1152px; 
 	/* original 2D image from http://www.flickr.com/photos/yourpaldave/385386667/ CC by-nc 2.0 */
 	-o-transition-property: -o-transform, left, top;
 	-o-transition-duration: 1s, 1s, 1s;
@@ -34,10 +34,28 @@ body {
 	transition-duration: 1s, 1s, 1s;
 	transition-timing-function: ease-in-out, ease-in-out, ease-in-out;
 }
+
+#instructions {
+	position: absolute; width: 158px; height: 82px;
+	left: 240px;
+	top: 306px;
+	-o-transform:skew(0, -30deg);
+	-webkit-transform:skew(0, -30deg);
+	-moz-transform:skew(0, -30deg);
+	-ms-transform:skew(0, -30deg);
+	transform:skew(0, -30deg);
+	font-size: 0.8em;
+	background-color: #fff;
+	font-weight: bold;
+	padding: 4px;
+	text-transform: uppercase;
+}
+#instructions em {color: red; font-style: normal;}
+
 #logo1, #logo1b {
-	position: absolute; width: 200px;
-	left: 225px;
-	top: 340px;
+	position: absolute; width: 110px;
+	left: 660px;
+	top: 412px;
 	-o-transform:skew(0, -30deg);
 	-webkit-transform:skew(0, -30deg);
 	-moz-transform:skew(0, -30deg);
@@ -99,7 +117,7 @@ img[src="operalogo.png"]:hover, .zoom1 #logo1, .zoom2 #logo2, .zoom3 #logo3, .zo
 }
 
 .zoom1 {
-	left: -400px; top: -800px;
+	left: -1300px; top: -1500px;
 	-o-transform:skew(0, 30deg) scale(2);
 	-webkit-transform:skew(0, 30deg) scale(2);
 	-moz-transform:skew(0, 30deg) scale(2);
@@ -140,8 +158,7 @@ img[src="operalogo.png"]:hover, .zoom1 #logo1, .zoom2 #logo2, .zoom3 #logo3, .zo
 }
 
 footer {position: fixed; bottom: 0; left: 0;}
-#instructions, #credit {background: hsla(0, 0%, 100%, 0.9); border: 1px solid #fff; border-radius: 5px; font-size: 0.7em; padding: 5px 4px 3px 4px; margin: 5px; line-height: 1; font-weight: bold; float: left;}
-#instructions em {color: red; font-style: normal;}
+#credit {background: hsla(0, 0%, 100%, 0.9); border: 1px solid #fff; border-radius: 5px; font-size: 0.7em; padding: 5px 4px 3px 4px; margin: 5px; line-height: 1; font-weight: bold; float: left;}
 #credit a {color: #000;}
 
 </style>
@@ -195,15 +212,17 @@ window.addEventListener('load', init, false);
 
 </head>
 <body>
+
 <div id="container">
-<img src="operalogo-grey.png" id="logo1b"><img src="operalogo.png" id="logo1" alt="Opera Software">
+	<p id="instructions">Click on the <em>Opera</em> logos to zoom in on them.<br> Click them again to zoom out.</p>
+<img src="operalogo-white.png" id="logo1b"><img src="operalogo.png" id="logo1" alt="Opera Software">
 <img src="operalogo-white.png" id="logo2b"><img src="operalogo.png" id="logo2" alt="Opera Software">
 <img src="operalogo-white.png" id="logo3b"><img src="operalogo.png" id="logo3" alt="Opera Software">
 <img src="operalogo-grey.png" id="logo4b"><img src="operalogo.png" id="logo4" alt="Opera Software">
 <img src="operalogo-grey.png" id="logo5b"><img src="operalogo.png" id="logo5" alt="Opera Software">
 </div>
+
 <footer>
-<p id="instructions">Click on the <em>Opera</em> logos to zoom in on them. Click again to zoom out.</p>
 <p id="credit">Artwork <a href="http://creativecommons.org/licenses/by-nc/2.0/deed.en">CC by-nc 2.0</a> by <a href="http://www.flickr.com/photos/yourpaldave/385386667/">Your Pal Dave</a>.</p>
 </footer>
 </body>

@@ -38,43 +38,52 @@
 	}
 	section:first-child{
 		left: 0;
-		top: 70px;
+		top: 5em;
+
 	}
 	section:nth-child(2){
 		left: 10%;
-		top: 0px;
+		top:  0;
+
 	}
 	section:nth-child(3){
 		left: 4%;
-		top: 80px;
+		top: 6em;
+		top: 6rem;
 	}
 	section:nth-child(4){
-		left: 30%;
-		top:  200px;
+		left: 10%;
+		top:  10em;
+		top:  10rem;
 	}
 	section:nth-child(5){
 		left: 25%;
-		top:  25px;
+		top:  2.5em;
+		top:  2.5rem;
 	}
 	section:nth-child(6){
 		left: 60%;
-		top:  0px;
+		top:  0;
 	}
 	section:nth-child(7){
-		left: 62%;
-		top:  120px;
+		left: 15%;
+		top:  9em;
+		top:  9rem;
 	}
 	section:nth-child(8){
-		left: 60%;
-		top: 180px;
+		left: 30%;
+		top: 13em;
+		top: 13rem;
 	}
 	section:nth-child(9){
-		left: 60%;
-		top: 200px;
+		left: 50%;
+		top:  9em;
+		top: 9rem;
 	}
 	section:nth-child(10){
-		left: 40%;
-		top: 105px;
+		left: 45%;
+		top:  7em;
+		top:  7rem;
 	}
 
 	section:hover{

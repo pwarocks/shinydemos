@@ -73,6 +73,13 @@ section, .leadPhoto .close, #container{
             transition-timing-function: linear;
 }
 
+#container{
+         -o-transition-duration: 1s;
+	-webkit-transition-duration: 1s;
+       -moz-transition-duration: 1s;
+        -ms-transition-duration: 1s;
+            transition-duration: 1s;
+}
 section{
 	border-width: 1px;
 	border-color: rgba(0,0,0,.2);
@@ -151,10 +158,16 @@ section.leadPhoto{
 	background-color: rgba(0,0,0,.5);
 	position: fixed;
 	z-index: 9997;
-	left: -2000px;
-	top:  -2000px;
-	width:  4000px;
-	height: 4000px;
+	left: -2000em;
+	top:  -2000em;
+	width:  4000em;
+	height: 4000em;
+
+	/* using rems where supported */
+	left: -2000rem;
+	top:  -2000rem;
+	width:  4000rem;
+	height: 4000rem
 }
 #overlay:hover{cursor: pointer;}
 

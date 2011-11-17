@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<title>Border Radius Salon</title>
+<style>
+ #frame {
+   padding: 10px 30px;
+   background-color: #fff;
+   -o-border-image: url(frame1.png);
+   -moz-border-image: url(frame1.png) 100 stretch;
+   -webkit-border-image: url(frame1.png) 100 stretch;
+   -o-border-image: url(frame1.png) 100 stretch;
+   border-image: url(frame1.png) 100 stretch;
+   border-width:60px;
+   display: table-cell;
+   vertical-align: middle;
+ }
+ div {
+   margin: 10% auto;
+ }
+</style>
+<div id="frame"></div>
+<script src="borderbox.js"></script>
+<script>
+  BorderBox.prototype.append = function(){
+    frame.appendChild(this.box);
+  };
+  BorderBox.prototype.number = function(){
+    var upperLimit = 150;
+    return Math.floor(Math.random() * upperLimit) + "px";
+  };
+  BorderBox.prototype.doubleNumber = function(){
+    var upperLimit = 150,
+        first = Math.floor(Math.random() * upperLimit) + "px",
+        second = Math.floor(Math.random() * upperLimit) + "px";
+    return first + " " + second;
+  };
+  
+  var s = new BorderBox(150,150).create();
+</script>

@@ -2,5 +2,21 @@
 <title>random border radius thing</title>
 <link rel="stylesheet" href="style.css">
 <body>
-  <script src="borderradius.js"></script>
+<script src="borderbox.js"></script>
+<script>
+['oTransitionEnd', 'transitionend', 'webkitTransitionEnd', 'msTransitionEnd'].forEach(function(event){
+  document.addEventListener(event, function(){
+    f.destroy();
+    go();
+  }, false);
+});
+
+var go = function go(){
+  f = new BorderBox(250,250);
+  f.create();
+  setTimeout(function(){f.box.className = 'transition';}, 2000);
+};
+
+go();
+</script>
 </body>

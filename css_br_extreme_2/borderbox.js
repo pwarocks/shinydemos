@@ -59,7 +59,6 @@ BorderBox.prototype = {
     }, this);
     if (this.framed){
       this.frame.style.borderWidth = (frameBorder > 10 ? frameBorder : 10) + "px";
-      console.log(this.frame.style.borderWidth);
     }
     this.append();
   },

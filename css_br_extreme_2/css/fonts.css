@@ -1,0 +1,10 @@
+/* Bebas Neue
+---------------------------------------- */
+@font-face {
+	font-family:'Bebas Neue';
+	src:url(http://people.opera.com/pepelsbey/experiments/shiny/fonts/BebasNeue.eot);
+	src:url(http://people.opera.com/pepelsbey/experiments/shiny/fonts/BebasNeue.eot?) format('embedded-opentype'),
+		url(http://people.opera.com/pepelsbey/experiments/shiny/fonts/BebasNeue.woff) format('woff'),
+		url(http://people.opera.com/pepelsbey/experiments/shiny/fonts/BebasNeue.ttf) format('truetype'),
+		url(http://people.opera.com/pepelsbey/experiments/shiny/fonts/BebasNeue.svg) format('svg');
+	}

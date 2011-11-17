@@ -1,7 +1,3 @@
-body {
-  width: 95%;
-}
-
 div {
   margin: 0 auto;
 }
@@ -27,14 +23,23 @@ div.transition {
 #frame {
   padding: 10px 30px;
   background-color: #fff;
-  -o-border-image: url(frame1.png);
-  -moz-border-image: url(frame1.png) 100 stretch;
-  -webkit-border-image: url(frame1.png) 100 stretch;
-  -o-border-image: url(frame1.png) 100 stretch;
-  border-image: url(frame1.png) 100 stretch;
+  -o-border-image: url(../images/frame1.png);
+  -moz-border-image: url(../images/frame1.png) 100 stretch;
+  -webkit-border-image: url(../images/frame1.png) 100 stretch;
+  -o-border-image: url(../images/frame1.png) 100 stretch;
+  border-image: url(../images/frame1.png) 100 stretch;
   border-width:60px;
   display: table-cell;
   vertical-align: middle;
+  position:absolute;
+  top:50%;
+  left:50%;
+  -webkit-transform:translate(-50%, -50%);
+  -moz-transform:translate(-50%, -50%);
+  -ms-transform:translate(-50%, -50%);
+  -o-transform:translate(-50%, -50%);
+  transform:translate(-50%, -50%);
+  box-shadow: 0 5px 15px rgba(0,0,0,.5);
 }
 
 #frame div {

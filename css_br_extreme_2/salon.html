@@ -22,17 +22,6 @@
 <script>
   BorderBox.prototype.append = function(){
     frame.appendChild(this.box);
-  };
-  BorderBox.prototype.number = function(){
-    var upperLimit = 150;
-    return Math.floor(Math.random() * upperLimit) + "px";
-  };
-  BorderBox.prototype.doubleNumber = function(){
-    var upperLimit = 150,
-        first = Math.floor(Math.random() * upperLimit) + "px",
-        second = Math.floor(Math.random() * upperLimit) + "px";
-    return first + " " + second;
-  };
-  
-  var s = new BorderBox(150,150).create();
+  };  
+  var s = new BorderBox({width: 150, height: 150, framed: true}).create();
 </script>

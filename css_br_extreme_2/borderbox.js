@@ -1,9 +1,10 @@
-var BorderBox = function(w, h){
+var BorderBox = function(config){
   this.dirs = ['Top', 'Right', 'Bottom', 'Left'];
   this.corners = ['BottomLeft', 'BottomRight', 'TopLeft', 'TopRight'];
   this.box = document.createElement('div');
-  this.width = w;
-  this.height = h;
+  this.width = config.width;
+  this.height = config.height;
+  this.framed = config.framed;
 };
 
 BorderBox.prototype = {
@@ -17,19 +18,19 @@ BorderBox.prototype = {
   },
   
   number: function(){
-    var upperLimit = 250;
+    var upperLimit = (this.width + this.height) / 2;
     return Math.floor(Math.random() * upperLimit) + "px";
   },
   
   doubleNumber: function(){
-    var upperLimit = 250,
+    var upperLimit = (this.width + this.height) / 2,
         first = Math.floor(Math.random() * upperLimit) + "px",
         second = Math.floor(Math.random() * upperLimit) + "px";
     return first + " " + second;
   },
   
   oneOrTwo: function(){
-    return [this.number, this.doubleNumber][+(Math.random() > 0.5)]();
+    return [this.number.bind(this), this.doubleNumber.bind(this)][+(Math.random() > 0.5)]();
   },
   
   border: function(prop, style){

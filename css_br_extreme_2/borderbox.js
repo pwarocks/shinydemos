@@ -4,7 +4,10 @@ var BorderBox = function(config){
   this.box = document.createElement('div');
   this.width = config.width;
   this.height = config.height;
-  this.framed = config.framed;
+  if (this.framed = config.framed) {
+    this.frame = document.createElement('div');
+    this.frame.id = 'frame';
+  }
 };
 
 BorderBox.prototype = {
@@ -53,7 +56,12 @@ BorderBox.prototype = {
   },
   
   append: function(){
-    document.body.appendChild(this.box);
+    if (this.framed){
+      document.body.appendChild(this.frame);
+      this.frame.appendChild(this.box);
+    } else {
+      document.body.appendChild(this.box);
+    }
   },
   
   destroy: function(){

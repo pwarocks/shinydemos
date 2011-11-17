@@ -23,3 +23,20 @@ div.transition {
   transition-property: all;
   transition-duration: 2s;
 }
+
+#frame {
+  padding: 10px 30px;
+  background-color: #fff;
+  -o-border-image: url(frame1.png);
+  -moz-border-image: url(frame1.png) 100 stretch;
+  -webkit-border-image: url(frame1.png) 100 stretch;
+  -o-border-image: url(frame1.png) 100 stretch;
+  border-image: url(frame1.png) 100 stretch;
+  border-width:60px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#frame div {
+  margin: 10% auto;
+}

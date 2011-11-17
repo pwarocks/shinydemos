@@ -13,7 +13,11 @@ var BorderBox = function(config){
 BorderBox.prototype = {
   style: function(){
     var styles = ['dotted', 'dashed', 'solid', 'double', 'groove', 'ridge', 'inset', 'outset'];
-    return styles[Math.floor(Math.random() * 9)];
+    return styles[this.random(9)];
+  },
+  
+  random: function(limit){
+    return Math.floor(Math.random() * limit);
   },
   
   color: function(){
@@ -22,13 +26,13 @@ BorderBox.prototype = {
   
   number: function(){
     var upperLimit = (this.width + this.height) / 2;
-    return Math.floor(Math.random() * upperLimit) + "px";
+    return this.random(upperLimit) + "px";
   },
   
   doubleNumber: function(){
     var upperLimit = (this.width + this.height) / 2,
-        first = Math.floor(Math.random() * upperLimit) + "px",
-        second = Math.floor(Math.random() * upperLimit) + "px";
+        first = this.random(upperLimit) + "px",
+        second = this.random(upperLimit) + "px";
     return first + " " + second;
   },
   
@@ -41,6 +45,7 @@ BorderBox.prototype = {
   },
   
   create: function(){
+    var frameBorder = this.random(60);
     this.box.style.width = this.width + "px";
     this.box.style.height = this.height + "px";
     this.box.style.backgroundColor = this.color();
@@ -52,6 +57,10 @@ BorderBox.prototype = {
     this.corners.forEach(function(item){
       this.border(item + 'Radius', this.oneOrTwo());
     }, this);
+    if (this.framed){
+      this.frame.style.borderWidth = (frameBorder > 10 ? frameBorder : 10) + "px";
+      console.log(this.frame.style.borderWidth);
+    }
     this.append();
   },
   

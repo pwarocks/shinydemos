@@ -66,14 +66,6 @@ function makeCurrent(el){
     nextSlide(frame);
     makeSlide({dir: 'next'});
   }
-  
-  //addNextFrame();
-  
-  //nextSibling add next class in chain, if that guy doesn't
-  //have a sibling, create it
-  //prev sibling moves down in chain
-  
-  //need a notion of direction so i can flip that behavior
 }
 
 function bindClicks(){

@@ -16,8 +16,10 @@ function initFrames(){
   });
 }
 
-function prevSlide(frame){
+function prevSlide(){
+  var frame = document.querySelector('.prev');
   makeSlide({dir: 'prev'});
+  frame.classList.add('current');
   frame.classList.remove('prev');
   frame.previousSibling.classList.remove('prev-far');
   frame.previousSibling.classList.add('prev');
@@ -27,7 +29,10 @@ function prevSlide(frame){
   frame.nextSibling.nextSibling.classList.add('next-far');
 }
 
-function nextSlide(frame){
+function nextSlide(){
+  var frame = document.querySelector('.next');
+  makeSlide({dir: 'next'});
+  frame.classList.add('current');
   frame.classList.remove('next');
   frame.nextSibling.classList.remove('next-far');
   frame.nextSibling.classList.add('next');
@@ -47,37 +52,57 @@ function makeSlide(slide){
     newSlide = new BorderBox({width: 150, height: 150, framed: true});
     newSlide.frame.classList.add('prev-far');
     newSlide.create();
-    document.body.insertBefore(newSlide.frame, frames[0]);
+    document.body.insertBefore(newSlide.frame, frameList[0]);
   }
 }
 
 function makeCurrent(el){
   var frame = el.frame ? el.frame : el;
   
-  if (el.classList.contains('current')) return;
-  
-  frame.classList.add('current');
+  if (frame.classList.contains('current')) return;
   
   if (frame.classList.contains('prev')){
-    prevSlide(frame);
+    prevSlide();
   }
   
   if (frame.classList.contains('next')){
-    nextSlide(frame);
-    makeSlide({dir: 'next'});
+    nextSlide();
   }
 }
 
-function bindClicks(){
-  frames = document.getElementsByClassName('frame');
-  [].slice.apply(frames).forEach(function(){
+//modified from http://html5slides.googlecode.com/svn/trunk/slides.js
+
+function handleBodyKeyDown(event) {
+  switch (event.keyCode) {
+    case 39: // right arrow
+    case 13: // Enter
+    case 32: // space
+    case 34: // PgDn
+      nextSlide();
+      event.preventDefault();
+      break;
+
+    case 37: // left arrow
+    case 8: // Backspace
+    case 33: // PgUp
+      prevSlide();
+      event.preventDefault();
+      break;
+  }
+};
+
+function eventListeners(){
+  frameList = document.getElementsByClassName('frame');
+  [].slice.apply(frameList).forEach(function(){
       addEventListener('click', function(event){makeCurrent(event.target);}, false);
   });
+  
+  document.addEventListener('keydown', handleBodyKeyDown, false);  
 }
 
 function init(){
   initFrames();
-  bindClicks();
+  eventListeners();
 };
 
 document.addEventListener('DOMContentLoaded', init, false);

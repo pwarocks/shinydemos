@@ -1,4 +1,5 @@
 body {overflow-x: hidden;}
+.sd-panel {z-index:9;}
 
 
 div.transition {

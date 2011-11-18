@@ -10,7 +10,7 @@ var BorderBox = function(config){
   this.height = config.height;
   if (this.framed = config.framed) {
     this.frame = document.createElement('div');
-    this.frame.id = 'frame';
+    this.frame.className = 'frame';
   }
 };
 

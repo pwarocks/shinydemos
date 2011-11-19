@@ -23,7 +23,6 @@ div.transition {
 .frame {
   padding: 10px 30px;
   background-color: #fff;
-  -o-border-image: url(../images/frame1.png);
   -moz-border-image: url(../images/frame1.png) 100 stretch;
   -webkit-border-image: url(../images/frame1.png) 100 stretch;
   -o-border-image: url(../images/frame1.png) 100 stretch;
@@ -41,6 +40,13 @@ div.transition {
   transform:translate(-50%, -50%);
   box-shadow: 0 5px 15px rgba(0,0,0,.5);
 }
+
+/*div.frame:nth-of-type(odd) {
+  -moz-border-image: url(../images/frame2.png) 100 stretch;
+  -webkit-border-image: url(../images/frame2.png) 100 stretch;
+  -o-border-image: url(../images/frame2.png) 100 stretch;
+  border-image: url(../images/frame2.png) 100 stretch;
+}* maybe just do the border randomly */
 
 .current {
   -o-transition-property:left;-o-transition-duration:0.5s;-ms-transition-property:left;-ms-transition-duration:0.5s;-moz-transition-property:left;-moz-transition-duration:0.5s;-webkit-transition-property:left;-webkit-transition-duration:0.5s;transition-property:left;transition-duration:0.5s;

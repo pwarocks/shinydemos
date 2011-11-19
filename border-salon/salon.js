@@ -25,8 +25,8 @@ function prevSlide(){
   frame.previousSibling.classList.add('prev');
   frame.nextSibling.classList.remove('current');
   frame.nextSibling.classList.add('next');
-  frame.nextSibling.nextSibling.classList.remove('next');
   frame.nextSibling.nextSibling.classList.add('next-far');
+  setTimeout(function(){frame.parentNode.removeChild(frame.nextSibling.nextSibling);}, 300);
 }
 
 function nextSlide(){
@@ -38,8 +38,8 @@ function nextSlide(){
   frame.nextSibling.classList.add('next');
   frame.previousSibling.classList.remove('current');
   frame.previousSibling.classList.add('prev');
-  frame.previousSibling.previousSibling.classList.remove('prev');
   frame.previousSibling.previousSibling.classList.add('prev-far');
+  setTimeout(function(){frame.parentNode.removeChild(frame.previousSibling.previousSibling);}, 300);
 }
 
 function makeSlide(slide){

@@ -49,7 +49,8 @@ BorderBox.prototype = {
   },
   
   create: function(){
-    var frameBorder = this.random(60);
+    var frameBorder = this.random(60),
+        frameStyle = ['frame-style-1', 'frame-style-2'][+(Math.random() > 0.5)];
     this.box.style.width = this.width + "px";
     this.box.style.height = this.height + "px";
     this.box.style.backgroundColor = this.color();
@@ -63,6 +64,7 @@ BorderBox.prototype = {
     }, this);
     if (this.framed){
       this.frame.style.borderWidth = (frameBorder > 10 ? frameBorder : 10) + "px";
+      this.frame.classList.add(frameStyle);
     }
     this.append();
   },

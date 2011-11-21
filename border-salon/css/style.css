@@ -19,7 +19,7 @@ div.transition{border-bottom-left-radius:1px !important;border-bottom-right-radi
   .frame{-o-transform:scale(0.75) translate(-75%,-70%);-ms-transform:scale(0.75) translate(-75%,-70%);-moz-transform:scale(0.75) translate(-75%,-70%);-webkit-transform:scale(0.75) translate(-75%,-70%);transform:scale(0.75) translate(-75%,-70%);}
 }
 
-@media all and (min-width: 100px) and (max-width: 480px) {
+@media all and (min-width: 0) and (max-width: 480px) {
   .prev {-o-transition-property:left;-o-transition-duration:0.5s;-ms-transition-property:left;-ms-transition-duration:0.5s;-moz-transition-property:left;-moz-transition-duration:0.5s;-webkit-transition-property:left;-webkit-transition-duration:0.5s;transition-property:left;transition-duration:0.5s;left:-50%;}
   .next{-o-transition-property:left;-o-transition-duration:0.5s;-ms-transition-property:left;-ms-transition-duration:0.5s;-moz-transition-property:left;-moz-transition-duration:0.5s;-webkit-transition-property:left;-webkit-transition-duration:0.5s;transition-property:left;transition-duration:0.5s;left:150%;}
 }

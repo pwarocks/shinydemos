@@ -106,6 +106,9 @@ function eventListeners(){
 }
 
 function init(){
+  ['frame1', 'frame2'].forEach(function(item){
+    new Image().src = item;
+  });
   initFrames();
   eventListeners();
 };

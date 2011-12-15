@@ -96,16 +96,64 @@ function handleBodyKeyDown(event) {
   }
 };
 
+/* Touch events */
+
+function handleTouchStart(event) {
+  if (event.touches.length == 1) {
+    touchDX = 0;
+    touchDY = 0;
+
+    touchStartX = event.touches[0].pageX;
+    touchStartY = event.touches[0].pageY;
+
+    document.body.addEventListener('touchmove', handleTouchMove, true);
+    document.body.addEventListener('touchend', handleTouchEnd, true);
+  }
+};
+
+function handleTouchMove(event) {
+  if (event.touches.length > 1) {
+    cancelTouch();
+  } else {
+    touchDX = event.touches[0].pageX - touchStartX;
+    touchDY = event.touches[0].pageY - touchStartY;
+  }
+};
+
+function handleTouchEnd(event) {
+  var dx = Math.abs(touchDX);
+  var dy = Math.abs(touchDY);
+
+  if ((dx > PM_TOUCH_SENSITIVITY) && (dy < (dx * 2 / 3))) {
+    if (touchDX > 0) {
+      prevSlide();
+    } else {
+      nextSlide();
+    }
+  }
+
+  cancelTouch();
+};
+
+function cancelTouch() {
+  document.body.removeEventListener('touchmove', handleTouchMove, true);
+  document.body.removeEventListener('touchend', handleTouchEnd, true);  
+};
+
 function eventListeners(){
   frameList = document.getElementsByClassName('frame');
   [].slice.apply(frameList).forEach(function(){
       addEventListener('click', function(event){makeCurrent(event.target);}, false);
   });
   
-  document.addEventListener('keydown', handleBodyKeyDown, false);  
+  document.addEventListener('keydown', handleBodyKeyDown, false);
+  document.body.addEventListener('touchstart', handleTouchStart, false);
+  
 }
 
 function init(){
+  var PM_TOUCH_SENSITIVITY = 15;
+  
   ['frame1', 'frame2'].forEach(function(item){
     new Image().src = item;
   });

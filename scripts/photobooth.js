@@ -28,12 +28,12 @@
       ];
       
   var canvasPrep = (function(){
-    canvasBg.src = 'assets/bg_output.png';
+    canvasBg.src = '../images/photobooth/bg_output.png';
     canvasBg.onload = function(){
      photos.drawImage(canvasBg, 0, 0); 
     }
-    corner.src = 'assets/corner.png';
-    snap.src = 'assets/img_border.png';
+    corner.src = '../images/photobooth/corner.png';
+    snap.src = '../images/photobooth/img_border.png';
     snap.onload = function(){
       photos.drawImage(snap, 16, 23);
       photos.drawImage(snap, 181, 23);
@@ -102,19 +102,17 @@
   };
   
   var startButton = function(){
-    countdown.src = 'assets/countdown.svg';
+    countdown.src = '../images/photobooth/countdown.svg';
     countdown.id = 'countdown';
     container.appendChild(countdown);
     setTimeout(takeSnaps, 4000, 1200);
   };
   
   var share = function(){
-    shareimg.src = 'assets/img_border_hover.png';
+    shareimg.src = '../images/photobooth/img_border_hover.png';
     shareimg.onload = function(){
       photos.drawImage(this, 512, 23);
-      //photos.globalCompositeOperation = 'destination-out';
       photos.drawImage(corner, 635, 23);
-      //photos.globalCompositeOperation = 'source-over';
     };
     
     snapshots.className = 'clickable';
@@ -131,7 +129,7 @@
   };
   
   var repaint = function(){
-    shareimg.src = 'assets/img_repaint.png';
+    shareimg.src = '../images/photobooth/img_repaint.png';
     shareimg.onload = function(){
       photos.drawImage(this, 512, 23);
     };

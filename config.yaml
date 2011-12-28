@@ -1,7 +1,9 @@
+# Allowed tags: js, forms, canvas, content, parser, svg, css, audio, video
+
 - slug: pagedcontent
-  tags: [css3]
+  tags: [css]
   support: [opera, chrome, safari, firefox, ie]
 
 - slug: css_br_extreme
-  tags: [css3]
+  tags: [css, svg, parser]
   support: [opera, chrome, safari, firefox, ie]

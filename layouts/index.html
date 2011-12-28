@@ -17,16 +17,10 @@
 			<p>Shinydemos is a growing set of demos of the latest Open Web Standards, made by the Opera developer relations team. No browser is blocked: any browser that supports the standard sees the shiny!</p>
 		</header>
 		<nav class="navigation">
-			<ul>
-				<li class="audio"><a href="tag.html">Audio</a></li>
-				<li class="canvas"><a href="tag.html">Canvas</a></li>
-				<li class="content"><a href="tag.html">Content Editable</a></li>
-				<li class="css"><a href="tag.html">CSS3</a></li>
-				<li class="forms"><a href="tag.html">Web Forms</a></li>
-				<li class="js"><a href="tag.html">JavaScript</a></li>
-				<li class="parser"><a href="tag.html">HTML5 Parser</a></li>
-				<li class="svg"><a href="tag.html">SVG</a></li>
-				<li class="video"><a href="tag.html">Video</a></li>
+			<ul>		  
+		  {{#each tags}}
+				<li class="{{hyphenatedTag this}}"><a href="{{hyphenatedTag this}}.html">{{this}}</a></li>
+			{{/each}}
 			</ul>
 		</nav>
 		<footer class="footer">

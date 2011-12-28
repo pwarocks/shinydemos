@@ -28,12 +28,12 @@
       ];
       
   var canvasPrep = (function(){
-    canvasBg.src = '../images/photobooth/bg_output.png';
+    canvasBg.src = '../../source/images/photobooth/bg_output.png';
     canvasBg.onload = function(){
      photos.drawImage(canvasBg, 0, 0); 
     }
-    corner.src = '../images/photobooth/corner.png';
-    snap.src = '../images/photobooth/img_border.png';
+    corner.src = '../../source/images/photobooth/corner.png';
+    snap.src = '../../source/images/photobooth/img_border.png';
     snap.onload = function(){
       photos.drawImage(snap, 16, 23);
       photos.drawImage(snap, 181, 23);
@@ -102,14 +102,14 @@
   };
   
   var startButton = function(){
-    countdown.src = '../images/photobooth/countdown.svg';
+    countdown.src = '../../source/images/photobooth/countdown.svg';
     countdown.id = 'countdown';
     container.appendChild(countdown);
     setTimeout(takeSnaps, 4000, 1200);
   };
   
   var share = function(){
-    shareimg.src = '../images/photobooth/img_border_hover.png';
+    shareimg.src = '../../source/images/photobooth/img_border_hover.png';
     shareimg.onload = function(){
       photos.drawImage(this, 512, 23);
       photos.drawImage(corner, 635, 23);

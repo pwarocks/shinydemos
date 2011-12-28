@@ -1,0 +1,7 @@
+- slug: pagedcontent
+  tags: [css3]
+  support: [opera, chrome, safari, firefox, ie]
+
+- slug: css_br_extreme
+  tags: [css3]
+  support: [opera, chrome, safari, firefox, ie]

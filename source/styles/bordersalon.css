@@ -1,0 +1,25 @@
+body{overflow-x:hidden;}
+.sd-panel{z-index:9;}
+div.transition{border-bottom-left-radius:1px !important;border-bottom-right-radius:1px !important;border-top-left-radius:1px !important;border-top-right-radius:1px !important;border-width:50px !important;-o-transition-property:all;-o-transition-duration:2s;-ms-transition-property:all;-ms-transition-duration:2s;-moz-transition-property:all;-moz-transition-duration:2s;-webkit-transition-property:all;-webkit-transition-duration:2s;transition-property:all;transition-duration:2s;}
+.frame{padding:10px 30px;background-color:#fff;border-width:60px;display:table-cell;vertical-align:middle;position:absolute;top:50%;left:500%;-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%);box-shadow:0 5px 15px rgba(0,0,0,.5);}
+.frame-style-1{-moz-border-image:url(../images/border_salon/frame1.png) 100 stretch;-webkit-border-image:url(../images/border_salon/frame1.png) 100 stretch;-o-border-image:url(../images/border_salon/frame1.png) 100 stretch;border-image:url(../images/border_salon/frame1.png) 100 stretch;}
+.frame-style-2{-moz-border-image:url(../images/border_salon/frame2.png) 100 stretch;-webkit-border-image:url(../images/border_salon/frame2.png) 100 stretch;-o-border-image:url(../images/border_salon/frame2.png) 100 stretch;border-image:url(../images/border_salon/frame2.png) 100 stretch;}
+.prev-far{-o-transition-property:left;-o-transition-duration:0.5s;-ms-transition-property:left;-ms-transition-duration:0.5s;-moz-transition-property:left;-moz-transition-duration:0.5s;-webkit-transition-property:left;-webkit-transition-duration:0.5s;transition-property:left;transition-duration:0.5s;left:-50%;}
+.prev{-o-transition-property:left;-o-transition-duration:0.5s;-ms-transition-property:left;-ms-transition-duration:0.5s;-moz-transition-property:left;-moz-transition-duration:0.5s;-webkit-transition-property:left;-webkit-transition-duration:0.5s;transition-property:left;transition-duration:0.5s;left:0;}
+.current{-o-transition-property:left;-o-transition-duration:0.5s;-ms-transition-property:left;-ms-transition-duration:0.5s;-moz-transition-property:left;-moz-transition-duration:0.5s;-webkit-transition-property:left;-webkit-transition-duration:0.5s;transition-property:left;transition-duration:0.5s;left:50%;}
+.next{-o-transition-property:left;-o-transition-duration:0.5s;-ms-transition-property:left;-ms-transition-duration:0.5s;-moz-transition-property:left;-moz-transition-duration:0.5s;-webkit-transition-property:left;-webkit-transition-duration:0.5s;transition-property:left;transition-duration:0.5s;left:100%;}
+.next-far{-o-transition-property:left;-o-transition-duration:0.5s;-ms-transition-property:left;-ms-transition-duration:0.5s;-moz-transition-property:left;-moz-transition-duration:0.5s;-webkit-transition-property:left;-webkit-transition-duration:0.5s;transition-property:left;transition-duration:0.5s;left:150%;}
+.frame div{margin:10% auto;}
+
+@media all and (max-width: 669px) {
+  .frame{-o-transform:scale(0.5) translate(-100%,-100%);-ms-transform:scale(0.5) translate(-100%,-100%);-moz-transform:scale(0.5) translate(-100%,-100%);-webkit-transform:scale(0.5) translate(-100%,-100%);transform:scale(0.5) translate(-100%,-100%);}
+}
+
+@media all and (max-width: 960px) and (min-width: 670px) {
+  .frame{-o-transform:scale(0.75) translate(-75%,-70%);-ms-transform:scale(0.75) translate(-75%,-70%);-moz-transform:scale(0.75) translate(-75%,-70%);-webkit-transform:scale(0.75) translate(-75%,-70%);transform:scale(0.75) translate(-75%,-70%);}
+}
+
+@media all and (min-width: 0) and (max-width: 480px) {
+  .prev {-o-transition-property:left;-o-transition-duration:0.5s;-ms-transition-property:left;-ms-transition-duration:0.5s;-moz-transition-property:left;-moz-transition-duration:0.5s;-webkit-transition-property:left;-webkit-transition-duration:0.5s;transition-property:left;transition-duration:0.5s;left:-50%;}
+  .next{-o-transition-property:left;-o-transition-duration:0.5s;-ms-transition-property:left;-ms-transition-duration:0.5s;-moz-transition-property:left;-moz-transition-duration:0.5s;-webkit-transition-property:left;-webkit-transition-duration:0.5s;transition-property:left;transition-duration:0.5s;left:150%;}
+}

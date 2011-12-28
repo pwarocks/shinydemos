@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PhotoBooth</title>
+<meta name="viewport" content="width=device-width">
+<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="splash">
+    <img src="img/portraits.svg">
+    <p class="oldfashion"><span>Miniature</span> Portraits</p>
+    <button class="clean-gray">Get Started!</button>
+  </div>
+  <video muted>
+    <source src="media/charade.webm" type='video/webm;'>
+    <source src="media/charade.mp4" type='video/mp4;'>
+  </video>
+  <canvas class="blank" id="photos" height="500" width="98"></canvas>
+  <img id="leftarrow" src="img/larrow.png" class="hidden" alt="Eye">
+  <img id="rightarrow" src="img/rarrow.png" class="hidden" alt="Level">
+  <!--[if IE]>
+    <script src="js/classlist.min.js"></script>
+  <![endif]-->
+  <script src="js/photobooth.js"></script>
+</body>
+</html>

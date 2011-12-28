@@ -1,0 +1,40 @@
+@font-face{font-family:'dayposter';src:url('../fonts/DAYPBL__-webfont.eot');src:url('../fonts/DAYPBL__-webfont.eot?#iefix') format('embedded-opentype'),
+url('../fonts/DAYPBL__-webfont.woff') format('woff'),
+url('../fonts/DAYPBL__-webfont.ttf') format('truetype'),
+url('../fonts/DAYPBL__-webfont.svg#DayPosterBlackRegular') format('svg');font-weight:normal;font-style:normal;}
+
+@font-face {
+  font-family: 'Limelight';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Limelight'), url('http://themes.googleusercontent.com/static/fonts/limelight/v1/kD_2YDkzv1rorNqQ2oFK5qCWcynf_cDxXwCLxiixG1c.ttf') format('truetype');
+}
+
+body {margin:0;background:#fff;background: #ccc;}
+video {-o-object-fit:cover;float:left;}
+canvas {margin-left:20px;position:absolute;right:20px;z-index:3;}
+img, button {display:block;}
+/* button courtesy of https://github.com/ubuwaits/css3-buttons */
+button.clean-gray{position:relative;margin:0 auto;background-color:#eeeeee;background-image:-webkit-linear-gradient(top,#eeeeee,#cccccc);background-image:-moz-linear-gradient(top,#eeeeee,#cccccc);background-image:-ms-linear-gradient(top,#eeeeee,#cccccc);background-image:-o-linear-gradient(top,#eeeeee,#cccccc);background-image:linear-gradient(top,#eeeeee,#cccccc);border:1px solid #ccc;border-bottom:1px solid #bbb;border-radius:3px;color:#333;font:bold 11px "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;line-height:1;padding:8px 0;text-align:center;text-shadow:0 1px 0 #eee;width:150px;}
+button.clean-gray:hover{background-color:#dddddd;background-image:-webkit-linear-gradient(top,#dddddd,#bbbbbb);background-image:-moz-linear-gradient(top,#dddddd,#bbbbbb);background-image:-ms-linear-gradient(top,#dddddd,#bbbbbb);background-image:-o-linear-gradient(top,#dddddd,#bbbbbb);background-image:linear-gradient(top,#dddddd,#bbbbbb);border:1px solid #bbb;border-bottom:1px solid #999;cursor:pointer;text-shadow:0 1px 0 #ddd;}
+button.clean-gray:active{border:1px solid #aaa;border-bottom:1px solid #888;box-shadow:inset 0 0 5px 2px #aaaaaa,0 1px 0 0 #eeeeee;}
+
+.dayposter {font-family:dayposter;text-align: center;letter-spacing:9px;margin:0;color: #333;}
+.oldfashion {font-family: 'Limelight', cursive;font-size:72px;margin:0;text-align:center;-o-transform: scaleY(1.4);-ms-transform: scaleY(1.4);-moz-transform: scaleY(1.4);-webkit-transform: scaleY(1.4);transform: scaleY(1.4);}
+.oldfashion span {font-size:22px;position:absolute;top:-5px;left:82px;}
+.done {-o-transition: top 1s ease-out 0s;-moz-transition: top 1s ease-out 0s;-ms-transition: top 1s ease-out 0s;-webkit-transition: top 1s ease-out 0s;transition: top 1s ease-out 0s;top: 11%;right:46%;}
+.blank {top: -200%;}
+.center {margin:5% auto;width:auto;}
+.hidden {display:none;}
+
+#leftarrow, #rightarrow {position:absolute;top:40%;}
+#lb {height: 100%;width:100%;background-color:#000;opacity:0.75;position:absolute;z-index:0;}
+#frame {border:7px solid rgba(255,255,255,0.5);z-index:1;position:absolute;}
+#splash {width:440px;position:absolute;z-index:4;vertical-align:middle;background:#fff;width:500px;border:5px solid red;border-radius:10px;padding:10px;box-shadow: inset 0 0 2px 2px rgba(200, 0, 0, 0.3);}
+#splash img {margin:0 auto 20px;}
+
+/* if not wide enough, hide the "eye level" text*/
+@media all and (min-width:700px){
+  #leftarrow::after{content: attr(alt);position:absolute;left:20px;top:18px;color:#fff;font-size:40px;font-family:dayposter;}
+  #rightarrow::before{content: attr(alt);position:absolute;right:10px;top:22px;color:#fff;font-size:36px;font-family:dayposter;}
+}

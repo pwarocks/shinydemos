@@ -1,0 +1,291 @@
+@import url(./maiden_orange/stylesheet.css);
+
+body#cssbr{
+	position: relative;
+	font: 13px / 1.5 sans-serif;
+	padding:0;
+	background: #8BE8FF;
+	margin:0
+}
+
+a{text-decoration: underline;}
+a:link{color: #3cf;}
+a:visited{color: #0cf;}
+a:hover, a:active{color: #f3c;}
+
+#wrap{
+	background:#fff;
+	border-width:0px 1px 1px 1px;
+	border-style: solid;
+	border-color: #0cf;
+	border-radius: 0 0 30px 0;
+	margin:auto;
+	position:relative;
+	min-width:600px;
+	min-height:500px;
+}
+header{
+	background: #fff;
+	border-width:1px 1px 0px 1px;
+	border-style: solid;
+	border-color: #0cf;
+	border-radius: 30px 0 0 0;
+	display:block;
+	margin: .5em auto 0 auto;
+	min-width:600px;
+}
+h1{
+	font-family: 'MaidenOrangeRegular',serif;
+	font-size:30px;
+	margin:20px 20px 0 20px;
+	padding-bottom:5px;
+}
+p{margin:0;}
+
+form{
+	float:right;
+	background:#B9F1FF;
+	position:relative;
+	border-radius: 20px 0;
+	margin: -20px 20px 0;
+}
+
+fieldset{border:0; border-radius: 5px;}
+form > fieldset > legend{font-size: 16px; padding-top: .5em; cursor:pointer}
+form > fieldset legend img{
+	-o-transform: rotate(0deg);
+	-o-transition: -o-transform 200ms linear;
+
+	-webkit-transform: rotate(0deg);
+	-webkit-transition: -webkit-transform 200ms linear;
+
+	-moz-transform: rotate(0deg);
+	-moz-transition: -moz-transform 200ms linear;
+
+	-ms-transform: rotate(0deg);
+	-ms-transition: -ms-transform 200ms linear;
+
+	vertical-align: middle;
+}
+form button{margin: 1em;}
+fieldset fieldset{background:#E8FAFF; margin: 0 0 10px 0; position:relative}
+fieldset fieldset legend{padding-top: 2em; font-family: monospace;}
+fieldset#advanced, fieldset#basic{ position:relative}
+fieldset#advanced fieldset p{float: left; width: 49%; margin:0 0 3px 0;}
+fieldset#basic fieldset p{float: left; margin:5px;}
+
+.notmono{font-family: sans-serif;}
+
+label{display:block;}
+input[type=range]{display:block; width:100px;}
+label.inline, label.checkbox{display:inline;}
+label.checkbox{cursor:pointer}
+
+/* right align in browsers that do not support range */
+input[type=range]{text-align:right}
+
+#main{
+	position:fixed;
+	top:100px;
+	width: 200px;
+	height: 200px;
+	margin: 20px 0 20px 55px;
+}
+
+#main > img, #main > div{
+	width: 200px;
+	height: 200px;
+	margin: 0;
+}
+
+#main > video{
+	width:200px;
+	height:200px;
+	     -o-object-fit: fill;
+	-webkit-object-fit: fill;
+   	   -moz-object-fit: fill;
+	    -ms-object-fit: fill;
+	 -khtml-object-fit: fill;
+	        object-fit: fill;
+}
+
+#changeobj{
+	border-color:#f3c;
+	background-color:#0cf;
+	margin:0;
+}
+
+#main p{
+	position:absolute;
+	background:#cf0;
+	white-space:nowrap;
+	text-align:right;
+}
+
+#main p:nth-child(1){top: -1.5em; left: -2.5em; line-height: 1;}
+#main p:nth-child(2){top: -1.5em; right:-2.5em; line-height: 1;}
+#main p:nth-child(3){bottom: -1.5em; left: -2.5em; line-height: 1;}
+#main p:nth-child(4){bottom: -1.5em; right: -2.5em; line-height: 1;}
+
+.patt002{background-image: url('pattern_002.gif');}
+.patt123{background-image: url('pattern_132.gif');}
+.patt141{background-image: url('pattern_141.gif');}
+.patt155{background-image: url('pattern_155.gif');}
+.patt157{background-image: url('pattern_157.gif');}
+
+.hide{display:none;}
+.show{display:block}
+.credit{
+	font-size: .8em; /* for older browsers*/
+	font-size: .7rem;
+	padding-top: .3em;
+	padding-top: .3rem;
+	display:block;
+	color: #666;
+}
+.samevalues{
+	clear:both;
+}
+#unsupported{
+	text-align:center;
+	background:#fc0;
+	padding: 5px;
+	margin:0;
+	position: fixed;
+	top:0;
+	left:0;
+	width:100%;
+	z-index: 100;
+}
+
+#unsupported a:link, #overlay a.close{ color: #33f; }
+#unsupported a:visited{ color: #30c; }
+#unsupported a:hover, #unsupported a:active{ color: #f09; }
+
+.close{
+	background:#f09;
+	color: #fff;
+	padding: 1px 3px;
+	position:absolute;
+	cursor: pointer;
+}
+#unsupported a.close{ right:20px; }
+#unsupported a.close:hover{
+	background:#000;
+	color:#fff;
+	text-decoration:none;
+}
+
+footer{
+	display:block;
+	clear:both;
+	text-align: right;
+}
+footer p{margin: 20px; padding:10px 0 0 0}
+
+#overlay{
+	position:fixed;
+	z-index:9999;
+	width:100%;
+	height:200%;
+	background:rgba(0,0,0,.5);
+	top:0;
+	left:0;
+	margin:0;
+}
+
+#overlay section{
+	background: #fff;
+	margin: 100px auto;
+	padding: 20px 20px 30px;
+	position: relative;
+	width: 80%;
+	border-radius: 30px 0;
+	box-shadow: 0 0 100px rgba(0,0,0,.5);
+}
+
+#overlay h1{margin:0}
+
+#overlay pre{
+	background-color: #fff;
+	padding: 5px;
+	margin:0
+}
+#overlay a.close{color:#fff; right: 20px;}
+
+#overlay h2{
+	font-family: 'MaidenOrangeRegular',serif;
+	font-size:36px;
+	margin:0 10px;
+}
+pre{
+	border:1px inset #333;
+	margin:20px;
+}
+
+form{width:300px;}
+
+form > fieldset div{
+	max-height:.01em;
+	     -o-transition-property: min-height, max-height;
+	-webkit-transition-property: min-height, max-height;
+	    -ms-transition-property: min-height, max-height;
+	   -moz-transition-property: min-height, max-height;
+	 -khtml-transition-property: min-height, max-height;
+
+	     -o-transition-duration: 500ms;
+	-webkit-transition-duration: 500ms;
+	    -ms-transition-duration: 500ms;
+	   -moz-transition-duration: 500ms;
+     -khtml-transition-duration: 500ms;
+
+         -o-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
+	-webkit-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
+	    -ms-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
+	   -moz-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
+	 -khtml-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
+
+	overflow: hidden;
+	width: 100%;
+	padding:0;
+}
+
+form > fieldset.active div{
+	min-height: 10em;
+	max-height: 80em;
+	height:auto;
+}
+
+form > fieldset.active legend img{
+	-o-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+}
+
+/* large screen override for browsers
+that support media queries.*/
+@media screen and (min-width: 801px){
+	form{width:400px;}
+	#wrap, header{width:950px;}
+	#main{
+		width: 300px;
+		height: 300px;
+		margin: 20px 0 20px 55px;
+	}
+	#main > img, #main > div{width: 300px;	height: 300px;}
+
+	#main > video{width:300px; height:300px;}
+
+	.samevalues{
+		position:absolute;
+		top:1.5em;
+		right:.2em;
+		top:1.34rem;
+		right:.2rem;
+	}
+
+	h1{ font-size:48px; margin:20px 20px 0 20px;}
+	form > fieldset > legend{font-size: 22px;}
+	input[type=range]{width:auto;}
+}

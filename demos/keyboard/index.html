@@ -86,7 +86,7 @@ footer {
 }
 button {
 	background-color:white;
-	background-image:url(button.png);
+	background-image:url(../../source/images/keyboard/button.png);
 	background-size:100% auto;
 	width:3em;
 	height:3.2em;
@@ -102,8 +102,8 @@ button:active, button.pressed {
 <body>
 <h1>Hixie's HTML5 keyboard</h1>
 <video loop>
-  <source src="hixie.mp4" type="video/mp4">
-  <source src="hixie.webm" type="video/webm">
+  <source src="media/hixie.mp4" type="video/mp4">
+  <source src="media/hixie.webm" type="video/webm">
   Suck it, crappy browsers. </video>
 <div>
   <button id="q" data-text="<q> element">Q</button>
@@ -149,9 +149,9 @@ var vid = document.querySelector('video'),
        for (var i = 0, l = buttons.length; i < l; i++) {
          var key = buttons[i].id;
          if (canPlayOgg){
-           document.body.appendChild(new Audio(key + '.ogg'));
+           document.body.appendChild(new Audio('media/' + key + '.ogg'));
          } else {
-           document.body.appendChild(new Audio(key + '.mp3'));
+           document.body.appendChild(new Audio('media/' + key + '.mp3'));
          }
        };
     })(),
@@ -174,8 +174,7 @@ var vid = document.querySelector('video'),
       for (var i = 0, l = buttons.length; i < l; i++) {
         buttons[i].addEventListener('click', function(){
           //(using the 'val starts with' ^= attribute selector,or whatever it's called)
-          console.log(this, this.id);
-          document.querySelector('audio[src^=' + this.id + ']').play();
+          document.querySelector('audio[src^=media\\/' + this.id + ']').play();
           //show the text from data-text and play video
           showText(this);
           vid.play();

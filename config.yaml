@@ -1,9 +1,11 @@
 # Allowed tags: js, forms, canvas, content, parser, svg, css, audio, video
 
 - slug: pagedcontent
+  title: "Paged Content Magic"
   tags: [css]
   support: [opera, chrome, safari, firefox, ie]
 
-- slug: css_br_extreme
+- slug: border-salon
+  title: "Border Radius Salon"
   tags: [css, svg, parser]
   support: [opera, chrome, safari, firefox, ie]

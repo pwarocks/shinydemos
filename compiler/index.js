@@ -9,6 +9,10 @@ Handlebars.registerHelper('hyphenatedTag', function(tag) {
   return tag.split(' ').join('-');
 });
 
+Handlebars.registerHelper('tag', function(tag) {
+  return tag.split(' ').join('-');
+});
+
 var paths = {
   deploy: './deploy',
   source: './source',
@@ -21,40 +25,73 @@ var paths = {
 }
 
 var homepageTemplate = Handlebars.compile(fs.readFileSync(paths.layouts.home).toString());
+
+var tagspageTemplate = Handlebars.compile(fs.readFileSync(paths.layouts.tag).toString());
   
-var tags = [], currenttag;
+var slugsPerTag = [], tagfound = false, slugs;
 
 
 // Copy all demos to deployment folder
-
-/*
 ncp(paths.demos, paths.deploy + '/' + paths.demos, function(err) {
-  if(err)
-    console.error(err);  
-console.log('copying demos to %s', paths.deploy + '/' + paths.demos);
+  if(err) {
+     console.error(err);   
+  }
+  console.log('copying demos to %s', paths.deploy + '/' + paths.demos);
 }); 
 
 // Copy Assets and Styles to deployment folder
 ncp(paths.source, paths.deploy, function(err) {
-  if(err)
-    console.error("error copying source", err)
-console.log('copying source assets to %s from %s', paths.deploy, paths.source);
+  if(err) {
+    console.error("error copying source", err);    
+  }
+  console.log('copying source assets to %s from %s', paths.deploy, paths.source);
 }); 
 
-*/
+
 //Render index.html with our configs
-for(var i = 0; i < configs.length; i++) {
-  [].forEach.apply(configs[i].tags, [function(tag, i) {
-    if(tags.indexOf(tag) == -1) {
-      tags.push(tag);
+[].forEach.apply(configs, [function(config, i) {
+  var tag = config.tags.toString().split(',');
+    
+  tag.forEach(function(t) 
+  {
+    tagfound = false;
+    slugsPerTag.forEach(function(s) {
+      if(s.tag == t) {
+        tagfound = true;
+        s.slugs.push(config);
+      } 
+    });
+    
+    if(!tagfound) {
+      slugsPerTag.push({
+        'tag': t,
+        'slugs': [config]
+      });
     }
-  }]);
-}
+  });
+}]);
 
-var homepageRender = homepageTemplate({tags: tags});
-
+// homepage render
+var homepageRender = homepageTemplate({tags: slugsPerTag});
 fs.writeFileSync(paths.deploy + '/index.html', homepageRender);
+console.log('homepage rendered…'); 
 
+//tagspage render
+slugsPerTag.forEach(function(t) {
+  slugs = t.slugs, slugCollection = [];
+  slugs.forEach(function(s) {
+    slugCollection.push({
+      'path': "../" + s.slug + '.html',
+      'title': s.title,
+      'thumb': './images/' + s.slug + '/thumb.png',
+      'demotags': s.tags.toString()
+    });    
+  });  
+  
+   fs.writeFileSync(paths.deploy + '/' + t.tag + ".html", tagspageTemplate({'title': t.tag,
+   'slugs': slugCollection })); 
+  console.log('rendered %s page', t.tag);
+});
 
 
 

@@ -3,7 +3,7 @@
 - slug: pagedcontent
   title: "Paged Content Magic"
   tags: [css]
-  support: [opera, chrome, safari, firefox, ie]
+  support: [opera]
 
 - slug: border-salon
   title: "Border Radius Salon"

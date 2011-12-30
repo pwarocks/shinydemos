@@ -1,32 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Yet Anoter Shiny Demo</title>
-	<meta charset="UTF-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" href="../styles/panel.css">
-	<style>
-		BODY {
-			background:#5A5C61 url(images/linen.png);
-			}
-	</style>
-</head>
-<body>
-	<div class="sd-panel">
-		<p class="sd-logo">
-			<a href="../index.html" class="sd-logo-link">Shiny Demos</a>
-		</p>
-		<h1 class="sd-title">
-			Yet Another Shiny Demo With Catchy Title
-		</h1>
-		<ul class="sd-browsers">
-			<li class="sd-browser sd-browser-chrome sd-browser-supported" title="Chrome">Chrome</li>
-			<li class="sd-browser sd-browser-firefox" title="Firefox">Firefox</li>
-			<li class="sd-browser sd-browser-ie" title="Internet Explorer">Internet Explorer</li>
-			<li class="sd-browser sd-browser-opera sd-browser-supported" title="Opera">Opera</li>
-			<li class="sd-browser sd-browser-safari sd-browser-supported" title="Safari">Safari</li>
-		</ul>
-	</div>
-</body>
-</html>
+	<p class="sd-logo">
+		<a href="../index.html" class="sd-logo-link">Shiny Demos</a>
+	</p>
+	<h1 class="sd-title">
+		{{title}}
+	</h1>
+	<ul class="sd-browsers">
+	  {{#each browsers}}
+		<li class="sd-browser sd-browser-{{this.browser}}{{#if this.isSupported}} sd-browser-supported{{/if}}" title="{{this.browser}}">{{this.browser}}</li>
+		{{/each}}
+	</ul>

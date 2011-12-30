@@ -14,7 +14,8 @@
   "dependencies": {
     "ncp": "*",
     "handlebars": "*",
-    "js-yaml": "*"    
+    "js-yaml": "*",
+    "jsdom": "*"
     
   },
   "devDependencies": {}

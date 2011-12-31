@@ -1,11 +1,11 @@
 	<p class="sd-logo">
-		<a href="../index.html" class="sd-logo-link">Shiny Demos</a>
+		<a href="../../index.html" class="sd-logo-link">Shiny Demos</a>
 	</p>
 	<h1 class="sd-title">
 		{{title}}
 	</h1>
 	<ul class="sd-browsers">
 	  {{#each browsers}}
-		<li class="sd-browser sd-browser-{{this.browser}}{{#if this.isSupported}} sd-browser-supported{{/if}}" title="{{this.browser}}">{{this.browser}}</li>
+		<li class="sd-browser sd-browser-{{this.browser}}{{this.supportedBrowser}}" title="{{this.browser}}">{{this.browser}}</li>
 		{{/each}}
 	</ul>

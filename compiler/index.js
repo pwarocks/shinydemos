@@ -5,10 +5,7 @@ var yaml = require('js-yaml');
 var jsdom = require('jsdom').jsdom;
 
 var configs = require('../config.yaml').shift();
-
-// Preparation for Demo page cleanup
-var browsers = ['opera', 'chrome', 'safari', 'firefox', 'ie'];
-var cssHref = '../../styles/panel.css';
+var siteconfig = configs.siteconfig;
 
 Handlebars.registerHelper('hyphenatedTag', function(tag) {
   return tag.split(' ').join('-');
@@ -18,42 +15,45 @@ Handlebars.registerHelper('tag', function(tag) {
   return tag.split(' ').join('-');
 });
 
-var paths = {
-  deploy: './deploy',
-  source: './source',
-  demos: './demos',
-  layouts: {
-    home: './layouts/index.html',
-    demo: './layouts/demo.html',
-    tag: './layouts/tag.html' 
-  }
-}
-
-var homepageTemplate = Handlebars.compile(fs.readFileSync(paths.layouts.home).toString());
-
-var tagspageTemplate = Handlebars.compile(fs.readFileSync(paths.layouts.tag).toString());
-
-var demopageTemplate = Handlebars.compile(fs.readFileSync(paths.layouts.demo).toString());
+// Compile all the templates
+var homepageTemplate = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/home.html').toString());
+var tagspageTemplate = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/tag.html').toString());
+var demopageTemplate = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/demo.html').toString());
   
 var slugsPerTag = [], tagfound = false, slugs;
 
+//Check if demos folder exists in deploy folder
+var deployedDemosFolder = siteconfig.deployFolder + '/demos';
+
+try {
+  fs.lstatSync(siteconfig.deployFolder);  
+} catch (e) {
+  fs.mkdirSync(siteconfig.deployFolder);  
+  console.log('Deploy folder does not exist. Creating…');
+}
+
+try {
+  fs.lstatSync(deployedDemosFolder);  
+} catch (e) {
+  fs.mkdirSync(deployedDemosFolder);  
+  console.log('Demos folder does not exist. Creating…');
+}
 
 // Copy all demos to deployment folder
-
-ncp(paths.demos, paths.deploy + '/' + paths.demos, function(err) {
+ncp(siteconfig.demosFolder, deployedDemosFolder, function(err) {
   if(err) {
      console.error(err);   
   }
   
   // Copy Assets and Styles to deployment folder
-  ncp(paths.source, paths.deploy, function(err) {
+  ncp(siteconfig.sourceFolder, siteconfig.deployFolder, function(err) {
     if(err) {
       console.error("error copying source", err);    
     }  
-    console.log('copying source assets to %s from %s', paths.deploy, paths.source);    
+    console.log('copying source assets to %s from %s', siteconfig.sourceFolder, siteconfig.deployFolder);    
   }); 
   
-  console.log('copying demos to %s from %s', paths.deploy, paths.demos);
+  console.log('copying demos to %s from %s', siteconfig.demosFolder, deployedDemosFolder);
 
   //stupid callbacks
   createdemos();  
@@ -62,7 +62,7 @@ ncp(paths.demos, paths.deploy + '/' + paths.demos, function(err) {
 // homepage render
 function renderHomePage() {
   var homepageRender = homepageTemplate({tags: slugsPerTag});
-  fs.writeFileSync(paths.deploy + '/index.html', homepageRender);
+  fs.writeFileSync(siteconfig.deployFolder + '/index.html', homepageRender);
   console.log('homepage rendered…');   
 };
 
@@ -72,14 +72,14 @@ function renderTagsPages() {
     slugs = t.slugs, slugCollection = [];
     slugs.forEach(function(s) {    
       slugCollection.push({
-        'path': "../" + s.slug + '.html',
+        'path': siteconfig.demosFolder + '/' + s.slug + '/index.html',
         'title': s.title,
         'thumb': './images/' + s.slug + '/thumb.png',
         'demotags': s.tags.toString()
       });    
     });  
 
-     fs.writeFileSync(paths.deploy + '/' + t.tag + ".html", tagspageTemplate({'title': t.tag, 'slugs': slugCollection })); 
+     fs.writeFileSync(siteconfig.deployFolder + '/' + t.tag + ".html", tagspageTemplate({'title': t.tag, 'slugs': slugCollection })); 
      console.log('rendered %s page', t.tag);
   });  
 };
@@ -87,48 +87,46 @@ function renderTagsPages() {
 //Render index.html with our configs
 function createdemos() {
   console.log('creating demos from source files');
-  [].forEach.apply(configs, [function(config, i) {
+  [].forEach.apply(configs.demos, [function(demo, i) {
     var browserArray = [];
-
-    browsers.forEach(function(browser) {
+    var demoPath = deployedDemosFolder + '/' + demo.slug + '/index.html';
+    siteconfig.browsers.forEach(function(browser) {
       browserArray.push({
         'browser': browser,
-        'isSupported': config.support.indexOf(browser) > -1 ? true : false
+        'supportedBrowser': demo.support.indexOf(browser) > -1 ?  ' ' + siteconfig.supportedBrowserClass : ''
       });    
     });
 
-    var demo = fs.readFileSync(paths.deploy + '/demos/'+ config.slug + '/index.html').toString();
-    doc = jsdom(demo);
-    var win = doc.createWindow();
-    var appendText = win.document.createElement('div');
-    var cssLink = win.document.createElement('link');
+    var win = jsdom(fs.readFileSync(demoPath).toString()).createWindow();
+    var panelContainer = win.document.createElement(siteconfig.panelTag);
+    var panelCSS = win.document.createElement('link');
 
-    cssLink.rel = 'stylesheet';
-    cssLink.href = cssHref;
+    panelCSS.rel = 'stylesheet';
+    panelCSS.href = '../../styles/' + siteconfig.panelCSS;
 
-    appendText.className = 'sd-panel';
-    appendText.innerHTML = demopageTemplate({ 'title': config.title, 'browsers': browserArray });
+    panelContainer.className = siteconfig.panelClass;
+    panelContainer.innerHTML = demopageTemplate({ 'title': demo.title, 'browsers': browserArray });
 
-    win.document.getElementsByTagName('head')[0].appendChild(cssLink);
-    win.document.body.insertBefore(appendText, win.document.body.firstChild);  
+    win.document.getElementsByTagName('head')[0].appendChild(panelCSS);
+    win.document.body.insertBefore(panelContainer, win.document.body.firstChild);  
 
-    fs.writeFileSync(paths.deploy + '/demos/' + config.slug + "/index.html", win.document.doctype.toString() + win.document.outerHTML);
+    fs.writeFileSync(demoPath, win.document.doctype.toString() + win.document.outerHTML);
 
-    var tag = config.tags.toString().split(',');    
+    var tag = demo.tags.toString().split(',');    
     tag.forEach(function(t) 
     {
       tagfound = false;
       slugsPerTag.forEach(function(s) {
         if(s.tag == t) {
           tagfound = true;
-          s.slugs.push(config);
+          s.slugs.push(demo);
         } 
       });
 
       if(!tagfound) {
         slugsPerTag.push({
           'tag': t,
-          'slugs': [config]
+          'slugs': [demo]
         });
       }
     });        

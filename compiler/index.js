@@ -124,3 +124,6 @@ shinydemos.create = function() {
   };  
 };
 
+//Create demos project pages
+shinydemos.create();
+

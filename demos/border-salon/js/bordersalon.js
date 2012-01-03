@@ -141,10 +141,16 @@ function cancelTouch() {
 };
 
 function eventListeners(){
-  frameList = document.getElementsByClassName('frame');
+  frameList = document.getElementsByClassName('frame'),
+  paintings = document.querySelectorAll('.frame > div');
   [].slice.apply(frameList).forEach(function(){
       addEventListener('click', function(event){makeCurrent(event.target);}, false);
   });
+  
+  [].slice.apply(paintings).forEach(function(){
+      addEventListener('click', function(event){makeCurrent(event.target.parentNode);}, false);
+  });
+  
   
   document.addEventListener('keydown', handleBodyKeyDown, false);
   document.body.addEventListener('touchstart', handleTouchStart, false);

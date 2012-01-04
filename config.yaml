@@ -47,4 +47,24 @@ demos:
   - slug: object-fitness
     title: "Object Fit"
     tags: [css]
+    support: [opera]  
+    
+  - slug: rock-piano
+    title: "Rock Piano"
+    tags: [css]
+    support: [opera]
+    
+  - slug: tatami
+    title: "Tatami"
+    tags: [css]
     support: [opera]    
+    
+  - slug: isometric-city
+    title: "An isometric world"
+    tags: [css]
+    support: [opera]   
+    
+  - slug: borderradius-fun
+    title: "Tinkering with Border Radius"
+    tags: [css]
+    support: [opera, chrome, safari, firefox, ie]           

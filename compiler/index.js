@@ -80,6 +80,7 @@ shinydemos.create = function() {
         panelContainer.className = siteconfig.panelClass;
         panelContainer.innerHTML = demopageTemplate({ 'title': demo.title, 'browsers': browserArray });
 
+        console.log('wrapping', demo.title);
         win.document.getElementsByTagName('head')[0].appendChild(panelCSS);
         win.document.body.insertBefore(panelContainer, win.document.body.firstChild);  
 

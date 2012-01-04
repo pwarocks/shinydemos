@@ -23,3 +23,28 @@ demos:
     title: "Border Radius Salon"
     tags: [css, svg, parser]
     support: [opera, chrome, safari, firefox, ie]
+    
+  - slug: photobooth
+    title: "Photobooth in Your browser"
+    tags: [js, canvas]
+    support: [opera, chrome]    
+    
+  - slug: parallax
+    title: "Parallax Shifts"
+    tags: [css]
+    support: [opera, chrome, safari, firefox, ie]    
+
+  - slug: keyboard
+    title: "Type a key and hear a voice!"
+    tags: [audio]
+    support: [opera, chrome, safari, firefox, ie]    
+    
+  - slug: paranoid
+    title: "Return of the Retro with a canvas game!"
+    tags: [canvas]
+    support: [opera, chrome, safari, firefox, ie]    
+    
+  - slug: object-fitness
+    title: "Object Fit"
+    tags: [css]
+    support: [opera]    

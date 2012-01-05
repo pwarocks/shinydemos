@@ -1,3 +1,20 @@
 node_modules
 deploy
 .DS_Store
+
+# html5 video and media
+*.webm
+*.ogg
+*.ogv
+*.m4v
+*.avi
+*.vp8
+*.mov
+*.oga
+*.mp1
+*.mp2
+*.mp3
+*.mp4
+*.mpeg
+*.3gp
+*.wav

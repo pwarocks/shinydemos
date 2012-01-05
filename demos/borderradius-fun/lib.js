@@ -86,7 +86,7 @@ var Lib = (function(){
 						break;
 				}
 			}
-			video.src = filename+canplay;
+			video.src = 'http://media.shinydemos.com/borderradius-fun/'+filename+canplay;
 			video.width = '100%';
 			video.height = '100%';
 			video.setAttribute('autoplay','autoplay');

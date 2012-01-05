@@ -149,9 +149,9 @@
          for (var i = 0, l = buttons.length; i < l; i++) {
            var key = buttons[i].id;
            if (canPlayOgg){
-             document.body.appendChild(new Audio('media/' + key + '.ogg'));
+             document.body.appendChild(new Audio('http://media.shinydemos.com/hixie-keyboard/' + key + '.ogg'));
            } else {
-             document.body.appendChild(new Audio('media/' + key + '.mp3'));
+             document.body.appendChild(new Audio('http://media.shinydemos.com/hixie-keyboard/' + key + '.mp3'));
            }
          };
       })(),
@@ -174,7 +174,7 @@
         for (var i = 0, l = buttons.length; i < l; i++) {
           buttons[i].addEventListener('click', function(){
             //(using the 'val starts with' ^= attribute selector,or whatever it's called)
-            document.querySelector('audio[src^=media\\/' + this.id + ']').play();
+            document.querySelector('audio[src^=http\\:\\/\\/media\\.shinydemos\\.com\\/hixie-keyboard\\/' + this.id + ']').play();
             //show the text from data-text and play video
             showText(this);
             vid.play();
@@ -192,7 +192,7 @@
           }
 
           try {
-            document.querySelector('audio[src^=' + key + ']').play();
+            document.querySelector('audio[src^=http\\:\\/\\/media\\.shinydemos\\.com\\/hixie-keyboard\\/' + key + ']').play();
             button = document.querySelector('#' + key);
             showText(button);
             button.className = 'pressed';

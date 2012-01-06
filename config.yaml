@@ -26,7 +26,7 @@ demos:
   - slug: photo-booth
     title: "Photobooth in Your browser"
     tags: [js, canvas]
-    support: [getUserMedia, video]    
+    support: [getusermedia, video]    
     
   - slug: parallax
     title: "Parallax Shifts"

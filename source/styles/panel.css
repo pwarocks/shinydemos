@@ -1,15 +1,11 @@
 @import url(fonts.css);
 
-body {
-	background:#5A5C61 url(../images/linen.png) !important;
-}
-
 html, body { margin: 0; padding: 0; }
 
 /* Panel
 ---------------------------------------- */
 .sd-panel {
-  position: relative;
+	position:relative;
 	height:80px;
 	box-shadow:0 0 0 1px rgba(255, 255, 255, 0.2);
 	background:url(../images/texture.png);
@@ -38,7 +34,6 @@ html, body { margin: 0; padding: 0; }
 				height:80px;
 				content:'';
 				}
-
 	.sd-title {
 		position:absolute;
 		bottom:12px;

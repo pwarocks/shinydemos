@@ -11,7 +11,7 @@ siteconfig:
   panelTag: 'div'
 
 
-# Allowed tags: js, forms, canvas, content, parser, svg, css, audio, video
+# Allowed tags: javascript, forms, canvas, content, parser, svg, css, audio, video
 demos:
   - slug: pagedcontent
     title: "Paged Content Magic"
@@ -25,7 +25,7 @@ demos:
     
   - slug: photo-booth
     title: "Photobooth in Your browser"
-    tags: [js, canvas]
+    tags: [javascript, canvas]
     support: [getusermedia, video]    
     
   - slug: parallax

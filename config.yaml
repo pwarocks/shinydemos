@@ -67,3 +67,8 @@ demos:
     title: "Tinkering with Border Radius"
     tags: [css]
     support: []           
+  
+  - slug: tweetmap
+    title: "A map of tweets from the public timeline"
+    tags: [svg]
+    support: [svg]    

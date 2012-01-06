@@ -1,0 +1,75 @@
+<!doctype html>  
+<html  lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Tweets Around the World</title>
+  <meta name="description" content="A map of tweets around the world">
+  <meta name="author" content="Divya Manian">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css" media="screen">
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background: lightblue;
+      color: #fff;
+      font: 14px/1.5 sans-serif;
+    }
+
+    #map { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+    #tweet { 
+      position: absolute;
+      opacity: 0; 
+      -o-transition: opacity 1s linear; 
+      -moz-transition: opacity 1s linear;
+      -webkit-transition: opacity 1s linear;
+      -ms-transition: opacity 1s linear;
+      width: 15em; 
+      background: white;
+      color: #444;
+      border-radius: 5px;
+      box-shadow: 0 0 1em #444;
+      padding: 1em;
+      border: 1px solid #666;
+    }
+
+    #tweet.show { opacity: 1; }
+    
+    svg {
+      display: block;
+      overflow: hidden;
+      background: transparent;
+    }    
+
+    #container { position: relative; }
+    #container header { text-shadow: 1px 1px 1px #000; background: rgba(0, 0, 0, 0.5); padding: 1rem; position: absolute; top: 0; right: 0; left: 0; z-index: 2; }
+    #container header p { font-size: 0.7em; color: white; }
+    #container h1, #container h2 { color: indianred; line-height: 1; }
+    #container h2 { font-size: 1em; text-transform: uppercase; color: white; }
+    #container a { color: lightblue; }
+  </style> 
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>How the world tweets</h1>
+      <h2>A snippet from the public timeline</h2>    
+      <p>Location data from <a href="http://www.geonames.org/">Geonames</a> • Colors from <a href="http://colorbrewer.org/">Color Brewer</a></p>
+      </header>
+    <div id="map"></div>
+    <div id="tweet"></div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script src="d3.min.js"></script>
+  <script src="d3.geo.min.js"></script>
+  <script src="d3.geom.min.js"></script>
+  <script src="colorbrewer.js"></script>
+  <script src="tweetmap.js"></script>      
+</body>
+</html>

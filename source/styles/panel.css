@@ -4,6 +4,8 @@ body {
 	background:#5A5C61 url(../images/linen.png) !important;
 }
 
+html, body { margin: 0; padding: 0; }
+
 /* Panel
 ---------------------------------------- */
 .sd-panel {
@@ -36,6 +38,7 @@ body {
 				height:80px;
 				content:'';
 				}
+
 	.sd-title {
 		position:absolute;
 		bottom:12px;
@@ -47,51 +50,27 @@ body {
 		}
 
 /* Browsers */
-.sd-browsers {
-	position:absolute;
-	top:13px;
-	right:13px;
-	margin:0;
-	padding:0;
-	list-style:none;
-	}
-	.sd-browser {
-		float:left;
-		margin-left:5px;
-		width:18px;
-		height:18px;
-		background:url(../images/browsers.png) no-repeat;
-		text-indent:-9999px;
-		}
+#feature-support {
+	margin:0 0.5em;
+	padding: 30px 0.5em 30px 2em;
+  float: right;
+  width: 25em;
+  position: relative;
+  text-align: left;
+  }
 
-/* Vendors */
-.sd-browser-chrome {
-	background-position:0 0;
-	}
-.sd-browser-chrome.sd-browser-supported {
-	background-position:0 -18px;
-	}
-.sd-browser-firefox {
-	background-position:-18px 0;
-	}
-.sd-browser-firefox.sd-browser-supported {
-	background-position:-18px -18px;
-	}
-.sd-browser-ie {
-	background-position:-36px 0;
-	}
-.sd-browser-ie.sd-browser-supported {
-	background-position:-36px -18px;
-	}
-.sd-browser-opera {
-	background-position:-54px 0;
-	}
-.sd-browser-opera.sd-browser-supported {
-	background-position:-54px -18px;
-	}
-.sd-browser-safari {
-	background-position:-72px 0;
-	}
-.sd-browser-safari.sd-browser-supported {
-	background-position:-72px -18px;
-	}
+.supports::before,
+.nosupport::before {
+  font-weight: bold;
+  content: '•';
+  color: green;
+  font-size: 2em;
+  line-height: 80px;
+  position: absolute;
+  left: 0; top: 0;
+ }
+
+
+.nosupport::before {
+  color: red;
+}

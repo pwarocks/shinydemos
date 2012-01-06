@@ -15,11 +15,12 @@ shinydemos.create = function() {
     return tag.split(' ').join('-');
   });
 
+
   // Compile all the templates
   var homepageTemplate = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/home.html').toString());
   var tagspageTemplate = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/tag.html').toString());
   var demopageTemplate = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/demo.html').toString());
-
+  var featuresupportTemplate = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/featuresupport.html').toString());
 
   //Check if demos folder exists in deploy folder
   var deployedDemosFolder = siteconfig.deployFolder + '/demos';
@@ -61,29 +62,30 @@ shinydemos.create = function() {
     [].forEach.call(
       configs.demos,
       function(demo, i) {
-        var browserArray = siteconfig.browsers.map(function(browser) {
-          return {
-            'browser': browser,
-            'supportedBrowser': demo.support.indexOf(browser) > -1 ?  ' ' + siteconfig.supportedBrowserClass : ''
-          };    
-        });
 
         var demoPath = deployedDemosFolder + '/' + demo.slug + '/index.html';
         var win = jsdom(fs.readFileSync(demoPath).toString()).createWindow();
 
         var panelContainer = win.document.createElement(siteconfig.panelTag);
         var panelCSS = win.document.createElement('link');
+        var panelJS = win.document.createElement('script');
+        
+        var featuresupportContainer = win.document.createElement('div');
+        featuresupportContainer.innerHTML = featuresupportTemplate({'features': demo.support});
+        
 
         panelCSS.rel = 'stylesheet';
         panelCSS.href = '../../styles/' + siteconfig.panelCSS;
+        panelJS.src = '../../scripts/' + siteconfig.panelJS;
 
         panelContainer.className = siteconfig.panelClass;
-        panelContainer.innerHTML = demopageTemplate({ 'title': demo.title, 'browsers': browserArray });
+        panelContainer.innerHTML = demopageTemplate({ 'title': demo.title });
 
         console.log('wrapping', demo.title);
         win.document.getElementsByTagName('head')[0].appendChild(panelCSS);
+        win.document.getElementsByTagName('head')[0].appendChild(panelJS);
         win.document.body.insertBefore(panelContainer, win.document.body.firstChild);  
-
+        win.document.body.appendChild(featuresupportContainer);
 
         fs.writeFileSync(demoPath, win.document.doctype.toString() + win.document.outerHTML);
 

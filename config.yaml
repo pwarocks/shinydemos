@@ -5,9 +5,8 @@ siteconfig:
   demosFolder: './demos'
   sourceFolder: './source'
   layoutsFolder: './layouts'
-  browsers: ['opera', 'chrome', 'safari', 'firefox', 'ie']
-  supportedBrowserClass: 'sd-browser-supported'
   panelCSS: 'panel.css'
+  panelJS: 'modernizr.custom.40833.js'
   panelClass: 'sd-panel'
   panelTag: 'div'
 
@@ -17,54 +16,54 @@ demos:
   - slug: pagedcontent
     title: "Paged Content Magic"
     tags: [css]
-    support: [opera]
+    support: [pagedcontent]
 
   - slug: border-salon
     title: "Border Radius Salon"
-    tags: [css, svg, parser]
-    support: [opera, chrome, safari, firefox, ie]
+    tags: [css]
+    support: []
     
-  - slug: photobooth
+  - slug: photo-booth
     title: "Photobooth in Your browser"
     tags: [js, canvas]
-    support: [opera, chrome]    
+    support: [getUserMedia, video]    
     
   - slug: parallax
     title: "Parallax Shifts"
     tags: [css]
-    support: [opera, chrome, safari, firefox, ie]    
+    support: [csstransforms, csstransitions]    
 
-  - slug: keyboard
+  - slug: hixie-keyboard
     title: "Type a key and hear a voice!"
     tags: [audio]
-    support: [opera, chrome, safari, firefox, ie]    
+    support: [audio, video]    
     
   - slug: paranoid
     title: "Return of the Retro with a canvas game!"
     tags: [canvas]
-    support: [opera, chrome, safari, firefox, ie]    
+    support: [canvas]    
     
   - slug: object-fitness
     title: "Object Fit"
     tags: [css]
-    support: [opera]  
+    support: [object-fit]  
     
   - slug: rock-piano
     title: "Rock Piano"
     tags: [css]
-    support: [opera]
+    support: [audio]
     
   - slug: tatami
     title: "Tatami"
     tags: [css]
-    support: [opera]    
+    support: [csstransitions]    
     
   - slug: isometric-city
     title: "An isometric world"
     tags: [css]
-    support: [opera]   
+    support: [csstransitions]   
     
   - slug: borderradius-fun
     title: "Tinkering with Border Radius"
     tags: [css]
-    support: [opera, chrome, safari, firefox, ie]           
+    support: []           

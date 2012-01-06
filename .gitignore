@@ -1,6 +1,7 @@
 node_modules
 deploy
 .DS_Store
+*.swp
 
 # html5 video and media
 *.webm

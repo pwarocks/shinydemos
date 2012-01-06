@@ -1,0 +1,24 @@
+  <script>
+    (function(){
+          var featuresupportContainer = document.getElementById("feature-support");
+      
+      {{#if features}}
+
+          var features = "{{features}}".split(',');
+
+      for(var i = 0, j = features.length; i < j; i++){
+        if(!Modernizr[features[i]]) {
+          featuresupportContainer.innerText = "Your browser does not support all the features required for this demo. View this demo in Opera Next";
+          featuresupportContainer.className = "nosupport";
+          return;
+        }  
+      }
+
+     {{/if}}
+
+      featuresupportContainer.innerText = "Success! Your browser supports all these features!";
+      featuresupportContainer.className = "supports";
+    })();
+
+
+  </script>

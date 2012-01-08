@@ -18,15 +18,15 @@
 			<p>Shinydemos is a growing set of demos of the latest Open Web Standards, made by the Opera developer relations team. No browser is blocked: any browser that supports the standard sees the shiny!</p>
 		</header>
 		<ul class="gallery">
-		  {{#each slugs}}
-		  <li>
-		    <a href={{this.path}}>
-		      <h2>{{this.title}}</h2>
-		      <img src="{{thumb}}" alt="">
-		    </a>
-		    <p>Tags: {{this.demotags}}</p>
-		  </li>
-		  {{/each}}
+{{#each slugs}}
+		<li>
+			<a href="{{this.path}}">
+				<h2>{{this.title}}</h2>
+				<img src="{{thumb}}" alt="">
+			</a>
+			<p>Tags: {{this.demotags}}</p>
+		</li>
+{{/each}}
 		</ul>
 		<footer class="footer">
 			<p><a href="http://www.opera.com/developer/">Opera Software</a></p>

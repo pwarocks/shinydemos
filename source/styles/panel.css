@@ -1,6 +1,6 @@
 @import url(fonts.css);
 
-html, body { margin: 0; padding: 0; }
+html, body { margin:0; padding:0; }
 
 /* Panel
 ---------------------------------------- */
@@ -45,27 +45,26 @@ html, body { margin: 0; padding: 0; }
 		}
 
 /* Browsers */
-#feature-support {
+.sd-support {
 	margin:0 0.5em;
-	padding: 30px 0.5em 30px 2em;
-  float: right;
-  width: 25em;
-  position: relative;
-  text-align: left;
-  }
-
-.supports::before,
-.nosupport::before {
-  font-weight: bold;
-  content: '•';
-  color: green;
-  font-size: 2em;
-  line-height: 80px;
-  position: absolute;
-  left: 0; top: 0;
- }
-
-
-.nosupport::before {
-  color: red;
-}
+	padding:30px 0.5em 30px 2em;
+	float:right;
+	width:25em;
+	position:relative;
+	text-align:left;
+	}
+.sd-support:before {
+	position:absolute;
+	top:0;
+	left:0;
+	font-weight:bold;
+	content:'•';
+	font-size:2em;
+	line-height:80px;
+	}
+	.sd-supports:before {
+		color:#090;
+		}
+	.sd-nosupport:before {
+		color:#C00;
+		}

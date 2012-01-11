@@ -74,7 +74,7 @@ a{
 
 
 .button{
-	display:block;
+	display:inline-block;
 			outline: none;
 			cursor: pointer;
 			text-align: center;
@@ -87,9 +87,10 @@ a{
 			color: #fef4e9;
 			border: solid 1px #da7c0c;
 			background: #f78d1d;
-			background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+			background: -webkit-gradient(top,  #faa51a,  #f47a20);
 			background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
-			background: -o-linear-gradient(top,  #faa51a,  #f47a20);	display: inline-block;
+			background: -ms-linear-gradient(top,  #faa51a,  #f47a20);
+			background: -o-linear-gradient(top,  #faa51a,  #f47a20);
 }
 
 footer{

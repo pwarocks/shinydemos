@@ -157,6 +157,30 @@ function eventListeners(){
   
 }
 
+function showHints(){
+  var lhint = document.createElement('div');
+      rhint = lhint.cloneNode(false);
+      
+  lhint.innerHTML = '&larr;';
+  rhint.innerHTML = '&rarr;';
+  rhint.className = 'right-hint';
+  lhint.className = 'left-hint';
+  
+  document.body.appendChild(rhint);
+  document.body.appendChild(lhint);
+  
+  setTimeout(hideHints, 1000);
+  
+  function hideHints(){
+    rhint.classList.add('fade');
+    lhint.classList.add('fade');
+    setTimeout(function(){
+      lhint.parentNode.removeChild(lhint);
+      rhint.parentNode.removeChild(rhint);
+    }, 500); 
+  }
+}
+
 function init(){
   var PM_TOUCH_SENSITIVITY = 15;
   
@@ -165,6 +189,7 @@ function init(){
   });
   initFrames();
   eventListeners();
+  showHints();
 };
 
 document.addEventListener('DOMContentLoaded', init, false);

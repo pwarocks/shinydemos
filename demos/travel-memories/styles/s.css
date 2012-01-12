@@ -9,6 +9,17 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'BitstreamVeraSerifRoman';
+    src: url('../fonts/bitstreamvera/VeraSerif-webfont.eot');
+    src: url('../fonts/bitstreamvera/VeraSerif-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bitstreamvera/VeraSerif-webfont.woff') format('woff'),
+         url('../fonts/bitstreamvera/VeraSerif-webfont.ttf') format('truetype'),
+         url('../fonts/bitstreamvera/VeraSerif-webfont.svg#BitstreamVeraSerifRoman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html,body{margin: 0; padding: 0}
 
 body *{margin: 0; padding: 0}
@@ -18,7 +29,7 @@ html{height: 100%;}
 
 body{
 	height: 100%;
-	font: .9em / 1 'BitstreamVeraSerifRoman',serif;
+	font: .9em / 1 'BitstreamVeraSerifRoman',Georgia,'Droid Serif',serif;
 	background: url(../images/squidfingers_dot_com_pattern_038.gif);
 	position: relative;
 	overflow-x: hidden;

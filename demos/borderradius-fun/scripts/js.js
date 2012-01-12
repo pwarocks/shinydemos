@@ -189,6 +189,7 @@
 				 	break;
 				case 'video':
 					borderobj = vid;
+					vid.play();
 					break;
 				case 'img':
 					borderobj = img;

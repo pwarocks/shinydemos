@@ -1,0 +1,146 @@
+@font-face {
+    font-family: 'NobileRegular';
+    src: url('../fonts/nobile-webfont.eot');
+    src: url('../fonts/nobile-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/nobile-webfont.woff') format('woff'),
+         url('../fonts/nobile-webfont.ttf') format('truetype'),
+         url('../fonts/nobile-webfont.svg#NobileRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@-o-viewport {
+  width: device-width;
+  height: device-height;
+}
+
+
+body{
+	background-color: #999;
+	background-image: url('../images/back2.png');
+	font-family: "NobileRegular", sans-serif;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	color: #fff;
+}
+
+#container{
+	background-color: #ccc;
+	background-image: -o-linear-gradient(#333, #000) !important;
+	background-image: -webkit-linear-gradient(#333, #000) !important;
+	background-image: -moz-linear-gradient(#333, #000) !important;
+	background-image: -ms-linear-gradient(#333, #000) !important;
+	background-image: linear-gradient(#333, #000) !important;
+	width: 610px;
+	margin-top: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+	border-left: 1px solid #333;
+	border-right:  1px solid #333;
+	height: 100%;
+	text-align: center;
+	border-bottom: 1px solid #333;
+	border-top: 1px solid #333;
+	box-shadow: 1px 12px 10px #222;
+	border-radius: 5px;
+	opacity: 0.9;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+video{
+	visibility: hidden;
+	display: none ;
+}
+
+canvas{
+	width: 300px;
+	height: 180px;
+	box-shadow: 1px 1px 2px #000;
+	-o-transition-property: -o-transform, box-shadow;
+	-o-transition-timing-function: ease;
+	-o-transition-duration: 0.4s;
+	
+	-webkit-transition-property: -webkit-transform, box-shadow;
+	-webkit-transition-timing-function: ease;
+	-webkit-transition-duration: 0.4s;
+	
+	-moz-transition-property: -moz-transform, box-shadow;
+	-moz-transition-timing-function: ease;
+	-moz-transition-duration: 0.4s;
+	
+	-ms-transition-property: -ms-transform, box-shadow;
+	-ms-transition-timing-function: ease;
+	-ms-transition-duration: 0.4s;
+	
+	transition-property: transform, box-shadow;
+	transition-timing-function: ease;
+	transition-duration: 0.4s;
+}
+
+#red:hover{
+	-o-transform: rotate(10deg) scale(1.1) translate(20px, 15px);
+	-webkit-transform: rotate(10deg) scale(1.1) translate(20px, 15px);
+	-moz-transform: rotate(10deg) scale(1.1) translate(20px, 15px);
+	-ms-transform: rotate(10deg) scale(1.1) translate(20px, 15px);
+	transform: rotate(10deg) scale(1.1) translate(20px, 15px);
+	box-shadow: 3px 3px 3px #000;
+}
+
+#green:hover{
+	-o-transform: rotate(10deg) scale(1.1) translate(-20px, 15px);
+	-webkit-transform: rotate(10deg) scale(1.1) translate(-20px, 15px);
+	-moz-transform: rotate(10deg) scale(1.1) translate(-20px, 15px);
+	-ms-transform: rotate(10deg) scale(1.1) translate(-20px, 15px);
+	transform: rotate(10deg) scale(1.1) translate(-20px, 15px);
+	box-shadow: 3px 3px 3px #000;
+}
+
+#blue:hover{
+	-o-transform: rotate(10deg) scale(1.1) translate(20px, -15px);
+	-webkit-transform: rotate(10deg) scale(1.1) translate(20px, -15px);
+	-moz-transform: rotate(10deg) scale(1.1) translate(20px, -15px);
+	-ms-transform: rotate(10deg) scale(1.1) translate(20px, -15px);
+	transform: rotate(10deg) scale(1.1) translate(20px, -15px);
+	box-shadow: 3px 3px 3px #000;
+}
+
+#yellow:hover{
+	-o-transform: rotate(10deg) scale(1.1) translate(-20px,-15px);
+	-webkit-transform: rotate(10deg) scale(1.1) translate(-20px,-15px);
+	-moz-transform: rotate(10deg) scale(1.1) translate(-20px,-15px);
+	-ms-transform: rotate(10deg) scale(1.1) translate(-20px,-15px);
+	transform: rotate(10deg) scale(1.1) translate(-20px,-15px);
+	box-shadow: 3px 3px 3px #000;
+}
+
+#warholdiv{
+	margin-bottom: 10px;
+}
+
+
+#mycanvas{
+	visibility: hidden;
+	display: none;
+}
+
+
+h1{		
+		font-family: "NobileRegular", sans-serif;
+	    font-size: 2.6em;
+}
+
+code{
+	font-size: 0.9em;
+}
+
+

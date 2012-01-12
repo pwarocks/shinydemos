@@ -29,7 +29,7 @@
 		div		  = document.querySelector('#main div');
 		bgimg     = document.querySelector('#bgimg');
 		fgimg     = document.querySelector('#fgimg');
-		img 	  = Lib.makeImage('kananaskis.jpg');
+		img 	  = Lib.makeImage('images/kananaskis.jpg');
 		vid		  = Lib.makeVideo('raindropsinapool');
 		close     = document.querySelectorAll('.close');
 

@@ -1,4 +1,14 @@
-@import url(./maiden_orange/stylesheet.css);
+@font-face {
+    font-family: 'MaidenOrangeRegular';
+    src: url('../fonts/MaidenOrange-webfont.eot');
+    src: url('../fonts/MaidenOrange-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/MaidenOrange-webfont.woff') format('woff'),
+         url('../fonts/MaidenOrange-webfont.ttf') format('truetype'),
+         url('../fonts/MaidenOrange-webfont.svg#MaidenOrangeRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 body#cssbr{
 	position: relative;

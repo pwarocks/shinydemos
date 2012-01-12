@@ -22,53 +22,53 @@ demos:
     title: "Border Radius Salon"
     tags: [css]
     support: []
-    
+
   - slug: photo-booth
     title: "Photobooth in Your browser"
     tags: [javascript, canvas]
-    support: [getusermedia, video]    
-    
+    support: [getusermedia, video]
+
   - slug: parallax
     title: "Parallax Shifts"
     tags: [css]
-    support: [csstransforms, csstransitions]    
+    support: [csstransforms, csstransitions]
 
   - slug: hixie-keyboard
     title: "Type a key and hear a voice!"
     tags: [audio]
-    support: [audio, video]    
-    
+    support: [audio, video]
+
   - slug: paranoid
     title: "Return of the Retro with a canvas game!"
     tags: [canvas]
-    support: [canvas]    
-    
+    support: [canvas]
+
   - slug: object-fitness
     title: "Object Fit"
     tags: [css]
-    support: [object-fit]  
-    
+    support: [object-fit]
+
   - slug: rock-piano
     title: "Rock Piano"
     tags: [css]
     support: [audio]
-    
+
   - slug: tatami
     title: "Tatami"
     tags: [css]
-    support: [csstransitions]    
-    
+    support: [csstransitions]
+
   - slug: isometric-city
     title: "An isometric world"
     tags: [css]
-    support: [csstransitions]   
-    
+    support: [csstransitions]
+
   - slug: borderradius-fun
     title: "Tinkering with Border Radius"
     tags: [css]
-    support: []           
-  
+    support: []
+
   - slug: tweetmap
     title: "A map of tweets from the public timeline"
     tags: [svg]
-    support: [svg]    
+    support: [svg]

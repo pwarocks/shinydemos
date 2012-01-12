@@ -1,14 +1,13 @@
-@import url(./fonts/josefin_slab/stylesheet.css);
-@import url(./fonts/bitstreamvera/stylesheet.css);
+html,body{margin: 0; padding: 0}
 
-*{margin: 0; padding: 0}
+body *{margin: 0; padding: 0}
 
 html{height: 100%;}
 
 body{
 	height: 100%;
 	font: .9em / 1 'BitstreamVeraSerifRoman',serif;
-	background: url(./images/squidfingers_dot_com_pattern_038.gif);
+	background: url(../images/squidfingers_dot_com_pattern_038.gif);
 	position: relative;
 	overflow-x: hidden;
 }
@@ -21,7 +20,7 @@ header{display:block;}
 
 #loader{
 	position:absolute;
-	background: url(./images/ajax-loader.gif) center no-repeat;
+	background: url(../images/ajax-loader.gif) center no-repeat;
 	width: 100%;
 	height: 100%;
 }
@@ -127,7 +126,7 @@ section.leadPhoto{
 
 .close{
 	font-family: sans-serif;
-	background: transparent url(images/close.png) 2px 2px no-repeat;
+	background: transparent url(../images/close.png) 2px 2px no-repeat;
 	width:40px;
 	height:40px;
 	text-align: center;
@@ -174,7 +173,7 @@ section.leadPhoto{
 .hide{display: none;}
 
 footer{
-	font-size: .5em;
+	font-size: .7rem;
 	color: #666;
 	display: block;
 	margin: 0;

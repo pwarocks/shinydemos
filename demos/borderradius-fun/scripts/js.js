@@ -208,6 +208,7 @@
 			  Set fgimg value to current type of object
 			  so the field stays the same.
 			********/
+
 			fgimg.value = whichtype;
 
 			/* Remove any classes from the border object */
@@ -287,7 +288,7 @@
 			var transition = Lib.transitionEvent();
 			var a = 'active';
 			var act = new RegExp(a,'g');
-			var parent = e.target.parentNode;
+			var parent = e.currentTarget.parentNode;
 			var panel  = parent.querySelector('div');
 
 			if(Lib.hasClassList){
@@ -360,5 +361,6 @@
 		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
 		form.addEventListener('reset',onresethandler,false);
+
 	}
 })();

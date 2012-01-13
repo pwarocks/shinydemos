@@ -62,7 +62,7 @@ header > p{
 #container{
 	margin: 0 2em;
 	margin: 0 1.5rem;
-	background: rgba(255,255,255,.6);
+	background: rgba(255,255,255,.65);
 	height: 45em;
 	height: 40rem;
 	position: relative;
@@ -70,7 +70,7 @@ header > p{
     top: 0;
 }
 
-#container.loading{top: -1000px;}
+#container.loading{top: -300em;}
 
 #photostack{
 	top:0;

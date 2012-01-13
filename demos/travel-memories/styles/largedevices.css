@@ -6,6 +6,10 @@
 		margin: 3em auto 0 auto;
 
 	}
+	#container{
+		height: 45em;
+	 	height: 40rem;
+	}
 	section{
 		position: absolute;
 		background: #fff;

@@ -28,7 +28,7 @@ html{height: 100%;}
 
 body{
 	height: 100%;
-	font: .9em / 1 'BitstreamVeraSerifRoman',Georgia,'Droid Serif',serif;
+	font: 80% / 1 'BitstreamVeraSerifRoman',Georgia,'Droid Serif',serif;
 	background: url(../images/squidfingers_dot_com_pattern_038.gif);
 	position: relative;
 	overflow-x: hidden;
@@ -61,6 +61,7 @@ header > p{
 
 #container{
 	margin: 0 2em;
+	margin: 0 1.5rem;
 	background: rgba(255,255,255,.6);
 	height: 45em;
 	height: 40rem;

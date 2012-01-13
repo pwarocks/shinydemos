@@ -31,6 +31,7 @@ body{
 	font: .9em / 1 'BitstreamVeraSerifRoman',Georgia,'Droid Serif',serif;
 	background: url(../images/squidfingers_dot_com_pattern_038.gif);
 	position: relative;
+	overflow-x: hidden;
 }
 
 a:link{color: #c60;}

@@ -112,7 +112,6 @@ section{
 	border-style: outset;
 	position: absolute;
 	background: #fff;
-	margin: 0 -10px;
 	cursor: pointer;
 	z-index:auto;
 	display:block;

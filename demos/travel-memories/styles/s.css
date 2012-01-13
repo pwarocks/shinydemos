@@ -26,7 +26,6 @@ body *{margin: 0; padding: 0}
 
 html{height: 100%;}
 
-
 body{
 	height: 100%;
 	font: .9em / 1 'BitstreamVeraSerifRoman',Georgia,'Droid Serif',serif;
@@ -49,11 +48,15 @@ header{display:block;}
 
 h1{
 	font: normal 4em / 1 'JosefinSlabBold';
-	padding: 20px 20px 0 20px;
+	padding: .5em 0 0 .23em;
+	padding: 1rem 1rem 0 1rem;
 	margin:0;
 	letter-spacing: -.05em;
 }
-header > p{padding: 0 20px;}
+header > p{
+	padding: 0 1em;
+	padding: 0 1rem;
+}
 
 #container{
 	margin: 0 2em;

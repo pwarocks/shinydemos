@@ -15,12 +15,12 @@
 	section.vert{width: 188px;}
 	section p{border-width: 8px;}
 	section:nth-child(odd){
-		     -o-transform: rotate(-5deg);
-	   	   -moz-transform: rotate(-5deg);
-		-webkit-transform: rotate(-5deg);
-		 -khtml-transform: rotate(-5deg);
-		    -ms-transform: rotate(-5deg);
-		        transform: rotate(-5deg);
+		     -o-transform: rotate(-1deg);
+	   	   -moz-transform: rotate(-1deg);
+		-webkit-transform: rotate(-1deg);
+		 -khtml-transform: rotate(-1deg);
+		    -ms-transform: rotate(-1deg);
+		        transform: rotate(-1deg);
 	}
 	section:nth-child(even){
 		     -o-transform: rotate(5deg);

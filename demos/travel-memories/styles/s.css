@@ -34,7 +34,7 @@ body{
 	overflow-x: hidden;
 }
 
-body.clip{ overflow: hidden; }
+body.clip{ overflow-y: hidden; }
 
 a:link{color: #c60;}
 a:visited{color: #c90;}

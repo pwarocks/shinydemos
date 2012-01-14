@@ -34,6 +34,8 @@ body{
 	overflow-x: hidden;
 }
 
+body.clip{ overflow: hidden; }
+
 a:link{color: #c60;}
 a:visited{color: #c90;}
 a:hover, a:active{color: #c30;}
@@ -177,19 +179,12 @@ section.leadPhoto{
 
 #overlay{
 	background-color: rgba(0,0,0,.5);
-	position: fixed;
+	position: absolute;
 	z-index: 9997;
-
-	/* left: -2000em;
-	top:  -2000em;
-	width:  4000em;
-	height: 4000em; */
-
-	/* using rems where supported */
-	left: -2000rem;
-	top:  -2000rem;
-	width:  4000rem;
-	height: 4000rem
+	left: -100em;
+	top:  -100em;
+	width:  1000em;
+	height: 1000em;
 }
 #overlay:hover{cursor: pointer;}
 

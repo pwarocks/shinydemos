@@ -22,7 +22,7 @@
 
 html,body{margin: 0; padding: 0}
 
-body *{margin: 0; padding: 0}
+body *{margin: 0; padding: 0;}
 
 html{height: 100%;}
 
@@ -60,8 +60,7 @@ header > p{
 }
 
 #container{
-	margin: 0 2em;
-	margin: 0 1.5rem;
+	margin: 0 auto;
 	background: rgba(255,255,255,.65);
 	position: relative;
 	z-index: 0;
@@ -73,8 +72,6 @@ header > p{
 #photostack{
 	top:0;
 	position:relative;
-	width:70em;
-	width:63rem;
 }
 
 /*
@@ -182,10 +179,11 @@ section.leadPhoto{
 	background-color: rgba(0,0,0,.5);
 	position: fixed;
 	z-index: 9997;
-	left: -2000em;
+
+	/* left: -2000em;
 	top:  -2000em;
 	width:  4000em;
-	height: 4000em;
+	height: 4000em; */
 
 	/* using rems where supported */
 	left: -2000rem;

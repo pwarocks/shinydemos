@@ -13,7 +13,7 @@
 <div id="subcontainer">
 <div id="message"></div>
 <div id="left">
-<video id="video" autoplay loop="true"></video>
+<video id="video" autoplay loop="loop"></video>
 </div>
 <div id="right">
 <div id="picbutton" class="buttons">
@@ -31,17 +31,11 @@
 <div id="pictures">
 </div>
 </div>
-<!--<p id="shakemessage">Shake device to reset the images</p>-->
 
 <div id="share">
 <ul> 
 <li>
-<!-- yeah this is inline JS, but I think its okay in cases like these -->
 <a href="javascript:location.href='http://www.reddit.com/submit?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)"><img src="./images/reddit.png" alt="share reddit" title="share on reddit" /></a></li>
-
-<!--<li><a href="http://twitter.com/home?status=Currently checking out "> <img src="./images/twitter.png" alt="share on twitter" title="share on twitter" /></a></li>-->
-
-<!--<li><a href="javascript:location.href='http://twitter.com/share?text=Currently%20checking%20out'+encodeURIComponent(location.href)" /><img src="./images/twitter.png" alt="share on twitter" title="share on twitter" /></a></li>-->
 
 <li><a href="javascript:location.href='http://twitter.com/share?text='+encodeURIComponent('Checking out \'Polaroid Taker\' on Shiny Demos ')+encodeURIComponent(location.href)" /><img src="./images/twitter.png" alt="share on twitter" title="share on twitter" /></a></li>
 

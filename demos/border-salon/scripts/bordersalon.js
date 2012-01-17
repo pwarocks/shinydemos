@@ -158,7 +158,7 @@ function eventListeners(){
 }
 
 function showHints(){
-  var lhint = document.createElement('div');
+  var lhint = document.createElement('div'),
       rhint = lhint.cloneNode(false);
       
   lhint.innerHTML = '&larr;';

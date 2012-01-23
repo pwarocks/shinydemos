@@ -3,28 +3,18 @@
   height: device-height;
 }
 
-@font-face {
-    font-family: 'lobster';
-    src: url('../fonts/Lobster.eot');
-    src: url('../fonts/Lobster.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Lobster.woff') format('woff'),
-         url('../fonts/Lobster.ttf') format('truetype'),
-         url('../fonts/Lobster.svg#lobster') format('svg');
-}
-
-
 body{
 	background-color: #333;
 	color: #030303;
-	font-family: 'lobster';
+	font-family: 'Lobster', cursive;
 	background-image: url('../images/gallerybackuq4.jpg');
 
 }
 
-#top h1{
-	font-family: 'lobster';
+#top > h1{
+	font-family: 'Lobster', cursive;
 	font-size: 3.2em;
-	color: white;
+	color: #fff;
 	text-shadow: 1px 1px 2px #333;
 }
 
@@ -73,7 +63,7 @@ video:hover{
 	width: 45%;
 }
 
-#footer{
+#pic_container{
 	clear: both;
 	color: #fff;
 	padding-left: 25px;
@@ -118,10 +108,6 @@ canvas{
 	max-width: 800px;
 }
 
-#shutter{
-	width: 48px;
-	height: 48px;
-}
 
 #shakemessage{
 	margin-top: 10px;
@@ -151,7 +137,8 @@ canvas{
 	padding: .5em 2em .55em;
 	border-radius: 5px;
 	box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	font-size: 0.8em;
+	font-size: 1.5em;
+	font-family: 'Lobster', cursive;
 	margin-top: 5px;
 	color: #fef4e9;
 	border: solid 1px #da7c0c;

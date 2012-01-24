@@ -14,14 +14,20 @@ var mp4video = "http:\/\/media.shinydemos.com\/warholiser\/wsh.mp4";
 
 
 if (navigator.getUserMedia){
-	navigator.getUserMedia(options, v_success, v_error);
-} else {
+  	navigator.getUserMedia(options, v_success, v_error);
+}  
+  
+else if (navigator.webkitGetUserMedia) {
+	navigator.webkitGetUserMedia("video", webkit_v_success, v_error)
+}
+
+else {
 	not_supported();
 }
 
 function not_supported(){
 	var message = document.querySelector('#message');
-	message.innerHTML = "<h1>navigator.getUserMedia() is not supported by this browser. Moving to a &lt;video&gt; fallback instead.</h1>";
+	message.innerHTML = "<h2>Webcam access through the WebRTC spec is not supported by this browser. Moving to a &lt;video&gt; fallback instead.</h2>";
 	
 	video_element.innerHTML = "<source src=\""+webmvideo+"\" type=\"video\/webm\" ><\/source> <source src=\""+mp4video+"\" type=\"video\/mp4\" ><\/source>";
 			video_element.muted= true;
@@ -30,6 +36,10 @@ function not_supported(){
 
 function v_success(stream){
 	video_element.src = stream;
+}
+
+function webkit_v_success(stream) {
+	video_element.src = window.webkitURL.createObjectURL(stream)
 }
 
 function v_error(error){
@@ -50,8 +60,8 @@ function snapshot(){
 	canvas.style.msTransform = "rotate("+deg+"deg)";
 	canvas.style.zIndex = "999";
 
-	var footer = document.querySelector("#pictures");
-	footer.appendChild(canvas);
+	var picture_stage = document.querySelector("#pictures");
+	picture_stage.appendChild(canvas);
 	
 	var ctx = canvas.getContext('2d');
 	var cw = canvas.width;

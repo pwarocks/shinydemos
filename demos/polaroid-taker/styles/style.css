@@ -17,8 +17,7 @@
 body{
 	background-color: #333;
 	color: #030303;
-	font-family: 'BitstreamVeraSerifRoman', Georgia,serif;
-	/* background-image: url('../images/gallerybackuq4.jpg'); */
+	font-family: 'BitstreamVeraSerifRoman', Georgia, serif;
 	background-image: url('../images/squidfingers_dot_com_pattern_038.gif');
 }
 
@@ -26,22 +25,29 @@ body{
 #top > h1{
 	font-family: 'Lobster', cursive;
 	font-size: 3.2em;
-	color: #fff;
-	text-shadow: 1px 1px 2px #333;
+	color: #630;
+	text-shadow: 1px 1px 2px #fff;
 	display:block; /* for older browsers where header is still an inline element by default */
     margin:0
 }
-h2{margin:0; padding: 1em; padding: 1rem; font-size: 1rem; line-height: 1.5; font-weight: normal;}
+h2{
+    margin:0;
+    padding: .5em;
+    padding: .5rem;
+    font-size: .9rem;
+    line-height: 1.5;
+    font-weight: normal;
+}
+
 #container{
 	max-width: device-width;
 	margin:0;
 }
 
 video{
-	margin-bottom: 10px;
 	width: 100%;
-	moz-box-shadow: 1px 1px 15px #000;
-	webkit-box-shadow: 1px 1px 15px #000;
+	-moz-box-shadow: 1px 1px 15px #000;
+	-webkit-box-shadow: 1px 1px 15px #000;
 	box-shadow: 1px 1px 15px #000;
 	-webkit-transition: -webkit-transform ease-in 0.5s;
 	-moz-transition: -moz-transform ease-in 0.5s;
@@ -111,7 +117,7 @@ canvas{
 
 #top, #subcontainer{
 	max-width: 800px;
-	background: rgba(255,255,255,.5);
+	background: rgba(255,255,255,.75);
 	margin:0 auto;
 }
 
@@ -135,7 +141,7 @@ canvas{
 	box-shadow: 1px 1px 15px #f78e1d;
 }
 
-.buttons{
+button{
 	display:block;
 	outline: none;
 	cursor: pointer;

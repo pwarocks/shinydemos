@@ -67,10 +67,9 @@ video{
 #button{
 	font-size: 1.0em;
 	margin-bottom: 10px;
-
 }
 
-#left{width: 50%;}
+#vidwrapper{width: 60%; margin:auto; text-align: center;}
 
 #buttons{padding-top: 5px;}
 

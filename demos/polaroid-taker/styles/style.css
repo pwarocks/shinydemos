@@ -7,8 +7,8 @@ body{
 	background-color: #333;
 	color: #030303;
 	font-family: 'Lobster', cursive;
-	background-image: url('../images/gallerybackuq4.jpg');
-
+	/* background-image: url('../images/gallerybackuq4.jpg'); */
+	background-image: url('../images/squidfingers_dot_com_pattern_038.gif');
 }
 
 #top > h1{
@@ -49,7 +49,7 @@ video:hover{
 #button{
 	font-size: 1.0em;
 	margin-bottom: 10px;
-	
+
 }
 
 #left{
@@ -101,7 +101,7 @@ canvas{
 	overflow: hidden;
 	border: 5px solid white;
 	border-bottom: 30px solid white;
-	
+
 }
 
 #subcontainer{
@@ -128,7 +128,7 @@ canvas{
 	box-shadow: 1px 1px 15px #f78e1d;
 }
 
-.buttons{	
+.buttons{
 	display:block;
 	outline: none;
 	cursor: pointer;
@@ -146,5 +146,5 @@ canvas{
 	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
 	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
 	background: -o-linear-gradient(top,  #faa51a,  #f47a20);	display: inline-block;
-	background: linear-gradient(top,  #faa51a,  #f47a20);	display: inline-block;			
+	background: linear-gradient(top,  #faa51a,  #f47a20);	display: inline-block;
 }

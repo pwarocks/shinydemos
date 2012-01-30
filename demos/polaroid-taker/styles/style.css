@@ -66,10 +66,7 @@ video{
 
 #left{width: 50%;}
 
-#right{
-	padding-top: 5px;
-	width: 45%;
-}
+#buttons{padding-top: 5px;}
 
 #pic_container{
 	clear: both;

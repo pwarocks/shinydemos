@@ -21,7 +21,12 @@ body{
 	background-image: url('../images/squidfingers_dot_com_pattern_038.gif');
 }
 
-#top{text-align:center; border-radius: 10px 10px 0 0;}
+#top{
+    text-align:center;
+    border-radius: 10px 10px 0 0;
+    border: 1px solid #eee;
+    border-width: 1px 1px 0 1px;
+}
 #top > h1{
 	font-family: 'Lobster', cursive;
 	font-size: 3.2em;
@@ -47,9 +52,10 @@ h2{
 
 video{
 	width: 100%;
-	-moz-box-shadow: 1px 1px 15px #000;
+	/*-moz-box-shadow: 1px 1px 15px #000;
 	-webkit-box-shadow: 1px 1px 15px #000;
-	box-shadow: 1px 1px 15px #000;
+	box-shadow: 1px 1px 15px #000; */
+	border:1px solid #eee;
 	-webkit-transition: -webkit-transform ease-in 0.5s;
 	-moz-transition: -moz-transform ease-in 0.5s;
 	-ms-transition: -ms-transform ease-in 0.5s;
@@ -112,7 +118,11 @@ canvas{
 	margin:0 auto;
 }
 
-#subcontainer{border-radius: 0 0 10px 10px;}
+#subcontainer{
+    border-radius: 0 0 10px 10px;
+    border: 1px solid #eee;
+    border-width: 0px 1px 1px 1px;
+}
 
 #shakemessage{
 	margin-top: 10px;
@@ -153,3 +163,16 @@ button{
 	background: -o-linear-gradient(top,  #faa51a,  #f47a20);	display: inline-block;
 	background: linear-gradient(top,  #faa51a,  #f47a20);	display: inline-block;
 }
+
+#overlay{
+    background:rgba(0,0,0,.6);
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left: 0;
+    margin:0;
+    z-index:1000px;
+}
+
+.hide{visibility:hidden;}

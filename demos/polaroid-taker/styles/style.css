@@ -22,16 +22,19 @@ body{
 	background-image: url('../images/squidfingers_dot_com_pattern_038.gif');
 }
 
+#top{text-align:center;}
 #top > h1{
 	font-family: 'Lobster', cursive;
 	font-size: 3.2em;
 	color: #fff;
 	text-shadow: 1px 1px 2px #333;
 	display:block; /* for older browsers where header is still an inline element by default */
+    margin:0
 }
-
+h2{margin:0; padding: 1em; padding: 1rem; font-size: 1rem; line-height: 1.5; font-weight: normal;}
 #container{
 	max-width: device-width;
+	margin:0;
 }
 
 video{
@@ -61,14 +64,10 @@ video{
 
 }
 
-#left{
-	float: left;
-	width: 50%;
-}
+#left{width: 50%;}
 
 #right{
 	padding-top: 5px;
-	float: right;
 	width: 45%;
 }
 
@@ -113,8 +112,10 @@ canvas{
 
 }
 
-#subcontainer{
+#top, #subcontainer{
 	max-width: 800px;
+	background: rgba(255,255,255,.5);
+	margin:0 auto;
 }
 
 

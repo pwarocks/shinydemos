@@ -54,24 +54,10 @@ video{
 	-ms-transition: -ms-transform ease-in 0.5s;
 	-o-transition: -o-transform ease-in 0.5s;
 	transition: transform ease-in 0.5s;
-}
-
-/* video:hover{
-	-webkit-transform: rotate(7deg);
-	-moz-transform: rotate(7deg);
-	-ms-transform: rotate(7deg);
-	-o-transform: rotate(7deg);
-	transform: rotate(7deg);
-} */
-
-#button{
-	font-size: 1.0em;
-	margin-bottom: 10px;
+	margin-bottom:5px;
 }
 
 #vidwrapper{width: 60%; margin:auto; text-align: center;}
-
-#buttons{padding-top: 5px;}
 
 #pic_container{
 	clear: both;

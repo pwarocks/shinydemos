@@ -1,0 +1,150 @@
+@-o-viewport {
+  width: device-width;
+  height: device-height;
+}
+
+body{
+	background-color: #333;
+	color: #030303;
+	font-family: 'Lobster', cursive;
+	background-image: url('../images/gallerybackuq4.jpg');
+
+}
+
+#top > h1{
+	font-family: 'Lobster', cursive;
+	font-size: 3.2em;
+	color: #fff;
+	text-shadow: 1px 1px 2px #333;
+}
+
+#container{
+	max-width: device-width;
+}
+
+canvas{
+	border: 1px solid #ccc;
+}
+video{
+	margin-bottom: 10px;
+	width: 100%;
+	moz-box-shadow: 1px 1px 15px #000;
+	webkit-box-shadow: 1px 1px 15px #000;
+	box-shadow: 1px 1px 15px #000;
+	-webkit-transition: -webkit-transform ease-in 0.5s;
+	-moz-transition: -moz-transform ease-in 0.5s;
+	-ms-transition: -ms-transform ease-in 0.5s;
+	-o-transition: -o-transform ease-in 0.5s;
+	transition: transform ease-in 0.5s;
+}
+
+video:hover{
+	-webkit-transform: rotate(7deg);
+	-moz-transform: rotate(7deg);
+	-ms-transform: rotate(7deg);
+	-o-transform: rotate(7deg);
+	transform: rotate(7deg);
+}
+
+#button{
+	font-size: 1.0em;
+	margin-bottom: 10px;
+	
+}
+
+#left{
+	float: left;
+	width: 50%;
+}
+
+#right{
+	padding-top: 5px;
+	float: right;
+	width: 45%;
+}
+
+#pic_container{
+	clear: both;
+	color: #fff;
+	padding-left: 25px;
+	margin-left: 10px;
+	color: #fff;
+}
+
+a{
+	color: #fff;
+}
+
+a:visited{
+	color: #fff;
+}
+
+#polaroid{
+	margin-bottom: 10px;
+}
+
+canvas{
+	background-color: #fff;
+	box-shadow: 3px 3px 3px #000;
+}
+
+#mycanvas{
+		-o-transform: rotate(-25deg);
+		-moz-transform: rotate(-25deg);
+		-webkit-transform: rotate(-25deg);
+		-ms-transform: rotate(-25deg);
+		transform: rotate(-25deg);
+}
+
+.pic{
+	-o-object-fit: cover;
+	overflow: hidden;
+	border: 5px solid white;
+	border-bottom: 30px solid white;
+	
+}
+
+#subcontainer{
+	max-width: 800px;
+}
+
+
+#shakemessage{
+	margin-top: 10px;
+}
+
+
+#share{
+	text-align: right;
+	margin-top: 40px;
+}
+
+#share ul li{
+	list-style-type: none;
+	display: inline-block;
+}
+
+#share ul li img{
+	box-shadow: 1px 1px 15px #f78e1d;
+}
+
+.buttons{	
+	display:block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	padding: .5em 2em .55em;
+	border-radius: 5px;
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	font-size: 1.5em;
+	font-family: 'Lobster', cursive;
+	margin-top: 5px;
+	color: #fef4e9;
+	border: solid 1px #da7c0c;
+	background: #f78d1d;
+	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+	background: -o-linear-gradient(top,  #faa51a,  #f47a20);	display: inline-block;
+	background: linear-gradient(top,  #faa51a,  #f47a20);	display: inline-block;			
+}

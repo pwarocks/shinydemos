@@ -23,9 +23,6 @@ body{
 	max-width: device-width;
 }
 
-canvas{
-	border: 1px solid #ccc;
-}
 video{
 	margin-bottom: 10px;
 	width: 100%;
@@ -85,7 +82,7 @@ a:visited{
 }
 
 canvas{
-	background-color: #fff;
+	background-color: #f60;
 	box-shadow: 3px 3px 3px #000;
 }
 

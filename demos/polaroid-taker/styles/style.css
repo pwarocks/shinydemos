@@ -73,19 +73,6 @@ a:visited{
 	margin-bottom: 10px;
 }
 
-/* canvas{
-	background-color: #f60;
-	box-shadow: 3px 3px 3px #000;
-}
-
-#mycanvas{
-		-o-transform: rotate(-25deg);
-		-moz-transform: rotate(-25deg);
-		-webkit-transform: rotate(-25deg);
-		-ms-transform: rotate(-25deg);
-		transform: rotate(-25deg);
-} */
-
 .pic{
 	-o-object-fit: cover;
 	overflow: hidden;
@@ -93,8 +80,6 @@ a:visited{
 	padding: 5px 5px 30px 5px;
 	position:relative;
 	border: 1px solid #eee;
-	/* border: 5px solid white;
-	border-bottom: 30px solid white; */
 }
 
 #top, #subcontainer{

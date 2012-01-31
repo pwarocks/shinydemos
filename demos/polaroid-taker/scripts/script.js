@@ -2,7 +2,6 @@ var picbutton = document.querySelector('#picbutton');
 var resetbutton = document.querySelector('#resetbutton');
 var video_element = document.querySelector('video');
 var overlay = document.querySelector('#overlay');
-var audio = document.querySelector('audio');
 
 picbutton.addEventListener('click', snapshot, false);
 video_element.addEventListener('click', snapshot, false);
@@ -10,7 +9,7 @@ resetbutton.addEventListener('click', clearImages, false);
 window.addEventListener('devicemotion', shakeReset, false);
 overlay.addEventListener('click', closeOverlay, false);
 
-var prev= 0;
+var prev = 0;
 var options = {audio: false, video:true};
 var webmvideo = "http:\/\/media.shinydemos.com\/warholiser\/wsh.webm";
 var mp4video = "http:\/\/media.shinydemos.com\/warholiser\/wsh.mp4";
@@ -52,7 +51,8 @@ function v_error(error){
 
 function snapshot(){
     showOverlay();
-    audio.play();
+
+    document.querySelector('audio').play();
 
     var photoborder = document.createElement('section');
     var close = document.createElement('button');
@@ -84,18 +84,14 @@ function snapshot(){
 }
 
 
-function applyEvents(){
-	var elems = document.querySelectorAll('.pic');
-	for (var i=0; i<elems.length;i++){
+ function applyEvents(){
+    var elems = document.querySelectorAll('.pic button');
+    var num = elems.length;
+	for (var i=0; i<num;i++){
 		elems[i].addEventListener('click', newimg, true);
 	}
 }
 
-
-function newimg(){
-	var datauri = this.toDataURL("image/png");
-	window.open(datauri);
-}
 
 function shakeReset(event){
 

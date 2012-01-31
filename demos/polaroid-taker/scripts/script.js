@@ -60,8 +60,8 @@ function snapshot(){
 
     close.innerHTML = 'Close';
 
-    photoborder.className = "pic";
     photoborder.id = 'leadPhoto';
+    photoborder.className = "pic";
 
     photoborder.style.width  = w+'px';
     photoborder.style.height = h+'px';
@@ -153,5 +153,13 @@ function closeOverlay(event){
 function showOverlay(){
     var ol = overlay;
     ol.className = ol.className.replace(/hide|invisible/gi,'');
+
+    overlay.addEventListener('oTransitionEnd', function(){
+        var leadPhoto =  document.querySelector('#leadPhoto');
+
+        if( leadPhoto ){
+            leadPhoto.className += ' slidein';
+        }
+    }, false);
 }
 

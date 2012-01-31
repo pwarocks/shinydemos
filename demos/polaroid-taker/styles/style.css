@@ -182,12 +182,13 @@ button{
 
 canvas{display:block;}
 
-.leadPhoto{
+#leadPhoto{
     top:0;
     margin:auto;
     box-shadow: 0px 0px 15px rgba(0,0,0,.8);
     z-index: 1001;
     -o-transform: translateY(-50%);
+    border:10px solid #c00;
 }
 
 #pic_container{margin:auto;text-align:center}

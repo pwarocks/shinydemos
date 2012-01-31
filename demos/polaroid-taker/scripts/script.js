@@ -60,7 +60,8 @@ function snapshot(){
 
     close.innerHTML = 'Close';
 
-    photoborder.className = "pic leadPhoto";
+    photoborder.className = "pic";
+    photoborder.id = 'leadPhoto';
 
     photoborder.style.width  = w+'px';
     photoborder.style.height = h+'px';
@@ -142,12 +143,12 @@ function getDeg(){
 function closeOverlay(event){
     event.target.className = 'hide';
 
-    var leadPhoto = document.querySelector('.leadPhoto');
+    var leadPhoto = document.querySelector('#leadPhoto');
 
     var polaroid = document.querySelector('#pictures');
 
     polaroid.appendChild(leadPhoto);
-    leadPhoto.className = leadPhoto.className.replace(' leadPhoto','');
+
     leadPhoto.removeAttribute('style');
 
     console.log(leadPhoto);

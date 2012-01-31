@@ -19,15 +19,13 @@ body{overflow-x:hidden;background: url(../images/linen.png);width:100%;}
 
 @media all and (max-width: 960px) and (min-width: 670px) {
   .frame{-o-transform:scale(0.75) translate(-67%,-70%);-ms-transform:scale(0.75) translate(-75%,-70%);-moz-transform:scale(0.75) translate(-75%,-70%);-webkit-transform:scale(0.75) translate(-75%,-70%);transform:scale(0.75) translate(-75%,-70%);}
-  .prev-far {display:none;}
-  .next-far {display:none;}
+  .prev-far, .next-far {display:none;}
 }
 
 @media all and (min-width: 0) and (max-width: 480px) {
   .prev {-o-transition-property:left;-o-transition-duration:0.5s;-ms-transition-property:left;-ms-transition-duration:0.5s;-moz-transition-property:left;-moz-transition-duration:0.5s;-webkit-transition-property:left;-webkit-transition-duration:0.5s;transition-property:left;transition-duration:0.5s;left:-50%;}
   .next{-o-transition-property:left;-o-transition-duration:0.5s;-ms-transition-property:left;-ms-transition-duration:0.5s;-moz-transition-property:left;-moz-transition-duration:0.5s;-webkit-transition-property:left;-webkit-transition-duration:0.5s;transition-property:left;transition-duration:0.5s;left:150%;}
-  .prev-far {display:none;}
-  .next-far {display:none;}
+  .prev-far, .next-far {display:none;}
 }
 
 @media all and (max-height: 300px) {

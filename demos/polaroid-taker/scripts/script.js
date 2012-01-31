@@ -2,6 +2,7 @@ var picbutton = document.querySelector('#picbutton');
 var resetbutton = document.querySelector('#resetbutton');
 var video_element = document.querySelector('video');
 var overlay = document.querySelector('#overlay');
+var audio = document.querySelector('audio');
 
 picbutton.addEventListener('click', snapshot, false);
 video_element.addEventListener('click', snapshot, false);
@@ -51,6 +52,7 @@ function v_error(error){
 
 function snapshot(){
     showOverlay();
+    audio.play();
 
     var photoborder = document.createElement('section');
     var close = document.createElement('button');

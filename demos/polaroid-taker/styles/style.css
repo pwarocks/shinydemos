@@ -198,7 +198,6 @@ canvas{display:block;}
     position:relative;
     -o-transform: translateY(-150%);
     -o-transition: -o-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
-
 }
 
 #leadPhoto.slidein{
@@ -220,6 +219,7 @@ canvas{display:block;}
     margin: 0rem 0rem .5rem .5rem;
     width:auto;
     z-index:auto;
+
 }
 
 #pictures .pic canvas{

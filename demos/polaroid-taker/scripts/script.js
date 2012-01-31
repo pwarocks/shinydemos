@@ -138,7 +138,7 @@ function closeOverlay(event){
 
     if( leadPhoto !== null ){
         polaroid = document.querySelector('#pictures');
-        polaroid.appendChild(leadPhoto);
+        polaroid.insertBefore(leadPhoto, polaroid.firstChild);
         leadPhoto.style = '';
         leadPhoto.id = '';
     }

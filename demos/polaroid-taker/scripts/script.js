@@ -2,6 +2,7 @@ var picbutton = document.querySelector('#picbutton');
 var resetbutton = document.querySelector('#resetbutton');
 var video_element = document.querySelector('video');
 var overlay = document.querySelector('#overlay');
+var hasClassList = !(document.body.classList == undefined );
 
 picbutton.addEventListener('click', snapshot, false);
 video_element.addEventListener('click', snapshot, false);

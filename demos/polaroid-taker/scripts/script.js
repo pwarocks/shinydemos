@@ -85,13 +85,16 @@ function snapshot(){
 
 
  function applyEvents(){
-    var elems = document.querySelectorAll('.pic button');
+    var elems = document.querySelectorAll('.pic');
     var num = elems.length;
 	for (var i=0; i<num;i++){
-		elems[i].addEventListener('click', newimg, true);
+		elems[i].addEventListener('click', closeimg, true);
 	}
 }
 
+function closeimg(){
+    console.log( this );
+}
 
 function shakeReset(event){
 
@@ -129,9 +132,11 @@ function getDeg(){
 }
 
 function closeOverlay(event){
+    var leadPhoto, polaroid;
+    var transition = transitionEvent();
     event.target.className = 'hide';
 
-    var leadPhoto, polaroid;
+
     leadPhoto = document.querySelector('#leadPhoto');
 
     if( leadPhoto !== null ){
@@ -141,7 +146,7 @@ function closeOverlay(event){
         leadPhoto.id = '';
     }
 
-    event.target.addEventListener('oTransitionEnd', function(){
+    event.target.addEventListener(transition, function(){
         if( this.classList.contains('hide') == true ){
             this.classList.add('invisible');
         }
@@ -150,9 +155,11 @@ function closeOverlay(event){
 
 function showOverlay(){
     var ol = overlay;
+    var transition = transitionEvent();
+
     ol.className = ol.className.replace(/hide|invisible/gi,'');
 
-    overlay.addEventListener('oTransitionEnd', function(){
+    overlay.addEventListener(transition, function(){
         var leadPhoto =  document.querySelector('#leadPhoto');
 
         if( leadPhoto ){
@@ -161,3 +168,21 @@ function showOverlay(){
     }, false);
 }
 
+
+function transitionEvent(){
+    var t, transitions, el = document.createElement('fakeelement');
+
+    transitions = {
+        'transition':'transitionEnd',
+        'OTransition':'oTransitionEnd',
+        'MSTransition':'msTransitionEnd',
+        'MozTransition':'transitionend',
+        'WebkitTransition':'webkitTransitionEnd'
+     }
+
+    for(t in transitions){
+        if( el.style[t] !== undefined ){
+            return transitions[t];
+        }
+    }
+}

@@ -52,20 +52,35 @@ function v_error(error){
 function snapshot(){
     showOverlay();
 
+    var photoborder = document.createElement('section');
+    var close = document.createElement('button');
 	var canvas = document.createElement('canvas');
-	canvas.width = video_element.clientWidth/2;
-	canvas.height = video_element.clientHeight/2;
-	canvas.className = "pic";
-	var deg = getDeg();
+	var w = video_element.clientWidth * 1.2;
+	var h = video_element.clientHeight * 1.2;
+
+    close.innerHTML = 'Close';
+
+    photoborder.className = "pic leadPhoto";
+
+    photoborder.style.width  = w+'px';
+    photoborder.style.height = h+'px';
+
+	canvas.width = w;
+	canvas.height = h;
+
+
+
+	/* var deg = getDeg();
 
 	canvas.style.OTransform = "rotate("+deg+"deg)";
 	canvas.style.MozTransform = "rotate("+deg+"deg)";
 	canvas.style.WebkitTransform = "rotate("+deg+"deg)";
 	canvas.style.msTransform = "rotate("+deg+"deg)";
-	canvas.style.zIndex = "999";
+	canvas.style.zIndex = "999"; */
 
-	var picture_stage = document.querySelector("#pictures");
-	picture_stage.appendChild(canvas);
+    photoborder.appendChild(canvas);
+    photoborder.appendChild(close);
+    document.body.appendChild(photoborder);
 
 	var ctx = canvas.getContext('2d');
 	var cw = canvas.width;
@@ -77,7 +92,7 @@ function snapshot(){
 
 
 function applyEvents(){
-	var elems = document.querySelectorAll('canvas');
+	var elems = document.querySelectorAll('.pic');
 	for (var i=0; i<elems.length;i++){
 		elems[i].addEventListener('click', newimg, true);
 	}
@@ -103,7 +118,7 @@ function shakeReset(event){
 }
 
 function clearImages(){
-	var canvases = document.querySelectorAll('canvas');
+	var canvases = document.querySelectorAll('section');
 	var polaroid = document.querySelector('#pictures');
 	for (var i=0; i<canvases.length; i++){
 		polaroid.removeChild(canvases[i]);
@@ -126,11 +141,20 @@ function getDeg(){
 
 function closeOverlay(event){
     event.target.className = 'hide';
+
+    var leadPhoto = document.querySelector('.leadPhoto');
+
+    var polaroid = document.querySelector('#pictures');
+
+    polaroid.appendChild(leadPhoto);
+    leadPhoto.className = leadPhoto.className.replace(' leadPhoto','');
+    leadPhoto.removeAttribute('style');
+
+    console.log(leadPhoto);
 }
 
 function showOverlay(){
     var ol = overlay;
     ol.className = ol.className.replace(/hide/,'');
-    console.log(ol.className);
 }
 

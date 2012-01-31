@@ -3,21 +3,10 @@
   height: device-height;
 }
 
-@font-face {
-    font-family: 'BitstreamVeraSerifRoman';
-    src: url('../fonts/bitstreamvera/VeraSerif-webfont.eot');
-    src: url('../fonts/bitstreamvera/VeraSerif-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/bitstreamvera/VeraSerif-webfont.woff') format('woff'),
-         url('../fonts/bitstreamvera/VeraSerif-webfont.ttf') format('truetype'),
-         url('../fonts/bitstreamvera/VeraSerif-webfont.svg#BitstreamVeraSerifRoman') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
 body{
 	background-color: #333;
 	color: #030303;
-	font-family: 'BitstreamVeraSerifRoman', Georgia, serif;
+	font-family: 'Gudea', sans-serif;
 	background-image: url('../images/squidfingers_dot_com_pattern_038.gif');
 }
 
@@ -39,7 +28,7 @@ h2{
     margin:0 auto;
     padding: 1em;
     padding: 1rem;
-    font-size: .9rem;
+    font-size: 1rem;
     line-height: 1.5;
     font-weight: normal;
     width: 80%;
@@ -74,9 +63,6 @@ video{
 #pic_container{
 	clear: both;
 	color: #fff;
-	padding-left: 25px;
-	margin-left: 10px;
-	color: #fff;
 }
 
 a{
@@ -91,7 +77,7 @@ a:visited{
 	margin-bottom: 10px;
 }
 
-canvas{
+/* canvas{
 	background-color: #f60;
 	box-shadow: 3px 3px 3px #000;
 }
@@ -102,14 +88,17 @@ canvas{
 		-webkit-transform: rotate(-25deg);
 		-ms-transform: rotate(-25deg);
 		transform: rotate(-25deg);
-}
+} */
 
 .pic{
 	-o-object-fit: cover;
 	overflow: hidden;
-	border: 5px solid white;
-	border-bottom: 30px solid white;
-
+	background: #fff;
+	padding: 5px 5px 30px 5px;
+	position:relative;
+	border: 1px solid #eee;
+	/* border: 5px solid white;
+	border-bottom: 30px solid white; */
 }
 
 #top, #subcontainer{
@@ -119,15 +108,14 @@ canvas{
 }
 
 #subcontainer{
-    border-radius: 0 0 10px 10px;
+    border-radius: 0;
     border: 1px solid #eee;
-    border-width: 0px 1px 1px 1px;
+    border-width: 0px 1px;
 }
 
 #shakemessage{
 	margin-top: 10px;
 }
-
 
 #share{
 	text-align: right;
@@ -164,6 +152,22 @@ button{
 	background: linear-gradient(top,  #faa51a,  #f47a20);	display: inline-block;
 }
 
+.pic button{
+    position: absolute;
+    bottom:0;
+    right:0;
+    background: transparent;
+    font-family: 'Gudea', sans-serif;
+    font-size: .8em;
+    font-weight:bold;
+    color:#333;
+    border:none;
+    box-shadow:none;
+    padding: 0 7px .5em 0;
+
+}
+
+
 #overlay{
     background:rgba(0,0,0,.6);
     position:absolute;
@@ -176,3 +180,37 @@ button{
 }
 
 .hide{visibility:hidden;}
+
+canvas{display:block;}
+
+.leadPhoto{
+    margin: auto;
+    top:0;
+    box-shadow: 0px 0px 15px #0cf;
+    position: absolute;
+}
+
+#pic_container{margin:auto;text-align:center}
+
+#pictures{
+    width:100%;
+    margin:0;
+    background:rgba(255,255,255,.75);
+    float:left;
+}
+
+#pictures .pic{
+    float:left;
+    margin: 0em 0em .5em .5em;
+    margin: 0rem 0rem .5rem .5rem;
+    width:auto;
+}
+
+#pictures .pic canvas{
+    width: 10rem;
+    height: 7.5rem;
+    border:1px solid #ccc;
+}
+#pictures .pic button{
+    opacity:0;
+}

@@ -129,11 +129,10 @@ function handleTouchEnd(event) {
   if ((dx > PM_TOUCH_SENSITIVITY) && (dy < (dx * 2 / 3))) {
     if (touchDX > 0) {
       prevSlide();
-      event.preventDefault();
     } else {
       nextSlide();
-      event.preventDefault();
     }
+    event.preventDefault();
   }
 
   cancelTouch();

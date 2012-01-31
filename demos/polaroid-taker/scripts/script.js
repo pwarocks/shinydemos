@@ -80,7 +80,7 @@ function snapshot(){
 
     photoborder.appendChild(canvas);
     photoborder.appendChild(close);
-    document.body.appendChild(photoborder);
+    overlay.appendChild(photoborder);
 
 	var ctx = canvas.getContext('2d');
 	var cw = canvas.width;

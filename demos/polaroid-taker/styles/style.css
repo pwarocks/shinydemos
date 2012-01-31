@@ -176,9 +176,17 @@ button{
     left: 0;
     margin:0;
     z-index:1000px;
+    -o-transition: opacity 250ms linear;
 }
 
-.hide{visibility:hidden;}
+#overlay.invisible{
+    visibility:hidden;
+}
+
+#overlay.hide{
+    opacity:0;
+    -o-transition: opacity 250ms linear;
+}
 
 canvas{display:block;}
 

@@ -69,16 +69,6 @@ function snapshot(){
 	canvas.width = w;
 	canvas.height = h;
 
-
-
-	/* var deg = getDeg();
-
-	canvas.style.OTransform = "rotate("+deg+"deg)";
-	canvas.style.MozTransform = "rotate("+deg+"deg)";
-	canvas.style.WebkitTransform = "rotate("+deg+"deg)";
-	canvas.style.msTransform = "rotate("+deg+"deg)";
-	canvas.style.zIndex = "999"; */
-
     photoborder.appendChild(canvas);
     photoborder.appendChild(close);
     overlay.appendChild(photoborder);
@@ -143,19 +133,25 @@ function getDeg(){
 function closeOverlay(event){
     event.target.className = 'hide';
 
-    var leadPhoto = document.querySelector('#leadPhoto');
+    var leadPhoto, polaroid;
+    leadPhoto = document.querySelector('#leadPhoto');
 
-    var polaroid = document.querySelector('#pictures');
+    if( leadPhoto !== null ){
+        polaroid = document.querySelector('#pictures');
+        polaroid.appendChild(leadPhoto);
+        leadPhoto.style = '';
+        leadPhoto.id = '';
+    }
 
-    polaroid.appendChild(leadPhoto);
-
-    leadPhoto.removeAttribute('style');
-
-    console.log(leadPhoto);
+    event.target.addEventListener('oTransitionEnd', function(){
+        if( this.classList.contains('hide') == true ){
+            this.classList.add('invisible');
+        }
+    }, false);
 }
 
 function showOverlay(){
     var ol = overlay;
-    ol.className = ol.className.replace(/hide/,'');
+    ol.className = ol.className.replace(/hide|invisible/gi,'');
 }
 

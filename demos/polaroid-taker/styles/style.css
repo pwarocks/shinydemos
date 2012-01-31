@@ -40,9 +40,6 @@ h2{
 
 video{
 	width: 100%;
-	/*-moz-box-shadow: 1px 1px 15px #000;
-	-webkit-box-shadow: 1px 1px 15px #000;
-	box-shadow: 1px 1px 15px #000; */
 	border:1px solid #eee;
 	-webkit-transition: -webkit-transform ease-in 0.5s;
 	-moz-transition: -moz-transform ease-in 0.5s;

@@ -51,9 +51,11 @@ function v_error(error){
 
 
 function snapshot(){
-    showOverlay();
-
-    document.querySelector('audio').play();
+    /*
+    Removing the invisible class so that we can
+    Fade in the overlay later.
+    */
+    overlay.classList.remove('invisible');
 
     var photoborder = document.createElement('section');
     var close = document.createElement('button');
@@ -82,9 +84,13 @@ function snapshot(){
 	ctx.drawImage(video_element, 0, 0, cw, ch );
 
 	applyEvents();
+	showOverlay();
+
+    document.querySelector('audio').play();
+
 }
 
-
+/* Closes the image */
  function applyEvents(){
     var elems = document.querySelectorAll('.pic');
     var num = elems.length;
@@ -94,7 +100,9 @@ function snapshot(){
 }
 
 function closeimg(){
+    this.style = '';
     console.log( this );
+    console.log( 'closeimg');
 }
 
 function shakeReset(event){
@@ -137,11 +145,20 @@ function closeOverlay(event){
     var transition = transitionEvent();
     event.target.className = 'hide';
 
-
     leadPhoto = document.querySelector('#leadPhoto');
 
     if( leadPhoto !== null ){
         polaroid = document.querySelector('#pictures');
+
+        if( polaroid.firstChild === null ){
+            polaroid.insertBefore(leadPhoto, polaroid.firstChild);
+        } else {
+            polaroid.appendChild(leadPhoto);
+        }
+
+        leadPhoto.style.width = 'auto';
+        leadPhoto.style.height = 'auto';
+
         polaroid.insertBefore(leadPhoto, polaroid.firstChild);
         leadPhoto.style = '';
         leadPhoto.id = '';
@@ -158,10 +175,15 @@ function showOverlay(){
     var ol = overlay;
     var transition = transitionEvent();
 
-    ol.className = ol.className.replace(/hide|invisible/gi,'');
+
+    ol.classList.remove('hide');
+
 
     overlay.addEventListener(transition, function(){
+
         var leadPhoto =  document.querySelector('#leadPhoto');
+
+        console.log(transition);
 
         if( leadPhoto ){
             leadPhoto.className += ' slidein';

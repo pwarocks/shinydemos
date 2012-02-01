@@ -15,7 +15,6 @@ var options = {audio: false, video:true};
 var webmvideo = "http:\/\/media.shinydemos.com\/warholiser\/wsh.webm";
 var mp4video = "http:\/\/media.shinydemos.com\/warholiser\/wsh.mp4";
 
-
 if (navigator.getUserMedia){
   	navigator.getUserMedia(options, v_success, v_error);
 }
@@ -83,26 +82,10 @@ function snapshot(){
 	var ch = canvas.height;
 	ctx.drawImage(video_element, 0, 0, cw, ch );
 
-	applyEvents();
 	showOverlay();
 
     document.querySelector('audio').play();
 
-}
-
-/* Closes the image */
- function applyEvents(){
-    var elems = document.querySelectorAll('.pic');
-    var num = elems.length;
-	for (var i=0; i<num;i++){
-		elems[i].addEventListener('click', closeimg, true);
-	}
-}
-
-function closeimg(){
-    this.style = '';
-    console.log( this );
-    console.log( 'closeimg');
 }
 
 function shakeReset(event){
@@ -151,15 +134,13 @@ function closeOverlay(event){
         polaroid = document.querySelector('#pictures');
 
         if( polaroid.firstChild === null ){
-            polaroid.insertBefore(leadPhoto, polaroid.firstChild);
+           polaroid.appendChild(leadPhoto);
         } else {
-            polaroid.appendChild(leadPhoto);
+           polaroid.insertBefore(leadPhoto, polaroid.firstChild);
         }
 
         leadPhoto.style.width = 'auto';
         leadPhoto.style.height = 'auto';
-
-        polaroid.insertBefore(leadPhoto, polaroid.firstChild);
         leadPhoto.style = '';
         leadPhoto.id = '';
     }

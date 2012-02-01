@@ -194,7 +194,12 @@ canvas{display:block;}
 }
 
 #leadPhoto.slidein{
-    -o-transform: translateY(5%);
+    -moz-transition: translateY(5%);
+    -webkit-transition: translateY(5%);
+    -ms-transition: translateY(5%);
+    -khtml-transition: translateY(5%);
+    -o-transition: translateY(5%);
+    transition: translateY(5%);
 }
 
 #pic_container{margin:auto;text-align:center}

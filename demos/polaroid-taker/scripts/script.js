@@ -2,7 +2,6 @@ var picbutton = document.querySelector('#picbutton');
 var resetbutton = document.querySelector('#resetbutton');
 var video_element = document.querySelector('video');
 var overlay = document.querySelector('#overlay');
-var hasClassList = !(document.body.classList == undefined );
 
 picbutton.addEventListener('click', snapshot, false);
 video_element.addEventListener('click', snapshot, false);
@@ -54,7 +53,8 @@ function snapshot(){
     Removing the invisible class now so that we can
     Fade in the overlay later in this function.
     */
-    overlay.classList.remove('invisible');
+
+    overlay.className = overlay.className.replace(/invisible/gi,'');
 
     var photoborder = document.createElement('section');
     var close = document.createElement('button');
@@ -139,26 +139,26 @@ function closeOverlay(event){
            polaroid.insertBefore(leadPhoto, polaroid.firstChild);
         }
 
-        leadPhoto.style.width = 'auto';
-        leadPhoto.style.height = 'auto';
-        leadPhoto.style = '';
+        /* leadPhoto.style.width = 'auto';
+        leadPhoto.style.height = 'auto'; */
+        leadPhoto.style.cssText = '';
         leadPhoto.id = '';
     }
 
     event.target.addEventListener(transition, function(){
-        if( this.classList.contains('hide') == true ){
-            this.classList.add('invisible');
+        if( this.className.indexOf('hide') > 0 ){
+            this.className += ' invisible';
         }
     }, false);
+
+    console.log( 'overlay closed.');
 }
 
 function showOverlay(){
     var ol = overlay;
     var transition = transitionEvent();
 
-
-    ol.classList.remove('hide');
-
+    ol.className = ol.className.replace(/hide/gi,'');
 
     overlay.addEventListener(transition, function(){
 

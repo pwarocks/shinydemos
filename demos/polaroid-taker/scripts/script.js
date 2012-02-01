@@ -33,7 +33,7 @@ function not_supported(){
 	message.innerHTML = "<h2>Webcam access through the WebRTC spec is not supported by this browser. Moving to a &lt;video&gt; fallback instead.</h2>";
 
 	video_element.innerHTML = "<source src=\""+webmvideo+"\" type=\"video\/webm\" ><\/source> <source src=\""+mp4video+"\" type=\"video\/mp4\" ><\/source>";
-			video_element.muted= true;
+	video_element.muted= true;
 
 }
 

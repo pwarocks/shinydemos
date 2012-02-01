@@ -150,23 +150,28 @@ button{
 
 #overlay{
     background:rgba(0,0,0,.6);
-    position:absolute;
+    position:fixed;
     width:100%;
     height:100%;
     top:0;
     left: 0;
     margin:0;
     z-index:1000px;
-    -o-transition: opacity 250ms linear;
+    -moz-transition: opacity 250ms linear;
+ -webkit-transition: opacity 250ms linear;
+     -ms-transition: opacity 250ms linear;
+  -khtml-transition: opacity 250ms linear;
+      -o-transition: opacity 250ms linear;
+         transition: opacity 250ms linear;
+    display: block;
 }
 
 #overlay.invisible{
-    visibility:hidden;
+    display:none;
 }
 
 #overlay.hide{
     opacity:0;
-    -o-transition: opacity 250ms linear;
 }
 
 canvas{display:block;}
@@ -175,34 +180,39 @@ canvas{display:block;}
     top:0;
     margin:auto;
     box-shadow: 0px 0px 15px rgba(0,0,0,.8);
-    z-index: 1001;
+
     position:relative;
+    width:auto;
 
-    -moz-transform: translateY(-150%);
-    -webkit-transform: translateY(-150%);
-    -ms-transform: translateY(-150%);
-    -khtml-transform: translateY(-150%);
-    -o-transform: translateY(-150%);
-    transform: translateY(-150%)
+     -moz-transform: translateY(-150%);
+ -webkit-transform: translateY(-150%);
+     -ms-transform: translateY(-150%);
+  -khtml-transform: translateY(-150%);
+      -o-transform: translateY(-150%);
+         transform: translateY(-150%);
 
-    -moz-transition: transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
-    -webkit-transition: -webkit-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
-    -ms-transition: -ms-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
-    -khtml-transition: -khtml-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
-    -o-transition: -o-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
-    transition: transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
+ -moz-transition: transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
+  -webkit-transition: -webkit-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
+      -ms-transition: -ms-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
+  -khtml-transition: -khtml-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
+      -o-transition: -o-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
+         transition: transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
+
 }
 
 #leadPhoto.slidein{
-    -moz-transform: translateY(5%);
-    -webkit-transform: translateY(5%);
+   -moz-transform: translateY(5%);
+-webkit-transform: translateY(5%);
     -ms-transform: translateY(5%);
-    -khtml-transform: translateY(5%);
-    -o-transform: translateY(5%);
-    transform: translateY(5%);
+ -khtml-transform: translateY(5%);
+     -o-transform: translateY(5%);
+        transform: translateY(5%);
 }
 
-#pic_container{margin:auto;text-align:center}
+#pic_container{
+    margin:auto;
+    text-align:center
+}
 
 #pictures{
     width:100%;
@@ -217,7 +227,6 @@ canvas{display:block;}
     margin: 0rem 0rem .5rem .5rem;
     width:auto;
     z-index:auto;
-
 }
 
 #pictures .pic canvas{

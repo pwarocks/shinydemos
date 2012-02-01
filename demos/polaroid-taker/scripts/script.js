@@ -52,8 +52,8 @@ function v_error(error){
 
 function snapshot(){
     /*
-    Removing the invisible class so that we can
-    Fade in the overlay later.
+    Removing the invisible class now so that we can
+    Fade in the overlay later in this function.
     */
     overlay.classList.remove('invisible');
 

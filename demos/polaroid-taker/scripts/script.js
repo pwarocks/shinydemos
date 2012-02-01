@@ -53,7 +53,6 @@ function snapshot(){
     Removing the invisible class now so that we can
     Fade in the overlay later in this function.
     */
-
     overlay.className = overlay.className.replace(/invisible/gi,'');
 
     var photoborder = document.createElement('section');
@@ -139,8 +138,6 @@ function closeOverlay(event){
            polaroid.insertBefore(leadPhoto, polaroid.firstChild);
         }
 
-        /* leadPhoto.style.width = 'auto';
-        leadPhoto.style.height = 'auto'; */
         leadPhoto.style.cssText = '';
         leadPhoto.id = '';
     }

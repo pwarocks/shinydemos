@@ -144,9 +144,7 @@ button{
     border:none;
     box-shadow:none;
     padding: 0 7px .5em 0;
-
 }
-
 
 #overlay{
     background:rgba(0,0,0,.6);
@@ -184,20 +182,19 @@ canvas{display:block;}
     position:relative;
     width:auto;
 
-     -moz-transform: translateY(-150%);
+    -moz-transform: translateY(-150%);
  -webkit-transform: translateY(-150%);
      -ms-transform: translateY(-150%);
   -khtml-transform: translateY(-150%);
       -o-transform: translateY(-150%);
          transform: translateY(-150%);
 
- -moz-transition: transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
-  -webkit-transition: -webkit-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
-      -ms-transition: -ms-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
-  -khtml-transition: -khtml-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
-      -o-transition: -o-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
-         transition: transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
-
+   -moz-transition: transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
+-webkit-transition: -webkit-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
+    -ms-transition: -ms-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
+ -khtml-transition: -khtml-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
+     -o-transition: -o-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
+        transition: transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
 }
 
 #leadPhoto.slidein{

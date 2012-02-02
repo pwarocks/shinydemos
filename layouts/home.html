@@ -6,17 +6,20 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/screen.css">
-	<link rel="stylesheet" href="styles/screen-wide.css" media="only screen and (min-width:800px)">
-	<script src="scripts/jquery.js"></script>
-	<script src="scripts/script.js"></script>
+	<link rel="stylesheet" href="styles/screen-narrow.css" media="only screen and (max-width:550px)">
+	<link rel="stylesheet" href="styles/screen-wide.css" media="only screen and (min-width:800px) and (min-height:620px)">
+	<link rel="icon" sizes="16x16" href="images/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" href="images/favicon.png">
 </head>
 <body>
-	<div class="page-index">
+	<div class="page-index" id="page-index">
 		<header class="header">
-			<h1 tabindex="0">Shiny Demos</h1>
-			<p>Shinydemos is a growing set of demos of the latest Open Web Standards, made by the Opera developer relations team. No browser is blocked: any browser that supports the standard sees the shiny!</p>
+			<div class="path">
+				<h1 id="title">Shiny Demos</h1>
+			</div>
+			<p class="tagline">Shiny Demos is a growing set of demos of the latest Open Web Standards, made by the Opera developer relations team. No browser is blocked: any browser that supports the standard sees the shiny!</p>
 		</header>
-		<nav class="navigation">
+		<nav class="navigation" id="navigation">
 			<ul>
 {{#each tags}}
 				<li class="{{hyphenate this}}"><a href="{{hyphenate this}}.html">{{this}}</a></li>
@@ -27,5 +30,6 @@
 			<p><a href="http://www.opera.com/developer/">Opera Software</a></p>
 		</footer>
 	</div>
+	<script src="scripts/script.js"></script>
 </body>
 </html>

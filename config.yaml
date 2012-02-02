@@ -6,7 +6,7 @@ siteconfig:
   sourceFolder: './source'
   layoutsFolder: './layouts'
   panelCSS: 'panel.css'
-  panelJS: 'modernizr.custom.40833.js'
+  panelJS: 'modernizr.js'
   panelClass: 'sd-panel'
   panelTag: 'div'
 

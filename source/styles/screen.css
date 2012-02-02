@@ -93,7 +93,7 @@ A {
 		-webkit-border-radius:20px;
 		-moz-border-radius:20px;
 		border-radius:20px;
-		background:#000 url(../images/cubes.png) -800px 0 no-repeat;
+		background:#000 url(../images/cubes.png) no-repeat;
 		-webkit-box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
 		-moz-box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
 		box-shadow:0 0 35px rgba(0, 0, 0, 0.6);

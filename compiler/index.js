@@ -117,7 +117,7 @@ shinydemos.create = function() {
           'path': siteconfig.demosFolder + '/' + d.slug + '/',
           'title': d.title,
           'thumb': 'images/' + d.slug + '/thumb.png',
-          'demotags': d.tags.toString()        
+          'demotags': d.tags.join(', ')        
         }
       });
 

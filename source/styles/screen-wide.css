@@ -149,7 +149,7 @@
 	top:240px;
 	left:160px;
 	}
-.navigation .js A {
+.navigation .javascript A {
 	top:560px;
 	left:160px;
 	}
@@ -170,7 +170,7 @@
 .navigation .audio A,
 .navigation .canvas A,
 .navigation .css A,
-.navigation .js A,
+.navigation .javascript A,
 .navigation .svg A,
 .navigation .video A {
 	-webkit-transform:rotate(-90deg);
@@ -192,7 +192,7 @@
 .navigation .canvas A,
 .navigation .content A,
 .navigation .forms A,
-.navigation .js A,
+.navigation .javascript A,
 .navigation .parser A {
 	direction:rtl;
 	}

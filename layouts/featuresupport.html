@@ -1,17 +1,17 @@
 <script>
 	(function(){
-		var featuresupportContainer = document.getElementById('sd-support');
+		var featuresupportContainer = document.getElementById('sd-features');
 {{#if features}}
 		var features = '{{features}}'.split(',');
 		for(var i = 0, j = features.length; i < j; i++){
 			if(!Modernizr[features[i]]) {
-				featuresupportContainer.innerText = 'Your browser does not support all the features required for this demo. View this demo in Opera Next';
-				featuresupportContainer.className += ' sd-nosupport';
+				featuresupportContainer.innerText = 'Your browser doesn’t support all required features';
+				featuresupportContainer.className += ' sd-features-nope';
 				return;
 			}
 		}
 {{/if}}
 		featuresupportContainer.innerText = 'Success! Your browser supports all these features!';
-		featuresupportContainer.className += ' sd-supports';
+		featuresupportContainer.className += ' sd-features-yep';
 	})();
 </script>

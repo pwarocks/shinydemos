@@ -1,0 +1,56 @@
+/* Pages
+---------------------------------------- */
+.page-index,
+.page-plain {
+	padding:40px 0;
+	}
+.page-plain {
+	padding:55px 0 40px;
+	}
+
+/* Header
+---------------------------------------- */
+.header {
+	padding:0 35px;
+	margin:0 0 38px;
+	}
+	.header .path {
+		margin:0 0 29px;
+		}
+
+/* Header Plain
+---------------------------------------- */
+.page-plain .header:before {
+	top:-55px;
+	}
+
+/* Navigation
+---------------------------------------- */
+.navigation {
+	margin:0 auto 48px;
+	}
+
+/* Demos
+---------------------------------------- */
+.demos H2 {
+	padding:0 20px;
+	}
+
+@media only screen and (max-width:480px) {
+	.navigation UL,
+	.navigation LI:first-child A,
+	.navigation LI:last-child A {
+		-webkit-border-radius:0;
+		-moz-border-radius:0;
+		border-radius:0;
+		}
+	}
+
+@media only screen and (max-width:320px) {
+	.header .path {
+		font-size:40px;
+		}
+	.navigation {
+		font-size:40px;
+		}
+	}

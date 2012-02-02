@@ -1,3 +1,10 @@
+/* Pages
+---------------------------------------- */
+.page-index,
+.page-plain {
+	padding:65px 80px;
+	}
+
 /* Page Index
 ---------------------------------------- */
 .page-index {
@@ -9,24 +16,25 @@
 	overflow:hidden;
 	}
 
-/* Page Index: Header
+/* Header Index
 ---------------------------------------- */
 .page-index .header {
 	position:absolute;
-	top:65px;
-	left:80px;
 	z-index:1;
+	outline:none;
 	}
-	.page-index .header P {
+	.page-index .header .path {
+		margin:0;
+		}
+	.page-index .header .tagline {
 		position:absolute;
-		top:100%;
 		z-index:-1;
 		visibility:hidden;
 		margin:-6px 0 0 -30px;
 		padding:25px 30px;
 		width:480px;
 		border-radius:10px;
-		background:rgba(0, 0, 0, 0.2);
+		background:rgba(0, 0, 0, 0.3);
 		opacity:0;
 		-webkit-transition:opacity 0.5s;
 		-moz-transition:opacity 0.5s;
@@ -34,63 +42,52 @@
 		-o-transition:opacity 0.5s;
 		transition:opacity 0.5s;
 		}
-	.page-index .header H1:hover {
-		border-color:#1FA5EE;
-		}
-	.page-index .header H1:hover + P,
-	.page-index .header H1:focus + P {
-		visibility:visible;
-		opacity:1;
-		}
 
-/* Page Index: Footer
----------------------------------------- */
-.page-index .footer {
-	position:absolute;
-	bottom:74px;
-	right:79px;
-	z-index:1;
+/* Active */
+.page-index-active .header .path H1 {
+	border-color:#1FA5EE;
+	}
+.page-index-active .header .tagline {
+	visibility:visible;
+	opacity:1;
 	}
 
-/* Page Plain
----------------------------------------- */
-.page-plain {
-	padding:65px 80px;
-	}
-
-/* Page Plain: Header
+/* Header Plain
 ---------------------------------------- */
 .page-plain .header {
+	position:static;
 	max-width:none;
 	}
-	.page-plain .header H1 {
-		display:inline;
+	.page-plain .header:before {
+		top:0;
+		left:0;
+		background-color:rgba(0, 0, 0, 0.7);
+		background-position:80px 0;
+		background-size:auto;
 		}
-
-/* Page Plain: Footer
----------------------------------------- */
-.page-plain .footer {
-	max-width:none;
-	}
-	.page-plain .footer A {
-		margin:0;
+	.page-plain .header .path P SPAN {
+		display:inline;
 		}
 
 /* Navigation
 ---------------------------------------- */
 .navigation {
 	position:absolute;
-	top:50%;
-	right:-100%;
-	left:-100%;
-	margin:-200px 0 0 40px;
+	top:-100%;
+	bottom:-100%;
+	left:50%;
+	margin:40px 0 0 -200px;
 	max-width:none;
+	width:480px;
 	background:rgba(0, 0, 0, 0.7);
-	-webkit-transform:rotate(-45deg);
-	-moz-transform:rotate(-45deg);
-	-ms-transform:rotate(-45deg);
-	-o-transform:rotate(-45deg);
-	transform:rotate(-45deg);
+	-webkit-box-shadow:0 0 0 12px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow:0 0 0 12px rgba(0, 0, 0, 0.1);
+	box-shadow:0 0 0 12px rgba(0, 0, 0, 0.1);
+	-webkit-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
+	-ms-transform:rotate(45deg);
+	-o-transform:rotate(45deg);
+	transform:rotate(45deg);
 	-webkit-transition-property:margin-left, opacity;
 	-moz-transition-property:margin-left, opacity;
 	-ms-transition-property:margin-left, opacity;
@@ -102,17 +99,17 @@
 	-o-transition-duration:0.5s;
 	transition-duration:0.5s;
 	}
-.navigation-right {
-	margin-left:600px;
-	opacity:0.2;
-	}
 	.navigation UL {
-		position:relative;
-		margin:auto;
-		width:800px;
-		height:480px;
+		position:absolute;
+		top:50%;
+		margin:-370px 0 0;
+		width:480px;
+		height:800px;
 		border-radius:0;
-		background:#222 url(../images/cubes-wide.png) no-repeat;
+		background:#000 url(../images/cubes.png) no-repeat;
+		-webkit-box-shadow:none;
+		-moz-box-shadow:none;
+		box-shadow:none;
 		}
 		.navigation LI A {
 			position:absolute;
@@ -120,65 +117,67 @@
 			width:80px;
 			height:60px;
 			}
-		.navigation LI A:hover,
-		.navigation LI A:focus {
-			}
 		.navigation LI:first-child A,
 		.navigation LI:last-child A {
 			border-radius:0;
 			}
 
+/* Active */
+.page-index-active .navigation {
+	margin-left:80px;
+	opacity:0.2;
+	}
+
 /* Items */
 .navigation .audio A {
 	top:240px;
-	left:480px;
+	left:240px;
 	}
 .navigation .canvas A {
-	top:320px;
-	left:240px;
+	top:480px;
+	left:320px;
 	}
 .navigation .content A {
-	top:160px;
-	left:240px;
-	-webkit-transform:rotate(90deg);
-	-moz-transform:rotate(90deg);
-	-ms-transform:rotate(90deg);
-	-o-transform:rotate(90deg);
-	transform:rotate(90deg);
+	top:480px;
+	left:160px;
 	}
 .navigation .css A {
 	top:80px;
-	left:640px;
+	left:80px;
 	}
 .navigation .forms A {
-	top:160px;
-	left:480px;
-	-webkit-transform:rotate(90deg);
-	-moz-transform:rotate(90deg);
-	-ms-transform:rotate(90deg);
-	-o-transform:rotate(90deg);
-	transform:rotate(90deg);
+	top:240px;
+	left:160px;
 	}
-.navigation .js A {
-	top:160px;
+.navigation .javascript A {
+	top:560px;
 	left:160px;
 	}
 .navigation .parser A {
 	top:320px;
-	left:400px;
-	-webkit-transform:rotate(90deg);
-	-moz-transform:rotate(90deg);
-	-ms-transform:rotate(90deg);
-	-o-transform:rotate(90deg);
-	transform:rotate(90deg);
+	left:320px;
 	}
 .navigation .svg A {
-	top:240px;
+	top:480px;
 	left:240px;
 	}
 .navigation .video A {
 	top:160px;
-	left:560px;
+	left:160px;
+	}
+
+/* -90deg */
+.navigation .audio A,
+.navigation .canvas A,
+.navigation .css A,
+.navigation .javascript A,
+.navigation .svg A,
+.navigation .video A {
+	-webkit-transform:rotate(-90deg);
+	-moz-transform:rotate(-90deg);
+	-ms-transform:rotate(-90deg);
+	-o-transform:rotate(-90deg);
+	transform:rotate(-90deg);
 	}
 
 /* LTR */
@@ -190,25 +189,47 @@
 	}
 
 /* RTL */
-.navigation .js A,
-.navigation .forms A,
 .navigation .canvas A,
 .navigation .content A,
+.navigation .forms A,
+.navigation .javascript A,
 .navigation .parser A {
 	direction:rtl;
 	}
 
-/* Gallery
+/* Demos
 ---------------------------------------- */
-.gallery {
-	overflow:hidden;
+.demos {
 	max-width:none;
 	text-align:justify;
-	text-align-last:center;
 	}
-	.gallery LI {
+	.demos LI {
 		display:inline-block;
 		width:30%;
 		vertical-align:top;
-/*		text-align:left;*/
+		text-align:left;
 		}
+
+@media only screen and (max-width:1024px) {
+	.demos LI {
+		width:46%;
+		}
+	}
+
+/* Footer Index
+---------------------------------------- */
+.page-index .footer {
+	position:absolute;
+	bottom:51px;
+	right:75px;
+	-webkit-transition:opacity 0.5s linear;
+	-moz-transition:opacity 0.5s linear;
+	-ms-transition:opacity 0.5s linear;
+	-o-transition:opacity 0.5s linear;
+	transition:opacity 0.5s linear;
+	}
+
+/* Active */
+.page-index-active .footer {
+	opacity:0.2;
+	}

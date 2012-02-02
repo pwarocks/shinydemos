@@ -1,10 +1,10 @@
 
 # Relative to root directory
 siteconfig:
-  deployFolder: './deploy'
-  demosFolder: './demos'
-  sourceFolder: './source'
-  layoutsFolder: './layouts'
+  deployFolder: 'deploy'
+  demosFolder: 'demos'
+  sourceFolder: 'source'
+  layoutsFolder: 'layouts'
   panelCSS: 'panel.css'
   panelJS: 'modernizr.js'
   panelClass: 'sd-panel'

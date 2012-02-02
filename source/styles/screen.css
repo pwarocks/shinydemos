@@ -4,7 +4,7 @@
 /* Global
 ---------------------------------------- */
 BODY {
-	background:#111 url(../images/texture.png) 50% 0;
+	background:#181818 url(../images/denim.png) 50% 0;
 	color:#FFF;
 	font:12px/1 Tahoma, sans-serif;
 	}
@@ -13,60 +13,90 @@ A {
 	text-decoration:none;
 	}
 
-/* Page Plain
+/* Pages
 ---------------------------------------- */
 .page-index,
 .page-plain {
-	padding:65px 40px;
+	padding:65px 0;
 	}
 
 /* Header
 ---------------------------------------- */
 .header {
-	margin:0 auto 40px;
+	position:relative;
+	margin:0 auto 63px;
 	max-width:480px;
 	}
-	.header H1 {
-		border-bottom:6px solid #333;
+	.header .path {
+		margin:0 0 45px;
+		text-shadow:0 3px 0 #333;
 		font:50px/1 'Bebas Neue', sans-serif;
 		}
-	.header H1:focus {
-		outline:none;
-		border-color:#1FA5EE;
-		}
-	.header P {
-		margin:32px 0 0;
-		line-height:1.7;
+		.header .path P {
+			display:table-cell;
+			white-space:nowrap;
+			}
+			.header .path P SPAN {
+				display:none;
+				}
+			.header .path P:after {
+				content:'\00A0\2022\00A0';
+				text-shadow:0 3px 0 #111;
+				color:#333;
+				}
+		.header .path H1 {
+			display:table-cell;
+			}
+		.header .path A {
+			color:#FFF;
+			}
+	.header .tagline {
+		max-width:40em;
+		line-height:1.5;
 		font-size:20px;
 		}
 
-/* Footer
+/* Header Index
 ---------------------------------------- */
-.footer {
-	margin:auto;
-	max-width:480px;
+.page-index .header .path H1 {
+	border-bottom:6px solid #333;
 	}
-	.footer A {
-		display:block;
-		overflow:hidden;
-		margin:auto;
-		width:121px;
-		height:48px;
-		outline:none;
-		background:url(../images/opera.png);
-		text-indent:-9999px;
-		}
+
+/* Header Plain
+---------------------------------------- */
+.page-plain .header:before {
+	position:absolute;
+	top:-65px;
+	right:0;
+	left:0;
+	height:20px;
+	background:#000 url(../images/cubes-header.png) no-repeat;
+	background-size:100% 100%;
+	-webkit-box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
+	-moz-box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
+	box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
+	content:'';
+	}
+.header .path P A {
+	display:inline-block;
+	border-bottom:6px solid #1FA5EE;
+	}
 
 /* Navigation
 ---------------------------------------- */
 .navigation {
-	margin:0 auto 40px;
+	margin:0 auto 48px;
 	max-width:480px;
-	font:50px/1 'Bebas Neue', sans-serif;
+	font:50px/50px 'Bebas Neue', sans-serif;
 	}
 	.navigation UL {
+		-webkit-border-radius:20px;
+		-moz-border-radius:20px;
 		border-radius:20px;
-		background:#444 url(../images/cubes-narrow.png) no-repeat;
+		background:#000 url(../images/cubes.png) -800px 0 no-repeat;
+		-webkit-box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
+		-moz-box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
+		box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
 		}
 		.navigation LI A {
 			display:block;
@@ -74,13 +104,17 @@ A {
 			height:60px;
 			color:#FFF;
 			white-space:nowrap;
-			text-indent:32px;
-			text-shadow:0 0 5px rgba(0, 0, 0, 0.5);
+			text-indent:35px;
+			text-shadow:0 3px 0 rgba(0, 0, 0, 0.2);
 			}
 		.navigation LI:first-child A {
+			-webkit-border-radius:20px 20px 0 0;
+			-moz-border-radius:20px 20px 0 0;
 			border-radius:20px 20px 0 0;
 			}
 		.navigation LI:last-child A {
+			-webkit-border-radius:0 0 20px 20px;
+			-moz-border-radius:0 0 20px 20px;
 			border-radius:0 0 20px 20px;
 			}
 		.navigation LI A:hover,
@@ -89,44 +123,82 @@ A {
 			background:#1FA5EE;
 			}
 
-/* Gallery
+/* Demos
 ---------------------------------------- */
-.gallery {
+.demos {
 	margin:auto;
 	max-width:480px;
 	}
-	.gallery LI {
+	.demos LI {
 		position:relative;
-		overflow:hidden;
-		margin:0 0 40px;
+		padding:0 0 53px;
 		}
-	.gallery LI:last-child {
+		.demos LI IMG {
+			display:block;
+			margin:0 0 30px;
+			width:100%;
+			border-bottom:6px solid #333;
+			background:#000;
+			-webkit-box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
+			-moz-box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
+			box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
+			}
+		.demos LI:hover IMG {
+			border-color:#1FA5EE;
+			}
+	.demos .clear {
 		margin:0;
+		padding:0;
 		}
-	.gallery A {
+	.demos H2 {
+		text-align:center;
+		text-shadow:0 3px 0 #333;
+		font:30px/1 'Bebas Neue', sans-serif;
+		}
+	.demos P {
+		position:absolute;
+		top:10px;
+		right:10px;
+		padding:0 5px 0 8px;
+		width:auto;
+		height:0;
+		border:solid 1px rgba(51, 51, 51, 0.5);
+		border-width:9px 5px 13px 17px;
+		-webkit-border-radius:6px;
+		-moz-border-radius:6px;
+		border-radius:6px;
+		-webkit-border-image:url(../images/label.png) 9 5 13 17 repeat;
+		-moz-border-image:url(../images/label.png) 9 5 13 17 repeat;
+		-o-border-image:url(../images/label.png) 9 5 13 17 repeat;
+		border-image:url(../images/label.png) 9 5 13 17 repeat;
+		text-shadow:0 1px 2px #000;
+		white-space:nowrap;
+		word-spacing:4px;
+		font:13px/1px Tahoma, sans-serif;
+		}
+	.demos A {
 		color:#FFF;
 		}
-	.gallery H2 {
-		position:absolute;
-		right:0;
-		bottom:0;
-		left:0;
-		padding:20px 20px 14px;
-		border-bottom:6px solid transparent;
-		background:rgba(0, 0, 0, 0.7);
-		font-size:15px;
+	.demos A:hover,
+	.demos A:focus {
+		outline:none;
 		}
-	.gallery A:hover H2,
-	.gallery A:focus H2 {
-		border-color:#1FA5EE;
-		}
-	.gallery IMG {
-		display:block;
-		width:100%;
-		}
-	.gallery P {
-		position:absolute;
-		top:0;
-		left:0;
-		display:none;
-		}
+
+/* Footer
+---------------------------------------- */
+.footer A {
+	display:block;
+	overflow:hidden;
+	margin:0 auto -10px;
+	width:130px;
+	height:58px;
+	outline:none;
+	background:url(../images/opera.png);
+	text-indent:-9999px;
+	}
+
+/* Speed Dial
+---------------------------------------- */
+@media	screen and (view-mode:minimized),
+ 		screen and (min-width:256px) and (min-height:160px) and (max-width:512px) and (max-height:320px) { 	
+}

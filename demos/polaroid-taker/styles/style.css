@@ -189,7 +189,7 @@ canvas{display:block;}
       -o-transform: translateY(-150%);
          transform: translateY(-150%);
 
-   -moz-transition: transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
+   -moz-transition: -moz-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
 -webkit-transition: -webkit-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
     -ms-transition: -ms-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);
  -khtml-transition: -khtml-transform 1s cubic-bezier(0.345, 0.680, 1.000, -0.005);

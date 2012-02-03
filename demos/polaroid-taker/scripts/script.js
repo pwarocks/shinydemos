@@ -143,12 +143,12 @@ function closeOverlay(event){
     }
 
     event.target.addEventListener(transition, function(){
-        if( this.className.indexOf('hide') > 0 ){
+        if( this.className.indexOf('hide') > -1 ){
             this.className += ' invisible';
         }
+        console.log( this.id );
     }, false);
 
-    console.log( 'overlay closed.');
 }
 
 function showOverlay(){

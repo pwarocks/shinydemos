@@ -1,94 +1,113 @@
 (function() {
-      var scrollpage = document.getElementById('scrollpage'),
-          scrollwrap = document.getElementById('scrollwrap'),
-          sections = scrollpage.querySelectorAll('section'),
-          navsections = scrollpage.querySelectorAll('section > h2'),
-          style = document.createElement('style'),
-          styles = [],
-          numsections = sections.length,
+    var $docEl = $( document.documentElement ),
+    $body = $( document.body ),
+    $window = $( window ),
+    $scrollpage = $body.find('#scrollpage'),
+    $scrollable = $body,
+    $bodyWidth = $body.width(),
+    $aside = $('<div class=aside/>'),
+    $sections = $scrollpage.find('.planet'),
+    $navtitles = $sections.find('h2'),
+    $style = $('<style/>'),
+    styles = [],
+    numsections = $sections.length,
           clickcount = 0,
-          prefixes = ' -o- -webkit- -moz- -ms- '.split(' '),          
-          aside = document.createElement('aside'), 
-          currentwidth = window.innerWidth,
-          asidelinks = aside.childNodes,
-          lnk, prevscroll, currentscroll, clickevent;
+          prefixes = ' -o- -webkit- -moz- -ms- '.split(' ');
       
-      styles.push('#scrollpage section { width: ' + currentwidth + 'px; }');
-      
-      for(i = 0; i < numsections; i++) {
-        styles.push('.parent' + i + ' { ' + prefixes.join( 'transform: translate(' + i*currentwidth + 'px, 0);') + '}');
-        styles.push('.page' + i + ' { ' + prefixes.join( 'transform: translate(-' + i*currentwidth + 'px, 0);') + '}');        
-        lnk = document.createElement('a');
-        if(i == 0) { lnk.classList.add('active'); } 
-        lnk.href='#';
-        lnk.onclick = function (i) { return function (e) { 
-          changePage(i);
-          e.preventDefault(); 
-        };  }(i);
-        lnk.appendChild(document.createTextNode(navsections[i].textContent));
-        aside.appendChild(lnk);
+    if ( $docEl.scrollLeft() ) {
+      $scrollable = $docEl;
+    } else {
+      var bodyST = $body.scrollLeft();
+      if ( $body.scrollLeft( bodyST + 1 ).scrollLeft() == bodyST) {
+        $scrollable = $docEl;
+      } else {
+        $body.scrollLeft( bodyST - 1 );
       }
-      
+    } 
 
-      document.body.appendChild(aside);   
-      style.textContent = styles.join(' ');
-      document.head.appendChild(style);
-      
-      function scrollupdate() {
-          currentscroll = document.documentElement.scrollLeft || document.body.scrollLeft;
-          if(prevscroll) {   
-            if(currentscroll > prevscroll || clickcount == 0) {
-              changePage('next');          
+    
+    function createNavigationMenu() {
+      $navtitles.each(function(i, $navtitle) {
+          lnk = $('<a>');
+        lnk.attr('href','#'+ $navtitle.parentNode.id);
+        lnk.click(function(e) {
+            e.preventDefault(); 
+            $scrollable.animate( { scrollLeft: $(this.hash).position().left }, 600, 'linear' );
+        });
 
-            } else {
-              changePage('prev');
+        lnk.append($navtitle.innerText);
+        $aside.append(lnk);
+      });
 
-            }            
-          } else {
-            changePage(Math.floor(currentscroll/currentwidth));
-          }
-          
-            prevscroll = currentscroll;                                
- 
-      }
-      
-      scrollupdate();
-      
-      var throttledscroll = Cowboy.throttle(500, true, scrollupdate);
-
-      document.addEventListener('scroll', throttledscroll, false);  
-      
-      function changePage(opt) {
-        switch(opt) {
-          case 'prev':
-            clickcount = clickcount > 0 ? (clickcount - 1) : numsections - 1;         
-            break;
-          case 'next':
-            clickcount = clickcount < (numsections - 1) ? (clickcount + 1) : 0;         
-            break;
-          default:
-            clickcount = opt;
-        }
-
-        scrollpage.className = "page" + clickcount;           
-
-        document.removeEventListener('scroll', throttledscroll, false);  
-        if(document.documentElement.scrollLeft != undefined) { 
-          document.documentElement.scrollLeft = clickcount * currentwidth; 
-        } else {
-          document.body.scrollLeft = clickcount * currentwidth; 
-        }  
-        document.addEventListener('scroll', throttledscroll, false);           
-
-                        
-        scrollwrap.className = "parent" + clickcount;
+        //styles.push('.parent' + i + ' { ' + prefixes.join( 'transform: translate(' + i*currentwidth + 'px, );') + '}');
         
-        for(var i = 0, len = asidelinks.length; i < len; i++) {
-          asidelinks[i].classList.remove('active');
-        }
-        asidelinks[clickcount].classList.add('active');
-      };
+      $body.append($aside);
+    }
       
-   
-    })();
+    createNavigationMenu();
+    $style.text('#scrollpage .planet { width: ' + $bodyWidth + 'px; }');
+    $(document.head).append($style);
+
+     // auto highlight nav links depending on doc position
+      var deferred = false,
+          timeout = false,    
+          last = false, 
+          lastscroll = null,
+          scroll = null,
+          cache = $aside.find('a');
+          check = function() {
+            $scrollable.css({'overflow': 'hidden'});
+              scroll = $scrollable.scrollLeft();
+              $scrollable.css({'overflow': 'auto'});
+              updateScroll();
+
+          };
+
+      function updateScroll() {
+        $.each( cache, function( i, v ) {
+              // if we're past the link's section, activate it
+              $v = $(v),
+              $planetPosition =$(v.hash).position().left;
+              if(lastscroll != scroll) {
+                if (scroll >= $planetPosition && scroll < $planetPosition + $bodyWidth) {
+                  if(lastscroll < scroll && last&&last.text() == $v.text()) {
+                    $planetPosition = i < (cache.length -1) ? $planetPosition + $bodyWidth : 0;
+                    $v.removeClass('active');
+                    last = $(cache[(i + 1) % cache.length]).addClass('active');
+                  } else {
+                    last && last.removeClass('active');
+                    last = $v.addClass('active');
+                  }  
+                  lastscroll = scroll; 
+                  $scrollable.scrollLeft($planetPosition);
+                  return false;
+                } else {
+                }
+              }  
+              
+            });
+
+            // all done
+            clearTimeout( timeout );
+            deferred = false;
+
+      };
+      // work on scroll, but debounced
+      var $document = $(document).scroll( function() {
+
+        // timeout hasn't been created yet
+        if ( !deferred ) {
+          timeout = setTimeout( check , 250 ); // defer this stuff
+          deferred = true;
+        }
+
+      });
+ 
+     // fix any possible failed scroll events and fix the nav automatically
+      (function() {
+        $document.scroll();
+        setTimeout( arguments.callee, 1500 );
+      })(); 
+      
+})();
 

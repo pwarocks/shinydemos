@@ -157,11 +157,7 @@ function showOverlay(){
     ol.className = ol.className.replace(/hide/gi,'');
 
     overlay.addEventListener(transition, function(){
-
         var leadPhoto =  document.querySelector('#leadPhoto');
-
-        console.log(transition);
-
         if( leadPhoto ){
             leadPhoto.className += ' slidein';
         }

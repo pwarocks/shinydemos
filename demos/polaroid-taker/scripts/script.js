@@ -142,11 +142,10 @@ function closeOverlay(event){
         leadPhoto.id = '';
     }
 
-    event.target.addEventListener(transition, function(){
-        if( this.className.indexOf('hide') > -1 ){
-            this.className += ' invisible';
+    event.target.addEventListener(transition, function(evt){
+        if( evt.target.className.indexOf('hide') > -1 ){
+            evt.target.className += ' invisible';
         }
-        console.log( this.id );
     }, false);
 
 }

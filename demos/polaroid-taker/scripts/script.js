@@ -142,6 +142,8 @@ function closeOverlay(event){
         leadPhoto.id = '';
     }
 
+    console.log('transition: '+transition);
+
     event.target.addEventListener(transition, function(evt){
         if( evt.target.className.indexOf('hide') > -1 ){
             evt.target.className += ' invisible';
@@ -166,12 +168,12 @@ function showOverlay(){
 
 
 function transitionEvent(){
-    var t, transitions, el = document.createElement('fakeelement');
+    var t, transitions, el = document.createElement('fakeel');
 
     transitions = {
         'transition':'transitionEnd',
         'OTransition':'oTransitionEnd',
-        'MSTransition':'msTransitionEnd',
+        'msTransition':'MSTransitionEnd',
         'MozTransition':'transitionend',
         'WebkitTransition':'webkitTransitionEnd'
      }

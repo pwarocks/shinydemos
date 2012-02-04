@@ -161,7 +161,6 @@ button{
   -khtml-transition: opacity 250ms linear;
       -o-transition: opacity 250ms linear;
          transition: opacity 250ms linear;
-    display: block;
 }
 
 #overlay.invisible{

@@ -3,9 +3,21 @@ var Handlebars = require('handlebars');
 
 var planetObjects = JSON.parse(fs.readFileSync('platform.json'));
 
-planetObjects.forEach(function(planetObject) {
+var skinSelection = [];
+
+planetObjects.forEach(function(planetObject, index) {
   var allocatedNumbers = [];
-  planetObject.skin = Math.floor(Math.random()*4);
+  if (index%4 === 0) {
+    skinSelection = [];    
+  }
+  
+  currentSkin = Math.floor(Math.random()*4);
+  while (index %4 !== 0 && skinSelection && skinSelection.indexOf(currentSkin) > -1) {
+    currentSkin = Math.floor(Math.random()*4);
+  }
+
+  skinSelection.push(currentSkin);
+  planetObject.skin = currentSkin;
   planetObject.techs.forEach(function(tech) {
    var currentAllocation =  Math.floor(Math.random()*10);
    while(allocatedNumbers && (allocatedNumbers.indexOf(currentAllocation) > -1)) {

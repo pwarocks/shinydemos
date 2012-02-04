@@ -202,15 +202,11 @@
          {
             "href": "https://wiki.mozilla.org/Privacy/Features/DOMCryptAPISpec/Latest",
             "title": "DOMCrypt"
-         },
-         {
-            "href": "http://wiki.whatwg.org/wiki/Crypto",
-            "title": "window.crypto.getRandomValues"
          }
       ]
    },
    {
-      "slug": "bonus",
+      "slug": "Others",
       "category": "Other core-platform bonus features",
       "techs": [
          {

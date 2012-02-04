@@ -59,7 +59,7 @@
         $planet = $(planet);
         $planet.show();
         $planet.removeClass();
-        $planet.addClass('planet scaleshow-' + ($sectionsLength - i));
+        $planet.addClass('planet scaleshow-' + (i));
       });
 
       setTimeout(function() { $parallax.removeClass(); $parallax.addClass('scale-' + position); $currentPlanet.addClass('active'); }, 0);

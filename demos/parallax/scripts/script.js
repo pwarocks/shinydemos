@@ -3,111 +3,71 @@
     $body = $( document.body ),
     $window = $( window ),
     $scrollpage = $body.find('#scrollpage'),
-    $scrollable = $body,
-    $bodyWidth = $body.width(),
+    $parallax = $body.find('#parallax'),
     $aside = $('<div class=aside/>'),
     $sections = $scrollpage.find('.planet'),
     $navtitles = $sections.find('h2'),
     $style = $('<style/>'),
     styles = [],
-    numsections = $sections.length,
-          clickcount = 0,
-          prefixes = ' -o- -webkit- -moz- -ms- '.split(' ');
+    $lastPlanet = null,
+    $lastLink = null;
       
-    if ( $docEl.scrollLeft() ) {
-      $scrollable = $docEl;
-    } else {
-      var bodyST = $body.scrollLeft();
-      if ( $body.scrollLeft( bodyST + 1 ).scrollLeft() == bodyST) {
-        $scrollable = $docEl;
-      } else {
-        $body.scrollLeft( bodyST - 1 );
-      }
-    } 
-
-    
+       
     function createNavigationMenu() {
       $navtitles.each(function(i, $navtitle) {
-          lnk = $('<a>');
+        lnk = $('<a>');
         lnk.attr('href','#'+ $navtitle.parentNode.id);
+        lnk.attr('data-position', i);
+        if (i === 0) {
+          lnk.addClass('active');
+          $lastLink = lnk;
+        }
         lnk.click(function(e) {
-            e.preventDefault(); 
-            $scrollable.animate( { scrollLeft: $(this.hash).position().left }, 600, 'linear' );
+            $lastLink && $lastLink.removeClass('active');
+            e.preventDefault();
+            $this = $(this); 
+            $this.addClass('active');
+            $lastLink = $this;
+            moveplanets($this.attr('data-position'));
         });
 
-        lnk.append($navtitle.innerText);
+        lnk.append($navtitle.textContent);
         $aside.append(lnk);
       });
-
-        //styles.push('.parent' + i + ' { ' + prefixes.join( 'transform: translate(' + i*currentwidth + 'px, );') + '}');
         
       $body.append($aside);
     }
       
     createNavigationMenu();
-    $style.text('#scrollpage .planet { width: ' + $bodyWidth + 'px; }');
-    $(document.head).append($style);
 
-     // auto highlight nav links depending on doc position
-      var deferred = false,
-          timeout = false,    
-          last = false, 
-          lastscroll = null,
-          scroll = null,
-          cache = $aside.find('a');
-          check = function() {
-            $scrollable.css({'overflow': 'hidden'});
-              scroll = $scrollable.scrollLeft();
-              $scrollable.css({'overflow': 'auto'});
-              updateScroll();
+   function moveplanets(position){
+      $currentPlanet = $sections.eq(position);
+      $lastPlanet && $lastPlanet.removeClass('active');
+      $lastPlanet = $currentPlanet;
+      $scalePlanetsHide = $currentPlanet.prevAll();
+      $scalePlanetsShow = $currentPlanet.nextAll().andSelf();
+      $sectionsLength = $sections.length;
 
-          };
-
-      function updateScroll() {
-        $.each( cache, function( i, v ) {
-              // if we're past the link's section, activate it
-              $v = $(v),
-              $planetPosition =$(v.hash).position().left;
-              if(lastscroll != scroll) {
-                if (scroll >= $planetPosition && scroll < $planetPosition + $bodyWidth) {
-                  if(lastscroll < scroll && last&&last.text() == $v.text()) {
-                    $planetPosition = i < (cache.length -1) ? $planetPosition + $bodyWidth : 0;
-                    $v.removeClass('active');
-                    last = $(cache[(i + 1) % cache.length]).addClass('active');
-                  } else {
-                    last && last.removeClass('active');
-                    last = $v.addClass('active');
-                  }  
-                  lastscroll = scroll; 
-                  $scrollable.scrollLeft($planetPosition);
-                  return false;
-                } else {
-                }
-              }  
-              
-            });
-
-            // all done
-            clearTimeout( timeout );
-            deferred = false;
-
-      };
-      // work on scroll, but debounced
-      var $document = $(document).scroll( function() {
-
-        // timeout hasn't been created yet
-        if ( !deferred ) {
-          timeout = setTimeout( check , 250 ); // defer this stuff
-          deferred = true;
-        }
-
+      $scalePlanetsHide.each(function(i, planet){
+        $planet = $(planet);
+        $planet.removeClass();
+        $planet.addClass('planet');
+        setTimeout(function() { $sections.eq(i).addClass('scalehide-' + i); }, 0);
       });
- 
-     // fix any possible failed scroll events and fix the nav automatically
-      (function() {
-        $document.scroll();
-        setTimeout( arguments.callee, 1500 );
-      })(); 
-      
+
+      $scalePlanetsShow.each(function(i, planet) {
+        $planet = $(planet);
+        $planet.show();
+        $planet.removeClass();
+        $planet.addClass('planet scaleshow-' + ($sectionsLength - i));
+      });
+
+      setTimeout(function() { $parallax.removeClass(); $parallax.addClass('scale-' + position); $currentPlanet.addClass('active'); }, 0);
+    }
+
+    $sections.eq(0).addClass('active');
+    $parallax.addClass('scale-0');
+
 })();
+
 

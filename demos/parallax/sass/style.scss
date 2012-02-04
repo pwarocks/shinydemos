@@ -1,0 +1,261 @@
+@import "compass/css3";
+// Vars
+$planets: 8;
+$diameter: 550px;
+$mobile-diameter: 300px;
+$mobile-spacing: 5;
+$spacing: 10;
+
+
+@mixin planet-styles($multiplier: $mobile-spacing) {
+
+  #scrollpage {
+    @include transform(translate(unquote($planets * $spacing + "rem"), 0));
+  }
+
+  @for $i from 0 through $planets {
+    .scale-#{$i} {
+      @include transform(scale(($i*0.1 + 1)*0.5));
+    }
+    .planet:nth-child(#{$i + 1}) { 
+      @include transform(scale(($planets - $i)* 0.1) translate(unquote(-($planets - $i)*$multiplier + "rem"), 0)); 
+      z-index: $planets - $i;
+    }
+
+    .planet.scalehide-#{$i} {
+      @include transform(scale($planets + $i) translate(unquote(-($planets + $i)*$multiplier + "rem"), unquote($i*$multiplier + "rem")));
+    }
+
+    .planet.scaleshow-#{$i} {
+      @include transform(scale($i * 0.1) translate(unquote(-($i*$multiplier) + "rem"), 0));
+    }
+  }
+}
+
+@mixin specs-style($radius: $mobile-diameter/2 - 30 ) {
+
+
+  @for $i from 0 through 10 {
+    .planet a.spec-#{$i} {
+        $position: 360 / 10 * $i;
+      $cos: cos($position * (pi()/180));
+      $sin: sin($position * (pi()/180));
+      top: $radius + 30 + $radius * $sin;
+      $leftValue: $radius + $radius * $cos;
+      @if ($leftValue < $radius + 25) {
+        right: 2 * $radius - $leftValue;
+        padding: 0 40px 0 0;
+
+        &::before {
+          left: auto;
+          right: 0;
+        }
+      } @else {
+          left: $radius + $radius * $cos;
+      }
+    }
+  }
+}
+ 
+
+
+html { 
+  background-color: #000;
+  background: url('../images/bg-2.png') #000; 
+  color: #fff; 
+  overflow: hidden;
+}
+    
+body { 
+  font-family: sans-serif; 
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+#scrollpage { 
+  background: url('../images/bg-4-small.png') center center no-repeat fixed, url('../image/bg-3-small.png') fixed center center no-repeat; 
+  position: absolute;
+  top: 50%;
+  margin-top: -$mobile-diameter/2;
+}
+
+h2 { font-family: sans-serif; text-transform: uppercase; }
+a { text-decoration: none; color: white; }
+
+.aside { 
+  position: fixed; 
+  bottom: 0; left: 1em; right: 1em; 
+  padding: 1em 0; 
+  z-index: 4; 
+  text-align:center;
+}            
+    
+.aside a { 
+  padding: 0 1em; 
+  display: inline-block; 
+  position: relative; 
+  text-transform: uppercase; 
+  font-size: 0.9em; 
+}
+
+.aside a:hover, aside a.active { color: yellow; }
+
+.planet { 
+  @include transform(scale(1));
+  @include transform-origin(50%, 50%);
+  @include transition(all 2s ease-out);
+  background-size: contain; 
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0; 
+  height: $mobile-diameter;
+
+  
+  &.active {
+    h2, p a { opacity: 1; }    
+  }
+
+  h2, p a {
+    opacity: 0; 
+    @include transition(opacity 1s linear);
+  }
+
+  div {
+    width: $mobile-diameter; 
+    height: 100%;
+    margin: 0 auto; 
+    position: relative;
+  }
+
+  p {
+    background: url(../images/planet-1.png) no-repeat center center; 
+    height: 100%; 
+    width: 100%; 
+    border-radius: $mobile-diameter; 
+    position: relative; 
+  }
+}    
+
+@include planet-styles;
+@include specs-style;
+
+[data-skin="4"] p, [data-skin="0"] p { background-image: url(../images/planet-2.png); }
+[data-skin="2"] p { background-image: url(../images/planet-3.png); }
+[data-skin="1"] p { background-image: url(../images/planet-4.png); }
+    
+
+.planet h2 { 
+  font-size: 2em;
+  margin: 0;
+  display: table;
+  letter-spacing: 0.15em;
+  line-height: 1em;
+  text-align: center; 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+
+  b {
+    display: table-cell;
+    vertical-align: middle;
+    word-wrap: break-word;
+  }
+}
+
+
+.planet a { 
+  position: absolute; 
+  display: block; 
+  padding-left: 40px; 
+  line-height: 1; 
+  font-size: 1em; 
+  text-transform: uppercase; 
+  margin-top: -16px;
+  z-index: 3;
+}
+
+.planet a::before {
+  content: '•';
+  font-size: 80px;
+  line-height: 1px;
+  position: absolute;
+  top: 16px;
+  left: 0;
+  color: black;
+  text-shadow: none;
+  display: block;
+}
+
+
+@media (min-height: 600px) {
+  html {
+    background: url('../images/bg-3.png') center center fixed, url('../images/bg-2.png') 0px 0px fixed, url('../images/bg-2.png')  -85px 65px fixed, url(../images/broken_noise.png), #000;
+  }
+
+  #parallax{ 
+    position: absolute;
+    top: 0; right: 0; left: 0; bottom: 0;
+    background: url('../images/bg-4.png') center center no-repeat; 
+    display: block;
+    @include transition(all 5s linear);
+  }
+
+  #scrollpage { margin-top: -$diameter/2; }
+
+  .planet { height: $diameter; text-shadow: 1px 1px 2px #000; }
+
+  @include planet-styles($spacing);
+  @include specs-style($diameter/2 - 30); 
+
+  .planet h2 { 
+    font-size: 6em; 
+    font-family: 'Lato', sans-serif; letter-spacing: 0; 
+  }        
+  
+  
+  .aside {
+    @include background-image(linear-gradient(rgb(108, 199, 235), rgba(0, 0, 0, 0.5) 2%, rgba(0, 0, 0, 0.5) 98%, rgb(108, 199, 235)));
+  }
+  .aside::before {
+    position: absolute;
+    right: 1em;
+    left: 1em;
+    top: 0;
+    height: 5px;
+    content: "";
+    @include background-image(linear-gradient(left, rgba(108, 199, 235, 0) 5%, rgb(108, 199, 235) 10%, rgb(108, 199, 235) 90%, rgba(108, 199, 235, 0) 95%));
+  }
+
+  .aside a:hover::after, 
+  .aside a.active::after { 
+    position: absolute; 
+    top: -1.18em; 
+    height: 5px; 
+    left: 0; right: 0; 
+    background: yellow; 
+    content: ""; 
+  }
+  
+  .planet {
+    div { width: $diameter; }
+  
+    p {
+      border-radius: $diameter;  
+      box-shadow: 0 0 0.5em 0.25em #5e1100;        
+      background-size: 120% 120%;
+    }
+  
+    a  { font-size: 2em; }
+  }
+  
+  [data-skin="4"] p, [data-skin="0"] p { box-shadow: 0 0 0.5em 0.25em #354c7b; }
+  [data-skin="2"] p { box-shadow: 0 0 0.5em 0.25em slategray; }
+  [data-skin="1"] p { box-shadow: 0 0 0.5em 0.25em #47463a; }
+}  
+
+
+

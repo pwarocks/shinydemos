@@ -62,7 +62,7 @@ function snapshot(){
 	var h = video_element.clientHeight * 1.2;
 
     close.innerHTML = 'Close';
-    close.addEventListener('click',closePhoto,false);
+    close.addEventListener('click',closeOverlay,false);
 
     photoborder.id = 'leadPhoto';
     photoborder.className = "pic";
@@ -127,7 +127,7 @@ function getDeg(){
 function closeOverlay(){
     var leadPhoto, polaroid;
     var transition = transitionEvent();
-    event.target.className = 'hide';
+    overlay.className = 'hide';
 
     leadPhoto = document.querySelector('#leadPhoto');
 

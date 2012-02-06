@@ -174,12 +174,6 @@ function showOverlay(){
     }, false);
 }
 
-function closePhoto(clickEvent){
-    console.log( clickEvent.currentTarget.parentNode );
-    closeOverlay();
-
-}
-
 function transitionEvent(){
     var t, transitions, el = document.createElement('fakeel');
 

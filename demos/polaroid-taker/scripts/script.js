@@ -51,7 +51,7 @@ function v_error(error){
 function snapshot(){
     /*
     Removing the invisible class now so that we can
-    Fade in the overlay later in this function.
+    fade in the overlay later.
     */
     overlay.className = overlay.className.replace(/invisible/gi,'');
 
@@ -62,6 +62,7 @@ function snapshot(){
 	var h = video_element.clientHeight * 1.2;
 
     close.innerHTML = 'Close';
+    close.addEventListener('click',closePhoto,false);
 
     photoborder.id = 'leadPhoto';
     photoborder.className = "pic";
@@ -83,6 +84,7 @@ function snapshot(){
 
 	showOverlay();
 
+    // Play the camera shutter noise.
     document.querySelector('audio').play();
 
 }
@@ -122,7 +124,7 @@ function getDeg(){
 	}
 }
 
-function closeOverlay(event){
+function closeOverlay(){
     var leadPhoto, polaroid;
     var transition = transitionEvent();
     event.target.className = 'hide';
@@ -132,6 +134,10 @@ function closeOverlay(event){
     if( leadPhoto !== null ){
         polaroid = document.querySelector('#pictures');
 
+        /*
+          If we don't have a first child, append the photo.
+          Otherwise, insert it at the beginning of the stack.
+        */
         if( polaroid.firstChild === null ){
            polaroid.appendChild(leadPhoto);
         } else {
@@ -142,9 +148,11 @@ function closeOverlay(event){
         leadPhoto.id = '';
     }
 
-    console.log('transition: '+transition);
-
-    event.target.addEventListener(transition, function(evt){
+    /*
+       When the opacity transition ends, add the invisible class
+       to hide the overlay
+    */
+    overlay.addEventListener(transition, function(evt){
         if( evt.target.className.indexOf('hide') > -1 ){
             evt.target.className += ' invisible';
         }
@@ -166,6 +174,11 @@ function showOverlay(){
     }, false);
 }
 
+function closePhoto(clickEvent){
+    console.log( clickEvent.currentTarget.parentNode );
+    closeOverlay();
+
+}
 
 function transitionEvent(){
     var t, transitions, el = document.createElement('fakeel');
@@ -184,3 +197,4 @@ function transitionEvent(){
         }
     }
 }
+

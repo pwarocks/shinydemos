@@ -48,11 +48,21 @@ function v_error(error){
 }
 
 function makePhotoBorder(w,h){
-   var photoborder = document.createElement('section');
-   var close = document.createElement('button');
+   var polaroid = document.querySelector('#pictures');
+   var polaroidKid = polaroid.firstChild;
 
-   close.innerHTML = 'Close';
-   close.addEventListener('click',closeOverlay,false);
+   if( polaroidKid ){
+      photoborder = polaroidKid.cloneNode(true);
+   } else {
+
+       var photoborder = document.createElement('section');
+       var close = document.createElement('button');
+
+       close.innerHTML = 'Close';
+       close.addEventListener('click',closeOverlay,false);
+
+       photoborder.appendChild(close);
+   }
 
    photoborder.id = 'leadPhoto';
    photoborder.className = "pic";
@@ -60,7 +70,6 @@ function makePhotoBorder(w,h){
    photoborder.style.width  = w+'px';
    photoborder.style.height = h+'px';
 
-   photoborder.appendChild(close);
 
    return photoborder;
 }
@@ -80,19 +89,20 @@ function snapshot(){
     canvas = document.createElement('canvas');
 	w = video_element.clientWidth * 1.2;
 	h = video_element.clientHeight * 1.2;
+
     photoborder = makePhotoBorder(w,h);
 
 	canvas.width = w;
 	canvas.height = h;
+    ctx = canvas.getContext('2d');
+	cw = canvas.width;
+	ch = canvas.height;
+	ctx.drawImage(video_element, 0, 0, cw, ch );
 
     photoborder.appendChild(canvas);
 
     overlay.appendChild(photoborder);
 
-    ctx = canvas.getContext('2d');
-	cw = canvas.width;
-	ch = canvas.height;
-	ctx.drawImage(video_element, 0, 0, cw, ch );
 
     // Play the camera shutter noise.
     document.querySelector('audio').play();

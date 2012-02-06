@@ -42,11 +42,6 @@ h2{
 video{
 	width: 100%;
 	border:1px solid #eee;
-	-webkit-transition: -webkit-transform ease-in 0.5s;
-	-moz-transition: -moz-transform ease-in 0.5s;
-	-ms-transition: -ms-transform ease-in 0.5s;
-	-o-transition: -o-transform ease-in 0.5s;
-	transition: transform ease-in 0.5s;
 	margin-bottom:5px;
 }
 
@@ -178,7 +173,9 @@ button{
     opacity:0;
 }
 
-canvas{display:block;}
+canvas{
+    display:block;
+}
 
 #leadPhoto{
     top:0;

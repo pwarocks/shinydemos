@@ -127,7 +127,9 @@ function getDeg(){
 function closeOverlay(){
     var leadPhoto, polaroid;
     var transition = transitionEvent();
-    overlay.className = 'hide';
+    var ol = overlay;
+
+    ol.className = 'hide';
 
     leadPhoto = document.querySelector('#leadPhoto');
 
@@ -152,7 +154,7 @@ function closeOverlay(){
        When the opacity transition ends, add the invisible class
        to hide the overlay
     */
-    overlay.addEventListener(transition, function(evt){
+    ol.addEventListener(transition, function(evt){
         if( evt.target.className.indexOf('hide') > -1 ){
             evt.target.className += ' invisible';
         }
@@ -166,7 +168,7 @@ function showOverlay(){
 
     ol.className = ol.className.replace(/hide/gi,'');
 
-    overlay.addEventListener(transition, function(){
+    ol.addEventListener(transition, function(){
         var leadPhoto =  document.querySelector('#leadPhoto');
         if( leadPhoto ){
             leadPhoto.className += ' slidein';

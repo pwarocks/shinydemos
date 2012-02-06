@@ -1,19 +1,24 @@
 body#cssbr{
 	position: relative;
 	font: 85% / 1.5 helvetica,arial,sans-serif;
+	margin:0
 	padding:0;
 	background: #eee;
-	margin:0
 }
+section{display:block;}
 
 #main{
-	/* position:fixed;
-	top:100px; */
-	width: 200px;
-	height: 200px;
+	position:relative;
 	margin: 20px 0 20px 55px;
 	background:#333;
 }
+
+#changeobj{
+	border-color:#f3c;
+	background-color:#0cf;
+	margin:0;
+}
+
 
 #main > img, #main > div{
 	width: 200px;
@@ -37,9 +42,14 @@ body#cssbr{
 	background:#ddd;
 	white-space:nowrap;
 	text-align:right;
+	line-height: 1;
 }
 
-#main p:nth-child(1){top: -1.5em; left: -2.5em; line-height: 1;}
-#main p:nth-child(2){top: -1.5em; right:-2.5em; line-height: 1;}
-#main p:nth-child(3){bottom: -1.5em; left: -2.5em; line-height: 1;}
-#main p:nth-child(4){bottom: -1.5em; right: -2.5em; line-height: 1;}
+#main p:nth-child(1){top: -1.5rem; left: -2.5rem;}
+#main p:nth-child(2){top: -1.5rem; right:-2.5rem; }
+#main p:nth-child(3){bottom: -1.5rem; left: -2.5rem;}
+#main p:nth-child(4){bottom: -1.5rem; right: -2.5rem;}
+
+#overlay{
+    display:none;
+}

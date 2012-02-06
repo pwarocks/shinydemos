@@ -134,8 +134,9 @@ button{
 	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
 	background: -webkit-linear-gradient(top,  #faa51a,  #f47a20);
 	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
-	background: -o-linear-gradient(top,  #faa51a,  #f47a20);	display: inline-block;
-	background: linear-gradient(top,  #faa51a,  #f47a20);	display: inline-block;
+	background: -o-linear-gradient(top,  #faa51a,  #f47a20);
+	background: linear-gradient(top,  #faa51a,  #f47a20);
+	display: inline-block;
 }
 
 .pic button{

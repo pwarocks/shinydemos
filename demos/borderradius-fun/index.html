@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width,user-scalable=yes">
 	<link rel="stylesheet" media="all" href="styles/fonts.css">
 	<link rel="stylesheet" media="screen" href="styles/s.css">
+	<link rel="stylesheet" media="screen and (min-width: 768px)" href="styles/bigscreen.css">
 	<!--[if lte IE 9]>
 	<script type="text/javascript">
 	// adding fake support for HTML(5) tags that we're using
@@ -53,7 +54,7 @@
 			<legend>Basic options <img src="images/triangle.png" alt="Click this label open or close these controls" width="10" height="10"></legend>
 
 			<div>
-			<fieldset id="foreground">
+			<fieldset id="foreground" class="hidefromsmall">
 				<label for="fgimg" class="inline notmono">Use a(n):</label>
 				<select id="fgimg" name="fgimg">
 					<option value="div">&lt;div&gt;</option>
@@ -251,7 +252,7 @@
 
 
 		<div>
-			<button type="submit" id="getcode" disabled>Get the code</button>
+			<button type="submit" id="getcode" disabled  class="hidefromsmall">Get the code</button>
 			<button type="reset" id="resetform" disabled>Reset</button>
 		</div>
 	</form>

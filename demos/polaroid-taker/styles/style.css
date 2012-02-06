@@ -216,7 +216,6 @@ canvas{display:block;}
 #pictures{
     width:100%;
     margin:0;
-    background:rgba(255,255,255,.75);
     float:left;
 }
 

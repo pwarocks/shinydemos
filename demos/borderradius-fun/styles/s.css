@@ -9,26 +9,24 @@ section{display:block;}
 
 #main{
 	position:relative;
-	margin: 20px 0 20px 55px;
-	background:#333;
+	width:20em;
+	height:20em;
+	margin:auto;
 }
 
 #changeobj{
 	border-color:#f3c;
 	background-color:#0cf;
-	margin:0;
 }
 
 
-#main > img, #main > div{
-	width: 200px;
-	height: 200px;
-	margin: 0;
+#main > video, #main > img, #main > div{
+    width: 19em;
+	height: 19em;
+	margin: 1em auto;
 }
 
-#main > video{
-	width:200px;
-	height:200px;
+#main > video, #main > img{
 	     -o-object-fit: fill;
 	-webkit-object-fit: fill;
    	   -moz-object-fit: fill;
@@ -43,12 +41,13 @@ section{display:block;}
 	white-space:nowrap;
 	text-align:right;
 	line-height: 1;
+	font-family:monospace;
 }
 
-#main p:nth-child(1){top: -1.5rem; left: -2.5rem;}
-#main p:nth-child(2){top: -1.5rem; right:-2.5rem; }
-#main p:nth-child(3){bottom: -1.5rem; left: -2.5rem;}
-#main p:nth-child(4){bottom: -1.5rem; right: -2.5rem;}
+#main p:nth-child(1){top: -1.5em; left: -2.5em;}
+#main p:nth-child(2){top: -1.5em; right:-2.5em; }
+#main p:nth-child(3){bottom: -1.5em; left: -2.5em;}
+#main p:nth-child(4){bottom: -1.5em; right: -2.5em;}
 
 #overlay{
     display:none;

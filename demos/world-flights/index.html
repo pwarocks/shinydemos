@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>World Flights</title>
+    <link rel="stylesheet" media="all" type="text/css" href="styles/style.css" />
+    <script src="../../source/scripts/PhiloGL.js"></script>
+    <script src="scripts/classes.js"></script>
+    <script src="scripts/index.js"></script>
+  </head>
+  <body>
+    <div id="log-panel" style="display:none;">
+      <span id="log-message"></span>
+    </div>
+  
+    <div id="fallback" class="fallback"></div>
+    
+    <div id="container">      
+      <div id="title">
+        <h1>World Flights</h1>
+        <div class="description">Visualize major airlines flight routes</div>
+      </div>
+
+      <div class="canvas-container">
+        <div id="canvas-wrapper">
+          <canvas id="map-canvas" width="1024" height="1024"></canvas>
+        </div>
+        <div id="list-wrapper" class="list-wrapper" style="display:none;">
+          <input type="text" id="search" placeholder="Search for an Airline" />
+          <ul id="selected-airlines">
+          </ul>
+          <div class="list-container">
+            <ul id="airline-list"></ul>
+          </div>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="footer">
+    Authors: <a href="http://philogb.github.com/">Nicolas Garcia Belmonte</a> and <a href="http://twitter.com/gerbille/">Luz Caballero</a>.
+  </div>
+  
+  <div class="tooltip hide" id="tooltip" style="width:auto;"></div>
+  
+  <script>
+    if (!PhiloGL.hasWebGL()) {
+      document.body.className = 'no-webgl';
+      document.getElementById('fallback').innerHTML = ''
+        +  '<div style="margin:10px;">'
+        +   'Your browser does not support WebGL. Try downloading <a href="http://www.opera.com/browser/next/">Opera</a> to see the example.'
+        +  '</div>'
+        +  '<iframe width="640" height="480" src="http://www.youtube.com/embed/YIxplozKJZM?rel=0&amp;hd=1" frameborder="0" allowfullscreen></iframe>';
+    }
+  </script>
+</body>
+</html>

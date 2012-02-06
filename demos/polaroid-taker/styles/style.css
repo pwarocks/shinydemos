@@ -80,6 +80,7 @@ a:visited{
 	padding: 5px 5px 30px 5px;
 	position:relative;
 	border: 1px solid #eee;
+	display:block;
 }
 
 #top, #subcontainer{

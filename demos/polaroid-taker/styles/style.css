@@ -99,7 +99,10 @@ a:visited{
 
 #share{
 	text-align: right;
-	margin-top: 40px;
+	margin: 2em;
+	margin: 2rem;
+	padding-bottom:1em;
+	padding-bottom:1rem;
 }
 
 #share ul li{

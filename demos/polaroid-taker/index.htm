@@ -2,11 +2,10 @@
 <html>
 <head>
 	<title>Polaroid taker: Strike a pose!</title>
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Gudea:400,700' rel='stylesheet' type='text/css'>
-	<link href="styles/style.css" rel="stylesheet" type="text/css" />
-
+	<link href="styles/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -15,7 +14,6 @@
 <div id="container">
   <div id="subcontainer">
     <div id="message"></div>
-
     <div id="vidwrapper">
       <video id="video" autoplay loop="true"></video>
       <button id="picbutton" type="button">Take a photo!</button>
@@ -27,19 +25,14 @@
     </div>
 
     <div id="share">
-    <ul>
-    <li>
-    <a href="javascript:location.href='http://www.reddit.com/submit?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><img src="./images/reddit.png" alt="share reddit" title="share on reddit" /></a></li>
-
-    <li><a href="javascript:location.href='http://twitter.com/share?text='+encodeURIComponent('Checking out \'Polaroid Taker\' on Shiny Demos ')+encodeURIComponent(location.href)"><img src="./images/twitter.png" alt="share on twitter" title="share on twitter" /></a></li>
-
-    <li><a href="http://www.delicious.com/save" onclick="window.open('http://www.delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;"> <img src="./images/delicious.png" alt="save on delicious" title="save on delicious" /></a></li>
-    </ul>
+        <ul>
+            <li><a href="javascript:location.href='http://www.reddit.com/submit?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><img src="./images/reddit.png" alt="share reddit" title="share on reddit" /></a></li>
+            <li><a href="javascript:location.href='http://twitter.com/share?text='+encodeURIComponent('Checking out \'Polaroid Taker\' on Shiny Demos ')+encodeURIComponent(location.href)"><img src="./images/twitter.png" alt="share on twitter" title="share on twitter" /></a></li>
+            <li><a href="http://www.delicious.com/save" onclick="window.open('http://www.delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;"> <img src="./images/delicious.png" alt="save on delicious" title="save on delicious" /></a></li>
+        </ul>
     </div>
+  <!-- end container -->
   </div>
-
-
-
 
 </div>
 
@@ -49,8 +42,6 @@
   <source src="http://media.shinydemos.com/polaroid-taker/camera4.mp3">
   <source src="http://media.shinydemos.com/polaroid-taker/camera4.ogg">
 </audio>
-
-
-	<script src="scripts/script.js"></script>
+<script src="scripts/script.js"></script>
 </body>
 </html>

@@ -55,6 +55,9 @@ function snapshot(){
     */
     overlay.className = overlay.className.replace(/invisible/gi,'');
 
+    // Pause the video
+    video_element.pause();
+
     var photoborder = document.createElement('section');
     var close = document.createElement('button');
 	var canvas = document.createElement('canvas');
@@ -159,6 +162,9 @@ function closeOverlay(){
             evt.target.className += ' invisible';
         }
     }, false);
+
+     // Restart the video
+    video_element.play();
 
 }
 

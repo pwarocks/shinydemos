@@ -9,21 +9,23 @@ section{display:block;}
 
 #main{
 	position:relative;
-	width:20em;
-	height:20em;
+	width:10em;
 	margin:auto;
+	background:#333;
 }
+
 
 #changeobj{
 	border-color:#f3c;
 	background-color:#0cf;
+	margin:0;
 }
 
 
 #main > video, #main > img, #main > div{
-    width: 19em;
-	height: 19em;
-	margin: 1em auto;
+    width: 9em;
+	height: 9em;
+	margin: .5em auto;
 }
 
 #main > video, #main > img{
@@ -44,11 +46,16 @@ section{display:block;}
 	font-family:monospace;
 }
 
-#main p:nth-child(1){top: -1.5em; left: -2.5em;}
-#main p:nth-child(2){top: -1.5em; right:-2.5em; }
-#main p:nth-child(3){bottom: -1.5em; left: -2.5em;}
-#main p:nth-child(4){bottom: -1.5em; right: -2.5em;}
+#main p:nth-child(1){top: .5em; left: -2.5em;}
+#main p:nth-child(2){top: .5em; right:-2.5em; }
+#main p:nth-child(3){bottom: .5em; left: -2.5em;}
+#main p:nth-child(4){bottom: .5em; right: -2.5em;}
 
 #overlay{
+    display:none;
+}
+
+/* Hide some elements from small screens */
+.hidefromsmall{
     display:none;
 }

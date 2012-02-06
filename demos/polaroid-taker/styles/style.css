@@ -216,15 +216,15 @@ canvas{display:block;}
 }
 
 #pictures{
-    width:100%;
-    margin:0;
+    width:98%;
+    margin:0 .5em;
+    margin:0 .5rem;
     float:left;
 }
 
 #pictures .pic{
     float:left;
-    margin: 0em 0em .5em .5em;
-    margin: 0rem 0rem .5rem .5rem;
+    margin: 0em 0em 2% 2%;
     width:auto;
     z-index:auto;
 }
@@ -236,5 +236,5 @@ canvas{display:block;}
 }
 
 #pictures .pic button{
-    opacity:0;
+    visibility:hidden;
 }

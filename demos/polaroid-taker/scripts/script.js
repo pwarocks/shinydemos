@@ -48,34 +48,38 @@ function v_error(error){
 }
 
 function makePhotoBorder(w,h){
-   var polaroid = document.querySelector('#pictures');
-   var polaroidKid = polaroid.firstChild;
+   var close, photoborder, polaroid, polaroidKid, canvas;
 
-   if( polaroidKid ){
+   polaroid = document.querySelector('#pictures');
+   polaroidKid = polaroid.firstChild;
+
+   if( polaroidKid !== null ){
       photoborder = polaroidKid.cloneNode(true);
    } else {
+       photoborder = document.createElement('section');
 
-       var photoborder = document.createElement('section');
-       var close = document.createElement('button');
+       canvas = document.createElement('canvas');
+       canvas.width = w;
+	   canvas.height = h;
 
+       close = document.createElement('button');
        close.innerHTML = 'Close';
        close.addEventListener('click',closeOverlay,false);
 
+       photoborder.appendChild(canvas);
        photoborder.appendChild(close);
    }
 
    photoborder.id = 'leadPhoto';
    photoborder.className = "pic";
-
    photoborder.style.width  = w+'px';
    photoborder.style.height = h+'px';
-
 
    return photoborder;
 }
 
 function snapshot(){
-    var canvas, w, h, photoborder, ctx, cw, ch;
+    var photoborder, canvas, ctx, cw, ch;
 
     /*
     Removing the invisible class now so that we can
@@ -86,31 +90,23 @@ function snapshot(){
     // Pause the video
     video_element.pause();
 
-    canvas = document.createElement('canvas');
 	w = video_element.clientWidth * 1.2;
 	h = video_element.clientHeight * 1.2;
 
     photoborder = makePhotoBorder(w,h);
+    canvas = photoborder.querySelector('canvas');
 
-	canvas.width = w;
-	canvas.height = h;
     ctx = canvas.getContext('2d');
 	cw = canvas.width;
 	ch = canvas.height;
 	ctx.drawImage(video_element, 0, 0, cw, ch );
 
-    photoborder.appendChild(canvas);
-
     overlay.appendChild(photoborder);
-
 
     // Play the camera shutter noise.
     document.querySelector('audio').play();
 
 	showOverlay();
-
-
-
 }
 
 function shakeReset(event){
@@ -186,7 +182,6 @@ function closeOverlay(){
 
     // Restart the video
     video_element.play();
-
 }
 
 function showOverlay(){

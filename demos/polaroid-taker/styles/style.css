@@ -15,7 +15,7 @@ body{
     border: 1px solid #eee;
     border-width: 1px 1px 0 1px;
 }
-#top > h1{
+h1{
 	font-family: 'Lobster', cursive;
 	font-size: 3.2em;
 	color: #630;

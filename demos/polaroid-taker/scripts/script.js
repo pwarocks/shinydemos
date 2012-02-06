@@ -47,8 +47,27 @@ function v_error(error){
 	console.log("Error! Error code is:"+error.code);
 }
 
+function makePhotoBorder(w,h){
+   var photoborder = document.createElement('section');
+   var close = document.createElement('button');
+
+   close.innerHTML = 'Close';
+   close.addEventListener('click',closeOverlay,false);
+
+   photoborder.id = 'leadPhoto';
+   photoborder.className = "pic";
+
+   photoborder.style.width  = w+'px';
+   photoborder.style.height = h+'px';
+
+   photoborder.appendChild(close);
+
+   return photoborder;
+}
 
 function snapshot(){
+    var canvas, w, h, photoborder, ctx, cw, ch;
+
     /*
     Removing the invisible class now so that we can
     fade in the overlay later.
@@ -58,37 +77,29 @@ function snapshot(){
     // Pause the video
     video_element.pause();
 
-    var photoborder = document.createElement('section');
-    var close = document.createElement('button');
-	var canvas = document.createElement('canvas');
-	var w = video_element.clientWidth * 1.2;
-	var h = video_element.clientHeight * 1.2;
-
-    close.innerHTML = 'Close';
-    close.addEventListener('click',closeOverlay,false);
-
-    photoborder.id = 'leadPhoto';
-    photoborder.className = "pic";
-
-    photoborder.style.width  = w+'px';
-    photoborder.style.height = h+'px';
+    canvas = document.createElement('canvas');
+	w = video_element.clientWidth * 1.2;
+	h = video_element.clientHeight * 1.2;
+    photoborder = makePhotoBorder(w,h);
 
 	canvas.width = w;
 	canvas.height = h;
 
     photoborder.appendChild(canvas);
-    photoborder.appendChild(close);
+
     overlay.appendChild(photoborder);
 
-	var ctx = canvas.getContext('2d');
-	var cw = canvas.width;
-	var ch = canvas.height;
+    ctx = canvas.getContext('2d');
+	cw = canvas.width;
+	ch = canvas.height;
 	ctx.drawImage(video_element, 0, 0, cw, ch );
-
-	showOverlay();
 
     // Play the camera shutter noise.
     document.querySelector('audio').play();
+
+	showOverlay();
+
+
 
 }
 
@@ -163,7 +174,7 @@ function closeOverlay(){
         }
     }, false);
 
-     // Restart the video
+    // Restart the video
     video_element.play();
 
 }

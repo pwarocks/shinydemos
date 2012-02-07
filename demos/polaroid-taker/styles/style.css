@@ -3,28 +3,36 @@
   height: device-height;
 }
 
+.sd-panel{
+    margin-bottom:.5em;
+}
 body{
 	background-color: #FAF7EC;
+	background-image: url('../images/squidfingers_dot_com_pattern_038.gif');
+    margin:0;
+    padding:0;
+}
+#container{
 	color: #030303;
 	font-family: 'Gudea', sans-serif;
-	background-image: url('../images/squidfingers_dot_com_pattern_038.gif');
 }
 
 #top{
     text-align:center;
     border: 1px solid #eee;
-    border-width: 1px 1px 0 1px;
+    border-width: 4em 1px 0 1px;
+    border-top-color: rgba(245,245,245,0);
+    display:block; /* for older browsers where header is still an inline element by default */
 }
-h1{
+#top h1{
 	font-family: 'Lobster', cursive;
 	font-size: 3.2em;
 	color: #630;
 	text-shadow: 1px 1px 1px #ccc;
-	display:block; /* for older browsers where header is still an inline element by default */
     margin:0;
     font-weight:normal;
 }
-h2{
+#container h2{
     margin:0 auto;
     padding: 1em;
     padding: 1rem;

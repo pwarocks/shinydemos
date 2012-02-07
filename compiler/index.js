@@ -114,7 +114,7 @@ shinydemos.create = function() {
       var demos = demosByTag[t];
       var demoCollection = demos.map(function(d) {
         return {
-          'path': siteconfig.demosFolder + '/' + d.slug + '/',
+          'path': '/' + siteconfig.demosFolder + '/' + d.slug + '/',
           'title': d.title,
           'thumb': 'images/' + d.slug + '/thumb.png',
           'demotags': d.tags.join(', ')        

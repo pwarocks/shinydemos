@@ -3,6 +3,9 @@
   height: device-height;
 }
 
+.sd-panel{
+    margin-bottom:.5em;
+}
 body{
 	background-color: #FAF7EC;
 	background-image: url('../images/squidfingers_dot_com_pattern_038.gif');

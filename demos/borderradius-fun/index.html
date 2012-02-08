@@ -2,10 +2,11 @@
 <html lang="en-us">
 <head>
 	<meta charset="UTF-8">
-	<title>Border radius fun</title>
+	<title>Border Radius Fun</title>
 	<meta name="viewport" content="width=device-width,user-scalable=yes">
 	<link rel="stylesheet" media="all" href="styles/fonts.css">
 	<link rel="stylesheet" media="screen" href="styles/s.css">
+	<link href='http://fonts.googleapis.com/css?family=Gudea:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" media="screen and (min-width: 40em)" href="styles/bigscreen.css">
 	<!--[if lte IE 9]>
 	<script type="text/javascript">
@@ -69,12 +70,12 @@
 				<legend>border-top-left-radius</legend>
 
 				<p>
-					<label for="topleftA">top-top left</label>
+					<label for="topleftA" class="radius">top-top left</label>
 					<input type="range" id="topleftA" name="topleftA" min="0" max="300" value="0">
 				</p>
 
 				<p>
-					<label for="topleftB">left-top left</label>
+					<label for="topleftB" class="radius">left-top left</label>
 					<input type="range" id="topleftB" name="topleftB" min="0" max="300" value="0">
 				</p>
 
@@ -88,12 +89,12 @@
 			<fieldset id="topright" class="crnr">
 				<legend>border-top-right-radius</legend>
 				<p>
-					<label for="toprightA">top-top right</label>
+					<label for="toprightA" class="radius">top-top right</label>
 					<input type="range" id="toprightA" name="toprightA" min="0" max="300" value="0">
 				</p>
 
 				<p>
-					<label for="toprightB">right-top right</label>
+					<label for="toprightB" class="radius">right-top right</label>
 					<input type="range" id="toprightB" name="toprightB" min="0" max="300" value="0">
 				</p>
 
@@ -108,12 +109,12 @@
 			<fieldset id="bottomright" class="crnr">
 				<legend>border-bottom-right-radius</legend>
 				<p>
-					<label for="bottomrightA">bottom-bottom right</label>
+					<label for="bottomrightA" class="radius">bottom-bottom right</label>
 					<input type="range" id="bottomrightA" name="bottomrightA" min="0" max="300" value="0">
 				</p>
 
 				<p>
-					<label for="bottomrightB">right-bottom right</label>
+					<label for="bottomrightB" class="radius">right-bottom right</label>
 					<input type="range" id="bottomrightB" name="bottomrightB" min="0" max="300" value="0">
 				</p>
 
@@ -127,12 +128,12 @@
 			<fieldset id="bottomleft" class="crnr">
 				<legend>border-bottom-left-radius</legend>
 				<p>
-					<label for="bottomleftA">bottom-bottom left</label>
+					<label for="bottomleftA" class="radius">bottom-bottom left</label>
 					<input type="range" id="bottomleftA" name="bottomleftA" min="0" max="300" value="0">
 				</p>
 
 				<p>
-					<label for="bottomleftB">left-bottom left</label>
+					<label for="bottomleftB" class="radius">left-bottom left</label>
 					<input type="range" id="bottomleftB" name="bottomleftB" min="0" max="300" value="0">
 				</p>
 
@@ -151,7 +152,7 @@
 				<fieldset id="setborderstyle">
 				<legend>border-style</legend>
 				<p>
-					<label for="brdrtop">border-top-style</label>
+					<label for="brdrtop">top</label>
 					<select id="brdrtop" name="brdrtop">
 					<option value="">none</option>
 					<option value="dashed">dashed</option>
@@ -166,7 +167,7 @@
 				</p>
 
 				<p>
-					<label for="brdrright">border-right-style</label>
+					<label for="brdrright">right</label>
 					<select id="brdrright" name="brdrright">
 					<option value="">none</option>
 					<option value="dashed">dashed</option>
@@ -181,7 +182,7 @@
 				</p>
 
 				<p>
-					<label for="brdrbottom">border-bottom-style</label>
+					<label for="brdrbottom">bottom</label>
 					<select id="brdrbottom" name="brdrbottom">
 					<option value="">none</option>
 					<option value="dashed">dashed</option>
@@ -196,7 +197,7 @@
 				</p>
 
 				<p>
-					<label for="brdrleft">border-left-style</label>
+					<label for="brdrleft">left</label>
 					<select id="brdrleft" name="brdrleft">
 						<option value="">none</option>
 						<option value="dashed">dashed</option>
@@ -214,22 +215,22 @@
 				<fieldset id="setborderwidth">
 				<legend>border-width</legend>
 				<p>
-					<label for="brdrwidthtop">border-top-width</label>
+					<label for="brdrwidthtop">top</label>
 					<input type="range" id="brdrwidthtop" name="brdrwidthtop" min="0" max="50" value="0">
 				</p>
 
 				<p>
-					<label for="brdrwidthright">border-right-width</label>
+					<label for="brdrwidthright">right</label>
 					<input type="range" id="brdrwidthright" name="brdrwidthright" min="0" max="80" value="0">
 				</p>
 
 				<p>
-					<label for="brdrwidthbottom">border-bottom-width</label>
+					<label for="brdrwidthbottom">bottom</label>
 					<input type="range" id="brdrwidthbottom" name="brdrwidthbottom" min="0" max="50" value="0">
 				</p>
 
 				<p>
-					<label for="brdrwidthleft">border-left-width</label>
+					<label for="brdrwidthleft">left</label>
 					<input type="range" id="brdrwidthleft" name="brdrwidthleft" min="0" max="80" value="0">
 				</p>
 			</fieldset>

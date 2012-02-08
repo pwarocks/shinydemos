@@ -1,3 +1,8 @@
+@-o-viewport {
+  width: device-width;
+  height: device-height;
+}
+
 @font-face {
     font-family: 'MaidenOrangeRegular';
     src: url('../fonts/MaidenOrange-webfont.eot');
@@ -13,24 +18,30 @@ body{
 	position: relative;
 	margin:0;
 	padding:0;
-	background: #E8E8EC;
+	background: #E3E3E3;
+	color:#222;
 }
+
 #demoname{
     font-family: 'MaidenOrangeRegular',helvetica,arial,sans-serif;
     padding-top:1em;
     text-align: center;
+    font-weight:normal;
 }
 
-section{display:block;}
+#wrap{
+    font: 85% / 1.5 'Gudea',helvetica,arial,sans-serif;
+}
+
+#wrap section{display:block;}
 
 #main{
-	font: 85% / 1.5 helvetica,arial,sans-serif;
 	position:relative;
 	width:10em;
 	margin: 0 auto 2em auto;
 }
 
-
+/* Either the video, div or image */
 #changeobj{
 	border-color:#f3c;
 	background-color:#0cf;
@@ -71,13 +82,25 @@ section{display:block;}
     display:none;
 }
 
-/* Hide some elements from small screens */
-.hidefromsmall{
-    display:none;
+/* Form elements */
+form{
+    margin: 1em;
+    padding:0;
 }
 
-/* Form elements */
-form > fieldset > legend{font-size: 16px; padding-top: .5em; cursor:pointer}
+form > fieldset{
+    padding:0;
+    margin: 0 0 .1em 0;
+    border-radius: 5px;
+    background: #fff;
+    position:relative;
+    border:none;
+}
+form > fieldset > legend{
+    font-size: 16px;
+    padding: 2.2em 0 0 .6em;
+    cursor:pointer;
+}
 form > fieldset legend img{
 	-o-transform: rotate(0deg);
 	-o-transition: -o-transform 200ms linear;
@@ -132,20 +155,48 @@ form > fieldset.active legend img{
 	-ms-transform: rotate(90deg);
 }
 
-/* For Android browsers */
-input[type='range']{
-    background-color: #ccc;
-    height: 8px;
-    display:block;
+fieldset#advanced, fieldset#basic{position:relative}
+
+fieldset fieldset{
+    background:#fff;
+    margin: 0 0 10px 0;
+    position:relative;
+    border:0;
+}
+fieldset fieldset legend{
+    padding-top: 2em;
+    font-family: monospace;
 }
 
-input[type='range']::-webkit-slider-thumb{
+fieldset#advanced{
+    margin-top:-1.2em;
+}
+
+/* Hide some elements from small screens */
+.hidefromsmall{
+    display:none;
+}
+
+
+label.radius{display:block}
+
+.notmono{font-family: sans-serif;}
+
+
+/* For Android browsers */
+.norangeui input[type='range']{
+    background-color: #ccc;
+    border-radius: 15px;
+}
+
+.norangeui input[type='range']::-webkit-slider-thumb{
     height:15px;
     width:15px;
     border-radius:15px;
     background: transparent url(/shinydemos/demos/borderradius-fun/images/thumb-up.png);
 }
 
-input[type='range']::-webkit-slider-thumb:focus{
+.norangeui input[type='range']::-webkit-slider-thumb:focus{
     background: url(/shinydemos/demos/borderradius-fun/images/thumb.png);
 }
+

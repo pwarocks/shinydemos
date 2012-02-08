@@ -99,8 +99,35 @@ var Lib = (function(){
 			img.src = filename;
 			return img;
 
-		}
+		},
+		/*
+		   Yes, we are browser sniffing. This is generally a bad
+		   practice. However it is the best choice in this SPECIFIC
+		   case because:
 
+		   1. We are testing for a known browser bug in a known entity
+		   (a released browser).
+
+		   2. It will have minimal side effects in future versions
+		   of this browser.
+
+		   3. There is no other fix.
+		*/
+
+		mightBeAndroid: function(){
+            if( window.navigator.vendor === undefined){
+                return false;
+            } else {
+                if(
+                    (window.navigator.vendor.indexOf('Google') > -1) &&
+                    (window.navigator.platform == 'Linux armv7l')
+                ){
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+		}
 	// end object
 	}
 })();

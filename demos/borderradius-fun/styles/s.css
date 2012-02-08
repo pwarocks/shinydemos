@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'MaidenOrangeRegular';
+    src: url('../fonts/MaidenOrange-webfont.eot');
+    src: url('../fonts/MaidenOrange-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/MaidenOrange-webfont.woff') format('woff'),
+         url('../fonts/MaidenOrange-webfont.ttf') format('truetype'),
+         url('../fonts/MaidenOrange-webfont.svg#MaidenOrangeRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body#cssbr{
 	position: relative;
 	font: 85% / 1.5 helvetica,arial,sans-serif;
@@ -125,6 +136,7 @@ input[type='range']{
 input[type='range']::-webkit-slider-thumb{
     height:15px;
     width:15px;
+    border-radius:15px;
     background: transparent url(/shinydemos/demos/borderradius-fun/images/thumb-up.png);
 }
 

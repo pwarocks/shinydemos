@@ -202,3 +202,8 @@ label.radius{display:block}
     background: url(/shinydemos/demos/borderradius-fun/images/thumb.png);
 }
 
+.preview{
+    display:inline-block;
+    width: 2em;
+    height:2em;
+}

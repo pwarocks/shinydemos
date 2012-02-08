@@ -3,8 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Border radius</title>
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
 	<link rel="stylesheet" media="all" href="styles/fonts.css">
 	<link rel="stylesheet" media="screen" href="styles/s.css">
+	<link rel="stylesheet" media="screen and (min-width: 40em)" href="styles/bigscreen.css">
 	<!--[if lte IE 9]>
 	<script type="text/javascript">
 	// adding fake support for HTML(5) tags that we're using
@@ -25,14 +27,34 @@
 
 <header><h1>Border-Radius-O-Matic</h1></header>
 
-<div id="wrap">
+<section id="main">
+    <p>
+        <b id="tl" class="crnrsz">0px</b>
+	</p>
+
+	<p>
+	    <b id="tr" class="crnrsz">0px</b>
+	</p>
+
+	<p>
+		<b id="bl" class="crnrsz">0px</b>
+	</p>
+
+	<p>
+		<b id="br" class="crnrsz">0px</b>
+	</p>
+
+    <div id="changeobj"></div>
+</section>
+
+<section id="wrap">
 	<form>
 		<fieldset id="basic" class="active">
 
 			<legend>Basic options <img src="images/triangle.png" alt="Click this label open or close these controls" width="10" height="10"></legend>
 
 			<div>
-			<fieldset id="foreground">
+			<fieldset id="foreground" class="hidefromsmall">
 				<label for="fgimg" class="inline notmono">Use a(n):</label>
 				<select id="fgimg" name="fgimg">
 					<option value="div">&lt;div&gt;</option>
@@ -212,16 +234,12 @@
 				</p>
 			</fieldset>
 
-				<fieldset id="setbgimg">
+				<fieldset id="setbgimg" class="hidefromsmall">
 				<legend>background-image</legend>
-				<select id="bgimg" name="bgimg">
-					<option value="">none</option>
-					<option value="002">Diamonds</option>
-					<option value="123">Roses</option>
-					<option value="141">Zig Zag</option>
-					<option value="155">Weave</option>
-					<option value="157">Nordic Sweater</option>
-				</select>
+				<input type="radio" name="bgimg" id="diamonds" value="002"> <label for="diamonds">Diamonds</label>
+				<input type="radio" name="bgimg" id="zigzag" value="141"> <label for="zigzag">Zig Zag</label>
+				<input type="radio" name="bgimg" id="nordic" value="157"> <label for="nordic">Nordic</label>
+
 				<br><span class="credit">Background patterns by <a href="http://www.squidfingers.com/patterns/" target="_blank">Squidfingers</a>.</span>
 			</fieldset>
 			</div>
@@ -230,45 +248,19 @@
 
 
 		<div>
-			<button type="submit" id="getcode" disabled>Get the code</button>
+			<button type="submit" id="getcode" disabled  class="hidefromsmall">Get the code</button>
 			<button type="reset" id="resetform" disabled>Reset</button>
 		</div>
 	</form>
 
-	<div id="main">
-		<p>
-			<code>
-			<b id="tl" class="crnrsz">0px</b>
-			</code>
-		</p>
 
-		<p><code>
-		<b id="tr" class="crnrsz">0px</b>
-		</code>
-		</p>
-
-		<p>
-		<code>
-		<b id="bl" class="crnrsz">0px</b>
-		</code>
-		</p>
-
-		<p>
-		<code>
-		<b id="br" class="crnrsz">0px</b>
-		</code>
-		</p>
-
-		<div id="changeobj"></div>
-
-	</div>
 
 <footer>
 	<p class="credit">Title font is <a href="http://www.fontsquirrel.com/fonts/maiden-orange" target="_blank">Maiden Orange</a>.</p>
 </footer>
-</div><!-- end wrap -->
+</section><!-- end wrap -->
 
-<div id="overlay" class="hide">
+<section id="overlay" class="hide">
 	<section id="showcss" class="hide">
 		<a class="close">close</a>
 		<h1>Copy and paste the CSS below into your file</h1>
@@ -281,7 +273,7 @@
 		<p>Please download and install the latest version of <a href="http://www.opera.com/download/">Opera</a>.<br>(The latest versions of <a href="http://www.google.com/chrome/">Chrome</a>, <a href="http://getfirefox.com/">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a> or <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">Internet Explorer</a> will also work.) </p>
 	</section>
 
-</div>
+</section>
 
 <script src="scripts/lib.js"></script>
 <script src="scripts/js.js"></script>

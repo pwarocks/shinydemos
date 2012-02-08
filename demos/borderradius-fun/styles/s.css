@@ -9,19 +9,25 @@
     font-style: normal;
 }
 
-body#cssbr{
+body{
 	position: relative;
-	font: 85% / 1.5 helvetica,arial,sans-serif;
-	margin:0
+	margin:0;
 	padding:0;
-	background: #eee;
+	background: #E8E8EC;
 }
+#demoname{
+    font-family: 'MaidenOrangeRegular',helvetica,arial,sans-serif;
+    padding-top:1em;
+    text-align: center;
+}
+
 section{display:block;}
 
 #main{
+	font: 85% / 1.5 helvetica,arial,sans-serif;
 	position:relative;
 	width:10em;
-	margin:auto;
+	margin: 0 auto 2em auto;
 }
 
 
@@ -126,7 +132,7 @@ form > fieldset.active legend img{
 	-ms-transform: rotate(90deg);
 }
 
-
+/* For Android browsers */
 input[type='range']{
     background-color: #ccc;
     height: 8px;

@@ -79,9 +79,11 @@ var Lib = (function(){
 				 e.target.play();
 			}
 
+
 			for(t in types){
 				switch( video.canPlayType( types[t] ) ){
 					case 'maybe':
+					case 'probably':
 						canplay = t;
 						break;
 				}

@@ -358,10 +358,9 @@
 		Lib.addHandlers({nodelist:close, event:'click', func:oncloseclick});
 		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
 
-		bgimg.addEventListener('change',onbgchange,false);
+		// bgimg.addEventListener('selected',onbgchange,false);
 		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
 		form.addEventListener('reset',onresethandler,false);
-
 	}
 })();

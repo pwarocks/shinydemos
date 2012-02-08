@@ -362,5 +362,13 @@
 		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
 		form.addEventListener('reset',onresethandler,false);
+
+        /* Add 'android' class to the body if it looks like this is Android. */
+
+        if( Lib.mightBeAndroid() ){
+            document.body.className += ' norangeui';
+        }
+
+
 	}
 })();

@@ -98,7 +98,7 @@ form > fieldset{
 }
 form > fieldset > legend{
     font-size: 16px;
-    padding: 2.2em 0 0 .6em;
+    padding: 2.2em 0 .4em .6em;
     cursor:pointer;
 }
 form > fieldset legend img{
@@ -155,8 +155,10 @@ form > fieldset.active legend img{
 	-ms-transform: rotate(90deg);
 }
 
-fieldset#advanced, fieldset#basic{position:relative}
-
+fieldset#advanced, fieldset#basic{
+    position:relative;
+}
+fieldset#advanced{ margin-bottom: 1em }
 fieldset fieldset{
     background:#fff;
     margin: 0 0 10px 0;

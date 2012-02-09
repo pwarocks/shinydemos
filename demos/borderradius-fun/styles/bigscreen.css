@@ -1,0 +1,33 @@
+.hidefromsmall{
+    display:block;
+}
+
+
+form #advanced p{
+    float:left;
+    width: 24%;
+}
+
+form #basic p{
+    float:left;
+    width: 32%;
+}
+
+form #basic p:nth-child(2),
+form #basic p:nth-child(3){
+    border-left: 1% solid rgba(0,0,0,.7);
+}
+
+fieldset fieldset{
+    width: auto;
+}
+
+#main{
+    width: 17em;
+}
+
+#main > video, #main > img, #main > div{
+    width: 15em;
+	height: 15em;
+	margin: .5em auto;
+}

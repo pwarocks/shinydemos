@@ -27,11 +27,8 @@
 		range     = document.querySelectorAll('#basic input[type=range]');
 		brdrwidth = document.querySelectorAll('#setborderwidth input[type=range]');
 		div		  = document.querySelector('#main div');
-
 		bgimg     = form['bgimg'];
-
-
-		fgimg     = document.querySelector('#fgimg');
+		fgimg     = form['fgimg'];
 		img 	  = Lib.makeImage('images/kananaskis.jpg');
 		vid		  = Lib.makeVideo('raindropsinapool');
 		close     = document.querySelectorAll('.close');
@@ -182,9 +179,9 @@
 
 		onfgchange = function(e){
 
-			var id, curchild = main.lastElementChild, selects = document.querySelectorAll('select');
-			id = curchild.id;
-			var whichtype = e.target.value;
+			var curchild = main.lastElementChild, selects = document.querySelectorAll('select');
+
+			var whichtype = e.currentTarget.value;
 
 			switch( whichtype ){
 				case 'div':
@@ -198,15 +195,13 @@
 					borderobj = img;
 					break;
 			}
-			borderobj.id = id;
+			borderobj.id = curchild.id;
 
 			main.replaceChild(borderobj, curchild);
 
 			/* Reset the form. */
 			form.setAttribute('class','formonly');
 			form.reset();
-
-
 
 			/*******
 			  Set fgimg value to current type of object
@@ -361,8 +356,8 @@
 		Lib.addHandlers({nodelist:close, event:'click', func:oncloseclick});
 		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
 		Lib.addHandlers({nodelist:bgimg, event:'click', func:onbgchange});
+		Lib.addHandlers({nodelist:fgimg, event:'click', func:onfgchange});
 
-		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
 		form.addEventListener('reset',onresethandler,false);
 
@@ -371,6 +366,5 @@
         if( Lib.mightBeAndroid() ){
             document.body.className += ' norangeui';
         }
-
 	}
 })();

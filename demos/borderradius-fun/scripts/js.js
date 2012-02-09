@@ -27,7 +27,10 @@
 		range     = document.querySelectorAll('#basic input[type=range]');
 		brdrwidth = document.querySelectorAll('#setborderwidth input[type=range]');
 		div		  = document.querySelector('#main div');
-		bgimg     = document.querySelector('#bgimg');
+
+		bgimg     = form['bgimg'];
+
+
 		fgimg     = document.querySelector('#fgimg');
 		img 	  = Lib.makeImage('images/kananaskis.jpg');
 		vid		  = Lib.makeVideo('raindropsinapool');
@@ -168,7 +171,7 @@
 		}
 
 		onbgchange = function(e){
-			if( e.target.value == ''){
+		    if( e.target.value == ''){
 				borderobj.className = '';
 			} else {
 				borderobj.className = 'patt'+e.target.value;
@@ -357,8 +360,8 @@
 		Lib.addHandlers({nodelist:brdrwidth, event:'change', func:onborderwidthchange});
 		Lib.addHandlers({nodelist:close, event:'click', func:oncloseclick});
 		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
+		Lib.addHandlers({nodelist:bgimg, event:'click', func:onbgchange});
 
-		// bgimg.addEventListener('selected',onbgchange,false);
 		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
 		form.addEventListener('reset',onresethandler,false);
@@ -368,7 +371,6 @@
         if( Lib.mightBeAndroid() ){
             document.body.className += ' norangeui';
         }
-
 
 	}
 })();

@@ -27,7 +27,11 @@
 					<img src="{{thumb}}" alt="{{this.title}}">
 					<h2>{{this.title}}</h2>
 				</a>
-				<p>{{this.demotags}}</p>
+        <p>
+        {{#each this.demotags}}
+          <a href="/{{this}}/">{{this}}</a>
+        {{/each}}
+        </p>
 			</li>
 {{/each}}
 			<li class="clear"></li>
@@ -37,6 +41,6 @@
 			<p><a href="http://www.opera.com/developer/">Opera Software</a></p>
 		</footer>
 	</div>
-	<script src=/"scripts/script.js"></script>
+	<script src="/scripts/script.js"></script>
 </body>
 </html>

@@ -87,9 +87,9 @@ body{
 
 /* Form elements */
 form{
-    margin: 1em;
-    padding:0em;
-    background: #fff;
+    margin: -3em 1em 1em;
+    padding:0;
+    border-radius: 5px;
 }
 
 form > fieldset{
@@ -100,7 +100,7 @@ form > fieldset{
 }
 form > fieldset > legend{
     font-size: 24px;
-    padding: 0 0 .4em .4em;
+    padding: 2em 0 .4em .4em;
     cursor:pointer;
 }
 form > fieldset legend img{
@@ -159,17 +159,19 @@ form > fieldset.active legend img{
 
 fieldset#advanced, fieldset#basic{
     position:relative;
+    background:#fff;
+    border-radius: 5px;
 }
-fieldset#basic{border-bottom: 20px solid #E3E3E3;}
 
-fieldset#advanced legend{ padding-top: .7em }
 
 fieldset fieldset{
     margin: -1.6em .5em .5em;
     padding: 3px;
     position:relative;
-    border:0;
     background:#eee;
+    clear:both;
+    border:none;
+    border-radius: 5px;
 }
 
 fieldset fieldset legend{
@@ -228,3 +230,4 @@ label.radius{display:block}
 .patt155{background-image: url('../images/pattern_155.gif');}
 .patt157{background-image: url('../images/pattern_157.gif');}
 
+.clear{clear:both;}

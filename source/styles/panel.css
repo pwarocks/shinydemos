@@ -3,13 +3,16 @@
 /* Panel
 ---------------------------------------- */
 .sd-panel {
-	position:relative;
+	position:fixed;
 	background:#181818 url(../images/denim.png);
 	-webkit-box-shadow:0 0 0 1px rgba(255, 255, 255, 0.3);
 	-moz-box-shadow:0 0 0 1px rgba(255, 255, 255, 0.3);
 	box-shadow:0 0 0 1px rgba(255, 255, 255, 0.3);
 	color:#FFF;
 	font:12px/1 Tahoma, sans-serif;
+  top: 0;
+  right: 0;
+  left: 0;
 	}
 	.sd-panel:after {
 		position:absolute;
@@ -78,11 +81,11 @@
 		content:'';
 		background:url(../images/icons.png) no-repeat;
 		}
-	.sd-features-yep .sd-desc:before {
+	.sd-features-yep:before {
 		background-color:#04AC30;
 		background-position:3px 2px;
 		}
-	.sd-features-nope .sd-desc:before {
+	.sd-features-nope:before {
 		background-color:#FA5D48;
 		background-position:3px -18px;
 		}
@@ -112,27 +115,40 @@
 			background:url(../images/icons.png) no-repeat;
 			content:'';
 			}
-		.sd-list-yep .sd-feature-link:before {
+		.sd-feature-yep .sd-feature-link:before {
 			background-position:-20px 0;
 			}
-		.sd-list-yep .sd-feature-link:hover:before {
+    .sd-feature-yep .sd-feature-link {
+      color: #fff;
+    }
+
+    .sd-feature-yep .sd-feature-link:hover {
+      color: green;
+    }
+		.sd-feature-yep .sd-feature-link:hover:before {
 			background-position:-20px -10px;
 			}
-		.sd-list-nope .sd-feature-link:before {
+    .sd-feature-nope .sd-feature-link:hover {
+      color:#ed5945; 
+    }
+		.sd-feature-nope .sd-feature-link {
+      color: #999;
+    }  
+    .sd-feature-nope .sd-feature-link:before {
 			background-position:-20px -20px;
 			}
-		.sd-list-nope .sd-feature-link:hover:before {
+		.sd-feature-nope .sd-feature-link:hover:before {
 			background-position:-20px -30px;
 			}
 
 /* Active */
-.sd-features-active {
+.sd-features:hover {
 	visibility:visible;
 	}
-	.sd-features-active .sd-desc {
+	.sd-features:hover .sd-desc {
 		color:#999;
 		}
-	.sd-features-active .sd-desc:before {
+	.sd-features:hover .sd-desc:before {
 		background-color:#1FA5EE;
 		}
 
@@ -186,7 +202,7 @@
 		}
 
 /* Active */
-.sd-features-active .sd-desc {
+.sd-features:hover .sd-desc {
 	color:#FFF;
 	}
 

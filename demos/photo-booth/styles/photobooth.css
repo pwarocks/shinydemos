@@ -1,4 +1,4 @@
-body{font-family:sans-serif;height:900px; margin:0 auto;position:relative; }
+body{margin:0 auto;position:relative;background-image:url("../images/bg_wood.png")}
 #container h1{margin:50px 0 -35px 15px;padding:0;width:912px;height:192px;text-indent:-9999px;background-image:url(../images/banner.png);position:relative;top:-20px;}
 button:active{background:url(../images/button_pressed.png);}
 canvas{position:relative;margin-left:50px;margin-top:10px;}

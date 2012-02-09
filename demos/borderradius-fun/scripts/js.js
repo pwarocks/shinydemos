@@ -208,7 +208,7 @@
 			  so the field stays the same.
 			********/
 
-			fgimg.value = whichtype;
+			form[whichtype].checked = true;
 
 			/* Remove any classes from the border object */
 			borderobj.className = '';

@@ -45,7 +45,7 @@ body{
 /* Either the video, div or image */
 #changeobj{
 	border-color:#f3c;
-	background-color:#0cf;
+	background-color:#1FA5EE;
 	margin:0;
 }
 
@@ -67,11 +67,12 @@ body{
 
 #main p{
 	position:absolute;
-	background:#ddd;
+	background:#FBA783;
 	white-space:nowrap;
 	text-align:right;
 	line-height: 1;
 	font-family:monospace;
+	padding:3px;
 }
 
 #main p:nth-child(1){top: .5em; left: -2.5em;}
@@ -86,20 +87,19 @@ body{
 /* Form elements */
 form{
     margin: 1em;
-    padding:0;
+    padding:0em;
+    background: #fff;
 }
 
 form > fieldset{
     padding:0;
     margin: 0 0 .1em 0;
-    border-radius: 5px;
-    background: #fff;
     position:relative;
     border:none;
 }
 form > fieldset > legend{
     font-size: 24px;
-    padding: 2.2em 0 .4em .4em;
+    padding: 0 0 .4em .4em;
     cursor:pointer;
 }
 form > fieldset legend img{
@@ -159,20 +159,27 @@ form > fieldset.active legend img{
 fieldset#advanced, fieldset#basic{
     position:relative;
 }
-fieldset#advanced{ margin-bottom: 1em }
+fieldset#basic{border-bottom: 20px solid #E3E3E3;}
+
+fieldset#advanced legend{ padding-top: .7em }
+
 fieldset fieldset{
-    background:#fff;
-    margin: 0 0 10px 0;
+    margin: 0 0 0px 0;
     position:relative;
     border:0;
 }
+
 fieldset fieldset legend{
-    padding-top: 2em;
     font-family: monospace;
 }
 
 fieldset#advanced{
     margin-top:-1.2em;
+}
+
+form #buttons{
+    background: #E3E3E3;
+    padding-top:1em;
 }
 
 /* Hide some elements from small screens */
@@ -209,5 +216,5 @@ label.radius{display:block}
     display:inline-block;
     width: 2em;
     height:2em;
-    margin:0 .5em;
+    margin:0 .5em 0 0;
 }

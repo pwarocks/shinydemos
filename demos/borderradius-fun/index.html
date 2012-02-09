@@ -7,7 +7,7 @@
 	<link rel="stylesheet" media="all" href="styles/fonts.css">
 	<link rel="stylesheet" media="screen" href="styles/s.css">
 	<link href='http://fonts.googleapis.com/css?family=Gudea:400,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" media="screen and (min-width: 40em)" href="styles/bigscreen.css">
+	<link rel="stylesheet" media="screen and (min-width: 30em)" href="styles/bigscreen.css">
 	<!--[if lte IE 9]>
 	<script type="text/javascript">
 	// adding fake support for HTML(5) tags that we're using
@@ -49,19 +49,19 @@
 </section>
 
 <section id="wrap">
-	<form>
+	<form id="borderoptions">
 		<fieldset id="basic" class="active">
 
 			<legend>Basic options <img src="images/triangle.png" alt="Click this label open or close these controls" width="10" height="10"></legend>
 
 			<div>
-			<fieldset id="foreground" class="hidefromsmall">
-				<p><b>Add a border to a(n):</b></p>
+			<fieldset id="foreground" class="hidefromsmall clear">
+				<legend>Add a border to a(n):</legend>
 
 				<input type="radio" id="div" value="div" name="fgimg"> <label for="div"><code>div</code> element</label>
                 <input type="radio" id="img" value="img" name="fgimg"> <label for="img">image</label>
                 <input type="radio" id="video" value="video" name="fgimg"> <label for="video">video</label>
-
+            <br>
 			</fieldset>
 
 			<!-- top left controls -->
@@ -150,7 +150,7 @@
 			<legend>Oh you fancy, huh? <img src="images/triangle.png" alt="Click this label open or close these controls" width="10" height="10"></legend>
 			<div>
 				<fieldset id="setborderstyle">
-				<legend>border-style</legend>
+				<br><legend>border-style</legend>
 				<p>
 					<label for="brdrtop">top</label>
 					<select id="brdrtop" name="brdrtop">
@@ -215,22 +215,22 @@
 				<fieldset id="setborderwidth">
 				<legend>border-width</legend>
 				<p>
-					<label for="brdrwidthtop">top</label>
+					<label for="brdrwidthtop" class="radius">top</label>
 					<input type="range" id="brdrwidthtop" name="brdrwidthtop" min="0" max="50" value="0">
 				</p>
 
 				<p>
-					<label for="brdrwidthright">right</label>
+					<label for="brdrwidthright" class="radius">right</label>
 					<input type="range" id="brdrwidthright" name="brdrwidthright" min="0" max="80" value="0">
 				</p>
 
 				<p>
-					<label for="brdrwidthbottom">bottom</label>
+					<label for="brdrwidthbottom" class="radius">bottom</label>
 					<input type="range" id="brdrwidthbottom" name="brdrwidthbottom" min="0" max="50" value="0">
 				</p>
 
 				<p>
-					<label for="brdrwidthleft">left</label>
+					<label for="brdrwidthleft" class="radius">left</label>
 					<input type="range" id="brdrwidthleft" name="brdrwidthleft" min="0" max="80" value="0">
 				</p>
 			</fieldset>

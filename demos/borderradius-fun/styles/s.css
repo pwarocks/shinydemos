@@ -32,6 +32,7 @@ body{
 #wrap{
     font: 85% / 1.5 'Gudea',helvetica,arial,sans-serif;
     min-width: 320px;
+    margin:auto;
 }
 
 #wrap section{display:block;}
@@ -164,13 +165,16 @@ fieldset#basic{border-bottom: 20px solid #E3E3E3;}
 fieldset#advanced legend{ padding-top: .7em }
 
 fieldset fieldset{
-    margin: 0 0 0px 0;
+    margin: -1.6em .5em .5em;
+    padding: 3px;
     position:relative;
     border:0;
+    background:#eee;
 }
 
 fieldset fieldset legend{
     font-family: monospace;
+    padding: 2em 0 0 0;
 }
 
 fieldset#advanced{
@@ -210,7 +214,6 @@ label.radius{display:block}
     background: url(/shinydemos/demos/borderradius-fun/images/thumb.png);
 }
 
-
 /* Only appears on larger screens */
 .sample{
     display:inline-block;
@@ -218,3 +221,10 @@ label.radius{display:block}
     height:2em;
     margin:0 .5em 0 0;
 }
+
+.patt002{background-image: url('../images/pattern_002.gif');}
+.patt123{background-image: url('../images/pattern_132.gif');}
+.patt141{background-image: url('../images/pattern_141.gif');}
+.patt155{background-image: url('../images/pattern_155.gif');}
+.patt157{background-image: url('../images/pattern_157.gif');}
+

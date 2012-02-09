@@ -79,7 +79,7 @@ shinydemos.create = function() {
         panelJS.src = '../../scripts/' + siteconfig.panelJS;
 
         panelContainer.className = siteconfig.panelClass;
-        panelContainer.innerHTML = demopageTemplate({ 'title': demo.title });
+        panelContainer.innerHTML = demopageTemplate({ 'title': demo.title, 'features': demo.support });
 
         console.log('wrapping', demo.title);
         win.document.getElementsByTagName('head')[0].appendChild(panelCSS);
@@ -117,7 +117,7 @@ shinydemos.create = function() {
           'path': '/' + siteconfig.demosFolder + '/' + d.slug + '/',
           'title': d.title,
           'thumb': 'images/' + d.slug + '/thumb.png',
-          'demotags': d.tags.join(', ')        
+          'demotags': d.tags        
         }
       });
 

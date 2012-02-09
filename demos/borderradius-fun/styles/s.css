@@ -166,7 +166,7 @@ fieldset#advanced, fieldset#basic{
 
 fieldset fieldset{
     margin: -1.6em .5em .5em .5em;
-    padding: 1em;
+    padding: 1em 1em 0 1em;
     position:relative;
     background:#eee;
     clear:both;
@@ -188,11 +188,13 @@ form #buttons{
     padding-top:1em;
 }
 
+form p{
+    margin:0 0 1em 0;
+}
 /* Hide some elements from small screens */
 .hidefromsmall{
     display:none;
 }
-
 
 label.radius{display:block}
 

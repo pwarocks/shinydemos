@@ -159,11 +159,12 @@ fieldset#advanced, fieldset#basic{
     position:relative;
     background:#fff;
     border-radius: 5px;
+    padding-bottom:.8em
 }
 
 
 fieldset fieldset{
-    margin: -1.6em .5em .5em .5em;
+    margin: -1.6em 1em .5em 1em;
     padding: .5em 1em 1em 1em;
     position:relative;
     background:#eee;

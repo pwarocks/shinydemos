@@ -166,7 +166,7 @@ fieldset#advanced, fieldset#basic{
 
 fieldset fieldset{
     margin: -1.6em .5em .5em .5em;
-    padding: 1em 1em 0 1em;
+    padding: 0em 1em 0 1em;
     position:relative;
     background:#eee;
     clear:both;
@@ -175,12 +175,12 @@ fieldset fieldset{
 }
 
 fieldset fieldset legend{
-    font-family: monospace;
-    padding: 2em 0 0 0;
+    padding: 3em 0 .5em 0;
+    font-weight:bold;
 }
 
 fieldset#advanced{
-    margin-top:-1.2em;
+    margin-top:-1.3em;
 }
 
 form #buttons{
@@ -214,7 +214,6 @@ input[type='range'].notrange:focus{
 
 select{
     font:inherit;
-    padding:.5em;
 }
 
 option{padding:0;}

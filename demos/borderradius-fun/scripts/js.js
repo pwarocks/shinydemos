@@ -15,17 +15,15 @@
         close       = document.querySelectorAll('.close');
 
         oncloseclick = function(e){
-            // e.preventDefault();
+            e.preventDefault();
 
-            alert('dafdsa');
+            // hides either the unsupported or get the css panel.
+            e.currentTarget.parentNode.className = 'hide';
 
-            // overlay.className = 'hide';
-            console.log('fdafsd');
-            console.log( e.target );
-            console.log( e.currentTarget );
+            // hides the overlay.
+            e.currentTarget.parentNode.parentNode.className = 'hide';
 
-            // showcss.className = 'hide';
-            // document.body.className = '';
+            document.body.className = '';
         }
 
 	    Lib.addHandlers({nodelist:close, event:'click', func:oncloseclick});

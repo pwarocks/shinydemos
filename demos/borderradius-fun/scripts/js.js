@@ -35,10 +35,7 @@
 
 	} else {
 
-        overlay.className = 'show';
-		unsupported.className = 'show';
-
-	  	var hasRange, form, getcode, range, fixranges, n, bgimg, fgimg, fimg, div, unit = 'px';
+        var hasRange, form, getcode, range, fixranges, n, bgimg, fgimg, fimg, div, unit = 'px';
 		var onsubmithandler, onresethandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, oncloseclick, onpanelclick;
 
 		form      = document.querySelector('form');

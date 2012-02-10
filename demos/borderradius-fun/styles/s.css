@@ -31,7 +31,7 @@ section{display:block;}
     font-weight:normal;
 }
 
-#wrap{
+#wrap, #overlay{
     font: 100% / 1.5 'Gudea',helvetica,arial,sans-serif;
     min-width: 320px;
     margin:auto;
@@ -256,7 +256,7 @@ select{
 
 button{
 	background-color:#1FA5EE;
-	border: 1px outset #1FA5EE;
+	border: 1px solid #1FA5EE;
 	color:#fff;
 	border-radius: 5px;
 	font:inherit;
@@ -298,16 +298,22 @@ button:disabled, button[disabled]{
 #unsupported a:visited{ color: #30c; }
 #unsupported a:hover, #unsupported a:active{ color: #f09; }
 
-.close{
+#unsupported a.close, #overlay a.close{
 	background:#f09;
 	color: #fff;
-	padding: 1px 3px;
+	padding: .1em .4em .3em;
 	position:absolute;
 	cursor: pointer;
-}
-#unsupported a.close{ right:20px; }
-#unsupported a.close:hover{
-	background:#000;
-	color:#fff;
+	right:20px;
+	font-family:'Gudea', sans-serif;
+    border-radius:5px;
 	text-decoration:none;
+	line-height:1.1;
 }
+
+#unsupported a.close:hover, #overlay a.close:hover{
+    background:rgb(248, 93, 27);
+    color:#ffc
+}
+
+

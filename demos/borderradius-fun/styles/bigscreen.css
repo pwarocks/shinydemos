@@ -2,10 +2,17 @@
     display:block;
 }
 
+#getcode{display:inline;}
 
 form #advanced p{
     float:left;
     width: 24%;
+}
+
+#setborderstyle p:nth-child(4){
+    width: 25%;
+    white-space:nowrap;
+    border-right: 15px solid rgba(0,0,0,0);
 }
 
 form #basic p{
@@ -13,10 +20,17 @@ form #basic p{
     width: 32%;
 }
 
-form #advanced p.credit{
+form #advanced p{
+    width: 24%;
+}
+
+form #advanced #setbgimg p.credit{
     width:100%;
 }
 
+form #advanced #setbgimg p{
+    width: 32%;
+}
 
 form #basic p:nth-child(2),
 form #basic p:nth-child(3){

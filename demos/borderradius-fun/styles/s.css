@@ -214,8 +214,6 @@ select{
     font:inherit;
 }
 
-option{padding:0;}
-
 .notmono{font-family: sans-serif;}
 
 /* For Android browsers */

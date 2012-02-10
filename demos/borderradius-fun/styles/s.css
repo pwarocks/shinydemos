@@ -22,6 +22,8 @@ body{
 	color:#222;
 }
 
+section{display:block;}
+
 #demoname{
     font-family: 'MaidenOrangeRegular',helvetica,arial,sans-serif;
     padding-top:1em;
@@ -79,10 +81,6 @@ body{
 	border-color:#f3c;
 	background-color:#1FA5EE;
 	margin:0;
-}
-
-#overlay{
-    display:none;
 }
 
 /* Form elements */
@@ -256,15 +254,16 @@ option{padding:0;}
 .credit a{color: rgba(0,0,0,.8);}
 .credit a:hover{color: #c09; margin:0}
 
-.hidefromsmall,#getcode{display:none;}
+.hidefromsmall, #getcode{display:none;}
+.show{display: block;}
 
 button{
 	background-color:#1FA5EE;
-	border: 2px outset #1FA5EE;
+	border: 1px outset #1FA5EE;
 	color:#fff;
 	border-radius: 5px;
 	font:inherit;
-	text-shadow: 1px 1px 0px #003;
+	text-shadow: 1px 0px 0px #003;
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 85, 255)), to(rgb(31, 165, 238)));
     background-image: -webkit-linear-gradient(top, rgb(0, 85, 255), rgb(31, 165, 238));
     background-image: -moz-linear-gradient(top, rgb(0, 85, 255), rgb(31, 165, 238));
@@ -277,11 +276,25 @@ button{
 button:hover, button:focus{
 	background-color:#0055ff;
 	background-image:none;
-	border: 2px solid #03f;
+	border: 1px solid #03f;
 	color:#fff;
 	border-radius: 5px;
 	font:inherit;
 	text-shadow: none;
+}
+
+button:disabled, button[disabled]{
+    color:#666;
+    text-shadow: none;
+   	border: 1px solid #a8a8a8;
+    background-color: #ebecea;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(235, 236, 234)), to(rgb(168, 168, 168)));
+    background-image: -webkit-linear-gradient(top, rgb(235, 236, 234), rgb(168, 168, 168));
+    background-image: -moz-linear-gradient(top, rgb(235, 236, 234), rgb(168, 168, 168));
+    background-image: -o-linear-gradient(top, rgb(235, 236, 234), rgb(168, 168, 168));
+    background-image: -ms-linear-gradient(top, rgb(235, 236, 234), rgb(168, 168, 168));
+    background-image: linear-gradient(top, rgb(235, 236, 234), rgb(168, 168, 168));
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#ebecea', EndColorStr='#a8a8a8');
 }
 
 #unsupported a:link, #overlay a.close{ color: #33f; }
@@ -300,43 +313,4 @@ button:hover, button:focus{
 	background:#000;
 	color:#fff;
 	text-decoration:none;
-}
-#overlay{
-	position:fixed;
-	z-index:9999;
-	width:100%;
-	height:200%;
-	background:rgba(0,0,0,.5);
-	top:0;
-	left:0;
-	margin:0;
-}
-
-#overlay section{
-	background: #fff;
-	margin: 100px auto;
-	padding: 20px 20px 30px;
-	position: relative;
-	width: 80%;
-	border-radius: 30px 0;
-	box-shadow: 0 0 100px rgba(0,0,0,.5);
-}
-
-#overlay h1{margin:0}
-
-#overlay pre{
-	background-color: #fff;
-	padding: 5px;
-	margin:0
-}
-#overlay a.close{color:#fff; right: 20px;}
-
-#overlay h2{
-	font-family: 'MaidenOrangeRegular',serif;
-	font-size:36px;
-	margin:0 10px;
-}
-pre{
-	border:1px inset #333;
-	margin:20px;
 }

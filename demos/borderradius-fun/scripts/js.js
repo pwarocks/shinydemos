@@ -221,7 +221,7 @@
 
 		onsubmithandler = function(e){
 			e.preventDefault();
-
+            alert( overlay );
 			var	x,
 				num,
 				extractCSS,
@@ -274,6 +274,8 @@
 
 			pre.innerHTML = output;
 			overlay.className = showcss.className = 'show';
+
+
 		}
 
 		oncloseclick = function(e){

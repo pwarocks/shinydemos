@@ -51,7 +51,6 @@
 		var onsubmithandler,
 		    onresethandler,
 		    onrangechange,
-		    onunitchange,
 		    onborderchange,
 		    onborderwidthchange,
 		    onpanelclick;
@@ -167,7 +166,7 @@
 		onborderwidthchange = function(e){
 			var whichborder, whichstyle, u = unit, evt;
 
-			switch( e.target.id ){
+        	switch( e.target.id ){
 				case 'brdrwidthtop':
 					whichborder = 'borderTopWidth';
 					whichstyle  = 'brdrtop';

@@ -316,7 +316,6 @@
 		}
 
 		onresethandler = function(e){
-			alert('fadsafsd');
 
 			var i, hasclass, curchild, corners = document.querySelectorAll('.crnrsz'), clen = corners.length;
 			/*

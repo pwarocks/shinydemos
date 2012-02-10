@@ -55,7 +55,7 @@ var Lib = (function(){
 				for(i = 0; i < len; i++){
 					fixranges[i].setAttribute('size',4);
 					fixranges[i].setAttribute('maxlength',3);
-					fixranges[i].className = ' notrange';
+					fixranges[i].className = 'notrange';
 				}
 			}
 		},

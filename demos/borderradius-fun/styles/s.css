@@ -184,22 +184,36 @@ fieldset#advanced{
 }
 
 form #buttons{
-    background: #E3E3E3;
     padding-top:1em;
 }
 
 form p{
     margin:0 0 1em 0;
-}
-/* Hide some elements from small screens */
-.hidefromsmall{
-    display:none;
+    padding:0;
 }
 
 label.radius{display:block}
 
-.notmono{font-family: sans-serif;}
 
+input[type='range']{
+     width:inherit;
+}
+
+input[type='range'].notrange{
+     border: 1px solid #ccc;
+     font: inherit;
+     font-size: 1.5em;
+     padding: .1em;
+     margin-top:.1em;
+     width: 3em;
+     text-align:right;
+}
+
+input[type='range'].notrange:focus{
+    border-color: rgb(248, 93, 27);
+}
+
+.notmono{font-family: sans-serif;}
 
 /* For Android browsers */
 .norangeui input[type='range']{
@@ -236,3 +250,88 @@ label.radius{display:block}
 .credit{font-size:.8em; color: rgba(0,0,0,.8); text-align: right;}
 .credit a{color: rgba(0,0,0,.8);}
 .credit a:hover{color: #c09; margin:0}
+
+.hidefromsmall,#getcode{display:none;}
+
+button{
+	background-color:#1FA5EE;
+	border: 2px outset #1FA5EE;
+	color:#fff;
+	border-radius: 5px;
+	font:inherit;
+	text-shadow: 1px 1px 0px #003;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 85, 255)), to(rgb(31, 165, 238)));
+    background-image: -webkit-linear-gradient(top, rgb(0, 85, 255), rgb(31, 165, 238));
+    background-image: -moz-linear-gradient(top, rgb(0, 85, 255), rgb(31, 165, 238));
+    background-image: -o-linear-gradient(top, rgb(0, 85, 255), rgb(31, 165, 238));
+    background-image: -ms-linear-gradient(top, rgb(0, 85, 255), rgb(31, 165, 238));
+    background-image: linear-gradient(top, rgb(0, 85, 255), rgb(31, 165, 238));
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#0055ff', EndColorStr='#1fa5ee');
+}
+
+button:hover, button:focus{
+	background-color:#0055ff;
+	background-image:none;
+	border: 2px solid #03f;
+	color:#fff;
+	border-radius: 5px;
+	font:inherit;
+	text-shadow: none;
+}
+
+#unsupported a:link, #overlay a.close{ color: #33f; }
+#unsupported a:visited{ color: #30c; }
+#unsupported a:hover, #unsupported a:active{ color: #f09; }
+
+.close{
+	background:#f09;
+	color: #fff;
+	padding: 1px 3px;
+	position:absolute;
+	cursor: pointer;
+}
+#unsupported a.close{ right:20px; }
+#unsupported a.close:hover{
+	background:#000;
+	color:#fff;
+	text-decoration:none;
+}
+#overlay{
+	position:fixed;
+	z-index:9999;
+	width:100%;
+	height:200%;
+	background:rgba(0,0,0,.5);
+	top:0;
+	left:0;
+	margin:0;
+}
+
+#overlay section{
+	background: #fff;
+	margin: 100px auto;
+	padding: 20px 20px 30px;
+	position: relative;
+	width: 80%;
+	border-radius: 30px 0;
+	box-shadow: 0 0 100px rgba(0,0,0,.5);
+}
+
+#overlay h1{margin:0}
+
+#overlay pre{
+	background-color: #fff;
+	padding: 5px;
+	margin:0
+}
+#overlay a.close{color:#fff; right: 20px;}
+
+#overlay h2{
+	font-family: 'MaidenOrangeRegular',serif;
+	font-size:36px;
+	margin:0 10px;
+}
+pre{
+	border:1px inset #333;
+	margin:20px;
+}

@@ -142,19 +142,19 @@
 			switch( e.target.id ){
 				case 'brdrtop':
 					whichborder = 'borderTopStyle';
-					document.querySelector('#brdrwidthtop').value = 1;
+					document.querySelector('#brdrwidthtop').value = (document.querySelector('#brdrwidthtop').value > 0) ? document.querySelector('#brdrwidthtop').value : 1;
 					break;
 				case 'brdrright':
 					whichborder = 'borderRightStyle';
-					document.querySelector('#brdrwidthright').value = 1;
+					document.querySelector('#brdrwidthright').value = (document.querySelector('#brdrwidthright').value > 0) ? document.querySelector('#brdrwidthright').value : 1;
 					break;
 				case 'brdrbottom':
 					whichborder = 'borderBottomStyle';
-					document.querySelector('#brdrwidthbottom').value = 1;
+					document.querySelector('#brdrwidthbottom').value = (document.querySelector('#brdrwidthbottom').value > 0) ? document.querySelector('#brdrwidthbottom').value : 1;
 					break;
 				case 'brdrleft':
 					whichborder = 'borderLeftStyle';
-					document.querySelector('#brdrwidthleft').value = 1;
+					document.querySelector('#brdrwidthleft').value = (document.querySelector('#brdrwidthleft').value > 0) ? document.querySelector('#brdrwidthleft').value : 1;
 					break;
 			}
 

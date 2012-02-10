@@ -68,8 +68,6 @@ fieldset fieldset{
 
 #overlay section{
     display:none;
-}
-#overlay section{
 	background: #fff;
 	margin: 100px auto;
 	padding: 20px 20px 30px;
@@ -79,8 +77,6 @@ fieldset fieldset{
 	box-shadow: 0 0 100px rgba(0,0,0,.5);
 }
 
-#overlay h1{margin:0}
-
 #overlay pre{
 	background-color: #fff;
 	padding: 5px;
@@ -89,16 +85,22 @@ fieldset fieldset{
 #overlay a.close{color:#fff; right: 20px;}
 
 #overlay h2{
-	font-family: 'MaidenOrangeRegular',serif;
+	font: normal 1.5em / 1 'MaidenOrangeRegular', serif;
 	font-size:36px;
-	margin:0 10px;
-}
-pre{
-	border:1px inset #333;
-	margin:20px;
+	margin:0 1em .2em 0;
+	margin:0 1rem .5rem 0;
+
 }
 
 #overlay.show, #overlay section.show{
     display: block;
+}
+
+pre{
+	border:1px inset #333;
+	margin:1em;
+    padding:1em;
+    margin:1rem;
+    padding:1rem;
 }
 

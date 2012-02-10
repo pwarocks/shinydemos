@@ -73,7 +73,7 @@ fieldset fieldset{
 	padding: 20px 20px 30px;
 	position: relative;
 	width: 80%;
-	border-radius: 30px 0;
+	border-radius:5px;
 	box-shadow: 0 0 100px rgba(0,0,0,.5);
 }
 
@@ -82,7 +82,6 @@ fieldset fieldset{
 	padding: 5px;
 	margin:0
 }
-#overlay a.close{color:#fff; right: 20px;}
 
 #overlay h2{
 	font: normal 1.5em / 1 'MaidenOrangeRegular', serif;

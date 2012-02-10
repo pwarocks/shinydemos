@@ -1,0 +1,7 @@
+input[type=range]{
+    width:90%;
+}
+
+#basic p:last-child{
+    text-align:right;
+}

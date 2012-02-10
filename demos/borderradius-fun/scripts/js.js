@@ -12,13 +12,18 @@
 	    main        = document.getElementById('main'),
 	    borderobj   = main.lastElementChild,
 		panels      = document.querySelectorAll('form > fieldset > legend');
+        close       = document.querySelectorAll('.close');
 
 	if( Lib.hasBorderRadius == false ){
 		overlay.className = 'show';
 		unsupported.className = 'show';
 
 	} else {
-		var hasRange, form, getcode, range, fixranges, n, close, bgimg, fgimg, fimg, div, unit = 'px';
+
+overlay.className = 'show';
+		unsupported.className = 'show';
+
+	  	var hasRange, form, getcode, range, fixranges, n, bgimg, fgimg, fimg, div, unit = 'px';
 		var onsubmithandler, onresethandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, oncloseclick, onpanelclick;
 
 		form      = document.querySelector('form');
@@ -31,7 +36,6 @@
 		fgimg     = form['fgimg'];
 		img 	  = Lib.makeImage('images/kananaskis.jpg');
 		vid		  = Lib.makeVideo('raindropsinapool');
-		close     = document.querySelectorAll('.close');
 
 		onrangechange = function(e){
 			var prop, u = unit, thisedge, otheredge, labels;
@@ -278,9 +282,17 @@
 		}
 
 		oncloseclick = function(e){
-			overlay.className = 'hide';
-			showcss.className = 'hide';
-			document.body.className = '';
+		    // e.preventDefault();
+
+		    alert('dafdsa');
+
+			// overlay.className = 'hide';
+            console.log('fdafsd');
+			console.log( e.target );
+			console.log( e.currentTarget );
+
+			// showcss.className = 'hide';
+			// document.body.className = '';
 		}
 
 		onpanelclick = function(e){
@@ -369,5 +381,7 @@
         if( Lib.mightBeAndroid() ){
             document.body.className += ' norangeui';
         }
+
+         console.log( 'close '+close );
 	}
 })();

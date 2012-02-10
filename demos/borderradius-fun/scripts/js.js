@@ -221,8 +221,8 @@
 
 		onsubmithandler = function(e){
 			e.preventDefault();
-            alert( overlay );
-			var	x,
+
+            var	x,
 				num,
 				extractCSS,
 				getThese,
@@ -275,7 +275,6 @@
 			pre.innerHTML = output;
 			overlay.className = showcss.className = 'show';
 
-
 		}
 
 		oncloseclick = function(e){
@@ -304,6 +303,8 @@
 		}
 
 		onresethandler = function(e){
+			alert('fadsafsd');
+
 			var i, hasclass, curchild, corners = document.querySelectorAll('.crnrsz'), clen = corners.length;
 			/*
 			 If form has a class of 'formonly', the event came from onfgchange,

@@ -243,7 +243,7 @@ option{padding:0;}
     display:inline-block;
     width: 2em;
     height:2em;
-    margin:0 .5em -.5em 0;
+    margin:0 .5em -.5em .5em;
 }
 
 .patt002{background-image: url('../images/pattern_002.gif');}

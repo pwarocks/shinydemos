@@ -11,8 +11,9 @@
 		showcss     = document.getElementById('showcss'),
 	    main        = document.getElementById('main'),
 	    borderobj   = main.lastElementChild,
-		panels      = document.querySelectorAll('form > fieldset > legend');
-        close       = document.querySelectorAll('.close');
+		panels      = document.querySelectorAll('form > fieldset > legend'),
+        close       = document.querySelectorAll('.close'),
+        oncloseclick;
 
         oncloseclick = function(e){
             e.preventDefault();
@@ -53,7 +54,6 @@
 		    onunitchange,
 		    onborderchange,
 		    onborderwidthchange,
-		    oncloseclick,
 		    onpanelclick;
 
 		form      = document.querySelector('form');

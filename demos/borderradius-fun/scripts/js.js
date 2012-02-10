@@ -12,13 +12,30 @@
 	    main        = document.getElementById('main'),
 	    borderobj   = main.lastElementChild,
 		panels      = document.querySelectorAll('form > fieldset > legend');
+        close       = document.querySelectorAll('.close');
+
+        oncloseclick = function(e){
+            e.preventDefault();
+
+            // hides either the unsupported or get the css panel.
+            e.currentTarget.parentNode.className = 'hide';
+
+            // hides the overlay.
+            e.currentTarget.parentNode.parentNode.className = 'hide';
+
+            document.body.className = '';
+        }
+
+	    Lib.addHandlers({nodelist:close, event:'click', func:oncloseclick});
+
 
 	if( Lib.hasBorderRadius == false ){
 		overlay.className = 'show';
 		unsupported.className = 'show';
 
 	} else {
-		var hasRange, form, getcode, range, fixranges, n, close, bgimg, fgimg, fimg, div, unit = 'px';
+
+        var hasRange, form, getcode, range, fixranges, n, bgimg, fgimg, fimg, div, unit = 'px';
 		var onsubmithandler, onresethandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, oncloseclick, onpanelclick;
 
 		form      = document.querySelector('form');
@@ -27,11 +44,10 @@
 		range     = document.querySelectorAll('#basic input[type=range]');
 		brdrwidth = document.querySelectorAll('#setborderwidth input[type=range]');
 		div		  = document.querySelector('#main div');
-		bgimg     = document.querySelector('#bgimg');
-		fgimg     = document.querySelector('#fgimg');
+		bgimg     = form['bgimg'];
+		fgimg     = form['fgimg'];
 		img 	  = Lib.makeImage('images/kananaskis.jpg');
 		vid		  = Lib.makeVideo('raindropsinapool');
-		close     = document.querySelectorAll('.close');
 
 		onrangechange = function(e){
 			var prop, u = unit, thisedge, otheredge, labels;
@@ -168,7 +184,7 @@
 		}
 
 		onbgchange = function(e){
-			if( e.target.value == ''){
+		    if( e.target.value == ''){
 				borderobj.className = '';
 			} else {
 				borderobj.className = 'patt'+e.target.value;
@@ -179,9 +195,9 @@
 
 		onfgchange = function(e){
 
-			var id, curchild = main.lastElementChild, selects = document.querySelectorAll('select');
-			id = curchild.id;
-			var whichtype = e.target.value;
+			var curchild = main.lastElementChild, selects = document.querySelectorAll('select');
+
+			var whichtype = e.currentTarget.value;
 
 			switch( whichtype ){
 				case 'div':
@@ -195,7 +211,7 @@
 					borderobj = img;
 					break;
 			}
-			borderobj.id = id;
+			borderobj.id = curchild.id;
 
 			main.replaceChild(borderobj, curchild);
 
@@ -203,14 +219,12 @@
 			form.setAttribute('class','formonly');
 			form.reset();
 
-
-
 			/*******
 			  Set fgimg value to current type of object
 			  so the field stays the same.
 			********/
 
-			fgimg.value = whichtype;
+			form[whichtype].checked = true;
 
 			/* Remove any classes from the border object */
 			borderobj.className = '';
@@ -224,7 +238,7 @@
 		onsubmithandler = function(e){
 			e.preventDefault();
 
-			var	x,
+            var	x,
 				num,
 				extractCSS,
 				getThese,
@@ -276,12 +290,7 @@
 
 			pre.innerHTML = output;
 			overlay.className = showcss.className = 'show';
-		}
 
-		oncloseclick = function(e){
-			overlay.className = 'hide';
-			showcss.className = 'hide';
-			document.body.className = '';
 		}
 
 		onpanelclick = function(e){
@@ -304,6 +313,7 @@
 		}
 
 		onresethandler = function(e){
+
 			var i, hasclass, curchild, corners = document.querySelectorAll('.crnrsz'), clen = corners.length;
 			/*
 			 If form has a class of 'formonly', the event came from onfgchange,
@@ -355,13 +365,18 @@
 		Lib.addHandlers({nodelist:range, event:'change', func:onrangechange});
 		Lib.addHandlers({nodelist:brdrstyle, event:'change', func:onborderchange});
 		Lib.addHandlers({nodelist:brdrwidth, event:'change', func:onborderwidthchange});
-		Lib.addHandlers({nodelist:close, event:'click', func:oncloseclick});
 		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
+		Lib.addHandlers({nodelist:bgimg, event:'click', func:onbgchange});
+		Lib.addHandlers({nodelist:fgimg, event:'click', func:onfgchange});
 
-		bgimg.addEventListener('change',onbgchange,false);
-		fgimg.addEventListener('change',onfgchange,false);
 		form.addEventListener('submit',onsubmithandler,false);
 		form.addEventListener('reset',onresethandler,false);
 
+        /* Add 'android' class to the body if it looks like this is Android. */
+
+        if( Lib.mightBeAndroid() ){
+            document.body.className += ' norangeui';
+        }
 	}
+
 })();

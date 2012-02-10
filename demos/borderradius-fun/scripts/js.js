@@ -35,8 +35,26 @@
 
 	} else {
 
-        var hasRange, form, getcode, range, fixranges, n, bgimg, fgimg, fimg, div, unit = 'px';
-		var onsubmithandler, onresethandler, onrangechange, onunitchange, onborderchange, onborderwidthchange, oncloseclick, onpanelclick;
+        var hasRange,
+            form,
+            getcode,
+            range,
+            fixranges,
+            n,
+            bgimg,
+            fgimg,
+            fimg,
+            div,
+            unit = 'px';
+
+		var onsubmithandler,
+		    onresethandler,
+		    onrangechange,
+		    onunitchange,
+		    onborderchange,
+		    onborderwidthchange,
+		    oncloseclick,
+		    onpanelclick;
 
 		form      = document.querySelector('form');
 		getcode   = form.querySelector('button#getcode');

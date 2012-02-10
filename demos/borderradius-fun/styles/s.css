@@ -164,7 +164,7 @@ fieldset#advanced, fieldset#basic{
 
 fieldset fieldset{
     margin: -1.6em .5em .5em .5em;
-    padding: 0em 1em 1em 1em;
+    padding: .5em 1em 1em 1em;
     position:relative;
     background:#eee;
     clear:both;

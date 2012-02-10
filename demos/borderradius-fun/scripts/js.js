@@ -14,13 +14,30 @@
 		panels      = document.querySelectorAll('form > fieldset > legend');
         close       = document.querySelectorAll('.close');
 
+        oncloseclick = function(e){
+            // e.preventDefault();
+
+            alert('dafdsa');
+
+            // overlay.className = 'hide';
+            console.log('fdafsd');
+            console.log( e.target );
+            console.log( e.currentTarget );
+
+            // showcss.className = 'hide';
+            // document.body.className = '';
+        }
+
+	    Lib.addHandlers({nodelist:close, event:'click', func:oncloseclick});
+
+
 	if( Lib.hasBorderRadius == false ){
 		overlay.className = 'show';
 		unsupported.className = 'show';
 
 	} else {
 
-overlay.className = 'show';
+        overlay.className = 'show';
 		unsupported.className = 'show';
 
 	  	var hasRange, form, getcode, range, fixranges, n, bgimg, fgimg, fimg, div, unit = 'px';
@@ -281,20 +298,6 @@ overlay.className = 'show';
 
 		}
 
-		oncloseclick = function(e){
-		    // e.preventDefault();
-
-		    alert('dafdsa');
-
-			// overlay.className = 'hide';
-            console.log('fdafsd');
-			console.log( e.target );
-			console.log( e.currentTarget );
-
-			// showcss.className = 'hide';
-			// document.body.className = '';
-		}
-
 		onpanelclick = function(e){
 			e.stopPropagation();
 			var transition = Lib.transitionEvent();
@@ -368,7 +371,6 @@ overlay.className = 'show';
 		Lib.addHandlers({nodelist:range, event:'change', func:onrangechange});
 		Lib.addHandlers({nodelist:brdrstyle, event:'change', func:onborderchange});
 		Lib.addHandlers({nodelist:brdrwidth, event:'change', func:onborderwidthchange});
-		Lib.addHandlers({nodelist:close, event:'click', func:oncloseclick});
 		Lib.addHandlers({nodelist:panels, event:'click', func:onpanelclick});
 		Lib.addHandlers({nodelist:bgimg, event:'click', func:onbgchange});
 		Lib.addHandlers({nodelist:fgimg, event:'click', func:onfgchange});
@@ -381,7 +383,6 @@ overlay.className = 'show';
         if( Lib.mightBeAndroid() ){
             document.body.className += ' norangeui';
         }
-
-         console.log( 'close '+close );
 	}
+
 })();

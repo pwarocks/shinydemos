@@ -253,7 +253,6 @@ select{
 .credit a:hover{color: #c09; margin:0}
 
 .hidefromsmall, #getcode{display:none;}
-.show{display: block;}
 
 button{
 	background-color:#1FA5EE;

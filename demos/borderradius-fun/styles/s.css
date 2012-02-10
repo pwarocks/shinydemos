@@ -30,7 +30,7 @@ body{
 }
 
 #wrap{
-    font: 85% / 1.5 'Gudea',helvetica,arial,sans-serif;
+    font: 100% / 1.5 'Gudea',helvetica,arial,sans-serif;
     min-width: 320px;
     margin:auto;
 }
@@ -194,7 +194,6 @@ form p{
 
 label.radius{display:block}
 
-
 input[type='range']{
      width:inherit;
 }
@@ -212,6 +211,13 @@ input[type='range'].notrange{
 input[type='range'].notrange:focus{
     border-color: rgb(248, 93, 27);
 }
+
+select{
+    font:inherit;
+    padding:.5em;
+}
+
+option{padding:0;}
 
 .notmono{font-family: sans-serif;}
 

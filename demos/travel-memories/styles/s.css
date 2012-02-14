@@ -22,18 +22,19 @@
 
 html,body{margin: 0; padding: 0}
 
-body *{margin: 0; padding: 0}
+body *{margin: 0; padding: 0;}
 
 html{height: 100%;}
 
-
 body{
 	height: 100%;
-	font: .9em / 1 'BitstreamVeraSerifRoman',Georgia,'Droid Serif',serif;
+	font: 80% / 1 'BitstreamVeraSerifRoman',Georgia,'Droid Serif',serif;
 	background: url(../images/squidfingers_dot_com_pattern_038.gif);
 	position: relative;
 	overflow-x: hidden;
 }
+
+body.clip{ overflow-y: hidden; }
 
 a:link{color: #c60;}
 a:visited{color: #c90;}
@@ -50,28 +51,29 @@ header{display:block;}
 
 h1{
 	font: normal 4em / 1 'JosefinSlabBold';
-	padding: 20px 20px 0 20px;
+	padding: .5em 0 0 .23em;
+	padding: 1rem 1rem 0 1rem;
 	margin:0;
 	letter-spacing: -.05em;
 }
-header > p{padding: 0 20px;}
+header > p{
+	padding: 0 1em;
+	padding: 0 1rem;
+}
 
 #container{
-	margin: 0 2em;
-	background: rgba(255,255,255,.6);
-	min-height: 115%;
+	margin: 0 auto;
+	background: rgba(255,255,255,.65);
 	position: relative;
 	z-index: 0;
     top: 0;
 }
 
-#container.loading{top: -1000px;}
+#container.loading{top: -300em;}
 
 #photostack{
 	top:0;
 	position:relative;
-	margin: 3em auto 0 auto;
-	width:90%;
 }
 
 /*
@@ -108,9 +110,8 @@ section{
 	border-top-color: #e6e6e6;
 	border-left-color: #e6e6e6;
 	border-style: outset;
-	position: absolute;
+
 	background: #fff;
-	margin: 0 -10px;
 	cursor: pointer;
 	z-index:auto;
 	display:block;
@@ -178,18 +179,12 @@ section.leadPhoto{
 
 #overlay{
 	background-color: rgba(0,0,0,.5);
-	position: fixed;
+	position: absolute;
 	z-index: 9997;
-	left: -2000em;
-	top:  -2000em;
-	width:  4000em;
-	height: 4000em;
-
-	/* using rems where supported */
-	left: -2000rem;
-	top:  -2000rem;
-	width:  4000rem;
-	height: 4000rem
+	left: -100em;
+	top:  -100em;
+	width:  1000em;
+	height: 1000em;
 }
 #overlay:hover{cursor: pointer;}
 

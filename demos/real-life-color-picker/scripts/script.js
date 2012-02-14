@@ -14,7 +14,13 @@ var options = {
 
 if (navigator.getUserMedia){
 	navigator.getUserMedia(options, v_success);
-} else{
+}
+
+else if (navigator.webkitGetUserMedia) {
+	navigator.webkitGetUserMedia("video", webkit_v_success, v_error)
+}
+
+ else{
 	not_supported();
 }
 
@@ -27,6 +33,10 @@ function not_supported(){
 
 function v_success(stream){
 	video_element.src = stream;
+}
+
+function webkit_v_success(stream){
+	video_element.src = window.webkitURL.createObjectURL(stream);
 }
 
 function v_error(error){

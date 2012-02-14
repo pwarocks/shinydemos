@@ -15,7 +15,8 @@
     "ncp": "*",
     "handlebars": "*",
     "js-yaml": "*",
-    "jsdom": "*"
+    "jsdom": "*",
+    "rimraf": "*"
     
   },
   "devDependencies": {}

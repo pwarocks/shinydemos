@@ -108,6 +108,8 @@ function handleTouchStart(event) {
 
     document.body.addEventListener('touchmove', handleTouchMove, true);
     document.body.addEventListener('touchend', handleTouchEnd, true);
+
+    event.preventDefault();
   }
 };
 
@@ -117,19 +119,20 @@ function handleTouchMove(event) {
   } else {
     touchDX = event.touches[0].pageX - touchStartX;
     touchDY = event.touches[0].pageY - touchStartY;
+    event.preventDefault();
   }
 };
 
 function handleTouchEnd(event) {
   var dx = Math.abs(touchDX);
   var dy = Math.abs(touchDY);
-
   if ((dx > PM_TOUCH_SENSITIVITY) && (dy < (dx * 2 / 3))) {
     if (touchDX > 0) {
       prevSlide();
     } else {
       nextSlide();
     }
+    event.preventDefault();
   }
 
   cancelTouch();
@@ -177,12 +180,12 @@ function showHints(){
     setTimeout(function(){
       lhint.parentNode.removeChild(lhint);
       rhint.parentNode.removeChild(rhint);
-    }, 500); 
+    }, 300); 
   }
 }
 
 function init(){
-  var PM_TOUCH_SENSITIVITY = 15;
+  PM_TOUCH_SENSITIVITY = 15;
   
   ['frame1', 'frame2'].forEach(function(item){
     new Image().src = item;

@@ -48,7 +48,9 @@ function nextSlide(){
 }
 
 function makeSlide(slide){
-  var newSlide;
+  var newSlide,
+      frameList = document.getElementsByClassName('frame');
+
   if (slide.dir == 'next'){
     newSlide = new BorderBox({width: 150, height: 150, framed: true});
     newSlide.create();
@@ -63,7 +65,7 @@ function makeSlide(slide){
 
 function makeCurrent(el){
   var frame = el.frame ? el.frame : el;
-  
+
   if (frame.classList.contains('current')) return;
   
   if (frame.classList.contains('prev')){
@@ -144,16 +146,17 @@ function cancelTouch() {
 };
 
 function eventListeners(){
-  frameList = document.getElementsByClassName('frame'),
-  paintings = document.querySelectorAll('.frame > div');
-  [].slice.apply(frameList).forEach(function(){
-      addEventListener('click', function(event){makeCurrent(event.target);}, false);
-  });
-  
-  [].slice.apply(paintings).forEach(function(){
-      addEventListener('click', function(event){makeCurrent(event.target.parentNode);}, false);
-  });
-  
+
+  document.body.addEventListener('click', function(event){
+    var el = event.target;
+    if (el.classList.contains('frame')) {
+      makeCurrent(el);
+      event.stopPropagation();
+    } else if (el.classList.length == 0) {
+      makeCurrent(el.parentNode);
+      event.stopPropagation();
+    }
+  }, false);
   
   document.addEventListener('keydown', handleBodyKeyDown, false);
   document.body.addEventListener('touchstart', handleTouchStart, false);
@@ -188,7 +191,7 @@ function init(){
   PM_TOUCH_SENSITIVITY = 15;
   
   ['frame1', 'frame2'].forEach(function(item){
-    new Image().src = item;
+    new Image().src = 'images/' + item + '.jpg';
   });
   initFrames();
   eventListeners();

@@ -1,3 +1,5 @@
+//Authors: Nicolas Garcia Belmonte (@philogb) and Luz Caballero (@gerbille)
+
 //Unpack modules
 PhiloGL.unpack();
 Scene.PICKING_RES = 1;

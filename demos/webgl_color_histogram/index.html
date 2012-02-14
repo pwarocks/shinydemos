@@ -4,10 +4,10 @@
     <title>Real time color 3D histogram</title>
     <link href='http://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" media="all" type="text/css" href="styles/style.css" />
-    <script type="text/javascript" src="../../source/scripts/PhiloGL.js"></script>
-    <script type="text/javascript" src="scripts/histogram.js"></script>
+    <script src="../../source/scripts/PhiloGL.js"></script>
+    <script src="scripts/histogram.js"></script>
   </head>
-  <body onload="init();">
+  <body>
     <div id="title">
     <h1>Real time color 3D histogram analysis</h1>
     
@@ -81,12 +81,7 @@
       <canvas class="shadows" id="histogram-canvas" width="500" height="575"></canvas>
     </div>
   
-  <canvas id="pastie" width="50" height="50" style="display:none;"></canvas>
-
-  <div class="footer">
-    Copyright &copy; <a href="http://twitter.com/gerbille">Luz Caballero</a> and <a href="http://philogb.github.com/">Nicolas Garcia Belmonte</a>.
-  </div>
-
+  <canvas id="pastie" width="50" height="50"></canvas>
 
   <script>
     if (!PhiloGL.hasWebGL()) {

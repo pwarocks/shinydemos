@@ -31,7 +31,6 @@ body.no-webgl .description {
 
 .shadows {
   -webkit-box-shadow: #333 0 0 10px;
-  -o-box-shadow: #333 0 0 10px;
   -moz-box-shadow: #333 0 0 10px;
   box-shadow: #333 0 0 10px;
 }
@@ -110,16 +109,14 @@ ul.schemes li {
   cursor: pointer;
   -webkit-transition: -webkit-box-shadow 500ms;
   -moz-transition: -moz-box-shadow 500ms;
-  -o-transition: -o-box-shadow 500ms;
+  -o-transition: box-shadow 500ms;
   -webkit-box-shadow: inset #333 0 0 0px;
-  -o-box-shadow: inset #333 0 0 0px;
   -moz-box-shadow: inset #333 0 0 0px;
   box-shadow: inset #333 0 0 0px;
 }
 
 ul.schemes li:hover {
   -webkit-box-shadow: inset #333 0 0 5px;
-  -o-box-shadow: inset #333 0 0 5px;
   -moz-box-shadow: inset #333 0 0 5px;
   box-shadow: inset #333 0 0 5px;
   text-decoration: underline;
@@ -137,5 +134,9 @@ ul.schemes li img {
 
 canvas {
 /*  border: 1px solid red;*/
+}
+
+#pastie {
+  display:none;
 }
 

@@ -1,16 +1,13 @@
 (function() {
-    var $docEl = $( document.documentElement ),
-    $body = $( document.body ),
-    $window = $( window ),
-    $scrollpage = $body.find('#scrollpage'),
+    var $body = $( document.body ),
     $parallax = $body.find('#parallax'),
     $aside = $('<div class=aside/>'),
-    $sections = $scrollpage.find('.planet'),
+    $sections = $body.find('.planet'),
     $navtitles = $sections.find('h2'),
-    $style = $('<style/>'),
-    styles = [],
-    $lastPlanet = null,
-    $lastLink = null;
+    keys = [38, 40, 37,39],
+    targetPlanet = 0,
+    lastPlanet = 0,
+    $links;
       
        
     function createNavigationMenu() {
@@ -20,15 +17,14 @@
         lnk.attr('data-position', i);
         if (i === 0) {
           lnk.addClass('active');
-          $lastLink = lnk;
         }
         lnk.click(function(e) {
-            $lastLink && $lastLink.removeClass('active');
-            e.preventDefault();
-            $this = $(this); 
-            $this.addClass('active');
-            $lastLink = $this;
-            moveplanets($this.attr('data-position'));
+          e.preventDefault();
+          targetPlanet = +$(this).attr('data-position');
+          if(lastPlanet != targetPlanet) {
+            changePlanets();
+          } 
+          lastPlanet = targetPlanet;
         });
 
         lnk.append($navtitle.textContent);
@@ -36,37 +32,85 @@
       });
         
       $body.append($aside);
+
+      return $aside.find('a');
     }
       
-    createNavigationMenu();
 
-   function moveplanets(position){
-      $currentPlanet = $sections.eq(position);
-      $lastPlanet && $lastPlanet.removeClass('active');
-      $lastPlanet = $currentPlanet;
-      $scalePlanetsHide = $currentPlanet.prevAll();
+   function changePlanets() {
+      $links.eq(lastPlanet).removeClass('active');
+      if(lastPlanet > targetPlanet) {
+        moveToPlanet(lastPlanet - 1, targetPlanet, lastPlanet);
+      } else {
+        moveToPlanet(lastPlanet + 1, targetPlanet, lastPlanet);
+      }
+      $links.eq(targetPlanet).addClass('active');
+   };
+
+   function moveToPlanet(planet, targetPlanet, prevPlanet){
+
+     if(prevPlanet == targetPlanet) { return; }
+
+
+      var $currentPlanet = $sections.eq(planet);
+      var nextPlanet = planet > targetPlanet ? planet - 1 : planet + 1;
+
+      $prevPlanet = $sections.eq(planet - 1);
+      $prevPlanet.removeClass('active scaleshow-0').addClass('scalehide-' + (planet - 1));
+
+      $currentPlanet[0].addEventListener('oTransitionEnd', changePlanet, true);
+
+      function changePlanet(event) { 
+        if(event.propertyName == '-o-transform') {
+          moveToPlanet(nextPlanet, targetPlanet, planet);
+          event.target.removeEventListener(event.type, changePlanet, true); 
+        }
+      }
+
       $scalePlanetsShow = $currentPlanet.nextAll().andSelf();
-      $sectionsLength = $sections.length;
-
-      $scalePlanetsHide.each(function(i, planet){
-        $planet = $(planet);
-        $planet.removeClass();
-        $planet.addClass('planet');
-        setTimeout(function() { $sections.eq(i).addClass('scalehide-' + i); }, 0);
-      });
 
       $scalePlanetsShow.each(function(i, planet) {
         $planet = $(planet);
-        $planet.show();
         $planet.removeClass();
         $planet.addClass('planet scaleshow-' + (i));
       });
 
-      setTimeout(function() { $parallax.removeClass(); $parallax.addClass('scale-' + position); $currentPlanet.addClass('active'); }, 0);
+      $parallax.removeClass(); 
+      $parallax.addClass('scale-' + planet); 
+      $currentPlanet.addClass('active');
+
+
     }
 
-    $sections.eq(0).addClass('active');
-    $parallax.addClass('scale-0');
+
+    function init() {
+      
+      $links = createNavigationMenu();
+
+      $sections.eq(0).addClass('active');
+      $parallax.addClass('scale-0');
+
+      
+      window.onkeyup = function(e) {
+        var keyPressed = keys.indexOf(e.keyCode);
+
+        if(keyPressed > -1) {
+          if(e.keyCode == 38 || e.keyCode == 37) {
+            targetPlanet = targetPlanet > 0 ? targetPlanet - 1 : 0;
+          } else if(e.keyCode == 40 || e.keyCode == 39) {
+            targetPlanet = targetPlanet < ($sections.length - 1) ? targetPlanet + 1 : ($sections.length - 1);
+          }
+
+          changePlanets();
+
+          lastPlanet = targetPlanet;
+        }
+        
+      };
+    };
+
+    init();
+    
 
 })();
 

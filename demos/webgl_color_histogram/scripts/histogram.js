@@ -1,4 +1,9 @@
+//Copyright Luz Caballero (@gerbille) and Nicolas Garcia Belmonte (@philogb)
+
 (function() {
+	
+  window.addEventListener("DOMContentLoaded", init, false);
+
   //Unpack PhiloGL modules
   PhiloGL.unpack();
   
@@ -65,7 +70,7 @@
 
   })();
 
-  window.init = function() {
+  function init() {
     //create the models
     worker.map(function() { return {}; }).reduce({
       onComplete: function(ans) {

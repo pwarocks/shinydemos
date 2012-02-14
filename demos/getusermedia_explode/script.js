@@ -41,12 +41,21 @@ function init(){
         dropBomb(event, this);
     };
     
-    // Replace the source of the video element with the stream from the camera
-    if (navigator.getUserMedia) {
-        navigator.getUserMedia('video', successCallback, errorCallback);
-        function successCallback(stream) {
-            video.src = stream;
+    // Get the stream from the camera using getUserMedia
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+    if (navigator.getUserMedia) {             
+        if (window.webkitURL) {
+            navigator.getUserMedia('video', function(stream) {
+                // Replace the source of the video element with the stream from the camera
+                video.src = window.webkitURL.createObjectURL(stream);
+            }, errorCallback);
+        } else {
+            navigator.getUserMedia({video: true}, function(stream) {
+                // Replace the source of the video element with the stream from the camera
+                video.src = stream;
+            }, errorCallback);
         }
+        
         function errorCallback(error) {
             console.error('An error occurred: [CODE ' + error.code + ']');
             return;

@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Shiny Demos</title>
+	<title>{{title}} — Shiny Demos</title>
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<link rel="stylesheet" href="styles/screen.css">
-	<link rel="stylesheet" href="styles/screen-wide.css" media="only screen and (min-width:800px)">
-	<script src="scripts/jquery.js"></script>
-	<script src="scripts/script.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/styles/screen.css">
+	<link rel="stylesheet" href="/styles/screen-narrow.css" media="only screen and (max-width:550px)">
+	<link rel="stylesheet" href="/styles/screen-wide.css" media="only screen and (min-width:800px) and (min-height:620px)">
+	<link rel="icon" sizes="16x16" href="images/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" href="images/favicon.png">
 </head>
 <body>
 	<div class="page-plain">
 		<header class="header">
-			<p><a href="index.html">Shiny Demos</a></p>
-			<h1>{{title}}</h1>
-			<p>Shinydemos is a growing set of demos of the latest Open Web Standards, made by the Opera developer relations team. No browser is blocked: any browser that supports the standard sees the shiny!</p>
+			<div class="path">
+				<p><a href="/">S<span>hiny </span>D<span>emos</span></a></p>
+				<h1>{{title}}</h1>
+			</div>
+			<p class="tagline">Shiny Demos is a growing set of demos of the latest Open Web Standards, made by the Opera developer relations team. No browser is blocked: any browser that supports the standard sees the shiny!</p>
 		</header>
-		<ul class="gallery">
+		<ul class="demos">
 {{#each slugs}}
-		<li>
-			<a href="{{this.path}}">
-				<h2>{{this.title}}</h2>
-				<img src="{{thumb}}" alt="">
-			</a>
-			<p>Tags: {{this.demotags}}</p>
-		</li>
+			<li>
+				<a href="{{this.path}}">
+					<img src="{{thumb}}" alt="{{this.title}}">
+					<h2>{{this.title}}</h2>
+				</a>
+        <p>
+        {{#each this.demotags}}
+          <a href="/{{this}}/">{{this}}</a>
+        {{/each}}
+        </p>
+			</li>
 {{/each}}
+			<li class="clear"></li>
+			<li class="clear"></li>
 		</ul>
 		<footer class="footer">
 			<p><a href="http://www.opera.com/developer/">Opera Software</a></p>
 		</footer>
 	</div>
+	<script src="/scripts/script.js"></script>
 </body>
 </html>

@@ -58,6 +58,7 @@ loadHandler = function(e){
 			if( document.querySelector('.leadPhoto') != null ){
 
 				hasClassList ? overlay.classList.remove('hide') : overlay.setAttribute('class','');
+				hasClassList ? document.body.classList.add('clip') : document.body.setAttribute('class','clip');
 
 			} else{}
 		}, false);
@@ -74,10 +75,12 @@ loadHandler = function(e){
 
 		if( hasClassList == true ){
 			overlay.classList.add('hide');
+			document.body.classList.remove('clip');
 			lp.classList.remove( classReplace );
 		} else {
 			overlay.setAttribute('class','hide');
 			lp.className = lp.className.replace(re,'');
+			document.body.className = document.body.replace(/clip/,'');
 		}
 	}
 

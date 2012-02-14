@@ -3,6 +3,7 @@ var fs = require('fs');
 var Handlebars = require('handlebars');
 var yaml = require('js-yaml');
 var jsdom = require('jsdom').jsdom;
+var rimraf = require('rimraf');
 
 var shinydemos = exports;
 
@@ -26,13 +27,11 @@ shinydemos.create = function() {
   var deployedDemosFolder = siteconfig.deployFolder + '/demos';
 
 
+  rimraf.sync('./deploy');
+
   [siteconfig.deployFolder,deployedDemosFolder].forEach(function(folder) {
-    try {
-      fs.lstatSync(folder);  
-    } catch (e) {
-      console.log('%s folder does not exist. Creating…', folder);
+      console.log('Creating %s folder', folder);
       fs.mkdirSync(folder);    
-    }
   });
 
 
@@ -62,6 +61,7 @@ shinydemos.create = function() {
     [].forEach.call(
       configs.demos,
       function(demo, i) {
+        console.log('now working on demo:', demo.title); 
 
         var demoPath = deployedDemosFolder + '/' + demo.slug + '/index.html';
         var win = jsdom(fs.readFileSync(demoPath).toString()).createWindow();
@@ -79,7 +79,7 @@ shinydemos.create = function() {
         panelJS.src = '../../scripts/' + siteconfig.panelJS;
 
         panelContainer.className = siteconfig.panelClass;
-        panelContainer.innerHTML = demopageTemplate({ 'title': demo.title });
+        panelContainer.innerHTML = demopageTemplate({ 'title': demo.title, 'features': demo.support });
 
         console.log('wrapping', demo.title);
         win.document.getElementsByTagName('head')[0].appendChild(panelCSS);
@@ -114,14 +114,16 @@ shinydemos.create = function() {
       var demos = demosByTag[t];
       var demoCollection = demos.map(function(d) {
         return {
-          'path': siteconfig.demosFolder + '/' + d.slug + '/',
+          'path': '/' + siteconfig.demosFolder + '/' + d.slug + '/',
           'title': d.title,
-          'thumb': './images/' + d.slug + '/thumb.png',
-          'demotags': d.tags.toString()        
+          'thumb': 'images/' + d.slug + '/thumb.png',
+          'demotags': d.tags        
         }
       });
 
-       fs.writeFileSync(siteconfig.deployFolder + '/' + t + ".html", tagspageTemplate({'title': t, 'slugs': demoCollection })); 
+      fs.mkdirSync(siteconfig.deployFolder + '/' + t + '/');
+
+       fs.writeFileSync(siteconfig.deployFolder + '/' + t + "/index.html", tagspageTemplate({'title': t, 'slugs': demoCollection })); 
        console.log('rendered %s page', t);
     });  
   };  

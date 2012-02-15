@@ -336,6 +336,7 @@ function createApp() {
       lazyPicking: !isFirefox,
       centerOrigin: false,
       onDragStart: function(e) {
+        console.log(this);
         pos = pos || {};
         pos.x = e.x;
         pos.y = e.y;
@@ -371,6 +372,21 @@ function createApp() {
         pos.started = false;
         
         this.scene.resetPicking();
+      },
+      onTouchStart: function(e) {
+        if (e.preventDefault) e.preventDefault();
+        if (e.stopPropagation) e.stopPropagation();
+        this.events.onDragStart.call(this, e);
+      },
+      onTouchMove: function(e) {
+        if (e.preventDefault) e.preventDefault();
+        if (e.stopPropagation) e.stopPropagation();
+        this.events.onDragMove.call(this, e);
+      },
+      onTouchEnd: function(e) {
+        if (e.preventDefault) e.preventDefault();
+        if (e.stopPropagation) e.stopPropagation();
+        this.events.onDragEnd.call(this, e);
       },
       onMouseWheel: function(e) {
         var camera = this.camera,

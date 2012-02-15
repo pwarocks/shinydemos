@@ -2,10 +2,7 @@ var sign = document.getElementById('sign'),
 	body = document.body;
 
 function openFence(e) {
-	var name = body.className;
-	body.className = (name.indexOf('opened')+1) ?
-		name.replace(' opened', '') :
-		name += ' opened';
+	document.body.classList.toggle('opened')
 	e.preventDefault();
 }
 

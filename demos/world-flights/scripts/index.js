@@ -336,7 +336,6 @@ function createApp() {
       lazyPicking: !isFirefox,
       centerOrigin: false,
       onDragStart: function(e) {
-        console.log(this);
         pos = pos || {};
         pos.x = e.x;
         pos.y = e.y;

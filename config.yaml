@@ -38,6 +38,11 @@ demos:
     tags: [audio]
     support: [audio, video]
 
+  - slug: fence
+    title: "Fence"
+    tags: [css, svg]
+    support: []
+
   - slug: paranoid
     title: "Return of the Retro with a canvas game!"
     tags: [canvas]

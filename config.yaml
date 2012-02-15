@@ -83,7 +83,7 @@ demos:
     tags: [webgl]
     support: [canvas, video, webgl, webworkers]
 
-    - slug: world-flights
-      title: "World flights"
-      tags: [webgl]
-      support: [canvas, webgl, webworkers]
+  - slug: world-flights
+    title: "World flights"
+    tags: [webgl]
+    support: [canvas, webgl, webworkers]

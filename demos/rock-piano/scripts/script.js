@@ -1,5 +1,6 @@
 var body = document.body,
-	keys = document.getElementById('keyboard').getElementsByTagName('li');
+	keys = document.querySelectorAll('#keyboard li'),
+	media = 'http://media.shinydemos.com/rock-piano/';
 
 document.addEventListener('DOMContentLoaded', function() {
 	for(var i=0, l=keys.length; i < l; i++) {
@@ -10,11 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			note.loop = true;
 			note.id = 'note-' + name;
 		var mp3 = document.createElement('source');
-			mp3.src = 'media/' + name + '.mp3';
+			mp3.src = media + name + '.mp3';
 			mp3.type = 'audio/mpeg';
 		var ogg = document.createElement('source');
-			ogg.src = 'media/' + name + '.ogg';
-			ogg.type = 'audio/ogg';		
+			ogg.src = media + name + '.ogg';
+			ogg.type = 'audio/ogg';
 
 		note.appendChild(mp3);
 		note.appendChild(ogg);
@@ -60,6 +61,7 @@ function keyHandler(e) {
 		case 72: keyAction(e, '6-0'); break; // h
 		case 85: keyAction(e, '6-5'); break; // u
 		case 74: keyAction(e, '7-0'); break; // j
+		default: return;
 	}
 }
 

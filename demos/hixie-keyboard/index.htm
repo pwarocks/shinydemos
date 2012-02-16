@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Hixie Keyboard — Shiny Demos</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="styles/screen.css">
+	<link rel="stylesheet" href="../../styles/panel.css">
+</head>
+<body>
+	<div class="sd-panel">
+		<div class="sd-path">
+			<p class="sd-logo"><a href="../../index.html" class="sd-logo-link">SD</a></p>
+			<div class="sd-dot"></div>
+			<h1 class="sd-title">Hixie Keyboard</h1>
+		</div>
+		<div class="sd-features sd-features-nope">
+			<p class="sd-desc" id="sd-desc">Your browser doesn’t support all required features</p>
+			<ul class="sd-list sd-list-nope">
+				<li class="sd-feature"><a href="" class="sd-feature-link">Geolocation API</a></li>
+				<li class="sd-feature"><a href="" class="sd-feature-link">Stream API</a></li>
+				<li class="sd-feature"><a href="" class="sd-feature-link">File API</a></li>
+				<li class="sd-feature"><a href="" class="sd-feature-link">XMLHttpRequest 2</a></li>
+			</ul>
+			<p class="sd-desc-sub">Supported</p>
+			<ul class="sd-list sd-list-yep">
+				<li class="sd-feature"><a href="" class="sd-feature-link">Media Queries</a></li>
+				<li class="sd-feature"><a href="" class="sd-feature-link">CSS Gradients</a></li>
+				<li class="sd-feature"><a href="" class="sd-feature-link">HTML5 Video</a></li>
+				<li class="sd-feature"><a href="" class="sd-feature-link">DOMTokenList</a></li>
+				<li class="sd-feature"><a href="" class="sd-feature-link">SVG</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="cable"></div>
+	<div class="device">
+		<p class="lcd">_</p>
+		<div class="display">
+			<video preload width="170" height="220" class="video">
+				<source src="media/hixie.mp4" type="video/mp4">
+				<source src="media/hixie.webm" type="video/webm">
+				<source src="media/hixie.ogv" type="video/ogg">
+			</video>
+		</div>
+		<ul class="keyboard">
+			<li class="row first">
+				<button class="key" id="key-q" data-text="&lt;q&gt; element">Q</button><button class="key" id="key-w" data-text="web workers">W</button><button class="key" id="key-e" data-text="&lt;embed&gt;">E</button><button class="key" id="key-r" data-text="&lt;ruby&gt;">R</button><button class="key" id="key-t" data-text="&lt;time&gt;">T</button><button class="key" id="key-y" data-text="yeah, what's your use case?">Y</button><button class="key" id="key-u" data-text="utf-8">U</button><button class="key" id="key-i" data-text="itemprop">I</button><button class="key" id="key-o" data-text="&lt;output&gt;">O</button><button class="key" id="key-p" data-text="postmessage &lt;progress&gt; pattern placeholder">P</button>
+			</li>
+			<li class="row second">
+				<button class="key" id="key-a" data-text="&lt;article&gt;">A</button><button class="key" id="key-s" data-text="&lt;section&gt;">S</button><button class="key" id="key-d" data-text="&lt;details&gt;">D</button><button class="key" id="key-f" data-text="&lt;figure&gt; and &lt;figcaption&gt;">F</button><button class="key" id="key-g" data-text="geolocation isn't really part of html5">G</button><button class="key" id="key-h" data-text="&lt;header&gt;">H</button><button class="key" id="key-j" data-text="javascript is lovely">J</button><button class="key" id="key-k" data-text="&lt;keygen&gt;">K</button><button class="key" id="key-l" data-text="localstorage">L</button>
+			</li>
+			<li class="row third">
+				<button class="key" id="key-z" data-text="z-index, cause css is part of html5, bitches">Z</button><button class="key" id="key-x" data-text="xhtml2, my arse">X</button><button class="key" id="key-c" data-text="&lt;canvas&gt;">C</button><button class="key" id="key-v" data-text="&lt;video&gt;">V</button><button class="key" id="key-b" data-text="&lt;bdi&gt;">B</button><button class="key" id="key-n" data-text="&lt;nav&gt;">N</button><button class="key" id="key-m" data-text="&lt;menu&gt; and &lt;meter&gt;">M</button>
+			</li>
+		</ul>
+		<p class="footnote">An homage to <a href="http://www2.b3ta.com/buffyswear/">Buffy's Swearing Keyboard</a> (NSFW) made with open standards. Turn on speakers. Hit any key.</p>
+	</div>
+	<script src="scripts/script.js"></script>
+	<script src="../../scripts/script.js"></script>
+</body>
+</html>

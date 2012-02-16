@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>My time</title>
+<link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+html, body {margin: 0; padding: 0;}
+@font-face {
+  font-family: 'ocr-b';
+  font-style: normal;
+  font-weight: normal;
+  src: local('ocr-b'), url('ocrb10.ttf') format('truetype');
+}
+#container {
+  width:800px;
+  height: 600px;
+
+  
+
+/*  position:absolute;
+  left:50%;
+  top:50%;
+  margin:-275px 0 0 -400px;*/
+}
+
+svg {
+  z-index: 100; position: absolute;
+  width: 800px;
+  height: 600px;
+}
+text {font-family: 'Sigmar One', sans-serif; font-size: 160px;}
+video {position: absolute; top: 0; left: 0; width: 800px; height: 600px;}
+</style>
+
+</head>
+<body>
+
+<div id="container">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <mask id="maskedtext">
+      <rect width="800" height="600" x="0" y="0" fill="white"/>
+      <text id="clock" x="0" y="50%" text-anchor="start" fill="#000"> </text>
+    </mask>
+  </defs>
+  <rect width="800" height="600" x="0" y="0" fill="white" mask="url(#maskedtext)"/>  
+</svg>
+
+<script type="text/javascript">
+function digitalclock()
+{
+    var clock = document.getElementById('clock');
+    var time = document.createTextNode(new Date().toTimeString().substring(0, 8));
+    clock.replaceChild(time, clock.firstChild);
+    setTimeout('digitalclock()', 1000);
+}
+digitalclock();
+</script>
+
+<video autoplay></video>
+</div>
+
+<script type="text/javascript">
+var video = document.getElementsByTagName('video')[0], 
+       heading = document.getElementsByTagName('h3')[0];
+
+if(navigator.getUserMedia) {
+  navigator.getUserMedia('video', successCallback, errorCallback);
+  function successCallback( stream ) {
+    video.src = stream;
+  }
+  function errorCallback( error ) {
+    heading.textContent = 
+        "An error occurred: [CODE " + error.code + "]";
+  }
+} else {
+  heading.textContent = 
+      "No camera detected - punchline suffers";
+}
+</script>
+<script src="scripts/panel.js"></script>
+</body>
+</html>

@@ -2,7 +2,7 @@ var body = document.body,
 	video = document.querySelector('.video'),
 	lcd = document.querySelector('.lcd'),
 	keys = document.querySelectorAll('.keyboard button'),
-	sounds = [];
+	sounds = [], media = 'http://media.shinydemos.com/hixie-keyboard/';
 
 document.addEventListener('DOMContentLoaded', function() {
 	for(var i=0, l=keys.length; i < l; i++) {
@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
 			sound.id = 'sound-' + name;
 			sounds[i] = sound;
 		var mp3 = document.createElement('source');
-			mp3.src = 'media/' + name + '.mp3';
+			mp3.src = media + name + '.mp3';
 			mp3.type = 'audio/mpeg';
 		var ogg = document.createElement('source');
-			ogg.src = 'media/' + name + '.ogg';
+			ogg.src = media + name + '.ogg';
 			ogg.type = 'audio/ogg';
 
 		sound.appendChild(mp3);

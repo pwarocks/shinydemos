@@ -28,8 +28,8 @@ demos:
     tags: [javascript, canvas]
     support: [getusermedia, video]
 
-  - slug: parallax
-    title: "Parallax Shifts"
+  - slug: planetarium
+    title: "HTML5 Planetarium"
     tags: [css]
     support: [csstransforms, csstransitions]
 

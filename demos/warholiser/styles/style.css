@@ -9,6 +9,7 @@
     font-style: normal;
 }
 
+
 @-o-viewport {
   width: device-width;
   height: device-height;
@@ -41,12 +42,15 @@ body{
 	border-right:  1px solid #333;
 	height: 100%;
 	text-align: center;
+	text-shadow: 1px 1px 3px #333;
 	border-bottom: 1px solid #333;
 	border-top: 1px solid #333;
 	box-shadow: 1px 12px 10px #222;
 	border-radius: 5px;
 	opacity: 0.9;
 }
+
+
 
 a {
 	text-decoration: none;
@@ -136,11 +140,87 @@ canvas{
 
 h1{		
 		font-family: "NobileRegular", sans-serif;
-	    font-size: 2.6em;
+	    font-size: 1.6em;
 }
 
 code{
 	font-size: 0.9em;
 }
+
+
+/* Small phones like HTC Tatoo, Nokia E63 */
+@media (min-width: 240px) {
+
+#container{
+	width: 200px;
+}
+canvas{
+	width: 80px;
+	height: 40px;
+}
+
+h1{
+	font-size: 0.8em;
+}
+
+}
+
+
+/* Relatively larger screen phones like HTC Hero */
+@media (min-width: 320px) {
+
+#container{
+	width: 300px;
+}
+canvas{
+	width: 125px;
+	height: 75px;
+}
+
+h1{
+	font-size: 1.2em;
+}
+
+}
+
+
+/* Large screen smartphones like HTC Incredible S, Motorola Droid X, etc */
+@media (min-width: 480px) {
+
+#container{
+	width: 420px;
+}
+
+canvas{
+	width: 200px;
+	height: 120px;
+}
+
+h1{
+	font-size: 1.6em;
+}
+
+}
+
+/*For everything else 800px width and larger including some phones, tablets, desktops etc*/
+@media (min-width: 800px) {
+
+#container{
+	width: 610px;
+}
+
+canvas{
+	width: 300px;
+	height: 180px;
+}
+
+h1{
+	font-size: 1.6em;
+}
+
+}
+
+
+
 
 

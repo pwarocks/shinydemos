@@ -8,6 +8,15 @@
     targetPlanet = 0,
     lastPlanet = 0,
     $links;
+
+    var prefixes = 'O Webkit Moz ms'.split(' ');
+   
+    var currentPrefix =  (function() {
+      var prefixedProperty =  prefixes.join('Transform ').split(' ').filter(function(prop){
+          return (document.body.style[prop] !== undefined);
+      });
+      return prefixedProperty[0].split('Transform')[0].toLowerCase();
+    })();
       
        
     function createNavigationMenu() {
@@ -58,10 +67,10 @@
       $prevPlanet = $sections.eq(planet - 1);
       $prevPlanet.removeClass('active scaleshow-0').addClass('scalehide-' + (planet - 1));
 
-      $currentPlanet[0].addEventListener('oTransitionEnd', changePlanet, true);
+      $currentPlanet[0].addEventListener((currentPrefix === 'moz'? 'transitionend' : currentPrefix + 'TransitionEnd'), changePlanet, true);
 
       function changePlanet(event) { 
-        if(event.propertyName == '-o-transform') {
+        if(event.propertyName == '-' + currentPrefix + '-transform') {
           moveToPlanet(nextPlanet, targetPlanet, planet);
           event.target.removeEventListener(event.type, changePlanet, true); 
         }
@@ -104,6 +113,7 @@
           changePlanets();
 
           lastPlanet = targetPlanet;
+          e.preventDefault();
         }
         
       };

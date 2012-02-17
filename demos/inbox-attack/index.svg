@@ -4,23 +4,26 @@
      For some reason, validates when file uploaded or input directly but not when using live URL.
      Validator problem with WAI-ARIA? Or is the role attribute supported in SVG 1.2 only? -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <style type="text/css">
-	@-o-viewport {
-		width: device-width;
-		zoom: 1;
-		user-zoom: fixed;
-	}
-    @font-face {
-        /* LCD font by Samuel Reynolds */
-        /* License: http://www.spinwardstars.com/scrfonts/aaastdlicense.html */
-        font-family: 'LCD';
-        src: url(LCDM2B__.TTF.gz) format('truetype');
-    }
-    #txt_time, #txt_score, #txt_result {
-        font-family: 'LCD', monospace;
-    }
+    <style>
+		@-o-viewport {
+			width: device-width;
+			zoom: 1;
+			user-zoom: fixed;
+		}
+		@font-face {
+	        /* LCD font by Samuel Reynolds */
+	        /* License: http://www.spinwardstars.com/scrfonts/aaastdlicense.html */
+		    font-family: 'LCD';
+		    src: url('fonts/lcd.eot') format('embedded-opentype'),
+		         url('fonts/lcd.woff') format('woff'),
+		         url('fonts/lcd.ttf') format('truetype'),
+		         url('fonts/lcd.svg#LCD') format('svg');
+		}
+	    #txt_time, #txt_score, #txt_result {
+	        font-family: 'LCD', monospace;
+	    }
     </style>
-	<script type="text/javascript"><![CDATA[
+	<script><![CDATA[
 	function launch() {
 		/*
 		 * Configurable options

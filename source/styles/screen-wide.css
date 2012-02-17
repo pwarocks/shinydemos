@@ -2,7 +2,7 @@
 ---------------------------------------- */
 .page-index,
 .page-plain {
-	padding:65px 80px;
+	padding:50px 80px;
 	}
 
 /* Page Index
@@ -113,9 +113,7 @@
 		}
 		.navigation LI A {
 			position:absolute;
-			padding:20px 0 0;
 			width:80px;
-			height:60px;
 			}
 		.navigation LI:first-child A,
 		.navigation LI:last-child A {
@@ -145,9 +143,9 @@
 	top:80px;
 	left:80px;
 	}
-.navigation .forms A {
+.navigation .webgl A {
 	top:240px;
-	left:160px;
+	left:80px;
 	}
 .navigation .javascript A {
 	top:560px;
@@ -191,7 +189,7 @@
 /* RTL */
 .navigation .canvas A,
 .navigation .content A,
-.navigation .forms A,
+.navigation .webgl A,
 .navigation .javascript A,
 .navigation .parser A {
 	direction:rtl;

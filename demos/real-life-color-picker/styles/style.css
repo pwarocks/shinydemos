@@ -12,6 +12,11 @@ body{
 	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
 }
 
+@-o-viewport {
+  width: device-width;
+  height: device-height;
+}
+
 #supcontainer{
 	margin: 0 auto;
 	padding: 10px;
@@ -22,7 +27,7 @@ body{
 	border-radius: 3px;
 }
 
-h1{
+h1{ 
 	font-family: "chunk", "lucida grande", arial, sans-serif;
 	font-size: 2.5em;
 	margin: 0;
@@ -96,5 +101,76 @@ a{
 footer{
 	margin-top: 20px;
 	font-family: 'chunk';
+}
+
+
+/* Small phones like HTC Tatoo, Nokia E63 */
+@media (min-width: 240px) {
+
+#supcontainer{
+	width: 200px;
+}
+
+#video{
+	width: 160px;
+}
+
+.button{
+	font-size: 1.0em;	
+}
+
+}
+
+
+/* Relatively larger screen phones like HTC Hero */
+@media (min-width: 320px) {
+
+#supcontainer{
+	width: 260px;
+}
+
+#video{
+	width: 220px;
+}
+
+.button{
+	font-size: 1.2em;	
+}
+
+}
+
+
+
+/* Large screen smartphones like HTC Incredible S, Motorola Droid X, etc */
+@media (min-width: 480px){
+
+#supcontainer{
+	width: 420px;
+}
+
+#video{
+	width: 360px;
+}
+
+.button{
+	font-size: 1.4em;	
+}
+
+}
+
+/*For everything else 800px width and larger including some phones, tablets, desktops etc*/
+@media (min-width: 800px) {
+
+#supcontainer{
+	width: 600px;
+}
+
+#video{
+	width: 510px;
+}
+
+.button{
+	font-size: 1.2em;	
+}
 
 }

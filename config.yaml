@@ -55,7 +55,7 @@ demos:
 
   - slug: rock-piano
     title: "Rock Piano"
-    tags: [css audio]
+    tags: [css, audio]
     support: [audio]
 
   - slug: tatami

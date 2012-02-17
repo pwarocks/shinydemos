@@ -13,8 +13,8 @@ siteconfig:
 
 # Allowed tags: javascript, forms, canvas, content, parser, svg, css, audio, video, webgl
 demos:
-  - slug: pagedcontent
-    title: "Paged Content Magic"
+  - slug: slideshows 
+    title: "Slides from Web Openers"
     tags: [css]
     support: [pagedcontent]
 

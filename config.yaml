@@ -34,8 +34,8 @@ demos:
     support: [csstransforms, csstransitions]
 
   - slug: hixie-keyboard
-    title: "Type a key and hear a voice!"
-    tags: [audio]
+    title: "Hixie Keyboard"
+    tags: [audio, video, css]
     support: [audio, video]
 
   - slug: fence
@@ -55,7 +55,7 @@ demos:
 
   - slug: rock-piano
     title: "Rock Piano"
-    tags: [css]
+    tags: [css audio]
     support: [audio]
 
   - slug: tatami
@@ -68,7 +68,7 @@ demos:
     tags: [css]
     support: [csstransitions]
 
-  - slug: borderradius-fun
+  - slug: border-radius-fun
     title: "Tinkering with Border Radius"
     tags: [css]
     support: []

@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>HTML5 Slideshows!</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
-  <link href='http://people.opera.com/pepelsbey/experiments/shiny/css/fonts.css' rel='stylesheet' type='text/css'>
-  <style>  
-    html { color: #fff; }        
+html { color: #fff; }        
     body { 
       font-family: Tahoma, sans-serif; height: 100%; text-align: center; 
-      background: #666 url(http://people.opera.com/pepelsbey/experiments/shiny/demo/images/linen.png);
+      background: #666 url(../linen000.png);
     }
     
     html, body { margin: 0; padding: 0; }
@@ -38,7 +30,7 @@
     .slideshow .caption > :not(img) { padding-left: 1em; padding-right: 1em; }
     
     .slideshow .slide > div, 
-    .slideshow .caption > div { display: table-cell; vertical-align: middle; background: top left no-repeat; background-size: 100% 100%; background-color: #666; }
+    .slideshow .caption > div { display: table-cell; vertical-align: middle; background: top left no-repeat; background-size: 100% 100%; color: #000; }
     
     .slideshow nav { display: none; }
     
@@ -108,71 +100,3 @@
       
       .slideshow nav p i { position: absolute; top: -10%; display: block; right: -50%; text-align: right; }
     }
-  </style>
-</head>
-<body>
-  <header>
-    <h1><b>HTML5</b> Slideshows</h1>
-    <p>This page uses Generated Content for paged media to generate the slideshows. If there is no support, it simply links to the HTML slideshow.</p>
-  </header>
-  <div id="slideshows"></div>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-  <script>
-  var slides = ['mike.html', 'vadim.html'],
-  slideshowcontainer = $('#slideshows');
-  
-  for(var i = 0; i < slides.length; i++) {
-    if(typeof slideshowcontainer[0].currentPage === 'number' && typeof slideshowcontainer[0].pageCount === 'number') {          
-      $('<div class="slideshow">').load(slides[i] + ' div.slides', function() {
-        var that = $(this);
-        that.append($('<nav><button class="prev">Prev</button><button class="next">Next</button><p><i></i></p></nav>'));      
-        slideshowcontainer.append(that);      
-        if(i == slides.length) {
-            slideshow('div.slides');  
-        }
-      });
-    } else {
-      $('<div class="slideshow">').load(slides[i] + ' header.caption', function(i) {
-        var currentslide = slides[i];
-        return function() {
-          var that = $(this);
-          that.wrapInner($('div.slides'));
-          that.appendTo(slideshowcontainer).wrap('<a class="external" href="' +  window.location.href.substr(0, window.location.href.lastIndexOf("/")) +  "/" + currentslide + '" target="_blank">');
-        }
-      }(i));
-    }    
-  }
- 
-    
-  function slideshow(slideshowselector) {
-    
-    var slideshows = document.querySelectorAll(slideshowselector);
-        
-    function updateCurrentPage(e) {
-      e.target.parentNode.querySelector('nav p').dataset.progress = Math.floor((e.currentPage/(e.pageCount - 1))*10);
-      e.target.parentNode.querySelector('nav p i').textContent = (+e.currentPage + 1) + " of " + e.pageCount;      
-    }
-    
-    function nextPage(i) { 
-      if(slideshows[i].currentPage < slideshows[i].pageCount) { 
-        slideshows[i].currentPage++;  
-      } 
-    }
-    
-    function prevPage(i) { 
-      if (slideshows[i].currentPage > 0) { 
-        slideshows[i].currentPage--; 
-      } 
-    }
-  
-    
-    for(var i = 0, len = slideshows.length; i < len; i++) {
-      var slide = slideshows[i], parentContainer = slide.parentNode;
-      slide.onpagechange = updateCurrentPage;
-      parentContainer.querySelector('nav button.prev').onclick = function(i) { return function(e) { prevPage(i); }}(i);      
-      parentContainer.querySelector('nav button.next').onclick = function(i) { return function(e) { nextPage(i); }}(i);      
-    }
-  };
-  </script>
-</body>
-</html>

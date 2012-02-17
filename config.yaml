@@ -18,8 +18,8 @@ demos:
     tags: [svg]
     support: [svg]
 
-  - slug: pagedcontent
-    title: "Paged Content Magic"
+  - slug: slideshows 
+    title: "Slides from Web Openers"
     tags: [css]
     support: [pagedcontent]
 

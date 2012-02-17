@@ -143,9 +143,9 @@
 	top:80px;
 	left:80px;
 	}
-.navigation .forms A {
+.navigation .webgl A {
 	top:240px;
-	left:160px;
+	left:80px;
 	}
 .navigation .javascript A {
 	top:560px;
@@ -189,7 +189,7 @@
 /* RTL */
 .navigation .canvas A,
 .navigation .content A,
-.navigation .forms A,
+.navigation .webgl A,
 .navigation .javascript A,
 .navigation .parser A {
 	direction:rtl;

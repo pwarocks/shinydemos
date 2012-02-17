@@ -1,11 +1,10 @@
 /* Pages
 ---------------------------------------- */
-.page-index,
-.page-plain {
-	padding:40px 0;
+.page-index {
+	padding:25px 0;
 	}
 .page-plain {
-	padding:55px 0 40px;
+	padding:50px 0 40px;
 	}
 
 /* Header
@@ -21,7 +20,7 @@
 /* Header Plain
 ---------------------------------------- */
 .page-plain .header:before {
-	top:-55px;
+	top:-50px;
 	}
 
 /* Navigation

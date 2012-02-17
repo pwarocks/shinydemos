@@ -13,6 +13,11 @@ siteconfig:
 
 # Allowed tags: javascript, forms, canvas, content, parser, svg, css, audio, video, webgl
 demos:
+  - slug: inbox-attack
+    title: "Inbox Attack"
+    tags: [svg]
+    support [svg]
+
   - slug: pagedcontent
     title: "Paged Content Magic"
     tags: [css]

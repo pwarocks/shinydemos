@@ -16,7 +16,7 @@ demos:
   - slug: inbox-attack
     title: "Inbox Attack"
     tags: [svg]
-    support [svg]
+    support: [svg]
 
   - slug: pagedcontent
     title: "Paged Content Magic"

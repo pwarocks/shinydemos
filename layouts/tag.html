@@ -27,11 +27,7 @@
 					<img src="{{thumb}}" alt="{{this.title}}">
 					<h2>{{this.title}}</h2>
 				</a>
-        <p>
-        {{#each this.demotags}}
-          <a href="/{{this}}/">{{this}}</a>
-        {{/each}}
-        </p>
+				<p>{{#each this.demotags}}{{this}} {{/each}}</p>
 			</li>
 {{/each}}
 			<li class="clear"></li>

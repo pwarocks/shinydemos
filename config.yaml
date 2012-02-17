@@ -77,7 +77,7 @@ demos:
     title: "A map of tweets from the public timeline"
     tags: [svg]
     support: [svg]
-    
+
   - slug: 3d-color-histogram
     title: "3D color histogram"
     tags: [webgl]

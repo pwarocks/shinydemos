@@ -115,7 +115,7 @@ shinydemos.create = function() {
         return {
           'path': '/' + d.slug + '/',
           'title': d.title,
-          'thumb': 'images/' + d.slug + '/thumb.png',
+          'thumb': '/' + d.slug + '/thumb.png',
           'demotags': d.tags
         }
       });

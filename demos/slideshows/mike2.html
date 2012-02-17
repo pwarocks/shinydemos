@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<head>
+  <title>DOM Collections, Lists, &amp; Maps in HTML5</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1274">
+  <link rel="stylesheet" href="mike-2_files/style000.css">
+  <style>
+    #Cover H2 {
+      color:#FFF;
+      text-align:center;
+      font-size:70px;
+      }
+      
+    .bg h2 {color: #fff;font-size:1.2em;}
+    #collections-htmlcollections a {font-size:15px}
+  </style>
+</head>
+<body class="list">
+  <div class="slides">
+  <header class="caption">
+   <div>
+    <h1>DOM Collections, Lists, &amp; Maps in HTML5</h1>
+    <p>Mike Taylor, Opera&nbsp;Software</p>
+    </div>
+  </header>
+  
+  <div class="slide shout" id="html5"><div>
+    <section>
+      <header>
+        <h2><a href="http://miketaylr.com/post/be9bfed6.png" target="_blank">HTML5</a></h2>
+      </header>
+    </section>
+  </div></div>
+    
+  <div class="slide shout" id="DOMCore"><div>
+    <section>
+      <header>
+        <h2><a href="http://dvcs.w3.org/hg/domcore/raw-file/tip/Overview.html" target="_blank">DOM Core</a></h2>
+      </header>
+    </section>
+  </div></div>
+  
+  <div class="slide bg" id="lolresig"><div>
+    <section>
+      <img src="mike-2_files/theDOM00.png" alt="">
+    </section>
+  </div></div>
+  
+  <div class="slide bg" id="explosion"><div>
+    <section>
+      <img src="mike-2_files/explosio.jpg" alt="Explosion!">
+    </section>
+  </div></div>
+  
+  <div class="slide" id="outline"><div>
+    <section>
+      <header>
+        <h2>Outline</h2>
+      </header>
+      <ol>
+        <li><a href="http://miketaylr.com/pres/bkjs/#collections-section">Collections</a>
+          <ul>
+            <li>NodeList</li>
+            <li>HTMLCollection</li>
+          </ul>
+        </li>
+        <li><a href="http://miketaylr.com/pres/bkjs/#lists-section">Lists</a>
+          <ul>
+            <li>DOMTokenList</li>
+            <li>DOMSettableTokenList</li>
+          </ul>
+          <li><a href="http://miketaylr.com/pres/bkjs/#domstringmap">Maps</a>
+            <ul>
+              <li>DOMStringMap</li>
+            </ul>
+          </li>
+        </li>
+      </ol>
+    </section>
+  </div></div>
+  
+  <div class="slide bg" id="collections-section"><div>
+    <section>
+      <header>
+        <h2>Collections</h2>
+      </header>
+      <img src="mike-2_files/hammergu.jpg" alt="Hammer guy">
+    </section>
+  </div></div>
+  
+  <div class="slide" id="collections-quote"><div>
+    <section>
+      <header>
+        <h2>Collections</h2>
+      </header>
+      <blockquote cite="DOM Core">
+        <p>A collection is an object that represents a lists of <strong>DOM nodes</strong>. A collection can be either <strong>live</strong> or <strong>static</strong>. Unless otherwise stated, a collection must be live.</p>
+      </blockquote>
+    </section>
+  </div></div>
+
+  
+  <div class="slide" id="collections-nodelists"><div>
+    <section>
+      <header>
+        <h2>Collections: NodeLists</h2>
+      </header>
+      <pre>
+        <code>interface NodeList {</code>
+        <code>  getter Node? <mark>item</mark>(unsigned long <mark>index</mark>);</code>
+        <code>  readonly attribute unsigned long <mark>length</mark>;</code>
+        <code>};</code>
+      </pre>
+    </section>
+  </div></div>
+  
+  <div class="slide" id="nodelists-examples-one"><div>
+    <section>
+      <header>
+        <h2>NodeLists: examples</h2>
+      </header>
+      <pre class="column-left">
+        <code>Node.childNodes</code>
+        <code>document.getElementsByName</code>
+        <code>document.getElementsByTagName</code>
+        <code>document.getElementsByTagNameNS</code>
+        <code>document.links</code>
+        <code>document.getElementsByName</code>
+      </pre>
+    </section>
+  </div></div>
+
+  <div class="slide" id="nodelists-examples-two"><div>
+    <section>
+      <header>
+        <h2>NodeLists: examples</h2>
+      </header>
+      <pre class="column-left">
+        <code>document.getElementsByClassName</code>
+        <code>element.getElementsByClassName</code>
+        <code>document.querySelectorAll*</code>
+        <code>element.querySelectorAll*</code><br>
+        *<mark class="important">static</mark> NodeList
+      </pre>
+    </section>
+  </div></div>
+  
+  <div class="slide" id="collections-htmlcollections"><div>
+    <section>
+      <header>
+        <h2>Collections: HTMLCollections</h2>
+      </header>
+      <pre>
+        <code>interface HTMLCollection {</code>
+        <code>  readonly attribute unsigned long <mark>length</mark>;</code>
+        <code>  getter Element? <mark>item</mark>(unsigned long <mark>index</mark>);</code>
+        <code>  getter object? <mark>namedItem</mark>(DOMString <mark>name</mark>);</code>
+        <code>};</code>
+      </pre>
+      <p><a href="http://www.whatwg.org/specs/web-apps/current-work/complete/common-dom-interfaces.html#htmlallcollection" target="_blank">HTMLAllCollection</a>, 
+      <a href="http://www.whatwg.org/specs/web-apps/current-work/complete/common-dom-interfaces.html#htmlformcontrolscollection" target="_blank">HTMLFormControlsCollection</a>, 
+      <a href="http://www.whatwg.org/specs/web-apps/current-work/complete/common-dom-interfaces.html#htmloptionscollection" target="_blank">HTMLOptionsCollection</a>, 
+      <a href="http://www.whatwg.org/specs/web-apps/current-work/complete/common-dom-interfaces.html#htmlpropertiescollection" target="_blank">HTMLPropertiesCollection</a></p>
+    </section>
+  </div></div>
+  
+  <style>
+    .column-left {
+      float:left;
+    }
+    .column-right {
+      float:right;
+    }
+  </style>
+  
+  <div class="slide" id="htmlcollections-examples-one"><div>
+    <section>
+      <header>
+        <h2>HTMLCollections: examples</h2>
+      </header>
+      <pre class="column-left">
+        <code>document.anchors</code>
+        <code>document.applets</code>
+        <code>document.forms</code>
+        <code>document.images</code>
+        <code>document.links</code>
+      </pre>
+      <pre class="column-right">
+        <code>formElement.elements</code>
+        <code>selectElement.options</code>
+        <code>tableElement.rows</code>
+        <code>tableElement.tBodies</code>
+        <code>tableRowElement.cells</code>
+      </pre>
+    </section>
+  </div></div>
+  
+  <style>
+    #htmlcollections-examples-two :visited, #htmlcollections-examples-two :link {color: #fff;}
+  </style>
+  
+  <div class="slide" id="htmlcollections-examples-two"><div>
+    <section>
+      <header>
+        <h2>HTMLCollections: examples</h2>
+      </header>
+      <pre>
+        <code>document.embeds</code>
+        <code>document.plugins</code>
+        <code>document.scripts</code>
+        <code>document.all*</code><br>
+        <p>*<mark class="important"><a href="http://www.whatwg.org/specs/web-apps/current-work/complete/obsolete.html#dom-document-all" target="_blank">obsolete</a> but awesome</mark></p>
+      </pre>
+    </section>
+  </div></div>
+  
+  <div class="slide" id="htmlpropertiescollection"><div>
+    <section>
+      <header>
+        <h2>HTMLPropertiesCollection</h2>
+      </header>
+      <pre>
+        <code>var item = document.getItems("http://itemtype/URL")[0]</code>
+        <code>item.properties.foo</code>
+        <code>item.getValues()</code>
+      </pre>
+      <p><a href="http://dev.opera.com/articles/view/microdata-and-the-microdata-dom-api/" target="_blank">Microdata and the Microdata DOM API</a>, <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#using-the-microdata-dom-api" target="_blank">spec</a>,
+        <a href="http://devfiles.myopera.com/articles/6032/microdata_example.html">demo</a></p>
+    </section>
+  </div></div>
+  
+  <div class="slide bg" id="lists-section"><div>
+    <section>
+      <header>
+        <h2>Lists</h2>
+      </header>
+      <img src="mike-2_files/oldguy00.jpg" alt="Guy working on a drill press">
+    </section>
+  </div></div>
+  
+  <div class="slide" id="domtokenlist-quote"><div>
+    <section>
+      <header>
+        <h2>Lists</h2>
+      </header>
+      <blockquote cite="DOM Core">
+        <p>The DOMTokenList interface represents an interface to an underlying string that consists of a set of space-separated tokens.</p>
+      </blockquote>
+    </section>
+  </div></div>
+  
+  <div class="slide" id="domtokenlist"><div>
+    <section>
+      <header>
+        <h2>DOMTokenList</h2>
+      </header>
+      <pre>
+        <code>interface DOMTokenList {</code>
+        <code>  readonly attribute unsigned long <mark>length</mark>;</code>
+        <code>  getter DOMString? <mark>item</mark>(unsigned long <mark>index</mark>);</code>
+        <code>  boolean <mark>contains</mark>(DOMString <mark>token</mark>);</code>
+        <code>  void <mark>add</mark>(DOMString <mark>token</mark>);</code>
+        <code>  void <mark>remove</mark>(DOMString <mark>token</mark>);</code>
+        <code>  boolean <mark>toggle</mark>(DOMString <mark>token</mark>);</code>
+        <code>};</code>
+      </pre>
+    </section>
+  </div></div>
+  
+  <style>
+    #raptor {position:absolute;top:5%;left:5%;}
+    #raptor.hide {left: -1000%;}
+    #raptor.show {-o-transition: left 1s ease-out 0s;left:5%;}
+    #raptor.switch {-o-transform: scaleX(-1);}
+  </style>
+  
+  <div class="slide" id="domtokenlist-classlist-playground"><div>
+    <section>
+      <header>
+        <h2>DOMTokenList: classList</h2>
+      </header>
+      <pre>
+        <code>interface DOMTokenList {</code>
+        <code>  readonly attribute unsigned long <mark>length</mark>;</code>
+        <code>  getter DOMString? <mark>item</mark>(unsigned long <mark>index</mark>);</code>
+        <code>  boolean <mark>contains</mark>(DOMString <mark>token</mark>);</code>
+        <code>  void <mark>add</mark>(DOMString <mark>token</mark>);</code>
+        <code>  void <mark>remove</mark>(DOMString <mark>token</mark>);</code>
+        <code>  boolean <mark>toggle</mark>(DOMString <mark>token</mark>);</code>
+        <code>};</code>
+      </pre>
+      <small>*View Source. Go crazy.</small>
+      <img id="raptor" class="hide" src="mike-2_files/raptor00.png">
+    </section>
+  </div></div>
+  
+  <div class="slide bg" id="maps-section"><div>
+    <section>
+      <header>
+        <h2>Maps</h2>
+      </header>
+      <img src="mike-2_files/workerdu.jpg" alt="The DOM is a mess">
+    </section>
+  </div></div>
+  
+  <div class="slide" id="lists-quote"><div>
+    <section>
+      <header>
+        <h2>DOMStringMap</h2>
+      </header>
+      <blockquote cite="HTML5">
+        <p>The DOMStringMap interface represents a set of name-value pairs.</p>
+      </blockquote>
+    </section>
+  </div></div>
+  
+  <div class="slide" id="domstringmap"><div>
+    <section>
+      <header>
+        <h2>DOMStringMap</h2>
+      </header>
+      <pre>
+        <code>interface DOMStringMap {</code>
+        <code>  getter DOMString (DOMString name);</code>
+        <code>  setter void (DOMString name, DOMString value);</code>
+        <code>  creator void (DOMString name, DOMString value);</code>
+        <code>  deleter void (DOMString name);</code>
+        <code>};</code>
+      </pre>
+    </section>
+  </div></div>
+  
+  <div class="slide shout" id="domstringmap-dataset"><div>
+    <section>
+      <header>
+        <h2><a href="http://people.opera.com/brucel/demo/hixie-keyboard/" target="_blank">dataset demo</a></h2>
+      </header>
+    </section>
+  </div></div>
+  
+  <div class="slide" id="thanks"><div>
+    <section>
+      <header>
+        <h2>Thank You</h2>
+      </header>
+      <p>Mike Taylor, Opera&nbsp;Software</p>
+      <ul>
+        <li><a href="http://miketaylr.com/">miketaylr.com</a></li>
+        <li><a href="http://twitter.com/miketaylr">twitter.com/miketaylr</a></li>
+        <li><a href="mailto:miket@opera.com">miket@opera.com</a></li>
+      </ul>
+    </section>
+  </div></div>
+  <div class="progress"><div></div></div>
+ </div>
+  <script src="mike-2_files/script00.js"></script>
+  <!-- Shower, Copyright © 2010–2011 Vadim Makeev, http://pepelsbey.net/ -->
+</body>
+</html>
+
+<!-- This document saved from http://miketaylr.com/pres/bkjs/ -->

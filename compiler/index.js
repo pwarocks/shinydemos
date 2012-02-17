@@ -75,8 +75,8 @@ shinydemos.create = function() {
         
 
         panelCSS.rel = 'stylesheet';
-        panelCSS.href = '../../styles/' + siteconfig.panelCSS;
-        panelJS.src = '../../scripts/' + siteconfig.panelJS;
+        panelCSS.href = '/styles/' + siteconfig.panelCSS;
+        panelJS.src = '/scripts/' + siteconfig.panelJS;
 
         panelContainer.className = siteconfig.panelClass;
         panelContainer.innerHTML = demopageTemplate({ 'title': demo.title, 'features': demo.support });
@@ -114,7 +114,7 @@ shinydemos.create = function() {
       var demos = demosByTag[t];
       var demoCollection = demos.map(function(d) {
         return {
-          'path': '/' + siteconfig.demosFolder + '/' + d.slug + '/',
+          'path': '/' + d.slug + '/',
           'title': d.title,
           'thumb': 'images/' + d.slug + '/thumb.png',
           'demotags': d.tags        

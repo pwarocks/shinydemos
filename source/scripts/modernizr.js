@@ -1266,3 +1266,6 @@ window.Modernizr = (function( window, document, undefined ) {
 
 Modernizr.addTest('pagedcontent', function() { var testEl = document.createElement('div'); return testEl.pageCount ? true: false; } ),
 Modernizr.addTest('getUserMedia', function() { return (typeof navigator.getUserMedia === 'function'); });
+
+// Modernizr.addTest('bgrepeatround', function() {  });
+// https://github.com/alrra/Modernizr/blob/57160ea20e8d99b75e2061cb3fe7b899922d0470/feature-detects/css-backgroundrepeat.js

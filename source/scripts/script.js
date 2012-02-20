@@ -64,6 +64,7 @@ function checkFeatures(list) {
 			item.className = 'sd-feature';
 			link.className = 'sd-feature-link';
 			link.href = 'http://caniuse.com/#search=' + encodeURI(listFeatures[i]);
+			link.target = '_blank';
 
 			link.appendChild(text);
 			item.appendChild(link);

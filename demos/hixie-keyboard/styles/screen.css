@@ -183,7 +183,7 @@ BODY {
 		-o-transform:rotate(45deg);
 		transform:rotate(45deg);
 		}
-	.video {
+	.display .video {
 		display:block;
 		background:#000;
 		}

@@ -43,7 +43,7 @@ function init(){
     
     // Get the stream from the camera using getUserMedia
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-    if (navigator.getUserMedia) {             
+    if (navigator.getUserMedia) {        
         if (window.webkitURL) {
             navigator.getUserMedia('video', function(stream) {
                 // Replace the source of the video element with the stream from the camera
@@ -55,7 +55,7 @@ function init(){
                 video.src = stream;
             }, errorCallback);
         }
-        
+
         function errorCallback(error) {
             console.error('An error occurred: [CODE ' + error.code + ']');
             return;

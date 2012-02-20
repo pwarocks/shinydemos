@@ -11,10 +11,15 @@ siteconfig:
   panelTag: 'div'
 
 
-# Allowed tags: javascript, forms, canvas, content, parser, svg, css, audio, video
+# Allowed tags: javascript, forms, canvas, content, parser, svg, css, audio, video, webgl
 demos:
-  - slug: pagedcontent
-    title: "Paged Content Magic"
+  - slug: inbox-attack
+    title: "Inbox Attack"
+    tags: [svg]
+    support: [svg]
+
+  - slug: slideshows 
+    title: "Slides from Web Openers"
     tags: [css]
     support: [pagedcontent]
 
@@ -28,15 +33,20 @@ demos:
     tags: [javascript, canvas]
     support: [getusermedia, video]
 
-  - slug: parallax
-    title: "Parallax Shifts"
+  - slug: planetarium
+    title: "HTML5 Planetarium"
     tags: [css]
     support: [csstransforms, csstransitions]
 
   - slug: hixie-keyboard
-    title: "Type a key and hear a voice!"
-    tags: [audio]
+    title: "Hixie Keyboard"
+    tags: [audio, video, css]
     support: [audio, video]
+
+  - slug: fence
+    title: "Fence"
+    tags: [css, svg]
+    support: []
 
   - slug: paranoid
     title: "Return of the Retro with a canvas game!"
@@ -50,7 +60,7 @@ demos:
 
   - slug: rock-piano
     title: "Rock Piano"
-    tags: [css]
+    tags: [css, audio]
     support: [audio]
 
   - slug: tatami
@@ -63,7 +73,7 @@ demos:
     tags: [css]
     support: [csstransitions]
 
-  - slug: borderradius-fun
+  - slug: border-radius-fun
     title: "Tinkering with Border Radius"
     tags: [css]
     support: []
@@ -72,3 +82,13 @@ demos:
     title: "A map of tweets from the public timeline"
     tags: [svg]
     support: [svg]
+
+  - slug: 3d-color-histogram
+    title: "3D color histogram"
+    tags: [webgl]
+    support: [canvas, video, webgl, webworkers]
+
+  - slug: world-flights
+    title: "World flights"
+    tags: [webgl]
+    support: [canvas, webgl, webworkers]

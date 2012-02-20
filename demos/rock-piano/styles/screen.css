@@ -11,52 +11,53 @@
 BODY {
 	overflow:hidden;
 	background:#000;
-	-webkit-user-select:none;
-	user-select:none;
 	}
 
-/* Panel
+/* Deck
 ---------------------------------------- */
-.panel {
+.deck {
 	position:absolute;
-	top:0;
-	left:0;
 	z-index:2;
+	overflow:hidden;
 	width:100%;
-	height:100px;
-	border-bottom:1px solid rgba(194, 162, 140, 0.2);
-	background:
-		url(../images/dials.png) 100% 50% no-repeat,
-		url(../images/wood.jpg) 50% 0 repeat-x,
-		#482813;
-	-webkit-box-shadow:0 0 40px #000;
-	-moz-box-shadow:0 0 40px #000;
+	height:70px;
+	background:#482813 url(../images/wood.jpg) 50% 0 repeat-x;
+	-webkit-box-shadow:0 0 50px #000, 0 0 20px #000, 0 0 10px #000;
+	-moz-box-shadow:0 0 50px #000, 0 0 20px #000, 0 0 10px #000;
 	box-shadow:
 		0 0 50px #000,
 		0 0 20px #000,
-		0 0 10px #000;
+		0 0 10px #000,
+		0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 	}
-	.panel H1 {
+	.deck:after {
 		position:absolute;
-		top:50%;
-		margin:-20px 0 0 50px;
+		top:15px;
+		right:5px;
+		width:150px;
+		height:57px;
+		background:url(../images/dial.png);
+		content:'';
+		}
+	.deck H2 {
+		padding:18px 0 0;
 		color:#1E1008;
 		white-space:nowrap;
 		text-align:center;
 		text-shadow:
 			0 -1px 1px #000,
-			0 1px 1px #502F19,
-			0 0 20px rgba(194, 162, 140, 0.2);
-		font:50px/1 Lobster, sans-serif;
+			0 1px 1px rgba(255, 255, 255, 0.2),
+			0 0 20px rgba(194, 162, 140, 0.3);
+		font:40px/1 Lobster, sans-serif;
 		}
 
-/* Piano
+/* Keyboard
 ---------------------------------------- */
-.piano {
+.keyboard {
 	position:absolute;
-	top:100px;
+	top:0;
 	right:0;
-	bottom:10px;
+	bottom:0;
 	left:0;
 	overflow:hidden;
 	}
@@ -103,16 +104,18 @@ BODY {
 		background-image:linear-gradient(top, #D7D5C5, #CBC8BB);
 		content:'';
 		}
-.key.white:hover {
+.key.white.pressed {
 	bottom:5px;
 	}
-	.key.white:hover:before {
+	.key.white.pressed:before {
 		border:1px solid #6C6B63;
 		background-image:-webkit-linear-gradient(top, #D0CDBF, #AAA89C);
 		background-image:-moz-linear-gradient(top, #D0CDBF, #AAA89C);
 		background-image:-ms-linear-gradient(top, #D0CDBF, #AAA89C);
 		background-image:-o-linear-gradient(top, #D0CDBF, #AAA89C);
-		background-image:linear-gradient(top, #D7D5C5, #CBC8BB);
+		background-image:linear-gradient(top, #D0CDBF, #AAA89C);
+		-webkit-box-shadow:0 10px 15px rgba(0, 0, 0, 0.6) inset;
+		-moz-box-shadow:0 10px 15px rgba(0, 0, 0, 0.6) inset;
 		box-shadow:0 10px 15px rgba(0, 0, 0, 0.6) inset;
 		}
 
@@ -120,13 +123,13 @@ BODY {
 .key.black {
 	z-index:1;
 	width:8%;
-	height:60%;
+	height:65%;
 	-webkit-border-radius:0 0 5px 5px;
 	-moz-border-radius:0 0 5px 5px;
 	border-radius:0 0 5px 5px;
 	background:#26272b;
-	-webkit-box-shadow:0 0 0 8px #000;
-	-moz-box-shadow:0 0 0 8px #000;
+	-webkit-box-shadow:0 0 0 2px #000, 0 0 0 4px #111, 0 0 0 8px #000;
+	-moz-box-shadow:0 0 0 2px #000, 0 0 0 4px #111, 0 0 0 8px #000;
 	box-shadow:
 		0 0 0 2px #000,
 		0 0 0 4px #111,
@@ -142,16 +145,16 @@ BODY {
 		-moz-border-radius:5px 5px 10px 10px;
 		border-radius:5px 5px 10px 10px;
 		background:#3D3E41;
-		background-image:-webkit-linear-gradient(bottom, #4C4D53, #3A3B3D 20%, #3A3B3D 90%, #333);
-		background-image:-moz-linear-gradient(bottom, #4C4D53, #3A3B3D 20%, #3A3B3D 90%, #333);
-		background-image:-ms-linear-gradient(bottom, #4C4D53, #3A3B3D 20%, #3A3B3D 90%, #333);
-		background-image:-o-linear-gradient(bottom, #4C4D53, #3A3B3D 20%, #3A3B3D 90%, #333);
-		background-image:linear-gradient(bottom, #4C4D53, #3A3B3D 20%, #3A3B3D 90%, #333);
-		-webkit-box-shadow:0 0 0 5px #000, 0 1px 0 1px rgba(255, 255, 255, 0.1) inset;
-		-moz-box-shadow:0 0 0 5px #000, 0 1px 0 1px rgba(255, 255, 255, 0.1) inset;
+		background-image:-webkit-linear-gradient(bottom, #54555C, #3F4042 30%, #3F4042 90%, #333);
+		background-image:-moz-linear-gradient(bottom, #54555C, #3F4042 30%, #3F4042 90%, #333);
+		background-image:-ms-linear-gradient(bottom, #54555C, #3F4042 30%, #3F4042 90%, #333);
+		background-image:-o-linear-gradient(bottom, #54555C, #3F4042 30%, #3F4042 90%, #333);
+		background-image:linear-gradient(bottom, #54555C, #3F4042 30%, #3F4042 90%, #333);
+		-webkit-box-shadow:0 0 0 5px #000, 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+		-moz-box-shadow:0 0 0 5px #000, 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 		box-shadow:
 			0 0 0 5px #000,
-			0 1px 0 1px rgba(255, 255, 255, 0.1) inset;
+			0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 		content:'';
 		}
 	.key.black:after {
@@ -174,10 +177,11 @@ BODY {
 		box-shadow:0 0 0 5px #000;
 		content:'';
 		}
-.key.black:hover {
+.key.black.pressed {
 	background:#19191c;
 	}
-	.key.black:hover:before {
+	.key.black.pressed:before {
+		top:13px;
 		bottom:25px;
 		background-image:-webkit-linear-gradient(bottom, #404144, #303133 20%, #303133);
 		background-image:-moz-linear-gradient(bottom, #404144, #303133 20%, #303133);
@@ -185,7 +189,7 @@ BODY {
 		background-image:-o-linear-gradient(bottom, #404144, #303133 20%, #303133);
 		background-image:linear-gradient(bottom, #404144, #303133 20%, #303133);
 		}
-	.key.black:hover:after {
+	.key.black.pressed:after {
 		bottom:-25px;
 		background-image:-webkit-linear-gradient(top, #313237, #1A1B1C 30%, #000 50%, #000);
 		background-image:-moz-linear-gradient(top, #313237, #1A1B1C 30%, #000 50%, #000);

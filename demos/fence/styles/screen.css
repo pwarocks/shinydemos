@@ -1,0 +1,74 @@
+@import url(reset.css);
+
+HTML, BODY {
+	height:100%;
+	}
+BODY {
+	overflow:hidden;
+	background:#93BCC1 url(../images/panorama.jpg) 15% 50% / auto 110% no-repeat;
+	background-size:;
+	}
+
+/* Fence
+---------------------------------------- */
+.fence {
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	overflow:hidden;
+	-webkit-transition:left 1s linear;
+	-moz-transition:left 1s linear;
+	-ms-transition:left 1s linear;
+	-o-transition:left 1s linear;
+	transition:left 1s linear;
+	}
+	.fence:before {
+		position:absolute;
+		top:-15px;
+		bottom:-15px;
+		left:0;
+		width:50px;
+		background:#AEAFB5 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAABCAMAAACrDw2AAAAAkFBMVEVyc3qanqZ/got4fYRxd31ydHyFi5N/hIuwsLSXm6SZnaa6ur6QlJ3Y2Nr09PV2d4Dq6u6kparPz9KTl6D9/f6Mj5eIiY/Fxcian6dxcnqGiZHp6er+/v57fYXx8fPh4eP9/f2WmaKAgIff4OV5eoFobXSNkZnv7+90dX2bm6HU1dqRkZdscnj8/Pz6+vv39/hogSYjAAAAPklEQVR42gEzAMz/ACojEB4vLhQgHC0uLw4nGx8NEhcLCBEpKxYiJCgAGQUPHQIaFQwhCgEYCRMmBgcDBCwliq8Exiva1I8AAAAASUVORK5CYII=) repeat-y;
+		content:'';
+		}
+	.fence:after {
+		position:absolute;
+		top:0;
+		right:0;
+		bottom:0;
+		left:50px;
+		background:url(../images/chainlink.png) round;
+		content:'';
+		}
+
+/* Sign
+---------------------------------------- */
+.sign {
+	position:absolute;
+	top:50%;
+	right:50%;
+	margin:-10% -10% 0 0;
+	width:20%;
+	cursor:pointer;
+	-webkit-transform:translateX(25px);
+	-moz-transform:translateX(25px);
+	-ms-transform:translateX(25px);
+	-o-transform:translateX(25px);
+	transform:translateX(25px);
+	-webkit-transition:right 1s linear;
+	-moz-transition:right 1s linear;
+	-ms-transition:right 1s linear;
+	-o-transition:right 1s linear;
+	transition:right 1s linear;
+	}
+
+/* Opened
+---------------------------------------- */
+.opened .fence {
+	left:70%;
+	}
+.opened .sign {
+	right:15%;
+	}

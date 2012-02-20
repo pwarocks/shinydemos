@@ -26,7 +26,7 @@ demos:
   - slug: border-salon
     title: "Border Radius Salon"
     tags: [css]
-    support: []
+    support: [borderradius]
 
   - slug: photo-booth
     title: "Photobooth in Your browser"
@@ -46,7 +46,7 @@ demos:
   - slug: fence
     title: "Fence"
     tags: [css, svg]
-    support: []
+    support: [svg, bgrepeatround]
 
   - slug: paranoid
     title: "Return of the Retro with a canvas game!"
@@ -76,7 +76,7 @@ demos:
   - slug: border-radius-fun
     title: "Tinkering with Border Radius"
     tags: [css]
-    support: []
+    support: [borderradius]
 
   - slug: tweetmap
     title: "A map of tweets from the public timeline"

@@ -4,6 +4,7 @@ var Handlebars = require('handlebars');
 var yaml = require('js-yaml');
 var jsdom = require('jsdom').jsdom;
 var rimraf = require('rimraf');
+var minifier = require('html-minifier');
 
 var shinydemos = exports;
 
@@ -84,7 +85,7 @@ shinydemos.create = function() {
         win.document.body.insertBefore(panelContainer, win.document.body.firstChild);
         win.document.body.appendChild(featuresupportContainer);
 
-        fs.writeFileSync(demoPath, win.document.doctype.toString() + win.document.outerHTML);
+        fs.writeFileSync(demoPath, minifier.minify(win.document.doctype.toString() + win.document.outerHTML, { 'collapseWhitespace': true, 'removeComments': true }));
 
         var tags = demo.tags.toString().split(',');
         tags.forEach(function(t)

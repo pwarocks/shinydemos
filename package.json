@@ -16,7 +16,8 @@
     "handlebars": "*",
     "js-yaml": "*",
     "jsdom": "*",
-    "rimraf": "*"
+    "rimraf": "*",
+    "html-minifier": "*"
     
   },
   "devDependencies": {}

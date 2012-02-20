@@ -1,32 +1,4 @@
+<script src="/scripts/script.js"></script>
 <script>
-	(function(){
-    var featuresupportContainer = document.getElementById('sd-desc'),
-        feature = null,
-        doesitwork = false;
-
-    {{#if features}}
-		var features = '{{features}}'.split(',');
-		for(var i = 0, j = features.length; i < j; i++){
-
-      feature = document.getElementById('sd-' + features[i]);
-
-			if(!Modernizr[features[i]]) {
-        doesitwork = false;
-        feature.className += ' sd-feature-nope';
-        feature.title = features[i] + 'is not supported';
-      } else {
-        feature.className += ' sd-feature-yep';
-        feature.title = features[i] + 'is supported';
-      }
-		}
-
-    if (doesitwork && doesitwork == false) {
-				featuresupportContainer.innerText = "Your browser doesn&#39;t support all required features";
-				featuresupportContainer.className += ' sd-features-nope';
-    } else {
-      featuresupportContainer.innerText = 'Success! Your browser supports all these features!';
-      featuresupportContainer.className += ' sd-features-yep';
-    }
-    {{/if}}
-	})();
+	checkFeatures('{{features}}');
 </script>

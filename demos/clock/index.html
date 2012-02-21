@@ -6,49 +6,101 @@
 <link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-html, body {margin: 0; padding: 0;}
-@font-face {
-  font-family: 'ocr-b';
-  font-style: normal;
-  font-weight: normal;
-  src: local('ocr-b'), url('ocrb10.ttf') format('truetype');
-}
+html, body {margin: 0; padding: 0; overflow: hidden;} 
 #container {
-  width:800px;
+  width: 800px;
   height: 600px;
-
-  
-
-/*  position:absolute;
-  left:50%;
-  top:50%;
-  margin:-275px 0 0 -400px;*/
+  margin: 0 auto 0 auto; 
+  padding: 0 0 0 70px;
 }
 
 svg {
   z-index: 100; position: absolute;
-  width: 800px;
-  height: 600px;
+  top: 50%;
+  margin: -230px 0 0 0;
 }
-text {font-family: 'Sigmar One', sans-serif; font-size: 160px;}
-video {position: absolute; top: 0; left: 0; width: 800px; height: 600px;}
+text {font-family: 'Sigmar One', sans-serif; font-size: 152px;}
+video {
+  margin: 0; width: 800px; height: 600px; position: absolute; top: 50%; margin: -230px 0 0 0;
+  /* fallback/startup color below */
+  background: rgb(210,223,237);
+  background: -moz-linear-gradient(-45deg, rgba(210,223,237,1) 0%, rgba(200,215,235,1) 19%, rgba(166,192,227,1) 38%, rgba(190,208,234,1) 51%, rgba(175,199,232,1) 62%, rgba(186,208,239,1) 75%, rgba(153,181,219,1) 88%, rgba(121,155,200,1) 100%);
+  background: -webkit-linear-gradient(-45deg, rgba(210,223,237,1) 0%,rgba(200,215,235,1) 19%,rgba(166,192,227,1) 38%,rgba(190,208,234,1) 51%,rgba(175,199,232,1) 62%,rgba(186,208,239,1) 75%,rgba(153,181,219,1) 88%,rgba(121,155,200,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(210,223,237,1) 0%,rgba(200,215,235,1) 19%,rgba(166,192,227,1) 38%,rgba(190,208,234,1) 51%,rgba(175,199,232,1) 62%,rgba(186,208,239,1) 75%,rgba(153,181,219,1) 88%,rgba(121,155,200,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(210,223,237,1) 0%,rgba(200,215,235,1) 19%,rgba(166,192,227,1) 38%,rgba(190,208,234,1) 51%,rgba(175,199,232,1) 62%,rgba(186,208,239,1) 75%,rgba(153,181,219,1) 88%,rgba(121,155,200,1) 100%);
+  background: linear-gradient(-45deg, rgba(210,223,237,1) 0%,rgba(200,215,235,1) 19%,rgba(166,192,227,1) 38%,rgba(190,208,234,1) 51%,rgba(175,199,232,1) 62%,rgba(186,208,239,1) 75%,rgba(153,181,219,1) 88%,rgba(121,155,200,1) 100%);
+}
+
+/* I could have done this using viewbox on the svg element, but this triggers issues with the SVG mask, hence the need for manual rescaling */
+
+@media screen and (max-width: 860px) {
+  #container {
+    width: 100%;
+    padding-left: 6%;
+  }
+  text {font-size: 140px;}
+} 
+@media screen and (max-width: 780px) {
+  #container {padding-left: 5%;}
+  text {font-size: 130px;}
+}
+@media screen and (max-width: 720px) {
+  #container {padding-left: 4%;}
+  text {font-size: 120px;}
+}
+@media screen and (max-width: 660px) {
+  #container {padding-left: 4%;}
+  text {font-size: 110px;}
+}
+@media screen and (max-width: 600px) {
+  #container {padding-left: 3%;}
+  text {font-size: 100px;}
+  svg {margin: -240px 0 0 0;}
+}
+@media screen and (max-width: 540px) {
+  #container {padding-left: 3%;}
+  text {font-size: 90px;}
+}
+@media screen and (max-width: 490px) {
+  #container {padding-left: 3%;}
+  text {font-size: 80px;}
+}
+@media screen and (max-width: 430px) {
+  #container {padding-left: 3%;}
+  text {font-size: 70px;}
+}
+@media screen and (max-width: 380px) {
+  #container {padding-left: 2%;}
+  text {font-size: 60px;}
+}
+@media screen and (max-width: 320px) {
+  #container {padding-left: 2%;}
+  text {font-size: 50px;}
+}
 </style>
 
 </head>
 <body>
 
+<!-- inspiration by http://katachimag.com/heroine/countdown/ -->
+
 <div id="container">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
   <defs>
     <mask id="maskedtext">
-      <rect width="800" height="600" x="0" y="0" fill="white"/>
+      <rect width="800" height="600" x="0" y="0" fill="#fff"/>
       <text id="clock" x="0" y="50%" text-anchor="start" fill="#000"> </text>
     </mask>
   </defs>
-  <rect width="800" height="600" x="0" y="0" fill="white" mask="url(#maskedtext)"/>  
+  <rect width="800" height="600" x="0" y="0" fill="#fff" mask="url(#maskedtext)"/>  
 </svg>
 
-<script type="text/javascript">
+<p></p>
+
+<video autoplay></video>
+</div>
+
+<script>
 function digitalclock()
 {
     var clock = document.getElementById('clock');
@@ -59,27 +111,18 @@ function digitalclock()
 digitalclock();
 </script>
 
-<video autoplay></video>
-</div>
 
-<script type="text/javascript">
-var video = document.getElementsByTagName('video')[0], 
-       heading = document.getElementsByTagName('h3')[0];
+<script>
+var video = document.getElementsByTagName('video')[0];
 
-if(navigator.getUserMedia) {
-  navigator.getUserMedia('video', successCallback, errorCallback);
+navigator.getUserMedia('video', successCallback, errorCallback);
   function successCallback( stream ) {
     video.src = stream;
   }
   function errorCallback( error ) {
-    heading.textContent = 
+    para.textContent = 
         "An error occurred: [CODE " + error.code + "]";
   }
-} else {
-  heading.textContent = 
-      "No camera detected - punchline suffers";
-}
 </script>
-<script src="scripts/panel.js"></script>
 </body>
 </html>

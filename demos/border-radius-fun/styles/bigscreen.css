@@ -62,10 +62,6 @@ fieldset fieldset{
 	margin:0;
 }
 
-#overlay.hide, #overlay section.hide{
-    display:none;
-}
-
 #overlay section{
     display:none;
 	background: #fff;

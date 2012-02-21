@@ -1,24 +1,29 @@
 /* TEAM */
+
 	Shiny demos: 
-	Daniel Davis @ourmaninjapan 
-	Zi Bin Cheah @zibin
-	Shwetank Dixit @shwetank
-	Andreas Bovens @andreasbovens
-	Bruce Lawson @brucel
-	Chris Mills @chrisdavidmills
-	Patrick Lauke @patrick_h_lauke
-	Karl Dubost @karlpro
-	Vadim Makeev @pepelsbey
-	Divya Manian @divya
-	Mike Taylor @miketaylr
-	Luz Caballero @gerbille
-	Tiffany Brown @webinista
+
+		Daniel Davis @ourmaninjapan 
+		Zi Bin Cheah @zibin
+		Shwetank Dixit @shwetank
+		Andreas Bovens @andreasbovens
+		Bruce Lawson @brucel
+		Chris Mills @chrisdavidmills
+		Patrick Lauke @patrick_h_lauke
+		Karl Dubost @karlpro
+		Vadim Makeev @pepelsbey
+		Divya Manian @divya
+		Mike Taylor @miketaylr
+		Luz Caballero @gerbille
+		Tiffany Brown @webinista
 
 	Site design & pixel pushing:
-	Vadim Makeev @pepelsbey
+
+		Vadim Makeev @pepelsbey
 	
 	Site backend magic:
-	Divya Manian @divya
+
+		Divya Manian @divya
 
 	Github mastery:
-	Mike Taylor @miketaylr
+
+		Mike Taylor @miketaylr

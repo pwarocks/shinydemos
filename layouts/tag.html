@@ -8,8 +8,8 @@
 	<link rel="stylesheet" href="/styles/screen.css">
 	<link rel="stylesheet" href="/styles/screen-narrow.css" media="only screen and (max-width:550px)">
 	<link rel="stylesheet" href="/styles/screen-wide.css" media="only screen and (min-width:800px) and (min-height:620px)">
-	<link rel="icon" sizes="16x16" href="images/favicon.ico">
-	<link rel="apple-touch-icon-precomposed" href="images/favicon.png">
+	<link rel="icon" sizes="16x16" href="/images/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" href="/images/favicon.png">
 </head>
 <body>
 	<div class="page-plain">
@@ -27,11 +27,7 @@
 					<img src="{{thumb}}" alt="{{this.title}}">
 					<h2>{{this.title}}</h2>
 				</a>
-        <p>
-        {{#each this.demotags}}
-          <a href="/{{this}}/">{{this}}</a>
-        {{/each}}
-        </p>
+				<p>{{#each this.demotags}}{{this}} {{/each}}</p>
 			</li>
 {{/each}}
 			<li class="clear"></li>

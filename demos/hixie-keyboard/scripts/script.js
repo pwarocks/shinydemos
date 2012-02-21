@@ -1,11 +1,11 @@
 var body = document.body,
-	video = document.querySelector('.video'),
-	lcd = document.querySelector('.lcd'),
-	keys = document.querySelectorAll('.keyboard button'),
+	video = document.getElementById('video'),
+	lcd = document.getElementById('lcd'),
+	keys = document.querySelectorAll('#keyboard button'),
 	sounds = [], media = 'http://media.shinydemos.com/hixie-keyboard/';
 
 document.addEventListener('DOMContentLoaded', function() {
-	for(var i=0, l=keys.length; i < l; i++) {
+	for(var i=0, l=keys.length; i<l; i++) {
 		var key = keys[i],
 			name = key.id.split('-')[1];
 		var sound = document.createElement('audio');

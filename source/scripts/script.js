@@ -31,7 +31,8 @@ function checkFeatures(list) {
 
 	var maybeFeatures = list.split(','), nopeFeatures = [], yepFeatures = [],
 		nopeDescription = 'Your browser doesn’t support all required features',
-		yepDescription = 'Success! Your browser supports all required features!';
+		yepDescription = 'Success! Your browser supports all required features!',
+		descriptionText = yepDescription;
 
 	for(var i=0, l=maybeFeatures.length; i<l; i++) {
 		var feature = maybeFeatures[i];
@@ -77,14 +78,17 @@ function checkFeatures(list) {
 		var nopeList = createFeatures(nopeFeatures);
 			nopeList.classList.add('sd-list-nope');
 
+		descriptionText = nopeDescription;
+		panelSupport = 'sd-features-nope';
+		panelFeatures.appendChild(nopeList);
+	}
+
+	if(nopes && yeps) {
 		var subtitle = document.createElement('p'),
 			subtitleText = document.createTextNode('Supported');
 			subtitle.className = 'sd-desc-sub';
 			subtitle.appendChild(subtitleText);
 
-		descriptionText = document.createTextNode(nopeDescription);
-		panelSupport = 'sd-features-nope';
-		panelFeatures.appendChild(nopeList);
 		panelFeatures.appendChild(subtitle);
 	}
 
@@ -92,10 +96,10 @@ function checkFeatures(list) {
 		var yepList = createFeatures(yepFeatures);
 			yepList.classList.add('sd-list-yep');
 
-		descriptionText = document.createTextNode(yepDescription);
 		panelFeatures.appendChild(yepList);
 	}
 
+	descriptionText = document.createTextNode(descriptionText);
 	description.appendChild(descriptionText);
 	panelFeatures.classList.add(panelSupport);
 

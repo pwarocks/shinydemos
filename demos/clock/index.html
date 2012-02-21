@@ -6,7 +6,8 @@
 <link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-html, body {margin: 0; padding: 0; overflow: hidden;} 
+html, body {margin: 0; padding: 0; overflow: hidden;}
+body {font-family: Helvetica, Arial, sans-serif;} 
 #container {
   width: 800px;
   height: 600px;
@@ -113,7 +114,8 @@ digitalclock();
 
 
 <script>
-var video = document.getElementsByTagName('video')[0];
+var video = document.getElementsByTagName('video')[0], 
+    para = document.getElementsByTagName('p')[0];
 
 navigator.getUserMedia('video', successCallback, errorCallback);
   function successCallback( stream ) {

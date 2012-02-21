@@ -36,7 +36,7 @@ demos:
     title: "HTML5 Planetarium"
     tags: [css]
     support: [csstransforms, csstransitions]
-	
+
   - slug: multitouch-tracker
     title: "Simple multitouch demonstration"
     tags: [canvas]
@@ -76,7 +76,7 @@ demos:
     title: "An isometric world"
     tags: [css]
     support: [csstransitions]
-	
+
   - slug: photo-organizer
     title: "Touch-enabled photo lightbox"
     tags: [css, touch]

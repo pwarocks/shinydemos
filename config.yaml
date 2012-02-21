@@ -46,7 +46,7 @@ demos:
   - slug: fence
     title: "Fence"
     tags: [css, svg]
-    support: [svg, bgrepeatround]
+    support: [svg, inlinesvg, bgrepeatround]
 
   - slug: paranoid
     title: "Return of the Retro with a canvas game!"

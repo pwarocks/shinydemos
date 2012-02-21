@@ -1,0 +1,32 @@
+ 
+
+        @-o-viewport {
+          width: device-width;
+          height: device-height;
+          zoom: 0.65;
+        }
+        
+        @font-face {
+            font-family: 'SnicklesRegular';
+            src: url('../fonts/Snickles-webfont.eot');
+            src: url('../fonts/Snickles-webfont.eot?#iefix') format('embedded-opentype'),
+                 url('../fonts/Snickles-webfont.woff') format('woff'),
+                 url('../fonts/Snickles-webfont.ttf') format('truetype'),
+                 url('../fonts/Snickles-webfont.svg#SnicklesRegular') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        
+        }
+        
+
+        #borderrect {
+           stroke: black;
+        }
+        
+		svg{
+			background-color: #000;
+		}
+		#heading{
+			font-family: 'SnicklesRegular';
+		}
+     

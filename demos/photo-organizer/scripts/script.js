@@ -1,41 +1,4 @@
-<!DOCTYPE html>
-<title>Multitouch image box</title>
-<meta name="viewport" content="width=1000,user-scalable=no,initial-scale=1,target-densitydpi=device-dpi">
-<style>
-@viewport {
-	/* belt-and-braces - using viewport meta AND viewport CSS */
-	/* width: device-width;
-	height: device-height;
-	zoom: 1;
-	min-zoom: 1;
-	max-zoom: 1;
-	user-zoom: fixed;
-	orientation: landscape;
-	resolution: device; */
-}
-html { background: url(bg.gif); }
-html,body { min-height: 100%; width: 1000px; height: 100%; margin: 0; padding: 0; overflow: hidden; }
-img {
-	display: block;
-	position: absolute;
-	z-index:1;
-	-o-transform: scale(0.5);
-	-moz-transform: scale(0.5);
-	-webkit-transform: scale(0.5);
-	transform: scale(0.5);
-	top: 0px; left: 0px; /* though this won't be flush, due to transform (actual top and left = half the width/height of image */
-	border: 20px transparent solid;
-	background-color: #eee;
-	background-origin: border-box;
-	background-image: url(centermarks.png), url(centermarks.png), url(centermarks.png), url(centermarks.png), url(bullseye.png), url(bullseye.png), url(bullseye.png), url(bullseye.png), url(bullseye.png), url(bullseye.png), url(bullseye.png), url(bullseye.png), url(colourbar.png);
-	background-repeat: no-repeat;
-	background-position: center bottom, center top, left center, right center, 0 15%,  0 85%,  100% 15%,  100% 85%, 15% 0, 85% 0, 15% 100%, 85% 100%, 100% 70%;
-	margin: 0; padding: 0;
-}
-</style>
-<script src="/patrickl/scripts/ga.js"></script>
-<script>
-function gestureHandler(element) {
+﻿function gestureHandler(element) {
 	// define a data structure to store our touchpoints in
 	this.coords = function(x,y) {
 		this.x = x;
@@ -144,7 +107,3 @@ window.addEventListener('load',function() {
 	document.body.addEventListener('scroll',function(e) { e.preventDefault(); e.stopPropagation(); },true);
 	window.addEventListener('scroll',function(e) { e.preventDefault(); e.stopPropagation(); },true);
 }, false);
-</script>
-<body>
-<img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg">
-</body>

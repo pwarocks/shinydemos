@@ -37,6 +37,11 @@ demos:
     title: "HTML5 Planetarium"
     tags: [css]
     support: [csstransforms, csstransitions]
+	
+  - slug: multitouch-tracker
+    title: "Simple multitouch demonstration"
+    tags: [canvas]
+    support: [canvas, touch]
 
   - slug: hixie-keyboard
     title: "Hixie Keyboard"

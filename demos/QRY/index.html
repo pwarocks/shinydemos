@@ -1,37 +1,40 @@
 ﻿<!DOCTYPE html>
-<meta charset=utf-8>
-<title>QRY {curie} QR code reader</title>
-<meta name="viewport" content="width=480,user-scalable=no">
-<link rel="stylesheet" href="./styles/styles.css">
-<!-- Uses https://github.com/LazarSoft/jsqrcode LazarSoft's jsQRcode implementation -->
-<script type="text/javascript" src="./scripts/grid.js"></script>
-<script type="text/javascript" src="./scripts/version.js"></script>
-<script type="text/javascript" src="./scripts/detector.js"></script>
-<script type="text/javascript" src="./scripts/formatinf.js"></script>
-<script type="text/javascript" src="./scripts/errorlevel.js"></script>
-<script type="text/javascript" src="./scripts/bitmat.js"></script>
-<script type="text/javascript" src="./scripts/datablock.js"></script>
-<script type="text/javascript" src="./scripts/bmparser.js"></script>
-<script type="text/javascript" src="./scripts/datamask.js"></script>
-<script type="text/javascript" src="./scripts/rsdecoder.js"></script>
-<script type="text/javascript" src="./scripts/gf256poly.js"></script>
-<script type="text/javascript" src="./scripts/gf256.js"></script>
-<script type="text/javascript" src="./scripts/decoder.js"></script>
-<script type="text/javascript" src="./scripts/qrcode.js"></script>
-<script type="text/javascript" src="./scripts/findpat.js"></script>
-<script type="text/javascript" src="./scripts/alignpat.js"></script>
-<script type="text/javascript" src="./scripts/databr.js"></script>
-<!-- Actual demo logic -->
-<script type="text/javascript" src="./scripts/script.js"></script>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=480,user-scalable=no">
+	<link rel="stylesheet" href="./styles/styles.css">
+	<!-- Uses https://github.com/LazarSoft/jsqrcode LazarSoft's jsQRcode implementation -->
+	<script type="text/javascript" src="./scripts/grid.js"></script>
+	<script type="text/javascript" src="./scripts/version.js"></script>
+	<script type="text/javascript" src="./scripts/detector.js"></script>
+	<script type="text/javascript" src="./scripts/formatinf.js"></script>
+	<script type="text/javascript" src="./scripts/errorlevel.js"></script>
+	<script type="text/javascript" src="./scripts/bitmat.js"></script>
+	<script type="text/javascript" src="./scripts/datablock.js"></script>
+	<script type="text/javascript" src="./scripts/bmparser.js"></script>
+	<script type="text/javascript" src="./scripts/datamask.js"></script>
+	<script type="text/javascript" src="./scripts/rsdecoder.js"></script>
+	<script type="text/javascript" src="./scripts/gf256poly.js"></script>
+	<script type="text/javascript" src="./scripts/gf256.js"></script>
+	<script type="text/javascript" src="./scripts/decoder.js"></script>
+	<script type="text/javascript" src="./scripts/qrcode.js"></script>
+	<script type="text/javascript" src="./scripts/findpat.js"></script>
+	<script type="text/javascript" src="./scripts/alignpat.js"></script>
+	<script type="text/javascript" src="./scripts/databr.js"></script>
+	<!-- Actual demo logic -->
+	<script type="text/javascript" src="./scripts/script.js"></script>
 </head>
 <body>
-<div id="container">
-<h1><img src="./images/qry-heading.png" alt="QRY {curie} QR code reader"></h1>
-<div>
-<video id="sourcevid" autoplay>
-<p>This application requires an HTML5 <code>&lt;video&gt;</code> capable browser…</p>
-</video>
-</div>
-<div id="out"></div>
-</div>
+	<div id="container">
+	<h1><img src="./images/qry-heading.png" alt="QRY {curie} QR code reader"></h1>
+	<div>
+	<video id="sourcevid" autoplay>
+	<p>This application requires an HTML5 <code>&lt;video&gt;</code> capable browser…</p>
+	</video>
+	</div>
+	<div id="out"></div>
+	</div>
 </body>
+</html>

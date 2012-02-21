@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+          "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+<?xml-stylesheet href="styles/style.css" type="text/css"?>
+<meta name="viewport" content="width=device-width, height=device-height, zoom=0.65" />
+<title>SVG game with device orientation</title>
+	
+	<text id="heading" x="15" y="30" font-size="30" fill="white" stroke="white">Test your speed...</text>	
+	<rect id="borderrect" x="10" y="40" width="450" height="500" fill="url(#background)" stroke="black" stroke-width="1" />
+
+	<radialGradient id="holegrad">
+		<stop offset="0.2" stop-color="5b871f" />
+		<stop offset="1" stop-color="#90ba34" />
+	</radialGradient>
+	
+	<radialGradient id="presentgrad">
+		<stop offset="0.2" stop-color="orange" />
+		<stop offset="1" stop-color="yellow" />
+	</radialGradient>
+	
+	<linearGradient id="background" gradientTransform="rotate(90)">
+		<stop offset="0.2" stop-color="#666" />
+		<stop offset="1" stop-color="#333" />
+	</linearGradient>
+		
+	<circle cx="95" cy="85" fill="url('#holegrad')" r="20" />
+	<circle cx="390" cy="360" fill="url('#holegrad')" r="20" />
+	<circle cx="330" cy="200" fill="url('#holegrad')" r="20" />
+	<circle cx="90" cy="360" fill="url('#holegrad')" r="20" />
+	<circle cx="290" cy="460" fill="url('#holegrad')" r="20" />
+		
+	<text id="mytext" x="10" y="580" font-size="17" fill="white" stroke="white">Score: 0 of 5 down</text>
+
+<script xlink:href="scripts/script.js" />
+</svg>

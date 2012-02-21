@@ -92,6 +92,11 @@ demos:
     tags: [webgl]
     support: [canvas, video, webgl, webworkers]
 
+  - slug: QRY
+    title: "QRY {curie} QR code reader"
+    tags: [getusermedia]
+    support: [getusermedia, video]
+
   - slug: world-flights
     title: "World flights"
     tags: [webgl]

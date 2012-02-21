@@ -10,7 +10,6 @@ siteconfig:
   panelClass: 'sd-panel'
   panelTag: 'div'
 
-
 # Allowed tags: javascript, forms, canvas, content, parser, svg, css, audio, video, webgl
 demos:
   - slug: inbox-attack
@@ -92,3 +91,34 @@ demos:
     title: "World flights"
     tags: [webgl]
     support: [canvas, webgl, webworkers]
+
+# Features: 
+
+features:
+  - slug: 'applicationcache'
+    title: 'Application Cache'
+    link: '#'
+
+  - slug: audio
+    title: 'Audio Element'
+    link: '#'
+
+  - slug: backgroundsize
+    title: 'Background-size'
+    link: '#'
+
+  - slug: bgrepeatround
+    title: 'Background-repeat: round'
+    link: '#'
+
+  - slug: bgrepeatspace
+    title: 'Background-repeat: space'
+    link: '#'
+
+  - slug: borderimage
+    title: 'Border-image'
+    link: '#'
+
+  - slug: borderimage
+    title: 'Border-image'
+    link: '#'

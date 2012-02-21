@@ -4,10 +4,7 @@ HTML, BODY {
 BODY {
 	margin:0;
 	padding:0;
-	background-repeat: no-repeat;
-	background-position: center;
 	}
-	
 .inbox {
 	position:absolute;
 	top:0;

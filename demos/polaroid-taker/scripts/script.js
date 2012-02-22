@@ -86,9 +86,6 @@ function snapshot(){
     */
     overlay.className = overlay.className.replace(/invisible/gi,'');
 
-    // Pause the video
-    video_element.pause();
-
 	w = video_element.clientWidth * 1.2;
 	h = video_element.clientHeight * 1.2;
 

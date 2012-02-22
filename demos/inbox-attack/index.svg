@@ -43,8 +43,8 @@
         var default_height = 630;
         var case_ratio = default_width / default_height; // Optimal size ratio is roughly 1.55:1
         var svg = doc.getElementsByTagName('svg')[0];
-        var screen_width = document.documentElement.clientWidth;
-        var screen_height = document.documentElement.clientHeight;
+        var screen_width = win.innerWidth;
+        var screen_height = win.innerHeight;
         var case_width, case_height;
         
         // Ensure game is in landscape format
@@ -458,9 +458,9 @@
 		var progress_bar = new ProgressBar();
 		var user = new User();
 		doReset();
-		
 		// OK, let's get this baby started
 		var timer = setInterval(tick, TICK_RATE);
+                user.move('right')
 	}
 	
 	window.onload = launch;

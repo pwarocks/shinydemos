@@ -62,11 +62,9 @@
     
         svg.setAttribute('width', case_width);
         svg.setAttribute('height', case_height);
-        //setTimeout(function() { window.scrollTo(0, 1) }, 100);
-        //window.scrollTo(0,1);
         
-		// DOM elements - gotta catch 'em all
-		var progress = doc.getElementById('progress');
+        // DOM elements - gotta catch 'em all
+        var progress = doc.getElementById('progress');
         var lbl_reset = doc.getElementById('lbl_reset');
         var lbl_inbox = doc.getElementById('lbl_inbox');
         var lbl_attack = doc.getElementById('lbl_attack');
@@ -78,6 +76,9 @@
 		var btn_right = doc.getElementById('btn_right');
 		var inbox = doc.getElementById('inbox');
 		var head = doc.getElementById('head');
+                var btn_left = doc.getElementById('btn_left');
+                var btn_right = doc.getElementById('btn_right');
+                var btn_surround = doc.getElementById('button_surround');
         var users = [];
         for (var i = 0; i < 5; i++) {
             users[i] = doc.getElementById('user' + i);
@@ -139,6 +140,14 @@
         txt_result.setAttributeNS(null, 'font-size', 22 * scalex);
         txt_result.setAttributeNS(null, 'x', 466 * scalex);
         txt_result.setAttributeNS(null, 'y', 230 * scaley);
+
+        if (screen_width < 360 ) {
+          btn_left.setAttribute('r', '10%');
+          btn_left.setAttribute('stroke-width', '0.2%');
+          btn_right.setAttribute('r', '10%');
+          btn_right.setAttribute('stroke-width', '0.2%');
+          btn_surround.setAttribute('r', '11.5%');
+        }
         
 		/*
 		 * Reset variables to re-start game

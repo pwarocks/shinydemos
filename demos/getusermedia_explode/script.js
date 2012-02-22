@@ -35,11 +35,20 @@ function init(){
     
     var outputcanvas = document.getElementById('output');
     draw = outputcanvas.getContext('2d');
-    outputcanvas.width = window.innerWidth;
-    outputcanvas.height = window.innerHeight;
+    outputcanvas.width = PAINTWIDTH;
+    outputcanvas.height = PAINTHEIGHT;
     outputcanvas[mouse_down] = function() {
         dropBomb(event, this);
     };
+    
+    var checkDimensions = window.setInterval(function() {
+        if (outputcanvas.width > 0 && outputcanvas.height > 0) {            
+            // Get the stream here and start drawing the stream to the canvas
+            
+            //setInterval("processFrame()", 33);
+            window.clearInterval(checkDimensions);
+        }
+    }, 50);
     
     // Get the stream from the camera using getUserMedia
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
@@ -67,7 +76,10 @@ function init(){
         return;
     }
     
-    setInterval("processFrame()", 33);
+    // Start drawing the stream to the canvas when the video is ready
+    video.addEventListener('canplay', function() {
+        setInterval("processFrame()", 33);
+    }, false);
 }
 
 function createTiles(){

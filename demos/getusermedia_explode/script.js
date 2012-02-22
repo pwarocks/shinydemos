@@ -5,50 +5,35 @@
  * Edited for use with camera and touch screen by Daniel Davis (Opera Software)
  */
 
-// Global constants
-var TILE_WIDTH = 32;
-var TILE_HEIGHT = 24;
-var TILE_CENTER_WIDTH = TILE_WIDTH / 2;
-var TILE_CENTER_HEIGHT = TILE_HEIGHT / 2;
-var SOURCERECT = {x:0, y:0, width:0, height:0};
-var PAINTX = 0;
-var PAINTY = 0;
-var PAINTWIDTH = window.innerWidth;
-var PAINTHEIGHT = window.innerHeight;
-var SUPPORTS_TOUCH = 'createTouch' in document;
-var RAD = Math.PI/180;
+// Global constants & variables
+var exploding = {
+    TILE_WIDTH : 32,
+    TILE_HEIGHT : 24,
+    TILE_CENTER_WIDTH :  this.TILE_WIDTH / 2,
+    TILE_CENTER_HEIGHT : this.TILE_HEIGHT / 2,
+    SOURCERECT : {
+        width : 0,
+        height : 0
+    },
+    PAINTWIDTH : window.innerWidth,
+    PAINTHEIGHT : window.innerHeight,
+    RAD : Math.PI / 180,
+    tiles : []    
+};
 
-// Global variables
-var video;
-var copy;
-var copycanvas;
-var draw;
-var randomJump = false;
-var tiles = [];
-var debug = false;
-var mouse_down = (SUPPORTS_TOUCH ? 'ontouchstart' : 'onmousedown');
-
-function init(){
-    video = document.getElementById('sourcevid');
-    copycanvas = document.getElementById('sourcecopy');
-    copy = copycanvas.getContext('2d');
+exploding.init = function() {
+    video = document.querySelector('video');
+    exploding.canvas1 = document.getElementById('canvas1');
+    exploding.context1 = exploding.canvas1.getContext('2d');
     
-    var outputcanvas = document.getElementById('output');
-    draw = outputcanvas.getContext('2d');
-    outputcanvas.width = PAINTWIDTH;
-    outputcanvas.height = PAINTHEIGHT;
-    outputcanvas[mouse_down] = function() {
-        dropBomb(event, this);
+    var canvas2 = document.getElementById('canvas2');
+    exploding.context2 = canvas2.getContext('2d');
+    canvas2.width = window.innerWidth;
+    canvas2.height = window.innerHeight;
+    var mouse_down = ('createTouch' in document) ? 'ontouchstart' : 'onmousedown';
+    canvas2[mouse_down] = function() {
+        exploding.dropBomb(event, this);
     };
-    
-    var checkDimensions = window.setInterval(function() {
-        if (outputcanvas.width > 0 && outputcanvas.height > 0) {            
-            // Get the stream here and start drawing the stream to the canvas
-            
-            //setInterval("processFrame()", 33);
-            window.clearInterval(checkDimensions);
-        }
-    }, 50);
     
     // Get the stream from the camera using getUserMedia
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
@@ -76,56 +61,64 @@ function init(){
         return;
     }
     
-    // Start drawing the stream to the canvas when the video is ready
+    // Start drawing to the canvas once the video is ready.
     video.addEventListener('canplay', function() {
-        setInterval("processFrame()", 33);
+        if (!isNaN(video.duration)) {
+            exploding.canvas1.width = video.videoWidth;
+            exploding.canvas1.height = video.videoHeight;
+            
+            if (exploding.SOURCERECT.width == 0) {
+                exploding.SOURCERECT = {
+                    width : video.videoWidth,
+                    height : video.videoHeight
+                };
+                
+            }
+            
+            exploding.createTiles();
+            
+            // Start drawing the stream to the canvas
+            setInterval(function() {             
+                exploding.processFrame(video)
+            }, 33);
+        }
     }, false);
-}
+};
 
-function createTiles(){
-    var offsetX = (TILE_CENTER_WIDTH+(PAINTWIDTH-SOURCERECT.width)/2 >> 0);
-    var offsetY = (TILE_CENTER_HEIGHT+(PAINTHEIGHT-SOURCERECT.height)/2 >> 0);
-    var y=0;
-    while(y < SOURCERECT.height){
-        var x=0;
-        while(x < SOURCERECT.width){
-            var tile = new Tile();
+exploding.createTiles = function() {
+    exploding.TILE_WIDTH = exploding.canvas1.width / 16;
+    exploding.TILE_HEIGHT = exploding.canvas1.height / 16;
+    exploding.TILE_CENTER_WIDTH = exploding.TILE_WIDTH / 2 >> 0;
+    exploding.TILE_CENTER_HEIGHT = exploding.TILE_HEIGHT / 2 >> 0;
+                
+    var offsetX = (exploding.TILE_CENTER_WIDTH + (exploding.PAINTWIDTH - exploding.SOURCERECT.width) / 2 >> 0);
+    var offsetY = (exploding.TILE_CENTER_HEIGHT + (exploding.PAINTHEIGHT - exploding.SOURCERECT.height) / 2 >> 0);
+    var y = 0;
+    while (y < exploding.SOURCERECT.height) {
+        var x = 0;
+        while (x < exploding.SOURCERECT.width) {
+            var tile = new exploding.Tile();
             tile.videoX = x;
             tile.videoY = y;
-            tile.originX = offsetX+x;
-            tile.originY = offsetY+y;
+            tile.originX = offsetX + x;
+            tile.originY = offsetY + y;
             tile.currentX = tile.originX;
             tile.currentY = tile.originY;
-            tiles.push(tile);
-            x+=TILE_WIDTH;
+            exploding.tiles.push(tile);
+            x += exploding.TILE_WIDTH;
         }
-        y+=TILE_HEIGHT;
+        y += exploding.TILE_HEIGHT;
     }
-}
+};
 
-function processFrame(){
-    if(!isNaN(video.duration)){
-        if(SOURCERECT.width == 0){
-            SOURCERECT = {x:0,y:0,width:video.videoWidth,height:video.videoHeight};
-            copycanvas.width = video.videoWidth;
-            copycanvas.height = video.videoHeight;
-            
-            TILE_WIDTH = copycanvas.width / 16;
-            TILE_HEIGHT = copycanvas.height / 16;
-            TILE_CENTER_WIDTH = TILE_WIDTH / 2 >> 0;
-            TILE_CENTER_HEIGHT = TILE_HEIGHT / 2 >> 0;
-            
-            createTiles();
-        }
-    }
-    var debugStr = "";
+exploding.processFrame = function(video) {
     //copy tiles
-    copy.drawImage(video, 0, 0);
-    draw.clearRect(PAINTX, PAINTY,PAINTWIDTH,PAINTHEIGHT);
+    exploding.context1.drawImage(video, 0, 0);
+    exploding.context2.clearRect(0, 0, exploding.PAINTWIDTH, exploding.PAINTHEIGHT);
     
-    for(var i=0, len = tiles.length; i<len; i++){
-        var tile = tiles[i];
-        if(tile.force > 0.0001){
+    for (var i = 0, len = exploding.tiles.length; i < len; i++) {
+        var tile = exploding.tiles[i];
+        if (tile.force > 0.0001) {
             //expand
             var force = tile.force;
             tile.moveX *= force;
@@ -136,77 +129,72 @@ function processFrame(){
             tile.rotation += tile.moveRotation;
             tile.rotation %= 360;
             tile.force *= 0.9;
-            if(tile.currentX <= 0 || tile.currentX >= PAINTWIDTH){
+            if (tile.currentX <= 0 || tile.currentX >= exploding.PAINTWIDTH) {
                 tile.moveX *= -1;
             }
-            if(tile.currentY <= 0 || tile.currentY >= PAINTHEIGHT){
+            if (tile.currentY <= 0 || tile.currentY >= exploding.PAINTHEIGHT) {
                 tile.moveY *= -1;
             }
-        }else if(tile.rotation != 0 || tile.currentX != tile.originX || tile.currentY != tile.originY){
+        } else if (tile.rotation != 0 || tile.currentX != tile.originX || tile.currentY != tile.originY) {
             //contract
-            var diffx = (tile.originX-tile.currentX)*0.2;
-            var diffy = (tile.originY-tile.currentY)*0.2;
+            var diffx = (tile.originX - tile.currentX) * 0.2;
+            var diffy = (tile.originY - tile.currentY) * 0.2;
             var diffRot = (0-tile.rotation)*0.2;
             
-            if(absolute(diffx) < 0.5){
+            if (exploding.absolute(diffx) < 0.5) {
                 tile.currentX = tile.originX;
-            }else{
+            } else {
                 tile.currentX += diffx;
             }
-            if(absolute(diffy) < 0.5){
+            if (exploding.absolute(diffy) < 0.5) {
                 tile.currentY = tile.originY;
-            }else{
+            } else {
                 tile.currentY += diffy;
             }
-            if(absolute(diffRot) < 0.5){
+            if (exploding.absolute(diffRot) < 0.5) {
                 tile.rotation = 0;
-            }else{
+            } else {
                 tile.rotation += diffRot;
             }
-        }else{
+        } else {
             tile.force = 0;
         }
-        draw.save();
-        draw.translate(tile.currentX, tile.currentY);
-        draw.rotate(tile.rotation*RAD);
-        draw.drawImage(copycanvas, tile.videoX, tile.videoY, TILE_WIDTH, TILE_HEIGHT, -TILE_CENTER_WIDTH, -TILE_CENTER_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
-        draw.restore();
+        exploding.context2.save();
+        exploding.context2.translate(tile.currentX, tile.currentY);
+        exploding.context2.rotate(tile.rotation * exploding.RAD);
+        exploding.context2.drawImage(exploding.canvas1, tile.videoX, tile.videoY, exploding.TILE_WIDTH, exploding.TILE_HEIGHT, exploding.TILE_CENTER_WIDTH * -1, exploding.TILE_CENTER_HEIGHT * -1, exploding.TILE_WIDTH, exploding.TILE_HEIGHT);
+        exploding.context2.restore();
     }
-    if(debug){
-        debug = false;
-        document.getElementById('trace').innerHTML = debugStr;
-    }
-}
+};
 
-function explode(x, y){
-    for(var i=0, len = tiles.length; i<len; i++){
-        var tile = tiles[i];
+exploding.explode = function(x, y) {
+    for(var i = 0, len = exploding.tiles.length; i < len; i++) {
+        var tile = exploding.tiles[i];
         
-        var xdiff = tile.currentX-x;
-        var ydiff = tile.currentY-y;
-        var dist = Math.sqrt(xdiff*xdiff + ydiff*ydiff);
+        var xdiff = tile.currentX - x;
+        var ydiff = tile.currentY - y;
+        var dist = Math.sqrt(xdiff * xdiff + ydiff * ydiff);
         var rnd = Math.random();
         
-        var randRange = 180+(rnd*10);
-        var range = randRange-dist;
-        var force = 3*(range/randRange);
-        if(force > tile.force){
+        var randRange = 180 + (rnd * 10);
+        var range = randRange - dist;
+        var force = 3 * (range/randRange);
+        if (force > tile.force) {
             tile.force = force;
             var radians = Math.atan2(ydiff, xdiff);
             tile.moveX = Math.cos(radians);
             tile.moveY = Math.sin(radians);
-            tile.moveRotation = 0.5-rnd;
+            tile.moveRotation = 0.5 - rnd;
         }
     }
-    tiles.sort(zindexSort);
-    processFrame();
+    exploding.tiles.sort(exploding.zindexSort);
 }
 
-function zindexSort(a, b){
-    return (a.force-b.force);
+exploding.zindexSort = function(a, b) {
+    return (a.force - b.force);
 }
 
-function dropBomb(evt, obj){
+exploding.dropBomb = function(evt, obj) {
     evt.preventDefault();
     var posx = 0;
     var posy = 0;
@@ -215,7 +203,7 @@ function dropBomb(evt, obj){
     if (evt.touches) {
         posx = event.touches[0].pageX;
         posy = event.touches[0].pageY;
-    }else if (e.pageX || e.pageY){
+    }else if (e.pageX || e.pageY) {
         posx = e.pageX;
         posy = e.pageY;
     }else if (e.clientX || e.clientY) {
@@ -224,11 +212,11 @@ function dropBomb(evt, obj){
     }
     var canvasX = posx-obj.offsetLeft;
     var canvasY = posy-obj.offsetTop;
-    explode(canvasX, canvasY);
+    exploding.explode(canvasX, canvasY);
 }
 
 // Constructor for individual tiles
-function Tile(){
+exploding.Tile = function() {
     this.originX = 0;
     this.originY = 0;
     this.currentX = 0;
@@ -243,43 +231,10 @@ function Tile(){
     this.videoY = 0;
 }
 
-/*
-    getPixel
-    return pixel object {r,g,b,a}
-*/
-function getPixel(imageData, x, y){
-    var data = imageData.data;
-    var pos = (x + y * imageData.width) * 4;
-    return {r:data[pos], g:data[pos+1], b:data[pos+2], a:data[pos+3]}
-}
-/*
-    setPixel
-    set pixel object {r,g,b,a}
-*/
-function setPixel(imageData, x, y, pixel){
-    var data = imageData.data;
-    var pos = (x + y * imageData.width) * 4;
-    data[pos] = pixel.r;
-    data[pos+1] = pixel.g;
-    data[pos+2] = pixel.b;
-    data[pos+3] = pixel.a;
-}
-/*
-    copyPixel
-    faster then using getPixel/setPixel combo
-*/
-function copyPixel(sImageData, sx, sy, dImageData, dx, dy){
-    var spos = (sx + sy * sImageData.width) * 4;
-    var dpos = (dx + dy * dImageData.width) * 4;
-    dImageData.data[dpos] = sImageData.data[spos];     //R
-    dImageData.data[dpos+1] = sImageData.data[spos+1]; //G
-    dImageData.data[dpos+2] = sImageData.data[spos+2]; //B
-    dImageData.data[dpos+3] = sImageData.data[spos+3]; //A
-}
-
 // Slightly faster than Math.abs
-function absolute(x) {
+exploding.absolute = function(x) {
     return (x < 0 ? -x : x);
 }
 
-window.onload = init;
+window.addEventListener('DOMContentLoaded', exploding.init, false);
+

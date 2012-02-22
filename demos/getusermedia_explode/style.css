@@ -12,7 +12,7 @@ body {
 a {
     color:#99f;
 }
-#sourcevid, #sourcecopy {
+video, #canvas1 {
     display:none;
 }
 .error {

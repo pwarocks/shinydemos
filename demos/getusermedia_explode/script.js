@@ -45,6 +45,7 @@ function init(){
         if (outputcanvas.width > 0 && outputcanvas.height > 0) {            
             // Get the stream here and start drawing the stream to the canvas
             
+            //setInterval("processFrame()", 33);
             window.clearInterval(checkDimensions);
         }
     }, 50);
@@ -75,8 +76,10 @@ function init(){
         return;
     }
     
-    // Start drawing the stream to the canvas
-    setInterval("processFrame()", 33);
+    // Start drawing the stream to the canvas when the video is ready
+    video.addEventListener('canplay', function() {
+        setInterval("processFrame()", 33);
+    }, false);
 }
 
 function createTiles(){
@@ -106,7 +109,6 @@ function processFrame(){
             SOURCERECT = {x:0,y:0,width:video.videoWidth,height:video.videoHeight};
             copycanvas.width = video.videoWidth;
             copycanvas.height = video.videoHeight;
-            alert(copycanvas.width + ' :: ' + copycanvas.height);
             
             TILE_WIDTH = copycanvas.width / 16;
             TILE_HEIGHT = copycanvas.height / 16;

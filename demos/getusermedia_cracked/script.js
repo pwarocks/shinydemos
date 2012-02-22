@@ -37,8 +37,8 @@ function getCoords(event) {
 /* MAIN SCRIPT */
 document.addEventListener('DOMContentLoaded', function(){
     // Global variables
-	var windowwidth = window.innerWidth;
-	var windowheight = window.innerHeight;    
+	var windowwidth = window.outerWidth;
+	var windowheight = window.outerHeight;    
     var shards = [];
     var coords = [];
     var MAX_ROTATION = 0.05; // In radians
@@ -206,16 +206,16 @@ document.addEventListener('DOMContentLoaded', function(){
         
         if (videoratio > windowratio) {
             // Video is wider than screen, so match height to screen height
-            dh = window.innerHeight;
-            dw = window.innerWidth;
-            sw = (this.videoHeight * windowratio) >> 0;
+            dh = windowheight;
+            dw = windowwidth;
             sh = this.videoHeight;
+            sw = (sh * windowratio) >> 0;
         } else {
             // Video is taller than screen, so match width to screen width
-            dw = window.innerWidth;
-            dh = window.innerHeight;
+            dh = windowheight;
+            dw = windowwidth;
             sw = this.videoWidth;
-            sh = (this.videoWidth / windowratio) >> 0; // Round to an integer
+            sh = (sw / windowratio) >> 0; // Round to an integer
         }
         
         doDraw(this, context1, context2, sx, sy, sw, sh, 0, 0, dw, dh);

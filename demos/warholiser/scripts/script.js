@@ -8,9 +8,6 @@ var error = 1;
 var threshold = 45;
 var alpha = 255;
 
-slider.addEventListener('change', changeThreshold, true);
-aslider.addEventListener('change', changeAlpha, true);
-
 var options = {audio: false, video:true};
 
 var canvases = document.querySelectorAll('canvas');
@@ -19,10 +16,15 @@ for (var i=0; i<canvases.length;i++){
 }
 
 
-
-if (navigator.getUserMedia) {
+if (navigator.getUserMedia){
 	navigator.getUserMedia(options, v_success, v_error);
-} else{
+}
+
+else if (navigator.webkitGetUserMedia) {
+	navigator.webkitGetUserMedia("video", webkit_v_success, v_error)
+}
+
+ else{
 	not_supported();
 }
 
@@ -30,7 +32,7 @@ if (navigator.getUserMedia) {
 
 function not_supported() {
 	var message = document.querySelector('#message');
-	message.innerHTML = "<h1><code>navigator.getUserMedia()</code><br> is not supported by this browser, so this demo will not run properly. Using HTML5 &lt;video&gt; fallback instead.</h1>";
+	message.innerHTML = "<h1>Webcam access through the W3C WebRTC Spec is not supported by this browser, so this demo will not run properly. Using HTML5 &lt;video&gt; fallback instead.</h1>";
 		
 		video.innerHTML = "<source src=\""+webmvideo+"\" type=\"video\/webm\" ><\/source> <source src=\""+mp4video+"\" type=\"video\/mp4\" ><\/source>";
 		video_element.muted= true;
@@ -41,10 +43,13 @@ function not_supported() {
 
 
 function v_success(stream) {
-	video.src = stream;
+	video_element.src = stream;
 	var t=setInterval(copyVideoToCanvas, 100);
 }
 
+function webkit_v_success(stream){
+	video_element.src = window.webkitURL.createObjectURL(stream);
+}
 
 
 function v_error(error) {
@@ -66,13 +71,10 @@ function copyVideoToCanvas() {
 	makeImage('blue');
 }
 
-
 function newImg() {
 	var datauri = this.toDataURL("image/png");
 	window.open(datauri);
 }
-
-
 
 function makeImage(color) {
 var thename = "#"+color+"";
@@ -100,9 +102,9 @@ switch (color) {
 	case 'green': pixels[i] += 0; pixels[i+1] +=255; pixels[i+2] +=0;  break;
 	case 'yellow': pixels[i] += 255; pixels[i+1] +=255; pixels[i+2] +=0; break;
 	case 'blue': pixels[i] += 0; pixels[i+1] +=0; pixels[i+2] +=255; break;
-}//end switch 
+}
 
-} //end for
+}
 
 
 // Draw the ImageData at the given (x,y) coordinates.

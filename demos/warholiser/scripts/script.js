@@ -1,9 +1,5 @@
 var video_element = document.querySelector('#video');
 var thecanvas = document.querySelector('#mycanvas');
-var slider = document.querySelector('#slider');
-var asliider = document.querySelector('#aslider');
-var output = document.querySelector('#thresholdoutput');
-var aoutput = document.querySelector('#alphaoutput');
 
 var webmvideo = " http:\/\/media.shinydemos.com\/warholiser\/wsh.webm";
 var mp4video = " http:\/\/media.shinydemos.com\/warholiser\/wsh.mp4";
@@ -69,21 +65,6 @@ function copyVideoToCanvas() {
 	makeImage('yellow');
 	makeImage('blue');
 }
-
-
-
-function changeThreshold(){
-	threshold = slider.value;
-	output.value = threshold;
-}
-
-
-
-function changeAlpha() {
-	alpha = aslider.value;
-	aoutput.value = alpha;
-}
-
 
 
 function newImg() {

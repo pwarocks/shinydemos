@@ -3,7 +3,7 @@
 <head>
 <title>Tatami</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=1008">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <style type="text/css">
 
 body {margin: 0; padding: 0; height: 900px; font-family: Helvetica, Arial, sans-serif; font-size: 0.8em; background: #111;}
@@ -19,32 +19,7 @@ a:hover {text-decoration: underline;}
 .tatami {
 	height: 132px; width: 264px;
 	box-sizing: border-box;
-	background: #ecdbc1; 
-	background: 
-		-o-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
-		-o-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x, 
-		-o-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
-	background: 
-		-webkit-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
-		-webkit-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x, 
-		-webkit-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
-	background: 
-		-moz-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
-		-moz-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x, 
-		-moz-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
-	background: 
-		-ms-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
-		-ms-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x, 
-		-ms-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);	
-	background: 
-		linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
-		linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x, 
-		repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);	
+	background: #000 url(tatami.jpg) 0 0 no-repeat; 
 	border-radius: 2px; 
 	position: absolute;
 	-o-transform-origin: 0% 0%;
@@ -63,33 +38,7 @@ a:hover {text-decoration: underline;}
 	transition: all ease-in-out 1s;
 	transform: rotate(90deg);	
 }
-.simplelayout .tatami {
-	background: 
-		-o-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 1px, transparent 131px, hsla(0,0%,0%, 0.4) 132px), 
-		-o-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, transparent 1px, transparent 263px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x, 
-		-o-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
-	background: 
-		-webkit-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 1px, transparent 131px, hsla(0,0%,0%, 0.4) 132px), 
-		-webkit-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, transparent 1px, transparent 263px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x, 
-		-webkit-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
-	background: 
-		-moz-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 1px, transparent 131px, hsla(0,0%,0%, 0.4) 132px), 
-		-moz-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, transparent 1px, transparent 263px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x, 
-		-moz-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
-	background: 
-		-ms-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 1px, transparent 131px, hsla(0,0%,0%, 0.4) 132px), 
-		-ms-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, transparent 1px, transparent 263px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x, 
-		-ms-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
-	background: 
-		linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 1px, transparent 131px, hsla(0,0%,0%, 0.4) 132px), 
-		linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, transparent 1px, transparent 263px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x, 
-		repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
-}
+
 .fancylayout .tatami {
 	background: 
 		-o-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
@@ -127,22 +76,44 @@ a:hover {text-decoration: underline;}
 		repeating-linear-gradient(-2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
 		repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
 }
+
+
 	
-#selector {background: hsla(0, 0%, 100%, 0.8); border-radius: 5px; padding: 0; width: 150px; position: absolute; right: 0px; top: 0px; opacity: 1; text-shadow: hsla(0, 0%, 100%, 0.4) 0 1px 0;}
+#selector {background: hsla(0, 0%, 100%, 0.8); border-radius: 5px; opacity: 1; text-shadow: hsla(0, 0%, 100%, 0.4) 0 1px 0; position: absolute; padding: 0;}
 #selector ul, #selector p {list-style: none; margin: 5px; padding: 0 0 0 5px; line-height: 1.5em;}
 #selector h1 {font-size: 1em; margin: 0;background:hsla(0, 0%, 100%, 0.4); padding: 7px 10px 5px 10px;}
 #selector h1:nth-child(1) {border-radius: 5px 5px 0 0;}
 
-.simplelayout #simple {font-weight: bold;}
+
+
+@media screen and (min-width: 480px) and (max-width: 1000px) {
+	#selector {top: 580px; width: 460px;}
+	#selector section {float: left; width: 230px;}
+}
+
+@media screen and (min-width: 1000px) {
+	#selector {width: 230px; right: 0px; top: 0px;}
+}
+
+
 .normallayout #normal {font-weight: bold;}
 .fancylayout #fancy {font-weight: bold;}
 
-#floor {-o-transition: all ease-in-out 1s;}
+#floor {-o-transition: all ease-in-out 1s; border: 5px solid red; width: 860px; height: 540px;  position: absolute; top: 0;-o-transform-origin: 0% 0%;}
 
-.isolayout #floor {-o-transform: skew(50deg) scaleY(0.5); -o-transform-origin: 0% 0%; position: absolute; top: 150px; width: 100%;}
+@media screen and (min-width: 100px) and (max-width: 880px) {
+	#floor {-o-transform: scale(0.6) !important;}
+}
+
+
+.isolayout #floor {-o-transform: skew(50deg) scaleY(0.5); top: 150px; width: 100%;}
 .isolayout #iso {font-weight: bold;}
-.flatlayout #floor {-o-transform: none; position: absolute; top: 0;}
+.flatlayout #floor {-o-transform: none;}
 .flatlayout #flat {font-weight: bold;}
+
+
+
+
 
 #t1 {left: 200px; top: 50px;}
 #t2 {left: 205px; top: 55px;}
@@ -294,7 +265,6 @@ function init() {
 	var f10 = document.getElementById('f10');
 	var f12 = document.getElementById('f12');
 	var room = document.getElementById('room');
-	var simple = document.getElementById('simple');
 	var normal = document.getElementById('normal');
 	var fancy = document.getElementById('fancy');
 	var iso = document.getElementById('iso');
@@ -379,18 +349,11 @@ function init() {
 		room.classList.remove('fushuugijiki8');
 		room.classList.remove('fushuugijiki10');
 	}, false);
-	simple.addEventListener('click', function () {
-		room.classList.add('simplelayout');
-		room.classList.remove('normallayout');
-		room.classList.remove('fancylayout');
-	}, false);
 	normal.addEventListener('click', function () {
-		room.classList.remove('simplelayout');
 		room.classList.add('normallayout');
 		room.classList.remove('fancylayout');
 	}, false);
 	fancy.addEventListener('click', function () {
-		room.classList.remove('simplelayout');
 		room.classList.remove('normallayout');
 		room.classList.add('fancylayout');
 	}, false);
@@ -418,30 +381,33 @@ window.addEventListener('load', init, false);
 <div class="tatami" id="t11"></div><div class="tatami" id="t12"></div>
 </div>
 <div id="selector">
-<h1>Tatami layout</h1>
+<section>
+<h1>Tatami layout selector</h1>
 <ul id="layout">
-	<li><a href="#" id="s6" title="“auspicious” arrangement of 6">祝儀敷き 6畳</a></li>
-	<li><a href="#" id="s8" title="“auspicious” arrangement of 8">祝儀敷き 8畳</a></li>
-	<li><a href="#" id="s10" title="“auspicious” arrangement of 10">祝儀敷き 10畳</a></li>
-	<li><a href="#" id="s12" title="“auspicious” arrangement of 12">祝儀敷き 12畳</a></li>
-	<li><a href="#" id="f6" title="“inauspicious” arrangement of 6">不祝儀敷き 6畳</a></li>
-	<li><a href="#" id="f8" title="“inauspicious” arrangement of 8">不祝儀敷き 8畳</a></li>
-	<li><a href="#" id="f10" title="“inauspicious” arrangement of 10">不祝儀敷き 10畳</a></li>
-	<li><a href="#" id="f12" title="“inauspicious” arrangement of 12">不祝儀敷き 12畳</a></li>
+	<li><a href="#" id="s6">auspicious arrangement of 6</a></li>
+	<li><a href="#" id="s8">auspicious arrangement of 8</a></li>
+	<li><a href="#" id="s10">auspicious arrangement of 10</a></li>
+	<li><a href="#" id="s12">auspicious arrangement of 12</a></li>
+	<li><a href="#" id="f6">inauspicious arrangement of 6</a></li>
+	<li><a href="#" id="f8">inauspicious arrangement of 8</a></li>
+	<li><a href="#" id="f10">inauspicious arrangement of 10</a></li>
+	<li><a href="#" id="f12">inauspicious arrangement of 12</a></li>
 </ul>
-<h1>Detail level</h1>
-<ul id="detail">
-	<li><a href="#" id="simple">simple</a></li>
-	<li><a href="#" id="normal">normal</a></li>
-	<li><a href="#" id="fancy">fancy</a></li>
+</section>
+<section>
+<h1>Images or gradients</h1>
+<ul>
+	<li><a href="#" id="normal">with images</a></li>
+	<li><a href="#" id="fancy">with gradients</a></li>
 </ul>
-<h1>Options</h1>
-<ul id="detail">
+<h1>2D or 2.5D</h1>
+<ul>
 	<li><a href="#" id="flat">2D</a></li>
 	<li><a href="#" id="iso">2.5D</a></li>
 </ul>
 <h1>Reference</h1>
 <p>See <a href="http://ja.wikipedia.org/wiki/畳#.E6.95.B7.E3.81.8D.E3.81.8B.E3.81.9F">畳 - Wikipedia</a></p>
+</section>
 </div>
 </div>
 </body>

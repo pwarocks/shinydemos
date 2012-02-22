@@ -221,7 +221,11 @@ document.addEventListener('DOMContentLoaded', function(){
         doDraw(this, context1, context2, sx, sy, sw, sh, 0, 0, dw, dh);
     },false);
 
+<<<<<<< HEAD
     // Replace the source of the video element with the stream from the camera
+=======
+    // Get the stream from the camera using getUserMedia
+>>>>>>> 42799f45de439f379dfe872c574c70f22ea39cb5
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
     if (navigator.getUserMedia) {        
         if (window.webkitURL) {

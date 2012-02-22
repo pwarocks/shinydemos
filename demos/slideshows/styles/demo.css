@@ -6,7 +6,7 @@ html { color: #fff; }
     
     html, body { margin: 0; padding: 0; }
     
-    h1, h2 { font-family: Bebas Neue, sans-serif; text-transform: uppercase; }
+    h1, h2 { font-family: sans-serif; text-transform: uppercase; }
         
     a { text-decoration: none; color: white; }    
     
@@ -15,6 +15,10 @@ html { color: #fff; }
       padding: 1px 0 2em 0;
       margin-bottom: 3em;
     }
+
+   .sd-panel + header {
+     padding-top: 60px;
+   }
     
     body > header h1 { font-size: 4em; margin-bottom: 0; color: #0092bf; letter-spacing: 2px; text-shadow: 0 0 1px #000, 1px 1px 1px #000, 2px 2px 1px #000; }
     body > header h1 b { color: #f14a29; }
@@ -30,7 +34,7 @@ html { color: #fff; }
     .slideshow .caption > :not(img) { padding-left: 1em; padding-right: 1em; }
     
     .slideshow .slide > div, 
-    .slideshow .caption > div { display: table-cell; vertical-align: middle; background: top left no-repeat; background-size: 100% 100%; color: #000; }
+    .slideshow .caption > div { display: table-cell; vertical-align: middle; background: top left no-repeat; background-size: 100% 100%; }
     
     .slideshow nav { display: none; }
     
@@ -60,7 +64,7 @@ html { color: #fff; }
     }
         
     @media -o-paged {
-      .slideshow .slides { overflow: -o-paged-x; }
+      .slideshow .slides { overflow: -o-paged-x; color: #fff; }
       .slideshow .slides > * { position: static; break-inside: avoid; break-after: always;  }
       .slideshow .slide ul, .slideshow .content h2 { padding-left: 5rem; }
       .slideshow .slide img:only-child { -o-object-fit: cover; }
@@ -70,6 +74,10 @@ html { color: #fff; }
         display: block; position: absolute; bottom: 0; right: 0; left: 0; height: 2em; 
         background: -o-linear-gradient(transparent, #333 5%, #000), #000; 
       }            
+
+      .slideshow h1, .slideshow p { margin: 0.5rem 0; }
+
+      .slideshow .slides pre { white-space: pre-line; }
       
       .slideshow nav button, .slideshow nav p { vertical-align: middle; }
       .slideshow nav button { background: 0 0; padding: 0 10px; border: 0; color: #fff; font-size: 2em; line-height: 0.8em;}

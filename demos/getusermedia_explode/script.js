@@ -67,7 +67,10 @@ function init(){
         return;
     }
     
-    setInterval("processFrame()", 33);
+    // Start drawing to the canvas once the video is ready.
+    video.addEventListener('canplay', function() {
+        setInterval("processFrame()", 33);
+    }, false);
 }
 
 function createTiles(){

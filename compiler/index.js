@@ -4,6 +4,7 @@ var Handlebars = require('handlebars');
 var yaml = require('js-yaml');
 var jsdom = require('jsdom').jsdom;
 var rimraf = require('rimraf');
+var minifier = require('html-minifier');
 
 var shinydemos = exports;
 
@@ -22,24 +23,22 @@ shinydemos.create = function() {
   var demopageTemplate = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/demo.html').toString());
   var featuresupportTemplate = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/featuresupport.html').toString());
 
-  //Check if demos folder exists in deploy folder
-  var deployedDemosFolder = siteconfig.deployFolder + '/demos';
 
 
+  //delete deploy folder
   rimraf.sync('./deploy');
 
-  [siteconfig.deployFolder,deployedDemosFolder].forEach(function(folder) {
-      console.log('Creating %s folder', folder);
-      fs.mkdirSync(folder);
-  });
+  //create deploy folder
+  console.log('Creating %s folder', siteconfig.deployFolder);
+  fs.mkdirSync(siteconfig.deployFolder);
 
 
   // Copy all demos to deployment folder
-  ncp(siteconfig.demosFolder, deployedDemosFolder, function(err) {
+  ncp(siteconfig.demosFolder, siteconfig.deployFolder, function(err) {
     if(err) {
        console.error(err);
     }  else {
-      console.log('copied demos to %s from %s', siteconfig.demosFolder, deployedDemosFolder);
+      console.log('copied demos to %s from %s', siteconfig.demosFolder, siteconfig.deployFolder);
       createdemos();
     }
   });
@@ -62,7 +61,7 @@ shinydemos.create = function() {
       function(demo, i) {
         console.log('now working on demo:', demo.title);
 
-        var demoPath = deployedDemosFolder + '/' + demo.slug + '/index.html';
+        var demoPath = siteconfig.deployFolder + '/' + demo.slug + '/index.html';
         var win = jsdom(fs.readFileSync(demoPath).toString()).createWindow();
 
         var panelContainer = win.document.createElement(siteconfig.panelTag);
@@ -86,7 +85,7 @@ shinydemos.create = function() {
         win.document.body.insertBefore(panelContainer, win.document.body.firstChild);
         win.document.body.appendChild(featuresupportContainer);
 
-        fs.writeFileSync(demoPath, win.document.doctype.toString() + win.document.outerHTML);
+        fs.writeFileSync(demoPath, minifier.minify(win.document.doctype.toString() + win.document.outerHTML, { 'collapseWhitespace': true, 'removeComments': true }));
 
         var tags = demo.tags.toString().split(',');
         tags.forEach(function(t)

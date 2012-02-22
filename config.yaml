@@ -10,18 +10,22 @@ siteconfig:
   panelClass: 'sd-panel'
   panelTag: 'div'
 
-
 # Allowed tags: javascript, forms, canvas, content, parser, svg, css, audio, video, webgl
 demos:
-  - slug: pagedcontent
-    title: "Paged Content Magic"
+  - slug: inbox-attack
+    title: "Inbox Attack"
+    tags: [svg]
+    support: [svg]
+
+  - slug: slideshows 
+    title: "Slides from Web Openers"
     tags: [css]
     support: [pagedcontent]
 
   - slug: border-salon
     title: "Border Radius Salon"
     tags: [css]
-    support: []
+    support: [borderradius]
 
   - slug: photo-booth
     title: "Photobooth in Your browser"
@@ -33,6 +37,11 @@ demos:
     tags: [css]
     support: [csstransforms, csstransitions]
 
+  - slug: multitouch-tracker
+    title: "Simple multitouch demonstration"
+    tags: [canvas]
+    support: [canvas, touch]
+
   - slug: hixie-keyboard
     title: "Hixie Keyboard"
     tags: [audio, video, css]
@@ -41,7 +50,7 @@ demos:
   - slug: fence
     title: "Fence"
     tags: [css, svg]
-    support: []
+    support: [svg, inlinesvg, bgrepeatround]
 
   - slug: paranoid
     title: "Return of the Retro with a canvas game!"
@@ -68,10 +77,15 @@ demos:
     tags: [css]
     support: [csstransitions]
 
+  - slug: photo-organizer
+    title: "Touch-enabled photo lightbox"
+    tags: [css, touch]
+    support: [touch]
+
   - slug: border-radius-fun
     title: "Tinkering with Border Radius"
     tags: [css]
-    support: []
+    support: [borderradius]
 
   - slug: tweetmap
     title: "A map of tweets from the public timeline"
@@ -83,7 +97,43 @@ demos:
     tags: [webgl]
     support: [canvas, video, webgl, webworkers]
 
+  - slug: QRY
+    title: "QRY {curie} QR code reader"
+    tags: [getusermedia]
+    support: [getusermedia, video]
+
   - slug: world-flights
     title: "World flights"
     tags: [webgl]
     support: [canvas, webgl, webworkers]
+
+# Features: 
+
+features:
+  - slug: 'applicationcache'
+    title: 'Application Cache'
+    link: '#'
+
+  - slug: audio
+    title: 'Audio Element'
+    link: '#'
+
+  - slug: backgroundsize
+    title: 'Background-size'
+    link: '#'
+
+  - slug: bgrepeatround
+    title: 'Background-repeat: round'
+    link: '#'
+
+  - slug: bgrepeatspace
+    title: 'Background-repeat: space'
+    link: '#'
+
+  - slug: borderimage
+    title: 'Border-image'
+    link: '#'
+
+  - slug: borderimage
+    title: 'Border-image'
+    link: '#'

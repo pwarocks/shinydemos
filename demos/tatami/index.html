@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <style type="text/css">
 
-body {margin: 0; padding: 0; height: 900px; font-family: Helvetica, Arial, sans-serif; font-size: 0.8em; background: #111;}
+body {margin: 0; font-family: Helvetica, Arial, sans-serif; font-size: 0.9em; background: #111;}
 
 a {color: #004800; text-decoration: none; padding-right: 1em;}
 a:hover {text-decoration: underline;}
@@ -15,6 +15,11 @@ a:hover {text-decoration: underline;}
 	position: relative;
 	margin: 20px;
 }
+
+@media screen and (max-width: 480px) {
+	#room {margin: 8px; height: 730px;}
+}	
+
 
 .tatami {
 	height: 132px; width: 264px;
@@ -79,32 +84,56 @@ a:hover {text-decoration: underline;}
 
 
 	
-#selector {background: hsla(0, 0%, 100%, 0.8); border-radius: 5px; opacity: 1; text-shadow: hsla(0, 0%, 100%, 0.4) 0 1px 0; position: absolute; padding: 0;}
+#selector {background: hsla(0, 0%, 100%, 0.8); border-radius: 5px; text-shadow: hsla(0, 0%, 100%, 0.4) 0 1px 0; position: absolute; right: 0px; padding: 0; width: 210px;}
 #selector ul, #selector p {list-style: none; margin: 5px; padding: 0 0 0 5px; line-height: 1.5em;}
+#selector li {padding: 0.2em 0 0.2em 0;}
 #selector h1 {font-size: 1em; margin: 0;background:hsla(0, 0%, 100%, 0.4); padding: 7px 10px 5px 10px;}
 #selector h1:nth-child(1) {border-radius: 5px 5px 0 0;}
 
 
-
-@media screen and (min-width: 480px) and (max-width: 1000px) {
-	#selector {top: 580px; width: 460px;}
-	#selector section {float: left; width: 230px;}
+@media screen and (max-width: 1000px) {
+	#selector {top: 0; left: 0; width: 440px;}
+	#selector section {float: left; width: 50%;}
 }
 
-@media screen and (min-width: 1000px) {
-	#selector {width: 230px; right: 0px; top: 0px;}
+@media screen and (max-width: 480px) {
+	#selector {width: 100%;}
+	#selector section {float: clear; width: 100%;}
 }
 
 
 .normallayout #normal {font-weight: bold;}
 .fancylayout #fancy {font-weight: bold;}
 
-#floor {-o-transition: all ease-in-out 1s; border: 5px solid red; width: 860px; height: 540px;  position: absolute; top: 0;-o-transform-origin: 0% 0%;}
+#floor {-o-transition: all ease-in-out 1s; width: 860px; height: 600px;  position: absolute; top: 0;-o-transform-origin: 0% 0%;}
 
-@media screen and (min-width: 100px) and (max-width: 880px) {
+@media screen and (max-width: 1000px) {
+	#floor {top: 270px;}
+}
+@media screen and (max-width: 909px) {
+	#floor {-o-transform: scale(0.9) !important;}
+}
+@media screen and (max-width: 819px) {
+	#floor {-o-transform: scale(0.8) !important;}
+}
+@media screen and (max-width: 729px) {
+	#floor {-o-transform: scale(0.7) !important;}
+}
+@media screen and (max-width: 639px) {
 	#floor {-o-transform: scale(0.6) !important;}
 }
-
+@media screen and (max-width: 549px) {
+	#floor {-o-transform: scale(0.5) !important;}
+}
+@media screen and (max-width: 480px) {
+	#floor {top: 420px;}
+}
+@media screen and (max-width: 459px) {
+	#floor {-o-transform: scale(0.4) !important;}
+}
+@media screen and (max-width: 369px) {
+	#floor {-o-transform: scale(0.35) !important;}
+}
 
 #t1 {left: 200px; top: 50px;}
 #t2 {left: 205px; top: 55px;}
@@ -258,7 +287,8 @@ function init() {
 	var room = document.getElementById('room');
 	var normal = document.getElementById('normal');
 	var fancy = document.getElementById('fancy');
-	s6.addEventListener('click', function () {
+	s6.addEventListener('click', function (s6) {
+		s6.preventDefault();
 		room.classList.add('shuugijiki6');
 		room.classList.remove('shuugijiki8');
 		room.classList.remove('shuugijiki10');
@@ -268,7 +298,8 @@ function init() {
 		room.classList.remove('fushuugijiki10');
 		room.classList.remove('fushuugijiki12');
 	}, false);
-	s8.addEventListener('click', function () {
+	s8.addEventListener('click', function (s8) {
+		s8.preventDefault();
 		room.classList.add('shuugijiki8');
 		room.classList.remove('shuugijiki6');
 		room.classList.remove('shuugijiki10');
@@ -278,7 +309,8 @@ function init() {
 		room.classList.remove('fushuugijiki10');
 		room.classList.remove('fushuugijiki12');
 	}, false);
-	s10.addEventListener('click', function () {
+	s10.addEventListener('click', function (s10) {
+		s10.preventDefault();
 		room.classList.add('shuugijiki10');
 		room.classList.remove('shuugijiki6');
 		room.classList.remove('shuugijiki8');
@@ -288,7 +320,8 @@ function init() {
 		room.classList.remove('fushuugijiki10');
 		room.classList.remove('fushuugijiki12');
 	}, false);
-	s12.addEventListener('click', function () {
+	s12.addEventListener('click', function (s12) {
+		s12.preventDefault();
 		room.classList.add('shuugijiki12');
 		room.classList.remove('shuugijiki6');
 		room.classList.remove('shuugijiki8');
@@ -298,7 +331,8 @@ function init() {
 		room.classList.remove('fushuugijiki10');
 		room.classList.remove('fushuugijiki12');
 	}, false);
-	f6.addEventListener('click', function () {
+	f6.addEventListener('click', function (f6) {
+		f6.preventDefault();
 		room.classList.add('fushuugijiki6');
 		room.classList.remove('shuugijiki6');
 		room.classList.remove('shuugijiki8');
@@ -308,7 +342,8 @@ function init() {
 		room.classList.remove('fushuugijiki10');
 		room.classList.remove('fushuugijiki12');
 	}, false);
-	f8.addEventListener('click', function () {
+	f8.addEventListener('click', function (f8) {
+		f8.preventDefault();
 		room.classList.add('fushuugijiki8');
 		room.classList.remove('shuugijiki6');
 		room.classList.remove('shuugijiki8');
@@ -318,7 +353,8 @@ function init() {
 		room.classList.remove('fushuugijiki10');
 		room.classList.remove('fushuugijiki12');
 	}, false);
-	f10.addEventListener('click', function () {
+	f10.addEventListener('click', function (f10) {
+		f10.preventDefault();
 		room.classList.add('fushuugijiki10');
 		room.classList.remove('shuugijiki6');
 		room.classList.remove('shuugijiki8');
@@ -328,7 +364,8 @@ function init() {
 		room.classList.remove('fushuugijiki8');
 		room.classList.remove('fushuugijiki12');
 	}, false);
-	f12.addEventListener('click', function () {
+	f12.addEventListener('click', function (f12) {
+		f12.preventDefault();
 		room.classList.add('fushuugijiki12');
 		room.classList.remove('shuugijiki6');
 		room.classList.remove('shuugijiki8');
@@ -338,11 +375,13 @@ function init() {
 		room.classList.remove('fushuugijiki8');
 		room.classList.remove('fushuugijiki10');
 	}, false);
-	normal.addEventListener('click', function () {
+	normal.addEventListener('click', function (normal) {
+		normal.preventDefault();
 		room.classList.add('normallayout');
 		room.classList.remove('fancylayout');
 	}, false);
-	fancy.addEventListener('click', function () {
+	fancy.addEventListener('click', function (fancy) {
+		fancy.preventDefault();
 		room.classList.remove('normallayout');
 		room.classList.add('fancylayout');
 	}, false);
@@ -365,21 +404,21 @@ window.addEventListener('load', init, false);
 <section>
 <h1>Tatami layout selector</h1>
 <ul id="layout">
-	<li><a href="#" id="s6">auspicious arrangement of 6</a></li>
-	<li><a href="#" id="s8">auspicious arrangement of 8</a></li>
-	<li><a href="#" id="s10">auspicious arrangement of 10</a></li>
-	<li><a href="#" id="s12">auspicious arrangement of 12</a></li>
-	<li><a href="#" id="f6">inauspicious arrangement of 6</a></li>
-	<li><a href="#" id="f8">inauspicious arrangement of 8</a></li>
-	<li><a href="#" id="f10">inauspicious arrangement of 10</a></li>
-	<li><a href="#" id="f12">inauspicious arrangement of 12</a></li>
+	<li><a href="#" id="s6">auspicious pattern of 6</a></li>
+	<li><a href="#" id="s8">auspicious pattern of 8</a></li>
+	<li><a href="#" id="s10">auspicious pattern of 10</a></li>
+	<li><a href="#" id="s12">auspicious pattern of 12</a></li>
+	<li><a href="#" id="f6">inauspicious pattern of 6</a></li>
+	<li><a href="#" id="f8">inauspicious pattern of 8</a></li>
+	<li><a href="#" id="f10">inauspicious pattern of 10</a></li>
+	<li><a href="#" id="f12">inauspicious pattern of 12</a></li>
 </ul>
 </section>
 <section>
 <h1>Images or gradients</h1>
 <ul>
-	<li><a href="#" id="normal">with images</a></li>
-	<li><a href="#" id="fancy">with gradients</a></li>
+	<li><a href="" id="normal">with images</a></li>
+	<li><a href="" id="fancy">with gradients</a></li>
 </ul>
 <h1>Reference</h1>
 <p>See <a href="http://ja.wikipedia.org/wiki/畳#.E6.95.B7.E3.81.8D.E3.81.8B.E3.81.9F">畳 - Wikipedia</a></p>

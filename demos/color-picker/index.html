@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<title>Real Life color picker using getUserMedia from the WebRTC spec</title>
+<head>
+	<link href="styles/style.css" rel="stylesheet" type="text/css" />
+	<meta name="viewport" content="width=device-width, height=device-height">
+	<script src="scripts/quantize.js"></script>
+</head>
+
+</head>
+<body>
+<div id="supcontainer">
+<h1>Real Life Color Picker</h1>
+<div id="container">
+<div id="video_container">
+<video id="video" autoplay></video>
+</div>
+<div id="footer">
+<canvas id="mycanvas" width="300" height="425"></canvas>
+</div>
+<div id="doit" class="button">Create Pallete</div> <div id="reset" class="button">Reset</div>
+<div id="colors">
+<ul id="colorlist">
+</ul>
+</div>
+</div>
+<!-- Credit: Built upon work by Lokesh Dhakar (http://www.lokeshdhakar.com) at http://www.lokeshdhakar.com/2011/11/03/color-thief/. -->
+</div>
+
+	<script src="scripts/script.js"></script>
+
+</body>
+</html>

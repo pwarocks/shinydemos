@@ -7,6 +7,8 @@
 
 // Global constants & variables
 var exploding = {
+    PAINTWIDTH : window.innerWidth,
+    PAINTHEIGHT : window.innerHeight,
     TILE_WIDTH : 32,
     TILE_HEIGHT : 24,
     TILE_CENTER_WIDTH :  this.TILE_WIDTH / 2,
@@ -15,21 +17,19 @@ var exploding = {
         width : 0,
         height : 0
     },
-    PAINTWIDTH : window.innerWidth,
-    PAINTHEIGHT : window.innerHeight,
     RAD : Math.PI / 180,
     tiles : []    
 };
 
-exploding.init = function() {
-    video = document.querySelector('video');
+exploding.init = function() {    
+    var video = document.querySelector('video');
+    
     exploding.canvas1 = document.getElementById('canvas1');
     exploding.context1 = exploding.canvas1.getContext('2d');
     
     var canvas2 = document.getElementById('canvas2');
     exploding.context2 = canvas2.getContext('2d');
-    canvas2.width = window.innerWidth;
-    canvas2.height = window.innerHeight;
+    
     var mouse_down = ('createTouch' in document) ? 'ontouchstart' : 'onmousedown';
     canvas2[mouse_down] = function() {
         exploding.dropBomb(event, this);
@@ -64,35 +64,41 @@ exploding.init = function() {
     // Start drawing to the canvas once the video is ready.
     video.addEventListener('canplay', function() {
         if (!isNaN(video.duration)) {
+            // Set the dimensions of the drawing areas
+            var windowWidth = window.innerWidth;
+            var windowHeight = window.innerHeight;
+            
             exploding.canvas1.width = video.videoWidth;
             exploding.canvas1.height = video.videoHeight;
-            
+
+            canvas2.width = windowWidth;
+            canvas2.height = windowHeight;
+                    
             if (exploding.SOURCERECT.width == 0) {
                 exploding.SOURCERECT = {
                     width : video.videoWidth,
                     height : video.videoHeight
-                };
-                
+                };                
             }
             
-            exploding.createTiles();
+            exploding.createTiles(windowWidth, windowHeight);
             
             // Start drawing the stream to the canvas
             setInterval(function() {             
-                exploding.processFrame(video)
+                exploding.processFrame(video, windowWidth, windowHeight)
             }, 33);
         }
     }, false);
 };
 
-exploding.createTiles = function() {
+exploding.createTiles = function(paintWidth, paintHeight) {
     exploding.TILE_WIDTH = exploding.canvas1.width / 16;
     exploding.TILE_HEIGHT = exploding.canvas1.height / 16;
     exploding.TILE_CENTER_WIDTH = exploding.TILE_WIDTH / 2 >> 0;
     exploding.TILE_CENTER_HEIGHT = exploding.TILE_HEIGHT / 2 >> 0;
                 
-    var offsetX = (exploding.TILE_CENTER_WIDTH + (exploding.PAINTWIDTH - exploding.SOURCERECT.width) / 2 >> 0);
-    var offsetY = (exploding.TILE_CENTER_HEIGHT + (exploding.PAINTHEIGHT - exploding.SOURCERECT.height) / 2 >> 0);
+    var offsetX = (exploding.TILE_CENTER_WIDTH + (paintWidth - exploding.SOURCERECT.width) / 2 >> 0);
+    var offsetY = (exploding.TILE_CENTER_HEIGHT + (paintHeight - exploding.SOURCERECT.height) / 2 >> 0);
     var y = 0;
     while (y < exploding.SOURCERECT.height) {
         var x = 0;
@@ -111,10 +117,10 @@ exploding.createTiles = function() {
     }
 };
 
-exploding.processFrame = function(video) {
+exploding.processFrame = function(video, paintWidth, paintHeight) {
     //copy tiles
     exploding.context1.drawImage(video, 0, 0);
-    exploding.context2.clearRect(0, 0, exploding.PAINTWIDTH, exploding.PAINTHEIGHT);
+    exploding.context2.clearRect(0, 0, paintWidth, paintHeight);
     
     for (var i = 0, len = exploding.tiles.length; i < len; i++) {
         var tile = exploding.tiles[i];
@@ -129,10 +135,10 @@ exploding.processFrame = function(video) {
             tile.rotation += tile.moveRotation;
             tile.rotation %= 360;
             tile.force *= 0.9;
-            if (tile.currentX <= 0 || tile.currentX >= exploding.PAINTWIDTH) {
+            if (tile.currentX <= 0 || tile.currentX >= paintWidth) {
                 tile.moveX *= -1;
             }
-            if (tile.currentY <= 0 || tile.currentY >= exploding.PAINTHEIGHT) {
+            if (tile.currentY <= 0 || tile.currentY >= paintWidth) {
                 tile.moveY *= -1;
             }
         } else if (tile.rotation != 0 || tile.currentX != tile.originX || tile.currentY != tile.originY) {
@@ -237,4 +243,3 @@ exploding.absolute = function(x) {
 }
 
 window.addEventListener('DOMContentLoaded', exploding.init, false);
-

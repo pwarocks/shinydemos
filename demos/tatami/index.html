@@ -27,9 +27,6 @@ a:hover {text-decoration: underline;}
 	background: #000 url(tatami.jpg) 0 0 no-repeat; 
 	border-radius: 2px; 
 	position: absolute;
-	-o-transform-origin: 0% 0%;
-	-o-transition: all ease-in-out 1s;
-	-o-transform: rotate(90deg);
 	-webkit-transform-origin: 0% 0%;
 	-webkit-transition: all ease-in-out 1s;
 	-webkit-transform: rotate(90deg);
@@ -39,19 +36,15 @@ a:hover {text-decoration: underline;}
 	-ms-transform-origin: 0% 0%;
 	-ms-transition: all ease-in-out 1s;
 	-ms-transform: rotate(90deg);
+	-o-transform-origin: 0% 0%;
+	-o-transition: all ease-in-out 1s;
+	-o-transform: rotate(90deg);
 	transform-origin: 0% 0%;
 	transition: all ease-in-out 1s;
 	transform: rotate(90deg);	
 }
 
 .fancylayout .tatami {
-	background: 
-		-o-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
-		-o-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x,
-		-o-repeating-linear-gradient(2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
-		-o-repeating-linear-gradient(-2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
-		-o-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
 	background: 
 		-webkit-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
 		-webkit-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
@@ -73,6 +66,13 @@ a:hover {text-decoration: underline;}
 		-ms-repeating-linear-gradient(2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
 		-ms-repeating-linear-gradient(-2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
 		-ms-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
+	background: 
+		-o-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
+		-o-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
+		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x,
+		-o-repeating-linear-gradient(2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
+		-o-repeating-linear-gradient(-2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
+		-o-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
 	background: 
 		linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
 		linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
@@ -105,34 +105,82 @@ a:hover {text-decoration: underline;}
 .normallayout #normal {font-weight: bold;}
 .fancylayout #fancy {font-weight: bold;}
 
-#floor {-o-transition: all ease-in-out 1s; width: 860px; height: 600px;  position: absolute; top: 0;-o-transform-origin: 0% 0%;}
+#floor {
+	-webkit-transition: all ease-in-out 1s; 
+	-moz-transition: all ease-in-out 1s; 
+	-ms-transition: all ease-in-out 1s; 
+	-o-transition: all ease-in-out 1s; 
+	transition: all ease-in-out 1s; 
+	width: 860px; height: 600px;  position: absolute; top: 0;-o-transform-origin: 0% 0%;}
 
 @media screen and (max-width: 1000px) {
 	#floor {top: 270px;}
 }
 @media screen and (max-width: 909px) {
-	#floor {-o-transform: scale(0.9) !important;}
+	#floor {
+		-webkit-transform: scale(0.9) !important;
+		-moz-transform: scale(0.9) !important;
+		-ms-transform: scale(0.9) !important;
+		-o-transform: scale(0.9) !important;
+		transform: scale(0.9) !important;
+	}
 }
 @media screen and (max-width: 819px) {
-	#floor {-o-transform: scale(0.8) !important;}
+	#floor {
+		-webkit-transform: scale(0.8) !important;
+		-moz-transform: scale(0.8) !important;
+		-ms-transform: scale(0.8) !important;
+		-o-transform: scale(0.8) !important;
+		transform: scale(0.8) !important;
+	}
 }
 @media screen and (max-width: 729px) {
-	#floor {-o-transform: scale(0.7) !important;}
+	#floor {
+		-webkit-transform: scale(0.7) !important;
+		-moz-transform: scale(0.7) !important;
+		-ms-transform: scale(0.7) !important;
+		-o-transform: scale(0.7) !important;
+		transform: scale(0.7) !important;
+	}
 }
 @media screen and (max-width: 639px) {
-	#floor {-o-transform: scale(0.6) !important;}
+	#floor {
+		-webkit-transform: scale(0.6) !important;
+		-moz-transform: scale(0.6) !important;
+		-ms-transform: scale(0.6) !important;
+		-o-transform: scale(0.6) !important;
+		transform: scale(0.6) !important;
+	}
 }
 @media screen and (max-width: 549px) {
-	#floor {-o-transform: scale(0.5) !important;}
+	#floor {
+		-webkit-transform: scale(0.5) !important;
+		-moz-transform: scale(0.5) !important;
+		-ms-transform: scale(0.5) !important;
+		-o-transform: scale(0.5) !important;
+		transform: scale(0.5) !important;
+	}
 }
 @media screen and (max-width: 480px) {
 	#floor {top: 420px;}
 }
 @media screen and (max-width: 459px) {
-	#floor {-o-transform: scale(0.4) !important;}
+	#floor {
+		-webkit-transform: scale(0.4) !important;
+		-moz-transform: scale(0.4) !important;
+		-ms-transform: scale(0.4) !important;
+		-o-transform: scale(0.4) !important;
+		transform: scale(0.4) !important;
+	}
 }
 @media screen and (max-width: 369px) {
-	#floor {-o-transform: scale(0.35) !important;}
+	#floor {
+		-webkit-transform: scale(0.35) !important;
+		-moz-transform: scale(0.35) !important;
+		-ms-transform: scale(0.35) !important;
+		-o-transform: scale(0.35) !important;
+		transform: scale(0.35) !important;
+	}
 }
 
 #t1 {left: 200px; top: 50px;}
@@ -263,11 +311,11 @@ a:hover {text-decoration: underline;}
 .shuugijiki6 #t5, .shuugijiki6 #t8,
 .shuugijiki8 #t5, .shuugijiki8 #t8,
 .shuugijiki10 #t3, .shuugijiki10 #t4, .shuugijiki10 #t6, .shuugijiki10 #t7, .shuugijiki10 #t9, .shuugijiki10 #t10,
-.shuugijiki12 #t3, .shuugijiki12 #t4, .shuugijiki12 #t6, .shuugijiki12 #t7, .shuugijiki12 #t9, .shuugijiki12 #t10 {
-	-o-transform: rotate(0deg); 
+.shuugijiki12 #t3, .shuugijiki12 #t4, .shuugijiki12 #t6, .shuugijiki12 #t7, .shuugijiki12 #t9, .shuugijiki12 #t10 { 
 	-webkit-transform: rotate(0deg); 
 	-moz-transform: rotate(0deg); 
 	-ms-transform: rotate(0deg); 
+	-o-transform: rotate(0deg);
 	transform: rotate(0deg);
 }
 

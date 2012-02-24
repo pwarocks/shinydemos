@@ -1,7 +1,14 @@
 ﻿body{ margin: 0; padding: 0; background: #eee; }
-div#container { width: 460px; margin:0; padding: 10px; }
+div#container { width: 460px; margin:0; padding: 10px; margin: 0 auto; font: 1.75em/1.5 Helvetica, Arial, sans-serif; }
 div#container h1 {  margin:0; padding:0; }
 div#container h1 img { display:block; margin:0; padding:0; }
 div#container video,
-div#container canvas { display: block; width:100%; max-width: 440px; border: 10px #26779d solid; margin: 10px 0; padding: 0; }
-div#container canvas { border-color: #fb2989; } /* "found" visual cue */
+div#container canvas { display: block; width:100%; max-width: 440px; max-height:440px; border: 10px #26779d solid; background: #26779d; margin: 10px 0; padding: 0; }
+div#container canvas { border-color: #fb2989; background: #fb2989; } /* "found" visual cue */
+div#out { overflow: hidden; }
+
+@-o-viewport {
+	width: 480px auto;
+	orientation: portrait; // not implemented yet?
+	resolution: device; // not implemented yet?
+}

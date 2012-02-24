@@ -30,7 +30,7 @@ else if (navigator.webkitGetUserMedia) {
 
 function not_supported(){
 	var vid_c = document.querySelector("#video_container");
-	vid_c.innerHTML = "<video id=\"video\" autoplay loop=\"loop\"><source src=\""+webmvideo+"\"></source> <source src=\""+mp4video+"\"></source></video>";
+	vid_c.innerHTML = "<video id=\"video\" autoplay loop=\"loop\"><source src=\""+webmvideo+"\ type=\"video\/webm\" "></source> <source src=\""+mp4video+"\ type=\"video\/mp4\" "></source></video>";
 	not_supported = true;
 }
 

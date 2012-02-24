@@ -72,10 +72,10 @@
 
 			thisedge = e.target.value + u;
 
-			linktl = document.querySelector('#linktopleft').checked;
-			linktr = document.querySelector('#linktopright').checked;
-			linkbl = document.querySelector('#linkbottomleft').checked;
-			linkbr = document.querySelector('#linkbottomright').checked;
+			linktl = document.getElementById('linktopleft').checked;
+			linktr = document.getElementById('linktopright').checked;
+			linkbl = document.getElementById('linkbottomleft').checked;
+			linkbr = document.getElementById('linkbottomright').checked;
 
 			labels = {'topleftA':'tl',
 					  'topleftB':'tl',
@@ -130,7 +130,7 @@
 			}
 
 			borderobj.style[prop] = thisedge + ' '+otheredge + u;
-			document.querySelector( '#'+labels[e.target.id] ).innerHTML = borderobj.style[prop];
+			document.getElementById( labels[e.target.id] ).innerHTML = borderobj.style[prop];
 
 			Lib.enableButton('getcode');
 			Lib.enableButton('resetform');
@@ -142,19 +142,19 @@
 			switch( e.target.id ){
 				case 'brdrtop':
 					whichborder = 'borderTopStyle';
-					document.querySelector('#brdrwidthtop').value = (document.querySelector('#brdrwidthtop').value > 0) ? document.querySelector('#brdrwidthtop').value : 1;
+					document.getElementById('brdrwidthtop').value = (document.querySelector('#brdrwidthtop').value > 0) ? document.querySelector('#brdrwidthtop').value : 1;
 					break;
 				case 'brdrright':
 					whichborder = 'borderRightStyle';
-					document.querySelector('#brdrwidthright').value = (document.querySelector('#brdrwidthright').value > 0) ? document.querySelector('#brdrwidthright').value : 1;
+					document.getElementById('brdrwidthright').value = (document.querySelector('#brdrwidthright').value > 0) ? document.querySelector('#brdrwidthright').value : 1;
 					break;
 				case 'brdrbottom':
 					whichborder = 'borderBottomStyle';
-					document.querySelector('#brdrwidthbottom').value = (document.querySelector('#brdrwidthbottom').value > 0) ? document.querySelector('#brdrwidthbottom').value : 1;
+					document.getElementById('brdrwidthbottom').value = (document.querySelector('#brdrwidthbottom').value > 0) ? document.querySelector('#brdrwidthbottom').value : 1;
 					break;
 				case 'brdrleft':
 					whichborder = 'borderLeftStyle';
-					document.querySelector('#brdrwidthleft').value = (document.querySelector('#brdrwidthleft').value > 0) ? document.querySelector('#brdrwidthleft').value : 1;
+					document.getElementById('brdrwidthleft').value = (document.querySelector('#brdrwidthleft').value > 0) ? document.querySelector('#brdrwidthleft').value : 1;
 					break;
 			}
 
@@ -212,7 +212,7 @@
 
 		onfgchange = function(e){
 
-			var curchild = main.lastElementChild, selects = document.querySelectorAll('select');
+			var curchild = main.lastElementChild, selects = document.getElementsByTagName('select');
 
 			var whichtype = e.currentTarget.value;
 
@@ -263,7 +263,7 @@
 				pre,
 				styles;
 
-			pre      = document.querySelector('pre');
+			pre      = document.getElementsByTagName('pre')[0];
 
 			styles   = Lib.getStyles( borderobj );
 

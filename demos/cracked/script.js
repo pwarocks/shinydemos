@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function(){
         
         // Draw video onto first canvas
         ctx1.drawImage(video, sx, sy, sw, sh, dx, dy, dw, dh);
+        drawSticker(); 
         
         var len = shards.length;
         if (len > 0) {
@@ -188,6 +189,23 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     
     document[mouse_down] = doCrack;
+
+    function drawSticker() {
+      var x = (windowwidth / 2) - 125,
+          y = (windowheight / 2) - 100;
+
+      context1.lineWidth = 15;
+      context1.lineCap = 'square';
+      context1.lineJoin = 'round';
+      context1.strokeStyle = 'red';
+      context1.strokeRect(x, y, 270, 190);
+
+      context1.font = '35px Open Sans';
+      context1.fillStyle = 'white';
+      context1.fillText('IN CASE OF', x + 35, y + 65);
+      context1.fillText('EMERGENCY', x + 27, y + 110);
+      context1.fillText('BREAK GLASS', x + 17, y + 155);
+    }
     
     // Start drawing the video on page load thanks to "autoplay" attribute
     video.addEventListener('play', function() {
@@ -217,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function(){
             sw = this.videoWidth;
             sh = (sw / windowratio) >> 0; // Round to an integer
         }
-        
+
         doDraw(this, context1, context2, sx, sy, sw, sh, 0, 0, dw, dh);
     },false);
 

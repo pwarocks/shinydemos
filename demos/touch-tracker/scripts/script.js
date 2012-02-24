@@ -5,7 +5,7 @@ var canvas,
 
 var mouseX, mouseY, 
 // is this running in a touch capable environment?
-touchable = 'createTouch' in document,
+touchable = 'ontouchstart' in window || 'onMozTouchDown' in window || 'createTouch' in document,
 touches = []; // array of touch vectors
 
 function resetCanvas (e) {  
@@ -17,14 +17,17 @@ function resetCanvas (e) {
 }
 
 function loop() {
+	/* hack to work around lack of orientationchange/resize event */
+	if(canvas.height != window.innerHeight) {
+		canvas.width = window.innerWidth; 
+		canvas.height = window.innerHeight; 
+	}
 	c.clearRect(0,0,canvas.width, canvas.height);
-	for(var i=0; i<touches.length; i++) {
-		/* c.beginPath(); 
-		c.fillStyle = "white";
-		c.fillText("touch id : "+touch.identifier+" x:"+touch.clientX+" y:"+touch.clientY, touch.clientX+30, touch.clientY-30);  */
+	c.strokeStyle = "cyan";
+	c.lineWidth = "6";
+	/* need to handle canvas offsetLeft/offsetTop once we have SD panel */
+	for(var i=0, l=touches.length; i<l; i++) {
 		c.beginPath(); 
-		c.strokeStyle = "cyan";
-		c.lineWidth = "6";
 		c.arc(touches[i].clientX, touches[i].clientY, 50, 0, Math.PI*2, true); 
 		c.stroke();
 	}
@@ -32,7 +35,7 @@ function loop() {
 		c.beginPath();
 		c.lineWidth = "2";
 		c.moveTo(touches[0].clientX,touches[0].clientY);
-		for(var i=1; i<touches.length; i++) {
+		for(var i=1, l=touches.length; i<l; i++) {
 			c.lineTo(touches[i].clientX,touches[i].clientY);
 		}
 		c.stroke();
@@ -41,7 +44,7 @@ function loop() {
 
 function touchHandler(e) {
 	e.preventDefault();
-	touches = e.touches; 
+	touches = e.touches;
 }
 
 function init() {
@@ -51,8 +54,8 @@ function init() {
 	container.className = "container";
 	canvas.width = window.innerWidth; 
 	canvas.height = window.innerHeight; 
-	document.body.appendChild( container );
 	container.appendChild(canvas);	
+	document.body.appendChild( container );
 	c.strokeStyle = "#ffffff";
 	c.lineWidth =2;
 	
@@ -66,4 +69,7 @@ function init() {
 	
 }
 
-window.addEventListener('load',init,false);
+window.addEventListener('load',function() {
+	/* hack to prevent firing the init script before the window object's values are populated */
+	setTimeout(init,100);
+},false);

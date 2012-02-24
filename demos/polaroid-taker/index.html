@@ -15,7 +15,7 @@
   <div id="subcontainer">
     <div id="message"></div>
     <div id="vidwrapper">
-      <video id="video" autoplay></video>
+      <video id="video" autoplay loop="loop"></video>
       <button id="picbutton" type="button">Take a photo!</button>
       <button id="resetbutton" type="button">Reset</button>
     </div>
@@ -24,13 +24,6 @@
        <div id="pictures"></div>
     </div>
 
-    <div id="share">
-        <ul>
-            <li><a href="javascript:location.href='http://www.reddit.com/submit?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><img src="./images/reddit.png" alt="share reddit" title="share on reddit" /></a></li>
-            <li><a href="javascript:location.href='http://twitter.com/share?text='+encodeURIComponent('Checking out \'Polaroid Taker\' on Shiny Demos ')+encodeURIComponent(location.href)"><img src="./images/twitter.png" alt="share on twitter" title="share on twitter" /></a></li>
-            <li><a href="http://www.delicious.com/save" onclick="window.open('http://www.delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;"> <img src="./images/delicious.png" alt="save on delicious" title="save on delicious" /></a></li>
-        </ul>
-    </div>
   <!-- end container -->
   </div>
 

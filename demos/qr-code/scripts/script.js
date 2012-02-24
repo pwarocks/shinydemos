@@ -11,7 +11,8 @@ function loop() {
 		if (timer) { clearTimeout(timer); }
 		out.innerHTML = '<img src="./images/qry-happy.png" alt="[Happy]"> <a href="'+found+'">'+found+'</a>';
 		var video = document.getElementById('sourcevid'), container = video.parentNode;
-		canvas.style.height = video.clientHeight+'px'; // kludge?
+		canvas.style.width = video.clientWidth+'px';
+		canvas.style.height = video.clientHeight+'px';
 		container.removeChild(video);
 		container.appendChild(canvas);
 	}
@@ -26,7 +27,7 @@ function captureToCanvas() {
 	qrcode.decode(canvas.toDataURL());
 }
 
-window.addEventListener('load',function() {
+function init() {
 	var video = document.getElementById('sourcevid');
 
 	// Standard and webkit methods for hooking into stream
@@ -57,5 +58,19 @@ window.addEventListener('load',function() {
 	}
 	
 	qrcode.callback = function(a) { found=a; }
-	
+}
+
+window.addEventListener('load',function() {
+	// PxLoader by ThinkPixelLab http://thinkpixellab.com/pxloader/
+	var loader = new PxLoader(), 
+	pre1 = loader.addImage('./images/qry-passive.png'),
+	pre2 = loader.addImage('./images/qry-sad.png'),
+	pre3 = loader.addImage('./images/qry-happy.png');
+	 
+	// callback that will be run once images are ready 
+	loader.addCompletionListener(init); 
+	 
+	// begin downloading images 
+	loader.start(); 
+
 }, true);

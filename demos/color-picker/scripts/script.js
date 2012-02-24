@@ -2,6 +2,8 @@ var video_element = document.querySelector('#video');
 var resetButton = document.querySelector("#reset");
 var cPallete = document.querySelector("#doit");
 
+var webmvideo = "http:\/\/media.shinydemos.com\/warholiser\/wsh.webm";
+var mp4video = "http:\/\/media.shinydemos.com\/warholiser\/wsh.mp4";
 
 video_element.addEventListener('click', takeimage, true);
 cPallete.addEventListener('click', takeimage, true);
@@ -11,6 +13,8 @@ var options = {
 	"audio": false,
 	"video": true
 };
+
+var notsupported = false;
 
 if (navigator.getUserMedia){
 	navigator.getUserMedia(options, v_success);
@@ -26,9 +30,8 @@ else if (navigator.webkitGetUserMedia) {
 
 function not_supported(){
 	var vid_c = document.querySelector("#video_container");
-	vid_c.innerHTML = "It seems this browser does not support <code>navigator.getUserMedia()<\/code>, please use a browser which does in order to see this demo in action.";
-	resetButton.className = "hide";
-	cPallete.className = "hide";
+	vid_c.innerHTML = "<video id=\"video\" autoplay loop=\"loop\"><source src=\""+webmvideo+"\"></source> <source src=\""+mp4video+"\"></source></video>";
+	not_supported = true;
 }
 
 function v_success(stream){
@@ -44,36 +47,22 @@ function v_error(error){
 }
 
 function takeimage(){
+var vid = document.querySelector("#video");
 var canvas = document.querySelector('#mycanvas');
 var ctx = canvas.getContext('2d');
-var cw = canvas.width;
-var ch = canvas.height;
-var pixelCount = cw*ch;
-ctx.drawImage(video_element, 0, 0, cw, ch);
-var pixels = ctx.getImageData(0, 0, cw, ch).data;
-otherColors(pixels, pixelCount);
+
+if (not_supported == true){
+	var cw = vid.offsetWidth;
+	var ch = vid.offsetHeight;
+} else {
+	var cw = canvas.width;
+	var ch = canvas.height
 }
 
-function dominantColor(pixels, pixelCount) {
-	var pixelArray = [];
-	for (var i = 0; i < pixelCount; i++) {  
-		// If pixel is mostly opaque and not white
-		if(pixels[i*4+3] >= 125){
-			if(!(pixels[i*4] > 250 && pixels[i*4+1] > 250 && pixels[i*4+2] > 250)){
-	   			pixelArray.push( [pixels[i*4], pixels[i*4+1], pixels[i*4+2]]);
-			}
-		}
-	}
-
-	// Send array to quantize function which clusters values
-	// using median cut algorithm
-	var cmap = MMCQ.quantize(pixelArray, 5);
-	var newPalette = cmap.palette();
-	
-	var colorArray = {"r": newPalette[0][0], "g": newPalette[0][1], "b": newPalette[0][2]};
-	var primarySqaure = document.querySelector("#primesquare");
-	primarySqaure.setAttribute('style', "background-color:rgb("+colorArray.r+", "+colorArray.g+", "+colorArray.b+");");
-
+var pixelCount = cw*ch;
+ctx.drawImage(vid, 0, 0, cw, ch);
+var pixels = ctx.getImageData(0, 0, cw, ch).data;
+otherColors(pixels, pixelCount);
 }
 
 
@@ -87,7 +76,6 @@ function otherColors(pixels, pixelCount) {
 			}
 		}
 	}
-
 	// Send array to quantize function which clusters values
 	// using median cut algorithm
 	var cmap = MMCQ.quantize(pixelArray, 16);

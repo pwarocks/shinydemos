@@ -38,16 +38,8 @@ var camera, scene;
 var webglRenderer;
 var zmesh, geometry;
 var mouseX = 0, mouseY = 0;
-var windowHalfX = window.innerWidth / 2;
-var windowHalfY = window.innerHeight / 2;
-
-document.addEventListener('mousemove', onDocumentMouseMove, false);
-document.addEventListener('touchmove', onDocumentTouchMove, false);
-
-window.addEventListener("deviceorientation", handleOrientation, true);
-
-init();
-animate();
+var windowHalfX;
+var windowHalfY;
 
 function init() {
     Log.write('Loading...');
@@ -110,8 +102,22 @@ function render() {
 }
 
 function handleOrientation(event) {
+    windowHalfX = window.innerWidth / 2;
+    windowHalfY = window.innerHeight / 2;
     webglRenderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     webglRenderer.render(scene, camera);
 }
+
+document.addEventListener('mousemove', onDocumentMouseMove, false);
+document.addEventListener('touchmove', onDocumentTouchMove, false);
+window.addEventListener("deviceorientation", handleOrientation, true);
+
+window.addEventListener("load", function () {
+    windowHalfX = window.innerWidth / 2;
+    windowHalfY = window.innerHeight / 2;
+    init();
+    animate();
+}, false);
+

@@ -138,7 +138,7 @@
 				// loader
 				var loader = new THREE.JSONLoader(),
 					callbackModel   = function( geometry ) { createScene( geometry,  90, FLOOR, -50, 105 ) };
-				loader.load( { model: "obj/cosmonaut/cosmonaut.js", callback: callbackModel } );
+				loader.load( { model: "scripts/cosmonaut.js", callback: callbackModel } );
 			}
 
 			function createScene( geometry, x, y, z, b ) {

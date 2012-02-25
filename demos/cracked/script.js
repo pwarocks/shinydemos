@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function(){
     var context1 = canvas1.getContext('2d');
     var canvas2 = document.getElementById('canvas2');
     var context2 = canvas2.getContext('2d');
-    var HEALING_DELAY = 1000; // Milliseconds
-    var HEALING_TIME = 2000; // Milliseconds
+    var HEALING_DELAY = 600; // Milliseconds
+    var HEALING_TIME = 1000; // Milliseconds
     var opacity = 1;
     var timer_delay = HEALING_DELAY;
     var timer_heal = HEALING_TIME;
@@ -122,7 +122,8 @@ document.addEventListener('DOMContentLoaded', function(){
         
         // Draw video onto first canvas
         ctx1.drawImage(video, sx, sy, sw, sh, dx, dy, dw, dh);
-        
+        drawSticker();
+
         var len = shards.length;
         if (len > 0) {
             if (timer_delay > 0) {
@@ -185,6 +186,27 @@ document.addEventListener('DOMContentLoaded', function(){
         
         timer_delay = HEALING_DELAY;
         timer_heal = HEALING_TIME;
+    }
+
+    function drawSticker() {
+      var x = (windowwidth / 2) - 125,
+          y = (windowheight / 2) - 100;
+
+      context1.lineWidth = 15;
+      context1.lineCap = 'square';
+      context1.lineJoin = 'round';
+      context1.strokeStyle = 'red';
+      context1.shadowColor = 'rgba(0,0,0,0)';
+      context1.strokeRect(x, y, 300, 190);
+      context1.font = '35px Open Sans';
+      context1.fillStyle = '#fff';
+      context1.shadowColor = '#000';
+      context1.shadowOffsetX = 2;
+      context1.shadowOffsetY = 2;                                                                                                                   
+      context1.shadowBlur = 1;
+      context1.fillText('IN CASE OF', x + 50, y + 65);
+      context1.fillText('EMERGENCY', x + 42, y + 110);
+      context1.fillText('BREAK GLASS', x + 32, y + 155);
     }
     
     document[mouse_down] = doCrack;

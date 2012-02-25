@@ -106,3 +106,8 @@ demos:
     title: "World flights"
     tags: [webgl]
     support: [canvas, webgl, webworkers]
+
+  - slug: cosmonaut
+    title: "First space walk"
+    tags: [webgl]
+    support: [canvas, webgl]

@@ -59,8 +59,7 @@ animate();
 function init() {
   Log.write('Loading...');
 
-	container = document.createElement( 'div' );
-	document.body.appendChild( container );
+	container = document.getElementById("container");
 	
 	// camera
 	//camera = new THREE.PerspectiveCamera( 75, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 100000 );
@@ -86,7 +85,7 @@ function init() {
 function createScene( geometry, x, y, z, b ) {
 
 	zmesh = new THREE.Mesh( geometry, new THREE.MeshFaceMaterial() );
-	zmesh.position.set( -10.5, 2.3, 0 );
+	zmesh.position.set( -9.5, 1.7, 0 );
 	zmesh.scale.set( .4, .4, .4 );
 	scene.add( zmesh );
 	

@@ -1,4 +1,4 @@
-﻿var canvas;
+var canvas;
 var found,timer;
 
 function loop() {
@@ -11,8 +11,8 @@ function loop() {
 		if (timer) { clearTimeout(timer); }
 		out.innerHTML = '<img src="./images/qry-happy.png" alt="[Happy]"> <a href="'+found+'">'+found+'</a>';
 		var video = document.getElementById('sourcevid'), container = video.parentNode;
-		canvas.style.width = video.clientWidth+'px';
-		canvas.style.height = video.clientHeight+'px';
+		/* canvas.style.width = video.clientWidth+'px'; // doesn't work with current nesting used */
+		canvas.style.height = video.clientHeight+'px'; 
 		container.removeChild(video);
 		container.appendChild(canvas);
 	}
@@ -21,7 +21,8 @@ function loop() {
 function captureToCanvas() {
 	var video = document.getElementById('sourcevid');
 	canvas = document.createElement('canvas');
-	canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+	canvas.width = video.videoWidth;
+	canvas.height = video.videoHeight;
 	var ctx = canvas.getContext('2d');
 	ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, canvas.width, canvas.height);
 	qrcode.decode(canvas.toDataURL());

@@ -104,7 +104,9 @@ function onDocumentTouchMove(event) {
   if (event.preventDefault) event.preventDefault();
   if (event.stopPropagation) event.stopPropagation();
 
-	onDocumentMouseMove(event.touches[0]);
+	//onDocumentMouseMove(event.touches[0]);
+	mouseX = ( event.touches[0].clientX - windowHalfX );
+	mouseY = ( event.touches[0].clientY - windowHalfY );
 }
 
 function animate() {

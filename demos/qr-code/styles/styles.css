@@ -1,19 +1,26 @@
+/* Robotron 2084 font http://www.splintered.co.uk/experiments/113/ - converted with Font Squirrel */
+@font-face { font-family: 'Robotron2084SmallRegular'; src: url('../robotron_2084_small.woff') format('woff'), url('../robotron_2084_small.ttf') format('truetype'); }
+
 html, body { margin: 0; padding: 0; background: #eee; }
-div#container { width: 460px; margin:0; padding: 10px; margin: 0 auto; font: 1.75em/1.5 Helvetica, Arial, sans-serif; }
+body, code { font: 32px/1 'Robotron2084SmallRegular', sans-serif; }
+a, a:link, a:visited, a:hover, a:focus, a:active { color: #fb2989; }
+div#container { width: 460px; margin:0; padding: 10px; margin: 0 auto;  }
 div#container h1 {  margin:0; padding:0; }
 div#container h1 img { display:block; margin:0; padding:0; }
 div#container video,
 div#container canvas { box-sizing: border-box; display: block; width:100%; border: 10px #26779d solid; background: #26779d; margin: 10px 0; padding: 0; }
 div#container canvas { border-color: #fb2989; background: #fb2989; } /* "found" visual cue */
-div#out { overflow: hidden; }
+div#out { height: 25px; padding: 20px 10px 20px 60px; overflow: hidden; white-space: nowrap; background: url(../images/qry-passive.png) no-repeat center left;}
+div.happy#out { background-image: url(../images/qry-happy.png); }
+div.sad#out { background-image: url(../images/qry-sad.png); }
 
 @-o-viewport {
 	width: 480px auto;
-	orientation: portrait; // not implemented yet?
-	resolution: device; // not implemented yet?
+	orientation: portrait; // lock orientation - not implemented yet?
+	resolution: device; // set device-dpi - not implemented yet?
 }
 
-// some basic height restrictions for video/canvas for less tall devices
+/* some basic height restrictions for video/canvas for less tall devices */
 
 @media 	(max-height: 800px),
 		(max-device-height: 800px) {

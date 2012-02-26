@@ -1,77 +1,84 @@
-var canvas;
-var found,timer;
+// Wrap the whole thing in a self-contained object...
 
-function loop() {
-	var out = document.getElementById('out');
-	captureToCanvas();
-	if (!found) {
-		out.innerHTML = '<img src="./images/qry-passive.png" alt="[Passive]"> Scan your QR code…';
-		timer = setTimeout(loop,250);
-	} else {
-		if (timer) { clearTimeout(timer); }
-		out.innerHTML = '<img src="./images/qry-happy.png" alt="[Happy]"> <a href="'+found+'">'+found+'</a>';
-		var video = document.getElementById('sourcevid'), container = video.parentNode;
-		/* canvas.style.width = video.clientWidth+'px'; // doesn't work with current nesting used */
-		canvas.style.height = video.clientHeight+'px'; 
-		container.removeChild(video);
-		container.appendChild(canvas);
-	}
-}
+var qry = {
+	video:'',
+	container:'',
+	canvas:'',
+	ctx:'',
+	out:'',
+	found:false,
+	timer:'',
 
-function captureToCanvas() {
-	var video = document.getElementById('sourcevid');
-	canvas = document.createElement('canvas');
-	canvas.width = video.videoWidth;
-	canvas.height = video.videoHeight;
-	var ctx = canvas.getContext('2d');
-	ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, canvas.width, canvas.height);
-	qrcode.decode(canvas.toDataURL());
-}
-
-function init() {
-	var video = document.getElementById('sourcevid');
-
-	// Standard and webkit methods for hooking into stream
-	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-	if (navigator.getUserMedia) {        
-		if (window.webkitURL) {
-			navigator.getUserMedia('video', function(stream) {
-				// Replace the source of the video element with the stream from the camera
-				video.src = window.webkitURL.createObjectURL(stream);
-				timer = setTimeout(loop,250);
-			}, errorCallback);
+	loop: function() {
+		qry.captureToCanvas();
+		if (!qry.found) {
+			qry.out.className = '';
+			qry.out.innerHTML = 'scan your code';
+			qry.timer = setTimeout(qry.loop,250);
 		} else {
-			navigator.getUserMedia({video: true}, function(stream) {
-				// Replace the source of the video element with the stream from the camera
-				video.src = stream;
-				timer = setTimeout(loop,250);
-			}, errorCallback);
+			if (qry.timer) { clearTimeout(qry.timer); }
+			qry.out.className = 'happy';
+			// only make it a clickable link if it smells like a url
+			var regexp = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+			if (regexp.test(qry.found)) {
+				qry.out.innerHTML = '<a href="'+qry.found+'">'+qry.found+'</a>';
+			} else {
+				qry.out.innerHTML = qry.found;
+			}
+			/* canvas.style.width = video.clientWidth+'px'; // doesn't work with current nesting used */
+			qry.canvas.style.height = qry.video.clientHeight+'px'; 
+			qry.container.removeChild(qry.video);
+			qry.container.appendChild(qry.canvas);
 		}
-		function errorCallback(error) {
-			var out = document.getElementById('out');
-			out.innerHTML = '<img src="./images/qry-sad.png" alt="[Sad]"> an error occurred…';
+	},
+
+	captureToCanvas: function() {
+		qry.ctx.drawImage(qry.video, 0, 0, qry.video.videoWidth, qry.video.videoHeight, 0, 0, qry.canvas.width, qry.canvas.height);
+		qrcode.decode(qry.canvas.toDataURL());
+	},
+
+	canvasInit: function() {
+		qry.canvas = document.createElement('canvas');
+		qry.canvas.width = qry.video.videoWidth;
+		qry.canvas.height = qry.video.videoHeight;
+		qry.ctx = qry.canvas.getContext('2d');
+		qry.timer = setTimeout(qry.loop,250);
+	},
+
+	init: function() {
+		qry.video = document.getElementById('sourcevid');
+		qry.container = qry.video.parentNode;
+		qry.out = document.getElementById('out');
+
+		// Standard and webkit methods for hooking into stream (not very DRY though)
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+		if (navigator.getUserMedia) {        
+			if (window.webkitURL) {
+				navigator.getUserMedia('video', function(stream) {
+					// Replace the source of the video element with the stream from the camera
+					qry.video.src = window.webkitURL.createObjectURL(stream);
+					setTimeout(qry.canvasInit,250); // Needed to get videoWidth/videoHeight
+				}, errorCallback);
+			} else {
+				navigator.getUserMedia({video: true}, function(stream) {
+					// Replace the source of the video element with the stream from the camera
+					qry.video.src = stream;
+					setTimeout(qry.canvasInit,250); // Needed to get videoWidth/videoHeight
+				}, errorCallback);
+			}
+			function errorCallback(error) {
+				qry.out.className = 'sad';
+				qry.out.innerHTML = 'an error occurred';
+				return;
+			}
+		} else {
+			qry.out.className = 'sad';
+			qry.out.innerHTML = 'no <code>getUserMedia</code> support';
 			return;
 		}
-	} else {
-		var out = document.getElementById('out');
-		out.innerHTML = '<img src="./images/qry-sad.png" alt="[sad]"> no support for <code>getUserMedia</code> detected…';
-		return;
+		
+		qrcode.callback = function(a) { qry.found=a; }
 	}
-	
-	qrcode.callback = function(a) { found=a; }
-}
+};
 
-window.addEventListener('load',function() {
-	// PxLoader by ThinkPixelLab http://thinkpixellab.com/pxloader/
-	var loader = new PxLoader(), 
-	pre1 = loader.addImage('./images/qry-passive.png'),
-	pre2 = loader.addImage('./images/qry-sad.png'),
-	pre3 = loader.addImage('./images/qry-happy.png');
-	 
-	// callback that will be run once images are ready 
-	loader.addCompletionListener(init); 
-	 
-	// begin downloading images 
-	loader.start(); 
-
-}, true);
+window.addEventListener('load',qry.init,true);

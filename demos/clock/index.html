@@ -71,29 +71,31 @@ video {
 </div>
 
 <script>
-function digitalclock()
-{   var date = new Date();
-    var clock = document.getElementById('clock');
-    var time = document.createTextNode(date.toTimeString().substring(0, 8));
-    clock.replaceChild(time, clock.firstChild);
-    setTimeout('digitalclock()', 1000);
-}
-digitalclock();​
-</script>
+(function digitalclock(){   
+  var date = new Date(),
+      clock = document.getElementById('clock'),
+      time = document.createTextNode(date.toTimeString().substring(0, 8));
 
+  clock.replaceChild(time, clock.firstChild);
+  setTimeout(digitalclock, 1000);
+})();
 
-<script>
 var video = document.getElementsByTagName('video')[0], 
     para = document.getElementsByTagName('p')[0];
 
-navigator.getUserMedia('video', successCallback, errorCallback);
-  function successCallback( stream ) {
-    video.src = stream;
-  }
-  function errorCallback( error ) {
-    para.textContent = 
-        "An error occurred: [CODE " + error.code + "]";
-  }
+function successCallback( stream ) {
+  video.src = stream;
+}
+
+function errorCallback( error ) {
+  para.textContent = 
+  "An error occurred: [CODE " + error.code + "]";
+}
+
+if (navigator.getUserMedia) {
+  navigator.getUserMedia('video', successCallback, errorCallback);
+}
+
 </script>
 </body>
 </html>

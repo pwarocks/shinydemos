@@ -76,7 +76,7 @@ function digitalclock()
     var clock = document.getElementById('clock');
     var time = document.createTextNode(date.toTimeString().substring(0, 8));
     clock.replaceChild(time, clock.firstChild);
-    setTimeout('digitalclock()', 1000);
+    setTimeout(digitalclock, 1000);
 }
 digitalclock();​
 </script>

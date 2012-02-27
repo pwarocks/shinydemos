@@ -73,7 +73,6 @@ video {
 <script>
 function digitalclock()
 {   var date = new Date();
-    date.setHours(date.getHours() + 2);
     var clock = document.getElementById('clock');
     var time = document.createTextNode(date.toTimeString().substring(0, 8));
     clock.replaceChild(time, clock.firstChild);

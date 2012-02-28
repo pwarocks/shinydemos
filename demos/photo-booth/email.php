@@ -14,8 +14,8 @@ $message = "
 </head>
 <body>
   <p>Here are your Photobooth snapshots!</p>
-  <img height=187 width=680 src=http://miketaylr.com/test/fb/$file><br>
-  <a href=http://miketaylr.com/test/fb/download.php?file=$file>Download</a>
+  <img height=187 width=680 src=http://shinydemos.com/photo-booth/$file><br>
+  <a href=http://shinydemos.com/photo-booth/download.php?file=$file>Download</a>
 </body>
 </html>
 ";
@@ -25,7 +25,7 @@ $headers = 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 // Additional headers
-$headers .= 'From: Up North Web <noreply@opera.com>' . "\r\n";
+$headers .= 'From: shinydemos.com <noreply@opera.com>' . "\r\n";
 
 // send email
-mail($email, 'Your Opera Photobooth Pictures', $message, $headers);
+mail($email, 'Your Photobooth Pictures', $message, $headers);

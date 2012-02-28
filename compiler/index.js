@@ -34,7 +34,32 @@ shinydemos.create = function() {
 
 
   // Copy all demos to deployment folder
-  ncp(siteconfig.demosFolder, siteconfig.deployFolder, function(err) {
+  var demoArray = configs.demos.map(function(demo) {
+                   return demo.slug;
+                 });
+
+  var demofilter = function(filename) {
+    console.log(filename);
+    var fileStat = fs.statSync(filename);
+    if (fileStat.isDirectory()=== true) {
+      return (demoArray.indexOf(filename) > -1); 
+    } else {
+      return true;
+    }
+  };
+
+  ncp(siteconfig.demosFolder, siteconfig.deployFolder, {filter: function(name) { 
+      var currentfilestats = fs.statSync(name);
+      var regEx = new RegExp('\/' + siteconfig.demosFolder + '\/([^/]*)$');
+      var demodirectory = regEx.exec(name) && regEx.exec(name)[1];
+
+      if(!demodirectory || (demoArray.indexOf(demodirectory) > -1)) {
+        return true;
+      } else { 
+       return false; 
+      } 
+    } 
+  }, function(err) {
     if(err) {
        console.error(err);
     }  else {

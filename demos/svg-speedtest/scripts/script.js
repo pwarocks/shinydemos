@@ -46,8 +46,27 @@ var rect_y = parseInt(therect.getAttribute('y'));
 var rect_height = parseInt(therect.getAttribute('height'));
 var rect_y_other = rect_y + rect_height;
 
-window.addEventListener('devicemotion', capture_acc, true);
-window.addEventListener('deviceorientation', capture, true);
+if (window.DeviceOrientationEvent || window.OrientationEvent){
+	window.addEventListener('devicemotion', capture_acc, true);
+	window.addEventListener('deviceorientation', capture, true);
+	} 
+else {
+	var error_text = document.createElementNS(xmlns, "text"); 
+	error_text.setAttribute('class', 'errortext');
+	error_text.setAttribute('fill', 'red');
+	error_text.setAttribute('x', 10);
+	error_text.setAttribute('y', 560);
+	error_text.setAttribute('font-size', 20);
+	error_text.textContent = "The W3C Device Orientation specification is not supported by this browser.";
+	root.appendChild(error_text);
+	
+	var text = document.querySelector("#mytext");
+	text.setAttribute('class', 'errortext');
+	text.setAttribute('fill', '#ecedf0');
+	text.setAttribute('stroke', 'none');
+	text.setAttribute('font-size', 20);
+	text.textContent = "This demo will not work properly due to lack of support for it.";
+}
 
 thefunc();
 var thetime = setInterval(doTime, 100);

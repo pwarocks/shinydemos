@@ -6,7 +6,7 @@ html { color: #fff; }
     
     html, body { margin: 0; padding: 0; }
     
-    h1, h2 { font-family: Bebas Neue, sans-serif; text-transform: uppercase; }
+    h1, h2 { font-family: sans-serif; text-transform: uppercase; }
         
     a { text-decoration: none; color: white; }    
     
@@ -15,25 +15,38 @@ html { color: #fff; }
       padding: 1px 0 2em 0;
       margin-bottom: 3em;
     }
+
+   .sd-panel + header {
+     padding-top: 60px;
+   }
+
+    mark { background-color: #0092bf; }
     
     body > header h1 { font-size: 4em; margin-bottom: 0; color: #0092bf; letter-spacing: 2px; text-shadow: 0 0 1px #000, 1px 1px 1px #000, 2px 2px 1px #000; }
     body > header h1 b { color: #f14a29; }
     
-    .slideshow { width: 460px; height: 340px; display: inline-block; margin: 1em; position: relative; box-shadow: 0 0 1em #000; text-align: left; }
+    .slideshow { width: 512px; height: 320px; display: inline-block; margin: 1em; position: relative; box-shadow: 0 0 1em #000; text-align: left; }
     
     .slideshow .slides { position: relative; height: 100%; width: 100%; overflow: hidden; }
     
     .slideshow .slide, 
-    .slideshow .caption { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: table; width: 100%; height: 100%; }
+    .slideshow .caption { position: absolute; top: 0; left: 0; right: 0; bottom: 0; padding: 1em; display: table; width: 100%; height: 100%; }
     
-    .slideshow section > :not(img), 
-    .slideshow .caption > :not(img) { padding-left: 1em; padding-right: 1em; }
+    .slideshow section > img, 
+    .slideshow .caption > img { position: absolute; top: 0; right: 0; left: 0; bottom: 0; z-index: -1; }
     
     .slideshow .slide > div, 
-    .slideshow .caption > div { display: table-cell; vertical-align: middle; background: top left no-repeat; background-size: 100% 100%; color: #000; }
+    .slideshow .caption > div { display: table-cell; vertical-align: middle; background: top left no-repeat; background-size: 100% 100%; }
     
     .slideshow nav { display: none; }
+
+    .slideshow blockquote, 
+    .slideshow ul,
+    .slideshow ol { margin-left: 0; padding-left: 1em; }
     
+    .slideshow .column-left,
+    .slideshow .column-right { float: left; width: 45%; }
+
     a.external:hover { position: relative; display: inline-block; }
     a.external:hover::before {
       top: 40%;
@@ -60,9 +73,9 @@ html { color: #fff; }
     }
         
     @media -o-paged {
-      .slideshow .slides { overflow: -o-paged-x; }
+      .slideshow.active { box-shadow: 0 0 1em indianred; }
+      .slideshow .slides { overflow: -o-paged-x; color: #fff; text-shadow: 1px 1px 1px #000; }
       .slideshow .slides > * { position: static; break-inside: avoid; break-after: always;  }
-      .slideshow .slide ul, .slideshow .content h2 { padding-left: 5rem; }
       .slideshow .slide img:only-child { -o-object-fit: cover; }
       .slideshow .slide img { width: 100%; }
       .slideshow .slide header + img { -o-object-fit: contain; }
@@ -70,6 +83,13 @@ html { color: #fff; }
         display: block; position: absolute; bottom: 0; right: 0; left: 0; height: 2em; 
         background: -o-linear-gradient(transparent, #333 5%, #000), #000; 
       }            
+
+      .slideshow h1, .slideshow p { margin: 0.5rem 0; }
+
+      .slideshow .slides pre { white-space: pre-line; }
+
+      .slideshow .slides a { color: indianred; }
+      .slideshow .slides h2 { margin-top: 0; }
       
       .slideshow nav button, .slideshow nav p { vertical-align: middle; }
       .slideshow nav button { background: 0 0; padding: 0 10px; border: 0; color: #fff; font-size: 2em; line-height: 0.8em;}

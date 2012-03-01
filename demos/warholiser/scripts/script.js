@@ -1,129 +1,99 @@
-var video_element = document.querySelector('#video');
-var thecanvas = document.querySelector('#mycanvas');
-var slider = document.querySelector('#slider');
-var asliider = document.querySelector('#aslider');
-var output = document.querySelector('#thresholdoutput');
-var aoutput = document.querySelector('#alphaoutput');
+var video = document.getElementById('video'),
+    webmvideo = "http:\/\/media.shinydemos.com\/warholiser\/wsh.webm",
+    mp4video = "http:\/\/media.shinydemos.com\/warholiser\/wsh.mp4";
+    options = {audio: false, video:true},
+    red = document.getElementById('red'),
+    green = document.getElementById('green'),
+    blue = document.getElementById('blue'),
+    yellow = document.getElementById('yellow');
+    canvasWidth = red.width,
+    canvasHeight = red.height,
+    redCtx = red.getContext('2d'),
+    greenCtx = green.getContext('2d'),
+    yellowCtx = yellow.getContext('2d'),
+    blueCtx = blue.getContext('2d');
 
-var webmvideo = " http:\/\/media.shinydemos.com\/warholiser\/wsh.webm";
-var mp4video = " http:\/\/media.shinydemos.com\/warholiser\/wsh.mp4";
+  //"inlining" what used to be a for loop
+  red.addEventListener('click', newImg);
+  green.addEventListener('click', newImg);
+  blue.addEventListener('click', newImg);
+  yellow.addEventListener('click', newImg);
 
-var error = 1;
-var threshold = 45;
-var alpha = 255;
-
-slider.addEventListener('change', changeThreshold, true);
-aslider.addEventListener('change', changeAlpha, true);
-
-var options = {audio: false, video:true};
-
-var canvases = document.querySelectorAll('canvas');
-for (var i=0; i<canvases.length;i++){
-	canvases[i].addEventListener('click', newImg, true);
+if (navigator.getUserMedia){
+  navigator.getUserMedia(options, v_success, v_error);
+} else if (navigator.webkitGetUserMedia) {
+  navigator.webkitGetUserMedia("video", webkit_v_success, v_error)
+} else {
+  not_supported();
 }
-
-
-
-if (navigator.getUserMedia) {
-	navigator.getUserMedia(options, v_success, v_error);
-} else{
-	not_supported();
-}
-
-
 
 function not_supported() {
-	var message = document.querySelector('#message');
-	message.innerHTML = "<h1><code>navigator.getUserMedia()</code><br> is not supported by this browser, so this demo will not run properly. Using HTML5 &lt;video&gt; fallback instead.</h1>";
-		
-		video.innerHTML = "<source src=\""+webmvideo+"\" type=\"video\/webm\" ><\/source> <source src=\""+mp4video+"\" type=\"video\/mp4\" ><\/source>";
-		video_element.muted= true;
-	
-	var t=setInterval(copyVideoToCanvas, 100);
+  var message = document.getElementById('message');
+  message.innerHTML = "<h1>Webcam access through the W3C WebRTC Spec is not supported by this browser, so this demo will not run properly. Using HTML5 &lt;video&gt; fallback instead.</h1>";
+  video.innerHTML = "<source src=\""+webmvideo+"\" type=\"video\/webm\" ><\/source> <source src=\""+mp4video+"\" type=\"video\/mp4\" ><\/source>";
+  video.muted= true;
+        
+  setInterval(copyVideoToCanvas, 100);
 }
-
-
 
 function v_success(stream) {
-	video.src = stream;
-	var t=setInterval(copyVideoToCanvas, 100);
+  video.src = stream;
+  setInterval(copyVideoToCanvas, 100);
 }
 
-
+function webkit_v_success(stream){
+  video.src = window.webkitURL.createObjectURL(stream);
+}
 
 function v_error(error) {
-	console.log("Error! Error code is:"+error.code);
-	error = 0;
-	
-	video.innerHTML = "<source src=\""+webmvideo+"\" type=\"video\/webm\" ><\/source> <source src=\""+mp4video+"\" type=\"video\/mp4\" ><\/source>";
-	video_element.muted= true;
-	
-	var t=setInterval(copyVideoToCanvas, 100);
-}
+  console.log("Error! Error code is:"+error.code);
+  video.innerHTML = "<source src=\""+webmvideo+"\" type=\"video\/webm\" ><\/source> <source src=\""+mp4video+"\" type=\"video\/mp4\" ><\/source>";
+  video.muted= true;
 
+  setInterval(copyVideoToCanvas, 100);
+}
 
 
 function copyVideoToCanvas() {
-	makeImage('red');
-	makeImage('green');
-	makeImage('yellow');
-	makeImage('blue');
+  makeImage(red, redCtx);
+  makeImage(green, greenCtx);
+  makeImage(yellow, yellowCtx);
+  makeImage(blue, blueCtx);
 }
-
-
-
-function changeThreshold(){
-	threshold = slider.value;
-	output.value = threshold;
-}
-
-
-
-function changeAlpha() {
-	alpha = aslider.value;
-	aoutput.value = alpha;
-}
-
-
 
 function newImg() {
-	var datauri = this.toDataURL("image/png");
-	window.open(datauri);
+  var datauri = this.toDataURL("image/png");
+  window.open(datauri);
 }
 
+function makeImage(canvas, ctx) {
+  var imgdata, pixels, final;
+  ctx.drawImage(video, 0, 0, canvasWidth, canvasHeight);
+  imgdata = ctx.getImageData(0, 0, canvasWidth, canvasHeight);
+  pixels = imgdata.data;
 
+  // Loop over each pixel and invert the color.
+  for (var i = 0, n = pixels.length; i < n; i += 4) {
+    final = pixels[i] * 0.21 + pixels[i+1] * 0.71 + pixels[i+2] * 0.07 ; 
 
-function makeImage(color) {
-var thename = "#"+color+"";
-var thecanvas = document.querySelector(thename);
-var ctx = thecanvas.getContext("2d");
-ctx.drawImage(video_element, 0, 0, thecanvas.width, thecanvas.height );
-var imgdata = ctx.getImageData(0, 0, thecanvas.width, thecanvas.height);
-var pixels = imgdata.data;
+    if (final > 50){
+      final = 255;
+    } else {
+      final = 0;
+    }
+        
+    pixels[i] = pixels[i+1] = pixels[i+2] = final;
+    pixels[i+3] = 255;
 
-// Loop over each pixel and invert the color.
-for (var i = 0, n = pixels.length; i < n; i += 4) {
-var final = pixels[i] * 0.21 + pixels[i+1] * 0.71 + pixels[i+2] * 0.07 ; 
+    switch (canvas.id) {
+      case 'red': pixels[i] += 255; break;
+      case 'green': pixels[i+1] +=255; break;
+      case 'yellow': pixels[i] += 255; pixels[i+1] +=255; break;
+      case 'blue': pixels[i+2] +=255; break;
+    }
 
-	if (final > threshold){
-		final = 255;
-	} else {
-		final = 0;
-	}
-	
-pixels[i] = pixels[i+1] = pixels[i+2] = final;
-pixels[i+3] = alpha;
+  }
 
-switch (color) {
-	case 'red': pixels[i] += 255; pixels[i+1] +=0; pixels[i+2] +=0; break;
-	case 'green': pixels[i] += 0; pixels[i+1] +=255; pixels[i+2] +=0;  break;
-	case 'yellow': pixels[i] += 255; pixels[i+1] +=255; pixels[i+2] +=0; break;
-	case 'blue': pixels[i] += 0; pixels[i+1] +=0; pixels[i+2] +=255; break;
-}//end switch 
-
-} //end for
-
-
-// Draw the ImageData at the given (x,y) coordinates.
-ctx.putImageData(imgdata, 0, 0);
+  // Draw the ImageData at the given (x,y) coordinates.
+  ctx.putImageData(imgdata, 0, 0);
 }

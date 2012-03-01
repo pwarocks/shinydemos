@@ -255,6 +255,11 @@ select{
 
 .hidefromsmall, #getcode{display:none;}
 
+
+#overlay.hide, #overlay section.hide{
+    display:none;
+}
+
 button{
 	background-color:#1FA5EE;
 	border: 1px solid #1FA5EE;

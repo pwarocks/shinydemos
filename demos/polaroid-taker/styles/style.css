@@ -93,23 +93,6 @@ a:visited{
 	margin-top: 10px;
 }
 
-#share{
-	text-align: right;
-	margin: 2em;
-	margin: 2rem;
-	padding-bottom:1em;
-	padding-bottom:1rem;
-}
-
-#share ul li{
-	list-style-type: none;
-	display: inline-block;
-}
-
-#share ul li img{
-	box-shadow: 1px 1px 15px #f78e1d;
-}
-
 button{
 	display:block;
 	outline: none;

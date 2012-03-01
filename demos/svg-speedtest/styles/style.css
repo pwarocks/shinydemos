@@ -23,7 +23,7 @@ svg{
 	background-color: #000;
 }
 		
-#heading{
+#heading, .errortext{
 	font-family: 'SnicklesRegular';
 }
      

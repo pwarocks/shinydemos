@@ -11,17 +11,17 @@ var exploding = {
     PAINTHEIGHT : window.innerHeight,
     TILE_WIDTH : 32,
     TILE_HEIGHT : 24,
-    TILE_CENTER_WIDTH :  this.TILE_WIDTH / 2,
+    TILE_CENTER_WIDTH : this.TILE_WIDTH / 2,
     TILE_CENTER_HEIGHT : this.TILE_HEIGHT / 2,
     SOURCERECT : {
         width : 0,
         height : 0
     },
     RAD : Math.PI / 180,
-    tiles : []    
+    tiles : []
 };
 
-exploding.init = function() {    
+exploding.init = function() {
     var video = document.querySelector('video');
     
     exploding.canvas1 = document.getElementById('canvas1');
@@ -31,13 +31,13 @@ exploding.init = function() {
     exploding.context2 = canvas2.getContext('2d');
     
     var mouse_down = ('createTouch' in document) ? 'ontouchstart' : 'onmousedown';
-    canvas2[mouse_down] = function() {
+    canvas2[mouse_down] = function(event) {
         exploding.dropBomb(event, this);
     };
     
     // Get the stream from the camera using getUserMedia
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-    if (navigator.getUserMedia) {        
+    if (navigator.getUserMedia) {
         if (window.webkitURL) {
             navigator.getUserMedia('video', function(stream) {
                 // Replace the source of the video element with the stream from the camera
@@ -55,10 +55,11 @@ exploding.init = function() {
             return;
         }
     } else {
-        var errorMsg = '<p class="error">Uh oh, it appears your browser doesn\'t support this feature.<br>Please try with a <a href="http://my.opera.com/core/blog/2011/03/23/webcam-orientation-preview">browser that has camera support</a>.';
-        document.querySelector('[role=main]').innerHTML = errorMsg;
+        var error = document.createElement('div');
+        error.textContent = 'Your browser doesn\'t have camera support. Using a rather delightful video instead.';
+        error.className = 'error';
+        document.querySelector('[role=main]').appendChild(error);
         console.log('Native web camera streaming (getUserMedia) is not supported in this browser.');
-        return;
     }
     
     // Start drawing to the canvas once the video is ready.
@@ -78,13 +79,13 @@ exploding.init = function() {
                 exploding.SOURCERECT = {
                     width : video.videoWidth,
                     height : video.videoHeight
-                };                
+                };
             }
             
             exploding.createTiles(windowWidth, windowHeight);
             
             // Start drawing the stream to the canvas
-            setInterval(function() {             
+            setInterval(function() {
                 exploding.processFrame(video, windowWidth, windowHeight)
             }, 33);
         }
@@ -92,8 +93,8 @@ exploding.init = function() {
 };
 
 exploding.createTiles = function(paintWidth, paintHeight) {
-    exploding.TILE_WIDTH = exploding.canvas1.width / 16;
-    exploding.TILE_HEIGHT = exploding.canvas1.height / 16;
+    exploding.TILE_WIDTH = exploding.canvas1.width / 16 >> 0;
+    exploding.TILE_HEIGHT = exploding.canvas1.height / 16 >> 0;
     exploding.TILE_CENTER_WIDTH = exploding.TILE_WIDTH / 2 >> 0;
     exploding.TILE_CENTER_HEIGHT = exploding.TILE_HEIGHT / 2 >> 0;
                 

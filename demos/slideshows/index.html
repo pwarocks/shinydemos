@@ -22,13 +22,11 @@
     if(typeof slideshowcontainer[0].currentPage === 'number' && typeof slideshowcontainer[0].pageCount === 'number') {          
       $('<div class="slideshow">').load(slides[i] + ' div.slides', function() {
         var that = $(this);
-        that.append($('<nav><button class="prev">Prev</button><button class="next">Next</button><p><i></i></p></nav>'));      
+        that.append($('<nav><p><i></i></p><button class="prev">Prev</button><button class="next">Next</button></nav>'));      
         slideshowcontainer.append(that);      
         if(i == slides.length) {
             slideshow('div.slides');  
         }
-      }).click(function() {
-        makeActive($(this));
       });
     } else {
       $('<div class="slideshow">').load(slides[i] + ' header.caption', function(i) {
@@ -54,7 +52,6 @@
     var slideshows = document.querySelectorAll(slideshowselector);
         
     function updateCurrentPage(e) {
-      makeActive($(e.target.parentNode));
       e.target.parentNode.querySelector('nav p').dataset.progress = Math.floor((e.currentPage/(e.pageCount - 1))*10);
       e.target.parentNode.querySelector('nav p i').textContent = (+e.currentPage + 1) + " of " + e.pageCount;      
     }
@@ -75,9 +72,6 @@
     for(var i = 0, len = slideshows.length; i < len; i++) {
       var slide = slideshows[i], parentContainer = slide.parentNode;
       slide.onpagechange = updateCurrentPage;
-      $(parentContainer).find('nav button').focus(function() {
-        makeActive($(this).parents('.slideshow'));
-      });
       parentContainer.querySelector('nav button.prev').onclick = function(i) { return function(e) { prevPage(i); }}(i);      
       parentContainer.querySelector('nav button.next').onclick = function(i) { return function(e) { nextPage(i); }}(i);      
     }

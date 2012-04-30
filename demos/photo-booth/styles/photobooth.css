@@ -2,11 +2,11 @@ body{margin:0 auto;position:relative;background-image:url("../images/bg_wood.png
 #container h1{margin:50px 0 -35px 15px;padding:0;width:912px;height:192px;text-indent:-9999px;background-image:url(../images/banner.png);position:relative;top:-20px;}
 button:active{background:url(../images/button_pressed.png);}
 canvas{position:relative;margin-left:50px;margin-top:10px;}
-canvas:after{content:url(../images/deco_arrow.png);position:absolute;right:-135px;top:-10px;}
 video{position:relative;left:50px;-o-object-fit:cover;object-fit:cover;border-width:24px 20px;-o-border-image:url(../images/bg_cam.png) 23 20 repeat;-moz-border-image:url(../images/bg_cam.png) 23 20 repeat;-webkit-border-image:url(../images/bg_cam.png) 23 20 repeat;-ms-border-image:url(../images/bg_cam.png) 23 20 repeat;border-image:url(../images/bg_cam.png) 23 20 repeat;}
 #take-photo{text-indent:-9999px;background:url(../images/button_normal.png);border:none;padding:0;width:136px;height:294px;position:absolute;right:25px;top:297px;}
 #sticker{position:absolute;right:25px;top:160px;}
 #torn-sticker{position:absolute;right:-65px;top:750px;}
+#arrow{position:absolute;top:610px;right:70px;}
 #countdown{position:absolute;top:230px;left:230px;}
 #container{position:relative; margin: 0 auto; width:938px;height:988px;background:url(../images/deco_borderbox.png) no-repeat;}
 #container:after{content:url(../images/floral.png);position:absolute;left:220px;bottom:-40px;margin-bottom:20px;}

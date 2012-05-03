@@ -22,7 +22,7 @@ if (argv.env == "dev") {
   
   console.log('Deploying to dev.shinydemos.com. Hold on to your pants.'.green);
   
-  child = exec('cd deploy && rsync -e ssh -av . devrelbot@homes.oslo.osa:/home/devrelbot/public_html/dev.shinydemos.com',
+  child = exec('rsync -aH --progress deploy/* devrelbot@homes.oslo.osa:/home/devrelbot/public_html/dev.shinydemos.com',
     function (error, stdout, stderr) {
       console.log(stdout);
       process.exit();
@@ -46,7 +46,7 @@ if (argv.env == "prod") {
       console.log('Deploying to shinydemos.com. Hold on to your pants.'.green);
       
    /* THIS STAYS UNCOMMENTED UNTIL WE'RE READY TO DEPLOY. NO ACCIDENTS. KTHX.  
-      child = exec('cd deploy && rsync -e ssh -av . shinydemos@shinydemos.com:/home/shinydemos/shinydemos.com',
+      child = exec('rsync -aH --progress deploy/* shinydemos@shinydemos.com:/home/shinydemos/shinydemos.com',
         function (error, stdout, stderr) {
           console.log(stdout);
           process.exit();

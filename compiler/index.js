@@ -1,42 +1,37 @@
-var ncp = require('ncp').ncp;
-var fs = require('fs');
-var Handlebars = require('handlebars');
-var yaml = require('js-yaml');
-var jsdom = require('jsdom').jsdom;
-var rimraf = require('rimraf');
-var minifier = require('html-minifier');
-
-var shinydemos = exports;
+var ncp = require('ncp').ncp,
+    fs = require('fs'),
+    Handlebars = require('handlebars'),
+    yaml = require('js-yaml'),
+    jsdom = require('jsdom').jsdom,
+    rimraf = require('rimraf'),
+    minifier = require('html-minifier'),
+    shinydemos = exports,
+    homepage, tagspage, demopage, featuresupport;
 
 shinydemos.create = function() {
   var configs = require('../config.yaml').shift();
   var siteconfig = configs.siteconfig;
 
-  // Handlebar helper to hyphenate tags that are more than a word
   Handlebars.registerHelper('hyphenate', function(tag) {
     return tag.split(' ').join('-');
   });
 
   // Compile all the templates
-  var homepageTemplate = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/home.html').toString());
-  var tagspageTemplate = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/tag.html').toString());
-  var demopageTemplate = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/demo.html').toString());
-  var featuresupportTemplate = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/featuresupport.html').toString());
-
-
+  homepage = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/home.html').toString());
+  tagspage = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/tag.html').toString());
+  demopage = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/demo.html').toString());
+  featuresupport = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/featuresupport.html').toString());
 
   //delete deploy folder
-  rimraf.sync('./deploy');
+  console.log('Deleting old deploy folder and contents.')
+  rimraf.sync(siteconfig.deployFolder);
 
   //create deploy folder
   console.log('Creating %s folder', siteconfig.deployFolder);
   fs.mkdirSync(siteconfig.deployFolder);
 
-
   // Copy all demos to deployment folder
-  var demoArray = configs.demos.map(function(demo) {
-                   return demo.slug;
-                 });
+  var demoArray = configs.demos.map(function(demo) {return demo.slug;});
 
   var demofilter = function(filename) {
     console.log(filename);
@@ -94,7 +89,7 @@ shinydemos.create = function() {
         var panelJS = win.document.createElement('script');
 
         var featuresupportContainer = win.document.createElement('div');
-        featuresupportContainer.innerHTML = featuresupportTemplate({'features': demo.support});
+        featuresupportContainer.innerHTML = featuresupport({'features': demo.support});
 
 
         panelCSS.rel = 'stylesheet';
@@ -102,7 +97,7 @@ shinydemos.create = function() {
         panelJS.src = '/scripts/' + siteconfig.panelJS;
 
         panelContainer.className = siteconfig.panelClass;
-        panelContainer.innerHTML = demopageTemplate({ 'title': demo.title, 'features': demo.support });
+        panelContainer.innerHTML = demopage({ 'title': demo.title, 'features': demo.support });
 
         console.log('wrapping', demo.title);
         win.document.getElementsByTagName('head')[0].appendChild(panelCSS);
@@ -110,7 +105,7 @@ shinydemos.create = function() {
         win.document.body.insertBefore(panelContainer, win.document.body.firstChild);
         win.document.body.appendChild(featuresupportContainer);
 
-        fs.writeFileSync(demoPath, minifier.minify(win.document.doctype.toString() + win.document.outerHTML, { 'collapseWhitespace': true, 'removeComments': true }));
+        fs.writeFileSync(demoPath, minifier.minify(win.document.doctype.toString() + win.document.outerHTML, { 'collapseWhitespace': false, 'removeComments': true }));
 
         var tags = demo.tags.toString().split(',');
         tags.forEach(function(t)
@@ -126,7 +121,7 @@ shinydemos.create = function() {
 
   // homepage render
   function renderHomePage(allTags) {
-    var homepageRender = homepageTemplate({'tags': allTags});
+    var homepageRender = homepage({'tags': allTags});
     fs.writeFileSync(siteconfig.deployFolder + '/index.html', homepageRender);
     console.log('homepage rendered…');
   };
@@ -146,7 +141,7 @@ shinydemos.create = function() {
 
       fs.mkdirSync(siteconfig.deployFolder + '/' + t + '/');
 
-       fs.writeFileSync(siteconfig.deployFolder + '/' + t + "/index.html", tagspageTemplate({'title': t, 'slugs': demoCollection }));
+       fs.writeFileSync(siteconfig.deployFolder + '/' + t + "/index.html", tagspage({'title': t, 'slugs': demoCollection }));
        console.log('rendered %s page', t);
     });
   };

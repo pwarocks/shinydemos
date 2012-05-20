@@ -100,6 +100,11 @@ demos:
     title: "QRY {curie} QR code reader"
     tags: [getusermedia]
     support: [getusermedia, video]
+	
+  - slug: facekat
+    title: "FaceKat"
+    tags: [getusermedia]
+    support: [getusermedia, video]
 
   - slug: world-flights
     title: "World flights"

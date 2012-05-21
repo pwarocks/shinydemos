@@ -16,11 +16,6 @@ demos:
     tags: [svg]
     support: [svg]
 
-  - slug: slideshows 
-    title: "Slides from Web Openers"
-    tags: [css]
-    support: [pagedcontent]
-
   - slug: border-salon
     title: "Border Radius Salon"
     tags: [css]

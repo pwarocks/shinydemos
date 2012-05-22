@@ -58,7 +58,7 @@ shinydemos.create = function() {
     if(err) {
        console.error(err);
     }  else {
-      console.log('copied demos to %s from %s', siteconfig.demosFolder, siteconfig.deployFolder);
+      console.log('Copied demos to %s from %s', siteconfig.demosFolder, siteconfig.deployFolder);
       createdemos();
     }
   });
@@ -68,13 +68,13 @@ shinydemos.create = function() {
     if(err) {
       console.error("error copying source", err);
     }  else {
-      console.log('copied source assets to %s from %s', siteconfig.sourceFolder, siteconfig.deployFolder);
+      console.log('Copied source assets to %s from %s', siteconfig.sourceFolder, siteconfig.deployFolder);
     }
   });
 
   //Render index.html with our configs
   function createdemos() {
-    console.log('creating demos from source files');
+    console.log('Creating demos from source files');
     var demosByTag = {};
     [].forEach.call(
       configs.demos,
@@ -123,7 +123,7 @@ shinydemos.create = function() {
   function renderHomePage(allTags) {
     var homepageRender = homepage({'tags': allTags});
     fs.writeFileSync(siteconfig.deployFolder + '/index.html', homepageRender);
-    console.log('homepage rendered…');
+    console.log('Rendering homepage.');
   };
 
   //tagspage render
@@ -142,7 +142,7 @@ shinydemos.create = function() {
       fs.mkdirSync(siteconfig.deployFolder + '/' + t + '/');
 
        fs.writeFileSync(siteconfig.deployFolder + '/' + t + "/index.html", tagspage({'title': t, 'slugs': demoCollection }));
-       console.log('rendered %s page', t);
+       console.log('Rendering %s page', t);
     });
   };
 };

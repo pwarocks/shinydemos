@@ -5,7 +5,23 @@ siteconfig:
   sourceFolder: 'source'
   layoutsFolder: 'layouts'
 
-# Allowed tags: javascript, forms, canvas, content, parser, svg, css, audio, video, webgl
+# Allowed tags: ???
+# add a section for copy to appear below demos? i just added <br><br> but that's probably wrong
+tags:
+  - tagName: css
+    displayName: "CSS 3"
+    tagline: "CSS 3: CSS was co-invented by Opera's CTO, Håkon Wium Lie, so that Web pages could have beautiful designs. It started life as a method of specifying fonts and colours, and now provides simple animations, entire layouts and is the underpinning of Responsive Web Design.<br><br>Inspired to code? Read the <a href='http://dev.opera.com/articles/view/1-introduction-to-the-web-standards-cur/#toc'>Web Standards Curriculum CSS tutorials</a> and <a href='http://dev.opera.com/articles/tags/css3'>dev.O's CSS 3 articles</a>."
+
+  - tagName: svg
+    displayName: "SVG"
+    tagline: "You want scriptable text and images, that can be manipulated using their own DOM, CSS and script, in all modern browsers? You want to produce graphics that look sharp at phone screen size or widescreen TV size? And you want to be able to make them responsive too? Of course you do - so meet SVG: Scalable Vector Graphics. But you'll say 'Shiny! Very Groovy'. And you'd be right.<br><br>Inspired to code? Read Jeff Schiller's <a href='http://dev.opera.com/articles/view/svg-evolution-not-revolution/'>SVG: Evolution, Not Revolution</a> and <a href='http://twitter.com/odevrel'>tweet us</a> a link to your demo!</a>"
+
+  - tagName: webgl
+    displayName: "WebGL"
+    tagline: ""
+
+#add the rest here ^_________^  
+
 demos:
   - slug: 3d-color-histogram
     title: "3D color histogram"
@@ -54,13 +70,6 @@ demos:
     legend: "Blow up the video, and watch as the shards still continue to move. Based on Sean Christmann's <a href='http://www.craftymind.com/2010/04/20/blowing-up-html5-video-and-mapping-it-into-3d-space/'>exploding HTML5 video experiment</a> with kind permission."
     tags: [css]
     support: []
-
-# comment out until facekat actually makes it in. oops.
-#  - slug: facekat
-#    title: "FaceKat"
-#    lengend: ""
-#    tags: [getusermedia]
-#    support: [getusermedia, video]
 
   - slug: fence
     title: "Fence"

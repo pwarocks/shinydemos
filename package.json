@@ -17,7 +17,6 @@
     "js-yaml": "*",
     "jsdom": "*",
     "rimraf": "*",
-    "html-minifier": "*",
     "optimist": "*",
     "colors": "*",
     "prompt": "*"

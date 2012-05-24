@@ -4,23 +4,32 @@ var ncp = require('ncp').ncp,
     yaml = require('js-yaml'),
     jsdom = require('jsdom').jsdom,
     rimraf = require('rimraf'),
-    minifier = require('html-minifier'),
+    pluckSupport = require('../lib/pluck'),
     shinydemos = exports,
-    homepage, tagspage, demopage, featuresupport;
-
+    homepage, tagspage;
+    
 shinydemos.create = function() {
-  var configs = require('../config.yaml').shift();
-  var siteconfig = configs.siteconfig;
+  var configs = require('../config.yaml').shift(),
+      siteconfig = configs.siteconfig,
+      features = configs.features;
 
   Handlebars.registerHelper('hyphenate', function(tag) {
     return tag.split(' ').join('-');
   });
+  
+  Handlebars.registerHelper('arrayify', function(tagsArray) {
+    //tagsArray gets passed in from config.yml as a string, like "foo, bar, baz"
+    //we need to convert this to an ES Array of strings to avoid reference errors 
+    var result = tagsArray.split(',').map(function(tag){
+      return '"' + tag + '"';
+    });
+    
+    return result;
+  });
 
-  // Compile all the templates
   homepage = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/home.html').toString());
   tagspage = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/tag.html').toString());
-  demopage = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/demo.html').toString());
-  featuresupport = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/featuresupport.html').toString());
+  optionsjs = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/options.js').toString());
 
   //delete deploy folder
   console.log('Deleting old deploy folder and contents.')
@@ -32,16 +41,6 @@ shinydemos.create = function() {
 
   // Copy all demos to deployment folder
   var demoArray = configs.demos.map(function(demo) {return demo.slug;});
-
-  var demofilter = function(filename) {
-    console.log(filename);
-    var fileStat = fs.statSync(filename);
-    if (fileStat.isDirectory()=== true) {
-      return (demoArray.indexOf(filename) > -1); 
-    } else {
-      return true;
-    }
-  };
 
   ncp(siteconfig.demosFolder, siteconfig.deployFolder, {filter: function(name) { 
       var currentfilestats = fs.statSync(name);
@@ -76,40 +75,33 @@ shinydemos.create = function() {
   function createdemos() {
     console.log('Creating demos from source files');
     var demosByTag = {};
-    [].forEach.call(
-      configs.demos,
-      function(demo, i) {
-        console.log('now working on demo:', demo.title);
+    //demo that gets passed in is configs.demo
+    [].forEach.call(configs.demos, function(demo, i) {
+        console.log('now working on demo:', demo.slug);
 
         var demoPath = siteconfig.deployFolder + '/' + demo.slug + '/index.html';
         var win = jsdom(fs.readFileSync(demoPath).toString()).createWindow();
+        
+        //for now, inlining options.js template here at the bottom of the page
+        var optsContainer = win.document.createElement('script');
+        optsContainer.innerHTML = optionsjs({
+          title: demo.title,
+          legend: demo.legend,  
+          tags: demo.tags.toString(),
+          features: pluckSupport(features, demo.support.toString())
+        });
 
-        var panelContainer = win.document.createElement(siteconfig.panelTag);
-        var panelCSS = win.document.createElement('link');
-        var panelJS = win.document.createElement('script');
+        //hack to shut up JSDOM for now
+        win.PhiloGL = {};
+        win.PhiloGL.hasWebGL = function(){};
+        win.appendPanel = function(){};
 
-        var featuresupportContainer = win.document.createElement('div');
-        featuresupportContainer.innerHTML = featuresupport({'features': demo.support});
+        win.document.body.appendChild(optsContainer);
 
-
-        panelCSS.rel = 'stylesheet';
-        panelCSS.href = '/styles/' + siteconfig.panelCSS;
-        panelJS.src = '/scripts/' + siteconfig.panelJS;
-
-        panelContainer.className = siteconfig.panelClass;
-        panelContainer.innerHTML = demopage({ 'title': demo.title, 'features': demo.support });
-
-        console.log('wrapping', demo.title);
-        win.document.getElementsByTagName('head')[0].appendChild(panelCSS);
-        win.document.getElementsByTagName('head')[0].appendChild(panelJS);
-        win.document.body.insertBefore(panelContainer, win.document.body.firstChild);
-        win.document.body.appendChild(featuresupportContainer);
-
-        fs.writeFileSync(demoPath, minifier.minify(win.document.doctype.toString() + win.document.outerHTML, { 'collapseWhitespace': false, 'removeComments': true }));
+        fs.writeFileSync(demoPath, win.document.doctype + "\n" + win.document.outerHTML);
 
         var tags = demo.tags.toString().split(',');
-        tags.forEach(function(t)
-        {
+        tags.forEach(function(t){
           demosByTag[t] = demosByTag[t] || [];
           demosByTag[t].push(demo);
         });
@@ -117,16 +109,19 @@ shinydemos.create = function() {
 
     renderHomePage(Object.keys(demosByTag));
     renderTagsPages(demosByTag);
+    console.log('loldone');
+    //i think i need some kind of process.exit() here
   }
 
   // homepage render
   function renderHomePage(allTags) {
     var homepageRender = homepage({'tags': allTags});
     fs.writeFileSync(siteconfig.deployFolder + '/index.html', homepageRender);
-    console.log('Rendering homepage.');
+    console.log('Rendering homepage');
   };
 
   //tagspage render
+  //need to get in the copy for the tags somewhere
   function renderTagsPages(demosByTag) {
     Object.keys(demosByTag).forEach(function(t) {
       var demos = demosByTag[t];
@@ -141,8 +136,8 @@ shinydemos.create = function() {
 
       fs.mkdirSync(siteconfig.deployFolder + '/' + t + '/');
 
-       fs.writeFileSync(siteconfig.deployFolder + '/' + t + "/index.html", tagspage({'title': t, 'slugs': demoCollection }));
-       console.log('Rendering %s page', t);
+      fs.writeFileSync(siteconfig.deployFolder + '/' + t + "/index.html", tagspage({'title': t, 'slugs': demoCollection }));
+      console.log('Rendering %s page', t);
     });
   };
 };

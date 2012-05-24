@@ -18,7 +18,7 @@
 				<p><a href="/">S<span>hiny </span>D<span>emos</span></a></p>
 				<h1>{{title}}</h1>
 			</div>
-			<p class="tagline">Shiny Demos is a growing set of demos of the latest Open Web Standards, made by the Opera developer relations team. No browser is blocked: any browser that supports the standard sees the shiny!</p>
+			<p class="tagline">{{{tagline}}}</p>
 		</header>
 		<ul class="demos">
 {{#each slugs}}
@@ -27,7 +27,7 @@
 					<img src="{{thumb}}" alt="{{this.title}}">
 					<h2>{{this.title}}</h2>
 				</a>
-				<p>{{#each this.demotags}}{{this}} {{/each}}</p>
+				<p>{{#each this.demotags}}{{this}}{{/each}}</p>
 			</li>
 {{/each}}
 			<li class="clear"></li>

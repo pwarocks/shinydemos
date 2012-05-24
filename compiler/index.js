@@ -5,13 +5,15 @@ var ncp = require('ncp').ncp,
     jsdom = require('jsdom').jsdom,
     rimraf = require('rimraf'),
     pluckSupport = require('../lib/pluck'),
+    category = require('../lib/categories'),
     shinydemos = exports,
-    homepage, tagspage;
+    homepage, tagspage, optionsjs;
     
 shinydemos.create = function() {
   var configs = require('../config.yaml').shift(),
       siteconfig = configs.siteconfig,
-      features = configs.features;
+      features = configs.features,
+      categories = configs.tags;
 
   Handlebars.registerHelper('hyphenate', function(tag) {
     return tag.split(' ').join('-');
@@ -71,7 +73,7 @@ shinydemos.create = function() {
     }
   });
 
-  //Render index.html with our configs
+  //Render index.html for each demo based on config.yml
   function createdemos() {
     console.log('Creating demos from source files');
     var demosByTag = {};
@@ -109,8 +111,7 @@ shinydemos.create = function() {
 
     renderHomePage(Object.keys(demosByTag));
     renderTagsPages(demosByTag);
-    console.log('loldone');
-    //i think i need some kind of process.exit() here
+    console.log('Done!');
   }
 
   // homepage render
@@ -120,24 +121,28 @@ shinydemos.create = function() {
     console.log('Rendering homepage');
   };
 
-  //tagspage render
-  //need to get in the copy for the tags somewhere
+  // tags page render
   function renderTagsPages(demosByTag) {
-    Object.keys(demosByTag).forEach(function(t) {
-      var demos = demosByTag[t];
-      var demoCollection = demos.map(function(d) {
-        return {
-          'path': '/' + d.slug + '/',
-          'title': d.title,
-          'thumb': '/' + d.slug + '/thumb.png',
-          'demotags': d.tags
-        }
-      });
+    Object.keys(demosByTag).forEach(function(tag) {
+      var demos = demosByTag[tag],
+          demoCollection = demos.map(function(demo) {
+            return {
+              'path': '/' + demo.slug + '/',
+              'title': demo.title,
+              'thumb': '/' + demo.slug + '/thumb.png',
+              'demotags': demo.tags
+            }
+          });
 
-      fs.mkdirSync(siteconfig.deployFolder + '/' + t + '/');
+      fs.mkdirSync(siteconfig.deployFolder + '/' + tag + '/');
 
-      fs.writeFileSync(siteconfig.deployFolder + '/' + t + "/index.html", tagspage({'title': t, 'slugs': demoCollection }));
-      console.log('Rendering %s page', t);
+      fs.writeFileSync(siteconfig.deployFolder + '/' + tag + "/index.html", tagspage({
+        title: category.displayName(categories, tag), 
+        tagline: category.tagline(categories, tag),
+        slugs: demoCollection,
+      }));
+      
+      console.log('Rendering %s page', tag);
     });
   };
 };

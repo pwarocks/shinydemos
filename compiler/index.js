@@ -79,11 +79,16 @@ shinydemos.create = function() {
     [].forEach.call(configs.demos, function(demo, i) {
         console.log('now working on demo:', demo.slug);
 
-        var demoPath = siteconfig.deployFolder + '/' + demo.slug + '/index.html';
-        var win = jsdom(fs.readFileSync(demoPath).toString()).createWindow();
+        var demoPath = siteconfig.deployFolder + '/' + demo.slug + '/index.html',
+            document = jsdom(fs.readFileSync(demoPath).toString(), null, {
+              features: {
+                FetchExternalResources: ['script'],
+                ProcessExternalResources: false
+              }
+            });
         
         //for now, inlining options.js template here at the bottom of the page
-        var optsContainer = win.document.createElement('script');
+        var optsContainer = document.createElement('script');
         optsContainer.innerHTML = optionsjs({
           title: demo.title,
           legend: demo.legend,  
@@ -91,14 +96,9 @@ shinydemos.create = function() {
           features: pluckSupport(features, demo.support.toString())
         });
 
-        //hack to shut up JSDOM for now
-        win.PhiloGL = {};
-        win.PhiloGL.hasWebGL = function(){};
-        win.appendPanel = function(){};
+        document.body.appendChild(optsContainer);
 
-        win.document.body.appendChild(optsContainer);
-
-        fs.writeFileSync(demoPath, win.document.doctype + "\n" + win.document.outerHTML);
+        fs.writeFileSync(demoPath, document.doctype + "\n" + document.outerHTML);
 
         var tags = demo.tags.toString().split(',');
         tags.forEach(function(t){

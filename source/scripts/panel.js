@@ -10,9 +10,9 @@ function appendPanel(options) {
 		panel = document.createElement('div'),
 		button = document.createElement('button'),
 		yepList = [], nopeList = [],
-		maybeFeatures = options.features,
+		maybeFeatures = options.features.slice(0, options.features.length - 1),
 		nopeFeatures = [], yepFeatures = [],
-		nopeDesc = 'Your browser doesn’t support all required features',
+		nopeDesc = 'Your browser doesn\'t support all required features',
 		yepDesc = 'Success! Your browser supports all required features!';
 
 	for(var i=0, l=maybeFeatures.length; i<l; i++) {

@@ -87,6 +87,11 @@ demos:
     tags: [css]
     support: []
 
+  - slug: facekat
+    title: "FaceKat"
+    tags: [getusermedia]
+    support: [getusermedia, video]
+
   - slug: fence
     title: "Fence"
     legend: "Resize the browser window (or click on 'danger area'). Notice how you never see half square of chicken wire fence;the browser always ensures you see full squares only. If we say that CSS kicks ass, please don't take offence."
@@ -132,11 +137,6 @@ demos:
   - slug: qr-code
     title: "QRY {curie} QR code reader"
     legend: "Use a QR code as input for a website: getUserMedia grabs the image which is the processed using <a href='https://github.com/LazarSoft/jsqrcode'>LazarSoft's jsQRcode implementation</a>. Who knows? You might find yourself featured on <a href='http://picturesofpeoplescanningqrcodes.tumblr.com/'>picturesofpeoplescanningqrcodes.tumblr.com/</a>."
-    tags: [getusermedia]
-    support: [getusermedia, video]
-	
-  - slug: facekat
-    title: "FaceKat"
     tags: [getusermedia]
     support: [getusermedia, video]
 

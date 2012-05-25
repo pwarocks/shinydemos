@@ -5,11 +5,11 @@ var options = {
 	tags:[{{{arrayify tags}}}],
 	features:[{{#each features}}
 		{
-			slug: "{{this.slug}}",
+			name: "{{this.slug}}",
 			title: "{{this.title}}",
 			link: "{{this.link}}"
 		},{{/each}}
-	  {oldIEHatesTrailingCommas: true}
+	  { build: {{version}} }
 	]
 };
 

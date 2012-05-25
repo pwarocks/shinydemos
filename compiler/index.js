@@ -96,7 +96,8 @@ shinydemos.create = function() {
           title: demo.title,
           legend: demo.legend,  
           tags: demo.tags.toString(),
-          features: pluckSupport(features, demo.support.toString())
+          features: pluckSupport(features, demo.support.toString()),
+          version: new Date().getTime()
         });
 
         document.body.appendChild(optsContainer);

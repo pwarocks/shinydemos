@@ -90,7 +90,7 @@ shinydemos.create = function() {
             });
         
         //for now, inlining options.js template here at the bottom of the page
-        var optsContainer = document.createElement('script'),
+        var optsContainer = document.createElement('script');
 
         optsContainer.innerHTML = optionsjs({
           title: demo.title,

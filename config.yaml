@@ -277,7 +277,7 @@ features:
 
   - slug: js
     title: "JavaScript"
-    link: "TODO: find better link"
+    link: "http://ecma-international.org/ecma-262/5.1/"
 
   - slug: localstorage
     title: "Web Storage localStorage"

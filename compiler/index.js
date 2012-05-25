@@ -90,14 +90,26 @@ shinydemos.create = function() {
             });
         
         //for now, inlining options.js template here at the bottom of the page
-        var optsContainer = document.createElement('script');
+        var optsContainer = document.createElement('script'),
+            panelJS       = document.createElement('script'),
+            modernizr     = document.createElement('script'),
+            panelCSS      = document.createElement('link');
+            
+        panelJS.src = "/scripts/panel.js";
+        modernizr.src = "/scripts/panel.js";
+        panelCSS.rel = "stylesheet";
+        panelCSS.href = "/styles/panel.css";
+            
         optsContainer.innerHTML = optionsjs({
           title: demo.title,
           legend: demo.legend,  
           tags: demo.tags.toString(),
           features: pluckSupport(features, demo.support.toString())
         });
-
+        
+        document.getElementsByTagName('head')[0].appendChild(panelCSS);
+        document.body.appendChild(modernizr);
+        document.body.appendChild(panelJS);
         document.body.appendChild(optsContainer);
 
         fs.writeFileSync(demoPath, document.doctype + "\n" + document.outerHTML);

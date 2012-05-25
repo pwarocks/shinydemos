@@ -1,0 +1,130 @@
+﻿@font-face {
+  font-family: 'Erix';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./erix_outline.ttf') format('truetype');
+}
+
+body {
+	background-color: #000;
+	margin: 0px;
+	overflow: hidden;
+	cursor:crosshair;
+}
+
+a {
+	color:#0078ff;
+}
+
+.hud {
+	position:absolute;
+	z-index:9999;
+	color:white;
+	font-family: 'Erix', serif;
+	font-size: 100%;
+	font-style: normal;
+}
+
+#but {
+	position:absolute;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	top:50%;
+	left:0;
+}
+
+.but {
+	color:white;
+	font-family: 'Erix', serif;
+	font-size: 100%;
+	font-style: normal;
+	border-radius:0.3em;
+	border:0.1em solid white;
+	background-color: rgba(99,99,99,0.65);
+	cursor:pointer;
+	padding: 0.5em;
+	margin: 0 auto;
+	/* initial start button style */
+	display: none;
+}
+
+.but:hover {
+	background-color: #404040;
+}
+
+#score {
+	top:10px;
+	right:20px;
+}
+
+#lives {
+	top:10px;
+	left:20px;
+	font-size:100%;
+}
+
+#hiscore {
+	position:absolute;
+	z-index:9999;
+	top:10px;
+	left:0;
+	width:100%;
+	margin:0;
+	text-align:center;
+	font-size:90%;
+	line-height:100%;
+}			
+
+#info {
+	position:absolute;
+	z-index:9999;
+	bottom:75px;
+	left:50%;
+	width:20em;
+	margin-left:-10em;
+	text-align:center;
+	font-size:60%;
+	line-height: 1.2;
+}
+
+small {
+	font-size:70%;
+}
+
+#title {
+	position:absolute;
+	z-index:9999;
+	top:19%;
+	left:0;
+	width:100%;
+	text-align:center;
+	font-size: 200%;
+}
+
+#credit {
+	font-family: 'Erix', serif;
+	position:absolute;
+	bottom:1em;
+	width: 100%;
+	text-align:center;
+	font-size:30%;
+	color:#aaa;
+}
+
+#credit a { color: #f00; }
+
+video {
+	position:absolute;
+	top: 60px;
+	left: 10px;
+	z-index:100001;
+	display:block;
+	width: 200px; height: 150px;
+	-o-transform : scaleX(-1);
+	-moz-transform : scaleX(-1);
+	-webkit-transform : scaleX(-1);
+	transform : scaleX(-1);
+	-ms-filter : fliph; /*IE*/
+	filter : fliph; /*IE*/
+}

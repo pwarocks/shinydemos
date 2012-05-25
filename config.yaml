@@ -118,6 +118,11 @@ demos:
     legend: "Use a QR code as input for a website: getUserMedia grabs the image which is the processed using <a href='https://github.com/LazarSoft/jsqrcode'>LazarSoft's jsQRcode implementation</a>. Who knows? You might find yourself featured on <a href='http://picturesofpeoplescanningqrcodes.tumblr.com/'>picturesofpeoplescanningqrcodes.tumblr.com/</a>."
     tags: [getusermedia]
     support: [getusermedia, video]
+	
+  - slug: facekat
+    title: "FaceKat"
+    tags: [getusermedia]
+    support: [getusermedia, video]
 
   - slug: rock-piano
     title: "Rock Piano"

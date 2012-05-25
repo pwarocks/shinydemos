@@ -3,12 +3,12 @@
 
 /* Global
 ---------------------------------------- */
-BODY {
+body {
 	background:#181818 url(../images/denim.png) 50% 0;
 	color:#FFF;
 	font:12px/1 Tahoma, sans-serif;
 	}
-A {
+a {
 	color:#1FA5EE;
 	text-decoration:none;
 	}
@@ -32,22 +32,22 @@ A {
 		text-shadow:0 3px 0 #333;
 		font:50px/1.3 'Bebas Neue', sans-serif;
 		}
-		.header .path P {
+		.header .path p {
 			display:table-cell;
 			white-space:nowrap;
 			}
-			.header .path P SPAN {
+			.header .path p span {
 				display:none;
 				}
-			.header .path P:after {
+			.header .path p:after {
 				content:'\00A0\2022\00A0';
 				text-shadow:0 3px 0 #111;
 				color:#333;
 				}
-		.header .path H1 {
+		.header .path h1 {
 			display:table-cell;
 			}
-		.header .path A {
+		.header .path a {
 			color:#FFF;
 			}
 	.header .tagline {
@@ -58,7 +58,7 @@ A {
 
 /* Header Index
 ---------------------------------------- */
-.page-index .header .path H1 {
+.page-index .header .path h1 {
 	border-bottom:6px solid #333;
 	}
 
@@ -77,7 +77,7 @@ A {
 	box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
 	content:'';
 	}
-.header .path P A {
+.header .path p a {
 	display:inline-block;
 	border-bottom:6px solid #1FA5EE;
 	}
@@ -89,7 +89,7 @@ A {
 	max-width:480px;
 	font:50px/50px 'Bebas Neue', sans-serif;
 	}
-	.navigation UL {
+	.navigation ul {
 		-webkit-border-radius:20px;
 		-moz-border-radius:20px;
 		border-radius:20px;
@@ -98,7 +98,7 @@ A {
 		-moz-box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
 		box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
 		}
-		.navigation LI A {
+		.navigation li a {
 			display:block;
 			padding:14px 0 0;
 			height:66px;
@@ -107,18 +107,18 @@ A {
 			text-indent:35px;
 			text-shadow:0 3px 0 rgba(0, 0, 0, 0.2);
 			}
-		.navigation LI:first-child A {
+		.navigation li:first-child a {
 			-webkit-border-radius:20px 20px 0 0;
 			-moz-border-radius:20px 20px 0 0;
 			border-radius:20px 20px 0 0;
 			}
-		.navigation LI:last-child A {
+		.navigation li:last-child a {
 			-webkit-border-radius:0 0 20px 20px;
 			-moz-border-radius:0 0 20px 20px;
 			border-radius:0 0 20px 20px;
 			}
-		.navigation LI A:hover,
-		.navigation LI A:focus {
+		.navigation li a:hover,
+		.navigation li a:focus {
 			outline:none;
 			background:#1FA5EE;
 			}
@@ -129,11 +129,11 @@ A {
 	margin:auto;
 	max-width:480px;
 	}
-	.demos LI {
+	.demos li {
 		position:relative;
 		padding:0 0 53px;
 		}
-		.demos LI IMG {
+		.demos li img {
 			display:block;
 			margin:0 0 30px;
 			width:100%;
@@ -143,19 +143,19 @@ A {
 			-moz-box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
 			box-shadow:0 0 35px rgba(0, 0, 0, 0.6);
 			}
-		.demos LI:hover IMG {
+		.demos li:hover img {
 			border-color:#1FA5EE;
 			}
 	.demos .clear {
 		margin:0;
 		padding:0;
 		}
-	.demos H2 {
+	.demos h2 {
 		text-align:center;
 		text-shadow:0 3px 0 #333;
 		font:30px/1 'Bebas Neue', sans-serif;
 		}
-	.demos P {
+	.demos p {
 		position:absolute;
 		top:10px;
 		right:10px;
@@ -176,17 +176,17 @@ A {
 		word-spacing:4px;
 		font:13px/1px Tahoma, sans-serif;
 		}
-	.demos A {
+	.demos a {
 		color:#FFF;
 		}
-	.demos A:hover,
-	.demos A:focus {
+	.demos a:hover,
+	.demos a:focus {
 		outline:none;
 		}
 
 /* Footer
 ---------------------------------------- */
-.footer A {
+.footer a {
 	display:block;
 	overflow:hidden;
 	margin:0 auto -10px;

@@ -1,0 +1,6 @@
+[submodule "demos/emberwind"]
+	path = demos/emberwind
+	url = git@github.com:operasoftware/Emberwind.git
+[submodule "demos/odin"]
+	path = demos/odin
+	url = git@github.com:operasoftware/Odin.git

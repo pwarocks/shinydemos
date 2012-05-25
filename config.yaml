@@ -4,100 +4,118 @@ siteconfig:
   demosFolder: 'demos'
   sourceFolder: 'source'
   layoutsFolder: 'layouts'
-  panelCSS: 'panel.css'
-  panelJS: 'modernizr.js'
-  panelClass: 'sd-panel'
-  panelTag: 'div'
 
-# Allowed tags: javascript, forms, canvas, content, parser, svg, css, audio, video, webgl
+# Allowed tags: ???
+# add a section for copy to appear below demos? i just added <br><br> but that's probably wrong
+tags:
+  - tagName: css
+    displayName: "CSS 3"
+    tagline: "CSS 3: CSS was co-invented by Opera's CTO, Håkon Wium Lie, so that Web pages could have beautiful designs. It started life as a method of specifying fonts and colours, and now provides simple animations, entire layouts and is the underpinning of Responsive Web Design.<br><br>Inspired to code? Read the <a href='http://dev.opera.com/articles/view/1-introduction-to-the-web-standards-cur/#toc'>Web Standards Curriculum CSS tutorials</a> and <a href='http://dev.opera.com/articles/tags/css3'>dev.O's CSS 3 articles</a>."
+
+  - tagName: svg
+    displayName: "SVG"
+    tagline: "You want scriptable text and images, that can be manipulated using their own DOM, CSS and script, in all modern browsers? You want to produce graphics that look sharp at phone screen size or widescreen TV size? And you want to be able to make them responsive too? Of course you do - so meet SVG: Scalable Vector Graphics. But you'll say 'Shiny! Very Groovy'. And you'd be right.<br><br>Inspired to code? Read Jeff Schiller's <a href='http://dev.opera.com/articles/view/svg-evolution-not-revolution/'>SVG: Evolution, Not Revolution</a> and <a href='http://twitter.com/odevrel'>tweet us</a> a link to your demo!</a>"
+
+  - tagName: webgl
+    displayName: "WebGL"
+    tagline: ""
+
+#add the rest here ^_________^  
+
 demos:
-  - slug: inbox-attack
-    title: "Inbox Attack"
-    tags: [svg]
-    support: [svg]
-
-  - slug: slideshows 
-    title: "Slides from Web Openers"
-    tags: [css]
-    support: [pagedcontent]
-
-  - slug: border-salon
-    title: "Border Radius Salon"
-    tags: [css]
-    support: [borderradius]
-
-  - slug: photo-booth
-    title: "Photobooth in Your browser"
-    tags: [javascript, canvas]
-    support: [getusermedia, video]
-
-  - slug: planetarium
-    title: "HTML5 Planetarium"
-    tags: [css]
-    support: [csstransforms, csstransitions]
-
-  - slug: touch-tracker
-    title: "Simple multitouch demonstration"
-    tags: [canvas]
-    support: [canvas, touch]
-
-  - slug: hixie-keyboard
-    title: "Hixie Keyboard"
-    tags: [audio, video, css]
-    support: [audio, video]
-
-  - slug: fence
-    title: "Fence"
-    tags: [css, svg]
-    support: [svg, inlinesvg, bgrepeatround]
-
-  - slug: paranoid
-    title: "Return of the Retro with a canvas game!"
-    tags: [canvas]
-    support: [canvas]
-
-  - slug: object-fitness
-    title: "Object Fit"
-    tags: [css]
-    support: [object-fit]
-
-  - slug: rock-piano
-    title: "Rock Piano"
-    tags: [css, audio]
-    support: [audio]
-
-  - slug: tatami
-    title: "Tatami"
-    tags: [css]
-    support: [csstransitions]
-
-  - slug: isometric-city
-    title: "An isometric world"
-    tags: [css]
-    support: [csstransitions]
-
-  - slug: picture-organizer
-    title: "Touch-enabled photo lightbox"
-    tags: [css, touch]
-    support: [touch]
-
-  - slug: border-radius-fun
-    title: "Tinkering with Border Radius"
-    tags: [css]
-    support: [borderradius]
-
-  - slug: tweetmap
-    title: "A map of tweets from the public timeline"
-    tags: [svg]
-    support: [svg]
-
   - slug: 3d-color-histogram
     title: "3D color histogram"
+    legend: ""
     tags: [webgl]
     support: [canvas, video, webgl, webworkers]
 
+  - slug: beach
+    title: ""
+    legend: "Wake up to the sound of waves breaking on shore. Press the button to open up your CSS gradient blinds, and see your room transition from dark to light. The beach is deserted, so why not try {swimsuit: none} ?"
+    tags: [css]
+    support: []
+
+  - slug: border-radius-fun
+    title: "Tinkering with Border Radius"
+    legend: "There's no corner like a rounded corner, said Shakespeare. This demo allows you to try before you buy; use the HTML5 sliders to change your radii in real time, then save the code."
+    tags: [css]
+    support: [borderradius]
+
+  - slug: border-salon
+    title: "Border Radius Salon"
+    legend: "If you've tried the border-fun demo, you've made some borders so gorgeous they should be in a gallery. border-salon is a gallery of rounded-corner loveliness - all randomly generated for your delight!"
+    tags: [css]
+    support: [borderradius]
+
+  - slug: clock
+    title: "A time of reflection"
+    legend: "Tick, tock, tick, tock. Stare into your webcam. Marvel at the World's best-looking clock face."
+    tags: [css]
+    support: []
+
+  - slug: color-picker
+    title: ""
+    legend: "getUserMedia isn't just about taking photos. By copying the data into canvas, you can perform image analysis. This demo contructs a pallete of the dominant colours in the image."
+    tags: [css]
+    support: []
+
+  - slug: cracked
+    title: ""
+    legend: "In case of emergency, break glass!"
+    tags: [css]
+    support: []
+
+  - slug: explode
+    title: ""
+    legend: "Blow up the video, and watch as the shards still continue to move. Based on Sean Christmann's <a href='http://www.craftymind.com/2010/04/20/blowing-up-html5-video-and-mapping-it-into-3d-space/'>exploding HTML5 video experiment</a> with kind permission."
+    tags: [css]
+    support: []
+
+  - slug: fence
+    title: "Fence"
+    legend: "Resize the browser window (or click on 'danger area'). Notice how you never see half square of chicken wire fence;the browser always ensures you see full squares only. If we say that CSS kicks ass, please don't take offence."
+    tags: [css, svg]
+    support: [svg, inlinesvg, bgrepeatround]
+
+  - slug: hixie-keyboard
+    title: "Hixie Keyboard"
+    legend: "Press any key to make Hixie, the HTML5 editor, speak. Originally an HTML5 homage to <a href='http://www2.b3ta.com/buffyswear/'>Buffy's Swearing Keyboard</a> (NSFW, due to bad language and Flash)."
+    tags: [audio, video, css]
+    support: [audio, video]
+
+  - slug: inbox-attack
+    title: "Inbox Attack"
+    legend: "The 1980s meets 2012. Can you deal with the ever-quickening deluge of emails and keep your inbox at zero?"
+    tags: [svg]
+    support: [svg]
+
+  - slug: isometric-city
+    title: "An isometric world"
+    legend: "Click on the Opera logos to zoom in, and once again to zoom out, with CSS transforms and transitions."
+    tags: [css]
+    support: [csstransitions]
+
+  - slug: paranoid
+    title: "Return of the Retro with a canvas game!"
+    legend: "DIMENSION-CONTROLLING FORT 'DOH' HAS NOW BEEN DEMOLISHED, AND TIME STARTED FLOWING REVERSELY. And when time flows reversely, retro games get remade with HTML5."
+    tags: [canvas]
+    support: [canvas]
+
+  - slug: photo-booth
+    title: "Photobooth in Your browser"
+    legend: "Free online photo booth! Use getUserMedia for taking the shots, then email them to yourself. They are suitable for passports to travel anywhere on the World Wide Web."
+    tags: [javascript, canvas]
+    support: [getusermedia, video]
+
+  - slug: picture-organizer
+    title: "Touch-enabled photo lightbox"
+    legend: "Use your touch screen to rotate or drag the pictures around with your finger. This demo combines touch events and CSS transforms and multiple background images."
+    tags: [css, touch]
+    support: [touch]
+
   - slug: qr-code
     title: "QRY {curie} QR code reader"
+    legend: "Use a QR code as input for a website: getUserMedia grabs the image which is the processed using <a href='https://github.com/LazarSoft/jsqrcode'>LazarSoft's jsQRcode implementation</a>. Who knows? You might find yourself featured on <a href='http://picturesofpeoplescanningqrcodes.tumblr.com/'>picturesofpeoplescanningqrcodes.tumblr.com/</a>."
     tags: [getusermedia]
     support: [getusermedia, video]
 	
@@ -106,15 +124,31 @@ demos:
     tags: [getusermedia]
     support: [getusermedia, video]
 
+  - slug: rock-piano
+    title: "Rock Piano"
+    legend: "This Shiny rock piano combines Touch events, classList, HTML5 audio, border-radius, box-shadow, and gradients. Soon, all your friends, neighbours and that cutie from Accounts will call you 'HTM-Elton John'."
+    tags: [css, audio]
+    support: [audio]
+
+  - slug: tatami
+    title: "Tatami"
+    legend: "A tatami is a type of mat used as a flooring material in traditional Japanese-style rooms. There are rules concerning auspicious layouts of tatami. In homes, the mats must not be laid in a grid pattern, and in any layout there is never a point where the corners of four mats touch."
+    tags: [css]
+    support: [csstransitions]
+
+  - slug: touch-tracker
+    title: "Simple multitouch demonstration"
+    legend: "Using the magic of multitouch, you can see what robots' fingerprints would look like."
+    tags: [canvas]
+    support: [canvas, touch]
+
   - slug: world-flights
     title: "World flights"
+    legend: ""
     tags: [webgl]
     support: [canvas, webgl, webworkers]
 
-  - slug: cosmonaut
-    title: "First space walk"
-    tags: [webgl]
-    support: [canvas, webgl]
+    # to be added: odin demo, emberwind (i think)
 
 # Supported features list. Based on custom Modernizr build
 features:

@@ -5,22 +5,38 @@ siteconfig:
   sourceFolder: 'source'
   layoutsFolder: 'layouts'
 
-# Allowed tags: ???
-# add a section for copy to appear below demos? i just added <br><br> but that's probably wrong
+# Allowed tags: css, svg, av, webgl, canvas, device, gum
+# We'll probably add a "belowDemos" field for copy to highlight dev.opera articles in the future.
+# Right now there's no visual support for that, but copy has been written.
+
 tags:
   - tagName: css
     displayName: "CSS 3"
-    tagline: "CSS 3: CSS was co-invented by Opera's CTO, Håkon Wium Lie, so that Web pages could have beautiful designs. It started life as a method of specifying fonts and colours, and now provides simple animations, entire layouts and is the underpinning of Responsive Web Design.<br><br>Inspired to code? Read the <a href='http://dev.opera.com/articles/view/1-introduction-to-the-web-standards-cur/#toc'>Web Standards Curriculum CSS tutorials</a> and <a href='http://dev.opera.com/articles/tags/css3'>dev.O's CSS 3 articles</a>."
+    tagline: "CSS 3: CSS was co-invented by Opera's CTO, Håkon Wium Lie, so that Web pages could have beautiful designs. It started life as a method of specifying fonts and colours, and now provides simple animations, entire layouts and is the underpinning of Responsive Web Design."
 
   - tagName: svg
     displayName: "SVG"
-    tagline: "You want scriptable text and images, that can be manipulated using their own DOM, CSS and script, in all modern browsers? You want to produce graphics that look sharp at phone screen size or widescreen TV size? And you want to be able to make them responsive too? Of course you do - so meet SVG: Scalable Vector Graphics. But you'll say 'Shiny! Very Groovy'. And you'd be right.<br><br>Inspired to code? Read Jeff Schiller's <a href='http://dev.opera.com/articles/view/svg-evolution-not-revolution/'>SVG: Evolution, Not Revolution</a> and <a href='http://twitter.com/odevrel'>tweet us</a> a link to your demo!</a>"
+    tagline: "You want scriptable text and images, that can be manipulated using their own DOM, CSS and script, in all modern browsers? You want to produce graphics that look sharp at phone screen size or widescreen TV size? And you want to be able to make them responsive too? Of course you do - so meet SVG: Scalable Vector Graphics. But you'll say &quot;Shiny! Very Groovy&quot;. And you'd be right."
+
+  - tagName: av
+    displayName: "Audio/Video"
+    tagline: "For years, the only way to add audio or video to web pages was with a  plugin. Totally lame, daddy-o! These days, media can be embedded straight in the page with the HTML5 <audio> and <video> elements then decoded - and video manipulated - natively in the browser."
 
   - tagName: webgl
     displayName: "WebGL"
-    tagline: ""
+    tagline: "WebGL brings openGL, the language of games developers, to the Web. Providing 3D graphics and low-level access down to the graphics card, it's hard to learn but incredibly powerful for graphics and visualizations. The gaming experience is coming to the Web, and plugins can just plug off.<br><br>In Opera 12 desktop, enable webGL by entering <a href='opera:config#UserPrefs|EnableWebGL'>opera:config#UserPrefs|EnableWebGL</a> and setting the value to 1."
 
-#add the rest here ^_________^  
+  - tagName: canvas
+    displayName: "canvas"
+    tagline: "Who said images had to be static? Boring people, that's who. Until &lt;canvas&gt; was available, you had to move things around the screen using DHTML - which stands for &quot;Damned Hard To Make, Let'sCopyFromSomeWebsite&quot;. Now you can push pixels straight to the screen with JavaScript.  It's not only for first person shooters: by copying from videos or getUserMedia we produce image and video modification tools. Right now, in all modern browsers."
+
+  - tagName: device
+    displayName: "Device Integration"
+    tagline: "Browsers are integrating with native device capabilities to make Web apps ever-closer to native apps. For example, touch input is natural and intuitive, and it's revolutionised handheld devices. It's time to get Peter Pointer and Ruby Ring off the mouse and onto the screen. Make sure your designs have big fat hit areas. And colours that shine through grease."
+
+  - tagName: gum
+    displayName: "getUserMedia"
+    tagline: "gUM getUserMedia is an API that began as part of HTML5 and was split off into the W3C webRTC specification suite. It allows JavaScript access to a device's cameras and microphones.  Think in-browser video-conferencing! Think augmented reality! Think Shiny! Use Opera 12, Opera Mobile 12 or Chrome Canary to see the demos."  
 
 demos:
   - slug: 3d-color-histogram
@@ -104,7 +120,7 @@ demos:
   - slug: photo-booth
     title: "Photobooth in Your browser"
     legend: "Free online photo booth! Use getUserMedia for taking the shots, then email them to yourself. They are suitable for passports to travel anywhere on the World Wide Web."
-    tags: [javascript, canvas]
+    tags: [canvas]
     support: [getusermedia, video]
 
   - slug: picture-organizer

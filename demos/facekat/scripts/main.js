@@ -450,7 +450,7 @@ var canvasInput = document.createElement('canvas'); // compare
 canvasInput.setAttribute('width','320');
 canvasInput.setAttribute('height','240');
 
-var htracker = new headtrackr.Tracker({altVideo : "http://media.shinydemos.com/facekat/nocamfallback.ogv", smoothing : false, fadeVideo : true});
+var htracker = new headtrackr.Tracker({altVideo : "/media/facekat/nocamfallback.ogv", smoothing : false, fadeVideo : true});
 htracker.init(videoInput, canvasInput);
 htracker.start();
 

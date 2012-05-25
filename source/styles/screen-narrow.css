@@ -31,14 +31,14 @@
 
 /* Demos
 ---------------------------------------- */
-.demos H2 {
+.demos h2 {
 	padding:0 20px;
 	}
 
 @media only screen and (max-width:480px) {
-	.navigation UL,
-	.navigation LI:first-child A,
-	.navigation LI:last-child A {
+	.navigation ul,
+	.navigation li:first-child a,
+	.navigation li:last-child a {
 		-webkit-border-radius:0;
 		-moz-border-radius:0;
 		border-radius:0;

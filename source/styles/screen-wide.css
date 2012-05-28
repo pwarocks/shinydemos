@@ -124,6 +124,8 @@
 		.navigation li a {
 			position:absolute;
 			width:80px;
+			text-indent:24px;
+			direction:ltr;
 			}
 		.navigation li:first-child a,
 		.navigation li:last-child a {
@@ -136,51 +138,50 @@
 	opacity:0.2;
 	}
 
+/*	canvas
+	css3
+	device
+	getusermedia
+	multimedia
+	svg
+	webgl */
+
 /* Items */
-.navigation .audio a {
-	top:240px;
+.navigation .canvas a {
+	top:160px;
+	left:80px;
+	}
+.navigation .css3 a {
+	top:480px;
 	left:240px;
 	}
-.navigation .canvas a {
-	top:480px;
-	left:320px;
-	}
-.navigation .content a {
-	top:480px;
+.navigation .device a {
+	top:240px;
 	left:160px;
 	}
-.navigation .css a {
-	top:80px;
+.navigation .getusermedia a {
+	top:320px;
+	left:240px;
+	}
+.navigation .multimedia a {
+	top:400px;
+	left:80px;
+	}
+.navigation .svg a {
+	top:560px;
 	left:80px;
 	}
 .navigation .webgl a {
-	top:240px;
-	left:80px;
-	}
-.navigation .javascript a {
-	top:560px;
-	left:160px;
-	}
-.navigation .parser a {
-	top:320px;
-	left:320px;
-	}
-.navigation .svg a {
-	top:480px;
-	left:240px;
-	}
-.navigation .video a {
-	top:160px;
+	top:400px;
 	left:160px;
 	}
 
 /* -90deg */
-.navigation .audio a,
+.navigation .device a,
 .navigation .canvas a,
-.navigation .css a,
-.navigation .javascript a,
+.navigation .css3 a,
 .navigation .svg a,
-.navigation .video a {
+.navigation .webgl a {
 	-webkit-transform:rotate(-90deg);
 	-moz-transform:rotate(-90deg);
 	-ms-transform:rotate(-90deg);
@@ -188,20 +189,11 @@
 	transform:rotate(-90deg);
 	}
 
-/* LTR */
-.navigation .css a,
-.navigation .svg a,
-.navigation .video a,
-.navigation .audio a {
-	direction:ltr;
-	}
-
 /* RTL */
-.navigation .canvas a,
-.navigation .content a,
-.navigation .webgl a,
-.navigation .javascript a,
-.navigation .parser a {
+.navigation .css3 a,
+.navigation .multimedia a,
+.navigation .svg a,
+.navigation .webgl a {
 	direction:rtl;
 	}
 

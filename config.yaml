@@ -5,12 +5,12 @@ siteconfig:
   sourceFolder: 'source'
   layoutsFolder: 'layouts'
 
-# Allowed tags: css, svg, av, webgl, canvas, device, gum
+# Allowed tags: css3, svg, multimedia, webgl, canvas, device, getusermedia
 # We'll probably add a "belowDemos" field for copy to highlight dev.opera articles in the future.
 # Right now there's no visual support for that, but copy has been written.
 
 tags:
-  - tagName: css
+  - tagName: css3
     displayName: "CSS 3"
     tagline: "CSS 3: CSS was co-invented by Opera's CTO, Håkon Wium Lie, so that Web pages could have beautiful designs. It started life as a method of specifying fonts and colours, and now provides simple animations, entire layouts and is the underpinning of Responsive Web Design."
 
@@ -18,8 +18,8 @@ tags:
     displayName: "SVG"
     tagline: "You want scriptable text and images, that can be manipulated using their own DOM, CSS and script, in all modern browsers? You want to produce graphics that look sharp at phone screen size or widescreen TV size? And you want to be able to make them responsive too? Of course you do - so meet SVG: Scalable Vector Graphics. But you'll say &quot;Shiny! Very Groovy&quot;. And you'd be right."
 
-  - tagName: av
-    displayName: "Audio/Video"
+  - tagName: multimedia
+    displayName: "Multimedia"
     tagline: "For years, the only way to add audio or video to web pages was with a  plugin. Totally lame, daddy-o! These days, media can be embedded straight in the page with the HTML5 <audio> and <video> elements then decoded - and video manipulated - natively in the browser."
 
   - tagName: webgl
@@ -31,61 +31,61 @@ tags:
     tagline: "Who said images had to be static? Boring people, that's who. Until &lt;canvas&gt; was available, you had to move things around the screen using DHTML - which stands for &quot;Damned Hard To Make, Let'sCopyFromSomeWebsite&quot;. Now you can push pixels straight to the screen with JavaScript.  It's not only for first person shooters: by copying from videos or getUserMedia we produce image and video modification tools. Right now, in all modern browsers."
 
   - tagName: device
-    displayName: "Device Integration"
+    displayName: "Device"
     tagline: "Browsers are integrating with native device capabilities to make Web apps ever-closer to native apps. For example, touch input is natural and intuitive, and it's revolutionised handheld devices. It's time to get Peter Pointer and Ruby Ring off the mouse and onto the screen. Make sure your designs have big fat hit areas. And colours that shine through grease."
 
-  - tagName: gum
+  - tagName: getusermedia
     displayName: "getUserMedia"
-    tagline: "gUM getUserMedia is an API that began as part of HTML5 and was split off into the W3C webRTC specification suite. It allows JavaScript access to a device's cameras and microphones.  Think in-browser video-conferencing! Think augmented reality! Think Shiny! Use Opera 12, Opera Mobile 12 or Chrome Canary to see the demos."  
+    tagline: "getUserMedia is an API that began as part of HTML5 and was split off into the W3C webRTC specification suite. It allows JavaScript access to a device's cameras and microphones.  Think in-browser video-conferencing! Think augmented reality! Think Shiny! Use Opera 12, Opera Mobile 12 or Chrome Canary to see the demos."  
 
 demos:
   - slug: 3d-color-histogram
     title: "3D color histogram"
-    legend: ""
+    legend: "…"
     tags: [webgl]
     support: [canvas, video, webgl, webworkers]
 
   - slug: beach
-    title: ""
+    title: "Beach"
     legend: "Wake up to the sound of waves breaking on shore. Press the button to open up your CSS gradient blinds, and see your room transition from dark to light. The beach is deserted, so why not try {swimsuit: none} ?"
-    tags: [css]
-    support: []
+    tags: [css3]
+    support: [csstransitions, cssgradients]
 
   - slug: border-radius-fun
     title: "Tinkering with Border Radius"
     legend: "There's no corner like a rounded corner, said Shakespeare. This demo allows you to try before you buy; use the HTML5 sliders to change your radii in real time, then save the code."
-    tags: [css]
+    tags: [css3]
     support: [borderradius]
 
   - slug: border-salon
     title: "Border Radius Salon"
     legend: "If you've tried the border-fun demo, you've made some borders so gorgeous they should be in a gallery. border-salon is a gallery of rounded-corner loveliness - all randomly generated for your delight!"
-    tags: [css]
-    support: [borderradius]
+    tags: [css3]
+    support: [borderradius, borderimage]
 
   - slug: clock
     title: "A time of reflection"
     legend: "Tick, tock, tick, tock. Stare into your webcam. Marvel at the World's best-looking clock face."
-    tags: [css]
-    support: []
+    tags: [css3, getusermedia]
+    support: [getusermedia]
 
   - slug: color-picker
-    title: ""
+    title: "Real Life Color Picker"
     legend: "getUserMedia isn't just about taking photos. By copying the data into canvas, you can perform image analysis. This demo contructs a pallete of the dominant colours in the image."
-    tags: [css]
-    support: []
+    tags: [css3, getusermedia]
+    support: [getusermedia]
 
   - slug: cracked
-    title: ""
+    title: "Cracked"
     legend: "In case of emergency, break glass!"
-    tags: [css]
-    support: []
+    tags: [css3]
+    support: [getusermedia]
 
   - slug: explode
-    title: ""
+    title: "Explode"
     legend: "Blow up the video, and watch as the shards still continue to move. Based on Sean Christmann's <a href='http://www.craftymind.com/2010/04/20/blowing-up-html5-video-and-mapping-it-into-3d-space/'>exploding HTML5 video experiment</a> with kind permission."
-    tags: [css]
-    support: []
+    tags: [css3]
+    support: [getusermedia]
 
   - slug: facekat
     title: "FaceKat"
@@ -94,14 +94,14 @@ demos:
 
   - slug: fence
     title: "Fence"
-    legend: "Resize the browser window (or click on 'danger area'). Notice how you never see half square of chicken wire fence;the browser always ensures you see full squares only. If we say that CSS kicks ass, please don't take offence."
-    tags: [css, svg]
+    legend: "Resize the browser window (or click on 'danger area'). Notice how you never see half square of chicken wire fence; the browser always ensures you see full squares only. If we say that CSS kicks ass, please don't take offence."
+    tags: [css3, svg]
     support: [svg, inlinesvg, bgrepeatround]
 
   - slug: hixie-keyboard
     title: "Hixie Keyboard"
     legend: "Press any key to make Hixie, the HTML5 editor, speak. Originally an HTML5 homage to <a href='http://www2.b3ta.com/buffyswear/'>Buffy's Swearing Keyboard</a> (NSFW, due to bad language and Flash)."
-    tags: [audio, video, css]
+    tags: [multimedia, css3]
     support: [audio, video]
 
   - slug: inbox-attack
@@ -111,9 +111,9 @@ demos:
     support: [svg]
 
   - slug: isometric-city
-    title: "An isometric world"
+    title: "An Isometric World"
     legend: "Click on the Opera logos to zoom in, and once again to zoom out, with CSS transforms and transitions."
-    tags: [css]
+    tags: [css3]
     support: [csstransitions]
 
   - slug: paranoid
@@ -131,7 +131,7 @@ demos:
   - slug: picture-organizer
     title: "Touch-enabled photo lightbox"
     legend: "Use your touch screen to rotate or drag the pictures around with your finger. This demo combines touch events and CSS transforms and multiple background images."
-    tags: [css, touch]
+    tags: [css3, device]
     support: [touch]
 
   - slug: qr-code
@@ -143,24 +143,24 @@ demos:
   - slug: rock-piano
     title: "Rock Piano"
     legend: "This Shiny rock piano combines Touch events, classList, HTML5 audio, border-radius, box-shadow, and gradients. Soon, all your friends, neighbours and that cutie from Accounts will call you 'HTM-Elton John'."
-    tags: [css, audio]
+    tags: [css3, multimedia]
     support: [audio]
 
   - slug: tatami
     title: "Tatami"
     legend: "A tatami is a type of mat used as a flooring material in traditional Japanese-style rooms. There are rules concerning auspicious layouts of tatami. In homes, the mats must not be laid in a grid pattern, and in any layout there is never a point where the corners of four mats touch."
-    tags: [css]
+    tags: [css3]
     support: [csstransitions]
 
   - slug: touch-tracker
-    title: "Simple multitouch demonstration"
+    title: "Simple Multitouch Demonstration"
     legend: "Using the magic of multitouch, you can see what robots' fingerprints would look like."
     tags: [canvas]
     support: [canvas, touch]
 
   - slug: world-flights
-    title: "World flights"
-    legend: ""
+    title: "World Flights"
+    legend: "World flights"
     tags: [webgl]
     support: [canvas, webgl, webworkers]
 

@@ -4,6 +4,7 @@ var ncp = require('ncp').ncp,
     yaml = require('js-yaml'),
     jsdom = require('jsdom').jsdom,
     rimraf = require('rimraf'),
+    mkdirp = require('mkdirp'),
     pluckSupport = require('../lib/pluck'),
     category = require('../lib/categories'),
     shinydemos = exports,
@@ -80,33 +81,35 @@ shinydemos.create = function() {
   //Render index.html for each demo based on config.yml
   function createdemos() {
     console.log('Creating demos from source files');
-    var demosByTag = {}, tagNames;
+    var demosByTag = {}, tagNames, optsjs;
     //demo that gets passed in is configs.demo
     [].forEach.call(configs.demos, function(demo, i) {
         console.log('now working on demo:', demo.slug);
 
         var demoPath = siteconfig.deployFolder + '/' + demo.slug + '/index.html',
+            optsRoot = siteconfig.deployFolder + '/' + demo.slug + '/scripts',
+            optsPath = siteconfig.deployFolder + '/' + demo.slug + '/scripts/options.js',
             document = jsdom(fs.readFileSync(demoPath).toString(), null, {
               features: {
                 FetchExternalResources: ['script'],
                 ProcessExternalResources: false
               }
             });
-        
-        //for now, inlining options.js template here at the bottom of the page
-        var optsContainer = document.createElement('script');
 
-        optsContainer.innerHTML = optionsjs({
+        optsjs = optionsjs({
           title: demo.title,
-          legend: demo.legend,  
+          legend: demo.legend,
           tags: demo.tags.toString(),
           features: pluckSupport(features, demo.support.toString()),
           version: new Date().getTime()
         });
 
-        document.body.appendChild(optsContainer);
-
         fs.writeFileSync(demoPath, document.doctype + "\n" + document.outerHTML);
+        
+        //create the /scripts/ folder if it doesn't exist
+        mkdirp.sync(siteconfig.deployFolder + '/' + demo.slug + '/scripts');
+        //then write the options to the file system
+        fs.writeFileSync(optsPath, optsjs);
 
         var tags = demo.tags.toString().split(',');
 

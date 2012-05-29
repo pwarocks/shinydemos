@@ -11,156 +11,157 @@ siteconfig:
 
 tags:
   - tagName: css3
-    displayName: "CSS 3"
-    tagline: "CSS 3: CSS was co-invented by Opera's CTO, Håkon Wium Lie, so that Web pages could have beautiful designs. It started life as a method of specifying fonts and colours, and now provides simple animations, entire layouts and is the underpinning of Responsive Web Design."
+    displayName: 'CSS 3'
+    tagline: 'CSS 3: CSS was co-invented by Opera’s CTO, Håkon Wium Lie, so that Web pages could have beautiful designs. It started life as a method of specifying fonts and colours, and now provides simple animations, entire layouts and is the underpinning of Responsive Web Design.'
 
   - tagName: svg
-    displayName: "SVG"
-    tagline: "You want scriptable text and images, that can be manipulated using their own DOM, CSS and script, in all modern browsers? You want to produce graphics that look sharp at phone screen size or widescreen TV size? And you want to be able to make them responsive too? Of course you do - so meet SVG: Scalable Vector Graphics. But you'll say &quot;Shiny! Very Groovy&quot;. And you'd be right."
+    displayName: 'SVG'
+    tagline: 'You want scriptable text and images, that can be manipulated using their own DOM, CSS and script, in all modern browsers? You want to produce graphics that look sharp at phone screen size or widescreen TV size? And you want to be able to make them responsive too? Of course you do - so meet SVG: Scalable Vector Graphics. But you’ll say “Shiny! Very Groovy”. And you’d be right.'
 
   - tagName: audio-video
-    displayName: "Audio & Video"
-    tagline: "For years, the only way to add audio or video to web pages was with a  plugin. Totally lame, daddy-o! These days, media can be embedded straight in the page with the HTML5 <audio> and <video> elements then decoded - and video manipulated - natively in the browser."
+    displayName: 'Audio & Video'
+    tagline: 'For years, the only way to add audio or video to web pages was with a  plugin. Totally lame, daddy-o! These days, media can be embedded straight in the page with the HTML5 &lt;audio&gt; and &lt;video&gt; elements then decoded — and video manipulated — natively in the browser.'
 
   - tagName: webgl
-    displayName: "WebGL"
-    tagline: "WebGL brings openGL, the language of games developers, to the Web. Providing 3D graphics and low-level access down to the graphics card, it's hard to learn but incredibly powerful for graphics and visualizations. The gaming experience is coming to the Web, and plugins can just plug off.<br><br>In Opera 12 desktop, enable webGL by entering <a href='opera:config#UserPrefs|EnableWebGL'>opera:config#UserPrefs|EnableWebGL</a> and setting the value to 1."
+    displayName: 'WebGL'
+    tagline: 'WebGL brings openGL, the language of games developers, to the Web. Providing 3D graphics and low-level access down to the graphics card, it’s hard to learn but incredibly powerful for graphics and visualizations. The gaming experience is coming to the Web, and plugins can just plug off.<br><br>In Opera 12 desktop, enable webGL by entering <a href="opera:config#UserPrefs|EnableWebGL">opera:config#UserPrefs|EnableWebGL</a> and setting the value to 1.'
 
   - tagName: canvas
-    displayName: "Canvas"
-    tagline: "Who said images had to be static? Boring people, that's who. Until &lt;canvas&gt; was available, you had to move things around the screen using DHTML - which stands for &quot;Damned Hard To Make, Let'sCopyFromSomeWebsite&quot;. Now you can push pixels straight to the screen with JavaScript.  It's not only for first person shooters: by copying from videos or getUserMedia we produce image and video modification tools. Right now, in all modern browsers."
+    displayName: 'Canvas'
+    tagline: 'Who said images had to be static? Boring people, that’s who. Until <code>&lt;canvas&gt;</code> was available, you had to move things around the screen using DHTML - which stands for “Damned Hard To Make, Let’sCopyFromSomeWebsite”. Now you can push pixels straight to the screen with JavaScript. It’s not only for first person shooters: by copying from videos or getUserMedia we produce image and video modification tools. Right now, in all modern browsers.'
 
-  - tagName: device
-    displayName: "Device"
-    tagline: "Browsers are integrating with native device capabilities to make Web apps ever-closer to native apps. For example, touch input is natural and intuitive, and it's revolutionised handheld devices. It's time to get Peter Pointer and Ruby Ring off the mouse and onto the screen. Make sure your designs have big fat hit areas. And colours that shine through grease."
+  - tagName: touch
+    displayName: 'Touch'
+    tagline: 'Browsers are integrating with native device capabilities to make Web apps ever-closer to native apps. For example, touch input is natural and intuitive, and it’s revolutionised handheld devices. It’s time to get Peter Pointer and Ruby Ring off the mouse and onto the screen. Make sure your designs have big fat hit areas. And colours that shine through grease.'
 
   - tagName: getusermedia
-    displayName: "getUserMedia"
-    tagline: "getUserMedia is an API that began as part of HTML5 and was split off into the W3C webRTC specification suite. It allows JavaScript access to a device's cameras and microphones.  Think in-browser video-conferencing! Think augmented reality! Think Shiny! Use Opera 12, Opera Mobile 12 or Chrome Canary to see the demos."  
+    displayName: 'getUserMedia'
+    tagline: 'getUserMedia is an API that began as part of HTML5 and was split off into the W3C webRTC specification suite. It allows JavaScript access to a device’s cameras and microphones.  Think in-browser video-conferencing! Think augmented reality! Think Shiny! Use Opera 12, Opera Mobile 12 or Chrome Canary to see the demos.'
 
 demos:
   - slug: 3d-color-histogram
-    title: "3D color histogram"
-    legend: "…"
+    title: '3D color histogram'
+    legend: '…'
     tags: [webgl]
     support: [canvas, video, webgl, webworkers]
 
   - slug: beach
-    title: "Beach"
-    legend: "Wake up to the sound of waves breaking on shore. Press the button to open up your CSS gradient blinds, and see your room transition from dark to light. The beach is deserted, so why not try {swimsuit: none} ?"
+    title: 'Beach'
+    legend: 'Wake up to the sound of waves breaking on shore. Press the button to open up your CSS gradient blinds, and see your room transition from dark to light. The beach is deserted, so why not try {swimsuit: none} ?'
     tags: [css3]
     support: [csstransitions, cssgradients]
 
   - slug: border-radius-fun
-    title: "Tinkering with Border Radius"
-    legend: "There's no corner like a rounded corner, said Shakespeare. This demo allows you to try before you buy; use the HTML5 sliders to change your radii in real time, then save the code."
+    title: 'Tinkering with Border Radius'
+    legend: 'There’s no corner like a rounded corner, said Shakespeare. This demo allows you to try before you buy; use the HTML5 sliders to change your radii in real time, then save the code.'
     tags: [css3]
     support: [borderradius]
 
   - slug: border-salon
-    title: "Border Radius Salon"
-    legend: "If you've tried the border-fun demo, you've made some borders so gorgeous they should be in a gallery. border-salon is a gallery of rounded-corner loveliness - all randomly generated for your delight!"
+    title: 'Border Radius Salon'
+    legend: 'If you’ve tried the border-fun demo, you’ve made some borders so gorgeous they should be in a gallery. border-salon is a gallery of rounded-corner loveliness - all randomly generated for your delight!'
     tags: [css3]
     support: [borderradius, borderimage]
 
   - slug: clock
-    title: "A time of reflection"
-    legend: "Tick, tock, tick, tock. Stare into your webcam. Marvel at the World's best-looking clock face."
+    title: 'A time of reflection'
+    legend: 'Tick, tock, tick, tock. Stare into your webcam. Marvel at the World’s best-looking clock face.'
     tags: [css3, getusermedia]
     support: [getusermedia]
 
   - slug: color-picker
-    title: "Real Life Color Picker"
-    legend: "getUserMedia isn't just about taking photos. By copying the data into canvas, you can perform image analysis. This demo contructs a pallete of the dominant colours in the image."
+    title: 'Real Life Color Picker'
+    legend: 'getUserMedia isn’t just about taking photos. By copying the data into canvas, you can perform image analysis. This demo contructs a pallete of the dominant colours in the image.'
     tags: [css3, getusermedia]
     support: [getusermedia]
 
   - slug: cracked
-    title: "Cracked"
-    legend: "In case of emergency, break glass!"
+    title: 'Cracked'
+    legend: 'In case of emergency, break glass!'
     tags: [css3]
     support: [getusermedia]
 
   - slug: explode
-    title: "Explode"
-    legend: "Blow up the video, and watch as the shards still continue to move. Based on Sean Christmann's <a href='http://www.craftymind.com/2010/04/20/blowing-up-html5-video-and-mapping-it-into-3d-space/'>exploding HTML5 video experiment</a> with kind permission."
+    title: 'Explode'
+    legend: 'Blow up the video, and watch as the shards still continue to move. Based on Sean Christmann’s <a href="http://www.craftymind.com/2010/04/20/blowing-up-html5-video-and-mapping-it-into-3d-space/">exploding HTML5 video experiment</a> with kind permission.'
     tags: [css3]
     support: [getusermedia]
 
   - slug: facekat
-    title: "FaceKat"
+    title: 'FaceKat'
+    legend: '…'
     tags: [getusermedia]
     support: [getusermedia, video]
 
   - slug: fence
-    title: "Fence"
-    legend: "Resize the browser window (or click on 'danger area'). Notice how you never see half square of chicken wire fence; the browser always ensures you see full squares only. If we say that CSS kicks ass, please don't take offence."
+    title: 'Fence'
+    legend: 'Resize the browser window (or click on “danger area”). Notice how you never see half square of chicken wire fence; the browser always ensures you see full squares only. If we say that CSS kicks ass, please don’t take offence.'
     tags: [css3, svg]
     support: [svg, inlinesvg, bgrepeatround]
 
   - slug: hixie-keyboard
-    title: "Hixie Keyboard"
-    legend: "Press any key to make Hixie, the HTML5 editor, speak. Originally an HTML5 homage to <a href='http://www2.b3ta.com/buffyswear/'>Buffy's Swearing Keyboard</a> (NSFW, due to bad language and Flash)."
+    title: 'Hixie Keyboard'
+    legend: 'Press any key to make Hixie, the HTML5 editor, speak. Originally an HTML5 homage to <a href="http://www2.b3ta.com/buffyswear/">Buffy’s Swearing Keyboard</a> (NSFW, due to bad language and Flash).'
     tags: [audio-video, css3]
     support: [audio, video]
 
   - slug: inbox-attack
-    title: "Inbox Attack"
-    legend: "The 1980s meets 2012. Can you deal with the ever-quickening deluge of emails and keep your inbox at zero?"
+    title: 'Inbox Attack'
+    legend: 'The 1980s meets 2012. Can you deal with the ever-quickening deluge of emails and keep your inbox at zero?'
     tags: [svg]
     support: [svg]
 
   - slug: isometric-city
-    title: "An Isometric World"
-    legend: "Click on the Opera logos to zoom in, and once again to zoom out, with CSS transforms and transitions."
+    title: 'An Isometric World'
+    legend: 'Click on the Opera logos to zoom in, and once again to zoom out, with CSS transforms and transitions.'
     tags: [css3]
     support: [csstransitions]
 
   - slug: paranoid
-    title: "Return of the Retro with a canvas game!"
-    legend: "DIMENSION-CONTROLLING FORT 'DOH' HAS NOW BEEN DEMOLISHED, AND TIME STARTED FLOWING REVERSELY. And when time flows reversely, retro games get remade with HTML5."
+    title: 'Return of the Retro with a canvas game!'
+    legend: 'DIMENSION-CONTROLLING FORT “DOH” HAS NOW BEEN DEMOLISHED, AND TIME STARTED FLOWING REVERSELY. And when time flows reversely, retro games get remade with HTML5.'
     tags: [canvas]
     support: [canvas]
 
   - slug: photo-booth
-    title: "Photobooth in Your browser"
-    legend: "Free online photo booth! Use getUserMedia for taking the shots, then email them to yourself. They are suitable for passports to travel anywhere on the World Wide Web."
+    title: 'Photobooth in Your browser'
+    legend: 'Free online photo booth! Use getUserMedia for taking the shots, then email them to yourself. They are suitable for passports to travel anywhere on the World Wide Web.'
     tags: [canvas]
     support: [getusermedia, video]
 
   - slug: picture-organizer
-    title: "Touch-enabled photo lightbox"
-    legend: "Use your touch screen to rotate or drag the pictures around with your finger. This demo combines touch events and CSS transforms and multiple background images."
-    tags: [css3, device]
+    title: 'Touch-enabled photo lightbox'
+    legend: 'Use your touch screen to rotate or drag the pictures around with your finger. This demo combines touch events and CSS transforms and multiple background images.'
+    tags: [css3, touch]
     support: [touch]
 
   - slug: qr-code
-    title: "QRY {curie} QR code reader"
-    legend: "Use a QR code as input for a website: getUserMedia grabs the image which is the processed using <a href='https://github.com/LazarSoft/jsqrcode'>LazarSoft's jsQRcode implementation</a>. Who knows? You might find yourself featured on <a href='http://picturesofpeoplescanningqrcodes.tumblr.com/'>picturesofpeoplescanningqrcodes.tumblr.com/</a>."
+    title: 'QRY {curie} QR code reader'
+    legend: 'Use a QR code as input for a website: getUserMedia grabs the image which is the processed using <a href="https://github.com/LazarSoft/jsqrcode">LazarSoft’s jsQRcode implementation</a>. Who knows? You might find yourself featured on <a href="http://picturesofpeoplescanningqrcodes.tumblr.com/">picturesofpeoplescanningqrcodes.tumblr.com</a>.'
     tags: [getusermedia]
     support: [getusermedia, video]
 
   - slug: rock-piano
-    title: "Rock Piano"
-    legend: "This Shiny rock piano combines Touch events, classList, HTML5 audio, border-radius, box-shadow, and gradients. Soon, all your friends, neighbours and that cutie from Accounts will call you 'HTM-Elton John'."
+    title: 'Rock Piano'
+    legend: 'This Shiny rock piano combines Touch events, classList, HTML5 audio, border-radius, box-shadow, and gradients. Soon, all your friends, neighbours and that cutie from Accounts will call you “HTM-Elton John”.'
     tags: [css3, audio-video]
     support: [audio]
 
   - slug: tatami
-    title: "Tatami"
-    legend: "A tatami is a type of mat used as a flooring material in traditional Japanese-style rooms. There are rules concerning auspicious layouts of tatami. In homes, the mats must not be laid in a grid pattern, and in any layout there is never a point where the corners of four mats touch."
+    title: 'Tatami'
+    legend: 'A tatami is a type of mat used as a flooring material in traditional Japanese-style rooms. There are rules concerning auspicious layouts of tatami. In homes, the mats must not be laid in a grid pattern, and in any layout there is never a point where the corners of four mats touch.'
     tags: [css3]
     support: [csstransitions]
 
   - slug: touch-tracker
-    title: "Simple Multitouch Demonstration"
-    legend: "Using the magic of multitouch, you can see what robots' fingerprints would look like."
-    tags: [canvas]
+    title: 'Simple Multitouch Demonstration'
+    legend: 'Using the magic of multitouch, you can see what robots’ fingerprints would look like.'
+    tags: [canvas, touch]
     support: [canvas, touch]
 
   - slug: world-flights
-    title: "World Flights"
-    legend: "World flights"
+    title: 'World Flights'
+    legend: 'World flights'
     tags: [webgl]
     support: [canvas, webgl, webworkers]
 
@@ -169,177 +170,177 @@ demos:
 # Supported features list. Based on custom Modernizr build
 features:
   - slug: applicationcache
-    title: "App Cache"
-    link: "http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html"
+    title: 'App Cache'
+    link: 'http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html'
 
   - slug: audio
-    title: "HTML Audio"
-    link: "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#audio"
+    title: 'HTML Audio'
+    link: 'http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#audio'
 
   - slug: backgroundsize
-    title: "CSS background-size"
-    link: "http://www.w3.org/TR/css3-background/#the-background-size"
+    title: 'CSS background-size'
+    link: 'http://www.w3.org/TR/css3-background/#the-background-size'
 
   - slug: bgrepeatround
-    title: "CSS background-repeat: round"
-    link: "http://www.w3.org/TR/css3-background/#background-repeat"
+    title: 'CSS background-repeat: round'
+    link: 'http://www.w3.org/TR/css3-background/#background-repeat'
 
   - slug: bgrepeatspace
-    title: "CSS background-repeat: space"
-    link: "http://www.w3.org/TR/css3-background/#background-repeat"
+    title: 'CSS background-repeat: space'
+    link: 'http://www.w3.org/TR/css3-background/#background-repeat'
 
   - slug: bgrepeatspace
-    title: "CSS background-repeat: space"
-    link: "http://www.w3.org/TR/css3-background/#background-repeat"
+    title: 'CSS background-repeat: space'
+    link: 'http://www.w3.org/TR/css3-background/#background-repeat'
 
   - slug: borderimage
-    title: "CSS border-image"
-    link: "http://www.w3.org/TR/css3-background/#the-border-image"
+    title: 'CSS border-image'
+    link: 'http://www.w3.org/TR/css3-background/#the-border-image'
 
   - slug: borderradius
-    title: "CSS border-radius"
-    link: "http://www.w3.org/TR/css3-background/#the-border-radius"
+    title: 'CSS border-radius'
+    link: 'http://www.w3.org/TR/css3-background/#the-border-radius'
 
   - slug: boxshadow
-    title: "CSS box-shadow"
-    link: "http://www.w3.org/TR/css3-background/#box-shadow"
+    title: 'CSS box-shadow'
+    link: 'http://www.w3.org/TR/css3-background/#box-shadow'
 
   - slug: canvas
-    title: "Canvas"
-    link: "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#the-canvas-element"
+    title: 'Canvas'
+    link: 'http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#the-canvas-element'
 
   - slug: canvastext
-    title: "Canvas Text"
-    link: "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#drawing-text-to-the-canvas"
+    title: 'Canvas Text'
+    link: 'http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#drawing-text-to-the-canvas'
 
   - slug: cssanimations
-    title: "CSS Animations"
-    link: "http://www.w3.org/TR/css3-animations/"
+    title: 'CSS Animations'
+    link: 'http://www.w3.org/TR/css3-animations/'
 
   - slug: csscolumns
-    title: "CSS Multi-column"
-    link: "http://www.w3.org/TR/css3-multicol/"
+    title: 'CSS Multi-column'
+    link: 'http://www.w3.org/TR/css3-multicol/'
 
   - slug: cssgradients
-    title: "CSS Gradients"
-    link: "http://www.w3.org/TR/css3-images/#gradients"
+    title: 'CSS Gradients'
+    link: 'http://www.w3.org/TR/css3-images/#gradients'
 
   - slug: csstransforms
-    title: "CSS 2D Transforms"
-    link: "http://www.w3.org/TR/css3-2d-transforms/"
+    title: 'CSS 2D Transforms'
+    link: 'http://www.w3.org/TR/css3-2d-transforms/'
 
   - slug: csstransforms3d
-    title: "CSS 3D Trnasforms"
-    link: "http://www.w3.org/TR/css3-3d-transforms/"
+    title: 'CSS 3D Trnasforms'
+    link: 'http://www.w3.org/TR/css3-3d-transforms/'
 
   - slug: csstransitions
-    title: "CSS Transitions"
-    link: "http://www.w3.org/TR/css3-transitions/"
+    title: 'CSS Transitions'
+    link: 'http://www.w3.org/TR/css3-transitions/'
 
   - slug: draganddrop
-    title: "http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#dnd"
-    link: "HTML Drag and Drop"
+    title: 'http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#dnd'
+    link: 'HTML Drag and Drop'
 
   - slug: flexbox
-    title: "http://www.w3.org/TR/css3-flexbox/"
-    link: "CSS Flexbox"
+    title: 'http://www.w3.org/TR/css3-flexbox/'
+    link: 'CSS Flexbox'
 
   - slug: fontface
-    title: "CSS Web Fonts"
-    link: "http://www.w3.org/TR/css3-webfonts/"
+    title: 'CSS Web Fonts'
+    link: 'http://www.w3.org/TR/css3-webfonts/'
 
   - slug: generatedcontent
-    title: "CSS Generated Content"
-    link: "http://www.w3.org/TR/CSS21/generate.html"
+    title: 'CSS Generated Content'
+    link: 'http://www.w3.org/TR/CSS21/generate.html'
 
   - slug: geolocation
-    title: "Geolocation API"
-    link: "http://www.w3.org/TR/geolocation-API/"
+    title: 'Geolocation API'
+    link: 'http://www.w3.org/TR/geolocation-API/'
 
   - slug: getusermedia
-    title: "WebRTC getUserMedia"
-    link: "http://www.w3.org/TR/webrtc/"
+    title: 'WebRTC getUserMedia'
+    link: 'http://www.w3.org/TR/webrtc/'
 
   - slug: hashchange
-    title: "HTML hashChange event"
-    link: "http://www.w3.org/TR/html5/history.html#event-hashchange"
+    title: 'HTML hashChange event'
+    link: 'http://www.w3.org/TR/html5/history.html#event-hashchange'
 
   - slug: history
-    title: "HTML History and Location API"
-    link: "http://www.w3.org/TR/html5/history.html"
+    title: 'HTML History and Location API'
+    link: 'http://www.w3.org/TR/html5/history.html'
 
   - slug: hsla
-    title: "CSS HSLA colors"
-    link: "http://www.w3.org/TR/css3-color/#hsla-color"
+    title: 'CSS HSLA colors'
+    link: 'http://www.w3.org/TR/css3-color/#hsla-color'
 
   - slug: indexeddb
-    title: "Indexed Database API"
-    link: "http://www.w3.org/TR/IndexedDB/"
+    title: 'Indexed Database API'
+    link: 'http://www.w3.org/TR/IndexedDB/'
 
   - slug: inlinesvg
-    title: "Inline SVG"
-    link: "http://dev.w3.org/html5/spec/svg-0.html"
+    title: 'Inline SVG'
+    link: 'http://dev.w3.org/html5/spec/svg-0.html'
 
   - slug: js
-    title: "JavaScript"
-    link: "http://ecma-international.org/ecma-262/5.1/"
+    title: 'JavaScript'
+    link: 'http://ecma-international.org/ecma-262/5.1/'
 
   - slug: localstorage
-    title: "Web Storage localStorage"
-    link: "http://www.w3.org/TR/webstorage/#the-localstorage-attribute"
+    title: 'Web Storage localStorage'
+    link: 'http://www.w3.org/TR/webstorage/#the-localstorage-attribute'
 
   - slug: multiplebgs
-    title: "CSS Multiple Backgrounds"
-    link: "http://www.w3.org/TR/css3-background/#layering"
+    title: 'CSS Multiple Backgrounds'
+    link: 'http://www.w3.org/TR/css3-background/#layering'
 
   - slug: opacity
-    title: "CSS opacity"
-    link: "http://www.w3.org/TR/css3-color/#transparency"
+    title: 'CSS opacity'
+    link: 'http://www.w3.org/TR/css3-color/#transparency'
 
   - slug: pagedcontent
-    title: "CSS Generated Content for Paged Media"
-    link: "http://dev.w3.org/csswg/css3-gcpm/"
+    title: 'CSS Generated Content for Paged Media'
+    link: 'http://dev.w3.org/csswg/css3-gcpm/'
 
   - slug: postmessage
-    title: "HTML postMessage"
-    link: "http://www.whatwg.org/specs/web-apps/current-work/multipage/web-messaging.html#crossDocumentMessages"
+    title: 'HTML postMessage'
+    link: 'http://www.whatwg.org/specs/web-apps/current-work/multipage/web-messaging.html#crossDocumentMessages'
 
   - slug: rgba
-    title: "CSS RGBA colors"
-    link: "http://www.w3.org/TR/css3-color/#rgba-color"
+    title: 'CSS RGBA colors'
+    link: 'http://www.w3.org/TR/css3-color/#rgba-color'
 
   - slug: sessionstorage
-    title: "Web Storage sessionStorage"
-    link: "http://www.w3.org/TR/webstorage/#the-sessionstorage-attribute"
+    title: 'Web Storage sessionStorage'
+    link: 'http://www.w3.org/TR/webstorage/#the-sessionstorage-attribute'
 
   - slug: smil
-    title: "SVG SMIL animation"
-    link: "http://www.w3.org/TR/SVG/animate.html"
+    title: 'SVG SMIL animation'
+    link: 'http://www.w3.org/TR/SVG/animate.html'
 
   - slug: svg
-    title: "SVG"
-    link: "http://www.w3.org/TR/SVG/"
+    title: 'SVG'
+    link: 'http://www.w3.org/TR/SVG/'
 
   - slug: textshadow
-    title: "CSS text-shadow"
-    link: "http://www.w3.org/TR/css3-text/#text-shadow"
+    title: 'CSS text-shadow'
+    link: 'http://www.w3.org/TR/css3-text/#text-shadow'
 
   - slug: touch
-    title: "Touch Events"
-    link: "http://www.w3.org/TR/touch-events/"
+    title: 'Touch Events'
+    link: 'http://www.w3.org/TR/touch-events/'
 
   - slug: video
-    title: "HTML Video"
-    link: "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#video"
+    title: 'HTML Video'
+    link: 'http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#video'
 
   - slug: webgl
-    title: "WebGL"
-    link: "https://www.khronos.org/registry/webgl/specs/1.0/"
+    title: 'WebGL'
+    link: 'https://www.khronos.org/registry/webgl/specs/1.0/'
 
   - slug: websockets
-    title: "WebSocket API"
-    link: "http://www.w3.org/TR/websockets/"
+    title: 'WebSocket API'
+    link: 'http://www.w3.org/TR/websockets/'
 
   - slug: webworkers
-    title: "Web Workers"
-    link: "http://www.whatwg.org/specs/web-apps/current-work/multipage/workers.html"
+    title: 'Web Workers'
+    link: 'http://www.whatwg.org/specs/web-apps/current-work/multipage/workers.html'

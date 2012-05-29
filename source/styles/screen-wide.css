@@ -140,9 +140,9 @@
 
 /*	canvas
 	css3
-	device
+	touch
 	getusermedia
-	multimedia
+	audio-video
 	svg
 	webgl */
 
@@ -155,7 +155,7 @@
 	top:480px;
 	left:240px;
 	}
-.navigation .device a {
+.navigation .touch a {
 	top:240px;
 	left:160px;
 	}
@@ -163,7 +163,7 @@
 	top:320px;
 	left:240px;
 	}
-.navigation .multimedia a {
+.navigation .audio-video a {
 	top:400px;
 	left:80px;
 	}
@@ -177,7 +177,7 @@
 	}
 
 /* -90deg */
-.navigation .device a,
+.navigation .touch a,
 .navigation .canvas a,
 .navigation .css3 a,
 .navigation .svg a,
@@ -191,7 +191,7 @@
 
 /* RTL */
 .navigation .css3 a,
-.navigation .multimedia a,
+.navigation .audio-video a,
 .navigation .svg a,
 .navigation .webgl a {
 	direction:rtl;

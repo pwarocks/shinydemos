@@ -28,6 +28,10 @@ shinydemos.create = function() {
     
     return result;
   });
+  
+  Handlebars.registerHelper('displayName', function(tag) {
+    return category.displayName(categories, tag);
+  })
 
   homepage = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/home.html').toString());
   tagspage = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/tag.html').toString());
@@ -76,7 +80,7 @@ shinydemos.create = function() {
   //Render index.html for each demo based on config.yml
   function createdemos() {
     console.log('Creating demos from source files');
-    var demosByTag = {};
+    var demosByTag = {}, usedTags;
     //demo that gets passed in is configs.demo
     [].forEach.call(configs.demos, function(demo, i) {
         console.log('now working on demo:', demo.slug);
@@ -105,20 +109,27 @@ shinydemos.create = function() {
         fs.writeFileSync(demoPath, document.doctype + "\n" + document.outerHTML);
 
         var tags = demo.tags.toString().split(',');
+
         tags.forEach(function(t){
           demosByTag[t] = demosByTag[t] || [];
           demosByTag[t].push(demo);
         });
     });
+    
+    tagNames = Object.keys(demosByTag);
 
-    renderHomePage(Object.keys(demosByTag));
+    renderHomePage(tagNames);
     renderTagsPages(demosByTag);
     console.log('Done!');
   }
 
   // homepage render
-  function renderHomePage(allTags) {
-    var homepageRender = homepage({'tags': allTags});
+  function renderHomePage(tagNames) {
+    //the template needs to be changed so the tag names get hyphenated,
+    //but the displayName gets displayed
+    
+    var homepageRender = homepage({tagName: tagNames});
+    
     fs.writeFileSync(siteconfig.deployFolder + '/index.html', homepageRender);
     console.log('Rendering homepage');
   };

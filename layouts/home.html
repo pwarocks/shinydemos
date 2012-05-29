@@ -20,10 +20,8 @@
 			<p class="tagline">Shiny Demos is a growing set of demos of the latest Open Web Standards, made by the Opera developer relations team. No browser is blocked: any browser that supports the standard sees the shiny!</p>
 		</header>
 		<nav class="navigation" id="navigation">
-			<ul>
-{{#each tags}}
-				<li class="{{hyphenate this}}"><a href="{{hyphenate this}}/">{{this}}</a></li>
-{{/each}}
+			<ul>{{#each tagName}}
+				<li class="{{hyphenate this}}"><a href="{{hyphenate this}}/">{{displayName this}}</a></li>{{/each}}
 			</ul>
 		</nav>
 		<footer class="footer">

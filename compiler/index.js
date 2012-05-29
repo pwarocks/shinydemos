@@ -132,7 +132,7 @@ shinydemos.create = function() {
               'path': '/' + demo.slug + '/',
               'title': demo.title,
               'thumb': '/' + demo.slug + '/thumb.png',
-              'demotags': demo.tags
+              'demotags': demo.tags.sort()
             }
           });
 

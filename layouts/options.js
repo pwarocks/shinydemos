@@ -1,4 +1,3 @@
-
 var options = {
 	title:'{{title}}',
 	legend:'{{legend}}',
@@ -9,7 +8,7 @@ var options = {
 			title: '{{this.title}}',
 			link: '{{this.link}}'
 		},{{/each}}
-	  { build: {{version}} }
+		{ build: {{version}} }
 	]
 };
 

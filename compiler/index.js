@@ -2,7 +2,6 @@ var ncp = require('ncp').ncp,
     fs = require('fs'),
     Handlebars = require('handlebars'),
     yaml = require('js-yaml'),
-    jsdom = require('jsdom').jsdom,
     rimraf = require('rimraf'),
     mkdirp = require('mkdirp'),
     pluckSupport = require('../lib/pluck'),
@@ -86,15 +85,8 @@ shinydemos.create = function() {
     [].forEach.call(configs.demos, function(demo, i) {
         console.log('now working on demo:', demo.slug);
 
-        var demoPath = siteconfig.deployFolder + '/' + demo.slug + '/index.html',
-            optsRoot = siteconfig.deployFolder + '/' + demo.slug + '/scripts',
+        var optsRoot = siteconfig.deployFolder + '/' + demo.slug + '/scripts',
             optsPath = siteconfig.deployFolder + '/' + demo.slug + '/scripts/options.js',
-            document = jsdom(fs.readFileSync(demoPath).toString(), null, {
-              features: {
-                FetchExternalResources: ['script'],
-                ProcessExternalResources: false
-              }
-            });
 
         optsjs = optionsjs({
           title: demo.title,
@@ -104,10 +96,8 @@ shinydemos.create = function() {
           version: new Date().getTime()
         });
 
-        fs.writeFileSync(demoPath, document.doctype + "\n" + document.outerHTML);
-        
         //create the /scripts/ folder if it doesn't exist
-        mkdirp.sync(siteconfig.deployFolder + '/' + demo.slug + '/scripts');
+        mkdirp.sync(optsRoot);
         //then write the options to the file system
         fs.writeFileSync(optsPath, optsjs);
 

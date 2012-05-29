@@ -4,6 +4,7 @@
     <title>Real time color 3D histogram</title>
     <link href='http://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" media="all" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" href="/styles/panel.css">
     <script src="/scripts/philogl.js"></script>
     <script src="scripts/histogram.js"></script>
   </head>
@@ -83,7 +84,8 @@
         </div>
 
         <canvas id="pastie" width="50" height="50"></canvas>
-
+        <script src="/scripts/modernizr.js"></script>
+        <script src="/scripts/panel.js"></script>
         <script>
         if (!PhiloGL.hasWebGL()) {
           document.body.className = 'no-webgl';

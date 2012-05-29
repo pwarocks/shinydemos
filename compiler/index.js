@@ -125,9 +125,7 @@ shinydemos.create = function() {
 
   // homepage render
   function renderHomePage(tagNames) {
-    //the template needs to be changed so the tag names get hyphenated,
-    //but the displayName gets displayed
-    
+
     var homepageRender = homepage({tagName: tagNames});
     
     fs.writeFileSync(siteconfig.deployFolder + '/index.html', homepageRender);

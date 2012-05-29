@@ -79,8 +79,7 @@ video, #blinds, #switch {-o-transform-origin: 0 0; -webkit-transform-origin: 0 0
 }
 
 </style>
-
-
+<link rel="stylesheet" href="/styles/panel.css">
 </head>
 <body id="room">
 	<div id="brightness"> </div>
@@ -95,18 +94,19 @@ video, #blinds, #switch {-o-transform-origin: 0 0; -webkit-transform-origin: 0 0
 	  Blinds
 	</button>
 	</div>
-
-<script>
-// must be placed here otherwise Opera Mobile doesn't load the video.
-function init() {
-	var button = document.getElementById('button');
-	var room = document.getElementById('room');
-	button.addEventListener('click', function () {
-		room.classList.toggle('cover');
-	}, false);
-}
-window.addEventListener('load', init, false);
-</script>
+	<script src="/scripts/modernizr.js"></script>
+	<script src="/scripts/panel.js"></script>
+	<script>
+	// must be placed here otherwise Opera Mobile doesn't load the video.
+	function init() {
+		var button = document.getElementById('button');
+		var room = document.getElementById('room');
+		button.addEventListener('click', function () {
+			room.classList.toggle('cover');
+		}, false);
+	}
+	window.addEventListener('load', init, false);
+	</script>
 
 </body>
 </html>

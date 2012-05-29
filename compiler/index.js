@@ -80,7 +80,7 @@ shinydemos.create = function() {
   //Render index.html for each demo based on config.yml
   function createdemos() {
     console.log('Creating demos from source files');
-    var demosByTag = {}, usedTags;
+    var demosByTag = {}, tagNames;
     //demo that gets passed in is configs.demo
     [].forEach.call(configs.demos, function(demo, i) {
         console.log('now working on demo:', demo.slug);

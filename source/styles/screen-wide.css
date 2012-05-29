@@ -142,7 +142,7 @@
 	css3
 	device
 	getusermedia
-	multimedia
+	audio-video
 	svg
 	webgl */
 
@@ -163,7 +163,7 @@
 	top:320px;
 	left:240px;
 	}
-.navigation .multimedia a {
+.navigation .audio-video a {
 	top:400px;
 	left:80px;
 	}
@@ -191,7 +191,7 @@
 
 /* RTL */
 .navigation .css3 a,
-.navigation .multimedia a,
+.navigation .audio-video a,
 .navigation .svg a,
 .navigation .webgl a {
 	direction:rtl;

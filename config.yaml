@@ -18,8 +18,8 @@ tags:
     displayName: "SVG"
     tagline: "You want scriptable text and images, that can be manipulated using their own DOM, CSS and script, in all modern browsers? You want to produce graphics that look sharp at phone screen size or widescreen TV size? And you want to be able to make them responsive too? Of course you do - so meet SVG: Scalable Vector Graphics. But you'll say &quot;Shiny! Very Groovy&quot;. And you'd be right."
 
-  - tagName: multimedia
-    displayName: "Multimedia"
+  - tagName: audio-video
+    displayName: "Audio & Video"
     tagline: "For years, the only way to add audio or video to web pages was with a  plugin. Totally lame, daddy-o! These days, media can be embedded straight in the page with the HTML5 <audio> and <video> elements then decoded - and video manipulated - natively in the browser."
 
   - tagName: webgl
@@ -27,7 +27,7 @@ tags:
     tagline: "WebGL brings openGL, the language of games developers, to the Web. Providing 3D graphics and low-level access down to the graphics card, it's hard to learn but incredibly powerful for graphics and visualizations. The gaming experience is coming to the Web, and plugins can just plug off.<br><br>In Opera 12 desktop, enable webGL by entering <a href='opera:config#UserPrefs|EnableWebGL'>opera:config#UserPrefs|EnableWebGL</a> and setting the value to 1."
 
   - tagName: canvas
-    displayName: "canvas"
+    displayName: "Canvas"
     tagline: "Who said images had to be static? Boring people, that's who. Until &lt;canvas&gt; was available, you had to move things around the screen using DHTML - which stands for &quot;Damned Hard To Make, Let'sCopyFromSomeWebsite&quot;. Now you can push pixels straight to the screen with JavaScript.  It's not only for first person shooters: by copying from videos or getUserMedia we produce image and video modification tools. Right now, in all modern browsers."
 
   - tagName: device
@@ -101,7 +101,7 @@ demos:
   - slug: hixie-keyboard
     title: "Hixie Keyboard"
     legend: "Press any key to make Hixie, the HTML5 editor, speak. Originally an HTML5 homage to <a href='http://www2.b3ta.com/buffyswear/'>Buffy's Swearing Keyboard</a> (NSFW, due to bad language and Flash)."
-    tags: [multimedia, css3]
+    tags: [audio-video, css3]
     support: [audio, video]
 
   - slug: inbox-attack
@@ -143,7 +143,7 @@ demos:
   - slug: rock-piano
     title: "Rock Piano"
     legend: "This Shiny rock piano combines Touch events, classList, HTML5 audio, border-radius, box-shadow, and gradients. Soon, all your friends, neighbours and that cutie from Accounts will call you 'HTM-Elton John'."
-    tags: [css3, multimedia]
+    tags: [css3, audio-video]
     support: [audio]
 
   - slug: tatami

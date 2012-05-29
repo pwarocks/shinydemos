@@ -140,7 +140,7 @@
 
 /*	canvas
 	css3
-	device
+	touch
 	getusermedia
 	audio-video
 	svg
@@ -155,7 +155,7 @@
 	top:480px;
 	left:240px;
 	}
-.navigation .device a {
+.navigation .touch a {
 	top:240px;
 	left:160px;
 	}
@@ -177,7 +177,7 @@
 	}
 
 /* -90deg */
-.navigation .device a,
+.navigation .touch a,
 .navigation .canvas a,
 .navigation .css3 a,
 .navigation .svg a,

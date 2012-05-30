@@ -140,8 +140,8 @@ demos:
   - slug: photo-booth
     title: 'Photobooth in Your browser'
     legend: 'Free online photo booth! Use getUserMedia for taking the shots, then email them to yourself. They are suitable for passports to travel anywhere on the World Wide Web.'
-    tags: [canvas]
-    support: [getusermedia, video]
+    tags: [canvas, getusermedia, video]
+    support: [getusermedia, video, canvas]
 
   - slug: picture-organizer
     title: 'Touch-enabled photo lightbox'

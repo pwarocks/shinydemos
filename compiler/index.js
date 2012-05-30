@@ -85,6 +85,12 @@ shinydemos.create = function() {
     [].forEach.call(configs.demos, function(demo, i) {
         console.log('now working on demo:', demo.slug);
 
+        //Odin is a git submodule, so we can't change it at the source
+        //But we can rename demo -> index here.
+        if (demo.slug == "odin") {
+          fs.rename(siteconfig.deployFolder + '/odin/demo.html', siteconfig.deployFolder + '/odin/index.html');
+        }
+
         var optsRoot = siteconfig.deployFolder + '/' + demo.slug + '/scripts',
             optsPath = siteconfig.deployFolder + '/' + demo.slug + '/scripts/options.js',
 

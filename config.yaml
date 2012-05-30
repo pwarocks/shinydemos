@@ -83,6 +83,12 @@ demos:
     tags: [css3]
     support: [getusermedia]
 
+  - slug: emberwind
+    title: 'Emberwind'
+    legend: 'Help free the city of Grendale from the evil CandleFinger and his gremlin hordes. The grand city of Grendale is under siege by mischievous hordes of gremlins. Emberwind is a 2D platform game, re-written to use Open Web technologies.'
+    tags: [webgl, canvas]
+    support: [webgl, canvas, audio]
+
   - slug: explode
     title: 'Explode'
     legend: 'Blow up the video, and watch as the shards still continue to move. Based on Sean Christmann’s <a href="http://www.craftymind.com/2010/04/20/blowing-up-html5-video-and-mapping-it-into-3d-space/">exploding HTML5 video experiment</a> with kind permission.'
@@ -118,6 +124,12 @@ demos:
     legend: 'Click on the Opera logos to zoom in, and once again to zoom out, with CSS transforms and transitions.'
     tags: [css3]
     support: [csstransitions]
+
+  - slug: odin
+    title: 'ODIN'
+    legend: 'Opera is the only European browser, proudly based in Norway, where in the long dark winter, trolls roam free, mucking up your Git history by committing without useful commit messages. Every coder needs Odin to protect them, so here he is - through the magic of WebGL.'
+    tags: [webgl]
+    support: [webgl, audio]
 
   - slug: paranoid
     title: 'Return of the Retro with a canvas game!'
@@ -172,14 +184,6 @@ demos:
     legend: 'World flights'
     tags: [webgl]
     support: [canvas, webgl, webworkers]
-
-    # to be added: odin demo, emberwind (i think)
-
-    # Emberwind copy: 'Help free the city of Grendale from the evil CandleFinger and his gremlin hordes. The grand city of Grendale is under siege by mischievous hordes of gremlins. Emberwind is a 2D platform game, re-written to use Open Web technologies.'
-
-    # ODIN copy: 'Opera is the only European browser, proudly based in Norway, where in the long dark winter, trolls roam free, mucking up your Git history by committing without useful commit messages. Every coder needs Odin to protect them, so here he is - through the magic of webGL.'
-
-    # Warholiser demo. Copy: 'Now you can make a Warhol picture with no need for skill or talent, in no time at all. Just like he did.'
 
 # Supported features list. Based on custom Modernizr build
 features:

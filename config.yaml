@@ -161,6 +161,12 @@ demos:
     tags: [canvas, touch]
     support: [canvas, touch]
 
+  - slug: warholiser
+    title: 'Warholiser'
+    legend: 'Now you can make a Warhol picture with no need for skill or talent, in no time at all. Just like he did.'
+    tags: [canvas, getusermedia]
+    support: [canvas, getusermedia, video]
+
   - slug: world-flights
     title: 'World Flights'
     legend: 'World flights'

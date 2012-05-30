@@ -83,6 +83,12 @@ demos:
     tags: [css3]
     support: [getusermedia]
 
+  - slug: emberwind
+    title: 'Emberwind'
+    legend: 'Help free the city of Grendale from the evil CandleFinger and his gremlin hordes. The grand city of Grendale is under siege by mischievous hordes of gremlins. Emberwind is a 2D platform game, re-written to use Open Web technologies.'
+    tags: [webgl, canvas]
+    support: [webgl, canvas, audio]
+
   - slug: explode
     title: 'Explode'
     legend: 'Blow up the video, and watch as the shards still continue to move. Based on Sean Christmann’s <a href="http://www.craftymind.com/2010/04/20/blowing-up-html5-video-and-mapping-it-into-3d-space/">exploding HTML5 video experiment</a> with kind permission.'

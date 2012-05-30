@@ -128,7 +128,8 @@ demos:
   - slug: odin
     title: 'ODIN'
     legend: 'Opera is the only European browser, proudly based in Norway, where in the long dark winter, trolls roam free, mucking up your Git history by committing without useful commit messages. Every coder needs Odin to protect them, so here he is - through the magic of WebGL.'
-    support [webgl, audio]
+    tags: [webgl]
+    support: [webgl, audio]
 
   - slug: paranoid
     title: 'Return of the Retro with a canvas game!'

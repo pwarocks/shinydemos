@@ -125,6 +125,11 @@ demos:
     tags: [css3]
     support: [csstransitions]
 
+  - slug: odin
+    title: 'ODIN'
+    legend: 'Opera is the only European browser, proudly based in Norway, where in the long dark winter, trolls roam free, mucking up your Git history by committing without useful commit messages. Every coder needs Odin to protect them, so here he is - through the magic of WebGL.'
+    support [webgl, audio]
+
   - slug: paranoid
     title: 'Return of the Retro with a canvas game!'
     legend: 'DIMENSION-CONTROLLING FORT “DOH” HAS NOW BEEN DEMOLISHED, AND TIME STARTED FLOWING REVERSELY. And when time flows reversely, retro games get remade with HTML5.'
@@ -172,14 +177,6 @@ demos:
     legend: 'World flights'
     tags: [webgl]
     support: [canvas, webgl, webworkers]
-
-    # to be added: odin demo, emberwind (i think)
-
-    # Emberwind copy: 'Help free the city of Grendale from the evil CandleFinger and his gremlin hordes. The grand city of Grendale is under siege by mischievous hordes of gremlins. Emberwind is a 2D platform game, re-written to use Open Web technologies.'
-
-    # ODIN copy: 'Opera is the only European browser, proudly based in Norway, where in the long dark winter, trolls roam free, mucking up your Git history by committing without useful commit messages. Every coder needs Odin to protect them, so here he is - through the magic of webGL.'
-
-    # Warholiser demo. Copy: 'Now you can make a Warhol picture with no need for skill or talent, in no time at all. Just like he did.'
 
 # Supported features list. Based on custom Modernizr build
 features:

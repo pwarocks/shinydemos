@@ -15,7 +15,7 @@
     "ncp": "*",
     "handlebars": "*",
     "js-yaml": "*",
-    "jsdom": "*",
+    "mkdirp": "*",
     "rimraf": "*",
     "optimist": "*",
     "colors": "*",

@@ -8,7 +8,7 @@ var ncp = require('ncp').ncp,
     category = require('../lib/categories'),
     getFile = require('../lib/filename'),
     shinydemos = exports,
-    homepage, tagspage, optionsjs;
+    homepage, tagspage, optionsjs, filesArray;
     
 shinydemos.create = function() {
   var configs = require('../config.yaml').shift(),
@@ -32,7 +32,7 @@ shinydemos.create = function() {
   
   Handlebars.registerHelper('displayName', function(tag) {
     return category.displayName(categories, tag);
-  })
+  });
 
   homepage = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/home.html').toString());
   tagspage = Handlebars.compile(fs.readFileSync(siteconfig.layoutsFolder + '/tag.html').toString());
@@ -135,13 +135,15 @@ shinydemos.create = function() {
 
   // tags page render
   function renderTagsPages(demosByTag) {
+    filesArray = fs.readdirSync('deploy/thumbs');
+    
     Object.keys(demosByTag).forEach(function(tag) {
       var demos = demosByTag[tag],
           demoCollection = demos.map(function(demo) {
             return {
               'path': '/' + demo.slug + '/',
               'title': demo.title,
-              'thumb': '/thumbs/' + getFile(demo.slug),
+              'thumb': '/thumbs/' + getFile(filesArray, demo.slug),
               'demotags': demo.tags.sort()
             }
           });

@@ -6,6 +6,7 @@ var ncp = require('ncp').ncp,
     mkdirp = require('mkdirp'),
     pluckSupport = require('../lib/pluck'),
     category = require('../lib/categories'),
+    getFile = require('../lib/filename'),
     shinydemos = exports,
     homepage, tagspage, optionsjs;
     
@@ -131,6 +132,7 @@ shinydemos.create = function() {
     console.log('Rendering homepage');
   };
 
+
   // tags page render
   function renderTagsPages(demosByTag) {
     Object.keys(demosByTag).forEach(function(tag) {
@@ -139,7 +141,7 @@ shinydemos.create = function() {
             return {
               'path': '/' + demo.slug + '/',
               'title': demo.title,
-              'thumb': '/' + demo.slug + '/thumb.png',
+              'thumb': '/thumbs/' + getFile(demo.slug),
               'demotags': demo.tags.sort()
             }
           });

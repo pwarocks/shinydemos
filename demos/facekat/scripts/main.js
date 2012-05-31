@@ -461,7 +461,7 @@ document.body.appendChild(canvasInput);
 canvasInput.style.position = 'absolute';
 canvasInput.style.top = '60px';
 canvasInput.style.left = '10px';
-canvasInput.style.zIndex = '100002';
+canvasInput.style.zIndex = '1002';
 canvasInput.style.display = 'block';
 var canvasCtx = canvasInput.getContext('2d');
 canvasCtx.strokeStyle = "#999";

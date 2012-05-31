@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: normal;
   src: url('./erix_outline.ttf') format('truetype');
-}
+} /* Erix Outline font by Patrick H. Lauke http://www.splintered.co.uk/experiments/72/ */
 
 body {
 	background-color: #000;
@@ -18,7 +18,7 @@ a {
 
 .hud {
 	position:absolute;
-	z-index:9999;
+	z-index:999;
 	color:white;
 	font-family: 'Erix', serif;
 	font-size: 100%;
@@ -66,7 +66,7 @@ a {
 
 #hiscore {
 	position:absolute;
-	z-index:9999;
+	z-index:999;
 	top:10px;
 	left:0;
 	width:100%;
@@ -78,7 +78,7 @@ a {
 
 #info {
 	position:absolute;
-	z-index:9999;
+	z-index:999;
 	bottom:75px;
 	left:50%;
 	width:20em;
@@ -94,7 +94,7 @@ small {
 
 #title {
 	position:absolute;
-	z-index:9999;
+	z-index:999;
 	top:19%;
 	left:0;
 	width:100%;
@@ -118,13 +118,14 @@ video {
 	position:absolute;
 	top: 60px;
 	left: 10px;
-	z-index:100001;
+	z-index:1000;
 	display:block;
 	width: 200px; height: 150px;
 	-o-transform : scaleX(-1);
 	-moz-transform : scaleX(-1);
 	-webkit-transform : scaleX(-1);
+	-ms-transform: scaleX(-1);
 	transform : scaleX(-1);
-	-ms-filter : fliph; /*IE*/
-	filter : fliph; /*IE*/
+	-ms-filter : fliph; /* old IE*/
+	filter : fliph; /*old IE*/
 }

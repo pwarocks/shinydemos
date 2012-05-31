@@ -93,7 +93,7 @@ shinydemos.create = function() {
         }
 
         var optsRoot = siteconfig.deployFolder + '/' + demo.slug + '/scripts',
-            optsPath = siteconfig.deployFolder + '/' + demo.slug + '/scripts/options.js',
+            optsPath = optsRoot + '/options.js',
 
         optsjs = optionsjs({
           title: demo.title,

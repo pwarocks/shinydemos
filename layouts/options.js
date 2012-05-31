@@ -1,6 +1,6 @@
 var options = {
 	title:'{{title}}',
-	legend:'{{legend}}',
+	legend:'{{{legend}}}',
 	tags:[{{{arrayify tags}}}],
 	features:[{{#each features}}
 		{

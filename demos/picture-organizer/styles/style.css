@@ -9,7 +9,7 @@
 	orientation: landscape;
 	resolution: device; */
 }
-html { background: url(../images/inflicted.png); }
+html { background: url(../images/inflicted.png); } /* "Inflicted" Subtle Pattern by Hugo Loning http://subtlepatterns.com/?p=658 */
 html,body { min-height: 100%; width: 1000px; height: 100%; margin: 0; padding: 0; overflow: hidden; }
 img {
 	display: block;
@@ -17,6 +17,7 @@ img {
 	z-index:1;
 	-o-transform: scale(0.5);
 	-moz-transform: scale(0.5);
+	-ms-transform: scale(0.5);
 	-webkit-transform: scale(0.5);
 	transform: scale(0.5);
 	top: 0px; left: 0px; /* though this won't be flush, due to transform (actual top and left = half the width/height of image */

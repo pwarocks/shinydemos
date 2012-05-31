@@ -1,3 +1,5 @@
+/* Basic touch controller
+   uses adapted script from Seb-Lee Delisle's JSTouchController https://github.com/sebleedelisle/JSTouchController */
 
 var canvas,
 	c, // c is the canvas' context 2D

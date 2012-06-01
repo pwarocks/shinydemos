@@ -80,8 +80,8 @@ demos:
   - slug: cracked
     title: 'Cracked'
     legend: 'In case of emergency, break glass!'
-    tags: [css3]
-    support: [getusermedia]
+    tags: [getusermedia]
+    support: [getusermedia, canvas, video]
 
   - slug: emberwind
     title: 'Emberwind'
@@ -92,8 +92,8 @@ demos:
   - slug: explode
     title: 'Explode'
     legend: 'Blow up the video, and watch as the shards still continue to move. Based on Sean Christmann’s <a href="http://www.craftymind.com/2010/04/20/blowing-up-html5-video-and-mapping-it-into-3d-space/">exploding HTML5 video experiment</a> with kind permission.'
-    tags: [css3]
-    support: [getusermedia]
+    tags: [getusermedia]
+    support: [getusermedia, canvas, video]
 
   - slug: facekat
     title: 'FaceKat'

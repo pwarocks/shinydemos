@@ -19,7 +19,8 @@
     "rimraf": "*",
     "optimist": "*",
     "colors": "*",
-    "prompt": "*"
+    "prompt": "*",
+    "vows": "*"
   },
   "devDependencies": {}
 }

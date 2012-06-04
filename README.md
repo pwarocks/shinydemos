@@ -6,6 +6,9 @@
 - Type `node .` to get the files in the `deploy` folder.
 - Click on `deploy/index.html` to start navigating the demos
 
+## Running Tests
+
+If you install the vows binary (`npm install -g vows` should do it for you), you can do something like `vows test/* --spec`
 
 ## Remember
 

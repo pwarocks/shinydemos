@@ -20,7 +20,7 @@ vows.describe('Demo tags').addBatch({
 			assert.isDefined(topic);	
 		},
 		'should not contain spaces': function(topic){
-			assert.match(topic, /^[^\s]+$/)
+			assert.match(topic, /^[^\s]+$/);
 		}
 	}
 }).addBatch({

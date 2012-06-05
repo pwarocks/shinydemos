@@ -7,12 +7,12 @@ var vows = require('vows'),
 for (var i = 0, tag; tag = tags[i]; i++) {
 	vows.describe('Demo tags').addBatch({
 		'A tagName': {
-			topic: tags[0].tagName,
+			topic: tag.tagName,
 			'should be a string': function(topic){
 				assert.isString(topic);
 			},
 			'should be lowercase (numbers OK)': function(topic){
-				assert.match(topic, /^[a-z0-9]+$/);
+				assert.match(topic, /^[a-z0-9\-]+$/);
 			},
 			'should not be undefined': function(topic){
 				assert.isDefined(topic);	
@@ -23,7 +23,7 @@ for (var i = 0, tag; tag = tags[i]; i++) {
 		}
 	}).addBatch({
 		'A displayName': {
-			topic: tags[0].displayName,
+			topic: tag.displayName,
 			'should be a string': function(topic){
 				assert.isString(topic);
 			},
@@ -36,7 +36,7 @@ for (var i = 0, tag; tag = tags[i]; i++) {
 		}
 	}).addBatch({
 		'A tagline': {
-			topic: tags[0].tagline,
+			topic: tag.tagline,
 			'should be a string': function(topic){
 				assert.isString(topic);
 			},

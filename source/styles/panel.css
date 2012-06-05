@@ -84,6 +84,9 @@
 	margin:0 0 10px;
 	width:80%;
 	}
+	.sd-legend a {
+		color:#45b4f1;
+		}
 
 /* Tags */
 .sd-tags {

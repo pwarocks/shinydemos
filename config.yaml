@@ -16,19 +16,19 @@ tags:
 
   - tagName: svg
     displayName: 'SVG'
-    tagline: 'You want scriptable text and images, that can be manipulated using their own DOM, CSS and script, in all modern browsers? You want to produce graphics that look sharp at phone screen size or widescreen TV size? And you want to be able to make them responsive too? Of course you do - so meet SVG: Scalable Vector Graphics. But you’ll say “Shiny! Very Groovy”. And you’d be right.'
+    tagline: 'You want scriptable text and images, that can be manipulated using their own DOM, CSS and script, in all modern browsers? You want to produce graphics that look sharp at phone screen size or widescreen TV size? And you want to be able to make them responsive too? Of course you do — so meet SVG: Scalable Vector Graphics. But you’ll say “Shiny! Very Groovy”. And you’d be right.'
 
   - tagName: audio-video
     displayName: 'Audio & Video'
-    tagline: 'For years, the only way to add audio or video to web pages was with a  plugin. Totally lame, daddy-o! These days, media can be embedded straight in the page with the HTML5 &lt;audio&gt; and &lt;video&gt; elements then decoded — and video manipulated — natively in the browser.'
+    tagline: 'For years, the only way to add audio or video to web pages was with a plugin. Totally lame, daddy-o! These days, media can be embedded straight in the page with the HTML5 <code>&lt;audio&gt;<code> and <code>&lt;video&gt;<code> elements then decoded — and video manipulated — natively in the browser.'
 
   - tagName: webgl
     displayName: 'WebGL'
-    tagline: 'WebGL brings openGL, the language of games developers, to the Web. Providing 3D graphics and low-level access down to the graphics card, it’s hard to learn but incredibly powerful for graphics and visualizations. The gaming experience is coming to the Web, and plugins can just plug off.<br><br>In Opera 12 desktop, enable webGL by entering <a href="opera:config#UserPrefs|EnableWebGL">opera:config#UserPrefs|EnableWebGL</a> by setting the value to 1, and <a href="opera:config#UserPrefs|EnableHardwareAcceleration">enable hardware acceleration</a> similarly.'
+    tagline: 'WebGL brings OpenGL, the language of games developers, to the Web. Providing 3D graphics and low-level access down to the graphics card, it’s hard to learn but incredibly powerful for graphics and visualizations. The gaming experience is coming to the Web, and plugins can just plug off.<br><br>In Opera 12 desktop, enable webGL by entering <a href="opera:config#UserPrefs|EnableWebGL">Enable WebGL in opera:config</a> by setting the value to 1, and <a href="opera:config#UserPrefs|EnableHardwareAcceleration">Enable Hardware Acceleration</a> similarly.'
 
   - tagName: canvas
     displayName: 'Canvas'
-    tagline: 'Who said images had to be static? Boring people, that’s who. Until <code>&lt;canvas&gt;</code> was available, you had to move things around the screen using DHTML - which stands for “Damned Hard To Make, Let’sCopyFromSomeWebsite”. Now you can push pixels straight to the screen with JavaScript. It’s not only for first person shooters: by copying from videos or getUserMedia we produce image and video modification tools. Right now, in all modern browsers.'
+    tagline: 'Who said images had to be static? Boring people, that’s who. Until <code>&lt;canvas&gt;</code> was available, you had to move things around the screen using DHTML — which stands for “Damned Hard To Make, Let’sCopyFromSomeWebsite”. Now you can push pixels straight to the screen with JavaScript. It’s not only for first person shooters: by copying from videos or <code>getUserMedia</code> we produce image and video modification tools. Right now, in all modern browsers.'
 
   - tagName: touch
     displayName: 'Touch'
@@ -36,10 +36,9 @@ tags:
 
   - tagName: getusermedia
     displayName: 'getUserMedia'
-    tagline: 'getUserMedia is an API that began as part of HTML5 and was split off into the W3C webRTC specification suite. It allows JavaScript access to a device’s cameras and microphones.  Think in-browser video-conferencing! Think augmented reality! Think Shiny! Use Opera 12, Opera Mobile 12 or Chrome Canary to see the demos.'
+    tagline: '<code>getUserMedia</code> is an API that began as part of HTML5 and was split off into the W3C WebRTC specification suite. It allows JavaScript access to a device’s cameras and microphones. Think in-browser video-conferencing! Think augmented reality! Think Shiny! Use Opera 12, Opera Mobile 12 or Chrome Canary to see the demos.'
 
-
-
+# List of all active demos with description
 demos:
   - slug: 3d-color-histogram
     title: '3D color histogram'
@@ -61,7 +60,7 @@ demos:
 
   - slug: border-salon
     title: 'Border Radius Salon'
-    legend: 'If you’ve tried the border-fun demo, you’ve made some borders so gorgeous they should be in a gallery. border-salon is a gallery of rounded-corner loveliness - all randomly generated for your delight!'
+    legend: 'If you’ve tried the border-fun demo, you’ve made some borders so gorgeous they should be in a gallery. border-salon is a gallery of rounded-corner loveliness — all randomly generated for your delight!'
     tags: [css3]
     support: [borderradius, borderimage]
 
@@ -97,7 +96,7 @@ demos:
 
   - slug: facekat
     title: 'FaceKat'
-    legend: 'First there were punched cards for computer input, then the keyboard, the mouse, mouse gestures, the touchscreen - and now the head-wiggle! Avoid the obstacles by steering - with your head. It’s not quite <a href="http://dev.opera.com/articles/view/labs-introducing-opera-face-gestures/">face gestures</a> - yet.'
+    legend: 'First there were punched cards for computer input, then the keyboard, the mouse, mouse gestures, the touchscreen — and now the head-wiggle! Avoid the obstacles by steering — with your head. It’s not quite <a href="http://dev.opera.com/articles/view/labs-introducing-opera-face-gestures/">face gestures</a> — yet.'
     tags: [getusermedia]
     support: [getusermedia, video]
 
@@ -127,7 +126,7 @@ demos:
 
   - slug: odin
     title: 'ODIN'
-    legend: 'Opera is the only European browser, proudly based in Norway, where in the long dark winter, trolls roam free, mucking up your Git history by committing without useful commit messages. Every coder needs Odin to protect them, so here he is - through the magic of WebGL.'
+    legend: 'Opera is the only European browser, proudly based in Norway, where in the long dark winter, trolls roam free, mucking up your Git history by committing without useful commit messages. Every coder needs Odin to protect them, so here he is — through the magic of WebGL.'
     tags: [webgl]
     support: [webgl, audio]
 

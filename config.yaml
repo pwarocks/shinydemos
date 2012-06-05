@@ -256,12 +256,12 @@ features:
     link: 'http://www.w3.org/TR/css3-transitions/'
 
   - slug: draganddrop
-    title: 'http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#dnd'
-    link: 'HTML Drag and Drop'
+    title: 'HTML Drag and Drop'
+    link: 'http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#dnd'
 
   - slug: flexbox
-    title: 'http://www.w3.org/TR/css3-flexbox/'
-    link: 'CSS Flexbox'
+    title: 'CSS Flexbox'
+    link: 'http://www.w3.org/TR/css3-flexbox/'
 
   - slug: fontface
     title: 'CSS Web Fonts'

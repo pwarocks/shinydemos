@@ -16,11 +16,13 @@
     "handlebars": "*",
     "js-yaml": "*",
     "mkdirp": "*",
-    "rimraf": "*",
+    "rimraf": "*"
+  },
+  "devDependencies": {
     "optimist": "*",
     "colors": "*",
     "prompt": "*",
-    "vows": "*"
-  },
-  "devDependencies": {}
+    "vows": "*",
+    "jake": "*"
+  }
 }

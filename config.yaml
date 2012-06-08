@@ -20,7 +20,7 @@ tags:
 
   - tagName: audio-video
     displayName: 'Audio & Video'
-    tagline: 'For years, the only way to add audio or video to web pages was with a plugin. Totally lame, daddy-o! These days, media can be embedded straight in the page with the HTML5 <code>&lt;audio&gt;<code> and <code>&lt;video&gt;<code> elements then decoded — and video manipulated — natively in the browser.'
+    tagline: 'For years, the only way to add audio or video to web pages was with a plugin. Totally lame, daddy-o! These days, media can be embedded straight in the page with the HTML5 <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements then decoded — and video manipulated — natively in the browser.'
 
   - tagName: webgl
     displayName: 'WebGL'

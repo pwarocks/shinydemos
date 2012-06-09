@@ -1,6 +1,7 @@
 # Relative to root directory
 siteconfig:
   deployFolder: 'deploy'
+  deployRoot: '../shinydemos-misc'
   demosFolder: 'demos'
   sourceFolder: 'source'
   layoutsFolder: 'layouts'

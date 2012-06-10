@@ -19,6 +19,8 @@
  *	fov {number} : horizontal field of view of used camera in degrees (default is to estimate this)
  *	fadeVideo {boolean} : whether to fade out video when face is detected (default is false)
  *	cameraOffset {number} : distance from camera to center of screen, used to offset position of head (default is 11.5)
+ *	calcAngles {boolean} : whether to calculate angles when doing facetracking (default is false)
+ *	headPosition {boolean} : whether to calculate headposition (default is true)
  *
  * @author auduno / github.com/auduno
  */
@@ -47,6 +49,8 @@ headtrackr.Tracker = function(params) {
 	if (params.detectionInterval === undefined) params.detectionInterval = 20;
 	if (params.fadeVideo === undefined) params.fadeVideo = false;
 	if (params.cameraOffset === undefined) params.cameraOffset = 11.5;
+	if (params.calcAngles === undefined) params.calcAngles = false;
+	if (params.headPosition === undefined) params.headPosition = true;
 	
 	var ui, smoother, facetracker, headposition, canvasContext, videoElement, detector;
 	var detectionTimer;
@@ -60,41 +64,36 @@ headtrackr.Tracker = function(params) {
 	
 	this.status = "";
 	
-	this.init = function(video, canvas) {
+  var statusEvent = document.createEvent("Event");
+  statusEvent.initEvent("headtrackrStatus", true, true);
 	
+	var headtrackerStatus = function(message) {
+	  statusEvent.status = message;
+		document.dispatchEvent(statusEvent);
+		this.status = message;
+	}.bind(this);
+	
+	this.init = function(video, canvas) {
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+		window.URL = window.URL || window.webkitURL || window.msURL || window.mozURL;
 		// check for camerasupport
-		if (window.navigator.getUserMedia) {
-			this.status = "camera supported";
-		
+		if (navigator.getUserMedia) {
+		  headtrackerStatus("getUserMedia");
+		  
 			// set up stream
-			window.navigator.getUserMedia({video: true}, function( stream ) {
-				video.src = stream;
+			navigator.getUserMedia({video: true}, function( stream ) {
+				headtrackerStatus("camera found");
+				video.src = window.URL.createObjectURL(stream);
 				video.play();
-				this.status = "camera found";
 			}, function() {
+				headtrackerStatus("no camera");
 				if (params.altVideo !== undefined) {
 					video.src = params.altVideo;
 					video.play();
 				}
-				this.status = "no camera found";
-			});
-		} else if (window.navigator.webkitGetUserMedia) {
-			// chrome
-			this.status = "camera supported";
-		
-			// set up stream
-			window.navigator.webkitGetUserMedia('video', function( stream ) {
-					video.src = window.webkitURL.createObjectURL(stream);
-					video.play();
-			},function() {
-				if (params.altVideo) {
-					video.src = params.altVideo;
-					video.play();
-				}
-				this.status = "no camera found";
 			});
 		} else {
-			this.status = "camera not supported";
+			headtrackerStatus("no getUserMedia");
 			
 			if (params.altVideo !== undefined) {
 				video.src = params.altVideo;
@@ -120,9 +119,6 @@ headtrackr.Tracker = function(params) {
 		// create ui if needed
 		if (params.ui) {
 			ui = new headtrackr.Ui();
-		} else {
-			ui = {};
-			ui.setMessage = function(str) {};
 		}
 		
 		// create smoother if enabled
@@ -137,16 +133,16 @@ headtrackr.Tracker = function(params) {
 		
 		// if facetracking hasn't started, initialize facetrackr
 		if (facetracker === undefined) {
-			facetracker = new headtrackr.facetrackr.Tracker({debug : params.debug});
+			facetracker = new headtrackr.facetrackr.Tracker({debug : params.debug, calcAngles : params.calcAngles});
 			facetracker.init(canvasElement);
 		}
 		
 		// track face
 		facetracker.track()
 		var faceObj = facetracker.getTrackingObject({debug : params.debug});
-		
-		if (faceObj.detection == "WB") ui.setMessage("Camera whitebalancing");
-		if (firstRun && faceObj.detection == "VJ") ui.setMessage("Detecting your face...");
+    
+		if (faceObj.detection == "WB") headtrackerStatus("whitebalance");
+		if (firstRun && faceObj.detection == "VJ") headtrackerStatus("detecting");
 		
 		// check if we have a detection first
 		if (!(faceObj.confidence == 0)) {
@@ -156,7 +152,7 @@ headtrackr.Tracker = function(params) {
 			    detectionTimer = (new Date).getTime();
 			  }
 			  if (((new Date).getTime() - detectionTimer) > 5000) {
-			    ui.setMessage("No face detected.")
+			    headtrackerStatus("hints");
 			  }
 			  
 				var x = (faceObj.x + faceObj.width/2); //midpoint
@@ -167,8 +163,6 @@ headtrackr.Tracker = function(params) {
 					debugContext.strokeStyle = "#0000CC";
 					debugContext.strokeRect(faceObj.x, faceObj.y, faceObj.width, faceObj.height);
 				}
-				
-				this.status = 'detecting';
 			}
 			if (faceObj.detection == "CS") {
 				var x = faceObj.x; //midpoint
@@ -198,9 +192,9 @@ headtrackr.Tracker = function(params) {
 				if (faceObj.width == 0 || faceObj.height == 0) {
 					if (params.retryDetection) {
 						// retry facedetection
-						ui.setMessage("Lost track of face, detecting...");
+						headtrackerStatus("redetecting");
 						
-						facetracker = new headtrackr.facetrackr.Tracker({whitebalancing : false, debug: params.debug});
+						facetracker = new headtrackr.facetrackr.Tracker({whitebalancing : false, debug: params.debug, calcAngles : params.calcAngles});
 						facetracker.init(canvasElement);
 						faceFound = false;
 						headposition = undefined;
@@ -210,15 +204,13 @@ headtrackr.Tracker = function(params) {
               videoElement.style.opacity = 1;
               videoFaded = false;
             }
-						
-						this.status = 'detecting';
 					} else {
-						ui.setMessage("Lost track of face :(");
-						this.stop('lost tracking');
+					  headtrackerStatus("lost");
+						this.stop();
 					}
 				} else {
 					if (!faceFound) {
-						ui.setMessage("Face found!");
+					  headtrackerStatus("found");
 						faceFound = true;
 					}
 					
@@ -231,7 +223,7 @@ headtrackr.Tracker = function(params) {
 					}
 					
 					// get headposition
-					if (headposition === undefined) {
+					if (headposition === undefined && params.headPosition) {
             // wait until headdiagonal is stable before initializing headposition
             var stable = false;
             
@@ -264,14 +256,13 @@ headtrackr.Tracker = function(params) {
               }
               headposition.track(faceObj);
 						}
-					} else {
+					} else if (params.headPosition) {
             headposition.track(faceObj);
           }
 				}
 			}
 		}
 	 
-		
 		if (run) {
 			detector = window.setTimeout(track, params.detectionInterval);
 		}
@@ -286,6 +277,7 @@ headtrackr.Tracker = function(params) {
 		
 		var canvasContent = headtrackr.getWhitebalance(canvasElement);
 		if (canvasContent > 0) {
+		  run = true;
       track();
 		} else {
       window.setTimeout(starter, 100);
@@ -298,8 +290,6 @@ headtrackr.Tracker = function(params) {
 		
 		// check if video is playing, if not, return false
 		if (!(videoElement.currentTime > 0 && !videoElement.paused && !videoElement.ended)) {
-		
-			this.status = 'waiting for video';
 			
 			run = true;
 			//set event
@@ -313,15 +303,12 @@ headtrackr.Tracker = function(params) {
 		return true;
 	}
 	
-	this.stop = function(text) {
+	this.stop = function() {
 		window.clearTimeout(detector);
 		run = false;
-		if (!text) {
-			this.status = 'stopped';
-		} else {
-			this.status = text;
-		}
+		headtrackerStatus("stopped");
 		facetracker = undefined;
+		faceFound = false;
 		
 		return true;
 	}

@@ -35,8 +35,8 @@ headtrackr.headposition = {};
 headtrackr.headposition.Tracker = function(facetrackrObj, camwidth, camheight, params) {
 	
 	// some assumptions that are used when calculating distances and estimating horizontal fov
-	//	 head width = 17 cm -> 16
-	//	 head height = 21 cm -> 19
+	//	 head width = 16 cm
+	//	 head height = 19 cm
 	//	 when initialized, user is approximately 60 cm from camera
 	
 	if (!params) params = {};
@@ -97,42 +97,62 @@ headtrackr.headposition.Tracker = function(facetrackrObj, camwidth, camheight, p
 		
 		if (edgecorrection) {
 			// recalculate head_diag_cam, fx, fy
-			var onVerticalEdge = (fx-(w/2) == 0 || fx+(h/2) == this.camwidth_cam);
-			var onHorizontalEdge = (fy-(h/2) == 0 || fy+(h/2) == this.camheight_cam);
+			
+			var margin = 11;
+			
+			var leftDistance = fx-(w/2);
+			var rightDistance = this.camwidth_cam-(fx+(w/2));
+			var topDistance = fy-(h/2);
+			var bottomDistance = this.camheight_cam-(fy+(h/2));
+			
+			var onVerticalEdge = (leftDistance < margin || rightDistance < margin);
+			var onHorizontalEdge = (topDistance < margin || bottomDistance < margin);
 			
 			if (onHorizontalEdge) {
 				if (onVerticalEdge) {
 					// we are in a corner, use previous diagonal as estimate, i.e. don't change head_diag_cam
-					var onLeftEdge = (fx-w < 0);
-					var onTopEdge = (fy-w < 0);
+					var onLeftEdge = (leftDistance < margin);
+					var onTopEdge = (topDistance < margin);
+					
 					if (onLeftEdge) {
 						fx = w-(head_diag_cam * sin_hsa/2);
 					} else {
 						fx = fx-(w/2)+(head_diag_cam * sin_hsa/2);
 					}
+					
 					if (onTopEdge) {
 						fy = h-(head_diag_cam * cos_hsa/2);
 					} else {
 						fy = fy-(h/2)+(head_diag_cam*cos_hsa/2);
 					}
+					
 				} else {
 					// we are on top or bottom edge of camera, use width instead of diagonal and correct y-position
-					head_diag_cam = w/sin_hsa;
 					// fix fy
-					if (fy-(h/2) == 0) {
-						// TODO : recalc_fy becomes negative here - does that affect calculations
-						fy = h-((w/tan_hsa)/2);
+					if (topDistance < margin) {
+            var originalWeight = topDistance/margin;
+            var estimateWeight = (margin-topDistance)/margin;
+						fy = h-(originalWeight*(h/2) + estimateWeight*((w/tan_hsa)/2));
+            head_diag_cam = estimateWeight*(w/sin_hsa) + originalWeight*(Math.sqrt((w*w)+(h*h)));
 					} else {
-						fy = fy-(h/2)+((w/tan_hsa)/2);
+            var originalWeight = bottomDistance/margin;
+            var estimateWeight = (margin-bottomDistance)/margin;
+						fy = fy-(h/2)+(originalWeight*(h/2) + estimateWeight*((w/tan_hsa)/2));
+            head_diag_cam = estimateWeight*(w/sin_hsa) + originalWeight*(Math.sqrt((w*w)+(h*h)));
 					}
 				}
 			} else if (onVerticalEdge) {
 				// we are on side edges of camera, use height and correct x-position
-				head_diag_cam = h/cos_hsa;
-				if (fx-(w/2) == 0) {
-					fx = w-(h*tan_hsa/2);
+				if (leftDistance < margin) {
+          var originalWeight = leftDistance/margin;
+          var estimateWeight = (margin-leftDistance)/margin;
+          head_diag_cam = estimateWeight*(h/cos_hsa) + originalWeight*(Math.sqrt((w*w)+(h*h)));
+					fx = w-(originalWeight*(w/2)+(estimateWeight)*(h*tan_hsa/2));
 				} else {
-					fx = fx-(w/2)+(h*tan_hsa/2);
+          var originalWeight = rightDistance/margin;
+          var estimateWeight = (margin-rightDistance)/margin;
+          head_diag_cam = estimateWeight*(h/cos_hsa) + originalWeight*(Math.sqrt((w*w)+(h*h)));
+					fx = fx-(w/2)+(originalWeight*(w/2) + estimateWeight*(h*tan_hsa/2));
 				}
 			} else {
 				head_diag_cam = Math.sqrt((w*w)+(h*h));

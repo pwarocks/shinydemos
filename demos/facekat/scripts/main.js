@@ -1,4 +1,4 @@
-﻿// Based on FastCat by Andrea Doimo
+﻿// Based on FastKat by Andrea Doimo
 // Further modified by Audun Mathias Øygard and Patrick H. Lauke
 
 var STARS = 200;
@@ -27,6 +27,11 @@ var interval,hintsTimer;
 var tmp;
 var fullscreen=false;
 
+var gumSupported = false;
+var cameraEnabled = false;
+var messages;
+var messageNow = 0;
+
 var container;
 var camera, scene, renderer;
 
@@ -41,14 +46,6 @@ var c1,c2;
 var bdy = document.getElementById("body");
 
 var animType;
-
-var messageNow = 0;
-var messages = [
-	"fly as fast as possible, avoiding any obstacle",
-	"steer by moving your head",
-	"press ESC while playing to return here",
-	"SPACE=brakes"
-	];
 
 function handleKey(event) {
 	if (event.keyCode == 27) {
@@ -116,7 +113,9 @@ function titleScreen() {
 	
 	animType = "demo";
 	
-	hintsTimer = setInterval(showHints, 3000);
+	if (gumSupported) {
+	  hintsTimer = setInterval(showHints, 3000);
+	}
 }
 
 function animate() {
@@ -263,8 +262,6 @@ function init() {
 	
 	window.addEventListener('resize', onWindowResize, false );
 	window.addEventListener('keypress', handleKey, true)	;
-	
-	document.getElementById('start').addEventListener('click',start, true);
 	
 	animType = "demo";
 	animate();
@@ -444,13 +441,95 @@ videoInput.setAttribute('width','320');
 videoInput.setAttribute('height','240');
 document.body.appendChild(videoInput);
 
+// messaging stuff
+
+function gUMnCamera() {
+  gumSupported = true;
+  cameraEnabled = true;
+  
+  messages = [
+    "trying to detect face",
+    "please wait"
+  ];
+  
+  showHints();
+  hintsTimer = setInterval(showHints, 3000);
+}
+
+function noGUM() {
+  // add messaging
+  messages = [
+    "your browser does not support getUserMedia",
+    "please <a href='http://www.opera.com/browser/'>download Opera 12</a>",
+    "or <a href='http://caniuse.com/stream'>another browser</a> that supports getUserMedia",
+    "fallback video added for demonstration purposes"
+  ];
+  
+  showHints();
+  hintsTimer = setInterval(showHints, 3000);
+}
+
+function noCamera() {
+  // change messaging
+  messages = [
+    "no camera found",
+    "fallback video added for demonstration purposes"
+  ];
+
+  gumSupported = true;
+  showHints();
+  hintsTimer = setInterval(showHints, 3000);
+}
+
+function enableStart() {
+  document.getElementById('but').className = '';
+  
+  // change button to display "start"
+  document.getElementById('start').innerHTML = "START";
+  
+  // add eventlistener to button
+  document.getElementById('start').addEventListener('click',start, true);
+  
+  if (cameraEnabled) {
+    messages = ["face found!"];
+    document.getElementById('info').innerHTML = "face found!";
+    
+    setTimeout(function() {
+      // change messaging
+      messages = [
+        "fly as fast as possible, avoiding any obstacle",
+        "steer by moving your head",
+        "press ESC while playing to return here",
+        "SPACE = brakes"
+      ];
+    }, 1000);
+  }
+}
+
+document.addEventListener('headtrackrStatus', function(e) {
+  switch(e.status) {
+    case 'camera found':
+      gUMnCamera();
+      break;
+    case 'no getUserMedia':
+      noGUM();
+      break;
+    case 'no camera':
+      noCamera();
+      break;
+    case 'found':
+      enableStart();
+      break;
+  }
+}, false);
+
 // Face detection setup
 
 var canvasInput = document.createElement('canvas'); // compare
 canvasInput.setAttribute('width','320');
 canvasInput.setAttribute('height','240');
 
-var htracker = new headtrackr.Tracker({altVideo : "/media/facekat/nocamfallback.ogv", smoothing : false, fadeVideo : true});
+var htracker = new headtrackr.Tracker({altVideo : "/media/facekat/nocamfallback.ogv", smoothing : false, fadeVideo : true, ui : false});
 htracker.init(videoInput, canvasInput);
 htracker.start();
 

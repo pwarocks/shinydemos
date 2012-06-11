@@ -18,27 +18,3 @@ a {
 video, #canvas1 {
     display:none;
 }
-.error {
-    background:rgba(0, 0, 0, 0.7);
-    border:solid 2px #c00;
-    border-radius:1em;
-    bottom:2em;
-    display:block;
-    left:0em;
-    margin:1em auto;
-    padding:1em;
-    position:absolute;
-    right:0em;
-    text-align:center;
-    width:50%;
-}
-footer {
-    background:rgba(0, 0, 0, 0.7);
-    bottom:0;
-    display:block;
-    font-size:0.9em;
-    padding:5px 0;
-    position:absolute;
-    text-align:center;
-    width:100%;
-}

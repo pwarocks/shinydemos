@@ -9,7 +9,7 @@ body {
 	background-color: #000;
 	margin: 0px;
 	overflow: hidden;
-	cursor:crosshair;
+	cursor:default;
 }
 
 a {
@@ -60,7 +60,7 @@ a {
 
 #lives {
 	top:10px;
-	left:20px;
+	left:60px;
 	font-size:100%;
 }
 
@@ -128,4 +128,11 @@ video {
 	transform : scaleX(-1);
 	-ms-filter : fliph; /* old IE*/
 	filter : fliph; /*old IE*/
+}
+
+.grayout .but {
+  filter:alpha(opacity=40); /* IE */
+  opacity: 0.4; /* Safari, Opera */
+  -moz-opacity:0.40; /* FireFox */
+  cursor: default;
 }

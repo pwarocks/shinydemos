@@ -30,11 +30,12 @@ namespace('test', function () {
 		jake.exec([
 			'node test/config-demos-test.js',
 			'node test/config-features-test.js',
-			'node test/config-sitefeatures-test.js',
-			'node test/config-tags-test.js'
+			'node test/config-siteconfig-test.js',
+			'node test/config-tags-test.js',
+			'node test/config-demos-tags-test.js'
 		] , function() {
 			console.log("Done!");
-		}, {printStdout: true, breakOnError: false});
+		}, {printStdout: true, breakOnError: true});
 	});
 });
 

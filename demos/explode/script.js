@@ -19,10 +19,38 @@ var exploding = {
     },
     RAD : Math.PI / 180,
     tiles : []
-};
+}, video = document.querySelector('video');
+
+// Start drawing to the canvas once the video is ready.
+video.addEventListener('play', function() {
+    if (!isNaN(video.duration)) {
+        // Set the dimensions of the drawing areas
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+        
+        exploding.canvas1.width = video.videoWidth;
+        exploding.canvas1.height = video.videoHeight;
+
+        canvas2.width = windowWidth;
+        canvas2.height = windowHeight;
+                
+        if (exploding.SOURCERECT.width == 0) {
+            exploding.SOURCERECT = {
+                width : video.videoWidth,
+                height : video.videoHeight
+            };
+        }
+        
+        exploding.createTiles(windowWidth, windowHeight);
+        
+        // Start drawing the stream to the canvas
+        setInterval(function() {
+            exploding.processFrame(video, windowWidth, windowHeight)
+        }, 33);
+    }
+}, false);
 
 exploding.init = function() {
-    var video = document.querySelector('video');
     
     exploding.canvas1 = document.getElementById('canvas1');
     exploding.context1 = exploding.canvas1.getContext('2d');
@@ -42,54 +70,23 @@ exploding.init = function() {
             navigator.getUserMedia('video', function(stream) {
                 // Replace the source of the video element with the stream from the camera
                 video.src = window.webkitURL.createObjectURL(stream);
+                video.play();
             }, errorCallback);
         } else {
             navigator.getUserMedia({video: true}, function(stream) {
                 // Replace the source of the video element with the stream from the camera
                 video.src = stream;
+                video.play();
             }, errorCallback);
         }
 
         function errorCallback(error) {
-            console.error('An error occurred: [CODE ' + error.code + ']');
-            return;
+            if (error) console.error('An error occurred: [CODE ' + error.code + ']');
+            video.play();
         }
     } else {
-        var error = document.createElement('div');
-        error.textContent = 'Your browser doesn\'t have camera support. Using a rather delightful video instead.';
-        error.className = 'error';
-        document.querySelector('[role=main]').appendChild(error);
-        console.log('Native web camera streaming (getUserMedia) is not supported in this browser.');
+        video.play();
     }
-    
-    // Start drawing to the canvas once the video is ready.
-    video.addEventListener('canplay', function() {
-        if (!isNaN(video.duration)) {
-            // Set the dimensions of the drawing areas
-            var windowWidth = window.innerWidth;
-            var windowHeight = window.innerHeight;
-            
-            exploding.canvas1.width = video.videoWidth;
-            exploding.canvas1.height = video.videoHeight;
-
-            canvas2.width = windowWidth;
-            canvas2.height = windowHeight;
-                    
-            if (exploding.SOURCERECT.width == 0) {
-                exploding.SOURCERECT = {
-                    width : video.videoWidth,
-                    height : video.videoHeight
-                };
-            }
-            
-            exploding.createTiles(windowWidth, windowHeight);
-            
-            // Start drawing the stream to the canvas
-            setInterval(function() {
-                exploding.processFrame(video, windowWidth, windowHeight)
-            }, 33);
-        }
-    }, false);
 };
 
 exploding.createTiles = function(paintWidth, paintHeight) {

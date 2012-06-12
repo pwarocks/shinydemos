@@ -46,6 +46,7 @@ function appendPanel(options) {
 	if(nopes) {
 		nopeList = ['ul', {'class': 'sd-list sd-list-nope'}];
 		createFeatures(nopeFeatures, nopeList);
+		panel.classList.add('sd-panel-on');
 	}
 
 	if(yeps) {

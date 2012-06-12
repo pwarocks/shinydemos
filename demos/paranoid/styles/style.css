@@ -1,9 +1,9 @@
 /* typeface: Adore 64 by pixelite@lycos.de http://www.freakyfonts.de/ */
 @font-face {
     font-family: "Adore64";
-    src: url(../Adore64.ttf)
+    src: url(../Adore64.ttf);
 }
-
+/* Font: Adore 64 from http://www.freakyfonts.de/fonts.html */
 html, body { margin: 0; padding: 0; }
 body { font: 10px Adore64, sans-serif; background-color: #212121; color: #fff; }
 #container { width: 360px; margin: 0 auto 0 auto; padding-top: 24px; position: relative; } 
@@ -24,6 +24,12 @@ body { font: 10px Adore64, sans-serif; background-color: #212121; color: #fff; }
 }
 
 @-o-viewport {
+	width: 372px auto;
+	orientation: portrait;
+	resolution: device;
+}
+
+@-ms-viewport {
 	width: 372px auto;
 	orientation: portrait;
 	resolution: device;

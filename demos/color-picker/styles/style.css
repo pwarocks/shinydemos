@@ -4,6 +4,8 @@
 	src: local('☺'), url('../fonts/Chunkfive.woff') format('woff'), url('../fonts/Chunkfive.ttf') format('truetype'), url('../fonts/Chunkfive.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
+	/* ChunkFive font: http://www.fontsquirrel.com/fonts/ChunkFive  
+	Licensed under SIL Open Font License Version 1.1 http://www.fontsquirrel.com/license/ChunkFive */
 }
 
 body{

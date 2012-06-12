@@ -1,6 +1,6 @@
 var video = document.getElementById('video'),
-    webmvideo = "http:\/\/media.shinydemos.com\/warholiser\/wsh.webm",
-    mp4video = "http:\/\/media.shinydemos.com\/warholiser\/wsh.mp4";
+    webmvideo = "http:\/\/shinydemos.com\/media\/warholiser\/wsh.webm",
+    mp4video = "http:\/\/shinydemos.com\/media\/warholiser\/wsh.mp4";
     options = {audio: false, video:true},
     red = document.getElementById('red'),
     green = document.getElementById('green'),
@@ -28,11 +28,8 @@ if (navigator.getUserMedia){
 }
 
 function not_supported() {
-  var message = document.getElementById('message');
-  message.innerHTML = "<h1>Webcam access through the W3C WebRTC Spec is not supported by this browser, so this demo will not run properly. Using HTML5 &lt;video&gt; fallback instead.</h1>";
   video.innerHTML = "<source src=\""+webmvideo+"\" type=\"video\/webm\" ><\/source> <source src=\""+mp4video+"\" type=\"video\/mp4\" ><\/source>";
-  video.muted= true;
-        
+  video.muted= true;        
   setInterval(copyVideoToCanvas, 100);
 }
 

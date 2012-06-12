@@ -1,7 +1,7 @@
 # Relative to root directory
 siteconfig:
   deployFolder: 'deploy'
-gi  demosFolder: 'demos'
+  demosFolder: 'demos'
   sourceFolder: 'source'
   layoutsFolder: 'layouts'
 
@@ -58,7 +58,7 @@ demos:
     tags: [css3]
     support: [borderradius, borderimage]
 
-    - slug: border-radius-fun
+  - slug: border-radius-fun
     title: 'Tinkering with Border Radius'
     legend: 'There’s no corner like a rounded corner, said Shakespeare. This demo allows you to try before you buy; use the HTML5 sliders to change your radii in real time, then save the code.'
     tags: [css3]

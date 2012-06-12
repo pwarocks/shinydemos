@@ -127,8 +127,6 @@ video {
 	-webkit-transform : scaleX(-1);
 	-ms-transform: scaleX(-1);
 	transform : scaleX(-1);
-	-ms-filter : fliph; /* old IE*/
-	filter : fliph; /*old IE*/
 }
 
 .grayout .but {

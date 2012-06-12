@@ -1,8 +1,7 @@
 # Relative to root directory
 siteconfig:
   deployFolder: 'deploy'
-  deployRoot: '../shinydemos-misc'
-  demosFolder: 'demos'
+gi  demosFolder: 'demos'
   sourceFolder: 'source'
   layoutsFolder: 'layouts'
 
@@ -53,17 +52,17 @@ demos:
     tags: [css3]
     support: [csstransitions, cssgradients]
 
-  - slug: border-radius-fun
-    title: 'Tinkering with Border Radius'
-    legend: 'There’s no corner like a rounded corner, said Shakespeare. This demo allows you to try before you buy; use the HTML5 sliders to change your radii in real time, then save the code.'
-    tags: [css3]
-    support: [borderradius]
-
   - slug: border-salon
     title: 'Border Radius Salon'
     legend: 'If you’ve tried the border-fun demo, you’ve made some borders so gorgeous they should be in a gallery. border-salon is a gallery of rounded-corner loveliness — all randomly generated for your delight!'
     tags: [css3]
     support: [borderradius, borderimage]
+
+    - slug: border-radius-fun
+    title: 'Tinkering with Border Radius'
+    legend: 'There’s no corner like a rounded corner, said Shakespeare. This demo allows you to try before you buy; use the HTML5 sliders to change your radii in real time, then save the code.'
+    tags: [css3]
+    support: [borderradius]
 
   - slug: clock
     title: 'A time of reflection'

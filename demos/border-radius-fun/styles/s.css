@@ -15,11 +15,9 @@
 }
 
 body{
-	position: relative;
 	margin:0;
 	padding:0;
 	background: #E3E3E3;
-	color:#222;
 }
 
 section{display:block;}
@@ -35,6 +33,7 @@ section{display:block;}
     font: 100% / 1.5 'Gudea',helvetica,arial,sans-serif;
     min-width: 320px;
     margin:auto;
+    color:#222;
 }
 
 #wrap section{display:block;}
@@ -260,7 +259,7 @@ select{
     display:none;
 }
 
-button{
+form button{
 	background-color:#1FA5EE;
 	border: 1px solid #1FA5EE;
 	color:#fff;
@@ -276,7 +275,7 @@ button{
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#0055ff', EndColorStr='#1fa5ee');
 }
 
-button:hover, button:focus{
+form button:hover, form button:focus{
 	background-color:#0055ff;
 	background-image:none;
 	border: 1px solid #03f;
@@ -286,7 +285,7 @@ button:hover, button:focus{
 	text-shadow: none;
 }
 
-button:disabled, button[disabled]{
+form button:disabled, form button[disabled]{
     color:#666;
     text-shadow: none;
    	border: 1px solid #a8a8a8;

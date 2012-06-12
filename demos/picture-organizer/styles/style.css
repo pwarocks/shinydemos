@@ -9,7 +9,7 @@
 	orientation: landscape;
 	resolution: device; */
 }
-html { background: url(../images/inflicted.png); } /* "Inflicted" Subtle Pattern by Hugo Loning http://subtlepatterns.com/?p=658 */
+html { background: url(../images/inflicted.png); } /* "Inflicted" Subtle Pattern by Hugo Loning CC BY 3.0 Unported http://subtlepatterns.com/?p=658 */
 html,body { min-height: 100%; width: 1000px; height: 100%; margin: 0; padding: 0; overflow: hidden; }
 img {
 	display: block;

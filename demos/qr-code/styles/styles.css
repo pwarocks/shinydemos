@@ -16,8 +16,13 @@ div.sad#out { background-image: url(../images/qry-sad.png); }
 
 @-o-viewport {
 	width: 480px auto;
-	orientation: portrait; // lock orientation - not implemented yet?
-	resolution: device; // set device-dpi - not implemented yet?
+	orientation: portrait; /* lock orientation - not implemented yet? */
+	resolution: device; /* set device-dpi - not implemented yet? */
+}
+@-ms-viewport {
+	width: 480px auto;
+	orientation: portrait; /* lock orientation - not implemented yet? */
+	resolution: device; /* set device-dpi - not implemented yet? */
 }
 
 /* some basic height restrictions for video/canvas for less tall devices */

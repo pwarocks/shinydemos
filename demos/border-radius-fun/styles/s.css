@@ -12,6 +12,8 @@
          url('../fonts/MaidenOrange-webfont.svg#MaidenOrangeRegular') format('svg');
     font-weight: normal;
     font-style: normal;
+    /* Maiden Orange font: http://www.fontsquirrel.com/fonts/maiden-orange
+       Licensed under Apache Version 2.0: http://www.fontsquirrel.com/license/maidenorange */
 }
 
 body{

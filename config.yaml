@@ -185,6 +185,12 @@ demos:
     tags: [webgl]
     support: [canvas, webgl, webworkers]
 
+  - slug: hipster-dog
+    title: 'Hipster Dog'
+    legend: 'Hipster Dog'
+    tags: [css3, audio]
+    support: [csstransitions, cssanimations, audio]
+
 # Supported features list. Based on custom Modernizr build
 features:
   - slug: applicationcache

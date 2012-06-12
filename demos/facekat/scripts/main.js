@@ -529,7 +529,7 @@ var canvasInput = document.createElement('canvas'); // compare
 canvasInput.setAttribute('width','320');
 canvasInput.setAttribute('height','240');
 
-var htracker = new headtrackr.Tracker({altVideo : "/media/facekat/nocamfallback.ogv", smoothing : false, fadeVideo : true, ui : false});
+var htracker = new headtrackr.Tracker({altVideo : {"ogv" : "/media/facekat/nocamfallback.ogv", "mp4" : "/media/facekat/nocamfallback.mp4"}, smoothing : false, fadeVideo : true, ui : false});
 htracker.init(videoInput, canvasInput);
 htracker.start();
 

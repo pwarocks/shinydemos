@@ -45,6 +45,7 @@ a {
 	cursor:pointer;
 	padding: 0.5em;
 	margin: 0 auto;
+	width: 8em;
 	/* initial start button style */
 	display: none;
 }
@@ -126,8 +127,6 @@ video {
 	-webkit-transform : scaleX(-1);
 	-ms-transform: scaleX(-1);
 	transform : scaleX(-1);
-	-ms-filter : fliph; /* old IE*/
-	filter : fliph; /*old IE*/
 }
 
 .grayout .but {

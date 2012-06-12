@@ -45,6 +45,7 @@ a {
 	cursor:pointer;
 	padding: 0.5em;
 	margin: 0 auto;
+	width: 8em;
 	/* initial start button style */
 	display: none;
 }

@@ -1,6 +1,7 @@
 # Relative to root directory
 siteconfig:
   deployFolder: 'deploy'
+  deployRoot: '../shinydemos-misc'
   demosFolder: 'demos'
   sourceFolder: 'source'
   layoutsFolder: 'layouts'
@@ -12,31 +13,31 @@ siteconfig:
 tags:
   - tagName: css3
     displayName: 'CSS 3'
-    tagline: 'CSS 3: CSS was co-invented by Opera’s CTO, Håkon Wium Lie, so that Web pages could have beautiful designs. It started life as a method of specifying fonts and colours, and now provides simple animations, entire layouts and is the underpinning of Responsive Web Design.'
+    tagline: 'CSS 3: CSS was co-invented by Opera&rsquo;s CTO, Håkon Wium Lie, so that Web pages could have beautiful designs. It started life as a method of specifying fonts and colours, and now provides simple animations, entire layouts and is the underpinning of Responsive Web Design.'
 
   - tagName: svg
     displayName: 'SVG'
-    tagline: 'You want scriptable text and images, that can be manipulated using their own DOM, CSS and script, in all modern browsers? You want to produce graphics that look sharp at phone screen size or widescreen TV size? And you want to be able to make them responsive too? Of course you do — so meet SVG: Scalable Vector Graphics. But you’ll say “Shiny! Very Groovy”. And you’d be right.'
+    tagline: 'You want scriptable text and images, that can be manipulated using their own DOM, CSS and script, in all modern browsers? You want to produce graphics that look sharp at phone screen size or widescreen TV size? And you want to be able to make them responsive too? Of course you do &mdash; so meet SVG: Scalable Vector Graphics. But you&rsquo;ll say “Shiny! Very Groovy”. And you&rsquo;d be right.'
 
   - tagName: audio-video
     displayName: 'Audio & Video'
-    tagline: 'For years, the only way to add audio or video to web pages was with a plugin. Totally lame, daddy-o! These days, media can be embedded straight in the page with the HTML5 <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements then decoded — and video manipulated — natively in the browser.'
+    tagline: 'For years, the only way to add audio or video to web pages was with a plugin. Totally lame, daddy-o! These days, media can be embedded straight in the page with the HTML5 <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements then decoded &mdash; and video manipulated &mdash; natively in the browser.'
 
   - tagName: webgl
     displayName: 'WebGL'
-    tagline: 'WebGL brings OpenGL, the language of games developers, to the Web. Providing 3D graphics and low-level access down to the graphics card, it’s hard to learn but incredibly powerful for graphics and visualizations. The gaming experience is coming to the Web, and plugins can just plug off.<br><br>In Opera 12 desktop, enable webGL by entering <a href="opera:config#UserPrefs|EnableWebGL">Enable WebGL in opera:config</a> by setting the value to 1, and <a href="opera:config#UserPrefs|EnableHardwareAcceleration">Enable Hardware Acceleration</a> similarly.'
+    tagline: 'WebGL brings OpenGL, the language of games developers, to the Web. Providing 3D graphics and low-level access down to the graphics card, it&rsquo;s hard to learn but incredibly powerful for graphics and visualizations. The gaming experience is coming to the Web, and plugins can just plug off.<br><br>In Opera 12 desktop, enable webGL by entering <a href="opera:config#UserPrefs|EnableWebGL">Enable WebGL in opera:config</a> by setting the value to 1, and <a href="opera:config#UserPrefs|EnableHardwareAcceleration">Enable Hardware Acceleration</a> similarly.'
 
   - tagName: canvas
     displayName: 'Canvas'
-    tagline: 'Who said images had to be static? Boring people, that’s who. Until <code>&lt;canvas&gt;</code> was available, you had to move things around the screen using DHTML — which stands for “Damned Hard To Make, Let’sCopyFromSomeWebsite”. Now you can push pixels straight to the screen with JavaScript. It’s not only for first person shooters: by copying from videos or <code>getUserMedia</code> we produce image and video modification tools. Right now, in all modern browsers.'
+    tagline: 'Who said images had to be static? Boring people, that&rsquo;s who. Until <code>&lt;canvas&gt;</code> was available, you had to move things around the screen using DHTML &mdash; which stands for “Damned Hard To Make, Let&rsquo;sCopyFromSomeWebsite”. Now you can push pixels straight to the screen with JavaScript. It&rsquo;s not only for first person shooters: by copying from videos or <code>getUserMedia</code> we produce image and video modification tools. Right now, in all modern browsers.'
 
   - tagName: touch
     displayName: 'Touch'
-    tagline: 'Browsers are integrating with native device capabilities to make Web apps ever-closer to native apps. For example, touch input is natural and intuitive, and it’s revolutionised handheld devices. It’s time to get Peter Pointer and Ruby Ring off the mouse and onto the screen. Make sure your designs have big fat hit areas. And colours that shine through grease.'
+    tagline: 'Browsers are integrating with native device capabilities to make Web apps ever-closer to native apps. For example, touch input is natural and intuitive, and it&rsquo;s revolutionised handheld devices. It&rsquo;s time to get Peter Pointer and Ruby Ring off the mouse and onto the screen. Make sure your designs have big fat hit areas. And colours that shine through grease.'
 
   - tagName: getusermedia
     displayName: 'getUserMedia'
-    tagline: '<code>getUserMedia</code> is an API that began as part of HTML5 and was split off into the W3C WebRTC specification suite. It allows JavaScript access to a device’s cameras and microphones. Think in-browser video-conferencing! Think augmented reality! Think Shiny! Use Opera 12, Opera Mobile 12 or Chrome Canary to see the demos.'
+    tagline: '<code>getUserMedia</code> is an API that began as part of HTML5 and was split off into the W3C WebRTC specification suite. It allows JavaScript access to a device&rsquo;s cameras and microphones. Think in-browser video-conferencing! Think augmented reality! Think Shiny! Use Opera 12, Opera Mobile 12 or Chrome Canary to see the demos.'
 
 # List of all active demos with description
 demos:
@@ -54,25 +55,25 @@ demos:
 
   - slug: border-salon
     title: 'Border Radius Salon'
-    legend: 'If you’ve tried the border-fun demo, you’ve made some borders so gorgeous they should be in a gallery. border-salon is a gallery of rounded-corner loveliness — all randomly generated for your delight!'
+    legend: 'If you&rsquo;ve tried the border-fun demo, you&rsquo;ve made some borders so gorgeous they should be in a gallery. border-salon is a gallery of rounded-corner loveliness &mdash; all randomly generated for your delight!'
     tags: [css3]
     support: [borderradius, borderimage]
 
   - slug: border-radius-fun
     title: 'Tinkering with Border Radius'
-    legend: 'There’s no corner like a rounded corner, said Shakespeare. This demo allows you to try before you buy; use the HTML5 sliders to change your radii in real time, then save the code.'
+    legend: 'There&rsquo;s no corner like a rounded corner, said Shakespeare. This demo allows you to try before you buy; use the HTML5 sliders to change your radii in real time, then save the code.'
     tags: [css3]
     support: [borderradius]
 
   - slug: clock
     title: 'A time of reflection'
-    legend: 'Tick, tock, tick, tock. Stare into your webcam. Marvel at the World’s best-looking clock face.'
+    legend: 'Tick, tock, tick, tock. Stare into your webcam. Marvel at the World&rsquo;s best-looking clock face.'
     tags: [css3, getusermedia]
     support: [getusermedia]
 
   - slug: color-picker
     title: 'Real Life Color Picker'
-    legend: 'getUserMedia isn’t just about taking photos. By copying the data into canvas, you can perform image analysis. This demo contructs a pallete of the dominant colours in the image.'
+    legend: 'getUserMedia isn&rsquo;t just about taking photos. By copying the data into canvas, you can perform image analysis. This demo contructs a pallete of the dominant colours in the image.'
     tags: [css3, getusermedia]
     support: [getusermedia]
 
@@ -90,25 +91,25 @@ demos:
 
   - slug: explode
     title: 'Explode'
-    legend: 'Blow up the video, and watch as the shards still continue to move. Based on Sean Christmann’s <a href="http://www.craftymind.com/2010/04/20/blowing-up-html5-video-and-mapping-it-into-3d-space/">exploding HTML5 video experiment</a> with kind permission.'
+    legend: 'Blow up the video, and watch as the shards still continue to move. Based on Sean Christmann&rsquo;s <a href="http://www.craftymind.com/2010/04/20/blowing-up-html5-video-and-mapping-it-into-3d-space/">exploding HTML5 video experiment</a> with kind permission.'
     tags: [getusermedia]
     support: [getusermedia, canvas, video]
 
   - slug: facekat
     title: 'FaceKat'
-    legend: 'First there were punched cards for computer input, then the keyboard, the mouse, mouse gestures, the touchscreen — and now the head-wiggle! Avoid the obstacles by steering — with your head. It’s not quite <a href="http://dev.opera.com/articles/view/labs-introducing-opera-face-gestures/">face gestures</a> — yet.'
+    legend: 'First there were punched cards for computer input, then the keyboard, the mouse, mouse gestures, the touchscreen &mdash; and now the head-wiggle! Avoid the obstacles by steering &mdash; with your head. It&rsquo;s not quite <a href="http://dev.opera.com/articles/view/labs-introducing-opera-face-gestures/">face gestures</a> &mdash; yet.'
     tags: [getusermedia]
     support: [getusermedia, video]
 
   - slug: fence
     title: 'Fence'
-    legend: 'Resize the browser window (or click on “danger area”). Notice how you never see half square of chicken wire fence; the browser always ensures you see full squares only. If we say that CSS kicks ass, please don’t take offence.'
+    legend: 'Resize the browser window (or click on “danger area”). Notice how you never see half square of chicken wire fence; the browser always ensures you see full squares only. If we say that CSS kicks ass, please don&rsquo;t take offence.'
     tags: [css3, svg]
     support: [svg, inlinesvg, bgrepeatround]
 
   - slug: hixie-keyboard
     title: 'Hixie Keyboard'
-    legend: 'Press any key to make Hixie, the HTML5 editor, speak. Originally an HTML5 homage to <a href="http://www2.b3ta.com/buffyswear/">Buffy’s Swearing Keyboard</a> (NSFW, due to bad language and Flash).'
+    legend: 'Press any key to make Hixie, the HTML5 editor, speak. Originally an HTML5 homage to <a href="http://www2.b3ta.com/buffyswear/">Buffy&rsquo;s Swearing Keyboard</a> (NSFW, due to bad language and Flash).'
     tags: [audio-video, css3]
     support: [audio, video]
 
@@ -126,7 +127,7 @@ demos:
 
   - slug: odin
     title: 'ODIN'
-    legend: 'Opera is the only European browser, proudly based in Norway, where in the long dark winter, trolls roam free, mucking up your Git history by committing without useful commit messages. Every coder needs Odin to protect them, so here he is — through the magic of WebGL.'
+    legend: 'Opera is the only European browser, proudly based in Norway, where in the long dark winter, trolls roam free, mucking up your Git history by committing without useful commit messages. Every coder needs Odin to protect them, so here he is &mdash; through the magic of WebGL.'
     tags: [webgl]
     support: [webgl, audio]
 
@@ -150,7 +151,7 @@ demos:
 
   - slug: qr-code
     title: 'QRY {curie} QR code reader'
-    legend: 'Use a QR code as input for a website: getUserMedia grabs the image which is the processed using <a href="https://github.com/LazarSoft/jsqrcode">LazarSoft’s jsQRcode implementation</a>. Who knows? You might find yourself featured on <a href="http://picturesofpeoplescanningqrcodes.tumblr.com/">picturesofpeoplescanningqrcodes.tumblr.com</a>.'
+    legend: 'Use a QR code as input for a website: getUserMedia grabs the image which is the processed using <a href="https://github.com/LazarSoft/jsqrcode">LazarSoft&rsquo;s jsQRcode implementation</a>. Who knows? You might find yourself featured on <a href="http://picturesofpeoplescanningqrcodes.tumblr.com/">picturesofpeoplescanningqrcodes.tumblr.com</a>.'
     tags: [getusermedia]
     support: [getusermedia, video]
 
@@ -168,7 +169,7 @@ demos:
 
   - slug: touch-tracker
     title: 'Simple Multitouch Demonstration'
-    legend: 'Using the magic of multitouch, you can see what robots’ fingerprints would look like.'
+    legend: 'Using the magic of multitouch, you can see what robots&rsquo; fingerprints would look like.'
     tags: [canvas, touch]
     support: [canvas, touch]
 

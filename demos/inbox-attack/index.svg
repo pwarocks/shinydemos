@@ -12,10 +12,10 @@
             /* LCD font by Samuel Reynolds */
             /* License: http://www.spinwardstars.com/scrfonts/aaastdlicense.html */
             font-family: 'LCD';
-            src: url('fonts/lcd.eot') format('embedded-opentype'),
-                 url('fonts/lcd.woff') format('woff'),
-                 url('fonts/lcd.ttf') format('truetype'),
-                 url('fonts/lcd.svg#LCD') format('svg');
+            src: url('http://media.shinydemos.com/inbox-attack/fonts/lcd.eot') format('embedded-opentype'),
+                 url('http://media.shinydemos.com/inbox-attack/fonts/lcd.woff') format('woff'),
+                 url('http://media.shinydemos.com/inbox-attack/fonts/lcd.ttf') format('truetype'),
+                 url('http://media.shinydemos.com/inbox-attack/fonts/lcd.svg#LCD') format('svg');
         }
         #txt_time, #txt_score, #txt_result {
             font-family: 'LCD', monospace;

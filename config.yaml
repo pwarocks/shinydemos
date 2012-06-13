@@ -181,7 +181,7 @@ demos:
 
   - slug: hipster-dog
     title: 'Hipster Dog'
-    legend: 'Hipster Dog'
+    legend: 'Was it not Wordsworth who said "Earth hath nothing to show more fair / than a hipster dog riding a penny-farthing and bumping into giant shoes"? Tragically, he died without ever seeing Opera 12 move out of beta. In her moving tribute to Wordsworth, Luz has recreated this most elegiac of English poems, using CSS Animations and HTML5 audio instead of metaphor and synecdoche. Music by the incomparable <a href="http://incompetech.com/m/c/royalty-free/index.html?keywords=pixel">Kevin MacLeod</a>'
     tags: [css3, audio-video]
     support: [csstransitions, cssanimations, audio]
 

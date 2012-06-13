@@ -119,11 +119,12 @@ demos:
     tags: [svg]
     support: [svg]
 
-  - slug: isometric-city
-    title: 'An Isometric World'
-    legend: 'Click on the Opera logos to zoom in, and once again to zoom out, with CSS transforms and transitions.'
-    tags: [css3]
-    support: [csstransitions]
+#  waiting on permission for background image
+#  - slug: isometric-city
+#    title: 'An Isometric World'
+#    legend: 'Click on the Opera logos to zoom in, and once again to zoom out, with CSS transforms and transitions.'
+#    tags: [css3]
+#   support: [csstransitions]
 
   - slug: odin
     title: 'ODIN'

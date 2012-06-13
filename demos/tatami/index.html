@@ -1,487 +1,56 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-<title>Tatami</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<style type="text/css">
-
-body {margin: 0; font-family: Helvetica, Arial, sans-serif; font-size: 0.9em; background: #111;}
-
-a {color: #004800; text-decoration: none; padding-right: 1em;}
-a:hover {text-decoration: underline;}
-
-#room {
-	position: relative;
-	margin: 20px;
-}
-
-@media screen and (max-width: 480px) {
-	#room {margin: 8px; height: 730px;}
-}	
-
-
-.tatami {
-	height: 132px; width: 264px;
-	box-sizing: border-box;
-	background: #000 url(tatami.jpg) 0 0 no-repeat; 
-	border-radius: 2px; 
-	position: absolute;
-	-webkit-transform-origin: 0% 0%;
-	-webkit-transition: all ease-in-out 1s;
-	-webkit-transform: rotate(90deg);
-	-moz-transform-origin: 0% 0%;
-	-moz-transition: all ease-in-out 1s;
-	-moz-transform: rotate(90deg);
-	-ms-transform-origin: 0% 0%;
-	-ms-transition: all ease-in-out 1s;
-	-ms-transform: rotate(90deg);
-	-o-transform-origin: 0% 0%;
-	-o-transition: all ease-in-out 1s;
-	-o-transform: rotate(90deg);
-	transform-origin: 0% 0%;
-	transition: all ease-in-out 1s;
-	transform: rotate(90deg);	
-}
-
-.fancylayout .tatami {
-	background: 
-		-webkit-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
-		-webkit-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x,
-		-webkit-repeating-linear-gradient(2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
-		-webkit-repeating-linear-gradient(-2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
-		-webkit-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
-	background: 
-		-moz-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
-		-moz-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x,
-		-moz-repeating-linear-gradient(2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
-		-moz-repeating-linear-gradient(-2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
-		-moz-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
-	background: 
-		-ms-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
-		-ms-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x,
-		-ms-repeating-linear-gradient(2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
-		-ms-repeating-linear-gradient(-2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
-		-ms-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
-	background: 
-		-o-linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
-		-o-linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x,
-		-o-repeating-linear-gradient(2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
-		-o-repeating-linear-gradient(-2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
-		-o-repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
-	background: 
-		linear-gradient(90deg, hsla(0,0%,0%, 0.6) 0, transparent 4px, transparent 128px, hsla(0,0%,0%, 0.4) 132px),
-		linear-gradient(0deg, hsla(0,0%,0%, 0.6) 0, hsla(0,0%,0%, 0.1) 4px, transparent 100px, transparent 164px, hsla(0,0%,0%, 0.1) 260px, hsla(0,0%,0%, 0.4) 264px), 
-		url(micro.png) 0 -18px repeat-x, url(micro.png) 2px 125px repeat-x,
-		repeating-linear-gradient(2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
-		repeating-linear-gradient(-2deg, transparent 0, hsla(39, 19%, 60%, 0.3) 2px, transparent 4px), 
-		repeating-linear-gradient(90deg, hsla(36,53%,84%,1) 0,hsla(40,27%,71%,1) 1px,hsla(39,14%,51%,1) 3px);
-}
-/* micro.png is based off of a free pattern by Philip Seyfi found at http://japanese.lingualift.com/blog/free-japanese-background-patterns/ */
-
-	
-#selector {background: hsla(0, 0%, 100%, 0.8); border-radius: 5px; text-shadow: hsla(0, 0%, 100%, 0.4) 0 1px 0; position: absolute; right: 0px; padding: 0; width: 210px;}
-#selector ul, #selector p {list-style: none; margin: 5px; padding: 0 0 0 5px; line-height: 1.5em;}
-#selector li {padding: 0.2em 0 0.2em 0;}
-#selector h1 {font-size: 1em; margin: 0;background:hsla(0, 0%, 100%, 0.4); padding: 7px 10px 5px 10px;}
-#selector h1:nth-child(1) {border-radius: 5px 5px 0 0;}
-
-
-@media screen and (max-width: 1000px) {
-	#selector {top: 0; left: 0; width: 440px;}
-	#selector section {float: left; width: 50%;}
-}
-
-@media screen and (max-width: 480px) {
-	#selector {width: 100%;}
-	#selector section {float: clear; width: 100%;}
-}
-
-
-.normallayout #normal {font-weight: bold;}
-.fancylayout #fancy {font-weight: bold;}
-
-#floor {
-	-webkit-transition: all ease-in-out 1s; 
-	-moz-transition: all ease-in-out 1s; 
-	-ms-transition: all ease-in-out 1s; 
-	-o-transition: all ease-in-out 1s; 
-	transition: all ease-in-out 1s; 
-	width: 860px; height: 600px;  position: absolute; top: 0;
-	-webkit-transform-origin: 0% 0%;
-	-moz-transform-origin: 0% 0%;
-	-ms-transform-origin: 0% 0%;
-	-o-transform-origin: 0% 0%;
-	transform-origin: 0% 0%;
-}
-
-@media screen and (max-width: 1000px) {
-	#floor {top: 270px;}
-}
-@media screen and (max-width: 909px) {
-	#floor {
-		-webkit-transform: scale(0.9) !important;
-		-moz-transform: scale(0.9) !important;
-		-ms-transform: scale(0.9) !important;
-		-o-transform: scale(0.9) !important;
-		transform: scale(0.9) !important;
-	}
-}
-@media screen and (max-width: 819px) {
-	#floor {
-		-webkit-transform: scale(0.8) !important;
-		-moz-transform: scale(0.8) !important;
-		-ms-transform: scale(0.8) !important;
-		-o-transform: scale(0.8) !important;
-		transform: scale(0.8) !important;
-	}
-}
-@media screen and (max-width: 729px) {
-	#floor {
-		-webkit-transform: scale(0.7) !important;
-		-moz-transform: scale(0.7) !important;
-		-ms-transform: scale(0.7) !important;
-		-o-transform: scale(0.7) !important;
-		transform: scale(0.7) !important;
-	}
-}
-@media screen and (max-width: 639px) {
-	#floor {
-		-webkit-transform: scale(0.6) !important;
-		-moz-transform: scale(0.6) !important;
-		-ms-transform: scale(0.6) !important;
-		-o-transform: scale(0.6) !important;
-		transform: scale(0.6) !important;
-	}
-}
-@media screen and (max-width: 549px) {
-	#floor {
-		-webkit-transform: scale(0.5) !important;
-		-moz-transform: scale(0.5) !important;
-		-ms-transform: scale(0.5) !important;
-		-o-transform: scale(0.5) !important;
-		transform: scale(0.5) !important;
-	}
-}
-@media screen and (max-width: 480px) {
-	#floor {top: 420px;}
-}
-@media screen and (max-width: 459px) {
-	#floor {
-		-webkit-transform: scale(0.4) !important;
-		-moz-transform: scale(0.4) !important;
-		-ms-transform: scale(0.4) !important;
-		-o-transform: scale(0.4) !important;
-		transform: scale(0.4) !important;
-	}
-}
-@media screen and (max-width: 369px) {
-	#floor {
-		-webkit-transform: scale(0.35) !important;
-		-moz-transform: scale(0.35) !important;
-		-ms-transform: scale(0.35) !important;
-		-o-transform: scale(0.35) !important;
-		transform: scale(0.35) !important;
-	}
-}
-
-#t1 {left: 200px; top: 50px;}
-#t2 {left: 205px; top: 55px;}
-#t3 {left: 210px; top: 60px;}
-#t4 {left: 215px; top: 65px;}
-#t5 {left: 220px; top: 70px;}
-#t6 {left: 225px; top: 75px;}
-#t7 {left: 230px; top: 80px;}
-#t8 {left: 235px; top: 85px;}
-#t9 {left: 240px; top: 90px;}
-#t10 {left: 245px; top: 95px;}
-#t11 {left: 250px; top: 100px;}
-#t12 {left: 255px; top: 105px;}
-
-.s6 #t1 {left: 830px; top: 50px;}
-.s6 #t2 {left: 835px; top: 55px;}
-.s6 #t3 {left: 132px; top: 0px;}
-.s6 #t4 {left: 132px; top: 264px;}
-.s6 #t5 {left: 132px; top: 0px;}
-.s6 #t6 {left: 264px; top: 132px;}
-.s6 #t7 {left: 396px; top: 132px;}
-.s6 #t8 {left: 132px; top: 396px;}
-.s6 #t9 {left: 840px; top: 60px;}
-.s6 #t10 {left: 845px; top: 65px;}
-.s6 #t11 {left: 850px; top: 70px;}
-.s6 #t12 {left: 855px; top: 75px;}
-.s6 #s6 {font-weight: bold;}
-
-.s8 #t1 {left: 830px; top: 50px;}
-.s8 #t2 {left: 835px; top: 55px;}
-.s8 #t3 {left: 132px; top: 0px;}
-.s8 #t4 {left: 132px; top: 264px;}
-.s8 #t5 {left: 132px; top: 0px;}
-.s8 #t6 {left: 264px; top: 132px;}
-.s8 #t7 {left: 396px; top: 132px;}
-.s8 #t8 {left: 132px; top: 396px;}
-.s8 #t9 {left: 528px; top: 0px;}
-.s8 #t10 {left: 528px; top: 264px;}
-.s8 #t11 {left: 840px; top: 60px;}
-.s8 #t12 {left: 845px; top: 65px;}
-.s8 #s8 {font-weight: bold;}
-
-.s10 #t1 {left: 132px; top: 0;}
-.s10 #t2 {left: 132px; top: 264px;}
-.s10 #t3 {left: 132px; top: 0;}
-.s10 #t4 {left: 396px; top: 0;}
-.s10 #t5 {left: 264px; top: 132px;}
-.s10 #t6 {left: 264px; top: 132px;}
-.s10 #t7 {left: 264px; top: 264px;}
-.s10 #t8 {left: 660px; top: 132px;}
-.s10 #t9 {left: 132px; top: 396px;}
-.s10 #t10 {left: 396px; top: 396px;}
-.s10 #t11 {left: 830px; top: 50px;}
-.s10 #t12 {left: 835px; top: 55px;}
-.s10 #s10 {font-weight: bold;}
-
-.s12 #t1 {left: 132px; top: 0;}
-.s12 #t2 {left: 132px; top: 264px;}
-.s12 #t3 {left: 132px; top: 0;}
-.s12 #t4 {left: 396px; top: 0;}
-.s12 #t5 {left: 264px; top: 132px;}
-.s12 #t6 {left: 264px; top: 132px;}
-.s12 #t7 {left: 264px; top: 264px;}
-.s12 #t8 {left: 660px; top: 132px;}
-.s12 #t9 {left: 132px; top: 396px;}
-.s12 #t10 {left: 396px; top: 396px;}
-.s12 #t11 {left: 792px; top: 0;}
-.s12 #t12 {left: 792px; top: 264px;}
-.s12 #s12 {font-weight: bold;}
-
-.f6 #t1 {left: 132px; top: 0px;}
-.f6 #t2 {left: 264px; top: 0px;}
-.f6 #t3 {left: 396px; top: 0px;}
-.f6 #t4 {left: 830px; top: 50px;}
-.f6 #t5 {left: 132px; top: 264px}
-.f6 #t6 {left: 264px; top: 264px;}
-.f6 #t7 {left: 396px; top: 264px;}
-.f6 #t8 {left: 835px; top: 55px;}
-.f6 #t9 {left: 840px; top: 60px;}
-.f6 #t10 {left: 845px; top: 65px;}
-.f6 #t11 {left: 850px; top: 70px;}
-.f6 #t12 {left: 855px; top: 75px;}
-.f6 #f6 {font-weight: bold;}
-
-.f8 #t1 {left: 132px; top: 0px;}
-.f8 #t2 {left: 264px; top: 0px;}
-.f8 #t3 {left: 396px; top: 0px;}
-.f8 #t4 {left: 528px; top: 0px;}
-.f8 #t5 {left: 132px; top: 264px}
-.f8 #t6 {left: 264px; top: 264px;}
-.f8 #t7 {left: 396px; top: 264px;}
-.f8 #t8 {left: 528px; top: 264px;}
-.f8 #t9 {left: 830px; top: 50px;}
-.f8 #t10 {left: 835px; top: 55px;}
-.f8 #t11 {left: 840px; top: 60px;}
-.f8 #t12 {left: 845px; top: 65px;}
-.f8 #f8 {font-weight: bold;}
-
-.f10 #t1 {left: 132px; top: 0px;}
-.f10 #t2 {left: 264px; top: 0px;}
-.f10 #t3 {left: 396px; top: 0px;}
-.f10 #t4 {left: 528px; top: 0px;}
-.f10 #t5 {left: 132px; top: 264px;}
-.f10 #t6 {left: 264px; top: 264px;}
-.f10 #t7 {left: 396px; top: 264px;}
-.f10 #t8 {left: 528px; top: 264px;}
-.f10 #t9 {left: 660px; top: 0;}
-.f10 #t10 {left: 660px; top: 264px;}
-.f10 #t11 {left: 830px; top: 50px;}
-.f10 #t12 {left: 835px; top: 55px;}
-.f10 #f10 {font-weight: bold;}
-
-.f12 #t1 {left: 132px; top: 0px;}
-.f12 #t2 {left: 264px; top: 0px;}
-.f12 #t3 {left: 396px; top: 0px;}
-.f12 #t4 {left: 528px; top: 0px;}
-.f12 #t5 {left: 132px; top: 264px;}
-.f12 #t6 {left: 264px; top: 264px;}
-.f12 #t7 {left: 396px; top: 264px;}
-.f12 #t8 {left: 528px; top: 264px;}
-.f12 #t9 {left: 660px; top: 0;}
-.f12 #t10 {left: 660px; top: 264px;}
-.f12 #t11 {left: 792px; top: 0;}
-.f12 #t12 {left: 792px; top: 264px;}
-.f12 #f12 {font-weight: bold;}
-
-.s6 #t5, .s6 #t8,
-.s8 #t5, .s8 #t8,
-.s10 #t3, .s10 #t4, .s10 #t6, .s10 #t7, .s10 #t9, .s10 #t10,
-.s12 #t3, .s12 #t4, .s12 #t6, .s12 #t7, .s12 #t9, .s12 #t10 { 
-	-webkit-transform: rotate(0deg); 
-	-moz-transform: rotate(0deg); 
-	-ms-transform: rotate(0deg); 
-	-o-transform: rotate(0deg);
-	transform: rotate(0deg);
-}
-
-
-</style>
-<link rel="stylesheet" href="/styles/panel.css">
-<script type="text/javascript"> 
-
-function init() {
-	var s6 = document.getElementById('s6');
-	var s8 = document.getElementById('s8');
-	var s10 = document.getElementById('s10');
-	var s12 = document.getElementById('s12');
-	var f6 = document.getElementById('f6');
-	var f8 = document.getElementById('f8');
-	var f10 = document.getElementById('f10');
-	var f12 = document.getElementById('f12');
-	var room = document.getElementById('room');
-	var normal = document.getElementById('normal');
-	var fancy = document.getElementById('fancy');
-	s6.addEventListener('click', function (s6) {
-		s6.preventDefault();
-		room.classList.add('s6');
-		room.classList.remove('s8');
-		room.classList.remove('s10');
-		room.classList.remove('s12');
-		room.classList.remove('f6');
-		room.classList.remove('f8');
-		room.classList.remove('f10');
-		room.classList.remove('f12');
-	}, false);
-	s8.addEventListener('click', function (s8) {
-		s8.preventDefault();
-		room.classList.add('s8');
-		room.classList.remove('s6');
-		room.classList.remove('s10');
-		room.classList.remove('s12');
-		room.classList.remove('f6');
-		room.classList.remove('f8');
-		room.classList.remove('f10');
-		room.classList.remove('f12');
-	}, false);
-	s10.addEventListener('click', function (s10) {
-		s10.preventDefault();
-		room.classList.add('s10');
-		room.classList.remove('s6');
-		room.classList.remove('s8');
-		room.classList.remove('s12');
-		room.classList.remove('f6');
-		room.classList.remove('f8');
-		room.classList.remove('f10');
-		room.classList.remove('f12');
-	}, false);
-	s12.addEventListener('click', function (s12) {
-		s12.preventDefault();
-		room.classList.add('s12');
-		room.classList.remove('s6');
-		room.classList.remove('s8');
-		room.classList.remove('s10');
-		room.classList.remove('f6');
-		room.classList.remove('f8');
-		room.classList.remove('f10');
-		room.classList.remove('f12');
-	}, false);
-	f6.addEventListener('click', function (f6) {
-		f6.preventDefault();
-		room.classList.add('f6');
-		room.classList.remove('s6');
-		room.classList.remove('s8');
-		room.classList.remove('s10');
-		room.classList.remove('s12');
-		room.classList.remove('f8');
-		room.classList.remove('f10');
-		room.classList.remove('f12');
-	}, false);
-	f8.addEventListener('click', function (f8) {
-		f8.preventDefault();
-		room.classList.add('f8');
-		room.classList.remove('s6');
-		room.classList.remove('s8');
-		room.classList.remove('s10');
-		room.classList.remove('s12');
-		room.classList.remove('f6');
-		room.classList.remove('f10');
-		room.classList.remove('f12');
-	}, false);
-	f10.addEventListener('click', function (f10) {
-		f10.preventDefault();
-		room.classList.add('f10');
-		room.classList.remove('s6');
-		room.classList.remove('s8');
-		room.classList.remove('s10');
-		room.classList.remove('s12');
-		room.classList.remove('f6');
-		room.classList.remove('f8');
-		room.classList.remove('f12');
-	}, false);
-	f12.addEventListener('click', function (f12) {
-		f12.preventDefault();
-		room.classList.add('f12');
-		room.classList.remove('s6');
-		room.classList.remove('s8');
-		room.classList.remove('s10');
-		room.classList.remove('s12');
-		room.classList.remove('f6');
-		room.classList.remove('f8');
-		room.classList.remove('f10');
-	}, false);
-	normal.addEventListener('click', function (normal) {
-		normal.preventDefault();
-		room.classList.add('normallayout');
-		room.classList.remove('fancylayout');
-	}, false);
-	fancy.addEventListener('click', function (fancy) {
-		fancy.preventDefault();
-		room.classList.remove('normallayout');
-		room.classList.add('fancylayout');
-	}, false);
-}
-window.addEventListener('load', init, false);
-</script>
-
+	<title>Tatami — Shiny Demos</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="styles/screen.css">
+	<link rel="stylesheet" href="/styles/panel.css">
 </head>
 <body>
-<div id="room" class="normallayout flatlayout">
-<div id="floor">
-<div class="tatami" id="t1"></div><div class="tatami" id="t2"></div>
-<div class="tatami" id="t3"></div><div class="tatami" id="t4"></div>
-<div class="tatami" id="t5"></div><div class="tatami" id="t6"></div>
-<div class="tatami" id="t7"></div><div class="tatami" id="t8"></div>
-<div class="tatami" id="t9"></div><div class="tatami" id="t10"></div>
-<div class="tatami" id="t11"></div><div class="tatami" id="t12"></div>
-</div>
-<div id="selector">
-<section>
-<h1>Tatami layout selector</h1>
-<ul id="layout">
-	<li><a href="#" id="s6">auspicious pattern of 6</a></li>
-	<li><a href="#" id="s8">auspicious pattern of 8</a></li>
-	<li><a href="#" id="s10">auspicious pattern of 10</a></li>
-	<li><a href="#" id="s12">auspicious pattern of 12</a></li>
-	<li><a href="#" id="f6">inauspicious pattern of 6</a></li>
-	<li><a href="#" id="f8">inauspicious pattern of 8</a></li>
-	<li><a href="#" id="f10">inauspicious pattern of 10</a></li>
-	<li><a href="#" id="f12">inauspicious pattern of 12</a></li>
-</ul>
-</section>
-<section>
-<h1>Images or gradients</h1>
-<ul>
-	<li><a href="#" id="normal">with images</a></li>
-	<li><a href="#" id="fancy">with gradients</a></li>
-</ul>
-<h1>Reference</h1>
-<p>See <a href="http://ja.wikipedia.org/wiki/畳#.E6.95.B7.E3.81.8D.E3.81.8B.E3.81.9F">畳 - Wikipedia</a></p>
-</section>
-</div>
-</div>
-<script src="/scripts/modernizr.js"></script>
-<script src="/scripts/panel.js"></script>
-<script src="scripts/options.js"></script>
+	<div id="room" class="normallayout flatlayout">
+		<div id="floor">
+			<div class="tatami" id="t1"></div>
+			<div class="tatami" id="t2"></div>
+			<div class="tatami" id="t3"></div>
+			<div class="tatami" id="t4"></div>
+			<div class="tatami" id="t5"></div>
+			<div class="tatami" id="t6"></div>
+			<div class="tatami" id="t7"></div>
+			<div class="tatami" id="t8"></div>
+			<div class="tatami" id="t9"></div>
+			<div class="tatami" id="t10"></div>
+			<div class="tatami" id="t11"></div>
+			<div class="tatami" id="t12"></div>
+		</div>
+		<div id="selector">
+			<section>
+				<h1>Tatami layout selector</h1>
+				<ul id="layout">
+					<li><a href="#" id="s6">auspicious pattern of 6</a></li>
+					<li><a href="#" id="s8">auspicious pattern of 8</a></li>
+					<li><a href="#" id="s10">auspicious pattern of 10</a></li>
+					<li><a href="#" id="s12">auspicious pattern of 12</a></li>
+					<li><a href="#" id="f6">inauspicious pattern of 6</a></li>
+					<li><a href="#" id="f8">inauspicious pattern of 8</a></li>
+					<li><a href="#" id="f10">inauspicious pattern of 10</a></li>
+					<li><a href="#" id="f12">inauspicious pattern of 12</a></li>
+				</ul>
+			</section>
+			<section>
+				<h1>Images or gradients</h1>
+				<ul>
+					<li><a href="#" id="normal">with images</a></li>
+					<li><a href="#" id="fancy">with gradients</a></li>
+				</ul>
+				<h1>Reference</h1>
+				<p>See <a href="http://ja.wikipedia.org/wiki/畳#.E6.95.B7.E3.81.8D.E3.81.8B.E3.81.9F">畳 - Wikipedia</a></p>
+			</section>
+		</div>
+	</div>
+	<script src="/scripts/modernizr.js"></script>
+	<script src="/scripts/panel.js"></script>
+	<script src="scripts/options.js"></script>
+	<script src="scripts/script.js"></script>
 </body>
 </html>

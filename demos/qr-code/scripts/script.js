@@ -50,28 +50,23 @@ var qry = {
 		qry.container = qry.video.parentNode;
 		qry.out = document.getElementById('out');
 
-		// Standard and webkit methods for hooking into stream (not very DRY though)
-		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+		// Standard and prefixed methods for hooking into stream
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+		window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+
 		if (navigator.getUserMedia) {        
-			if (window.webkitURL) {
-				navigator.getUserMedia('video', function(stream) {
-					// Replace the source of the video element with the stream from the camera
-					qry.video.src = window.webkitURL.createObjectURL(stream);
-					setTimeout(qry.canvasInit,250); // Needed to get videoWidth/videoHeight
-				}, errorCallback);
-			} else {
 				navigator.getUserMedia({video: true}, function(stream) {
 					// Replace the source of the video element with the stream from the camera
-					qry.video.src = stream;
+					qry.video.src = window.URL.createObjectURL(stream) || stream;
 					setTimeout(qry.canvasInit,250); // Needed to get videoWidth/videoHeight
 				}, errorCallback);
-			}
-			function errorCallback(error) {
-				qry.out.className = 'sad';
-				qry.out.innerHTML = 'an error occurred';
-				return;
-			}
-		} else {
+				
+				function errorCallback(error) {
+						qry.out.className = 'sad';
+						qry.out.innerHTML = 'an error occurred';
+						return;
+					}	
+			} else {
 			qry.out.className = 'sad';
 			qry.out.innerHTML = 'no <code>getUserMedia</code> support';
 			return;

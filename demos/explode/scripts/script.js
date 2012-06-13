@@ -65,12 +65,14 @@ exploding.init = function() {
     
     // Get the stream from the camera using getUserMedia
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+    window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+    
     if (navigator.getUserMedia) {
         navigator.getUserMedia({video: true, toString: function(){return 'video';}}, successCallback, errorCallback);
 
         function successCallback(stream) {
             // Replace the source of the video element with the stream from the camera
-            video.src = (window.webkitURL) ? window.webkitURL.createObjectURL(stream) : stream;
+            video.src = window.URL.createObjectURL(stream) || stream;
             video.play();
         }
         

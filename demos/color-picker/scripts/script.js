@@ -16,15 +16,12 @@ var options = {
 
 var notsupported = false;
 
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+
 if (navigator.getUserMedia){
 	navigator.getUserMedia(options, v_success);
-}
-
-else if (navigator.webkitGetUserMedia) {
-	navigator.webkitGetUserMedia(options, webkit_v_success, v_error)
-}
-
- else{
+} else {
 	not_supported();
 }
 
@@ -35,11 +32,7 @@ function not_supported(){
 }
 
 function v_success(stream){
-	video_element.src = stream;
-}
-
-function webkit_v_success(stream){
-	video_element.src = window.webkitURL.createObjectURL(stream);
+	video_element.src = window.URL.createObjectURL( stream ) || stream;
 }
 
 function v_error(error){

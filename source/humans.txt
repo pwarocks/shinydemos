@@ -3,18 +3,16 @@
 	Shiny demos: 
 
 		Daniel Davis @ourmaninjapan 
-		Zi Bin Cheah @zibin
 		Shwetank Dixit @shwetank
 		Andreas Bovens @andreasbovens
 		Bruce Lawson @brucel
-		Chris Mills @chrisdavidmills
 		Patrick Lauke @patrick_h_lauke
-		Karl Dubost @karlpro
 		Vadim Makeev @pepelsbey
-		Divya Manian @divya
 		Mike Taylor @miketaylr
 		Luz Caballero @gerbille
 		Tiffany Brown @webinista
+		Audun Mathias Øygard @matsiyatzy
+		Erik Möller @erikjmoller
 
 	Site design & pixel pushing:
 
@@ -23,8 +21,9 @@
 	Site backend magic:
 
 		Divya Manian @divya (emeritus)
-		Mike Taylror @miketaylr
+		Mike Taylor @miketaylr
 
 	Github mastery:
 
 		Mike Taylor @miketaylr
+

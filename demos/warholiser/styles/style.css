@@ -12,9 +12,9 @@
          url('../fonts/daniel-webfont.svg#DanielRegular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
-
+/* Daniel font from http://www.fontsquirrel.com/fonts/Daniel
+   License: http://www.fontsquirrel.com/license/Daniel */
 
 body{
 	background-color: #999;

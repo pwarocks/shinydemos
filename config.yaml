@@ -68,7 +68,7 @@ demos:
   - slug: clock
     title: 'A time of reflection'
     legend: 'Tick, tock, tick, tock. Stare into your webcam. Marvel at the World&rsquo;s best-looking clock face.'
-    tags: [css3, getusermedia]
+    tags: [css3, getusermedia, svg]
     support: [getusermedia]
 
   - slug: color-picker

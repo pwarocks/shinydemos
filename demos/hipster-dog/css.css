@@ -1,0 +1,269 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+#sound {
+    position: absolute;
+    right: 10px;
+}
+
+@-webkit-keyframes willy {0% {
+    -webkit-transform: rotate(0deg);
+  }
+  10% {
+    -webkit-transform: rotate(-10deg);
+  }
+  30% {
+    -webkit-transform: rotate(-20deg);
+  }
+  80% {
+    -webkit-transform: rotate(-21deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
+@-webkit-keyframes swirl {0% {
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: translate(0, -200px) rotate(-180deg);
+  }
+  100% {
+    -webkit-transform: translate(0, 0px) rotate(-360deg);
+  }
+}
+
+@-o-keyframes willy {0% {
+    -o-transform: rotate(0deg);
+  }
+  10% {
+    -o-transform: rotate(-10deg);
+  }
+  30% {
+    -o-transform: rotate(-20deg);
+  }
+  80% {
+    -o-transform: rotate(-21deg);
+  }
+  100% {
+    -o-transform: rotate(0deg);
+  }
+}
+
+@-o-keyframes swirl {0% {
+    -o-transform: rotate(0deg);
+  }
+  50% {
+    -o-transform: translate(0,-200px) rotate(-180deg);
+  }
+  100% {
+    -o-transform: translate(0,0px) rotate(0deg);
+  }
+}
+
+@-moz-keyframes willy {0% {
+    -moz-transform: rotate(0deg);
+  }
+  10% {
+    -moz-transform: rotate(-10deg);
+  }
+  30% {
+    -moz-transform: rotate(-20deg);
+  }
+  80% {
+    -moz-transform: rotate(-21deg);
+  }
+  100% {
+    -moz-transform: rotate(0deg);
+  }
+}
+
+@-moz-keyframes swirl {0% {
+    -moz-transform: rotate(0deg);
+  }
+  50% {
+    -moz-transform: translate(0,-200px) rotate(-180deg);
+  }
+  100% {
+    -moz-transform: translate(0,0px) rotate(0deg);
+  }
+}
+
+@keyframes willy {0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(-10deg);
+  }
+  30% {
+    transform: rotate(-20deg);
+  }
+  80% {
+    transform: rotate(-21deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes swirl {0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: translate(0, -200px) rotate(-180deg);
+  }
+  100% {
+    transform: translate(0, 0px) rotate(-360deg);
+  }
+}
+
+@-webkit-keyframes wheel {
+  0% {
+    -webkit-transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes wheel {
+  0% {
+    -moz-transform: rotate(0);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes wheel {
+  0% {
+    -o-transform: rotate(0);
+  }
+  100% {
+    -o-transform: rotate(360deg);
+  }
+}
+
+@keyframes wheel {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#countryside {
+  width: 100%;
+  /* width: 900px;*/
+  height: 800px;
+  padding: 10px 0 10px 0;
+  background-image: url(countryside.jpg);
+  background-position: 0px 0px;
+  position: relative;
+  background-repeat: repeat-x;
+  overflow: hidden;
+}
+
+#shoe {
+  width: 395px;
+  height: 150px;
+  background-image: url(shoe.png);	
+  background-position: 0 0;
+  position: absolute;
+  /*top: 535px;*/
+  top: 545px;
+  background-repeat: no-repeat;
+  opacity: 1;
+
+  -webkit-transition: opacity 1000ms;
+  -o-transition: opacity 1000ms;
+  -moz-transition: opacity 1000ms;
+  -ms-transition: opacity 1000ms;
+  transition: opacity 1000ms;
+}
+
+#shoe.hide {
+  opacity: 0;
+}
+
+
+#old_bicycle {
+  width: 364px;
+  height: 312px;
+  position: absolute;
+  /*top: 316px;*/
+  top: 346px;
+  left: 100px;
+  background-repeat: no-repeat;
+}
+
+#big_wheel, #small_wheel, #bicycle_frame {
+  position: absolute;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+
+#big_wheel {
+  background-image: url(big_wheel.png);
+  width: 258px;
+  height: 258px;
+  top: 70px;
+  left: 100px;
+}
+
+#small_wheel {
+  background-image: url(small_wheel.png);
+  width: 99px;
+  height: 99px;
+  top: 210px;
+  left: 0;
+}
+
+#bicycle_frame {
+  background-image: url(bicycle_frame.png);
+  width: 210px;
+  height: 261px;
+  top: 5px;
+  left: 42px;
+}
+
+#doggie {
+  width: 80px;
+  height: 80px;
+  background-image: url(http://media.shinydemos.com/hipster-dog/doggie.png);
+  background-position: 0 0;
+  position: absolute;
+  /*top: 280px;*/
+  top: 313px;
+  left: 234px;
+  background-repeat: no-repeat;
+}
+.bubble {
+  width: 94px;
+  /*height: 64px;*/
+  background-position: 0px 0px;
+  position: absolute;
+  background-repeat: no-repeat;
+  visibility: hidden;
+}
+.bubble1 {
+  width: 90px;
+  padding: 4px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+.bubble2{
+  width: 24px;
+  height: 23px;
+  margin: -1px 0 0 60px;
+  background: url('bubble_arrow.gif');
+  background-repeat: no-repeat; 
+}

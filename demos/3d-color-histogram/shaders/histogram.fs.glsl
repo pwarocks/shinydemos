@@ -2,15 +2,13 @@
 precision highp float;
 #endif
 
-#define LIGHT_MAX 40
+#define LIGHT_MAX 2
 
 varying vec3 vColor;
 varying vec4 vTransformedNormal;
 varying vec4 vPosition;
 
 uniform float shininess;
-uniform bool enableSpecularHighlights;
-uniform bool enableLights;
 
 uniform vec3 ambientColor;
 uniform vec3 directionalColor;
@@ -19,52 +17,37 @@ uniform vec3 lightingDirection;
 uniform vec3 pointLocation[LIGHT_MAX];
 uniform vec3 pointColor[LIGHT_MAX];
 uniform vec3 pointSpecularColor[LIGHT_MAX];
-uniform float enableSpecular[LIGHT_MAX];
 uniform int numberPoints;
 
 uniform mat4 viewMatrix;
 
 void main(void) {
   vec3 lightWeighting;
-  if (!enableLights) {
-    lightWeighting = vec3(1.0, 1.0, 1.0);
-  } else {
-    vec3 lightDirection;
-    float specularLightWeighting = 0.0;
-    float diffuseLightWeighting = 0.0;
-    vec3  specularLight = vec3(0.0, 0.0, 0.0);
-    vec3  diffuseLight = vec3(0.0, 0.0, 0.0);
-    
-    vec3 transformedPointLocation;
-    vec3 normal = vTransformedNormal.xyz;
-    
-    vec3 eyeDirection = normalize(-vPosition.xyz);
-    vec3 reflectionDirection;
-    
-    vec3 pointWeight = vec3(0.0, 0.0, 0.0);
- 
-    for (int i = 0; i < LIGHT_MAX; i++) {
-      if (i < numberPoints) {
-        transformedPointLocation = (viewMatrix * vec4(pointLocation[i], 1.0)).xyz;
-        lightDirection = normalize(transformedPointLocation - vPosition.xyz);
-        
-        if (enableSpecular[i] > 0.0) {
-          reflectionDirection = reflect(-lightDirection, normal);
-          specularLightWeighting = pow(max(dot(reflectionDirection, eyeDirection), 0.0), shininess);
-          specularLight += specularLightWeighting * pointSpecularColor[i];
-        }
+  vec3 lightDirection;
+  float specularLightWeighting = 0.0;
+  float diffuseLightWeighting = 0.0;
+  vec3  specularLight = vec3(0.0, 0.0, 0.0);
+  vec3  diffuseLight = vec3(0.0, 0.0, 0.0);
 
-        diffuseLightWeighting = max(dot(normal, lightDirection), 0.0);
-        diffuseLight += diffuseLightWeighting * pointColor[i];
-      } else {
-        break;
-      }
-    }
-    
-    lightWeighting = ambientColor + diffuseLight + specularLight;
-  }
+  vec3 transformedPointLocation;
+  vec3 normal = vTransformedNormal.xyz;
 
-//  gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+  vec3 eyeDirection = normalize(-vPosition.xyz);
+  vec3 reflectionDirection;
+
+  vec3 pointWeight = vec3(0.0, 0.0, 0.0);
+
+  transformedPointLocation = (viewMatrix * vec4(pointLocation[0], 1.0)).xyz;
+  lightDirection = normalize(transformedPointLocation - vPosition.xyz);
+
+  reflectionDirection = reflect(-lightDirection, normal);
+  specularLightWeighting = pow(max(dot(reflectionDirection, eyeDirection), 0.0), shininess);
+  specularLight += specularLightWeighting * pointSpecularColor[0];
+
+  diffuseLightWeighting = max(dot(normal, lightDirection), 0.0);
+  diffuseLight += diffuseLightWeighting * pointColor[0];
+
+  lightWeighting = ambientColor + diffuseLight + specularLight;
+
   gl_FragColor = vec4(vColor * lightWeighting, 1.0);
-//  gl_FragColor = vec4(vColor, 1.0);
 }

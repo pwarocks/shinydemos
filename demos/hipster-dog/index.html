@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hipster Dog</title>
+	<meta name="author" content="Luz Caballero">
+	<!-- 
+	images used in this demo:
+	"Countryside near Amberley" by Jim Mead http://www.flickr.com/photos/jimmead/4935440241/ 
+	"Toast Shoe" by Mike Oliva http://www.flickr.com/photos/mikeyoliva/3968292186/
+	music used in this demo:
+	"Pixel Peeker Polka" by Kevin McLeod http://incompetech.com/m/c/royalty-free/index.html?keywords=pixel
+	-->
+  <link href="css.css" rel="stylesheet" type="text/css" media="screen" />
+  <link rel="stylesheet" href="/styles/panel.css">
+</head>
+<body>
+	<div id="countryside">
+		<input type="button" id="start" value="Start!" name="joyButton" style="display:none;">
+		<input type="button" id="sound" value="Toggle Sound" name="sound">
+		
+    <div id="old_bicycle">
+      <div id="bicycle_frame"></div>
+      <div id="big_wheel"></div>
+      <div id="small_wheel"></div>
+    </div>
+    <div id="doggie"></div>
+    <audio id="music" loop>
+      <source src="Pixel_Peeker_Polka.mp3" />
+      <source src="Pixel_Peeker_Polka.ogg" />
+    </audio>
+    <audio id="effect">
+      <source src="effect.wav" />
+    </audio>
+	</div>
+	<script src="/scripts/modernizr.js"></script>
+	<script src="/scripts/panel.js"></script>
+	<script src="scripts/options.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>

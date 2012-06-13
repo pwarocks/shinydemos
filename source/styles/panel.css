@@ -193,11 +193,11 @@
 /* Panel On
 ---------------------------------------- */
 .sd-panel-on {
-	-webkit-transform:none;
-	-moz-transform:none;
-	-ms-transform:none;
-	-o-transform:none;
-	transform:none;
+	-webkit-transform:translateY(0);
+	-moz-transform:translateY(0);
+	-ms-transform:translateY(0);
+	-o-transform:translateY(0);
+	transform:translateY(0);
 	}
 	.sd-panel-on .sd-button {
 		-webkit-transform-origin:50% 0;

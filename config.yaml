@@ -43,9 +43,9 @@ tags:
 demos:
   - slug: 3d-color-histogram
     title: '3D color histogram'
-    legend: '…'
-    tags: [webgl]
-    support: [canvas, video, webgl, webworkers]
+    legend: 'Visualize frame by frame color decomposition. Choose from different <a href="http://en.wikipedia.org/wiki/HSL_and_HSV">color schemes</a> below. Feel free to pause the video and to zoom/pan the histogram below.'
+    tags: [webgl, getusermedia]
+    support: [canvas, getusermedia, video, webgl, webworkers]
 
   - slug: beach
     title: 'Beach'
@@ -181,7 +181,7 @@ demos:
 
   - slug: world-flights
     title: 'World Flights'
-    legend: 'World flights'
+    legend: 'Visualize the major airline routes. Feel free to pan and zoom the Earth.'
     tags: [webgl]
     support: [canvas, webgl, webworkers]
 

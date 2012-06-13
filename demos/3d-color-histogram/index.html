@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Real time color 3D histogram</title>
+    <title>Real time color 3D histogram - Shiny Demos</title>
     <link href='http://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" media="all" type="text/css" href="styles/style.css" />
     <link rel="stylesheet" href="/styles/panel.css">
+    <script src="/scripts/modernizr.js"></script>
     <script src="/scripts/philogl.js"></script>
     <script src="scripts/histogram.js"></script>
   </head>
   <body>
     <div id="demo">
       <div id="title">
-        <h1>Real time color 3D histogram analysis</h1>
-
-        <div class="description">Visualize frame by frame color decomposition. Choose from different <a href="http://en.wikipedia.org/wiki/HSL_and_HSV">color schemes</a> below. Feel free to pause the video 
-          and to zoom/pan the histogram below.</div>
-        </div>
+        <div id="log-panel" style="display: none"><span id="log-message"></span></div>
 
         <div id="fallback" class="fallback"></div>
 
         <div id="container">
           <video id="movie" controls class="shadows" width="480">
-            <source src="http://media.shinydemos.com/webgl_color_histogram/shrek.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-            <source src="http://media.shinydemos.com/webgl_color_histogram/shrek.ogv" type='video/ogg; codecs="theora, vorbis"' />
           </video>
           <div class="controls shadows">
             <div class="section">
@@ -84,7 +79,6 @@
         </div>
 
         <canvas id="pastie" width="50" height="50"></canvas>
-        <script src="/scripts/modernizr.js"></script>
         <script src="/scripts/panel.js"></script>
         <script src="scripts/options.js"></script>
         <script>

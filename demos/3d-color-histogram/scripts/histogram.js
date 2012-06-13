@@ -12,6 +12,39 @@
     return document.getElementById(d);
   }
 
+  //Log
+  //Singleton that logs information
+  //Log singleton
+  var Log = {
+    elem: null,
+    timer: null,
+
+    getElem: function() {
+      if (!this.elem) {
+        return (this.elem = $id('log-message'));
+      }
+      return this.elem;
+    },
+
+    write: function(text, hide) {
+      if (this.timer) {
+        this.timer = clearTimeout(this.timer);
+      }
+
+      var elem = this.getElem(),
+          style = elem.parentNode.style;
+
+      elem.innerHTML = text;
+      style.display = '';
+
+      if (hide) {
+        this.timer = setTimeout(function() {
+          style.display = 'none';
+        }, 2000);
+      }
+    }
+  };
+
   //color histogram elements, models
   var dim = 8, histogram, photos, video, 
       worker = new WorkerGroup('scripts/histogram-models.js', 1),
@@ -81,10 +114,21 @@
 
     function initApp() {
       var theta = Math.PI / 4,
-          video = $id('movie');
+          video = $id('movie'),
+          controls = document.querySelector('.controls');
 
       //video player.
-      video.play();
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+      window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+      if (navigator.getUserMedia) {
+        navigator.getUserMedia({video: true}, function (stream) {
+          video.src = window.URL.createObjectURL(stream);
+          controls.classList.add('camera');
+        });
+        video.play();
+      } else {
+        Log.write("You need a browser that supports navigator.getUserMedia");
+      }
 
       //Create App
       PhiloGL('histogram-canvas', {

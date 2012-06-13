@@ -64,27 +64,22 @@ exploding.init = function() {
     };
     
     // Get the stream from the camera using getUserMedia
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
     if (navigator.getUserMedia) {
-        if (window.webkitURL) {
-            navigator.getUserMedia('video', function(stream) {
-                // Replace the source of the video element with the stream from the camera
-                video.src = window.webkitURL.createObjectURL(stream);
-                video.play();
-            }, errorCallback);
-        } else {
-            navigator.getUserMedia({video: true}, function(stream) {
-                // Replace the source of the video element with the stream from the camera
-                video.src = stream;
-                video.play();
-            }, errorCallback);
-        }
+        navigator.getUserMedia({video: true, toString: function(){return 'video';}}, successCallback, errorCallback);
 
+        function successCallback(stream) {
+            // Replace the source of the video element with the stream from the camera
+            video.src = (window.webkitURL) ? window.webkitURL.createObjectURL(stream) : stream;
+            video.play();
+        }
+        
         function errorCallback(error) {
             if (error) console.error('An error occurred: [CODE ' + error.code + ']');
             video.play();
         }
     } else {
+        console.log('Native web camera streaming (getUserMedia) is not supported in this browser.');
         video.play();
     }
 };

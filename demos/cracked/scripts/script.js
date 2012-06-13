@@ -37,14 +37,13 @@ function getCoords(event) {
 /* MAIN SCRIPT */
 document.addEventListener('DOMContentLoaded', function(){
     // Global variables
-	var windowwidth = window.outerWidth;
-	var windowheight = window.outerHeight;
+    var windowwidth = window.outerWidth;
+    var windowheight = window.outerHeight;
     var shards = [];
     var coords = [];
     var MAX_ROTATION = 0.05; // In radians
     var DRAW_SPEED = 1000 / 20; // Draw at 20 fps
-    var SUPPORTS_TOUCH = 'createTouch' in document;
-    var mouse_down = (SUPPORTS_TOUCH ? 'ontouchstart' : 'onmousedown');
+    var mouse_down = ('createTouch' in document ? 'ontouchstart' : 'onmousedown');
     var video = document.querySelector('video');;
     var canvas1 = document.getElementById('canvas1');
     var context1 = canvas1.getContext('2d');
@@ -83,28 +82,28 @@ document.addEventListener('DOMContentLoaded', function(){
             
             if (x <= windowwidth && y <= 0) {
                 // Move right
-				shard.corner2 = [x, y];
-				x += step;
-				shard.corner3 = [x, y];
+                shard.corner2 = [x, y];
+                x += step;
+                shard.corner3 = [x, y];
             } else if (x >= windowwidth && y <= windowheight) {
                 // Move down
-				shard.corner2 = [x, y];
-				y += step;
-				shard.corner3 = [x, y];
+                shard.corner2 = [x, y];
+                y += step;
+                shard.corner3 = [x, y];
                 // Make sure we've gone round the entire window
                 if (all_sides) {
                     break;
                 }
             } else if (x >= 0 && y >= windowheight) {
                 // Move left
-				shard.corner2 = [x, y];
-				x -= step;
-				shard.corner3 = [x, y];
+                shard.corner2 = [x, y];
+                x -= step;
+                shard.corner3 = [x, y];
             } else if (x <= 0 && y >= 0) {
                 // Move up
-				shard.corner2 = [x, y];
-				y -= step;
-				shard.corner3 = [x, y];
+                shard.corner2 = [x, y];
+                y -= step;
+                shard.corner3 = [x, y];
                 all_sides = true;
             }
             
@@ -240,31 +239,26 @@ document.addEventListener('DOMContentLoaded', function(){
             sh = (sw / windowratio) >> 0; // Round to an integer
         }
         
-        //alert(sw + ' : ' + sh + ' : ' + dw + ' : ' + dh);
-        
         doDraw(this, context1, context2, sx, sy, sw, sh, 0, 0, dw, dh);
     },false);
 
     // Get the stream from the camera using getUserMedia
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-    if (navigator.getUserMedia) {        
-        if (window.webkitURL) {
-            navigator.getUserMedia('video', function(stream) {
-                // Replace the source of the video element with the stream from the camera
-                video.src = window.webkitURL.createObjectURL(stream);
-            }, errorCallback);
-        } else {
-            navigator.getUserMedia({video: true}, function(stream) {
-                // Replace the source of the video element with the stream from the camera
-                video.src = stream;
-            }, errorCallback);
-        }
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+    if (navigator.getUserMedia) {
+        navigator.getUserMedia({video: true, toString: function(){return 'video';}}, successCallback, errorCallback);
 
+        function successCallback(stream) {
+            // Replace the source of the video element with the stream from the camera
+            video.src = (window.webkitURL) ? window.webkitURL.createObjectURL(stream) : stream;
+            video.play();
+        }
+        
         function errorCallback(error) {
-            alert('An error occurred: [CODE ' + error.code + ']');
+            if (error) console.error('An error occurred: [CODE ' + error.code + ']');
+            video.play();
         }
     } else {
-        alert('Your browser doesn\'t have camera support. Using a rather delightful video instead.');
-        opera.postError('Native web camera streaming (getUserMedia) is not supported in this browser.');
+        console.log('Native web camera streaming (getUserMedia) is not supported in this browser.');
+        video.play();
     }
 },false);

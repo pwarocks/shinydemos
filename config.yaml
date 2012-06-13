@@ -119,13 +119,6 @@ demos:
     tags: [svg]
     support: [svg]
 
-#  waiting on permission for background image
-#  - slug: isometric-city
-#    title: 'An Isometric World'
-#    legend: 'Click on the Opera logos to zoom in, and once again to zoom out, with CSS transforms and transitions.'
-#    tags: [css3]
-#   support: [csstransitions]
-
   - slug: odin
     title: 'ODIN'
     legend: 'Opera is the only European browser, proudly based in Norway, where in the long dark winter, trolls roam free, mucking up your Git history by committing without useful commit messages. Every coder needs Odin to protect them, so here he is &mdash; through the magic of WebGL.'

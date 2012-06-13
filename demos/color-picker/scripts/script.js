@@ -17,6 +17,7 @@ var options = {
 var notsupported = false;
 
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
 
 if (navigator.getUserMedia){
 	navigator.getUserMedia(options, v_success);

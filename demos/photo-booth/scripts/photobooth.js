@@ -26,6 +26,9 @@
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 362, 46, 120, 75);},
         function(){photos.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT, 527, 46, 120, 75);}
       ];
+  
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+  window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
       
   var canvasPrep = (function(){
     canvasBg.src = 'images/bg_output.png';
@@ -137,8 +140,8 @@
   
   var init = (function(){
     navigator.getUserMedia ? 
-      navigator.getUserMedia('video', function(stream){
-        video.src = stream;
+      navigator.getUserMedia({video: true}, function(stream){
+        video.src = window.URL.createObjectURL(stream) || stream;
         video.addEventListener('loadedmetadata', function(){
           video.play();
           computeSize(true);

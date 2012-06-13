@@ -89,7 +89,7 @@ var video = document.getElementsByTagName('video')[0],
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
 function successCallback( stream ) {
-  video.src = stream;
+  video.src = window.URL.createObjectURL( stream ) || stream;
 }
 
 function errorCallback( error ) {

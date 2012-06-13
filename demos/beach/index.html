@@ -1,113 +1,37 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="utf-8">
-<title>View on the beach</title>
-<meta name="viewport" content="width: device-width, initial-scale=1">
-<style>
-body {margin: 0; padding: 0; background-color: #000; background-image: url(seamlesswall.jpg); background-position: 50% 50%;} /* CC BY 2.0 by seier+seier http://www.flickr.com/photos/seier/4352721085/ */
-
-#brightness {position: absolute; display: block; background: hsla(0, 0%, 0%, 0.9); width: 100%; height: 100%; min-height: 480px; overflow: hidden;-o-transition: background-color 3s ease-in-out; -webkit-transition: background-color 3s ease-in-out; -moz-transition: background-color 3s ease-in-out; -ms-transition: background-color 3s ease-in-out; transition: background-color 3s ease-in-out;}
-body.cover #brightness {background: hsla(0, 0%, 0%, 0.6);}
-
-body {background-color: #777; background-position: 50% 50%; !important}
-video { 	
-	position:absolute; height:368px; width:640px; margin:-190px 0px 0px -317px; top: 50%;  left: 50%; padding: 0; 
-	border-top: 12px solid #111;
-	border-left: 12px solid #222;
-	border-bottom: 12px solid #ccc;
-	border-right: 12px solid #aaa;
-}
-
-body.cover video {cursor:crosshair;}
-
-#blinds {
-	position:absolute; height: 399px; width:684px; margin:-200px 0px 0px -327px; top: 50%;  left: 50%; padding: 0; z-index: 100;
-	-o-transition: height 3s ease-in-out; -webkit-transition: height 3s ease-in-out; -moz-transition: height 3s ease-in-out; -ms-transition: height 3s ease-in-out; transition: height 3s ease-in-out;
-	background: -moz-linear-gradient(top, rgba(170,170,170,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 85%, rgba(254,254,254,0) 100%);
-	background: -webkit-linear-gradient(top, rgba(170,170,170,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 85%,rgba(254,254,254,0) 100%);
-	background: -o-linear-gradient(top, rgba(170,170,170,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 85%,rgba(254,254,254,0) 100%);
-	background: -ms-linear-gradient(top, rgba(170,170,170,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 85%,rgba(254,254,254,0) 100%);
-	background: linear-gradient(top, rgba(170,170,170,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 85%,rgba(254,254,254,0) 100%);
-	background-size: 660px 20px;
-	overflow: hidden;
-	image-rendering: optimizeSpeed;
-	}
-
-body.cover #blinds {height: 20px;}
-#cords {position:absolute; height:399px; width:400px; margin:-200px 0px 0px -200px; top: 50%; left: 50%; padding: 0; border-left: 1px solid rgba(170,170,170,1);border-right: 1px solid rgba(170,170,170,1);}
-#switch {position:absolute; margin:70px 0px 0px -430px; top: 50%;  left: 50%; border: 1px solid white; border-radius: 4px; height: 80px; width: 80px; box-shadow: hsla(0, 0%, 0%, 0.7) 0 0 4px; -o-transition: opacity 3s ease-in-out;-webkit-transition: opacity 3s ease-in-out;-moz-transition: opacity 3s ease-in-out;-ms-transition: opacity 3s ease-in-out;transition: opacity 3s ease-in-out; z-index: 200;
-	background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%); 
-	background:-webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%);
-	background:-moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%);
-	background:-ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%);
-	background:linear-gradient(top, rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%);
-}
-
-button {width: 20px; overflow: hidden; height: 40px; position: relative; left: 30px; top: 20px; color: #fff; border-radius: 3px; border: 1px solid #fff; text-indent: -20em; box-shadow: hsla(0, 0%, 0%, 0.1) 0 0 4px, hsla(0, 0%, 0%, 0.2) 0 3px 3px; 
-	background: -o-linear-gradient(top, rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%);
-	background: -webkit-linear-gradient(top, rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%);
-	background: -moz-linear-gradient(top, rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%);
-	background: -ms-linear-gradient(top, rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%);
-	background: linear-gradient(top, rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%);
-}
-body.cover button {box-shadow: hsla(0, 0%, 0%, 0.1) 0 0 4px, hsla(0, 0%, 0%, 0.2) 0px -3px 3px;}
-
-video, #blinds, #switch {-o-transform-origin: 0 0; -webkit-transform-origin: 0 0; -moz-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0;}
-
-@media screen and (max-width: 900px) {
-	video {top: 70px; left: 100px; margin: 0;}
-	#blinds {top: 70px; left: 100px; margin: 0px; width: 665px;}
-	#switch {top: 340px; left: 10px; margin: 0;}
-}
-
-@media screen and (max-width: 800px) {
-	video, #blinds {-o-transform: scale(0.8);-webkit-transform: scale(0.8);-moz-transform: scale(0.8);-ms-transform: scale(0.8);transform: scale(0.8);}
-	#switch {top: 270px;}
-}
-@media screen and (max-width: 670px) {
-	video, #blinds {-o-transform: scale(0.6);-webkit-transform: scale(0.6);-moz-transform: scale(0.6);-ms-transform: scale(0.6);transform: scale(0.6);}
-	#switch {top: 200px;}
-}
-@media screen and (max-width: 520px) {
-	video, #blinds {-o-transform: scale(0.5);-webkit-transform: scale(0.5);-moz-transform: scale(0.5);-ms-transform: scale(0.5);transform: scale(0.5);}
-	#switch {top: 160px;}
-}
-@media screen and (max-width: 450px) {
-	video, #blinds {-o-transform: scale(0.45);-webkit-transform: scale(0.45);-moz-transform: scale(0.45);-ms-transform: scale(0.45);transform: scale(0.45);left: 10px;}
-	#switch {top: 260px;}
-}
-
-</style>
-<link rel="stylesheet" href="/styles/panel.css">
+	<title>View on the Beach — Shiny Demos</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="styles/screen.css">
+	<link rel="stylesheet" href="/styles/panel.css">
 </head>
 <body id="room">
-	<div id="brightness"> </div>
-	<div id="blinds"><div id="cords"></div></div>
-	<video autoplay loop poster="beach.jpg">
-	<source src="http://media.shinydemos.com/beach/Maldives_beach.mp4" type="video/mp4">
-	<source src="http://media.shinydemos.com/beach/Maldives_beach.webm" type="video/webm">
+	<div id="brightness"></div>
+	<div id="blinds">
+		<div id="cords"></div>
+	</div>
+	<video autoplay loop poster="images/beach.jpg" id="video">
+		<source src="http://media.shinydemos.com/beach/beach.mp4" type="video/mp4">
+		<source src="http://media.shinydemos.com/beach/beach.webm" type="video/webm">
 	</video>
 	<!-- CC BY 2.0 video by Nattu http://commons.wikimedia.org/wiki/File:Maldives_beach.ogv -->
 	<div id="switch">
-	<button id="button">
-	  Blinds
-	</button>
+		<button id="button">Blinds</button>
 	</div>
 	<script src="/scripts/modernizr.js"></script>
 	<script src="/scripts/panel.js"></script>
 	<script src="scripts/options.js"></script>
 	<script>
-	// must be placed here otherwise Opera Mobile doesn't load the video.
-	function init() {
-		var button = document.getElementById('button');
-		var room = document.getElementById('room');
-		button.addEventListener('click', function () {
-			room.classList.toggle('cover');
-		}, false);
-	}
-	window.addEventListener('load', init, false);
+		function init() {
+			var button = document.getElementById('button');
+			var room = document.getElementById('room');
+			button.addEventListener('click', function () {
+				room.classList.toggle('cover');
+			}, false);
+		}
+		window.addEventListener('load', init, false);
 	</script>
-
 </body>
 </html>

@@ -47,10 +47,11 @@ section{display:block;}
 #main > video, #main > img, #main > div{
     width: 9em;
 	height: 9em;
-	margin: .5em auto;
+	display:block;
+    margin: auto;
 }
 
-#main > video, #main > img{
+#main > video, #main > img, #main > div{
 	     -o-object-fit: fill;
 	-webkit-object-fit: fill;
    	   -moz-object-fit: fill;

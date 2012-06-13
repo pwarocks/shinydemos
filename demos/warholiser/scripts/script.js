@@ -1,11 +1,11 @@
 var video = document.getElementById('video'),
     webmvideo = "http:\/\/shinydemos.com\/media\/warholiser\/wsh.webm",
-    mp4video = "http:\/\/shinydemos.com\/media\/warholiser\/wsh.mp4";
+    mp4video = "http:\/\/shinydemos.com\/media\/warholiser\/wsh.mp4",
     options = {audio: false, video:true},
     red = document.getElementById('red'),
     green = document.getElementById('green'),
     blue = document.getElementById('blue'),
-    yellow = document.getElementById('yellow');
+    yellow = document.getElementById('yellow'),
     canvasWidth = red.width,
     canvasHeight = red.height,
     redCtx = red.getContext('2d'),
@@ -22,7 +22,7 @@ var video = document.getElementById('video'),
 if (navigator.getUserMedia){
   navigator.getUserMedia(options, v_success, v_error);
 } else if (navigator.webkitGetUserMedia) {
-  navigator.webkitGetUserMedia("video", webkit_v_success, v_error)
+  navigator.webkitGetUserMedia(options, webkit_v_success, v_error)
 } else {
   not_supported();
 }

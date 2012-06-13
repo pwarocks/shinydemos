@@ -21,7 +21,7 @@ if (navigator.getUserMedia){
 }
 
 else if (navigator.webkitGetUserMedia) {
-	navigator.webkitGetUserMedia("video", webkit_v_success, v_error)
+	navigator.webkitGetUserMedia(options, webkit_v_success, v_error)
 }
 
  else{

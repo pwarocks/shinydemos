@@ -188,7 +188,7 @@ demos:
   - slug: hipster-dog
     title: 'Hipster Dog'
     legend: 'Hipster Dog'
-    tags: [css3, audio]
+    tags: [css3, audio-video]
     support: [csstransitions, cssanimations, audio]
 
 # Supported features list. Based on custom Modernizr build

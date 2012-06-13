@@ -162,7 +162,7 @@ html, body {
   /* width: 900px;*/
   height: 800px;
   padding: 10px 0 10px 0;
-  background-image: url(countryside.jpg);
+  background-image: url(../images/countryside.jpg);
   background-position: 0px 0px;
   position: relative;
   background-repeat: repeat-x;
@@ -172,7 +172,7 @@ html, body {
 #shoe {
   width: 395px;
   height: 150px;
-  background-image: url(shoe.png);	
+  background-image: url(../images/shoe.png);	
   background-position: 0 0;
   position: absolute;
   /*top: 535px;*/
@@ -209,7 +209,7 @@ html, body {
 }
 
 #big_wheel {
-  background-image: url(big_wheel.png);
+  background-image: url(../images/big_wheel.png);
   width: 258px;
   height: 258px;
   top: 70px;
@@ -217,7 +217,7 @@ html, body {
 }
 
 #small_wheel {
-  background-image: url(small_wheel.png);
+  background-image: url(../images/small_wheel.png);
   width: 99px;
   height: 99px;
   top: 210px;
@@ -225,7 +225,7 @@ html, body {
 }
 
 #bicycle_frame {
-  background-image: url(bicycle_frame.png);
+  background-image: url(../images/bicycle_frame.png);
   width: 210px;
   height: 261px;
   top: 5px;
@@ -235,10 +235,9 @@ html, body {
 #doggie {
   width: 80px;
   height: 80px;
-  background-image: url(http://media.shinydemos.com/hipster-dog/doggie.png);
+  background-image: url(../images/doggie.png);
   background-position: 0 0;
   position: absolute;
-  /*top: 280px;*/
   top: 313px;
   left: 234px;
   background-repeat: no-repeat;
@@ -264,6 +263,6 @@ html, body {
   width: 24px;
   height: 23px;
   margin: -1px 0 0 60px;
-  background: url('bubble_arrow.gif');
+  background: url(../images/bubble_arrow.gif);
   background-repeat: no-repeat; 
 }

@@ -42,7 +42,7 @@ tags:
 # List of all active demos with description
 demos:
   - slug: 3d-color-histogram
-    title: '3D color histogram'
+    title: '3D Color Histogram'
     legend: 'Visualize frame by frame color decomposition. Choose from different <a href="http://en.wikipedia.org/wiki/HSL_and_HSV">color schemes</a> below. Feel free to pause the video and to zoom/pan the histogram below.'
     tags: [webgl, getusermedia]
     support: [canvas, getusermedia, video, webgl, webworkers]
@@ -66,7 +66,7 @@ demos:
     support: [borderradius]
 
   - slug: clock
-    title: 'A time of reflection'
+    title: 'A Time of Reflection'
     legend: 'Tick, tock, tick, tock. Stare into your webcam. Marvel at the World&rsquo;s best-looking clock face.'
     tags: [css3, getusermedia, svg]
     support: [getusermedia]
@@ -138,7 +138,7 @@ demos:
     support: [getusermedia, video, canvas]
 
   - slug: picture-organizer
-    title: 'Touch-enabled photo lightbox'
+    title: 'Picture Organiser'
     legend: 'Organising pictures is a drag. Use your touch screen to rotate or drag the pictures around with your finger. This demo combines touch events and CSS transforms and multiple background images.'
     tags: [css3, touch]
     support: [touch]
@@ -162,7 +162,7 @@ demos:
     support: [csstransitions]
 
   - slug: touch-tracker
-    title: 'Simple Multitouch Demonstration'
+    title: 'Touch Tracker'
     legend: 'Using the magic of multitouch, you can see what robots&rsquo; fingerprints would look like.'
     tags: [canvas, touch]
     support: [canvas, touch]

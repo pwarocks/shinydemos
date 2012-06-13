@@ -1,4 +1,4 @@
-﻿// Based on FastKat by Andrea Doimo
+﻿// Based on FastKat by Andrea Doimo http://www.omiod.com/games/fastkat.php
 // Further modified by Audun Mathias Øygard and Patrick H. Lauke
 
 var STARS = 200;

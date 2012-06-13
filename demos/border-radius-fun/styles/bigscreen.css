@@ -48,7 +48,6 @@ fieldset fieldset{
 #main > video, #main > img, #main > div{
     width: 15em;
 	height: 15em;
-	margin: .5em auto;
 }
 
 #overlay{

@@ -1,12 +1,6 @@
 ﻿// Based on FastKat by Andrea Doimo http://www.omiod.com/games/fastkat.php
 // Further modified by Audun Mathias Øygard and Patrick H. Lauke
 
-//browser js fix
-if( window.opera && navigator.getUserMedia ){
-    if( ! window.URL )window.URL={};
-    if( ! window.URL.createObjectURL)window.URL.createObjectURL=function(obj){return obj;}
-}
-
 var STARS = 200;
 var FAR = 4000;
 var SAFE = 50;

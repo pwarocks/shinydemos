@@ -69,7 +69,7 @@ demos:
     title: 'A Time of Reflection'
     legend: 'Tick, tock, tick, tock. Stare into your webcam. Marvel at the World&rsquo;s best-looking clock face.'
     tags: [css3, getusermedia, svg]
-    support: [getusermedia]
+    support: [getusermedia, inlinesvg]
 
   - slug: color-picker
     title: 'Real Life Color Picker'

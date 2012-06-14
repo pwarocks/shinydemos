@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Inbox Attack by Daniel Davis, Opera Software.
-     Use the left and right arrow keys or "Z" and "X" to move. -->
+<!-- Use the left and right arrow keys or "Z" and "X" to move. -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <style>
         @-o-viewport {
@@ -201,7 +200,7 @@
             };
             
             /*
-           * Resize and move the user based on the case size
+             * Resize and move the user based on the case size
              */
             this.resize = function() {
                 var x = case_width / 3.37;
@@ -334,8 +333,6 @@
          * Mail class
          */
         function Mail(channel_id) {
-            // Set local constants
-        
             // Create new #envelope element when mail object is created
             var new_mail = doc.createElementNS(SVGNS, 'use');
             new_mail.setAttributeNS(null,'transform', 'scale(' + scalex + ', ' + scaley + ')');
@@ -375,7 +372,6 @@
                         clearInterval(drop);
                     }
                     // If all mails have dropped, show the result
-                    //if (count_mails === TOTAL_TIME) {
                     if (count_mails === total_mails) {
                         showResult(count_caught, count_mails);
                     }
@@ -574,7 +570,7 @@
     </g>
     <g id="inbox">
         <title>Mail</title>
-    </g>	
+    </g>
 
     <g id="user0" opacity="0">
         <title>User (far left)</title>

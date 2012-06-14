@@ -122,7 +122,7 @@
       window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
       if (navigator.getUserMedia) {
         navigator.getUserMedia({video: true}, function (stream) {
-          video.src = window.URL.createObjectURL(stream);
+          video.src = window.URL.createObjectURL(stream) || stream;
           controls.classList.add('camera');
         });
         video.play();

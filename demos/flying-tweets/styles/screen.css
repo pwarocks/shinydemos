@@ -15,7 +15,7 @@ body {
     height:100%;
 }
 a {
-    color:#00c;
+    color:#33c;
 }
 a:hover, a:focus {
     text-decoration:none;
@@ -217,7 +217,8 @@ a:hover, a:focus {
     animation-timing-function:cubic-bezier(0.70, 0, 0.70, 1);
 }
 #user {
-    font-size:0.8em;
+    font-family:'Helvetica Neue', 'Free Sans', 'Deja Vu Sans', Arial, Helvetica, sans-serif;
+    font-size:0.7em;
     margin:1em 0 0.5em 0;
 }
 

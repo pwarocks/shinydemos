@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', function() {
      * Configuration
      */
     var query = '#css'; // The initial search term
-    var updateTime = 5; // The time between updates in minutes
+    var updateTime = 2; // The time between updates in minutes
     
     /*
      * Main script

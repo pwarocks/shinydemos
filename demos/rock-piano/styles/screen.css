@@ -30,15 +30,6 @@ BODY {
 		0 0 10px #000,
 		0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 	}
-	.deck:after {
-		position:absolute;
-		top:15px;
-		right:5px;
-		width:150px;
-		height:57px;
-		background:url(../images/dial.png);
-		content:'';
-		}
 	.deck H2 {
 		padding:18px 0 0;
 		color:#1E1008;

@@ -126,7 +126,7 @@ demos:
     support: [webgl, audio]
 
   - slug: paranoid
-    title: 'Return of the Retro with a canvas game!'
+    title: 'Paranoid'
     legend: 'DIMENSION-CONTROLLING FORT “DOH” HAS NOW BEEN DEMOLISHED, AND TIME STARTED FLOWING REVERSELY. And when time flows reversely, retro games get remade with HTML5.'
     tags: [canvas]
     support: [canvas]

@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Real time color 3D histogram - Shiny Demos</title>
-    <link href='http://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" media="all" type="text/css" href="styles/style.css" />
+    <title>Real time color 3D histogram — Shiny Demos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Crimson+Text">
+    <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="/styles/panel.css">
-    <script src="/scripts/modernizr.js"></script>
-    <script src="/scripts/philogl.js"></script>
-    <script src="scripts/histogram.js"></script>
   </head>
   <body>
     <div id="demo">
       <div id="title">
         <div id="log-panel" style="display: none"><span id="log-message"></span></div>
-
         <div id="fallback" class="fallback"></div>
-
         <div id="container">
           <video id="movie" controls class="shadows" width="480">
           </video>
@@ -26,21 +23,21 @@
             <ul class="schemes">
               <li>
                 <div class="title">
-                  <input type="radio" id="cube" name="shape" value="0" checked /><label for="cube">RGB Cube</label> 
+                  <input type="radio" id="cube" name="shape" value="0" checked><label for="cube">RGB Cube</label> 
                 </div>
-                <img src="images/cube.png" />
+                <img src="images/cube.png">
               </li>
               <li>
                 <div class="title">
-                  <input type="radio" id="clh" name="shape" value="1" /><label for="clh">Chroma Luma Hue</label> 
+                  <input type="radio" id="clh" name="shape" value="1"><label for="clh">Chroma Luma Hue</label> 
                 </div>
-                <img src="images/bicone.png" />
+                <img src="images/bicone.png">
               </li>
               <li>
                 <div class="title">
-                  <input type="radio" id="cvh" name="shape" value="2" /><label for="cvh">Chroma Value Hue</label> 
+                  <input type="radio" id="cvh" name="shape" value="2"><label for="cvh">Chroma Value Hue</label> 
                 </div>
-                <img src="images/cone.png" />
+                <img src="images/cone.png">
               </li>
             </ul>
             <div class="section">
@@ -50,9 +47,9 @@
               <tr>
                 <td>Grain:</td>
                 <td>
-                  <input type="radio" id="nonegrain" name="grain" value="0" /><label for="nonegrain">None</label> 
-                  <input type="radio" id="smallgrain" name="grain" value="0.01" checked /><label for="smallgrain">Small</label> 
-                  <input type="radio" id="mediumgrain" name="grain" value="0.03" /><label for="mediumgrain">Large</label>
+                  <input type="radio" id="nonegrain" name="grain" value="0"><label for="nonegrain">None</label> 
+                  <input type="radio" id="smallgrain" name="grain" value="0.01" checked><label for="smallgrain">Small</label> 
+                  <input type="radio" id="mediumgrain" name="grain" value="0.03"><label for="mediumgrain">Large</label>
                 </td>
               </tr>
               <tr>
@@ -77,19 +74,21 @@
           </div>
           <canvas class="shadows" id="histogram-canvas" width="500" height="575"></canvas>
         </div>
-
         <canvas id="pastie" width="50" height="50"></canvas>
+        <script src="/scripts/modernizr.js"></script>
         <script src="/scripts/panel.js"></script>
         <script src="scripts/options.js"></script>
+        <script src="/scripts/philogl.js"></script>
+        <script src="scripts/histogram.js"></script>
         <script>
-        if (!PhiloGL.hasWebGL()) {
-          document.body.className = 'no-webgl';
-          document.getElementById('fallback').innerHTML = ''
-          +  '<div style="margin:10px;">'
-          +   'Your browser does not support WebGL. Try downloading <a href="http://opera.com/browser/next/">Opera Next</a> to see the example.'
-          +  '</div>'
-          +  '<iframe title="YouTube video player" width="640" height="510" src="http://www.youtube.com/embed/ec-4GWoeYoU" frameborder="0" allowfullscreen></iframe>';
-        }
+          if (!PhiloGL.hasWebGL()) {
+            document.body.className = 'no-webgl';
+            document.getElementById('fallback').innerHTML = ''
+            +  '<div style="margin:10px;">'
+            +   'Your browser does not support WebGL. Try downloading <a href="http://opera.com/browser/next/">Opera Next</a> to see the example.'
+            +  '</div>'
+            +  '<iframe title="YouTube video player" width="640" height="510" src="http://www.youtube.com/embed/ec-4GWoeYoU" frameborder="0" allowfullscreen></iframe>';
+          }
         </script>
       </div>
     </body>

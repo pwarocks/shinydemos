@@ -1,96 +1,95 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Real time color 3D histogram - Shiny Demos</title>
-    <link href='http://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" media="all" type="text/css" href="styles/style.css" />
-    <link rel="stylesheet" href="/styles/panel.css">
-    <script src="/scripts/modernizr.js"></script>
-    <script src="/scripts/philogl.js"></script>
-    <script src="scripts/histogram.js"></script>
-  </head>
-  <body>
-    <div id="demo">
-      <div id="title">
-        <div id="log-panel" style="display: none"><span id="log-message"></span></div>
-
-        <div id="fallback" class="fallback"></div>
-
-        <div id="container">
-          <video id="movie" controls class="shadows" width="480">
-          </video>
-          <div class="controls shadows">
-            <div class="section">
-              Choose a Color Scheme:
-            </div>
-            <ul class="schemes">
-              <li>
-                <div class="title">
-                  <input type="radio" id="cube" name="shape" value="0" checked /><label for="cube">RGB Cube</label> 
-                </div>
-                <img src="images/cube.png" />
-              </li>
-              <li>
-                <div class="title">
-                  <input type="radio" id="clh" name="shape" value="1" /><label for="clh">Chroma Luma Hue</label> 
-                </div>
-                <img src="images/bicone.png" />
-              </li>
-              <li>
-                <div class="title">
-                  <input type="radio" id="cvh" name="shape" value="2" /><label for="cvh">Chroma Value Hue</label> 
-                </div>
-                <img src="images/cone.png" />
-              </li>
-            </ul>
-            <div class="section">
-              Other Options:
-            </div>
-            <table>
-              <tr>
-                <td>Grain:</td>
-                <td>
-                  <input type="radio" id="nonegrain" name="grain" value="0" /><label for="nonegrain">None</label> 
-                  <input type="radio" id="smallgrain" name="grain" value="0.01" checked /><label for="smallgrain">Small</label> 
-                  <input type="radio" id="mediumgrain" name="grain" value="0.03" /><label for="mediumgrain">Large</label>
-                </td>
-              </tr>
-              <tr>
-                <td>Background:</td>
-                <td>
-                  <select id="grayscale">
-                    <option>0.0</option>
-                    <option>0.1</option>
-                    <option>0.2</option>
-                    <option selected>0.3</option>
-                    <option>0.4</option>
-                    <option>0.5</option>
-                    <option>0.6</option>
-                    <option>0.7</option>
-                    <option>0.8</option>
-                    <option>0.9</option>
-                    <option>1.0</option>
-                  </select>
-                </td>
-              </tr>
-            </table>
+<head>
+  <title>Real time color 3D histogram — Shiny Demos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Crimson+Text">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="/styles/panel.css">
+</head>
+<body>
+  <div id="demo">
+    <div id="title">
+      <div id="log-panel" style="display: none"><span id="log-message"></span></div>
+      <div id="fallback" class="fallback"></div>
+      <div id="container">
+        <video id="movie" controls class="shadows" width="480"></video>
+        <div class="controls shadows">
+          <div class="section">
+            Choose a Color Scheme:
           </div>
-          <canvas class="shadows" id="histogram-canvas" width="500" height="575"></canvas>
+          <ul class="schemes">
+            <li>
+              <div class="title">
+                <input type="radio" id="cube" name="shape" value="0" checked><label for="cube">RGB Cube</label> 
+              </div>
+              <img src="images/cube.png" alt="RGB Cube">
+            </li>
+            <li>
+              <div class="title">
+                <input type="radio" id="clh" name="shape" value="1"><label for="clh">Chroma Luma Hue</label> 
+              </div>
+              <img src="images/bicone.png" alt="Chroma Luma Hue">
+            </li>
+            <li>
+              <div class="title">
+                <input type="radio" id="cvh" name="shape" value="2"><label for="cvh">Chroma Value Hue</label> 
+              </div>
+              <img src="images/cone.png" alt="Chroma Value Hue">
+            </li>
+          </ul>
+          <div class="section">
+            Other Options:
+          </div>
+          <table>
+            <tr>
+              <td>Grain:</td>
+              <td>
+                <input type="radio" id="nonegrain" name="grain" value="0"><label for="nonegrain">None</label> 
+                <input type="radio" id="smallgrain" name="grain" value="0.01" checked><label for="smallgrain">Small</label> 
+                <input type="radio" id="mediumgrain" name="grain" value="0.03"><label for="mediumgrain">Large</label>
+              </td>
+            </tr>
+            <tr>
+              <td>Background:</td>
+              <td>
+                <select id="grayscale">
+                  <option>0.0</option>
+                  <option>0.1</option>
+                  <option>0.2</option>
+                  <option selected>0.3</option>
+                  <option>0.4</option>
+                  <option>0.5</option>
+                  <option>0.6</option>
+                  <option>0.7</option>
+                  <option>0.8</option>
+                  <option>0.9</option>
+                  <option>1.0</option>
+                </select>
+              </td>
+            </tr>
+          </table>
         </div>
-
-        <canvas id="pastie" width="50" height="50"></canvas>
-        <script src="/scripts/panel.js"></script>
-        <script src="scripts/options.js"></script>
-        <script>
-        if (!PhiloGL.hasWebGL()) {
-          document.body.className = 'no-webgl';
-          document.getElementById('fallback').innerHTML = ''
-          +  '<div style="margin:10px;">'
-          +   'Your browser does not support WebGL. Try downloading <a href="http://opera.com/browser/next/">Opera Next</a> to see the example.'
-          +  '</div>'
-          +  '<iframe title="YouTube video player" width="640" height="510" src="http://www.youtube.com/embed/ec-4GWoeYoU" frameborder="0" allowfullscreen></iframe>';
-        }
-        </script>
+        <canvas class="shadows" id="histogram-canvas" width="500" height="575"></canvas>
       </div>
-    </body>
+    </div>
+    <canvas id="pastie" width="50" height="50"></canvas>
+  </div>
+  <script src="/scripts/modernizr.js"></script>
+  <script src="/scripts/panel.js"></script>
+  <script src="scripts/options.js"></script>
+  <script src="/scripts/philogl.js"></script>
+  <script src="scripts/histogram.js"></script>
+  <script>
+    if (!PhiloGL.hasWebGL()) {
+      document.body.className = 'no-webgl';
+      document.getElementById('fallback').innerHTML = ''
+      +  '<div style="margin:10px;">'
+      +   'Your browser does not support WebGL. Try downloading <a href="http://opera.com/browser/next/">Opera Next</a> to see the example.'
+      +  '</div>'
+      +  '<iframe title="YouTube video player" width="640" height="510" src="http://www.youtube.com/embed/ec-4GWoeYoU" frameborder="0" allowfullscreen></iframe>';
+    }
+  </script>
+</body>
 </html>

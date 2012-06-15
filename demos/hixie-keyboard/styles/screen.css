@@ -9,7 +9,7 @@
 		url(../fonts/munro.svg#Munro) format('svg');
 	}
 
-BODY {
+body {
 	overflow:hidden;
 	background:#403E3F url(../images/stripes.png);
 	}
@@ -186,18 +186,4 @@ BODY {
 	.display .video {
 		display:block;
 		background:#000;
-		}
-
-/* Footnote
----------------------------------------- */
-.footnote {
-	position:absolute;
-	bottom:-60px;
-	color:#989395;
-	text-shadow: 0px 1px 1px #222;
-	font:13px/1 Tahoma, sans-serif;
-	}
-	.footnote A {
-		text-decoration:none;
-		color:#869E68;
 		}

@@ -360,7 +360,7 @@ function loop() {
 					lives --;
 					updateLives();
 				}
-				speed = -1;
+				speed = -3;
 				collision = 50;
 			}
 		}
@@ -374,7 +374,7 @@ function loop() {
 		speed = maxSpeed;
 	}
 
-		score ++;
+	score += (Math.round(speed/10)+1);
 					
 	toNextPhase -= Math.floor(speed);
 	if ( toNextPhase < 0 ) {

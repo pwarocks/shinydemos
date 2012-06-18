@@ -5,6 +5,8 @@
 }
         
 @font-face {
+	/* Snickles font by Tup Wanders, http://www.tupwanders.nl/ */
+	/* License: http://www.fontsquirrel.com/license/Snickles */
 	font-family: 'SnicklesRegular';
 	src: url('../fonts/Snickles-webfont.eot');
 	src: url('../fonts/Snickles-webfont.eot?#iefix') format('embedded-opentype'),

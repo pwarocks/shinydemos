@@ -223,7 +223,7 @@ function updateLives() {
 }
 
 function reset() {
-	speed = 0;
+	speed = 5;
 	score = 0;
 	phase = 4;
 	nextFrame = 0;
@@ -360,7 +360,7 @@ function loop() {
 					lives --;
 					updateLives();
 				}
-				speed = -3;
+				speed = -1;
 				collision = 50;
 			}
 		}
@@ -492,6 +492,7 @@ function enableStart() {
   
   if (cameraEnabled) {
     messages = ["face found!"];
+    messageNow = 0;
     document.getElementById('info').innerHTML = "face found!";
     
     setTimeout(function() {

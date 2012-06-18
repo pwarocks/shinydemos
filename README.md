@@ -2,9 +2,7 @@
 
 Shiny Demos is a growing set of demos of the latest Open Web Standards, made by the Opera developer relations team. No browser is blocked: any browser that supports the standard sees the shiny!
 
-Bug reports (and fixes via pull requests) are most welcome. 
-
-In the very near future we'll outline how demos may be contributed.
+Please file an issue if you find a bug, and better yet, submit a pull request with a fix and tests.
 
 ### Requirements
 
@@ -22,7 +20,6 @@ In the very near future we'll outline how demos may be contributed.
 
 Note: you'll probably get errors about not being able to patch Emberwind and Odin&mdash;this won't affect anything, however, unless you're trying to deploy the site.
 
-
 ### Running Tests
 
 There are two Jake tasks for running tests:
@@ -38,8 +35,12 @@ There are two Jake tasks for deploying the site:
  * `jake deploy:prod`: deploys to shinydemos.com.
  
  Note: this will only work if you have access to the deploy script repo and have ssh keys in the right place, i.e., you probably can forget this exists.
+ 
+## Contributions
 
-### Remember
+We're still figuring this out. Stay tuned!
+
+That said, there are things to keep in mind for any new demo:
 
 - All demos need to have their associated data in `config.yaml` file.
 - Checking in large binary files into the repo makes `<devo>` sad. :(

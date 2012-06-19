@@ -374,7 +374,7 @@ function loop() {
 		speed = maxSpeed;
 	}
 
-	score += (Math.round(speed/10)+1);
+	score += (Math.round(speed/20)+1);
 					
 	toNextPhase -= Math.floor(speed);
 	if ( toNextPhase < 0 ) {

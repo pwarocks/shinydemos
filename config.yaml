@@ -151,7 +151,7 @@ demos:
 
   - slug: rock-piano
     title: 'Rock Piano'
-    legend: 'This Shiny rock piano combines Touch events, classList, HTML5 audio, border-radius, box-shadow, and gradients. Soon, all your friends, neighbours and that cutie from Accounts will call you “HTM-Elton John”.'
+    legend: 'This Shiny rock piano combines Touch events, classList, HTML5 audio, border-radius, box-shadow, and gradients. Soon, all your friends, neighbours and that cutie from Accounts will call you “HTM-Elton John”. You can also use your keyboard to play: WETYU for black keys and ASDFGHJ for the white.'
     tags: [css3, audio-video]
     support: [audio]
 

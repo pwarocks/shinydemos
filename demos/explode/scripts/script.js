@@ -1,8 +1,6 @@
 /*
  * Original code by Sean Christmann: 
  * http://www.craftymind.com/2010/04/20/blowing-up-html5-video-and-mapping-it-into-3d-space/
- * 
- * Edited for use with camera and touch screen by Daniel Davis (Opera Software)
  */
 
 // Global constants & variables

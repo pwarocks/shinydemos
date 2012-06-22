@@ -39,7 +39,7 @@ vows.describe('Category filtering').addBatch({
 		topic: 'IDontExist',
 		'it should throw': function(topic){
 			assert.throws(function(){
-				category.getPropFromTag(topic, 'css3')
+				category.getPropFromTag(topic, 'css3');
 			}, Error);
 		}
 	},
@@ -49,4 +49,4 @@ vows.describe('Category filtering').addBatch({
 			assert.isUndefined(topic);
 		}
 	}
-}).export(module);
+}).exportTo(module);

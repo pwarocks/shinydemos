@@ -86,5 +86,5 @@ for (var i = 0, demo; demo = demos[i]; i++) {
 				assert.isDefined(topic);	
 			}
 		}
-	}).export(module);
+	}).exportTo(module);
 }

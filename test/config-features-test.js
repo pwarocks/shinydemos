@@ -55,5 +55,5 @@ for (var i = 0, feature; feature = features[i]; i++) {
 				assert.match(topic, /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/i);
 			}
 		}
-	}).export(module);
+	}).exportTo(module);
 }

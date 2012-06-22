@@ -33,4 +33,4 @@ vows.describe('Site config properties').addBatch({
 			assert.equal(topic, 'layouts');
 		}
 	}
-}).export(module);
+}).exportTo(module);

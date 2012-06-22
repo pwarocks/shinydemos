@@ -49,4 +49,4 @@ vows.describe('Category filtering').addBatch({
 			assert.isUndefined(topic);
 		}
 	}
-}).export(module);
+}).exportTo(module);

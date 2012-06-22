@@ -23,7 +23,7 @@ for (var i = 0, feature; feature = features[i]; i++) {
 				assert.isDefined(topic);	
 			},
 			'should not contain spaces': function(topic){
-				assert.match(topic, /^[^\s]+$/)
+				assert.match(topic, /^[^\s]+$/);
 			}
 		}
 	}).addBatch({
@@ -52,7 +52,7 @@ for (var i = 0, feature; feature = features[i]; i++) {
 				assert.isDefined(topic);	
 			},
 			'should smell like a hyperlink': function(topic){
-				assert.match(topic, /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/i);
+				assert.match(topic, /(^|\s)((https?:\/\/)?[\w\-]+(\.[\w\-]+)+\.?(:\d+)?(\/\S*)?)/i);
 			}
 		}
 	}).exportTo(module);

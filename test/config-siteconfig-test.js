@@ -19,7 +19,7 @@ vows.describe('Site config properties').addBatch({
 		topic: siteconfig.demosFolder,
 		'should be "demos"': function(topic){
 			assert.equal(topic, 'demos');
-		},
+		}
 	},
 	'The source folder': {
 		topic: siteconfig.sourceFolder,

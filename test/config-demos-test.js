@@ -21,7 +21,7 @@ for (var i = 0, demo; demo = demos[i]; i++) {
 				assert.isDefined(topic);	
 			},
 			'should not contain spaces': function(topic){
-				assert.match(topic, /^[^\s]+$/)
+				assert.match(topic, /^[^\s]+$/);
 			}
 		}
 	}).addBatch({
@@ -58,7 +58,7 @@ for (var i = 0, demo; demo = demos[i]; i++) {
 			},
 			'should not be undefined': function(topic){
 				assert.isDefined(topic);	
-			},
+			}
 		}
 	}).addBatch({
 		'The tags': {
@@ -86,5 +86,5 @@ for (var i = 0, demo; demo = demos[i]; i++) {
 				assert.isDefined(topic);	
 			}
 		}
-	}).export(module);
+	}).exportTo(module);
 }

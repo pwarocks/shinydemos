@@ -47,5 +47,5 @@ for (var i = 0, tag; tag = tags[i]; i++) {
 				assert.isDefined(topic);	
 			}
 		}
-	}).export(module);
+	}).exportTo(module);
 }

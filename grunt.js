@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
-	var exec = require('child_process').exec;
+	var exec = require('child_process').exec,
+		async = require('async');
 	
 	// Project configuration.
 	grunt.initConfig({
@@ -21,7 +22,8 @@ module.exports = function(grunt) {
 			globals: {},
 			// Just for the lint:grunt target.
 			grunt: {
-				options: {node: true},			},
+				options: {node: true}
+			},
 			
 			// Just for the lint:tests target.
 			tests: {
@@ -66,6 +68,68 @@ module.exports = function(grunt) {
 		} else {
 			grunt.log.writeln('Unknown deploy target'.red);
 			return false;
+		}
+	});
+	
+	grunt.registerTask('test', 'Run unit tests', function(){
+		var done = this.async(),
+			pass = true;
+			
+		if (this.args[0] == "config") {
+			async.parallel([
+				function(callback){
+					//it seems that running a vows test via `node` doesn't emit
+					//an error object, so this is a regexy hack around that
+					exec('node test/config-demos-test.js', function (error, stdout, stderr) {
+						grunt.log.writeln(stdout);
+						callback(error, (/✗/.exec(stdout) !== null));
+					});
+				},
+				function(callback){
+					exec('node test/config-features-test.js', function (error, stdout, stderr) {
+						grunt.log.writeln(stdout);
+						callback(error, (/✗/.exec(stdout) !== null));
+					});
+				},
+				function(callback){
+					exec('node test/config-siteconfig-test.js', function (error, stdout, stderr) {
+						grunt.log.writeln(stdout);
+						callback(error, (/✗/.exec(stdout) !== null));
+					});
+				},
+				function(callback){
+					exec('node test/config-tags-test.js', function (error, stdout, stderr) {
+						grunt.log.writeln(stdout);
+						callback(error, (/✗/.exec(stdout) !== null));
+					});
+				},
+				function(callback){
+					exec('node test/config-demos-tags-test.js', function (error, stdout, stderr) {
+						grunt.log.writeln(stdout);
+						callback(error, (/✗/.exec(stdout) !== null));
+					});
+				}], 
+			function(err, results){
+				//if there's an error in one of the tests, the results array
+				//will have a true in it somewhere. so to pass, you should not
+				//have any match via [].indexOf()
+				pass = (results.join().indexOf('true') === -1);
+
+				done(pass);
+			});
+		} else {
+			exec('vows', function (error, stdout, stderr) {
+				
+				grunt.log.writeln(stdout);
+				
+				if (error) {
+					//if the test suite errors, pass will be false
+					pass = (error.code === 0);
+				}
+				
+				//now grunt can let us know we failed
+				done(pass);
+			});	
 		}
 	});
 };

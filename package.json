@@ -24,6 +24,7 @@
     "prompt": "*",
     "vows": "*",
     "jake": "*",
-    "grunt": "*"
+    "grunt": "*",
+    "async": "*"
   }
 }

@@ -19,26 +19,18 @@ module.exports = function(grunt) {
 			options: {
 				curly: true, newcap: true, bitwise: true, forin: true, latedef: true
 			},
-			globals: {},
-			// Just for the lint:grunt target.
 			grunt: {
 				options: {node: true}
 			},
-			
-			// Just for the lint:tests target.
 			tests: {
 				options: {node: true, loopfunc: true, boss: true}
 			},
-			
-			// Just for the lint:tests target.
 			lib: {
 				options: {browser: true, boss: true}
 			},
-			
 			shared: {
 				options: {shadow: true, expr: true}
 			},
-			
 			demos: {
 				options: {smarttabs: true, sub:true, browser:true, shadow: true, expr: true}
 			}

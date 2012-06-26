@@ -1,4 +1,6 @@
 module.exports = function(grunt) {
+	var exec = require('child_process').exec;
+	
 	// Project configuration.
 	grunt.initConfig({
 		lint: {
@@ -43,4 +45,27 @@ module.exports = function(grunt) {
 	
 	// Default task.
 	grunt.registerTask('default', 'lint');
+	
+	grunt.registerTask('deploy', 'Deploy the site', function(){
+		var done;
+		
+		if (this.args[0] == "dev") {
+			done = this.async();
+			grunt.log.writeln('Deploying the site to ' + 'dev.shinydemos.com'.green);
+			exec('node ../shinydemos-misc/deploy.js --env=dev', function(){
+				done();
+			});
+			
+		} else if (this.args[0] == "prod") {
+			done = this.async();
+			grunt.log.writeln('Deploying the site to ' + 'shinydemos.com'.green);
+			exec('node ../shinydemos-misc/deploy.js --env=prod', function(){
+				done();
+			});
+			
+		} else {
+			grunt.log.writeln('Unknown deploy target'.red);
+			return false;
+		}
+	});
 };

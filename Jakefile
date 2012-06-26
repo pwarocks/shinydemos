@@ -38,19 +38,3 @@ namespace('test', function () {
 		}, {printStdout: true, breakOnError: true});
 	});
 });
-
-namespace('deploy', function() {
-	desc('Deploy to dev.shinydemos.com.');
-	task('dev', function() {
-		jake.exec(['node ../shinydemos-misc/deploy.js --env=dev'], function() {
-			console.log("Done!");
-		}, {printStdout: true});
-	});
-	
-	desc('Deploy to shinydemos.com');
-	task('prod', function() {
-		jake.exec(['node ../shinydemos-misc/deploy.js --env=prod'], function() {
-			console.log("Done!");
-		}, {printStdout: true});
-	});
-});

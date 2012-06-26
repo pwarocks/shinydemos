@@ -7,8 +7,8 @@ module.exports = function(grunt) {
 			grunt: 'grunt.js',
 			tests: 'test/*.js',
 			lib: 'lib/*.js',
-			// commenting out for now, probably need to agree on linting
-			// options as a group
+			// commenting out for now, slowly getting
+			// a lot of code linted
 			// demos: 'demos/**/scripts/*.js',
 			shared: 'source/scripts/panel.js'
 		},
@@ -39,6 +39,10 @@ module.exports = function(grunt) {
 			
 			shared: {
 				options: {shadow: true, expr: true}
+			},
+			
+			demos: {
+				options: {smarttabs: true, sub:true, browser:true, shadow: true, expr: true}
 			}
 		}
 	});

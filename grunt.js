@@ -119,7 +119,6 @@ module.exports = function(grunt) {
 			});
 		} else {
 			exec('vows', function (error, stdout, stderr) {
-				
 				grunt.log.writeln(stdout);
 				
 				if (error) {
@@ -131,5 +130,21 @@ module.exports = function(grunt) {
 				done(pass);
 			});	
 		}
+	});
+	
+	grunt.registerTask('build', 'FIRE ZE MISSLES', function(){
+		var done = this.async(),
+			pass;
+			
+		exec('node ./index.js', function(error, stdout, stderr){
+			grunt.log.writeln(stdout);
+			
+			if (error) {
+			
+				pass = (error.code === 0);
+			}
+			
+			done(pass);
+		});
 	});
 };

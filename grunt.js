@@ -21,17 +21,16 @@ module.exports = function(grunt) {
 			globals: {},
 			// Just for the lint:grunt target.
 			grunt: {
-				options: {node: true},
-			},
+				options: {node: true},			},
 			
 			// Just for the lint:tests target.
 			tests: {
-				options: {node: true, loopfunc: true, boss: true},
+				options: {node: true, loopfunc: true, boss: true}
 			},
 			
 			// Just for the lint:tests target.
 			lib: {
-				options: {browser: true, boss: true},
+				options: {browser: true, boss: true}
 			},
 			
 			shared: {

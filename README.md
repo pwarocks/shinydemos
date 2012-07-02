@@ -22,14 +22,14 @@ Note: you'll probably get errors about not being able to patch Emberwind and Odi
 
 ### Running Tests
 
-There are two grunt tasks for running tests:
+There are two [grunt](http://gruntjs.com/) tasks for running tests:
 
   * `grunt test`: run the unit test suite.
   * `grunt test:config`: run the config tests over every entry in `config.yaml` (the unit tests only test a subset).
   
 ### Deploying the site
 
-There are two Jake tasks for deploying the site:
+There are two [grunt](http://gruntjs.com/) tasks for deploying the site:
 
  * `grunt deploy:dev`: deploys to dev.shinydemos.com, for manual testing and future versions of the site.
  * `grunt deploy:prod`: deploys to shinydemos.com.

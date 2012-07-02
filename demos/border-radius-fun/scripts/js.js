@@ -9,11 +9,11 @@
 	var	unsupported = document.getElementById('unsupported'),
 		overlay     = document.getElementById('overlay'),
 		showcss     = document.getElementById('showcss'),
-	    main        = document.getElementById('main'),
-	    borderobj   = main.lastElementChild,
+		main        = document.getElementById('main'),
+		borderobj   = main.lastElementChild,
 		panels      = document.querySelectorAll('form > fieldset > legend'),
-        close       = document.querySelectorAll('.close'),
-        oncloseclick;
+		close       = document.querySelectorAll('.close'),
+		oncloseclick;
 
         oncloseclick = function(e){
             e.preventDefault();
@@ -25,12 +25,12 @@
             e.currentTarget.parentNode.parentNode.className = 'hide';
 
             document.body.className = '';
-        }
+        };
 
 	    Lib.addHandlers({nodelist:close, event:'click', func:oncloseclick});
 
 
-	if( Lib.hasBorderRadius == false ){
+	if( Lib.hasBorderRadius === false ){
 		overlay.className = 'show';
 		unsupported.className = 'show';
 
@@ -60,11 +60,11 @@
 		brdrstyle = document.querySelectorAll('#setborderstyle select');
 		range     = document.querySelectorAll('#basic input[type=range]');
 		brdrwidth = document.querySelectorAll('#setborderwidth input[type=range]');
-		div		  = document.querySelector('#main div');
+		div       = document.querySelector('#main div');
 		bgimg     = form['bgimg'];
 		fgimg     = form['fgimg'];
-		img 	  = Lib.makeImage('images/kananaskis.jpg');
-		vid		  = Lib.makeVideo('raindropsinapool');
+		img       = Lib.makeImage('images/kananaskis.jpg');
+		vid       = Lib.makeVideo('raindropsinapool');
 
 		onrangechange = function(e){
 			var prop, u = unit, thisedge, otheredge, labels;
@@ -84,7 +84,7 @@
 				  'bottomrightA':'br',
 				  'bottomrightB':'br',
 				   'bottomleftA':'bl',
-				   'bottomleftB':'bl'}
+				   'bottomleftB':'bl'};
 
 			switch( e.target.id ){
 				case 'topleftA':
@@ -134,7 +134,7 @@
 
 			Lib.enableButton('getcode');
 			Lib.enableButton('resetform');
-		}
+		};
 
 		onborderchange = function(e){
 			var whichborder;
@@ -161,12 +161,12 @@
 			borderobj.style[whichborder] = e.target.value;
 			Lib.enableButton('getcode');
 			Lib.enableButton('resetform');
-		}
+		};
 
 		onborderwidthchange = function(e){
 			var whichborder, whichstyle, u = unit, evt;
 
-        	switch( e.target.id ){
+			switch( e.target.id ){
 				case 'brdrwidthtop':
 					whichborder = 'borderTopWidth';
 					whichstyle  = 'brdrtop';
@@ -186,7 +186,7 @@
 			}
 
 			/* change the border style to solid so we can see the width change. */
-			if( form[whichstyle].value == '' ){
+			if( form[whichstyle].value === '' ){
 
 				form[whichstyle].value = 'solid';
 
@@ -198,17 +198,17 @@
 			borderobj.style[whichborder] = e.target.value + u;
 			Lib.enableButton('getcode');
 			Lib.enableButton('resetform');
-		}
+		};
 
 		onbgchange = function(e){
-		    if( e.target.value == ''){
+			if( e.target.value === ''){
 				borderobj.className = '';
 			} else {
 				borderobj.className = 'patt'+e.target.value;
 			}
 			Lib.enableButton('getcode');
 			Lib.enableButton('resetform');
-		}
+		};
 
 		onfgchange = function(e){
 
@@ -219,7 +219,7 @@
 			switch( whichtype ){
 				case 'div':
 					borderobj = div;
-				 	break;
+					break;
 				case 'video':
 					borderobj = vid;
 					vid.play();
@@ -250,12 +250,12 @@
 			img.style.cssText = '';
 			vid.style.cssText = '';
 			div.style.cssText = '';
-		}
+		};
 
 		onsubmithandler = function(e){
 			e.preventDefault();
 
-            var	x,
+			var	x,
 				num,
 				extractCSS,
 				getThese,
@@ -270,7 +270,7 @@
 			output = '';
 
 			extractCSS = function( arrayOfStyles, styleObj){
-				var i, val, out, len = arrayOfStyles.length, css = new Array();
+				var i, val, out, len = arrayOfStyles.length, css = [];
 
 				for( var i = 0; i < len; i++){
 					val = styleObj.getPropertyValue(arrayOfStyles[i]);
@@ -287,7 +287,7 @@
 					out = '';
 				}
 				return out;
-			}
+			};
 
 			getThese = [
 			  ['background-image','border-top-right-radius','border-bottom-right-radius','border-bottom-left-radius','border-top-left-radius'],
@@ -301,14 +301,14 @@
 				output += extractCSS( getThese[x], styles );
 			}
 
-			if( output == ''){
+			if( output === ''){
 				output = 'No styles to output.';
-			} else{};
+			}
 
 			pre.innerHTML = output;
 			overlay.className = showcss.className = 'show';
 
-		}
+	};
 
 		onpanelclick = function(e){
 			e.stopPropagation();
@@ -327,7 +327,7 @@
 					parent.className += ' '+a;
 				}
 			}
-		}
+		};
 
 		onresethandler = function(e){
 
@@ -371,7 +371,7 @@
 
 			/* Remove any classes from the form */
 			form.setAttribute('class','');
-		}
+		};
 
 		/* Adjust UI for browsers without a range UI */
 		Lib.adjustUI();

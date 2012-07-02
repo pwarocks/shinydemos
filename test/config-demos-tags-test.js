@@ -24,6 +24,6 @@ for (var i = 0, demo; demo = demos[i]; i++) {
 					assert.equal(topic, getprop('tagName', topic));
 				}
 			}
-		}).export(module);
+		}).exportTo(module);
 	}
 }

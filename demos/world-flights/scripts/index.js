@@ -1,4 +1,4 @@
-//Authors: Nicolas Garcia Belmonte (@philogb) and Luz Caballero (@gerbille)
+//Copyright Luz Caballero (@gerbille) and Sencha Inc. (@sencha) Authors: Nicolas Garcia Belmonte (@philogb) and Luz Caballero (@gerbille)
 
 //Unpack modules
 PhiloGL.unpack();

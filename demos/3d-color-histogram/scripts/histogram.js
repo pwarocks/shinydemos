@@ -1,4 +1,4 @@
-//Copyright Luz Caballero (@gerbille) and Nicolas Garcia Belmonte (@philogb)
+//Copyright Luz Caballero (@gerbille) and Sencha Inc. (@sencha). Authors: Luz Caballero (@gerbille) and Nicolas Garcia Belmonte (@philogb)
 
 (function() {
 	

@@ -9,7 +9,8 @@ var options = {
 			link: '{{this.link}}'
 		},{{/each}}
 		{ build: {{version}} }
-	]
+	],
+	slug:'{{slug}}'
 };
 
 appendPanel(options);

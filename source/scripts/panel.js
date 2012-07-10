@@ -24,12 +24,15 @@ function appendPanel(options) {
 		}
 	}
 
-	var tags = ['p', {'class': 'sd-tags'}];
+	var tags = ['p', {'class': 'sd-tags'}],
+		github = ['a', {'class': 'github-link', 'href': 'https://github.com/operasoftware/shinydemos/tree/master/demos/' + options.slug}, 'source'];
 
 	for(var i=0, l=options.tags.length; i<l; i++) {
 		var tag = options.tags[i];
 		tags.push(['a', {'href': '/'+ tag + '/'}, tag]);
 	}
+	
+	tags.push(github);
 
 	var nopes = nopeFeatures.length,
 		yeps = yepFeatures.length;
@@ -66,7 +69,7 @@ function appendPanel(options) {
 				['h1', options.title]
 			],
 			['p', {'class': 'sd-legend'}, options.legend],
-			tags
+			tags,
 		],
 		['div', {'class': 'sd-features ' + descName},
 			['p', desc],

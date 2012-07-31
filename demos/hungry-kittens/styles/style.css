@@ -1,0 +1,39 @@
+body {
+	color: #444;
+}
+#fps {
+	color: #F00;
+}
+.sjs {
+	margin: auto;
+	border: 0px solid #000;
+}
+#info {
+  margin-left: 10px;
+  padding: 3px 15px 3px 15px;
+  width: 150px;
+  background-color: #fcf6d4;
+  font-family: Courier, monospace;
+  font-size: 0.8em;
+  float: left;
+  line-height: 20px;
+}
+h1, h3 {
+	padding-right: 160px;
+	text-align: center;
+	font-family: 'Special Elite', Courier;
+}
+#container{
+  clear: both;
+  width: 500px;
+  height:500px;
+  margin: auto;
+  background-image: url(../images/backgnd.jpg);
+  background-repeat: no-repeat;
+	background-position: 0 0;
+}
+#credits {
+  text-align: center;
+  font-family: Tahoma, sans-serif;
+  font-size: 0.8em;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hungry Kittens</title>
+	<meta charset='utf8'>
+	<link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+	<style>
+		body {
+			color: #444;
+		}
+		#fps {
+			color: #F00;
+		}
+		.sjs {
+			margin: auto;
+			border: 0px solid #000;
+		}
+		#info {
+		  margin-left: 10px;
+		  padding: 3px 15px 3px 15px;
+		  width: 150px;
+		  background-color: #fcf6d4;
+		  font-family: Courier, monospace;
+		  font-size: 0.8em;
+		  float: left;
+		  line-height: 20px;
+		}
+		h1, h3 {
+			padding-right: 160px;
+			text-align: center;
+			font-family: 'Special Elite', Courier;
+		}
+		#container{
+		  clear: both;
+		  width: 500px;
+		  height:500px;
+		  margin: auto;
+		  background-image: url(img/backgnd.jpg);
+		  background-repeat: no-repeat;
+			background-position: 0 0;
+		}
+		#credits {
+		  text-align: center;
+		  font-family: Tahoma, sans-serif;
+		  font-size: 0.8em;
+		}
+	</style>
+	<script src="js/sprite.js"></script>
+	<script src="js/game.js"></script>
+	<script>
+		window.onload = function () {
+			new Game().start();
+		}
+	</script>
+</head>
+<body>
+  <div id="info">
+	  <p id=fps></p>
+	  <p>HOW TO BE HUNGRY:</br> move: &larr; &rarr; </br> jump: &uarr; </br> meow: space-bar</p>
+	</div>
+	<p id=messages></p>
+	<h1>hungry kittens</h1>
+	<h3>Room #<span id=room></span></h3>
+	<div id=container></div>
+	<p id=credits>Background image:  Ⓒ <a href="http://www.flickr.com/photos/aisforangie/9526485/in/photostream/">A is for Angie</a> </br>
+	  Sprite by <a href="http://www.widgetworx.com/widgetworx/portfolio/spritelib.html">WidgetWorx</a></p>
+</body>
+</html>
+

@@ -3,9 +3,9 @@
 	this.coords = function(x,y) {
 		this.x = x;
 		this.y = y;
-	}
+	};
 	this.element = element;
-	this.store = new Array();
+	this.store = [];
 	this.store[0] = new this.coords(-1,-1);
 	this.store[1] = new this.coords(-1,-1);
 	this.dx = 0;
@@ -23,15 +23,21 @@
 		var zIndex = 0; // just using positive indices
 		var images = document.getElementsByTagName('img');
 		for (var i = 0; i<images.length; i++) {
-			if (parseInt(images[i].style.zIndex) >= zIndex) { 
-				zIndex = parseInt(images[i].style.zIndex) + 1;
+			if (parseInt(images[i].style.zIndex,10) >= zIndex) {
+				zIndex = parseInt(images[i].style.zIndex,10) + 1;
 			}
 		}
 		this.element.style.zIndex = zIndex;
-	}
-	
+	};
+
 	this.gesture = function(e) {
-		var x1 = x2 = y1 = y2 = i = angle = size = 0;
+		var x1 = 0;
+		var x2 = 0;
+		var y1 = 0;
+		var y2 = 0;
+		var i = 0;
+		var angle = 0;
+		var size = 0;
 		if (e.targetTouches) {
 			if (e.targetTouches.length>=2) {
 				
@@ -66,15 +72,14 @@
 				}
 				if (this.store[0].x!=-1) {
 					this.onefinger(x1-this.store[0].x,y1-this.store[0].y);
-				}			
+				}
 				// store the values for later comparison
 				this.store[0].x = x1;
 				this.store[0].y = y1;
 			}
-		} 	
-	}
-
-	this.twofinger = function(size,angle) {
+		}
+	};
+		this.twofinger = function(size,angle) {
 		var that = this;
 		var size_ratio = ((that.element.width*that.size)+size)/(that.element.width*that.size);
 		that.size *= size_ratio;
@@ -82,13 +87,13 @@
 		if (that.size > 1) { that.size = 1; }
 		that.angle += angle;
 		that.element.style.OTransform = that.element.style.MozTransform = that.element.style.webkitTransform = that.element.style.transform = 'rotate('+that.angle+'rad) scale('+that.size+')';
-	}
+	};
 	
 	this.onefinger = function(dx,dy) {
 		var that = this;
 		that.element.style.left = that.element.offsetLeft+dx+'px';
 		that.element.style.top = that.element.offsetTop+dy+'px';
-	}
+	};
 
 }
 
@@ -102,8 +107,5 @@ window.addEventListener('load',function() {
 		images[i].style.top = Math.random()*screen.height/2+'px';
 		images[i].style.zIndex = i;
 	}
-	document.body.addEventListener('touchstart',function(e) { e.preventDefault(); e.stopPropagation(); },false);
-	document.body.addEventListener('touchmove',function(e) { e.preventDefault(); e.stopPropagation(); },false);
-	document.body.addEventListener('scroll',function(e) { e.preventDefault(); e.stopPropagation(); },true);
-	window.addEventListener('scroll',function(e) { e.preventDefault(); e.stopPropagation(); },true);
+	window.addEventListener('touchmove',function(e) { e.preventDefault(); e.stopPropagation(); },false);
 }, false);

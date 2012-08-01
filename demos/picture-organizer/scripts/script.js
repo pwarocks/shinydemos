@@ -103,9 +103,10 @@ window.addEventListener('load',function() {
 		// attach the handler
 		var gh = new gestureHandler(images[i]);
 		// randomise the position
-		images[i].style.left = Math.random()*screen.width/2+'px';
-		images[i].style.top = Math.random()*screen.height/2+'px';
+		images[i].style.left = Math.random()*(window.innerWidth-images[i].clientWidth)+'px';
+		images[i].style.top = Math.random()*(window.innerHeight-images[i].clientHeight)+'px';
 		images[i].style.zIndex = i;
 	}
-	window.addEventListener('touchmove',function(e) { e.preventDefault(); e.stopPropagation(); },false);
+	window.addEventListener('touchmove',function(e) { e.preventDefault(); },false);
+	/* known (intentional) issue: this last statement prevents scrolling, so on small screen devices the SD panel will be cut off and non-scrollable */
 }, false);

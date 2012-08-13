@@ -274,3 +274,7 @@ var Game = function() {
 		start: start
 	};
 }
+
+window.onload = function () {
+	new Game().start();
+}

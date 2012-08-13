@@ -1,0 +1,11 @@
+{
+  "name" : "kittens",
+  "description" : "The hungry kittens server.",
+  "dependencies" : {
+    "mime" : "1.2.x",
+    "websocket" : "0.3.x",
+    "optimist": "1.0.6"
+  },
+  "engine" : "node >= 0.6.5",
+  "version" : "1.0.0"
+}

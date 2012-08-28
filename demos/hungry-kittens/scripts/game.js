@@ -33,6 +33,7 @@ var Game = function() {
 	var Cat = function (scene, data) {
 		var w = 32; // side of the cat's sprite frame, in px
 		this.catId = data.id;
+		this.name = data.name;
 		this.race = this.catId % 4; // assigning one of four races in the sprite sheet (we're an equal opportunity app)
 		this.isJumping = false;
 		this.jumpSpeed = 15; // initial jumping speed
@@ -40,6 +41,7 @@ var Game = function() {
 		this.frame = 0;
 		this.looking = "left";
 
+		//Sprite by WidgetWorx @ http://www.widgetworx.com/widgetworx/portfolio/spritelib.html
 		sjs.Sprite.call(this, scene, "../images/sprite.gif", {
 			size: [w, w],
 			x: data.x,
@@ -48,6 +50,12 @@ var Game = function() {
 			yoffset: 5 * w,
 			layer: scene.layers.default
 		});
+
+		// adding a tag with the kitten's name
+		var tag = document.createElement("span");
+		tag.className = "nametag";
+		tag.innerHTML = this.name;
+		this.dom.appendChild(tag);
 	}
 
 	Cat.prototype = Object.create(sjs.Sprite.prototype, {
@@ -167,10 +175,13 @@ var Game = function() {
 
   // start game
 	var start = function() {
-	  //connect to server
-		socket = new WebSocket('ws://' + location.host + '/');
 
-    
+		var defaultName = "Reginald";
+		var name = prompt("Please name your kitten", defaultName) || defaultName;
+
+		//connect to server
+		socket = new WebSocket('ws://' + location.host + '/?name=' + name.slice(0, 10));
+
 		var handlers = {
 		  // server sends data about peers in the room when connection is established
 			"connected": function (data) {

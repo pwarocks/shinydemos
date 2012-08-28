@@ -29,11 +29,15 @@ h1, h3 {
   height:500px;
   margin: auto;
   background-image: url(../images/backgnd.jpg);
+  /* Background image  Ⓒ A is for Angie http://www.flickr.com/photos/aisforangie/9526485/in/photostream */
   background-repeat: no-repeat;
 	background-position: 0 0;
 }
-#credits {
-  text-align: center;
-  font-family: Tahoma, sans-serif;
-  font-size: 0.8em;
+span.nametag {
+    color: #00F;
+    font-family: sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    text-shadow: 0 0 1px #FFF;
+    display: block;
 }

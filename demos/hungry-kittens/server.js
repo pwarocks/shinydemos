@@ -202,6 +202,7 @@ ws.on("request", function(request) {
 
 	var cat = {
 		id: -1,
+		name: url.parse(request.httpRequest.url, true).query.name || "",
 		x: 0, y: 0,
 		w: 32, h: 32,
 		looking: "left",

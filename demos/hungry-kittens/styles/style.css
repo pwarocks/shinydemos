@@ -1,0 +1,43 @@
+body {
+	color: #444;
+}
+#fps {
+	color: #F00;
+}
+.sjs {
+	margin: auto;
+	border: 0px solid #000;
+}
+#info {
+  margin-left: 10px;
+  padding: 3px 15px 3px 15px;
+  width: 150px;
+  background-color: #fcf6d4;
+  font-family: Courier, monospace;
+  font-size: 0.8em;
+  float: left;
+  line-height: 20px;
+}
+h1, h3 {
+	padding-right: 160px;
+	text-align: center;
+	font-family: 'Special Elite', Courier;
+}
+#container{
+  clear: both;
+  width: 500px;
+  height:500px;
+  margin: auto;
+  background-image: url(../images/backgnd.jpg);
+  /* Background image  Ⓒ A is for Angie http://www.flickr.com/photos/aisforangie/9526485/in/photostream */
+  background-repeat: no-repeat;
+	background-position: 0 0;
+}
+span.nametag {
+    color: #00F;
+    font-family: sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    text-shadow: 0 0 1px #FFF;
+    display: block;
+}

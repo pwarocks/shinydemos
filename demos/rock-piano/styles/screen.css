@@ -134,10 +134,10 @@ body {
 		-moz-border-radius:5px 5px 10px 10px;
 		border-radius:5px 5px 10px 10px;
 		background:#3D3E41;
-		background-image:-webkit-linear-gradient(bottom, #54555C, #3F4042 30%, #3F4042 90%, #333);
-		background-image:-moz-linear-gradient(bottom, #54555C, #3F4042 30%, #3F4042 90%, #333);
-		background-image:-o-linear-gradient(bottom, #54555C, #3F4042 30%, #3F4042 90%, #333);
-		background-image:linear-gradient(to top, #54555C, #3F4042 30%, #3F4042 90%, #333);
+		background-image:-webkit-linear-gradient(#333, #3F4042 10%, #3F4042 70%, #54555C);
+		background-image:-moz-linear-gradient(#333, #3F4042 10%, #3F4042 70%, #54555C);
+		background-image:-o-linear-gradient(#333, #3F4042 10%, #3F4042 70%, #54555C);
+		background-image:linear-gradient(#333, #3F4042 10%, #3F4042 70%, #54555C);
 		-webkit-box-shadow:0 0 0 5px #000, 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 		-moz-box-shadow:0 0 0 5px #000, 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 		box-shadow:
@@ -170,11 +170,11 @@ body {
 	.key.black.pressed:before {
 		top:13px;
 		bottom:25px;
-		background-image:-webkit-linear-gradient(bottom, #404144, #303133 20%, #303133);
-		background-image:-moz-linear-gradient(bottom, #404144, #303133 20%, #303133);
-		background-image:-ms-linear-gradient(bottom, #404144, #303133 20%, #303133);
-		background-image:-o-linear-gradient(bottom, #404144, #303133 20%, #303133);
-		background-image:linear-gradient(to top, #404144, #303133 20%, #303133);
+		background-image:-webkit-linear-gradient(#303133, #303133 80%, #404144);
+		background-image:-moz-linear-gradient(#303133, #303133 80%, #404144);
+		background-image:-ms-linear-gradient(#303133, #303133 80%, #404144);
+		background-image:-o-linear-gradient(#303133, #303133 80%, #404144);
+		background-image:linear-gradient(#303133, #303133 80%, #404144);
 		}
 	.key.black.pressed:after {
 		bottom:-25px;

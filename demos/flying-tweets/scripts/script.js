@@ -9,9 +9,11 @@ window.addEventListener('DOMContentLoaded', function() {
      * Main script
      */
     // Set some global variables
+    var container = document.getElementById('container');
     var frm_search = document.getElementById('frm_search');
     var txt_search = document.getElementById('txt_search');
     var btn_search = document.getElementById('btn_search');
+    var btn_resize = document.getElementById('btn_resize');
     var tweet = document.getElementById('tweet');
     var count = 0;
     var tweets = [];
@@ -112,4 +114,30 @@ window.addEventListener('DOMContentLoaded', function() {
     var timer = window.setInterval(function() {
         getTweets(query, 'updateTweets');
     }, 60000 * updateTime);
+    
+    // Check for fullscreen API support
+    if (document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled) {
+        // Resize the page
+        btn_resize.onclick = function(event) {
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
+            } else {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.mozRequestFullScreen) {
+                    container.mozRequestFullScreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                }
+            }
+        };
+    } else {
+        btn_resize.style.display = 'none';
+    }
 }, false);

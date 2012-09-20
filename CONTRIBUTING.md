@@ -19,6 +19,10 @@ We will not accept everything. Life is hard. We reserve the right to remove anyt
 
 * All your contributions (including images, source code, etc) will be under a liberal license (blahblah license).
 
+It means that everything that you will be contributing to shinydemos can be used by anyone else. We don't want to have to enter in complicated legal stuff, do we? Let's just share stuff.
+
+If you are using images be sure there are your owns. Do not reuse images of someone else.
+
 
 # Additional Resources
 

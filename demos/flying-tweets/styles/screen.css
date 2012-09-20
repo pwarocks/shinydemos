@@ -28,7 +28,6 @@ a:hover, a:focus {
     width:100%;
     -webkit-animation: container 60s linear infinite;
     -moz-animation: container 60s linear infinite;
-    -ms-animation: container 60s linear infinite;
     -o-animation: container 60s linear infinite;
     animation: container 60s linear infinite;
 }
@@ -47,20 +46,6 @@ a:hover, a:focus {
     }
 }
 @-moz-keyframes container {
-    25% {
-        background:#ffc;
-    }
-    50% {
-        background:#cfc;
-    }
-    75% {
-        background:#ccf;
-    }
-    100% {
-        background:#fcc;
-    }
-}
-@-ms-keyframes container {
     25% {
         background:#ffc;
     }
@@ -118,7 +103,6 @@ header {
     padding:0.5em;
     -webkit-transition-duration:0.3s;
     -moz-transition-duration:0.3s;
-    -ms-transition-duration:0.3s;
     -o-transition-duration:0.3s;
     transition-duration:0.3s;
 }
@@ -134,7 +118,6 @@ header {
     width:2em;
     -webkit-transition-duration:0.3s;
     -moz-transition-duration:0.3s;
-    -ms-transition-duration:0.3s;
     -o-transition-duration:0.3s;
     transition-duration:0.3s;
 }
@@ -157,82 +140,70 @@ header {
     position:relative;
     -webkit-transform:rotate(-360deg);
     -moz-transform:rotate(-360deg);
-    -ms-transform:rotate(-360deg);
     -o-transform:rotate(-360deg);
     transform:rotate(-360deg);
     -webkit-animation:char 10s infinite;
     -moz-animation:char 10s infinite;
-    -ms-animation:char 10s infinite;
     -o-animation:char 10s infinite;
     animation:char 10s infinite;
 }
 #tweet .char9 {
     -webkit-animation-timing-function:cubic-bezier(0.25, 0, 0.25, 1);
     -moz-animation-timing-function:cubic-bezier(0.25, 0, 0.25, 1);
-    -ms-animation-timing-function:cubic-bezier(0.25, 0, 0.25, 1);
     -o-animation-timing-function:cubic-bezier(0.25, 0, 0.25, 1);
     animation-timing-function:cubic-bezier(0.25, 0, 0.25, 1);
 }
 #tweet .char1 {
     -webkit-animation-timing-function:cubic-bezier(0.30, 0, 0.30, 1);
     -moz-animation-timing-function:cubic-bezier(0.30, 0, 0.30, 1);
-    -ms-animation-timing-function:cubic-bezier(0.30, 0, 0.30, 1);
     -o-animation-timing-function:cubic-bezier(0.30, 0, 0.30, 1);
     animation-timing-function:cubic-bezier(0.30, 0, 0.30, 1);
 }
 #tweet .char7 {
     -webkit-animation-timing-function:cubic-bezier(0.35, 0, 0.35, 1);
     -moz-animation-timing-function:cubic-bezier(0.35, 0, 0.35, 1);
-    -ms-animation-timing-function:cubic-bezier(0.35, 0, 0.35, 1);
     -o-animation-timing-function:cubic-bezier(0.35, 0, 0.35, 1);
     animation-timing-function:cubic-bezier(0.35, 0, 0.35, 1);
 }
 #tweet .char3 {
     -webkit-animation-timing-function:cubic-bezier(0.40, 0, 0.40, 1);
     -moz-animation-timing-function:cubic-bezier(0.40, 0, 0.40, 1);
-    -ms-animation-timing-function:cubic-bezier(0.40, 0, 0.40, 1);
     -o-animation-timing-function:cubic-bezier(0.40, 0, 0.40, 1);
     animation-timing-function:cubic-bezier(0.40, 0, 0.40, 1);
 }
 #tweet .char5 {
     -webkit-animation-timing-function:cubic-bezier(0.45, 0, 0.45, 1);
     -moz-animation-timing-function:cubic-bezier(0.45, 0, 0.45, 1);
-    -ms-animation-timing-function:cubic-bezier(0.45, 0, 0.45, 1);
     -o-animation-timing-function:cubic-bezier(0.45, 0, 0.45, 1);
     animation-timing-function:cubic-bezier(0.45, 0, 0.45, 1);
 }
 #tweet .char4 {
     -webkit-animation-timing-function:cubic-bezier(0.50, 0, 0.50, 1);
     -moz-animation-timing-function:cubic-bezier(0.50, 0, 0.50, 1);
-    -ms-animation-timing-function:cubic-bezier(0.50, 0, 0.50, 1);
     -o-animation-timing-function:cubic-bezier(0.50, 0, 0.50, 1);
     animation-timing-function:cubic-bezier(0.50, 0, 0.50, 1);
 }
 #tweet .char6 {
     -webkit-animation-timing-function:cubic-bezier(0.55, 0, 0.55, 1);
     -moz-animation-timing-function:cubic-bezier(0.55, 0, 0.55, 1);
-    -ms-animation-timing-function:cubic-bezier(0.55, 0, 0.55, 1);
     -o-animation-timing-function:cubic-bezier(0.55, 0, 0.55, 1);
     animation-timing-function:cubic-bezier(0.55, 0, 0.55, 1);
 }
 #tweet .char2 {
     -webkit-animation-timing-function:cubic-bezier(0.60, 0, 0.60, 1);
     -moz-animation-timing-function:cubic-bezier(0.60, 0, 0.60, 1);
-    -ms-animation-timing-function:cubic-bezier(0.60, 0, 0.60, 1);
     -o-animation-timing-function:cubic-bezier(0.60, 0, 0.60, 1);
     animation-timing-function:cubic-bezier(0.60, 0, 0.60, 1);
 }
 #tweet .char8 {
     -webkit-animation-timing-function:cubic-bezier(0.65, 0, 0.65, 1);
     -moz-animation-timing-function:cubic-bezier(0.65, 0, 0.65, 1);
-    -ms-animation-timing-function:cubic-bezier(0.65, 0, 0.65, 1);
     -o-animation-timing-function:cubic-bezier(0.65, 0, 0.65, 1);
     animation-timing-function:cubic-bezier(0.65, 0, 0.65, 1);
 }
 #tweet .char0 {
     -webkit-animation-timing-function:cubic-bezier(0.70, 0, 0.70, 1);
     -moz-animation-timing-function:cubic-bezier(0.70, 0, 0.70, 1);
-    -ms-animation-timing-function:cubic-bezier(0.70, 0, 0.70, 1);
     -o-animation-timing-function:cubic-bezier(0.70, 0, 0.70, 1);
     animation-timing-function:cubic-bezier(0.70, 0, 0.70, 1);
 }
@@ -276,24 +247,6 @@ header {
     100% {
         left:110%;
         -moz-transform:rotate(360deg);
-    }
-}
-@-ms-keyframes char {
-    0% {
-        left:-110%;
-        -ms-transform:rotate(-360deg);
-    }
-    25% {
-        left:0;
-        -ms-transform:rotate(0);
-    }
-    80% {
-        left:0;
-        -ms-transform:rotate(0);
-    }
-    100% {
-        left:110%;
-        -ms-transform:rotate(360deg);
     }
 }
 @-o-keyframes char {

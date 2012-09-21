@@ -1,31 +1,34 @@
 # How to contribute
 
-[Shiny Demos](http://shinydemos.com/) is a sample of open Web technologies demos started by [Opera Developer Relations Team](http://dev.opera.com/). But that would not make much sense without your own contributions, doesn't it. So we are waiting for your own contributions. No rewards, no crazy contests, just the simple joy to share together our love for the open Web. Let's push code and pixels.
+[Shiny Demos](http://shinydemos.com/) is a showcase site highlighting interesting and innovative uses of the latest open web technologies demos, and was created by the [Opera Developer Relations Team](http://dev.opera.com/). What we have created is fine, but we would much rather showcase contributions from the wider web community as well!
+
+So we are waiting for your own contributions — no rewards, no crazy contests, just the simple joy of sharing our love for the open web. Let's push code and pixels.
 
 ## Getting Started
 
 * Make sure you have a [GitHub account](https://github.com/signup/free)
 * Fork the repository on GitHub
-* Start creating a demo using the shiny demos template
+* Start creating a demo using the [Shiny Demos template](CHRIS - NEED TO PROVIDE LINK)
 * When finished, make a pull request
 
 ## What are we looking for?
 
-Shiny demos and double rainbows! Poneys are an option. Basically demos showing how it is possible to use the Open Web technologies. A demo should be working in many browsers, all if possible and should have least code which makes it workable in the future. User feature detections, avoid user agent sniffing.
+Shiny Demos and double rainbows! Ponies are an option. Basically, we want cool, innovative demos built with the latest open standards. Demos should work across multiple browsers if at all possible, feature as much future proofing code as is sensible, and follow accepted best practices. Use feature detection, and above all avoid user agent sniffing!
 
-We will not accept everything. Life is hard. We reserve the right to remove anything which we think doesn't fit into shiny demos. Don't be desperate though. Because even if your demos do not land on shiny demos Web site, it is still a demo usable and accessible to everyone on github.
+We will not accept everything. Life is hard. We reserve the right to not include anything which we think doesn't fit into Shiny Demos. Don't be upset though. Even if your demo doesn't end up landing on Shiny Demos, it is still usable and accessible to everyone on github.
 
-## Boring licences stuff
+If you want more inspiration, look around the [Shiny Demos](http://shinydemos.com/) to see what's up there already. If you have a query of any kind, please contact us (CHRIS - WE NEED TO OFFER A CONTACT MECHANISM.).
 
-* All your contributions (including images, source code, etc) will be under a liberal license (blahblah license).
+## Boring licence stuff
 
-It means that everything that you will be contributing to shinydemos can be used by anyone else. We don't want to have to enter in complicated legal stuff, do we? Let's just share stuff.
+* All your contributions (including images, source code, etc) will be under a liberal license (blahblah license - CHRIS SUGGESTION: I RECKON JUST CC-BY, OR EVEN CC-0/PUBLIC DOMAIN.) .
 
-If you are using images be sure there are your owns. Do not reuse images of someone else.
+It means that everything that you will be contributing to shinydemos can be used by anyone else. We don't want to have to enter into complicated legal stuff, do we? Let's just share stuff.
 
+If you are using images be sure that you are able to do so under any licensing conditions the images may have.
 
 # Additional Resources
 
-* [Blog post about shiny demos contributions](http://my.opera.com/ODIN/blah)
+* [Blog post about Shiny Demos contributions](http://my.opera.com/ODIN/blah)
 * [General GitHub documentation](http://help.github.com/)
 * [GitHub pull request documentation](http://help.github.com/send-pull-requests/)

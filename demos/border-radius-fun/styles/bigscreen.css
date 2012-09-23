@@ -47,43 +47,42 @@ fieldset fieldset{
 
 #main > video, #main > img, #main > div{
     width: 15em;
-	height: 15em;
+    height: 15em;
 }
 
 #overlay{
-	position:fixed;
-	z-index:9999;
-	width:100%;
-	height:100%;
-	background:rgba(0,0,0,.5);
-	top:0;
-	left:0;
-	margin:0;
+    position:fixed;
+    z-index:9999;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.5);
+    top:0;
+    left:0;
+    margin:0;
 }
 
 #overlay section{
     display:none;
-	background: #fff;
-	margin: 100px auto;
-	padding: 20px 20px 30px;
-	position: relative;
-	width: 80%;
-	border-radius:5px;
-	box-shadow: 0 0 100px rgba(0,0,0,.5);
+    background: #fff;
+    margin: 100px auto;
+    padding: 20px 20px 30px;
+    position: relative;
+    width: 80%;
+    border-radius:5px;
+    box-shadow: 0 0 100px rgba(0,0,0,.5);
 }
 
 #overlay pre{
-	background-color: #fff;
-	padding: 5px;
-	margin:0
+    background-color: #fff;
+    padding: 5px;
+    margin:0
 }
 
 #overlay h2{
-	font: normal 1.5em / 1 'Maiden Orange', serif;
-	font-size:36px;
-	margin:0 1em .2em 0;
-	margin:0 1rem .5rem 0;
-
+    font: normal 1.5em / 1 'Maiden Orange', serif;
+    font-size:36px;
+    margin:0 1em .2em 0;
+    margin:0 1rem .5rem 0;
 }
 
 #overlay.show, #overlay section.show{
@@ -91,10 +90,9 @@ fieldset fieldset{
 }
 
 pre{
-	border:1px inset #333;
-	margin:1em;
+    border:1px inset #333;
+    margin:1em;
     padding:1em;
     margin:1rem;
     padding:1rem;
 }
-

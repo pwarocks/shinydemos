@@ -54,7 +54,7 @@ var Game = function() {
 		// adding a tag with the kitten's name
 		var tag = document.createElement("span");
 		tag.className = "nametag";
-		tag.innerHTML = this.name;
+		tag.textContent = this.name;
 		this.dom.appendChild(tag);
 	}
 

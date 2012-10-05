@@ -21,7 +21,7 @@ var Game = function() {
   // plays meow sound, if this cat meows also broadcasts to server
 	var meow = function (broadcast) {
 		var a = document.createElement("audio");
-		a.src = "../sounds/meow" + (Math.round(Math.random()*10) % 5) + ".wav";
+		a.src = "http://media.shinydemos.com/hungry-kittens/meow" + (Math.round(Math.random()*10) % 5) + ".wav";
 		a.addEventListener("ended", function () { a.parentNode.removeChild(a); }, false);
 		document.body.appendChild(a);
 		a.play();

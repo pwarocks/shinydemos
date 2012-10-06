@@ -27,7 +27,7 @@ var Game = function() {
 		a.play();
 		if (broadcast)
 			socket.send(JSON.stringify({ type: "meow", data: me.catId }));
-	}
+	};
 
   // create Cat as a subclass of Sprite
 	var Cat = function (scene, data) {
@@ -48,7 +48,7 @@ var Game = function() {
 			y: 0,
 			xoffset: this.race * 3 * w,
 			yoffset: 5 * w,
-			layer: scene.layers.default
+			layer: scene.layers["default"]
 		});
 
 		// adding a tag with the kitten's name
@@ -56,7 +56,7 @@ var Game = function() {
 		tag.className = "nametag";
 		tag.textContent = this.name;
 		this.dom.appendChild(tag);
-	}
+	};
 
 	Cat.prototype = Object.create(sjs.Sprite.prototype, {
 		turnHead: { value: function (direction) {
@@ -119,7 +119,7 @@ var Game = function() {
 				looking: me.looking
 			}
 		}));
-	}
+	};
 
   // update the cats' positions
 	var paint = function() {
@@ -128,7 +128,7 @@ var Game = function() {
 
 		if (arrows[LEFT]) {
 			me.walk();
-			me.lookLeft()
+			me.lookLeft();
 			x -= step;
 		}
 		if (arrows[RIGHT]) {
@@ -143,11 +143,11 @@ var Game = function() {
     /* 
     //debug function, shows the keys that are being pressed
     var LEFT = 0, UP = 1, RIGHT = 2, DOWN = 3;
-  	var stateNameMapping = [{i: LEFT, n: "left"},
-  							{i: UP, n: "up"},
-  							{i: RIGHT, n: "right"},
-  							{i: DOWN, n: "down"}];
-    
+	var stateNameMapping = [{i: LEFT, n: "left"},
+							{i: UP, n: "up"},
+							{i: RIGHT, n: "right"},
+							{i: DOWN, n: "down"}];
+
 		var msg = stateNameMapping.filter(function (e) { return arrows[e.i] }).map(function (e) { return e.n }).join(" + ");
 		messageBox.innerHTML = msg || "Use the arrows to move.";
 		*/
@@ -169,7 +169,7 @@ var Game = function() {
 			}
 		}
 
-		if (ticker.currentTick % 20 == 0)
+		if (ticker.currentTick % 20 === 0)
 			document.getElementById("fps").innerHTML = ticker.fps + "fps";
 	};
 
@@ -249,7 +249,7 @@ var Game = function() {
 					meow();
 				}
 			}
-		}
+		};
 
     /* handle messages:
     { type: "unload", data: cat.id } -> remove a cat, it provides the cat's id
@@ -265,9 +265,9 @@ var Game = function() {
 			} else {
 			handlers[o.type](o.data);
 		  }
-		}
+		};
 
-		socket.onclose = function () {}
+		socket.onclose = function () {};
     
     // when the page closes, send socket.close to server to remove cat tied to this page
 		window.addEventListener("unload", function () {
@@ -284,8 +284,8 @@ var Game = function() {
 	return {
 		start: start
 	};
-}
+};
 
 window.onload = function () {
 	new Game().start();
-}
+};

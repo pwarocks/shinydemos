@@ -1,11 +1,16 @@
 {
-  "name" : "kittens",
-  "description" : "The hungry kittens server.",
-  "dependencies" : {
-    "mime" : "1.2.x",
+  "name": "kittens",
+  "description": "The hungry kittens server.",
+  "main": "server.js",
+  "dependencies": {
+    "mime": "1.2.x",
     "websocket": "*",
     "optimist": "*"
   },
-  "engine" : "node >= 0.6.5",
-  "version" : "1.0.0"
+  "engines": "node >= 0.6.5",
+  "version": "1.0.0",
+  "subdomain": "hungry-kittens",
+  "scripts": {
+    "start": "node server.js"
+  }
 }

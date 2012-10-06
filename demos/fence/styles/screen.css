@@ -19,7 +19,6 @@ BODY {
 	overflow:hidden;
 	-webkit-transition:left 1s linear;
 	-moz-transition:left 1s linear;
-	-ms-transition:left 1s linear;
 	-o-transition:left 1s linear;
 	transition:left 1s linear;
 	}
@@ -58,7 +57,6 @@ BODY {
 	transform:translateX(25px);
 	-webkit-transition:right 1s linear;
 	-moz-transition:right 1s linear;
-	-ms-transition:right 1s linear;
 	-o-transition:right 1s linear;
 	transition:right 1s linear;
 	}

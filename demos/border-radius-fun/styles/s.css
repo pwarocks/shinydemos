@@ -1,12 +1,13 @@
-@-o-viewport {
-  width: device-width;
-  height: device-height;
-}
+@-webkit-viewport{width:device-width;height:device-height;}
+@-moz-viewport{width:device-width;height:device-height;}
+@-ms-viewport{width:device-width;height:device-height;}
+@-o-viewport{width:device-width;height:device-height;}
+@viewport{width:device-width;height:device-height;}
 
 body{
-	margin:0;
-	padding:0;
-	background: #E3E3E3;
+  margin:0;
+  padding:0;
+  background: #E3E3E3;
 }
 
 section{display:block;}
@@ -28,35 +29,34 @@ section{display:block;}
 #wrap section{display:block;}
 
 #main{
-	position:relative;
-	width:10em;
-	margin: 0 auto 2em auto;
+    position:relative;
+    width:10em;
+    margin: 0 auto 2em auto;
 }
 
 #main > video, #main > img, #main > div{
     width: 9em;
-	height: 9em;
-	display:block;
+    height: 9em;
+    display:block;
     margin: auto;
 }
 
 #main > video, #main > img, #main > div{
-	     -o-object-fit: fill;
-	-webkit-object-fit: fill;
-   	   -moz-object-fit: fill;
-	    -ms-object-fit: fill;
-	 -khtml-object-fit: fill;
-	        object-fit: fill;
+    -webkit-object-fit: fill;
+    -moz-object-fit: fill;
+    -ms-object-fit: fill;
+    -o-object-fit: fill;
+    object-fit: fill;
 }
 
 #main p{
-	position:absolute;
-	background:#FBA783;
-	white-space:nowrap;
-	text-align:right;
-	line-height: 1;
-	font-family:monospace;
-	padding:3px;
+    position:absolute;
+    background:#FBA783;
+    white-space:nowrap;
+    text-align:right;
+    line-height: 1;
+    font-family:monospace;
+    padding:3px;
 }
 
 #main p:nth-child(1){top: .5em; left: -2.5em;}
@@ -67,9 +67,9 @@ section{display:block;}
 
 /* Either the video, div or image */
 #changeobj{
-	border-color:#f3c;
-	background-color:#1FA5EE;
-	margin:0;
+  border-color:#f3c;
+  background-color:#1FA5EE;
+  margin:0;
 }
 
 /* Form elements */
@@ -91,57 +91,61 @@ form > fieldset > legend{
     cursor:pointer;
 }
 form > fieldset legend img{
-	-o-transform: rotate(0deg);
-	-o-transition: -o-transform 200ms linear;
-
-	-webkit-transform: rotate(0deg);
-	-webkit-transition: -webkit-transform 200ms linear;
-
-	-moz-transform: rotate(0deg);
-	-moz-transition: -moz-transform 200ms linear;
-
-	-ms-transform: rotate(0deg);
-	-ms-transition: -ms-transform 200ms linear;
-
-	vertical-align: middle;
+    -webkit-transform: rotate(0deg);
+    -webkit-transition: -webkit-transform 200ms linear;
+    
+    -moz-transform: rotate(0deg);
+    -moz-transition: -moz-transform 200ms linear;
+    
+    -ms-transform: rotate(0deg);
+    -ms-transition: -ms-transform 200ms linear;
+    
+    -o-transform: rotate(0deg);
+    -o-transition: -o-transform 200ms linear;
+    
+    transform: rotate(0deg);
+    transition: transform 200ms linear;
+    
+    vertical-align: middle;
 }
 
 form > fieldset div{
-	max-height:.01em;
-	     -o-transition-property: min-height, max-height;
-	-webkit-transition-property: min-height, max-height;
-	    -ms-transition-property: min-height, max-height;
-	   -moz-transition-property: min-height, max-height;
-	 -khtml-transition-property: min-height, max-height;
-
-	     -o-transition-duration: 500ms;
-	-webkit-transition-duration: 500ms;
-	    -ms-transition-duration: 500ms;
-	   -moz-transition-duration: 500ms;
-     -khtml-transition-duration: 500ms;
-
-         -o-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
-	-webkit-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
-	    -ms-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
-	   -moz-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
-	 -khtml-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
-
-	overflow: hidden;
-	width: 100%;
-	padding:0;
+    max-height:.01em;
+    -webkit-transition-property: min-height, max-height;
+    -moz-transition-property: min-height, max-height;  
+    -ms-transition-property: min-height, max-height;
+    -o-transition-property: min-height, max-height;
+    transition-property: min-height, max-height;
+    
+    -webkit-transition-duration: 500ms;
+    -moz-transition-duration: 500ms;
+    -ms-transition-duration: 500ms;
+    -o-transition-duration: 500ms;
+    transition-duration: 500ms;
+    
+    -webkit-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
+    -moz-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
+    -ms-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
+    -o-transition-timing-function: cubic-bezier(.5,.8,.2,.9);
+    transition-timing-function: cubic-bezier(.5,.8,.2,.9);
+    
+    overflow: hidden;
+    width: 100%;
+    padding:0;
 }
 
 form > fieldset.active div{
-	min-height: 10em;
-	max-height: 80em;
-	height:auto;
+    min-height: 10em;
+    max-height: 80em;
+    height:auto;
 }
 
 form > fieldset.active legend img{
-	-o-transform: rotate(90deg);
-	-webkit-transform: rotate(90deg);
-	-moz-transform: rotate(90deg);
-	-ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
 }
 
 fieldset#advanced, fieldset#basic{
@@ -250,12 +254,12 @@ select{
 }
 
 form button{
-	background-color:#1FA5EE;
-	border: 1px solid #1FA5EE;
-	color:#fff;
-	border-radius: 5px;
-	font:inherit;
-	text-shadow: 1px 0px 0px #003;
+  background-color:#1FA5EE;
+  border: 1px solid #1FA5EE;
+  color:#fff;
+  border-radius: 5px;
+  font:inherit;
+  text-shadow: 1px 0px 0px #003;
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 85, 255)), to(rgb(31, 165, 238)));
     background-image: -webkit-linear-gradient(top, rgb(0, 85, 255), rgb(31, 165, 238));
     background-image: -moz-linear-gradient(top, rgb(0, 85, 255), rgb(31, 165, 238));
@@ -266,19 +270,19 @@ form button{
 }
 
 form button:hover, form button:focus{
-	background-color:#0055ff;
-	background-image:none;
-	border: 1px solid #03f;
-	color:#fff;
-	border-radius: 5px;
-	font:inherit;
-	text-shadow: none;
+  background-color:#0055ff;
+  background-image:none;
+  border: 1px solid #03f;
+  color:#fff;
+  border-radius: 5px;
+  font:inherit;
+  text-shadow: none;
 }
 
 form button:disabled, form button[disabled]{
     color:#666;
     text-shadow: none;
-   	border: 1px solid #a8a8a8;
+    border: 1px solid #a8a8a8;
     background-color: #ebecea;
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(235, 236, 234)), to(rgb(168, 168, 168)));
     background-image: -webkit-linear-gradient(top, rgb(235, 236, 234), rgb(168, 168, 168));
@@ -294,21 +298,19 @@ form button:disabled, form button[disabled]{
 #unsupported a:hover, #unsupported a:active{ color: #f09; }
 
 #unsupported a.close, #overlay a.close{
-	background:#f09;
-	color: #fff;
-	padding: .1em .4em .3em;
-	position:absolute;
-	cursor: pointer;
-	right:20px;
-	font-family:'Gudea', sans-serif;
+    background:#f09;
+    color: #fff;
+    padding: .1em .4em .3em;
+    position:absolute;
+    cursor: pointer;
+    right:20px;
+    font-family:'Gudea', sans-serif;
     border-radius:5px;
-	text-decoration:none;
-	line-height:1.1;
+    text-decoration:none;
+    line-height:1.1;
 }
 
 #unsupported a.close:hover, #overlay a.close:hover{
     background:rgb(248, 93, 27);
     color:#ffc
 }
-
-

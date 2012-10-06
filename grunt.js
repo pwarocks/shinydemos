@@ -15,7 +15,8 @@ module.exports = function(grunt) {
 				'demos/svg-speedtest/scripts/*.js',
 				'demos/tatami/scripts/*.js',
 				'demos/touch-tracker/scripts/*.js',
-				'demos/warholiser/scripts/*.js'
+				'demos/warholiser/scripts/*.js',
+				'demos/hungry-kittens/scripts/game.js'
 			],
 			shared: 'source/scripts/panel.js'
 		},

@@ -5,7 +5,7 @@ var Game = function() {
 	var LEFT = 0, UP = 1, RIGHT = 2, DOWN = 3;
 
 	var messageBox = document.getElementById("messages");
-	
+
 	//arrows = [left, up, right, down]
 	var arrows = [false, false, false, false];
 	
@@ -194,21 +194,62 @@ var Game = function() {
 				me = cats[data.id];
 				me.position(Math.round(Math.random()*SCENE_WIDTH), SCENE_HEIGHT - me.h);
 				sendMove();
-
-        // listen to keydown/keyup events: arrows = [left, up, right, down] keyCodes 37 to 40, and space = 32  
-				window.addEventListener('keydown', function(e) {
+				
+				var processKeyDown = function (e) {
 					if (e.keyCode >= 37 && e.keyCode <= 40){
 						arrows[e.keyCode - 37] = true;
 					} else if (e.keyCode == 32){
 						meow(true);
 					}
-				}, false);
-
-				window.addEventListener('keyup', function(e) {
+				}
+				
+				var processKeyUp = function (e) {
 					if (e.keyCode >= 37 && e.keyCode <= 40){
 						arrows[e.keyCode - 37] = false;
 					}
-				}, false);
+				}
+				
+				var dirs = {left: 37, up: 38, right: 39};
+				for (var dir in dirs) {
+					var button = document.querySelector("#button-" + dir);
+					(function (key) {
+						button.addEventListener('touchstart', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+							processKeyDown({keyCode: key});
+						}, false);
+						button.addEventListener('touchend', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+							processKeyUp({keyCode: key});
+						}, false);						
+						button.addEventListener('mousedown', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+							processKeyDown({keyCode: key});
+						}, false);
+						button.addEventListener('mouseup', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+							processKeyUp({keyCode: key});
+						}, false);						
+					})(dirs[dir]);
+				}
+        var buttonMeow = document.querySelector("#button-meow");
+        buttonMeow.addEventListener('touchstart', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          processKeyDown({keyCode: 32});
+        }, false);
+        buttonMeow.addEventListener('mouseup', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          processKeyDown({keyCode: 32});
+        }, false);
+
+				// listen to keydown/keyup events: arrows = [left, up, right, down] keyCodes 37 to 40, and space = 32  
+				window.addEventListener('keydown', processKeyDown, false);
+				window.addEventListener('keyup', processKeyUp, false);
         
 				document.getElementById("room").innerHTML = data.roomId;
 			},

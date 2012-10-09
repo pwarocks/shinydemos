@@ -55,11 +55,10 @@ window.addEventListener('DOMContentLoaded', function() {
         showTweet(count);
     }
     
-    img.addEventListener('WebkitAnimationIteration', doAnimationIteration, false);
-    img.addEventListener('MozAnimationIteration', doAnimationIteration, false);
-    img.addEventListener('msAnimationIteration', doAnimationIteration, false);
-    img.addEventListener('OAnimationIteration', doAnimationIteration, false);
-    img.addEventListener('animationIteration', doAnimationIteration, false);
+    img.addEventListener('webkitAnimationIteration', doAnimationIteration, false);
+    img.addEventListener('MSAnimationIteration', doAnimationIteration, false);
+    img.addEventListener('oanimationiteration', doAnimationIteration, false);
+    img.addEventListener('animationiteration', doAnimationIteration, false);
     
     function getTweets(query, callback) {
         var url = 'http://search.twitter.com/search.json?q=' + encodeURIComponent(query) + '&callback=' + callback;

@@ -14,6 +14,7 @@ body {font-family: Helvetica, Arial, sans-serif;}
   top: 50%;
   margin: -70px 0 0 0;
   width: 100%;
+  height: 153px;
 }
 #container text {
   font-family: 'Sigmar One', sans-serif; 

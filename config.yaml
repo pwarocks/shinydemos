@@ -111,11 +111,11 @@ demos:
 #    tags: [css3, svg]
 #    support: [svg, inlinesvg, bgrepeatround]
 
-  - slug: hungry-kittens
-    title: 'Hungry Kittens'
-    legend: 'Tired of shuffling round the City, looking for a hungry kitty? Load up on catfood - fill your pockets: you&apos;re a moggy magnet with your Web Sockets. <br> Relax! There&apos;s no need for strolling - farewell to COMET, goodbye long-polling. With Web Sockets they will come to you. Just be careful they don&apos;t eat you, too.'
-    tags: [audio-video, websockets]
-    support: [audio, websockets]
+#  - slug: hungry-kittens
+#    title: 'Hungry Kittens'
+#    legend: 'Tired of shuffling round the City, looking for a hungry kitty? Load up on catfood - fill your pockets: you&apos;re a moggy magnet with your Web Sockets. <br> Relax! There&apos;s no need for strolling - farewell to COMET, goodbye long-polling. With Web Sockets they will come to you. Just be careful they don&apos;t eat you, too.'
+#    tags: [audio-video, websockets]
+#    support: [audio, websockets]
 
   - slug: hixie-keyboard
     title: 'Hixie Keyboard'

@@ -8,9 +8,16 @@ module.exports = function(grunt) {
 			grunt: 'grunt.js',
 			tests: 'test/*.js',
 			lib: 'lib/*.js',
-			// commenting out for now, slowly getting
-			// a lot of code linted
-			// demos: 'demos/**/scripts/*.js',
+			//slowly adding all of these
+			demos: [
+				'demos/paranoid/scripts/*.js',
+				'demos/rock-piano/scripts/*.js',
+				'demos/svg-speedtest/scripts/*.js',
+				'demos/tatami/scripts/*.js',
+				'demos/touch-tracker/scripts/*.js',
+				'demos/warholiser/scripts/*.js',
+				'demos/hungry-kittens/scripts/game.js'
+			],
 			shared: 'source/scripts/panel.js'
 		},
 		// have a look at http://www.jshint.com/options/ to understand these

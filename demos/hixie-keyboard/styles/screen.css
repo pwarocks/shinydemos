@@ -166,11 +166,10 @@ body {
 		left:100px;
 		width:100%;
 		height:100%;
-		background-image:-webkit-linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
-		background-image:-moz-linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
-		background-image:-ms-linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
-		background-image:-o-linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
-		background-image:linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+		background-image:-webkit-linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+		background-image:-moz-linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+		background-image:-o-linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+		background-image:linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
 		content:'';
 		-webkit-transform-origin:0 0;
 		-moz-transform-origin:0 0;

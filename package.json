@@ -14,7 +14,7 @@
   "dependencies": {
     "ncp": "*",
     "handlebars": "*",
-    "js-yaml": "*",
+    "js-yaml": ">= 1.x",
     "mkdirp": "*",
     "rimraf": "*"
   },

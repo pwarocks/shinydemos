@@ -26,8 +26,6 @@ a:hover, a:focus {
     display:table;
     height:100%;
     width:100%;
-}
-.animate #container {
     -webkit-animation: container 60s linear infinite;
     -moz-animation: container 60s linear infinite;
     -o-animation: container 60s linear infinite;

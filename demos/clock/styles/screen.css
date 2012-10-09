@@ -13,6 +13,7 @@ body {font-family: Helvetica, Arial, sans-serif;}
   position: absolute;
   top: 50%;
   margin: -70px 0 0 0;
+  width: 100%;
 }
 #container text {
   font-family: 'Sigmar One', sans-serif; 

@@ -1,37 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Warholiser: See yourself in real-time in an Andy Warhol inspired piece</title>
-	<link href="styles/style.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="/styles/panel.css">
+	<title>Warholiser — Shiny Demos</title>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, height=device-height">
-	</head>
+	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="/styles/panel.css">
+</head>
 <body>
-
-<div id="container">
-
-<h1>Warholiser!</h1>
-<div id="message"></div>
-<video id="video" autoplay loop="true" >
-</video>
-
-<div id="warhols">
-<canvas id="mycanvas"></canvas>
-</div>
-
-<div id="warholdiv">
-<canvas id="red"></canvas>
-<canvas id="green"></canvas>
-<br />
-<canvas id="blue"></canvas>
-<canvas id="yellow"></canvas>
-</div>
-
-</div>
-<script src="/scripts/modernizr.js"></script>
-<script src="/scripts/panel.js"></script>
-<script src="scripts/options.js"></script>
-<script src="scripts/script.js"></script>
-	
+	<div id="container">
+		<h1>Warholiser!</h1>
+		<div id="message"></div>
+		<video autoplay loop id="video"></video>
+		<div id="warhols">
+			<canvas id="mycanvas"></canvas>
+		</div>
+		<div id="warholdiv">
+			<canvas id="red"></canvas>
+			<canvas id="green"></canvas>
+			<br>
+			<canvas id="blue"></canvas>
+			<canvas id="yellow"></canvas>
+		</div>
+	</div>
+	<script src="/scripts/modernizr.js"></script>
+	<script src="/scripts/panel.js"></script>
+	<script src="scripts/options.js"></script>
+	<script src="scripts/script.js"></script>
 </body>
 </html>

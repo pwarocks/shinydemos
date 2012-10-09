@@ -1,29 +1,27 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Curie QR code reader</title>
-	<!-- set meta viewport, but override it with -o-viewport later -->
-    <meta name="viewport" content="width=480,user-scalable=no">
-    <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="/styles/panel.css">
-    <!-- Uses https://github.com/LazarSoft/jsqrcode LazarSoft's jsQRcode implementation -->
-    <script src="./scripts/qr.min.js"></script>
-    <!-- Actual demo logic -->
-    <script src="./scripts/script.js"></script>
-  </head>
-  <body>
-    <div id="container">
-      <h1><img src="./images/qry-heading.png" alt="QRY {curie} QR code reader"></h1>
-      <div>
-        <video id="sourcevid" autoplay>
+  <title>QRY {curie} QR Code Reader — Shiny Demos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=480, user-scalable=no">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="/styles/panel.css">
+</head>
+<body>
+  <div id="container">
+    <h1><img src="images/qry-heading.png" alt="QRY {curie} QR code reader"></h1>
+    <div>
+      <video autoplay id="sourcevid">
         <p>This application requires an HTML5 <code>&lt;video&gt;</code> capable browser…</p>
-        </video>
-      </div>
-      <div id="out"></div>
+      </video>
     </div>
-    <script src="/scripts/modernizr.js"></script>
-    <script src="/scripts/panel.js"></script>
-    <script src="scripts/options.js"></script>
-  </body>
+    <div id="out"></div>
+  </div>
+  <!-- Uses https://github.com/LazarSoft/jsqrcode LazarSoft's jsQRcode implementation -->
+  <script src="/scripts/modernizr.js"></script>
+  <script src="/scripts/panel.js"></script>
+  <script src="scripts/options.js"></script>
+  <script src="scripts/qr.min.js"></script>
+  <script src="scripts/script.js"></script>
+</body>
 </html>

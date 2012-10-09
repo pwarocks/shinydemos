@@ -1,4 +1,4 @@
-importScripts('/scripts/PhiloGL.js');
+importScripts('/scripts/philogl.js');
 
 var dim = 8,
     cube = dim * dim * dim,

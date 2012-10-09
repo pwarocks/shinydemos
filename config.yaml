@@ -20,7 +20,7 @@ tags:
     tagline: 'You want scriptable text and images, that can be manipulated using their own DOM, CSS and script, in all modern browsers? You want to produce graphics that look sharp at phone screen size or widescreen TV size? And you want to be able to make them responsive too? Of course you do &mdash; so meet SVG: Scalable Vector Graphics. But you&rsquo;ll say “Shiny! Very Groovy”. And you&rsquo;d be right.'
 
   - tagName: audio-video
-    displayName: 'Audio & Video'
+    displayName: 'Audio &amp; Video'
     tagline: 'For years, the only way to add audio or video to web pages was with a plugin. Totally lame, daddy-o! These days, media can be embedded straight in the page with the HTML5 <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements then decoded &mdash; and video manipulated &mdash; natively in the browser.'
 
   - tagName: webgl
@@ -126,7 +126,7 @@ demos:
     support: [webgl, audio]
 
   - slug: paranoid
-    title: 'Return of the Retro with a canvas game!'
+    title: 'Paranoid'
     legend: 'DIMENSION-CONTROLLING FORT “DOH” HAS NOW BEEN DEMOLISHED, AND TIME STARTED FLOWING REVERSELY. And when time flows reversely, retro games get remade with HTML5.'
     tags: [canvas]
     support: [canvas]
@@ -151,7 +151,7 @@ demos:
 
   - slug: rock-piano
     title: 'Rock Piano'
-    legend: 'This Shiny rock piano combines Touch events, classList, HTML5 audio, border-radius, box-shadow, and gradients. Soon, all your friends, neighbours and that cutie from Accounts will call you “HTM-Elton John”.'
+    legend: 'This Shiny rock piano combines Touch events, classList, HTML5 audio, border-radius, box-shadow, and gradients. Soon, all your friends, neighbours and that cutie from Accounts will call you “HTM-Elton John”. You can also use your keyboard to play: WETYU for black keys and ASDFGHJ for the white.'
     tags: [css3, audio-video]
     support: [audio]
 

@@ -1,6 +1,6 @@
 // wrap the whole thing in an object so we don't pollute the global namespace
 var paranoid = {
-	ctx: new Object(),
+	ctx: {},
 	autopilot:true,
 	px:150,
 	py:335,
@@ -16,7 +16,7 @@ var paranoid = {
 	img_ball : new Image(),
 	img_brick : new Image(),
 	
-	bricks : new Array,
+	bricks : [],
 	bricks_count : 10,
 	
 	
@@ -173,9 +173,9 @@ var paranoid = {
 		// paddle control
 		if (paranoid.autopilot) { 
 			paranoid.px = paranoid.x-30;
-			document.getElementById('autopilot').className=""
+			document.getElementById('autopilot').className="";
 		} else {
-			document.getElementById('autopilot').className="off"
+			document.getElementById('autopilot').className="off";
 		}
 		
 		if (paranoid.px<20) { paranoid.px=20; }
@@ -189,7 +189,7 @@ var paranoid = {
 		paranoid.ctx.drawImage(paranoid.img_paddle,paranoid.px,paranoid.py);
 		paranoid.ctx.drawImage(paranoid.img_walls,0,paranoid.py,360,21,0,paranoid.py,360,21); // walls drawn last, so paddle shadow always underneath wall
 		
-		if (paranoid.bricks_count==0) {
+		if (paranoid.bricks_count===0) {
 			paranoid.dy = 0-paranoid.dy;
 			paranoid.reset();
 		}

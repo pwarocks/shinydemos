@@ -1,6 +1,6 @@
 // Microjungle DOM Builder — github.com/deepsweet/microjungle
 
-var microjungle=function(e){function f(h,b){for(var e=h.length,g=0;g<e;g++){var a=h[g];if(a)if(typeof a=='string')b.innerHTML+=a;else if(typeof a[0]=='string'){var j=i.createElement(a.shift()),c={}.toString.call(a[0])==='[object Object]'&&a.shift(),d;if(c)for(d in c)c[d]&&j.setAttribute(d,c[d]);b.appendChild(f(a,j))}else a.nodeType===11?b.appendChild(a):f(a,b)}return b}var i=document;return f(e,i.createDocumentFragment())};
+var microjungle=function(e){function f(h,b){for(var e=h.length,g=0;g<e;g++){var a=h[g];if(a)if(typeof a=='string')b.innerHTML+=a;else if(typeof a[0]=='string'){var j=i.createElement(a.shift()),c={}.toString.call(a[0])==='[object Object]'&&a.shift(),d;if(c)for(d in c)c[d]&&j.setAttribute(d,c[d]);b.appendChild(f(a,j));}else a.nodeType===11?b.appendChild(a):f(a,b);}return b;}var i=document;return f(e,i.createDocumentFragment());};
 
 // Panel Constructor
 
@@ -72,7 +72,7 @@ function appendPanel(options) {
 			['p', desc],
 			nopeList,
 			yepList
-		],
+		]
 	]);
 
 	panel.classList.add('sd-panel');

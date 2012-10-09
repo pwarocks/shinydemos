@@ -1,4 +1,4 @@
-//Copyright Luz Caballero (@gerbille) and Nicolas Garcia Belmonte (@philogb)
+//Copyright Luz Caballero (@gerbille) and Sencha Inc. (@sencha). Authors: Luz Caballero (@gerbille) and Nicolas Garcia Belmonte (@philogb)
 
 (function() {
 	
@@ -122,7 +122,7 @@
       window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
       if (navigator.getUserMedia) {
         navigator.getUserMedia({video: true}, function (stream) {
-          video.src = window.URL.createObjectURL(stream);
+          video.src = window.URL.createObjectURL(stream) || stream;
           controls.classList.add('camera');
         });
         video.play();

@@ -25,4 +25,4 @@ vows.describe('Test thumb image file name module').addBatch({
 			}
 		}
 	}
-}).export(module);
+}).exportTo(module);

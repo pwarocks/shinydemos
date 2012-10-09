@@ -8,24 +8,24 @@ function PxLoader(settings) {
     settings = settings || {};
 
     // how frequently we poll resources for progress
-    if (settings.statusInterval == null) {
+    if (settings.statusInterval === null) {
         settings.statusInterval = 5000; // every 5 seconds by default
     }
 
     // delay before logging since last progress change
-    if (settings.loggingDelay == null) {
+    if (settings.loggingDelay === null) {
         settings.loggingDelay = 20 * 1000; // log stragglers after 20 secs
     }
 
     // stop waiting if no progress has been made in the moving time window
-    if (settings.noProgressTimeout == null) {
+    if (settings.noProgressTimeout === null) {
         settings.noProgressTimeout = Infinity; // do not stop waiting by default
     }
 
     var entries = [], // holds resources to be loaded with their status
         progressListeners = [],
         timeStarted,
-        progressChanged = +new Date;
+        progressChanged = +new Date();
 
     /**
      * The status of a resource
@@ -41,7 +41,7 @@ function PxLoader(settings) {
 
     // places non-array values into an array.
     var ensureArray = function(val) {
-        if (val == null) {
+        if (val === null) {
             return [];
         }
 
@@ -59,7 +59,7 @@ function PxLoader(settings) {
         resource.tags = ensureArray(resource.tags);
 
         // ensure priority is set
-        if (resource.priority == null) {
+        if (resource.priority === null) {
             resource.priority = Infinity;
         }
 
@@ -115,11 +115,11 @@ function PxLoader(settings) {
             if (a.priority < b.priority) return -1;
             if (a.priority > b.priority) return 1;
             return 0;
-        }
+        };
     };
 
     this.start = function(orderedTags) {
-        timeStarted = +new Date;
+        timeStarted = +new Date();
 
         // first order the resources
         var compareResources = getResourceSort(orderedTags);
@@ -138,7 +138,7 @@ function PxLoader(settings) {
 
     var statusCheck = function() {
         var checkAgain = false,
-            noProgressTime = (+new Date) - progressChanged,
+            noProgressTime = (+new Date()) - progressChanged,
             timedOut = (noProgressTime >= settings.noProgressTimeout),
             shouldLog = (noProgressTime >= settings.loggingDelay);
 
@@ -203,11 +203,11 @@ function PxLoader(settings) {
         }
 
         // we have already updated the status of the resource
-        if (entry == null || entry.status !== ResourceState.WAITING) {
+        if (entry === null || entry.status !== ResourceState.WAITING) {
             return;
         }
         entry.status = statusType;
-        progressChanged = +new Date;
+        progressChanged = +new Date();
 
         var numResourceTags = resource.tags.length;
 
@@ -289,7 +289,7 @@ function PxLoader(settings) {
             return;
         }
 
-        var elapsedSeconds = Math.round((+new Date - timeStarted) / 1000);
+        var elapsedSeconds = Math.round((+new Date() - timeStarted) / 1000);
         window.console.log('PxLoader elapsed: ' + elapsedSeconds + ' sec');
 
         for (var i = 0, len = entries.length; i < len; i++) {
@@ -323,48 +323,5 @@ function PxLoader(settings) {
 
             window.console.log(message);
         }
-    };
-}
-
-// shims to ensure we have newer Array utility methods
-
-// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/isArray
-if (!Array.isArray) {
-    Array.isArray = function(arg) {
-        return Object.prototype.toString.call(arg) == '[object Array]';
-    };
-}
-
-// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/indexOf
-if (!Array.prototype.indexOf) {
-    Array.prototype.indexOf = function(searchElement /*, fromIndex */) {
-        "use strict";
-        if (this == null) {
-            throw new TypeError();
-        }
-        var t = Object(this);
-        var len = t.length >>> 0;
-        if (len === 0) {
-            return -1;
-        }
-        var n = 0;
-        if (arguments.length > 0) {
-            n = Number(arguments[1]);
-            if (n != n) { // shortcut for verifying if it's NaN
-                n = 0;
-            } else if (n != 0 && n != Infinity && n != -Infinity) {
-                n = (n > 0 || -1) * Math.floor(Math.abs(n));
-            }
-        }
-        if (n >= len) {
-            return -1;
-        }
-        var k = n >= 0 ? n : Math.max(len - Math.abs(n), 0);
-        for (; k < len; k++) {
-            if (k in t && t[k] === searchElement) {
-                return k;
-            }
-        }
-        return -1;
     };
 }

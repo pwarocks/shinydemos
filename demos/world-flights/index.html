@@ -1,53 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>World Flights - Shiny Demos</title>
-    <link rel="stylesheet" media="all" type="text/css" href="styles/style.css" />
-    <link rel="stylesheet" href="/styles/panel.css">
-    <script src="/scripts/philogl.js"></script>
-    <script src="scripts/classes.js"></script>
-    <script src="scripts/index.js"></script>
-  </head>
-  <body>
-    <div id="demo">
-      <div id="log-panel">
-        <span id="log-message"></span>
-      </div>
-  
-      <div id="fallback" class="fallback"></div>
-    
-      <div id="container">      
-        <div class="canvas-container">
-          <div id="canvas-wrapper">
-            <canvas id="map-canvas" width="1024" height="1024"></canvas>
-          </div>
-          <div id="list-wrapper" class="list-wrapper" style="display:none;">
-            <input type="text" id="search" placeholder="Search for an Airline" />
-            <ul id="selected-airlines">
-            </ul>
-            <div class="list-container">
-              <ul id="airline-list"></ul>
-            </div>
-          </div>
-          <div style="clear:both;"></div>
+<head>
+  <title>World Flights — Shiny Demos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="/styles/panel.css">
+</head>
+<body>
+  <div id="demo">
+    <div id="log-panel">
+      <span id="log-message"></span>
+    </div>
+    <div id="fallback" class="fallback"></div>
+    <div id="container">
+      <div class="canvas-container">
+        <div id="canvas-wrapper">
+          <canvas id="map-canvas" width="1024" height="1024"></canvas>
         </div>
+        <div id="list-wrapper" class="list-wrapper" style="display:none;">
+          <input type="text" id="search" placeholder="Search for an Airline">
+          <ul id="selected-airlines">
+          </ul>
+          <div class="list-container">
+            <ul id="airline-list"></ul>
+          </div>
+        </div>
+        <div style="clear:both;"></div>
       </div>
     </div>
-    
-    <div class="tooltip hide" id="tooltip" style="width:auto;"></div>
-    <script src="/scripts/modernizr.js"></script>
-    <script src="/scripts/panel.js"></script>
-    <script src="scripts/options.js"></script>
-    <script>
-      if (!PhiloGL.hasWebGL()) {
-        document.body.className = 'no-webgl';
-        document.getElementById('fallback').innerHTML = ''
-          +  '<div style="margin:10px;">'
-          +   'Your browser does not support WebGL. Try downloading <a href="http://www.opera.com/browser/next/">Opera</a> to see the example.'
-          +  '</div>'
-          +  '<iframe width="640" height="480" src="http://www.youtube.com/embed/YIxplozKJZM?rel=0&amp;hd=1" frameborder="0" allowfullscreen></iframe>';
-      }
-    </script>
   </div>
+  <div class="tooltip hide" id="tooltip" style="width:auto;"></div>
+  <script src="/scripts/modernizr.js"></script>
+  <script src="/scripts/panel.js"></script>
+  <script src="scripts/options.js"></script>
+  <script src="/scripts/philogl.js"></script>
+  <script src="scripts/classes.js"></script>
+  <script src="scripts/index.js"></script>
+  <script>
+    if (!PhiloGL.hasWebGL()) {
+      document.body.className = 'no-webgl';
+      document.getElementById('fallback').innerHTML = ''
+        +  '<div style="margin:10px;">'
+        +   'Your browser does not support WebGL. Try downloading <a href="http://www.opera.com/browser/next/">Opera</a> to see the example.'
+        +  '</div>'
+        +  '<iframe width="640" height="480" src="http://www.youtube.com/embed/YIxplozKJZM?rel=0&amp;hd=1" frameborder="0" allowfullscreen></iframe>';
+    }
+  </script>
 </body>
 </html>

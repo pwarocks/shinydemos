@@ -1,7 +1,7 @@
 var Lib = (function(){
 	return {
-		hasClassList: !(document.body.classList === undefined ),
-		hasBorderRadius: !(document.createElement('fauxel').style.borderRadius === undefined),
+		hasClassList: (document.body.classList !== undefined ),
+		hasBorderRadius: (document.createElement('fauxel').style.borderRadius !== undefined),
 		getStyles: function( obj ){
 			if('getComputedStyle' in window){
 				return window.getComputedStyle( obj, null );
@@ -19,7 +19,7 @@ var Lib = (function(){
 			'MozTransition':'transitionend',
 			'WebkitTransition':'webkitTransitionEnd',
 			'transition':'transitionEnd'
-		}
+		};
 			for(t in transitions){
 				if( el.style[t] !== undefined ){
 					return transitions[t];
@@ -27,12 +27,12 @@ var Lib = (function(){
 			}
 		},
 
-	 	/* Does this browser support range? */
-	    hasRange: function(){
-	       	var input = document.createElement('input');
-	       	input.setAttribute('type','range');
-	       	return (input.type == 'range')
-	    },
+		/* Does this browser support range? */
+		hasRange: function(){
+			var input = document.createElement('input');
+			input.setAttribute('type','range');
+			return (input.type == 'range');
+		},
 
 		/* Enable a button */
 		enableButton: function(buttonid){
@@ -47,7 +47,7 @@ var Lib = (function(){
 
 		/* If we don't have a range, adjust the UI. */
 		adjustUI: function(){
-		 	var hasRange = this.hasRange();
+			var hasRange = this.hasRange();
 			if( hasRange === false ){
 				var i, len, input;
 				fixranges = document.querySelectorAll('input[type=range]');
@@ -75,10 +75,10 @@ var Lib = (function(){
 				'.ogg':'video/ogg',
 				'.webm':'video/webm',
 				'.mp4':'video/mp4'
-			}
+			};
 			restart = function(e){
 				 e.target.play();
-			}
+			};
 
 
 			for(t in types){
@@ -132,6 +132,6 @@ var Lib = (function(){
             }
 		}
 	// end object
-	}
+	};
 })();
 

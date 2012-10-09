@@ -35,4 +35,4 @@ vows.describe('Feature support "plucking"').addBatch({
 			}
 		}
 	}
-}).export(module);
+}).exportTo(module);

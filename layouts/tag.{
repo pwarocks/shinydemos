@@ -27,7 +27,7 @@
 		<header class="header">
 			<div class="path">
 				<p><a href="/">S<span>hiny </span>D<span>emos</span></a></p>
-				<h1>{{title}}</h1>
+				<h1>{{{title}}}</h1>
 			</div>
 			<p class="tagline">{{{tagline}}}</p>
 		</header>

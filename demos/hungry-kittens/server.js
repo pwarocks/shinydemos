@@ -123,7 +123,12 @@ var RoomManager = function (catsPerRoom) {
 		}},
 
 		removeCat: { value: function (cat) {
-			if (!this.cats[cat.id]){
+      //weird but happens sometimes
+      if (!this.cats) {
+        this.cats = {};
+      }
+
+			if (!this.cats[cat.id]) {
 				return;
 			}
 			// remove from existing cats

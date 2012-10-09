@@ -5,7 +5,7 @@ var Game = function() {
 	var LEFT = 0, UP = 1, RIGHT = 2, DOWN = 3;
 
 	var messageBox = document.getElementById("messages");
-	
+
 	//arrows = [left, up, right, down]
 	var arrows = [false, false, false, false];
 	
@@ -21,19 +21,19 @@ var Game = function() {
   // plays meow sound, if this cat meows also broadcasts to server
 	var meow = function (broadcast) {
 		var a = document.createElement("audio");
-		a.src = "../sounds/meow" + (Math.round(Math.random()*10) % 5) + ".wav";
+		a.src = "http://media.shinydemos.com/hungry-kittens/meow" + (Math.round(Math.random()*10) % 5) + ".wav";
 		a.addEventListener("ended", function () { a.parentNode.removeChild(a); }, false);
 		document.body.appendChild(a);
 		a.play();
 		if (broadcast)
 			socket.send(JSON.stringify({ type: "meow", data: me.catId }));
-	}
+	};
 
   // create Cat as a subclass of Sprite
 	var Cat = function (scene, data) {
 		var w = 32; // side of the cat's sprite frame, in px
 		this.catId = data.id;
-		this.name = data.name;
+		this.name = escapeString(data.name);
 		this.race = this.catId % 4; // assigning one of four races in the sprite sheet (we're an equal opportunity app)
 		this.isJumping = false;
 		this.jumpSpeed = 15; // initial jumping speed
@@ -48,7 +48,7 @@ var Game = function() {
 			y: 0,
 			xoffset: this.race * 3 * w,
 			yoffset: 5 * w,
-			layer: scene.layers.default
+			layer: scene.layers["default"]
 		});
 
 		// adding a tag with the kitten's name
@@ -56,7 +56,7 @@ var Game = function() {
 		tag.className = "nametag";
 		tag.innerHTML = this.name;
 		this.dom.appendChild(tag);
-	}
+	};
 
 	Cat.prototype = Object.create(sjs.Sprite.prototype, {
 		turnHead: { value: function (direction) {
@@ -119,7 +119,7 @@ var Game = function() {
 				looking: me.looking
 			}
 		}));
-	}
+	};
 
   // update the cats' positions
 	var paint = function() {
@@ -128,7 +128,7 @@ var Game = function() {
 
 		if (arrows[LEFT]) {
 			me.walk();
-			me.lookLeft()
+			me.lookLeft();
 			x -= step;
 		}
 		if (arrows[RIGHT]) {
@@ -143,11 +143,11 @@ var Game = function() {
     /* 
     //debug function, shows the keys that are being pressed
     var LEFT = 0, UP = 1, RIGHT = 2, DOWN = 3;
-  	var stateNameMapping = [{i: LEFT, n: "left"},
-  							{i: UP, n: "up"},
-  							{i: RIGHT, n: "right"},
-  							{i: DOWN, n: "down"}];
-    
+	var stateNameMapping = [{i: LEFT, n: "left"},
+							{i: UP, n: "up"},
+							{i: RIGHT, n: "right"},
+							{i: DOWN, n: "down"}];
+
 		var msg = stateNameMapping.filter(function (e) { return arrows[e.i] }).map(function (e) { return e.n }).join(" + ");
 		messageBox.innerHTML = msg || "Use the arrows to move.";
 		*/
@@ -168,9 +168,6 @@ var Game = function() {
 				cat.update();
 			}
 		}
-
-		if (ticker.currentTick % 20 == 0)
-			document.getElementById("fps").innerHTML = ticker.fps + "fps";
 	};
 
   // start game
@@ -178,9 +175,8 @@ var Game = function() {
 
 		var defaultName = "Reginald";
 		var name = prompt("Please name your kitten", defaultName) || defaultName;
-
 		//connect to server
-		socket = new WebSocket('ws://' + location.host + '/?name=' + name.slice(0, 10));
+		socket = new WebSocket('ws://' + location.host + '/?name=' + name.slice(0,10));
 
 		var handlers = {
 		  // server sends data about peers in the room when connection is established
@@ -194,21 +190,62 @@ var Game = function() {
 				me = cats[data.id];
 				me.position(Math.round(Math.random()*SCENE_WIDTH), SCENE_HEIGHT - me.h);
 				sendMove();
-
-        // listen to keydown/keyup events: arrows = [left, up, right, down] keyCodes 37 to 40, and space = 32  
-				window.addEventListener('keydown', function(e) {
+				
+				var processKeyDown = function (e) {
 					if (e.keyCode >= 37 && e.keyCode <= 40){
 						arrows[e.keyCode - 37] = true;
 					} else if (e.keyCode == 32){
 						meow(true);
 					}
-				}, false);
-
-				window.addEventListener('keyup', function(e) {
+				};
+				
+				var processKeyUp = function (e) {
 					if (e.keyCode >= 37 && e.keyCode <= 40){
 						arrows[e.keyCode - 37] = false;
 					}
-				}, false);
+				};
+				
+				var dirs = {left: 37, up: 38, right: 39};
+				for (var dir in dirs) {
+					var button = document.querySelector("#button-" + dir);
+					(function (key) {
+						button.addEventListener('touchstart', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+							processKeyDown({keyCode: key});
+						}, false);
+						button.addEventListener('touchend', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+							processKeyUp({keyCode: key});
+						}, false);						
+						button.addEventListener('mousedown', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+							processKeyDown({keyCode: key});
+						}, false);
+						button.addEventListener('mouseup', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+							processKeyUp({keyCode: key});
+						}, false);						
+					})(dirs[dir]);
+				}
+        var buttonMeow = document.querySelector("#button-meow");
+        buttonMeow.addEventListener('touchstart', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          processKeyDown({keyCode: 32});
+        }, false);
+        buttonMeow.addEventListener('mouseup', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          processKeyDown({keyCode: 32});
+        }, false);
+
+				// listen to keydown/keyup events: arrows = [left, up, right, down] keyCodes 37 to 40, and space = 32  
+				window.addEventListener('keydown', processKeyDown, false);
+				window.addEventListener('keyup', processKeyUp, false);
         
 				document.getElementById("room").innerHTML = data.roomId;
 			},
@@ -249,7 +286,7 @@ var Game = function() {
 					meow();
 				}
 			}
-		}
+		};
 
     /* handle messages:
     { type: "unload", data: cat.id } -> remove a cat, it provides the cat's id
@@ -265,9 +302,9 @@ var Game = function() {
 			} else {
 			handlers[o.type](o.data);
 		  }
-		}
+		};
 
-		socket.onclose = function () {}
+		socket.onclose = function () {};
     
     // when the page closes, send socket.close to server to remove cat tied to this page
 		window.addEventListener("unload", function () {
@@ -284,8 +321,32 @@ var Game = function() {
 	return {
 		start: start
 	};
+};
+
+function escapeString(str) {
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;")
+        .replace(/\//g, "&#x2F;");
+}
+
+function externalHack() {
+	//super gross, but only temporary*
+	document.querySelector('.sd-title p a').href = "http://shinydemos.com";
+	
+	var f = document.querySelectorAll('.sd-tags a');
+	[].forEach.call(f, (function(elm){
+		var o = elm.href.split('/');
+		elm.href="http://shinydemos.com/"+o[o.length-2]+"/";
+	}))
+	//* hopefully
 }
 
 window.onload = function () {
 	new Game().start();
-}
+	
+	externalHack();
+};

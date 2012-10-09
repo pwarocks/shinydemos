@@ -39,6 +39,10 @@ tags:
     displayName: 'getUserMedia'
     tagline: '<code>getUserMedia</code> is an API that began as part of HTML5 and was split off into the W3C WebRTC specification suite. It allows JavaScript access to a device&rsquo;s cameras and microphones. Think in-browser video-conferencing! Think augmented reality! Think Shiny! Use Opera 12, Opera Mobile 12 or Chrome Canary to see the demos.'
 
+  - tagName: websockets
+    displayName: 'WebSocket'
+    tagline: 'The <code>WebSocket</code> API allows bi-directional, full-duplex communications channels over a single TCP connection. Also ponies.'
+
 # List of all active demos with description
 demos:
   - slug: 3d-color-histogram
@@ -106,6 +110,12 @@ demos:
 #    legend: 'Resize the browser window (or click on “danger area”). Notice how you never see half square of chicken wire fence; the browser always ensures you see full squares only. If we say that CSS kicks ass, please don&rsquo;t take offence.'
 #    tags: [css3, svg]
 #    support: [svg, inlinesvg, bgrepeatround]
+
+  - slug: hungry-kittens
+    title: 'Hungry Kittens'
+    legend: 'Tired of shuffling round the City, looking for a hungry kitty? Load up on catfood - fill your pockets: you&apos;re a moggy magnet with your Web Sockets. <br> Relax! There&apos;s no need for strolling - farewell to COMET, goodbye long-polling. With Web Sockets they will come to you. Just be careful they don&apos;t eat you, too.'
+    tags: [audio-video, websockets]
+    support: [audio, websockets]
 
   - slug: hixie-keyboard
     title: 'Hixie Keyboard'

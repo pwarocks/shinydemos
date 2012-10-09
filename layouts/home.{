@@ -32,7 +32,7 @@
 		</header>
 		<nav class="navigation" id="navigation">
 			<ul>{{#each tagName}}
-				<li class="{{hyphenate this}}"><a href="{{hyphenate this}}/">{{displayName this}}</a></li>{{/each}}
+				<li class="{{hyphenate this}}"><a href="{{hyphenate this}}/">{{{displayName this}}}</a></li>{{/each}}
 			</ul>
 		</nav>
 		<footer class="footer">

@@ -5,7 +5,7 @@ var Game = function() {
 	var LEFT = 0, UP = 1, RIGHT = 2, DOWN = 3;
 
 	var messageBox = document.getElementById("messages");
-	
+
 	//arrows = [left, up, right, down]
 	var arrows = [false, false, false, false];
 	
@@ -33,7 +33,7 @@ var Game = function() {
 	var Cat = function (scene, data) {
 		var w = 32; // side of the cat's sprite frame, in px
 		this.catId = data.id;
-		this.name = data.name;
+		this.name = escapeString(data.name);
 		this.race = this.catId % 4; // assigning one of four races in the sprite sheet (we're an equal opportunity app)
 		this.isJumping = false;
 		this.jumpSpeed = 15; // initial jumping speed
@@ -168,9 +168,6 @@ var Game = function() {
 				cat.update();
 			}
 		}
-
-		if (ticker.currentTick % 20 === 0)
-			document.getElementById("fps").innerHTML = ticker.fps + "fps";
 	};
 
   // start game
@@ -178,9 +175,8 @@ var Game = function() {
 
 		var defaultName = "Reginald";
 		var name = prompt("Please name your kitten", defaultName) || defaultName;
-
 		//connect to server
-		socket = new WebSocket('ws://' + location.host + '/?name=' + name.slice(0, 10));
+		socket = new WebSocket('ws://' + location.host + '/?name=' + name.slice(0,10));
 
 		var handlers = {
 		  // server sends data about peers in the room when connection is established
@@ -194,21 +190,62 @@ var Game = function() {
 				me = cats[data.id];
 				me.position(Math.round(Math.random()*SCENE_WIDTH), SCENE_HEIGHT - me.h);
 				sendMove();
-
-        // listen to keydown/keyup events: arrows = [left, up, right, down] keyCodes 37 to 40, and space = 32  
-				window.addEventListener('keydown', function(e) {
+				
+				var processKeyDown = function (e) {
 					if (e.keyCode >= 37 && e.keyCode <= 40){
 						arrows[e.keyCode - 37] = true;
 					} else if (e.keyCode == 32){
 						meow(true);
 					}
-				}, false);
-
-				window.addEventListener('keyup', function(e) {
+				};
+				
+				var processKeyUp = function (e) {
 					if (e.keyCode >= 37 && e.keyCode <= 40){
 						arrows[e.keyCode - 37] = false;
 					}
-				}, false);
+				};
+				
+				var dirs = {left: 37, up: 38, right: 39};
+				for (var dir in dirs) {
+					var button = document.querySelector("#button-" + dir);
+					(function (key) {
+						button.addEventListener('touchstart', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+							processKeyDown({keyCode: key});
+						}, false);
+						button.addEventListener('touchend', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+							processKeyUp({keyCode: key});
+						}, false);						
+						button.addEventListener('mousedown', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+							processKeyDown({keyCode: key});
+						}, false);
+						button.addEventListener('mouseup', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+							processKeyUp({keyCode: key});
+						}, false);						
+					})(dirs[dir]);
+				}
+        var buttonMeow = document.querySelector("#button-meow");
+        buttonMeow.addEventListener('touchstart', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          processKeyDown({keyCode: 32});
+        }, false);
+        buttonMeow.addEventListener('mouseup', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          processKeyDown({keyCode: 32});
+        }, false);
+
+				// listen to keydown/keyup events: arrows = [left, up, right, down] keyCodes 37 to 40, and space = 32  
+				window.addEventListener('keydown', processKeyDown, false);
+				window.addEventListener('keyup', processKeyUp, false);
         
 				document.getElementById("room").innerHTML = data.roomId;
 			},
@@ -286,6 +323,30 @@ var Game = function() {
 	};
 };
 
+function escapeString(str) {
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;")
+        .replace(/\//g, "&#x2F;");
+}
+
+function externalHack() {
+	//super gross, but only temporary*
+	document.querySelector('.sd-title p a').href = "http://shinydemos.com";
+	
+	var f = document.querySelectorAll('.sd-tags a');
+	[].forEach.call(f, (function(elm){
+		var o = elm.href.split('/');
+		elm.href="http://shinydemos.com/"+o[o.length-2]+"/";
+	}))
+	//* hopefully
+}
+
 window.onload = function () {
 	new Game().start();
+	
+	externalHack();
 };

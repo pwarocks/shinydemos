@@ -105,6 +105,12 @@ demos:
     tags: [getusermedia]
     support: [getusermedia, video]
 
+#  - slug: flying-tweets
+#    title: 'Flying Tweets'
+#    legend: 'Watch automatically-updated tweets fly onto your screen and fly off again. Great as a screensaver replacement or at conferences with boring speakers. When the page is not visible, animation stops to save precious CPU cycles.'
+#    tags: [css3]
+#    support: [cssanimations, csstransforms, fullscreen, pagevisibility]
+
 #  - slug: fence
 #    title: 'Fence'
 #    legend: 'Resize the browser window (or click on “danger area”). Notice how you never see half square of chicken wire fence; the browser always ensures you see full squares only. If we say that CSS kicks ass, please don&rsquo;t take offence.'
@@ -277,6 +283,10 @@ features:
     title: 'CSS Web Fonts'
     link: 'http://www.w3.org/TR/css3-webfonts/'
 
+  - slug: fullscreen
+    title: 'Fullscreen API'
+    link: 'http://www.w3.org/TR/fullscreen/'
+
   - slug: generatedcontent
     title: 'CSS Generated Content'
     link: 'http://www.w3.org/TR/CSS21/generate.html'
@@ -328,6 +338,10 @@ features:
   - slug: pagedcontent
     title: 'CSS Generated Content for Paged Media'
     link: 'http://dev.w3.org/csswg/css3-gcpm/'
+
+  - slug: pagevisibility
+    title: 'Page Visibility API'
+    link: 'http://www.w3.org/TR/page-visibility/'
 
   - slug: postmessage
     title: 'HTML postMessage'

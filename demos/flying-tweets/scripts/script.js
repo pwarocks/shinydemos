@@ -115,6 +115,13 @@ window.addEventListener('DOMContentLoaded', function() {
         getTweets(query, 'updateTweets');
     }, 60000 * updateTime);
     
+    // Page Visibility API: http://www.w3.org/TR/page-visibility/
+    // Stop the animation when the tab is not visible
+    document.addEventListener("visibilitychange", function(event) {
+        document.body.classList.toggle('animate');
+    }, false);
+    
+    // Fullscreen API: http://www.w3.org/TR/fullscreen/
     // Check for fullscreen API support
     if (document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled) {
         // Resize the page

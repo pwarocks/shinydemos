@@ -55,11 +55,10 @@ window.addEventListener('DOMContentLoaded', function() {
         showTweet(count);
     }
     
-    img.addEventListener('WebkitAnimationIteration', doAnimationIteration, false);
-    img.addEventListener('MozAnimationIteration', doAnimationIteration, false);
-    img.addEventListener('msAnimationIteration', doAnimationIteration, false);
-    img.addEventListener('OAnimationIteration', doAnimationIteration, false);
-    img.addEventListener('animationIteration', doAnimationIteration, false);
+    img.addEventListener('webkitAnimationIteration', doAnimationIteration, false);
+    img.addEventListener('MSAnimationIteration', doAnimationIteration, false);
+    img.addEventListener('oanimationiteration', doAnimationIteration, false);
+    img.addEventListener('animationiteration', doAnimationIteration, false);
     
     function getTweets(query, callback) {
         var url = 'http://search.twitter.com/search.json?q=' + encodeURIComponent(query) + '&callback=' + callback;
@@ -115,6 +114,13 @@ window.addEventListener('DOMContentLoaded', function() {
         getTweets(query, 'updateTweets');
     }, 60000 * updateTime);
     
+    // Page Visibility API: http://www.w3.org/TR/page-visibility/
+    // Stop the animation when the tab is not visible
+    document.addEventListener("visibilitychange", function(event) {
+        document.body.classList.toggle('animate');
+    }, false);
+    
+    // Fullscreen API: http://www.w3.org/TR/fullscreen/
     // Check for fullscreen API support
     if (document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled) {
         // Resize the page

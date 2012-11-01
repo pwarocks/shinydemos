@@ -2,12 +2,17 @@
 Author: Luz Caballero (@gerbille)*/
 
 var Game = function() {
-	var LEFT = 0, UP = 1, RIGHT = 2, DOWN = 3;
-
 	var messageBox = document.getElementById("messages");
 
+<<<<<<< HEAD
 	//arrows = [left, up, right, down]
 	var arrows = [false, false, false, false];
+=======
+	var LEFT = 0, JUMP = 1, RIGHT = 2, MEOW = 3;
+	
+	//buttons = [left, right, jump, meow]
+	var buttons = [false, false, false, false];
+>>>>>>> kittens
 	
 	var cats = {};
 	var me, socket;
@@ -15,6 +20,7 @@ var Game = function() {
   // creates a scene using sprite.js
 	var SCENE_WIDTH = 500;
 	var SCENE_HEIGHT = 490;
+	var container = document.getElementById('container');
 	var scene = sjs.Scene({ parent:container, w: SCENE_WIDTH, h: SCENE_HEIGHT, autoPause: false });
 	var ticker;
 
@@ -25,8 +31,12 @@ var Game = function() {
 		a.addEventListener("ended", function () { a.parentNode.removeChild(a); }, false);
 		document.body.appendChild(a);
 		a.play();
-		if (broadcast)
+		if (broadcast){
 			socket.send(JSON.stringify({ type: "meow", data: me.catId }));
+<<<<<<< HEAD
+=======
+		}
+>>>>>>> kittens
 	};
 
   // create Cat as a subclass of Sprite
@@ -126,19 +136,24 @@ var Game = function() {
 	  //handle user input
 		var x = 0, y = 0, step = 5;
 
-		if (arrows[LEFT]) {
+		var left = buttons[LEFT];
+		var right = buttons[RIGHT];
+		var jump = buttons[JUMP];
+		
+		if (left) {
 			me.walk();
 			me.lookLeft();
 			x -= step;
 		}
-		if (arrows[RIGHT]) {
+		if (right) {
 			me.walk();
 			me.lookRight();
 			x += step;
 		}
-		if (arrows[UP]){
+		if (jump){
 			me.jump();
 		}
+<<<<<<< HEAD
     
     /* 
     //debug function, shows the keys that are being pressed
@@ -152,6 +167,14 @@ var Game = function() {
 		messageBox.innerHTML = msg || "Use the arrows to move.";
 		*/
     
+=======
+		
+		if (buttons[MEOW]) {
+			meow(true);
+			buttons[MEOW] = false;
+		}
+
+>>>>>>> kittens
     // update cats' positions
 		for (var id in cats) {
 			var cat = cats[id];
@@ -173,7 +196,9 @@ var Game = function() {
   // start game
 	var start = function() {
 
-		var defaultName = "Reginald";
+		var defaultName = ["Agatha", "Cyrus", "Oswald", "Roscoe", 
+			"Holden", "Jasper", "Wren", "Clementine", "Florence", "Reginald"]
+			[Math.floor(Math.random() * 10)];
 		var name = prompt("Please name your kitten", defaultName) || defaultName;
 		//connect to server
 		socket = new WebSocket('ws://' + location.host + '/?name=' + name.slice(0,10));
@@ -186,14 +211,63 @@ var Game = function() {
 					cats[data.cats[id].id] = new Cat(scene, data.cats[id]);
 				}
         
-        // new peer gets id assigned by the server, and appears in random position in the scene
+        		// new peer gets id assigned by the server, and appears in random position in the scene
 				me = cats[data.id];
 				me.position(Math.round(Math.random()*SCENE_WIDTH), SCENE_HEIGHT - me.h);
 				sendMove();
+<<<<<<< HEAD
 				
+=======
+
+				//adding event listeners to buttons (for touch version)
+				var dirs = {left:LEFT, up:JUMP, right:RIGHT};
+				for (var dir in dirs) {
+					var button = document.querySelector("#button-" + dir);
+					(function (dir) {
+						button.addEventListener('touchstart', function (e) {
+              				e.preventDefault();
+              				e.stopPropagation();
+							buttons[dir] = true;
+							
+						}, false);
+						button.addEventListener('touchend', function (e) {
+              				e.preventDefault();
+              				e.stopPropagation();
+							buttons[dir] = false;
+						}, false);
+						
+						button.addEventListener('mousedown', function (e) {
+              				e.preventDefault();
+              				e.stopPropagation();
+							buttons[dir] = true;
+
+						}, false);
+						button.addEventListener('mouseup', function (e) {
+              				e.preventDefault();
+              				e.stopPropagation();
+							buttons[dir] = false;
+
+						}, false);	
+				
+					})(dirs[dir]);
+				}
+        		var buttonMeow = document.querySelector("#button-meow");
+		        buttonMeow.addEventListener('touchstart', function (e) {
+		          e.preventDefault();
+		          e.stopPropagation();
+		          buttons[MEOW] = true;
+		        }, false);
+				
+		        buttonMeow.addEventListener('mouseup', function (e) {
+		          e.preventDefault();
+		          e.stopPropagation();
+		          buttons[MEOW] = true;
+		        }, false);
+		
+>>>>>>> kittens
 				var processKeyDown = function (e) {
 					if (e.keyCode >= 37 && e.keyCode <= 40){
-						arrows[e.keyCode - 37] = true;
+						buttons[e.keyCode - 37] = true;
 					} else if (e.keyCode == 32){
 						meow(true);
 					}
@@ -201,9 +275,10 @@ var Game = function() {
 				
 				var processKeyUp = function (e) {
 					if (e.keyCode >= 37 && e.keyCode <= 40){
-						arrows[e.keyCode - 37] = false;
+						buttons[e.keyCode - 37] = false;
 					}
 				};
+<<<<<<< HEAD
 				
 				var dirs = {left: 37, up: 38, right: 39};
 				for (var dir in dirs) {
@@ -247,6 +322,13 @@ var Game = function() {
 				window.addEventListener('keydown', processKeyDown, false);
 				window.addEventListener('keyup', processKeyUp, false);
         
+=======
+		
+				// listen to keydown/keyup events: arrows = [left, up, right, down] keyCodes 37 to 40, and space = 32  
+				window.addEventListener('keydown', processKeyDown, false); 
+				window.addEventListener('keyup', processKeyUp, false);
+				   
+>>>>>>> kittens
 				document.getElementById("room").innerHTML = data.roomId;
 			},
       
@@ -269,11 +351,6 @@ var Game = function() {
 				}
 			},
       
-      // used by alternative mechanism used to remove cats b/c Opera has problems with "unload" events on window closing
-			"ping": function () {
-				socket.send(JSON.stringify({ type: "pong", data: me.catId }));
-			},
-
       // when a peer closes the window, remove its cat
 			"unload": function (id) {
 				cats[id].remove();

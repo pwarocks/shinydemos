@@ -35,7 +35,7 @@ var Game = function() {
 	var Cat = function (scene, data) {
 		var w = 32; // side of the cat's sprite frame, in px
 		this.catId = data.id;
-		this.name = data.name;
+		this.name = escapeString(data.name);
 		this.race = this.catId % 4; // assigning one of four races in the sprite sheet (we're an equal opportunity app)
 		this.isJumping = false;
 		this.jumpSpeed = 15; // initial jumping speed
@@ -56,7 +56,7 @@ var Game = function() {
 		// adding a tag with the kitten's name
 		var tag = document.createElement("span");
 		tag.className = "nametag";
-		tag.textContent = this.name;
+		tag.innerHTML = this.name;
 		this.dom.appendChild(tag);
 	};
 
@@ -329,6 +329,16 @@ var Game = function() {
 		start: start
 	};
 };
+
+function escapeString(str) {
+	return String(str)
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#039;")
+		.replace(/\//g, "&#x2F;");
+}
 
 window.onload = function () {
 	new Game().start();

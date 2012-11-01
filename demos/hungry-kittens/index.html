@@ -3,20 +3,23 @@
 <head>
   <title>Hungry Kittens — Shiny Demos</title>
 	<meta charset='utf8'>
-	<meta name="viewport" content="width=device-width">
+  	<meta name="viewport" id="viewport" content="width=500">
 	<link rel="stylesheet" href="styles/style.css">
 	<link rel="stylesheet" href="/styles/panel.css">
-	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Special+Elite'>
 </head>
 <body>
+	<p id="messages"></p>
+	<h3>Room #<span id="room"></span></h3>
 	<div id="info">
-		<p id="fps"></p>
 		<p>HOW TO BE HUNGRY:<br> move: &larr; &rarr; <br> jump: &uarr; <br> meow: space-bar</p>
 	</div>
-	<p id="messages"></p>
-	<h1>hungry kittens</h1>
-	<h3>Room #<span id="room"></span></h3>
 	<div id="container"></div>
+	<div id="controls">
+	  <span class="button" id="button-left">←</span>
+	  <span class="button" id="button-up">↑</span>
+	  <span class="button" id="button-right">→</span>
+	  <span class="button" id="button-meow">meow</span>
+	</div>
 	<script src="/scripts/modernizr.js"></script>
 	<script src="/scripts/panel.js"></script>
 	<script src="scripts/options.js"></script>

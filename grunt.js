@@ -24,13 +24,13 @@ module.exports = function(grunt) {
 		jshint: {
 			// Defaults.
 			options: {
-				curly: true, newcap: true, bitwise: true, forin: true, latedef: true
+				curly: true, newcap: true, bitwise: true, forin: true, latedef: true, strict: false
 			},
 			grunt: {
-				options: {node: true}
+				options: {node: true, strict: false}
 			},
 			tests: {
-				options: {node: true, loopfunc: true, boss: true}
+				options: {node: true, loopfunc: true, boss: true, strict: false}
 			},
 			lib: {
 				options: {browser: true, boss: true}
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 				options: {shadow: true, expr: true}
 			},
 			demos: {
-				options: {smarttabs: true, sub:true, browser:true, shadow: true, expr: true}
+				options: {smarttabs: true, sub:true, browser:true, shadow: true, expr: true, strict: false}
 			}
 		}
 	});

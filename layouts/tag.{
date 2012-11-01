@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{{title}} — Shiny Demos</title>
+	<title>{{{title}}} — Shiny Demos</title>
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +27,7 @@
 		<header class="header">
 			<div class="path">
 				<p><a href="/">S<span>hiny </span>D<span>emos</span></a></p>
-				<h1>{{title}}</h1>
+				<h1>{{{title}}}</h1>
 			</div>
 			<p class="tagline">{{{tagline}}}</p>
 		</header>

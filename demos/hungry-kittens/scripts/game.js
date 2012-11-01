@@ -259,7 +259,7 @@ var Game = function() {
 				window.addEventListener('keydown', processKeyDown, false); 
 				window.addEventListener('keyup', processKeyUp, false);
 				   
-				document.getElementById("room").innerHTML = data.roomId;
+				document.getElementById("room").innerHTML = data.roomId + 1;
 			},
       
       // if a new peer connects, the server broadcasts the new cat

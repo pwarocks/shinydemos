@@ -158,26 +158,7 @@ function broadcast(type, roomId, data) {
 		rooms.connections[id].sendUTF(s);
 	}
 }
-
-// used by Opera to remove cats when the user closes the window
-setInterval(function () {
-	if (!Object.keys(rooms.cats).length){
-		return;
-	}
-
-	var toKill = [];
-	// if the peer hasn't replied to the last server ping, remove the cat
-	for (var id in rooms.cats) {
-		if (!rooms.cats[id].ack){
-			toKill.push(rooms.cats[id]);
-		}
-		rooms.cats[id].ack = false;
-	}
-	toKill.forEach(rooms.removeCat);
-	// check on all the peers
-	ws.broadcastUTF(JSON.stringify({ type: "ping" }));
-}, 10000)
-
+	
 var WebSocketServer = require("websocket").server;
 
 var ws = new WebSocketServer({

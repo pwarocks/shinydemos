@@ -7,7 +7,7 @@ if(typeof document!=="undefined"&&!("classList" in document.createElement("a")))
 Modernizr.addTest("getusermedia", function(){var support = !!navigator.getUserMedia || !!navigator.webkitGetUserMedia || !!navigator.mozGetUserMedia || !!navigator.msGetUserMedia; return support;});
 Modernizr.addTest('pagedcontent', function() {var testEl = document.createElement('div'); return testEl.pageCount ? true: false;});
 Modernizr.addTest('fullscreen', function(){return !!(document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen || document.mozCancelFullScreen || document.webkitCancelFullScreen)});
-Modernizr.addTest('pagevisibility', function(){return !!(document.hidden || document.webkitHidden || document.mozHidden || document.msHidden)});
+Modernizr.addTest('pagevisibility', function(){return ('hidden' || 'webkitHidden' || 'mozHidden' || 'msHidden') in document});
 
 // Temporary gUM fix
 if (window.opera && navigator.getUserMedia) {

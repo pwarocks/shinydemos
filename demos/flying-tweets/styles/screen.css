@@ -105,6 +105,10 @@ header {
     -moz-transition-duration:0.3s;
     -o-transition-duration:0.3s;
     transition-duration:0.3s;
+    -webkit-transition-property:opacity;
+    -moz-transition-property:opacity;
+    -o-transition-property:opacity;
+    transition-property:opacity;
 }
 #txt_search:focus, #txt_search:hover, #btn_search:focus, #btn_search:hover, #btn_resize:focus, #btn_resize:hover {
     opacity:1;
@@ -135,13 +139,11 @@ header {
     overflow:hidden;
     padding:0 8%;
     vertical-align:middle;
+    white-space:pre-wrap; /* Needed to keep space in empty spans */
 }
 #tweet span, #tweet img {
+    display:inline-block;
     position:relative;
-    -webkit-transform:rotate(-360deg);
-    -moz-transform:rotate(-360deg);
-    -o-transform:rotate(-360deg);
-    transform:rotate(-360deg);
 }
 .animate #tweet span, .animate #tweet img {
     -webkit-animation:char 10s infinite;

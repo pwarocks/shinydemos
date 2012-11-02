@@ -1,8 +1,10 @@
 window.addEventListener('DOMContentLoaded', function() {
+    'use strict';
+    
     /*
      * Configuration
      */
-    var query = '#css'; // The initial search term
+    var query = '#css3'; // The initial search term
     var updateTime = 2; // The time between updates in minutes
     
     /*
@@ -10,6 +12,7 @@ window.addEventListener('DOMContentLoaded', function() {
      */
     // Set some global variables
     var container = document.getElementById('container');
+    var content = document.getElementById('content');
     var frm_search = document.getElementById('frm_search');
     var txt_search = document.getElementById('txt_search');
     var btn_search = document.getElementById('btn_search');
@@ -24,18 +27,19 @@ window.addEventListener('DOMContentLoaded', function() {
         var text = tweetData.text;
         var user = tweetData.user;
         var result = '';
-        for (var i = 0, len = text.length; i < len; i++) {
+        for (var i = 0, lenText = text.length; i < lenText; i++) {
             result += '<span class="char' + (i % 10) + '">' + text[i] + '</span>';
         }
         result += '<div id="user"><a href="http://twitter.com/' + user + '">';
         user = '@' + user;
-        for (var j = 0, len = user.length; j < len; j++) {
+        for (var j = 0, lenUser = user.length; j < lenUser; j++) {
             result += '<span class="char' + (j % 10) + '">' + user[j] + '</span>';
         }
         result += '</a></div>';
         return result;
     }
     
+    // Submit search for tweets
     frm_search.onsubmit = function(event) {
         event.preventDefault();
         count = 0;
@@ -46,6 +50,7 @@ window.addEventListener('DOMContentLoaded', function() {
         return false;
     };
     
+    // Loop through and show individual tweets
     function doAnimationIteration() {        
         if (count >= (tweets.length - 1)) {
             count = 0;
@@ -55,11 +60,13 @@ window.addEventListener('DOMContentLoaded', function() {
         showTweet(count);
     }
     
+    // Listen for the end of each animation cycle
     img.addEventListener('webkitAnimationIteration', doAnimationIteration, false);
     img.addEventListener('MSAnimationIteration', doAnimationIteration, false);
     img.addEventListener('oanimationiteration', doAnimationIteration, false);
     img.addEventListener('animationiteration', doAnimationIteration, false);
     
+    // Get tweets and append JSON result to body
     function getTweets(query, callback) {
         var url = 'http://search.twitter.com/search.json?q=' + encodeURIComponent(query) + '&callback=' + callback;
         // Remove any script tag we've used before
@@ -74,11 +81,7 @@ window.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(jsonScript);
     }
     
-    this.setTweets = function(data) {
-        updateTweets(data);
-        showTweet(0);
-    };
-    
+    // Update tweets array with latest data
     this.updateTweets = function(data) {
         tweets = [];
         var results = data.results;
@@ -93,6 +96,12 @@ window.addEventListener('DOMContentLoaded', function() {
             tweets.push(tweetData);
         }
         count = 0;
+    };
+    
+    // High-level function to update & show tweets
+    this.setTweets = function(data) {
+        updateTweets(data);
+        showTweet(0);
     };
     
     // Do this at the end of every animation iteration
@@ -117,7 +126,11 @@ window.addEventListener('DOMContentLoaded', function() {
     // Page Visibility API: http://www.w3.org/TR/page-visibility/
     // Stop the animation when the tab is not visible
     document.addEventListener("visibilitychange", function(event) {
-        document.body.classList.toggle('animate');
+        if (document.hidden) {
+            content.classList.remove('animate');
+        } else {
+            content.classList.add('animate');
+        }
     }, false);
     
     // Fullscreen API: http://www.w3.org/TR/fullscreen/

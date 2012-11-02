@@ -4,11 +4,14 @@
   "main": "server.js",
   "dependencies": {
     "mime": "1.2.x",
-    "websocket": "*",
-    "optimist": "*"
+    "websocket": "1.0.x",
+    "optimist": "0.3.x"
   },
-  "engines": "node >= 0.6.5",
-  "version": "1.0.0",
+  "license": "Apache",
+  "engines": {
+    "node": "0.8.x"
+  },
+  "version": "1.0.0-8",
   "subdomain": "hungry-kittens",
   "scripts": {
     "start": "node server.js"

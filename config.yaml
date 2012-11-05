@@ -107,7 +107,7 @@ demos:
 
   - slug: flying-tweets
     title: 'Flying Tweets'
-    legend: 'Watch automatically-updated tweets fly onto your screen and fly off again. Great as a screensaver replacement or at conferences with boring speakers. When the page is not visible, animation stops to save precious CPU cycles.'
+    legend: 'Watch automatically-updated tweets fly onto your screen and fly off again. Great as a screensaver replacement or on displays at events. When the page is not visible, animation stops to save precious CPU cycles. Based on <a href="http://visibletweets.com/">Visible Tweets</a> by <a href="https://twitter.com/themaninblue">@themaninblue</a>.'
     tags: [css3]
     support: [cssanimations, csstransforms, fullscreen, pagevisibility]
 

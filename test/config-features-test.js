@@ -2,7 +2,7 @@ var vows = require('vows'),
 	assert = require('assert'),
 	yaml = require('js-yaml'),
 	config = require('../config.yaml'),
-	features = config[0].features;
+	features = config.features;
 
 // features:
 // - slug: applicationcache

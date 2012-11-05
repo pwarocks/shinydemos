@@ -2,7 +2,7 @@ var vows = require('vows'),
 	assert = require('assert'),
 	yaml = require('js-yaml'),
 	config = require('../config.yaml'),
-	tags = config[0].tags;
+	tags = config.tags;
 
 for (var i = 0, tag; tag = tags[i]; i++) {
 	vows.describe('Demo tags').addBatch({

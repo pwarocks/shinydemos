@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rollo — Shiny Demos</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="styles/screen.css">
+	<link rel="stylesheet" href="/styles/panel.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000px" height="1000px" viewBox="0 0 1000 1000">
+<g id="mascot">
+	<title>O Dev Rel Viking</title>
+	<desc>An SVG mascot for Opera Developer Relations Team</desc>
+	<use x="437.5" y="50" xlink:href="#face"/>
+	<use x="462.5" y="100" xlink:href="#eye"/>
+	<use x="512.5" y="100" xlink:href="#eye"/>
+	<use x="425" y="150" xlink:href="#beard"/>
+	<use x="475" y="200" xlink:href="#mouth"/>
+	<use x="425" y="80" xlink:href="#helmet"/>
+	<use x="325" y="250" xlink:href="#body"/>
+	<use x="325" y="450" xlink:href="#belt"/>
+	<use x="375" y="650" xlink:href="#leg"/>
+	<use x="375" y="850" xlink:href="#foot"/>
+	<use x="525" y="650" xlink:href="#leg"/>
+	<use x="525" y="850" xlink:href="#foot"/>
+	<use x="245" y="250" xlink:href="#arm"/>
+	<use x="675" y="250" xlink:href="#arm"  transform="rotate(180 715 377.5)"/>
+	<use x="200" y="240" xlink:href="#flower"/>
+	<use x="255" y="425" xlink:href="#fist"/>
+	<use x="675" y="450" xlink:href="#shield"/>
+	<use x="508" y="295" xlink:href="#o"/>
+</g>
+
+<!--my library-->
+<defs>
+	<!-- face -->
+	<rect id="face" x="0" y="0" width="125" height="200" fill="#E6B8A1"/>
+</defs>
+<defs>
+	<!-- beard -->
+	<path id="beard" d="M 0 0 L 0 100 L 150 100 L 150 0 L 100 0 L 100 25 L 50 25 L 50 0z" fill="#4A310C"/>
+</defs>
+<defs>
+	<!-- eye -->
+	<rect id="eye" x="0" y="0" width="25" height="25" fill="#000000"/>
+</defs>
+<defs>
+	<!-- mouth -->
+	<rect id="mouth" x="0" y="0" width="50" height="25" fill="#f2c4d6"/>
+</defs>
+<defs>
+	<!-- helmet -->
+	<g id="helmet">
+		<use  x="148" y="-80" xlink:href="#horn"/>
+		<use  x="-2" y="-130" xlink:href="#horn" transform="translate(0 50) matrix(-1 0 0 1 0 0)"/>
+		<path d="M 0 0 L 150 0 A75, 75 0 0, 0 0 0 z" fill="#6E808B"/>
+		<rect x="0" y="0" width="150" height="20" fill="#48565e"/>
+		<use  x="15" y="10" xlink:href="#bolt"/>
+		<use  x="35" y="10" xlink:href="#bolt"/>
+		<use  x="55" y="10" xlink:href="#bolt"/>
+		<use  x="75" y="10" xlink:href="#bolt"/>
+		<use  x="95" y="10" xlink:href="#bolt"/>
+		<use  x="115" y="10" xlink:href="#bolt"/>
+		<use  x="135" y="10" xlink:href="#bolt"/>
+	</g>
+</defs>
+<defs>
+	<g id="horn">
+		<path d="M -10 77 A 10 10 0 0, 0 20 10 A 17 20 0 0, 1 -20 35 z" fill="#D5B8A9"/>
+	</g>
+
+</defs>
+<defs>
+	<!-- bolt -->
+	<circle id="bolt" cx="0" cy="0" r="5" fill="#48565e" stroke="#6E808B" stroke-width="3"/>
+</defs>
+
+<defs>
+	<!-- body -->
+	<rect id="body" x="0" y="0" width="350" height="400" fill="#93492C"/>
+</defs>
+<defs>
+	<!-- belt -->
+	<!--  #D16419 -->
+	<g id="belt">
+		<rect x="0" y="0" width="350" height="50" fill="#4A310C"/>
+		<rect x="137.5" y="-12.5" width="75" height="75" fill="#6E808B"/>
+		<rect x="150" y="0" width="50" height="50" fill="#4A310C"/>
+	</g>
+</defs>
+<defs>
+	<!-- leg -->
+	<rect id="leg" x="0" y="0" width="100" height="150" fill="#B4B4B6"/>
+</defs>
+<defs>
+	<!-- helmet -->
+	<g id="foot">
+		<path d="M 0 0 L 100 0 A50, 50 0 0, 0 0 0 z" fill="#6E808B"/>
+	</g>
+</defs>
+<defs>
+	<!-- shield -->
+	<circle id="shield" cx="0" cy="0" r="180" fill="#ffffff" stroke="#4A310C" stroke-width="20"/>
+</defs>
+<defs>
+
+	<g id="o" transform="scale(1.5)">
+	<!-- Opera O logo -->
+		<path fill="#D02026" d="M111.276, 32.732c-39.002, 0-66.281, 28.271-66.281, 70.703c0, 37.754, 26.508, 72.139, 66.281, 72.139c39.775, 0, 66.277-34.385, 66.277-72.139C177.554, 61.004, 150.272, 32.732, 111.276, 32.732z M111.278, 164.586 c-24.264, 0-27.113-36.325-27.113-62.736c0-28.512, 4.605-60.008, 27.113-60.008c22.506 , 0, 27.072, 31.831, 27.072, 60.343 C138.351, 128.598, 135.54, 164.586, 111.278, 164.586z"/>
+	</g>
+</defs>
+<defs>
+	<g id="arm">
+		<rect x="0" y="80" width="80" height="100" fill="#B4B4B6"/>
+		<path d="M 80 80 L 80 0 A 80, 80 0 0, 0 0, 80 z" fill="#B4B4B6"/>
+		<path d="M 80 0 L 0 0 A 80, 80 0 0, 0 80, 80 z" fill="#B4B4B6" transform="translate(0, 175)"/>
+		<!-- I always forget the syntax
+		M x y starting point
+		L x1 y2 straight line
+		A rx, ry
+		A B, C arc direction
+		x4 y4 final point of arc
+		z close with a line -->
+	</g>
+</defs>
+
+<defs>
+	<g id="fist">
+	<rect x="0" y="0" width="70" height="80" fill="#E6B8A1"/>
+	</g>
+</defs>
+
+<defs>
+	<g id="flower" transform="scale(.3)" transform="translate(-128.48765, -188.24834)">
+		<g id="g2485" transform="matrix(0.7458131, -0.6661552, 0.6661552, 0.7458131, -295.61753, 366.24769)">
+			<path id="path1872" d="M 57.070286, 898.65026 C 149.56446, 835.82937 122.86482, 722.0344 164.40735, 665.54943 C 187.27829, 633.87166 293.58907, 682.90537 328.65479, 606.67798 C 357.14601, 544.74253 299.55215, 457.13005 379.41482, 453.63523" style="fill:none; fill-opacity:0.75; fill-rule:evenodd; stroke:#3fac48; stroke-width:22.10000801; stroke-linecap:round; stroke-linejoin:miter; stroke-miterlimit:4; stroke-dasharray:none; stroke-opacity:1" />
+			<g transform= "matrix(0.999927, 1.201258e-2, -1.201258e-2, 0.999927, 82.74441, -100.2953)" id="g1899">
+				<path style="fill:#faf0e6; fill-opacity:1; fill-rule:nonzero; stroke:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; stroke-miterlimit:4; stroke-dasharray:none; stroke-dashoffset:0; stroke-opacity:1" id="path1876" d="M 345.71428 405.21933 A 58.57143 61.42857 0 1 1  228.57142, 405.21933 A 58.57143 61.42857 0 1 1  345.71428 405.21933 z" transform="matrix(1.373853, 0.256828, 3.069914e-2, 1.011792, -151.3964, 1.42507)" />
+				<path style="fill:#faf0e6; fill-opacity:1; fill-rule:nonzero; stroke:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; stroke-miterlimit:4; stroke-dasharray:none; stroke-dashoffset:0; stroke-opacity:1" id="path1878" d="M 494.28572 358.07648 A 61.42857 57.142857 0 1 1  371.42858, 358.07648 A 61.42857 57.142857 0 1 1  494.28572 358.07648 z" transform="matrix(0.487021, -1.157356, 0.92283, 0.807282, -192.5977, 624.1075)" />
+				<path style="fill:#faf0e6; fill-opacity:1; fill-rule:nonzero; stroke:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; stroke-miterlimit:4; stroke-dasharray:none; stroke-dashoffset:0; stroke-opacity:1" id="path1880" d="M 614.28572 456.64789 A 68.571426 64.285713 0 1 1  477.14287, 456.64789 A 68.571426 64.285713 0 1 1  614.28572 456.64789 z" transform="matrix(0.821376, -0.894476, 0.794788, 0.522638, -346.5613, 701.7331)" />
+				<path style="fill:#faf0e6; fill-opacity:1; fill-rule:nonzero; stroke:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; stroke-miterlimit:4; stroke-dasharray:none; stroke-dashoffset:0; stroke-opacity:1" id="path1882" d="M 562.85715 585.2193 A 77.14286 72.85714 0 1 1  408.57143, 585.2193 A 77.14286 72.85714 0 1 1  562.85715 585.2193 z" transform="matrix(0.587206, 0.792135, -0.993717, 0.221789, 749.7953, 56.25963)" />
+				<path style="fill:#faf0e6; fill-opacity:1; fill-rule:nonzero; stroke:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; stroke-miterlimit:4; stroke-dasharray:none; stroke-dashoffset:0; stroke-opacity:1" id="path1884" d="M 325.71428 612.36218 A 48.57143 60 0 1 1  228.57142, 612.36218 A 48.57143 60 0 1 1  325.71428 612.36218 z" transform="matrix(1.189081, -6.086524e-2, 7.878225e-2, 1.339566, -39.07874, -187.0298)" />
+				<path style="fill:#ffd700; fill-opacity:1; fill-rule:nonzero; stroke:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; stroke-miterlimit:4; stroke-dasharray:none; stroke-dashoffset:0; stroke-opacity:1" id="path1874" d="M 528.57143 465.21933 A 111.42857 107.14286 0 1 1  305.71428, 465.21933 A 111.42857 107.14286 0 1 1  528.57143 465.21933 z" transform="matrix(0.607363, -0.191854, 0.180138, 0.646865, 26.57748, 289.2413)" />
+			</g>
+		</g>
+	</g>
+</defs>
+</svg>
+	<script src="/scripts/modernizr.js"></script>
+	<script src="/scripts/panel.js"></script>
+	<script src="scripts/options.js"></script>
+	<script src="scripts/script.js"></script>
+</body>
+</html>

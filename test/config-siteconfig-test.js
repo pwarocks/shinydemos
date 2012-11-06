@@ -2,7 +2,7 @@ var vows = require('vows'),
 	assert = require('assert'),
 	yaml = require('js-yaml'),
 	config = require('../config.yaml'),
-	siteconfig = config[0].siteconfig;
+	siteconfig = config.siteconfig;
 
 // the site is designed in such a way that these properties can change
 // and it will all just work, but the likelihood is very small--so we're

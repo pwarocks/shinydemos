@@ -3,8 +3,8 @@ var vows = require('vows'),
 	yaml = require('js-yaml'),
 	config = require('../config.yaml'),
 	getprop = require('../lib/categories').getPropFromTag,
-	demos = config[0].demos,
-	demoTags = config[0].demos.tags;
+	demos = config.demos,
+	demoTags = config.demos.tags;
 
 // - slug: beach
 // title: 'Beach'

@@ -2,7 +2,7 @@ var vows = require('vows'),
 	assert = require('assert'),
 	yaml = require('js-yaml'),
 	config = require('../config.yaml'),
-	demos = config[0].demos;
+	demos = config.demos;
 
 // - slug: beach
 // title: 'Beach'

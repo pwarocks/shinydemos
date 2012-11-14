@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var MAX_ROTATION = 0.05; // In radians
     var DRAW_SPEED = 1000 / 20; // Draw at 20 fps
     var mouse_down = ('createTouch' in document ? 'ontouchstart' : 'onmousedown');
-    var video = document.querySelector('video');;
+    var video = document.querySelector('video');
     var canvas1 = document.getElementById('canvas1');
     var context1 = canvas1.getContext('2d');
     var canvas2 = document.getElementById('canvas2');
@@ -243,20 +243,20 @@ document.addEventListener('DOMContentLoaded', function(){
     // Get the stream from the camera using getUserMedia
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
     window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+	
+    function successCallback(stream) {
+        // Replace the source of the video element with the stream from the camera
+        video.src = window.URL.createObjectURL(stream) || stream;
+        video.play();
+    }
+        
+    function errorCallback(error) {
+        if (error) console.error('An error occurred: [CODE ' + error.code + ']');
+        video.play();
+    }
     
     if (navigator.getUserMedia) {
         navigator.getUserMedia({video: true, toString: function(){return 'video';}}, successCallback, errorCallback);
-
-        function successCallback(stream) {
-            // Replace the source of the video element with the stream from the camera
-            video.src = window.URL.createObjectURL(stream) || stream;
-            video.play();
-        }
-        
-        function errorCallback(error) {
-            if (error) console.error('An error occurred: [CODE ' + error.code + ']');
-            video.play();
-        }
     } else {
         console.log('Native web camera streaming (getUserMedia) is not supported in this browser.');
         video.play();

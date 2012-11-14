@@ -27,8 +27,9 @@ if (navigator.getUserMedia){
 
 function not_supported(){
 	var vid_c = document.querySelector("#video_container");
-	vid_c.innerHTML = "<video id=\"video\" autoplay loop=\"loop\"><source src=\""+webmvideo+"\ type=\"video\/webm\"></source> <source src=\""+mp4video+"\ type=\"video\/mp4\" ></source></video>";
-	not_supported = true;
+	vid_c.innerHTML = "<video id='video' autoplay loop='loop'><source src='" + webmvideo + 
+		" type='video\/webm\'></source> <source src='" + mp4video + "' type='video\/mp4'></source></video>";
+	notSupported = true;
 }
 
 function v_success(stream){
@@ -40,22 +41,24 @@ function v_error(error){
 }
 
 function takeimage(){
-var vid = document.querySelector("#video");
-var canvas = document.querySelector('#mycanvas');
-var ctx = canvas.getContext('2d');
-
-if (not_supported == true){
-	var cw = vid.offsetWidth;
-	var ch = vid.offsetHeight;
-} else {
-	var cw = canvas.width;
-	var ch = canvas.height
-}
-
-var pixelCount = cw*ch;
-ctx.drawImage(vid, 0, 0, cw, ch);
-var pixels = ctx.getImageData(0, 0, cw, ch).data;
-otherColors(pixels, pixelCount);
+	var vid = document.querySelector("#video");
+	var canvas = document.querySelector('#mycanvas');
+	var ctx = canvas.getContext('2d');
+	var cw;
+	var ch;
+	
+	if (notSupported === true){
+		cw = vid.offsetWidth;
+		ch = vid.offsetHeight;
+	} else {
+		cw = canvas.width;
+		ch = canvas.height;
+	}
+	
+	var pixelCount = cw*ch;
+	ctx.drawImage(vid, 0, 0, cw, ch);
+	var pixels = ctx.getImageData(0, 0, cw, ch).data;
+	otherColors(pixels, pixelCount);
 }
 
 
@@ -65,7 +68,7 @@ function otherColors(pixels, pixelCount) {
 		// If pixel is mostly opaque and not white
 		if(pixels[i*4+3] >= 125){
 			if(!(pixels[i*4] > 250 && pixels[i*4+1] > 250 && pixels[i*4+2] > 250)){
-	   			pixelArray.push( [pixels[i*4], pixels[i*4+1], pixels[i*4+2]]);
+				pixelArray.push( [pixels[i*4], pixels[i*4+1], pixels[i*4+2]]);
 			}
 		}
 	}

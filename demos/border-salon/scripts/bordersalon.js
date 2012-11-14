@@ -152,7 +152,7 @@ function eventListeners(){
     if (el.classList.contains('frame')) {
       makeCurrent(el);
       event.stopPropagation();
-    } else if (el.classList.length == 0) {
+    } else if (el.classList.length === 0) {
       makeCurrent(el.parentNode);
       event.stopPropagation();
     }

@@ -2,7 +2,7 @@ var sign = document.getElementById('sign'),
 	body = document.body;
 
 function openFence(e) {
-	document.body.classList.toggle('opened')
+	document.body.classList.toggle('opened');
 	e.preventDefault();
 }
 

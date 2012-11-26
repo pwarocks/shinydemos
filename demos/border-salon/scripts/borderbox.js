@@ -1,3 +1,5 @@
+/*jshint asi:true */
+
 //Safari doesn't have Funtion#bind yet :(
 if(!Function.prototype.bind){Function.prototype.bind=function(oThis){if(typeof this!=="function"){throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");}
 var fSlice=Array.prototype.slice,aArgs=fSlice.call(arguments,1),fToBind=this,fNOP=function(){},fBound=function(){return fToBind.apply(this instanceof fNOP?this:oThis||window,aArgs.concat(fSlice.call(arguments)));};fNOP.prototype=this.prototype;fBound.prototype=new fNOP();return fBound;};}
@@ -8,7 +10,8 @@ var BorderBox = function(config){
   this.box = document.createElement('div');
   this.width = config.width;
   this.height = config.height;
-  if (this.framed = config.framed) {
+  if (config.framed) {
+    this.framed = true;
     this.frame = document.createElement('div');
     this.frame.className = 'frame';
   }

@@ -16,11 +16,17 @@ module.exports = function(grunt) {
 				'demos/tatami/scripts/*.js',
 				'demos/touch-tracker/scripts/*.js',
 				'demos/warholiser/scripts/*.js',
-				'demos/hungry-kittens/scripts/game.js'
+				'demos/border-radius-fun/scripts/*.js',
+				'demos/border-salon/scripts/*.js',
+				'demos/clock/scripts/*.js',
+				'demos/color-picker/scripts/script.js',
+				'demos/cracked/scripts/*.js',
+				'demos/explode/scripts/*.js',
+				'demos/fence/scripts/*.js'
 			],
 			shared: 'source/scripts/panel.js'
 		},
-		// have a look at http://www.jshint.com/options/ to understand these
+		// have a look at http://www.jshint.com/docs/ to understand these
 		jshint: {
 			// Defaults.
 			options: {

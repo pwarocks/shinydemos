@@ -32,7 +32,7 @@ video.addEventListener('play', function() {
         canvas2.width = windowWidth;
         canvas2.height = windowHeight;
                 
-        if (exploding.SOURCERECT.width == 0) {
+        if (exploding.SOURCERECT.width === 0) {
             exploding.SOURCERECT = {
                 width : video.videoWidth,
                 height : video.videoHeight
@@ -43,7 +43,7 @@ video.addEventListener('play', function() {
         
         // Start drawing the stream to the canvas
         setInterval(function() {
-            exploding.processFrame(video, windowWidth, windowHeight)
+            exploding.processFrame(video, windowWidth, windowHeight);
         }, 33);
     }
 }, false);
@@ -64,20 +64,20 @@ exploding.init = function() {
     // Get the stream from the camera using getUserMedia
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
     window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+
+    function successCallback(stream) {
+        // Replace the source of the video element with the stream from the camera
+        video.src = window.URL.createObjectURL(stream) || stream;
+        video.play();
+    }
+        
+    function errorCallback(error) {
+        if (error) console.error('An error occurred: [CODE ' + error.code + ']');
+        video.play();
+    }
     
     if (navigator.getUserMedia) {
         navigator.getUserMedia({video: true, toString: function(){return 'video';}}, successCallback, errorCallback);
-
-        function successCallback(stream) {
-            // Replace the source of the video element with the stream from the camera
-            video.src = window.URL.createObjectURL(stream) || stream;
-            video.play();
-        }
-        
-        function errorCallback(error) {
-            if (error) console.error('An error occurred: [CODE ' + error.code + ']');
-            video.play();
-        }
     } else {
         console.log('Native web camera streaming (getUserMedia) is not supported in this browser.');
         video.play();
@@ -134,7 +134,7 @@ exploding.processFrame = function(video, paintWidth, paintHeight) {
             if (tile.currentY <= 0 || tile.currentY >= paintWidth) {
                 tile.moveY *= -1;
             }
-        } else if (tile.rotation != 0 || tile.currentX != tile.originX || tile.currentY != tile.originY) {
+        } else if (tile.rotation !== 0 || tile.currentX != tile.originX || tile.currentY != tile.originY) {
             //contract
             var diffx = (tile.originX - tile.currentX) * 0.2;
             var diffy = (tile.originY - tile.currentY) * 0.2;
@@ -187,11 +187,11 @@ exploding.explode = function(x, y) {
         }
     }
     exploding.tiles.sort(exploding.zindexSort);
-}
+};
 
 exploding.zindexSort = function(a, b) {
     return (a.force - b.force);
-}
+};
 
 exploding.dropBomb = function(evt, obj) {
     evt.preventDefault();
@@ -212,7 +212,7 @@ exploding.dropBomb = function(evt, obj) {
     var canvasX = posx-obj.offsetLeft;
     var canvasY = posy-obj.offsetTop;
     exploding.explode(canvasX, canvasY);
-}
+};
 
 // Constructor for individual tiles
 exploding.Tile = function() {
@@ -228,11 +228,11 @@ exploding.Tile = function() {
     this.moveRotation = 0;
     this.videoX = 0;
     this.videoY = 0;
-}
+};
 
 // Slightly faster than Math.abs
 exploding.absolute = function(x) {
     return (x < 0 ? -x : x);
-}
+};
 
 window.addEventListener('DOMContentLoaded', exploding.init, false);

@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function(){
         
         video.removeEventListener('playing', initVideo, false);
         doDraw(video, context1, context2, sx, sy, sw, sh, 0, 0, dw, dh);
-    }
+    };
     
     video.addEventListener('playing', initVideo, false);
     

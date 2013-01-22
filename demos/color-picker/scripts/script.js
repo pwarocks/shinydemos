@@ -14,13 +14,13 @@ var options = {
 	"video": true
 };
 
-var notsupported = false;
+var notSupported = false;
 
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
 
 if (navigator.getUserMedia){
-	navigator.getUserMedia(options, v_success);
+	navigator.getUserMedia(options, v_success, v_error);
 } else {
 	not_supported();
 }
@@ -33,7 +33,12 @@ function not_supported(){
 }
 
 function v_success(stream){
-	video_element.src = window.URL.createObjectURL( stream ) || stream;
+	if (video_element.mozCaptureStream) { // Needed to check for Firefox
+		video_element.mozSrcObject = stream;
+	} else {
+		video_element.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+	}
+	video_element.play();
 }
 
 function v_error(error){
@@ -60,7 +65,6 @@ function takeimage(){
 	var pixels = ctx.getImageData(0, 0, cw, ch).data;
 	otherColors(pixels, pixelCount);
 }
-
 
 function otherColors(pixels, pixelCount) {
 	var pixelArray = [];
@@ -94,9 +98,7 @@ function otherColors(pixels, pixelCount) {
 
 }
 
-
 function reset() {
 	var colorlist = document.querySelector("#colorlist");
 	colorlist.innerHTML = "";
 }
-

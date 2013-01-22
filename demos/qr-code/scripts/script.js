@@ -54,19 +54,26 @@ var qry = {
 		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 		window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
 
-		if (navigator.getUserMedia) {        
-				navigator.getUserMedia({video: true}, function(stream) {
-					// Replace the source of the video element with the stream from the camera
-					qry.video.src = window.URL.createObjectURL(stream) || stream;
-					setTimeout(qry.canvasInit,250); // Needed to get videoWidth/videoHeight
-				}, errorCallback);
-				
-				function errorCallback(error) {
-						qry.out.className = 'sad';
-						qry.out.innerHTML = 'an error occurred';
-						return;
-					}	
-			} else {
+		if (navigator.getUserMedia) {
+			function errorCallback(error) {
+				qry.out.className = 'sad';
+				qry.out.innerHTML = 'an error occurred';
+				return;
+			}
+
+			navigator.getUserMedia({video: true}, function(stream) {
+				// Replace the source of the video element with the stream from the camera
+				if (qry.video.mozCaptureStream) { // Needed to check for Firefox
+					qry.video.mozSrcObject = stream;
+				} else {
+					qry.video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+				}
+				qry.video.addEventListener('loadedmetadata', function(){
+					qry.video.play();
+					qry.canvasInit();
+				}, false);
+			}, errorCallback);
+		} else {
 			qry.out.className = 'sad';
 			qry.out.innerHTML = 'no <code>getUserMedia</code> support';
 			return;

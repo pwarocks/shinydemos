@@ -20,7 +20,7 @@ var exploding = {
 }, video = document.querySelector('video');
 
 // Start drawing to the canvas once the video is ready.
-video.addEventListener('play', function() {
+exploding.doDraw = function() {
     if (!isNaN(video.duration)) {
         // Set the dimensions of the drawing areas
         var windowWidth = window.innerWidth;
@@ -41,12 +41,16 @@ video.addEventListener('play', function() {
         
         exploding.createTiles(windowWidth, windowHeight);
         
+        video.removeEventListener('playing', exploding.doDraw, false);
+        
         // Start drawing the stream to the canvas
         setInterval(function() {
             exploding.processFrame(video, windowWidth, windowHeight);
         }, 33);
     }
-}, false);
+}
+
+video.addEventListener('playing', exploding.doDraw, false);
 
 exploding.init = function() {
     
@@ -67,7 +71,11 @@ exploding.init = function() {
 
     function successCallback(stream) {
         // Replace the source of the video element with the stream from the camera
-        video.src = window.URL.createObjectURL(stream) || stream;
+        if (video.mozCaptureStream) { // Needed to check for Firefox
+            video.mozSrcObject = stream;
+        } else {
+            video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+        }
         video.play();
     }
         

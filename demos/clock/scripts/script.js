@@ -1,4 +1,4 @@
-(function digitalclock(){   
+(function digitalclock(){
   var date = new Date(),
       clock = document.getElementById('clock'),
       time = document.createTextNode(date.toTimeString().substring(0, 8));
@@ -14,7 +14,12 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
 window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
 
 function successCallback( stream ) {
-  video.src = window.URL.createObjectURL( stream ) || stream;
+  if (video.mozCaptureStream) { // Needed to check for Firefox
+    video.mozSrcObject = stream;
+  } else {
+    video.src = (window.URL && window.URL.createObjectURL( stream )) || stream;
+  }
+  video.play();
 }
 
 function errorCallback( error ) {

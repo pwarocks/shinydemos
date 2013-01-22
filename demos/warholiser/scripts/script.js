@@ -35,12 +35,13 @@ function not_supported() {
 }
 
 function v_success(stream) {
-  video.src = window.URL.createObjectURL(stream) || stream;
+  if (video.mozCaptureStream) { // Needed to check for Firefox
+    video.mozSrcObject = stream;
+  } else {
+    video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+  }
+  video.play();
   setInterval(copyVideoToCanvas, 100);
-}
-
-function webkit_v_success(stream){
-  video.src = window.webkitURL.createObjectURL(stream);
 }
 
 function v_error(error) {

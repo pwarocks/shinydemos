@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function(){
         
         do {
             shard = new Shard();
-            shard.corner1 = coords;            
+            shard.corner1 = coords;
             step = randomXToY(100, 300);
             
             if (x <= windowwidth && y <= 0) {
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function(){
             shards.push(shard);
             
             shard_num++;
-        } while (shard_num < shard_total);        
+        } while (shard_num < shard_total);
     }
     
     // Draw images on both canvases
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     
     // Main function for cracking and fixing the screen
-    function doCrack(event) {        
+    function doCrack(event) {
         // Get coords
         var coords = (event) ? getCoords(event) : [];
         
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function(){
       context1.fillStyle = '#fff';
       context1.shadowColor = '#000';
       context1.shadowOffsetX = 2;
-      context1.shadowOffsetY = 2;                                                                                                                   
+      context1.shadowOffsetY = 2;
       context1.shadowBlur = 1;
       context1.fillText('IN CASE OF', x + 50, y + 65);
       context1.fillText('EMERGENCY', x + 42, y + 110);
@@ -208,8 +208,7 @@ document.addEventListener('DOMContentLoaded', function(){
     
     document[mouse_down] = doCrack;
     
-    // Start drawing the video on page load thanks to "autoplay" attribute
-    video.addEventListener('play', function() {
+    var initVideo = function() {
         // Calculate video and window height.
         // Note that final video size will always be greater than or equal to window size.        
         canvas1.width = windowwidth;
@@ -218,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function(){
         canvas2.height = windowheight;
         
         var windowratio = windowwidth / windowheight;
-        var videoratio = this.videoWidth / this.videoHeight;
+        var videoratio = video.videoWidth / video.videoHeight;
         var sw, sh, dw, dh;
         var sx = 0;
         var sy = 0;
@@ -227,26 +226,33 @@ document.addEventListener('DOMContentLoaded', function(){
             // Video is wider than screen, so match height to screen height
             dh = windowheight;
             dw = windowwidth;
-            sh = this.videoHeight;
+            sh = video.videoHeight;
             sw = (sh * windowratio) >> 0;
         } else {
             // Video is taller than screen, so match width to screen width
             dh = windowheight;
             dw = windowwidth;
-            sw = this.videoWidth;
+            sw = video.videoWidth;
             sh = (sw / windowratio) >> 0; // Round to an integer
         }
         
-        doDraw(this, context1, context2, sx, sy, sw, sh, 0, 0, dw, dh);
-    },false);
-
+        video.removeEventListener('playing', initVideo, false);
+        doDraw(video, context1, context2, sx, sy, sw, sh, 0, 0, dw, dh);
+    };
+    
+    video.addEventListener('playing', initVideo, false);
+    
     // Get the stream from the camera using getUserMedia
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
     window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
-	
+
     function successCallback(stream) {
         // Replace the source of the video element with the stream from the camera
-        video.src = window.URL.createObjectURL(stream) || stream;
+        if (video.mozCaptureStream) { // Needed to check for Firefox
+            video.mozSrcObject = stream;
+        } else {
+            video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+        }
         video.play();
     }
         

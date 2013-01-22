@@ -112,7 +112,11 @@ headtrackr.Tracker = function(params) {
 			// set up stream
 			navigator.getUserMedia(videoSelector, function( stream ) {
 				headtrackerStatus("camera found");
-				video.src = window.URL.createObjectURL(stream);
+				if (video.mozCaptureStream) { // Needed to check for Firefox
+					video.mozSrcObject = stream;
+				} else {
+					video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+				}
 				video.play();
 			}, function() {
 				headtrackerStatus("no camera");
@@ -130,7 +134,7 @@ headtrackr.Tracker = function(params) {
 		canvasContext = canvas.getContext("2d");
 		
 		// resize video when it is playing
-		video.addEventListener('playing', function() {
+		video.addEventListener('loadedmetadata', function() {
 			if(video.width > video.height) {
 				video.width = 320;
 			} else {

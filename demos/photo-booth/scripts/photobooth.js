@@ -141,7 +141,11 @@
   var init = (function(){
     navigator.getUserMedia ? 
       navigator.getUserMedia({video: true}, function(stream){
-        video.src = window.URL.createObjectURL(stream) || stream;
+        if (video.mozCaptureStream){ // Needed to check for Firefox
+            video.mozSrcObject = stream;
+        } else {
+            video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+        }
         video.addEventListener('loadedmetadata', function(){
           video.play();
           computeSize(true);

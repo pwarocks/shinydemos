@@ -116,7 +116,6 @@
 		width:480px;
 		height:800px;
 		border-radius:0;
-		background:#000 url(../images/cubes.png) no-repeat;
 		-webkit-box-shadow:none;
 		-moz-box-shadow:none;
 		box-shadow:none;
@@ -137,14 +136,6 @@
 	margin-left:80px;
 	opacity:0.2;
 	}
-
-/*	canvas
-	css3
-	touch
-	getusermedia
-	audio-video
-	svg
-	webgl */
 
 /* Items */
 .navigation .canvas a {

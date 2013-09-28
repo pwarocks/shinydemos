@@ -37,11 +37,11 @@ var paranoid = {
 		document.addEventListener('keydown', function(e){ paranoid.kbd(e);}, true);
 		
 		// if it's a touch device, change autopilot message and hide controls legend
-		var hazTouch = 'ontouchstart' in window || 'onMozTouchDown' in window || 'createTouch' in document;
+		/* var hazTouch = 'ontouchstart' in window || 'onMozTouchDown' in window || 'createTouch' in document;
 		if (hazTouch) {
 			document.getElementById('controls').className='off';
 			document.getElementById('autopilot').innerHTML+='<br>Touch to play';
-		}
+		} */
 		
 		
 		
@@ -102,7 +102,7 @@ var paranoid = {
 	
 	mouse: function(e) {
 		if (e.touches) {
-			paranoid.px=e.touches[0].clientX-e.target.offsetLeft;
+			paranoid.px=e.targetTouches[0].clientX-parseInt(window.getComputedStyle(e.target.parentNode).getPropertyValue("margin-left"));
 		}  else if (e.offsetX) {
 			paranoid.px=e.offsetX;
 		

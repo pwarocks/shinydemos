@@ -37,7 +37,7 @@ tags:
 
   - tagName: getusermedia
     displayName: 'getUserMedia'
-    tagline: '<code>getUserMedia</code> is an API that began as part of HTML5 and was split off into the W3C WebRTC specification suite. It allows JavaScript access to a device&rsquo;s cameras and microphones. Think in-browser video-conferencing! Think augmented reality! Think Shiny! Use Opera 12, Opera Mobile 12 or Chrome Canary to see the demos.'
+    tagline: '<code>getUserMedia</code> is an API that began as part of HTML5 and was split off into the W3C WebRTC specification suite. It allows JavaScript access to a device&rsquo;s cameras and microphones. Think in-browser video-conferencing! Think augmented reality! Think Shiny!'
 
   - tagName: websockets
     displayName: 'WebSocket'

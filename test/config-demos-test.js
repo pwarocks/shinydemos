@@ -1,6 +1,7 @@
+require('require-yaml');
+
 var vows = require('vows'),
 	assert = require('assert'),
-	yaml = require('js-yaml'),
 	config = require('../config.yaml'),
 	demos = config.demos;
 
@@ -18,7 +19,7 @@ for (var i = 0, demo; demo = demos[i]; i++) {
 				assert.match(topic, /^[a-z0-9\-]+$/);
 			},
 			'should not be undefined': function(topic){
-				assert.isDefined(topic);	
+				assert.isDefined(topic);
 			},
 			'should not contain spaces': function(topic){
 				assert.match(topic, /^[^\s]+$/);
@@ -34,7 +35,7 @@ for (var i = 0, demo; demo = demos[i]; i++) {
 				assert.isNotEmpty(topic);
 			},
 			'should not be undefined': function(topic){
-				assert.isDefined(topic);	
+				assert.isDefined(topic);
 			},
 			'should use Sentence Case': function(topic){
 				assert.notEqual(topic[0], function(topic){
@@ -57,7 +58,7 @@ for (var i = 0, demo; demo = demos[i]; i++) {
 				assert.isNotEmpty(topic);
 			},
 			'should not be undefined': function(topic){
-				assert.isDefined(topic);	
+				assert.isDefined(topic);
 			}
 		}
 	}).addBatch({
@@ -70,7 +71,7 @@ for (var i = 0, demo; demo = demos[i]; i++) {
 				assert.isNotEmpty(topic);
 			},
 			'should not be undefined': function(topic){
-				assert.isDefined(topic);	
+				assert.isDefined(topic);
 			}
 		}
 	}).addBatch({
@@ -83,7 +84,7 @@ for (var i = 0, demo; demo = demos[i]; i++) {
 				assert.isNotEmpty(topic);
 			},
 			'should not be undefined': function(topic){
-				assert.isDefined(topic);	
+				assert.isDefined(topic);
 			}
 		}
 	}).exportTo(module);

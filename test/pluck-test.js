@@ -1,6 +1,7 @@
+require('require-yaml');
+
 var vows = require('vows'),
 	assert = require('assert'),
-	yaml = require('js-yaml'),
 	config = require('../config.yaml'),
 	pluckSupport = require('../lib/pluck');
 

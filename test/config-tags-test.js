@@ -1,6 +1,7 @@
+require('require-yaml');
+
 var vows = require('vows'),
 	assert = require('assert'),
-	yaml = require('js-yaml'),
 	config = require('../config.yaml'),
 	tags = config.tags;
 
@@ -15,7 +16,7 @@ for (var i = 0, tag; tag = tags[i]; i++) {
 				assert.match(topic, /^[a-z0-9\-]+$/);
 			},
 			'should not be undefined': function(topic){
-				assert.isDefined(topic);	
+				assert.isDefined(topic);
 			},
 			'should not contain spaces': function(topic){
 				assert.match(topic, /^[^\s]+$/);
@@ -31,7 +32,7 @@ for (var i = 0, tag; tag = tags[i]; i++) {
 				assert.isNotEmpty(topic);
 			},
 			'should not be undefined': function(topic){
-				assert.isDefined(topic);	
+				assert.isDefined(topic);
 			}
 		}
 	}).addBatch({
@@ -44,7 +45,7 @@ for (var i = 0, tag; tag = tags[i]; i++) {
 				assert.isNotEmpty(topic);
 			},
 			'should not be undefined': function(topic){
-				assert.isDefined(topic);	
+				assert.isDefined(topic);
 			}
 		}
 	}).exportTo(module);

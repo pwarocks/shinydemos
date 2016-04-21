@@ -1,9 +1,10 @@
+require('require-yaml');
+
 var vows = require('vows'),
 	assert = require('assert'),
-	yaml = require('js-yaml'),
 	config = require('../config.yaml'),
 	category = require('../lib/categories');
-	
+
 //TODO: consider fixtures in case config.yml copy changes
 
 vows.describe('Category filtering').addBatch({
@@ -12,7 +13,7 @@ vows.describe('Category filtering').addBatch({
 			topic: category.getPropFromTag('displayName', 'css3'),
 			'css3 -> "CSS 3"': function(topic){
 				assert.equal(topic, 'CSS 3');
-			}	
+			}
 		},
 		'SVG': {
 			topic: category.getPropFromTag('displayName', 'svg'),

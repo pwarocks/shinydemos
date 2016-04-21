@@ -1,29 +1,19 @@
 {
-  "author": "Mike Taylor, Opera Software",
-  "name": "shinydemos",
-  "description": "A script to create final demos static files from initial files",
-  "version": "0.1.2",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/operasoftware/shinydemos.git"
-  },
+  "private": true,
   "main": "index",
-  "engines": {
-    "node": "~0.6.5"
-  },
   "dependencies": {
     "ncp": "*",
     "handlebars": "*",
-    "js-yaml": ">= 1.x",
+    "require-yaml": "0.0.1",
     "mkdirp": "*",
     "rimraf": "*"
   },
   "devDependencies": {
-    "optimist": "*",
+    "async": "*",
     "colors": "*",
-    "prompt": "*",
-    "vows": "*",
     "grunt": "*",
-    "async": "*"
+    "optimist": "*",
+    "prompt": "*",
+    "vows": "*"
   }
 }
